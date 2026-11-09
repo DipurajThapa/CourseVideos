@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-09 "Debugging with AI: Reading Errors and Tracebacks" ready for review: three kinds of bugs, tracebacks, print debugging and the structured debugging prompt, six AI stages on a day with no sales (17:22). Storyboard check now scans on-screen text.
 - python-08 "Repeat a Set Number of Times: for Loops and range()" ready for review (17:52 video, critic 8.2/10 with all fixes applied): tea price chart, loyalty card off-by-one caught by line checks, ignored instruction caught by comparing outputs.
 - python-07 "Repeat Until Done: while Loops" ready for review (18:04 video, critic 7.3/10 with all fixes applied): order loop, trace tables, AI limit of 3 tries caught by edge-case tests and a trace.
 - python-06 "Making Decisions: if, elif and else" ready for review (18:38 video, critic 8/10 with fixes applied). Theme now draws code without ligatures.

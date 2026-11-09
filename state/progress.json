@@ -197,15 +197,19 @@
     "python-09": {
       "language": "python",
       "number": 9,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-4b20cc",
           "started": "2026-11-09T23:25:30+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-09T23:56:48+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-09-4b20cc"
+      "current_run_id": "2026-11-09-4b20cc",
+      "path": "chapters/python/09-debugging-with-ai",
+      "completed": "2026-11-09T23:56:48+00:00"
     },
     "python-10": {
       "language": "python",
@@ -322,5 +326,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T23:25:30+00:00"
+  "updated": "2026-11-09T23:56:48+00:00"
 }
