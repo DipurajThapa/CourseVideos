@@ -1,10 +1,10 @@
 {
   "chapter_id": "python-02",
-  "run_id": "2026-11-09-f1911e",
-  "verified_at": "2026-11-09T10:14:32+00:00",
+  "run_id": "2026-11-09-3f211e",
+  "verified_at": "2026-11-09T10:55:56+00:00",
   "passed": true,
   "toolchains": [
-    "Python 3.14.6",
+    "Python 3.15.2",
     "Python 3.13.18"
   ],
   "checks": [
@@ -21,92 +21,92 @@
       "details": {
         "files_run": 21,
         "toolchains": [
-          "Python 3.14.6",
+          "Python 3.15.2",
           "Python 3.13.18"
         ],
         "results": {
           "examples/ai_average_fixed.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ai_average_flawed.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/err01_name_typo.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/err02_text_number.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/err03_digit_first.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/err04_reversed.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ex01_first_variables.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ex02_types.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ex03_arithmetic.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ex04_reassign.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ex05_order.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ex06_cafe_bill.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ex07_text_times.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task1.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task2.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task3.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task4.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task5.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task6.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task7.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "practice/solutions/task8.py": {
-            "Python 3.14.6": "pass",
+            "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           }
         }
@@ -160,9 +160,9 @@
           "longest": 26
         },
         "video/script.md": {
-          "sentences": 92,
-          "average_words": 8.0,
-          "longest": 19
+          "sentences": 396,
+          "average_words": 9.7,
+          "longest": 28
         }
       }
     },
@@ -171,9 +171,13 @@
       "passed": true,
       "problems": [],
       "details": {
-        "scenes": 8
+        "estimated_minutes": 14.8,
+        "duration_seconds": 848.6,
+        "size_mb": 20.54,
+        "scenes": 16,
+        "voice": "en_US-lessac-medium"
       }
     }
   ],
-  "fingerprint": "8c1188a15fb0baf4409a64132db6645475e5d59d121af22838b5e9a07998f56f"
+  "fingerprint": "30d9ffdf6c2209844782e6357dc0c25b84536104815747181993639bed0dea5c"
 }

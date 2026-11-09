@@ -1,0 +1,1158 @@
+1
+00:00:00,400 --> 00:00:04,013
+Welcome to Code Quest,
+Chapter 2: Values and Variables.
+
+2
+00:00:04,013 --> 00:00:08,430
+In this chapter, you will
+learn how a program stores data,
+
+3
+00:00:08,430 --> 00:00:11,642
+gives it a name and calculates with it.
+
+4
+00:00:12,417 --> 00:00:13,595
+First, a puzzle.
+
+5
+00:00:13,595 --> 00:00:17,523
+A learner asked an AI
+assistant for the average of
+
+6
+00:00:17,523 --> 00:00:20,272
+three test scores: 80, 90 and 100.
+
+7
+00:00:20,272 --> 00:00:22,236
+The AI wrote this code,
+
+8
+00:00:22,236 --> 00:00:25,378
+and it said the program would print 90.
+
+9
+00:00:26,150 --> 00:00:28,113
+Look closely at line 5.
+
+10
+00:00:28,113 --> 00:00:30,076
+Do you trust the prediction?
+
+11
+00:00:34,850 --> 00:00:38,206
+Here is the real output: 203 point 3 3.
+
+12
+00:00:38,206 --> 00:00:41,188
+The AI was sure, and it was wrong.
+
+13
+00:00:41,188 --> 00:00:43,426
+By the end of this chapter,
+
+14
+00:00:43,426 --> 00:00:46,035
+you will see why in two seconds.
+
+15
+00:00:47,067 --> 00:00:51,231
+Here is what you will be
+able to do by the end.
+
+16
+00:00:51,231 --> 00:00:53,313
+First, write variables with clear names,
+
+17
+00:00:53,313 --> 00:00:56,089
+and give them values with the equals sign.
+
+18
+00:00:56,850 --> 00:00:59,975
+Second, explain the four
+basic types of data,
+
+19
+00:00:59,975 --> 00:01:02,709
+and check the type of any value.
+
+20
+00:01:02,709 --> 00:01:05,443
+Third, calculate with
+the seven arithmetic operators.
+
+21
+00:01:06,217 --> 00:01:10,387
+Fourth, predict the output of
+a program before you run it.
+
+22
+00:01:10,387 --> 00:01:14,937
+And fifth, fix the errors that
+beginners meet most often with variables.
+
+23
+00:01:15,967 --> 00:01:19,573
+In Chapter 1, the cafe
+receipt typed each price twice:
+
+24
+00:01:19,573 --> 00:01:23,179
+once in the item line,
+and once in the total.
+
+25
+00:01:23,179 --> 00:01:25,343
+If the price of tea changes,
+
+26
+00:01:25,343 --> 00:01:27,867
+you must find and change every copy.
+
+27
+00:01:27,867 --> 00:01:30,391
+Miss one, and the receipt is wrong.
+
+28
+00:01:31,150 --> 00:01:32,556
+A variable solves this.
+
+29
+00:01:32,556 --> 00:01:36,070
+A variable is a name
+that refers to a value.
+
+30
+00:01:36,070 --> 00:01:40,286
+You store the price once, under
+a name such as tea price,
+
+31
+00:01:40,286 --> 00:01:42,044
+and use that name everywhere.
+
+32
+00:01:42,817 --> 00:01:44,997
+Every real program works this way.
+
+33
+00:01:44,997 --> 00:01:48,266
+A shopping app keeps
+the items in your basket.
+
+34
+00:01:48,266 --> 00:01:50,083
+A game keeps your score.
+
+35
+00:01:50,083 --> 00:01:52,263
+A banking app keeps your balance.
+
+36
+00:01:52,263 --> 00:01:55,896
+Each of these values has
+a name inside the program.
+
+37
+00:01:56,900 --> 00:02:00,510
+A value is a single
+piece of data, such as 3,
+
+38
+00:02:00,510 --> 00:02:02,152
+3.5 or the word Tea.
+
+39
+00:02:02,152 --> 00:02:03,793
+Every value has a type.
+
+40
+00:02:03,793 --> 00:02:07,075
+The type tells Python what
+kind of data it is,
+
+41
+00:02:07,075 --> 00:02:09,372
+and what you can do with it.
+
+42
+00:02:10,150 --> 00:02:11,939
+Python has four basic types.
+
+43
+00:02:11,939 --> 00:02:14,086
+An int is a whole number.
+
+44
+00:02:14,086 --> 00:02:17,306
+A float is a number with a decimal point.
+
+45
+00:02:17,306 --> 00:02:19,810
+A string is text inside quotation marks.
+
+46
+00:02:19,810 --> 00:02:22,672
+And a Boolean is either True or False.
+
+47
+00:02:23,450 --> 00:02:25,754
+Assignment connects a name to a value.
+
+48
+00:02:25,754 --> 00:02:29,374
+You write the name, then
+the equals sign, then the value.
+
+49
+00:02:29,374 --> 00:02:31,677
+Python works out the right side first.
+
+50
+00:02:31,677 --> 00:02:35,297
+Then it connects the name
+on the left to the result.
+
+51
+00:02:36,050 --> 00:02:38,752
+So read the equals sign as now refers to,
+
+52
+00:02:38,752 --> 00:02:40,253
+not as is equal to.
+
+53
+00:02:40,253 --> 00:02:43,255
+Think of a variable as
+a name label that you
+
+54
+00:02:43,255 --> 00:02:44,456
+stick on a value.
+
+55
+00:02:44,456 --> 00:02:48,058
+You can move the label to
+a new value at any time.
+
+56
+00:02:48,817 --> 00:02:51,255
+The comparison stops working at one point.
+
+57
+00:02:51,255 --> 00:02:54,042
+Two labels can point to the same value,
+
+58
+00:02:54,042 --> 00:02:57,178
+and moving one label
+does not move the other.
+
+59
+00:02:58,200 --> 00:02:58,965
+Step 1.
+
+60
+00:02:58,965 --> 00:03:02,410
+Create a file called
+ex 0 1 first variables.
+
+61
+00:03:02,410 --> 00:03:06,619
+Line 2 stores the text
+Asha in a variable called customer.
+
+62
+00:03:06,619 --> 00:03:10,063
+Line 3 stores the number 3 in tea price.
+
+63
+00:03:10,063 --> 00:03:12,359
+The next three lines print them.
+
+64
+00:03:13,117 --> 00:03:16,414
+Before you run it, predict
+the three lines of output.
+
+65
+00:03:22,183 --> 00:03:23,765
+Here is the output.
+
+66
+00:03:23,765 --> 00:03:27,720
+Asha, then Tea costs 3,
+then Two teas cost 6.
+
+67
+00:03:27,720 --> 00:03:30,093
+In the print on line 4,
+
+68
+00:03:30,093 --> 00:03:32,861
+the name customer has no quotation marks.
+
+69
+00:03:32,861 --> 00:03:37,212
+So Python prints its value,
+Asha, and not the word customer.
+
+70
+00:03:37,983 --> 00:03:40,914
+Good names make code easy to read.
+
+71
+00:03:40,914 --> 00:03:45,520
+The Python style guide, called
+PEP 8, says: use lowercase letters,
+
+72
+00:03:45,520 --> 00:03:48,032
+and join words with an underscore.
+
+73
+00:03:48,032 --> 00:03:51,381
+A name can contain
+letters, digits and underscores,
+
+74
+00:03:51,381 --> 00:03:54,312
+but it cannot start with a digit.
+
+75
+00:03:55,083 --> 00:03:56,111
+Capital letters matter,
+
+76
+00:03:56,111 --> 00:03:59,539
+so price with a small p and Price with a
+
+77
+00:03:59,539 --> 00:04:01,595
+capital P are two different names.
+
+78
+00:04:01,595 --> 00:04:05,022
+And do not use the
+words Python reserves for itself,
+
+79
+00:04:05,022 --> 00:04:07,078
+such as True, None or class.
+
+80
+00:04:08,100 --> 00:04:08,838
+Step 2.
+
+81
+00:04:08,838 --> 00:04:12,525
+The type function tells you
+the type of any value.
+
+82
+00:04:12,525 --> 00:04:16,582
+This program stores four values:
+a count of cups, a price,
+
+83
+00:04:16,582 --> 00:04:19,901
+an item name and a yes or no fact.
+
+84
+00:04:19,901 --> 00:04:22,851
+Then it prints each value with its type.
+
+85
+00:04:23,617 --> 00:04:24,335
+Run it.
+
+86
+00:04:24,335 --> 00:04:26,132
+The 2 is an int.
+
+87
+00:04:26,132 --> 00:04:27,928
+The 3.5 is a float.
+
+88
+00:04:27,928 --> 00:04:31,161
+Tea is a string, shown as s t r.
+
+89
+00:04:31,161 --> 00:04:32,958
+And True is a bool.
+
+90
+00:04:33,717 --> 00:04:37,496
+Python chose each type from
+the way you wrote the value.
+
+91
+00:04:37,496 --> 00:04:41,618
+A decimal point makes a float,
+and quotation marks make a string.
+
+92
+00:04:41,618 --> 00:04:44,366
+True and False need
+a capital first letter.
+
+93
+00:04:45,367 --> 00:04:46,294
+Step 3.
+
+94
+00:04:46,294 --> 00:04:50,467
+An operator is a
+symbol that does a calculation.
+
+95
+00:04:50,467 --> 00:04:53,713
+Seventeen biscuits are
+shared between five friends.
+
+96
+00:04:53,713 --> 00:04:56,958
+This program uses
+all seven arithmetic operators.
+
+97
+00:04:57,717 --> 00:05:00,709
+Pause the video and predict each line.
+
+98
+00:05:00,709 --> 00:05:04,557
+Pay special attention to
+divide, floor divide and remainder.
+
+99
+00:05:13,317 --> 00:05:15,560
+Here are the results.
+
+100
+00:05:15,560 --> 00:05:21,169
+Add gives 22, subtract gives
+12, and multiply gives 85.
+
+101
+00:05:21,169 --> 00:05:22,852
+Divide gives 3.4.
+
+102
+00:05:22,852 --> 00:05:25,095
+Floor divide gives 3.
+
+103
+00:05:25,095 --> 00:05:26,778
+Remainder gives 2.
+
+104
+00:05:26,778 --> 00:05:29,022
+And power gives 25.
+
+105
+00:05:29,783 --> 00:05:31,943
+Three operators often surprise beginners.
+
+106
+00:05:31,943 --> 00:05:34,103
+A single slash is division.
+
+107
+00:05:34,103 --> 00:05:36,695
+It gives the exact answer, 3.4,
+
+108
+00:05:36,695 --> 00:05:39,719
+and the result is always a float.
+
+109
+00:05:39,719 --> 00:05:42,311
+A double slash is floor division.
+
+110
+00:05:42,311 --> 00:05:47,495
+It gives the whole part, so
+each friend gets 3 whole biscuits.
+
+111
+00:05:48,250 --> 00:05:52,632
+The percent sign gives the remainder,
+so 2 biscuits are left over.
+
+112
+00:05:52,632 --> 00:05:55,918
+Finally, two stars raise
+a number to a power.
+
+113
+00:05:55,918 --> 00:05:59,569
+So 5 to the power 2 is 5 times 5,
+
+114
+00:05:59,569 --> 00:06:00,664
+which is 25.
+
+115
+00:06:01,667 --> 00:06:02,568
+Step 4.
+
+116
+00:06:02,568 --> 00:06:05,721
+A variable can get a new value.
+
+117
+00:06:05,721 --> 00:06:07,973
+Here, points starts at 10.
+
+118
+00:06:07,973 --> 00:06:11,577
+Line 4 says: points equals points plus 5.
+
+119
+00:06:12,350 --> 00:06:15,297
+In mathematics, that
+line would be impossible.
+
+120
+00:06:15,297 --> 00:06:20,349
+In Python, it means: take the
+current value of points, add 5,
+
+121
+00:06:20,349 --> 00:06:22,875
+and give points the new value.
+
+122
+00:06:22,875 --> 00:06:25,823
+Python works out the right side first.
+
+123
+00:06:26,583 --> 00:06:30,315
+So the output shows Start
+10, After a quiz 15,
+
+124
+00:06:30,315 --> 00:06:32,181
+and After the bonus 30.
+
+125
+00:06:32,181 --> 00:06:34,793
+Line 6 doubled the value of 15.
+
+126
+00:06:35,800 --> 00:06:36,793
+Step 5.
+
+127
+00:06:36,793 --> 00:06:40,269
+Python follows the
+same order as mathematics.
+
+128
+00:06:40,269 --> 00:06:42,255
+It calculates powers first.
+
+129
+00:06:42,255 --> 00:06:44,738
+Then it multiplies and divides.
+
+130
+00:06:44,738 --> 00:06:47,220
+Then it adds and subtracts.
+
+131
+00:06:47,220 --> 00:06:49,206
+Brackets change the order.
+
+132
+00:06:49,983 --> 00:06:52,654
+Predict lines 2 and 3 before you look.
+
+133
+00:06:58,417 --> 00:07:02,179
+Line 2 multiplies first,
+so the result is 14.
+
+134
+00:07:02,179 --> 00:07:07,196
+Line 3 adds first because of
+the brackets, so it gives 20.
+
+135
+00:07:07,196 --> 00:07:10,958
+Line 4 divides first,
+and gives 8.0, a float,
+
+136
+00:07:10,958 --> 00:07:13,467
+because division always gives a float.
+
+137
+00:07:14,217 --> 00:07:16,147
+Line 5 is a surprise.
+
+138
+00:07:16,147 --> 00:07:20,007
+Point 1 plus point 1 plus point 1 does not
+
+139
+00:07:20,007 --> 00:07:21,551
+print exactly point 3.
+
+140
+00:07:21,551 --> 00:07:25,025
+Computers store decimal numbers
+in binary, so some values,
+
+141
+00:07:25,025 --> 00:07:28,113
+such as point 1, carry a tiny error.
+
+142
+00:07:28,113 --> 00:07:29,271
+On line 6,
+
+143
+00:07:29,271 --> 00:07:33,132
+the round function rounds the
+result to 2 decimal places,
+
+144
+00:07:33,132 --> 00:07:35,062
+and you get point 3.
+
+145
+00:07:36,067 --> 00:07:40,451
+Here is the cafe receipt
+from Chapter 1, rebuilt with variables.
+
+146
+00:07:40,451 --> 00:07:44,836
+Lines 2 to 7 store
+the inputs: the customer, two prices,
+
+147
+00:07:44,836 --> 00:07:49,619
+the number of teas, a member
+flag and a 10 percent discount.
+
+148
+00:07:50,383 --> 00:07:54,263
+Lines 9 to 12 calculate
+the tea total, the bill,
+
+149
+00:07:54,263 --> 00:07:56,979
+the discount and the amount to pay.
+
+150
+00:07:56,979 --> 00:08:01,635
+Each calculation uses names, not numbers,
+so every price appears only once.
+
+151
+00:08:02,417 --> 00:08:03,345
+Run it.
+
+152
+00:08:03,345 --> 00:08:06,130
+Two teas at 3.5 cost 7.0.
+
+153
+00:08:06,130 --> 00:08:11,701
+The bill is 13.0, the discount
+is 1.3, and Asha pays 11.7.
+
+154
+00:08:11,701 --> 00:08:14,486
+Notice that 7.0 is a float,
+
+155
+00:08:14,486 --> 00:08:18,200
+because one of its parts was a float.
+
+156
+00:08:18,950 --> 00:08:22,518
+Now change tea price to
+4 and run it again.
+
+157
+00:08:22,518 --> 00:08:26,442
+Every line that depends on
+the tea price updates by itself.
+
+158
+00:08:26,442 --> 00:08:28,939
+For now, the discount applies every time.
+
+159
+00:08:28,939 --> 00:08:32,864
+In Chapter 6, you will
+use the member flag to decide.
+
+160
+00:08:38,867 --> 00:08:41,782
+The AI skill for
+this chapter is prediction.
+
+161
+00:08:41,782 --> 00:08:43,604
+Before you run a program,
+
+162
+00:08:43,604 --> 00:08:47,249
+ask an AI assistant such
+as ChatGPT or Claude to
+
+163
+00:08:47,249 --> 00:08:48,342
+predict its output.
+
+164
+00:08:48,342 --> 00:08:50,529
+Write down your own prediction too.
+
+165
+00:08:50,529 --> 00:08:51,987
+Then run the code.
+
+166
+00:08:51,987 --> 00:08:55,267
+The real output is
+the only answer that counts.
+
+167
+00:08:56,017 --> 00:08:59,451
+The safety habits from
+Chapter 1 still apply.
+
+168
+00:08:59,451 --> 00:09:02,457
+Never paste passwords,
+keys or private data.
+
+169
+00:09:02,457 --> 00:09:05,462
+Run every piece of AI code yourself.
+
+170
+00:09:05,462 --> 00:09:08,897
+You are responsible for the code you use.
+
+171
+00:09:09,650 --> 00:09:12,017
+AI helps at every stage.
+
+172
+00:09:12,017 --> 00:09:14,384
+Plan the variables you need.
+
+173
+00:09:14,384 --> 00:09:17,698
+Write the code
+yourself, then compare predictions.
+
+174
+00:09:17,698 --> 00:09:20,064
+Generate examples with fixed names.
+
+175
+00:09:20,064 --> 00:09:22,431
+Debug with the full error.
+
+176
+00:09:22,431 --> 00:09:24,325
+Test with new values.
+
+177
+00:09:24,325 --> 00:09:26,692
+And improve your variable names.
+
+178
+00:09:27,450 --> 00:09:29,461
+Here is the Write card.
+
+179
+00:09:29,461 --> 00:09:30,668
+Paste your code,
+
+180
+00:09:30,668 --> 00:09:35,494
+and ask the AI to predict
+the exact output line by line,
+
+181
+00:09:35,494 --> 00:09:37,505
+without running or changing it.
+
+182
+00:09:37,505 --> 00:09:39,918
+Then compare three
+things: your prediction,
+
+183
+00:09:39,918 --> 00:09:42,734
+the AI's prediction and the real output.
+
+184
+00:09:43,517 --> 00:09:45,494
+And here is the Debug card.
+
+185
+00:09:45,494 --> 00:09:47,801
+Give the AI the exact error message,
+
+186
+00:09:47,801 --> 00:09:50,438
+and ask for the cause before the fix.
+
+187
+00:09:51,217 --> 00:09:53,460
+Now, the AI pair moment.
+
+188
+00:09:53,460 --> 00:09:56,151
+Remember the puzzle from the start?
+
+189
+00:09:56,151 --> 00:09:59,740
+The AI wrote this
+average, and predicted 90.
+
+190
+00:09:59,740 --> 00:10:02,431
+It printed 203 point 3 3.
+
+191
+00:10:02,431 --> 00:10:02,880
+Why?
+
+192
+00:10:03,650 --> 00:10:05,833
+Use what you learned in step 5.
+
+193
+00:10:12,583 --> 00:10:15,369
+The AI forgot the order of operations.
+
+194
+00:10:15,369 --> 00:10:18,155
+Python divided only score 3 by 3,
+
+195
+00:10:18,155 --> 00:10:20,941
+and then added the other two scores.
+
+196
+00:10:20,941 --> 00:10:25,718
+Brackets around the sum fix the
+order, and the program prints 90.0.
+
+197
+00:10:26,483 --> 00:10:29,395
+A quick check would also catch this flaw.
+
+198
+00:10:29,395 --> 00:10:33,036
+An average of three scores
+must be between the lowest
+
+199
+00:10:33,036 --> 00:10:34,492
+and the highest score.
+
+200
+00:10:34,492 --> 00:10:36,676
+A result of 203 is impossible.
+
+201
+00:10:36,676 --> 00:10:40,316
+Code that runs is not
+always code that is correct.
+
+202
+00:10:41,333 --> 00:10:42,881
+Now, four common mistakes.
+
+203
+00:10:42,881 --> 00:10:46,748
+Mistake 1 is a typing
+error in a variable name.
+
+204
+00:10:46,748 --> 00:10:50,230
+Line 4 uses tea prise, spelled with an s.
+
+205
+00:10:50,230 --> 00:10:52,937
+Python only knows the names you created,
+
+206
+00:10:52,937 --> 00:10:55,645
+so it stops with a Name Error.
+
+207
+00:10:55,645 --> 00:10:57,966
+It even suggests the right name.
+
+208
+00:10:58,717 --> 00:11:01,367
+Mistake 2 is a number stored as text.
+
+209
+00:11:01,367 --> 00:11:04,680
+With quotation marks, 3 is
+a string, not an int.
+
+210
+00:11:04,680 --> 00:11:07,330
+Python will not add text and a number,
+
+211
+00:11:07,330 --> 00:11:09,318
+so you get a Type Error.
+
+212
+00:11:09,318 --> 00:11:11,969
+The fix is to remove the quotation marks.
+
+213
+00:11:12,750 --> 00:11:16,809
+Sometimes this mistake gives no
+error at all, which is worse.
+
+214
+00:11:16,809 --> 00:11:20,129
+Multiplying the string 3
+by 2 repeats the text,
+
+215
+00:11:20,129 --> 00:11:22,712
+so you get 33 instead of 6.
+
+216
+00:11:22,712 --> 00:11:25,664
+If a result looks strange, check the type.
+
+217
+00:11:26,417 --> 00:11:29,470
+Mistake 3 is a name
+that starts with a digit.
+
+218
+00:11:29,470 --> 00:11:32,523
+Python reads the 2 as
+the start of a number,
+
+219
+00:11:32,523 --> 00:11:34,965
+and does not understand
+the letters after it.
+
+220
+00:11:34,965 --> 00:11:38,018
+Start the name with a
+letter, such as second place.
+
+221
+00:11:38,783 --> 00:11:42,719
+Mistake 4 puts the name and
+the value on the wrong sides.
+
+222
+00:11:42,719 --> 00:11:45,999
+A literal is a value
+written directly in the code,
+
+223
+00:11:45,999 --> 00:11:49,278
+such as 10, and it cannot get a new value.
+
+224
+00:11:49,278 --> 00:11:52,558
+The name always goes on
+the left: points equals 10.
+
+225
+00:11:53,317 --> 00:11:55,633
+The habit from Chapter 1 still works.
+
+226
+00:11:55,633 --> 00:11:58,280
+Read the last line of an error first.
+
+227
+00:11:58,280 --> 00:12:00,265
+It names the kind of error.
+
+228
+00:12:00,265 --> 00:12:02,250
+Then look at the line number.
+
+229
+00:12:03,267 --> 00:12:05,668
+Two questions to
+think beyond this chapter.
+
+230
+00:12:05,668 --> 00:12:08,413
+First: four friends share a bill of 50.
+
+231
+00:12:08,413 --> 00:12:11,843
+How could you use floor
+division and remainder to find
+
+232
+00:12:11,843 --> 00:12:14,588
+how much each person pays in whole units,
+
+233
+00:12:14,588 --> 00:12:16,646
+and how much is left over?
+
+234
+00:12:23,417 --> 00:12:26,401
+Second: a is 5 and b is 8,
+
+235
+00:12:26,401 --> 00:12:28,640
+and you want to swap them.
+
+236
+00:12:28,640 --> 00:12:33,117
+Why does a equals b, followed
+by b equals a, not work?
+
+237
+00:12:33,117 --> 00:12:34,983
+Predict the result, test it,
+
+238
+00:12:34,983 --> 00:12:38,341
+then find a fix
+that uses a third variable.
+
+239
+00:12:45,367 --> 00:12:46,031
+Let's recap.
+
+240
+00:12:46,031 --> 00:12:48,356
+A value is a piece of data,
+
+241
+00:12:48,356 --> 00:12:52,011
+and every value has a
+type: int, float, string or bool.
+
+242
+00:12:52,011 --> 00:12:55,333
+A variable is a name
+that refers to a value.
+
+243
+00:12:55,333 --> 00:12:58,654
+The equals sign connects the
+name on the left to
+
+244
+00:12:58,654 --> 00:13:00,315
+the value on the right.
+
+245
+00:13:01,083 --> 00:13:03,980
+Python works out the right side first.
+
+246
+00:13:03,980 --> 00:13:06,464
+Single slash always gives a float.
+
+247
+00:13:06,464 --> 00:13:11,016
+Double slash gives the whole
+part, and percent gives the remainder.
+
+248
+00:13:11,016 --> 00:13:13,499
+Brackets control the order of operations.
+
+249
+00:13:14,250 --> 00:13:18,037
+And with AI: ask it
+to predict, make your own prediction,
+
+250
+00:13:18,037 --> 00:13:20,103
+and let the real run decide.
+
+251
+00:13:20,883 --> 00:13:24,041
+You earned 100 XP
+and the Name Keeper badge.
+
+252
+00:13:25,067 --> 00:13:25,915
+Now practise.
+
+253
+00:13:25,915 --> 00:13:29,308
+There are eight tasks
+in the practice file.
+
+254
+00:13:29,308 --> 00:13:34,398
+The three warm-up tasks are worth
+10 XP each: store and print,
+
+255
+00:13:34,398 --> 00:13:37,367
+name the type, and predict the operators.
+
+256
+00:13:38,117 --> 00:13:41,066
+The apply tasks are worth 20 XP each,
+
+257
+00:13:41,066 --> 00:13:44,383
+and the two stretch
+tasks are worth 40 each.
+
+258
+00:13:44,383 --> 00:13:48,070
+In the last task, you
+fix an AI's temperature converter.
+
+259
+00:13:48,070 --> 00:13:51,019
+Try each task before
+you open the solution.
+
+260
+00:13:52,033 --> 00:13:55,136
+In Chapter 3, you will work with text.
+
+261
+00:13:55,136 --> 00:13:59,014
+You will join strings and
+build clear messages from your
+
+262
+00:13:59,014 --> 00:14:00,178
+variables with f-strings.
+
+263
+00:14:00,178 --> 00:14:02,117
+Do the warm-up tasks now.
+
+264
+00:14:02,117 --> 00:14:04,056
+They take about ten minutes.
+
+265
+00:14:04,056 --> 00:14:05,995
+See you in Chapter 3.
