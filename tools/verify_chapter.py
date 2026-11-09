@@ -366,7 +366,7 @@ def prose_sentences(markdown: str) -> list[str]:
         if not s or s.startswith(("#", "|", "---")):
             continue
         s = re.sub(r"^([-*]|\d+\.)\s+", "", s)
-        s = re.sub(r"`[^`]*`", "code", s)
+        s = re.sub(r"`[^`]*`", "Code", s)
         s = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", s)
         s = re.sub(r"[*_>]", "", s)
         kept.append(s if re.search(r"[.!?:]$", s) else s + ".")
