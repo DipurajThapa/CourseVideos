@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-06",
   "run_id": "2026-11-09-ecc1c6",
-  "verified_at": "2026-11-09T21:49:42+00:00",
-  "passed": false,
+  "verified_at": "2026-11-09T22:09:01+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -178,23 +178,26 @@
           "sentences": 131,
           "average_words": 11.0,
           "longest": 30
+        },
+        "video/script.md": {
+          "sentences": 725,
+          "average_words": 8.7,
+          "longest": 25
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/06-making-decisions",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/06-making-decisions",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/06-making-decisions",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/06-making-decisions",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/06-making-decisions"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.3
+        "estimated_minutes": 19.0,
+        "duration_seconds": 1118.6,
+        "size_mb": 46.09,
+        "scenes": 17,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "011f1f1b0aa4579f63cbf73d784d6dc298263618bb42cc30fb35c8ce01a33d06"
+  "fingerprint": "cb81b6f6f68c8ec523ba5e4a58af242888fada117cda23fb991b2ac901e7af6a"
 }
