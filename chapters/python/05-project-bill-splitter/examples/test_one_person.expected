@@ -1,0 +1,11 @@
+==== BILL SPLITTER =====
+Bill total: 12.5
+Tip percent: 10
+Number of people: 1
+------------------------
+Bill               12.50
+Tip 10%             1.25
+Total              13.75
+------------------------
+Each pays          13.75
+Extra cents            0

@@ -1,0 +1,5 @@
+==== BILL SPLITTER =====
+Bill total: 48
+Tip percent: 10
+Number of people: 3
+<class 'float'> <class 'int'> <class 'int'>
