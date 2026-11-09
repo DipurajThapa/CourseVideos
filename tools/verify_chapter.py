@@ -112,12 +112,30 @@ def toolchains(language: str) -> list[dict]:
     return found
 
 
-def run(cmd: list[str], cwd: Path | None = None, stdin: str | None = None) -> subprocess.CompletedProcess:
-    return subprocess.run(
-        cmd, cwd=cwd, input=stdin, capture_output=True, text=True, timeout=TIMEOUT,
-        env={"PATH": os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin"), "LANG": "C.UTF-8", "PYTHONIOENCODING": "utf-8",
-             "PYTHONDONTWRITEBYTECODE": "1", "HOME": tempfile.gettempdir()},
-    )
+def run(cmd: list[str], cwd: Path | None = None, stdin: str | None = None,
+        extra_env: dict | None = None) -> subprocess.CompletedProcess:
+    env = {"PATH": os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin"), "LANG": "C.UTF-8", "PYTHONIOENCODING": "utf-8",
+           "PYTHONDONTWRITEBYTECODE": "1", "HOME": tempfile.gettempdir()}
+    env.update(extra_env or {})
+    return subprocess.run(cmd, cwd=cwd, input=stdin, capture_output=True, text=True, timeout=TIMEOUT, env=env)
+
+
+# When a Python file reads input from a .stdin file, the typed answers are echoed into the
+# output, so .expected shows exactly what the learner sees in the terminal:
+#   How many teas? 2
+# A sitecustomize module replaces input() before the program starts, so tracebacks stay clean.
+ECHO_INPUT = """import builtins, sys
+def _echo_input(prompt=""):
+    sys.stdout.write(str(prompt))
+    sys.stdout.flush()
+    line = sys.stdin.readline()
+    if not line:
+        raise EOFError("EOF when reading a line")
+    line = line.rstrip("\\n")
+    sys.stdout.write(line + "\\n")
+    return line
+builtins.input = _echo_input
+"""
 
 
 def normalise(text: str) -> str:
@@ -133,10 +151,16 @@ def run_file(source: Path, chain: dict) -> tuple[int, str, str]:
         work = Path(tmp) / "work"
         shutil.copytree(source.parent, work)
         target = work / source.name
+        extra_env = None
+        if stdin_file.exists() and source.suffix == ".py":
+            hook = Path(tmp) / "echo_input"
+            hook.mkdir()
+            (hook / "sitecustomize.py").write_text(ECHO_INPUT, encoding="utf-8")
+            extra_env = {"PYTHONPATH": str(hook)}
         code, out, err = 0, "", ""
         for step in chain["cmd"](target):
             try:
-                proc = run(step, cwd=work, stdin=stdin)
+                proc = run(step, cwd=work, stdin=stdin, extra_env=extra_env)
             except subprocess.TimeoutExpired:
                 return 124, out, f"timed out after {TIMEOUT}s"
             code, out, err = proc.returncode, proc.stdout, proc.stderr

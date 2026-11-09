@@ -1,0 +1,1283 @@
+1
+00:00:00,250 --> 00:00:02,276
+Welcome back to Code Quest.
+
+2
+00:00:02,296 --> 00:00:03,640
+This is Chapter 4.
+
+3
+00:00:03,667 --> 00:00:07,027
+Today your programs start a conversation.
+
+4
+00:00:07,047 --> 00:00:12,387
+They ask a question, listen to the answer,
+and calculate with it.
+
+5
+00:00:12,433 --> 00:00:15,879
+And an AI assistant will promise you 7.50
+of change.
+
+6
+00:00:15,899 --> 00:00:18,012
+Instead, its program will crash.
+
+7
+00:00:18,620 --> 00:00:21,343
+Remember Asha's receipt from Chapter 3?
+
+8
+00:00:21,363 --> 00:00:23,664
+Neat columns, two decimal places.
+
+9
+00:00:23,684 --> 00:00:24,930
+Very professional.
+
+10
+00:00:24,967 --> 00:00:26,504
+But there is a problem.
+
+11
+00:00:26,524 --> 00:00:30,567
+Every customer gets the same order, two
+teas and a sandwich.
+
+12
+00:00:30,600 --> 00:00:32,222
+Omar wants three teas?
+
+13
+00:00:32,242 --> 00:00:35,207
+Asha has to open the code and change it.
+
+14
+00:00:35,227 --> 00:00:38,342
+That is not how a real cafe program works.
+
+15
+00:00:38,953 --> 00:00:40,790
+So here is today's mission.
+
+16
+00:00:40,810 --> 00:00:43,953
+The program asks the customer three
+questions.
+
+17
+00:00:44,000 --> 00:00:47,980
+Then it prints the receipt for that order,
+and only that order.
+
+18
+00:00:48,000 --> 00:00:52,640
+Different answers, different receipt, and
+not one line of code changes.
+
+19
+00:00:52,660 --> 00:00:54,674
+Let's build it, piece by piece.
+
+20
+00:00:55,250 --> 00:00:58,470
+Ask a question with input, and store the
+answer.
+
+21
+00:00:58,500 --> 00:01:03,090
+Explain why every answer is text, even
+when it looks like a number.
+
+22
+00:01:03,133 --> 00:01:06,743
+Convert text into numbers, and numbers
+into text.
+
+23
+00:01:06,767 --> 00:01:10,387
+Write a program that asks, converts and
+calculates.
+
+24
+00:01:10,433 --> 00:01:13,913
+And fix the two errors that conversion
+causes most often.
+
+25
+00:01:14,483 --> 00:01:17,673
+Real programs react to the person who uses
+them.
+
+26
+00:01:17,700 --> 00:01:20,673
+A cash machine asks how much money you
+want.
+
+27
+00:01:20,693 --> 00:01:23,870
+A booking site asks how many guests are
+coming.
+
+28
+00:01:23,900 --> 00:01:28,612
+Each one asks a question, waits for your
+answer, and then uses it.
+
+29
+00:01:28,632 --> 00:01:30,117
+Today, so will yours.
+
+30
+00:01:30,717 --> 00:01:32,095
+Here is the big idea.
+
+31
+00:01:32,115 --> 00:01:35,757
+The function input shows a question, and
+then it waits.
+
+32
+00:01:35,800 --> 00:01:38,674
+The user types an answer and presses
+Enter.
+
+33
+00:01:38,694 --> 00:01:41,770
+Then input gives back exactly what they
+typed.
+
+34
+00:01:41,800 --> 00:01:43,915
+And here is the important part.
+
+35
+00:01:43,935 --> 00:01:45,980
+The answer is always a string.
+
+36
+00:01:46,000 --> 00:01:51,007
+Even when the user types the digit 3, you
+get the text 3, not the number.
+
+37
+00:01:51,620 --> 00:01:54,368
+To calculate with an answer, you convert
+it.
+
+38
+00:01:54,388 --> 00:01:57,640
+Converting means making a new value of
+another type.
+
+39
+00:01:57,667 --> 00:01:59,585
+Int makes a whole number.
+
+40
+00:01:59,605 --> 00:02:02,067
+The text 3 becomes the number 3.
+
+41
+00:02:02,100 --> 00:02:06,540
+Float makes a decimal number, for prices
+like 4.25.
+
+42
+00:02:06,567 --> 00:02:08,550
+And str goes the other way.
+
+43
+00:02:08,570 --> 00:02:10,628
+It turns a number into text.
+
+44
+00:02:11,220 --> 00:02:12,438
+Think of a waiter.
+
+45
+00:02:12,458 --> 00:02:14,845
+Every order goes onto a paper slip.
+
+46
+00:02:14,865 --> 00:02:17,940
+That is input: everything arrives as
+writing.
+
+47
+00:02:17,967 --> 00:02:20,091
+The kitchen cannot add up slips.
+
+48
+00:02:20,111 --> 00:02:21,230
+It needs numbers.
+
+49
+00:02:21,250 --> 00:02:24,447
+Conversion reads the slip and writes the
+number.
+
+50
+00:02:24,467 --> 00:02:27,462
+But unlike a person, a conversion cannot
+guess.
+
+51
+00:02:27,482 --> 00:02:32,339
+If the slip says the word two, instead of
+the digit, it stops with an error.
+
+52
+00:02:32,953 --> 00:02:33,772
+Quick check.
+
+53
+00:02:33,792 --> 00:02:36,216
+The user types 3 and presses Enter.
+
+54
+00:02:36,236 --> 00:02:38,032
+What does input give back?
+
+55
+00:02:49,413 --> 00:02:49,565
+B.
+
+56
+00:02:49,585 --> 00:02:50,680
+The string 3.
+
+57
+00:02:50,700 --> 00:02:53,167
+Input always gives back text.
+
+58
+00:02:53,787 --> 00:02:54,801
+Take a breather.
+
+59
+00:02:54,821 --> 00:02:56,677
+Here is what you know so far.
+
+60
+00:02:56,700 --> 00:02:59,381
+Next, Asha asks her first question.
+
+61
+00:03:04,117 --> 00:03:04,640
+Step 1.
+
+62
+00:03:04,660 --> 00:03:07,122
+Line 2 asks the customer's name.
+
+63
+00:03:07,142 --> 00:03:12,087
+The text inside input is the prompt, the
+question the user sees.
+
+64
+00:03:12,133 --> 00:03:14,667
+Notice the space after the question mark.
+
+65
+00:03:14,687 --> 00:03:17,593
+It keeps the answer from touching the
+question.
+
+66
+00:03:17,633 --> 00:03:22,993
+Lines 3 and 4 greet the customer by name,
+with f strings from Chapter 3.
+
+67
+00:03:34,347 --> 00:03:36,306
+The prompt: What is your name?
+
+68
+00:03:36,326 --> 00:03:40,397
+Then the program waits on line 2 until the
+user presses Enter.
+
+69
+00:03:40,433 --> 00:03:46,237
+In this course, the output shows the typed
+answer after each question, the way your
+
+70
+00:03:46,257 --> 00:03:47,219
+terminal does.
+
+71
+00:03:47,239 --> 00:03:49,043
+Here, the user typed Asha.
+
+72
+00:03:49,067 --> 00:03:51,833
+Then lines 3 and 4 use her answer.
+
+73
+00:03:52,417 --> 00:03:52,996
+Step 2.
+
+74
+00:03:53,016 --> 00:03:56,937
+Asha asks how many teas, and the user
+types 3.
+
+75
+00:03:56,967 --> 00:04:02,197
+Line 3 prints the answer and its type,
+with the type function from Chapter 2.
+
+76
+00:04:02,233 --> 00:04:04,898
+Line 4 multiplies the answer by 2.
+
+77
+00:04:04,918 --> 00:04:07,740
+Remember the big idea about answers.
+
+78
+00:04:19,113 --> 00:04:21,033
+Line 3 shows class str.
+
+79
+00:04:21,053 --> 00:04:22,973
+The answer is a string.
+
+80
+00:04:23,000 --> 00:04:26,190
+So line 4 repeats the text, and prints 33.
+
+81
+00:04:26,210 --> 00:04:32,304
+That is the same silent bug you met in
+Chapter 2: no error message, only a wrong
+
+82
+00:04:32,324 --> 00:04:32,839
+answer!
+
+83
+00:04:33,417 --> 00:04:33,980
+Step 3.
+
+84
+00:04:34,000 --> 00:04:36,897
+The fix is to put input inside int.
+
+85
+00:04:36,933 --> 00:04:39,432
+Python works from the inside out.
+
+86
+00:04:39,452 --> 00:04:42,256
+First, input gives back the string 3.
+
+87
+00:04:42,276 --> 00:04:45,003
+Then int turns it into the number 3.
+
+88
+00:04:45,033 --> 00:04:47,318
+Line 4 checks the type again.
+
+89
+00:04:47,338 --> 00:04:51,450
+Line 5 calculates the cost, with two
+decimal places.
+
+90
+00:05:02,813 --> 00:05:07,283
+Line 4 shows class int: a whole number.
+
+91
+00:05:07,333 --> 00:05:09,668
+So line 5 really calculates.
+
+92
+00:05:09,688 --> 00:05:11,182
+3 teas cost 10.50.
+
+93
+00:05:11,783 --> 00:05:12,248
+Step 4.
+
+94
+00:05:12,268 --> 00:05:15,500
+Remember the price stored as text in
+Chapter 3?
+
+95
+00:05:15,520 --> 00:05:19,030
+You were promised a way to turn text into
+a number.
+
+96
+00:05:19,050 --> 00:05:20,276
+Here it is: float.
+
+97
+00:05:20,296 --> 00:05:24,843
+A price can have a decimal point, like
+4.25, so line 2 uses float.
+
+98
+00:05:24,867 --> 00:05:28,307
+A count is always whole, so line 3 uses
+int.
+
+99
+00:05:28,333 --> 00:05:29,421
+Here is the rule.
+
+100
+00:05:29,441 --> 00:05:32,743
+Use int for counts, and float for amounts
+of money.
+
+101
+00:05:32,767 --> 00:05:36,652
+Line 4 multiplies, and line 5 prints the
+total.
+
+102
+00:05:48,013 --> 00:05:50,503
+Two questions, one after the other.
+
+103
+00:05:50,533 --> 00:05:53,678
+Then: 2 cakes cost 8.50.
+
+104
+00:05:54,250 --> 00:05:54,780
+Step 5.
+
+105
+00:05:54,800 --> 00:05:59,023
+Conversions also work on values you write
+in the code.
+
+106
+00:05:59,043 --> 00:06:00,830
+No questions this time.
+
+107
+00:06:00,867 --> 00:06:06,247
+Remember the table: int makes a whole
+number from text, and str turns a number
+
+108
+00:06:06,267 --> 00:06:06,940
+into text.
+
+109
+00:06:18,313 --> 00:06:23,043
+Line 2: the text 12 becomes the number 12,
+plus 1 is 13.
+
+110
+00:06:23,067 --> 00:06:29,077
+Line 7: str turns 4 into text, so plus can
+join it to the word teas.
+
+111
+00:06:29,100 --> 00:06:35,300
+Line 3: float turns the text 2.5 into a
+number, so times 2 gives 5.0.
+
+112
+00:06:35,333 --> 00:06:36,952
+Now the surprises.
+
+113
+00:06:36,972 --> 00:06:43,233
+Line 4: float accepts text without a
+decimal point, and adds point 0.
+
+114
+00:06:43,267 --> 00:06:45,196
+Line 5: int on 3.9 gives 3.
+
+115
+00:06:45,216 --> 00:06:47,867
+It cuts off the part after the point.
+
+116
+00:06:47,887 --> 00:06:49,167
+It does not round!
+
+117
+00:06:49,200 --> 00:06:55,539
+And line 6: int ignores spaces at the
+start and the end of the text.
+
+118
+00:06:56,153 --> 00:06:58,298
+Careful with one difference.
+
+119
+00:06:58,318 --> 00:07:02,163
+Int accepts the number 3.9, and cuts it
+down to 3.
+
+120
+00:07:02,200 --> 00:07:06,561
+But the text 3.9, in quotation marks, is
+not a whole number.
+
+121
+00:07:06,581 --> 00:07:11,380
+Int stops with a Value Error, instead of
+cutting off the decimals.
+
+122
+00:07:11,400 --> 00:07:14,709
+So for answers with a decimal point, use
+float.
+
+123
+00:07:15,320 --> 00:07:16,270
+Quick check.
+
+124
+00:07:16,290 --> 00:07:18,372
+What does int of 7.8 give?
+
+125
+00:07:29,747 --> 00:07:30,152
+A, 7.
+
+126
+00:07:30,172 --> 00:07:32,366
+Int cuts off the decimals.
+
+127
+00:07:32,386 --> 00:07:33,899
+It does not round.
+
+128
+00:07:34,520 --> 00:07:35,086
+Breather.
+
+129
+00:07:35,106 --> 00:07:36,257
+Stretch your arms.
+
+130
+00:07:36,277 --> 00:07:38,860
+You now have every piece of the mission.
+
+131
+00:07:38,900 --> 00:07:41,475
+Let's put them together in Asha's receipt.
+
+132
+00:07:46,217 --> 00:07:47,546
+Back to the mission.
+
+133
+00:07:47,566 --> 00:07:50,043
+Lines 2 to 4 ask the three questions.
+
+134
+00:07:50,063 --> 00:07:52,607
+The two counts are converted with int.
+
+135
+00:07:52,633 --> 00:07:55,671
+Lines 5 and 6 store the prices, as before.
+
+136
+00:07:55,691 --> 00:08:01,349
+To keep the program short, the member
+discount from Chapter 3 is left out this
+
+137
+00:08:01,369 --> 00:08:01,713
+time.
+
+138
+00:08:01,733 --> 00:08:06,475
+Line 8 cleans the name with strip and
+title, from Chapter 3.
+
+139
+00:08:06,495 --> 00:08:09,253
+Lines 9 to 11 calculate the totals.
+
+140
+00:08:09,300 --> 00:08:15,611
+Lines 12 to 14 build the two labels and
+the line, and lines 16 to 22 print the
+
+141
+00:08:15,631 --> 00:08:16,260
+receipt.
+
+142
+00:08:16,300 --> 00:08:18,566
+Look at lines 2 to 4 once more.
+
+143
+00:08:18,586 --> 00:08:20,484
+Which answer is different?
+
+144
+00:08:31,847 --> 00:08:33,303
+The name, on line 2.
+
+145
+00:08:33,323 --> 00:08:39,577
+It is only cleaned and printed, never used
+in a calculation, so it can stay a string.
+
+146
+00:08:39,600 --> 00:08:40,516
+Now Asha runs it.
+
+147
+00:08:40,536 --> 00:08:44,480
+The customer types omar with extra spaces,
+then 3 teas and 2 sandwiches.
+
+148
+00:08:44,500 --> 00:08:49,095
+And there is Omar's own receipt, with his
+name cleaned up.
+
+149
+00:08:49,115 --> 00:08:50,130
+22.50 to pay.
+
+150
+00:08:50,167 --> 00:08:51,294
+Mission complete!
+
+151
+00:08:51,314 --> 00:08:56,424
+But Asha's cafe needs one more thing: how
+much change does the customer get?
+
+152
+00:08:56,444 --> 00:09:00,204
+She builds it with an AI assistant, one
+stage at a time.
+
+153
+00:09:00,783 --> 00:09:04,673
+This chapter's AI skill is debugging with
+the exact error.
+
+154
+00:09:04,700 --> 00:09:09,850
+When a program stops, copy the full error
+message and the code into your prompt.
+
+155
+00:09:09,900 --> 00:09:11,664
+Ask for the cause first.
+
+156
+00:09:11,684 --> 00:09:14,265
+Only then ask for the smallest fix.
+
+157
+00:09:14,285 --> 00:09:17,610
+A fix you do not understand will break
+again.
+
+158
+00:09:17,633 --> 00:09:20,984
+And the safety habits from Chapter 1 still
+apply.
+
+159
+00:09:21,587 --> 00:09:22,661
+Stage 1: plan.
+
+160
+00:09:22,681 --> 00:09:28,289
+Asha describes the change feature, and
+asks which type the answer needs.
+
+161
+00:09:28,309 --> 00:09:29,227
+No code yet.
+
+162
+00:09:29,267 --> 00:09:30,990
+The AI lists four steps.
+
+163
+00:09:31,010 --> 00:09:35,348
+Step 2 converts with float, because money
+can have decimals.
+
+164
+00:09:35,368 --> 00:09:37,818
+That matches the rule from step 4.
+
+165
+00:09:38,420 --> 00:09:39,507
+Stage 2: write.
+
+166
+00:09:39,527 --> 00:09:45,705
+Asha writes the question line herself, and
+asks the AI to explain it from the inside
+
+167
+00:09:45,725 --> 00:09:46,000
+out.
+
+168
+00:09:46,033 --> 00:09:48,916
+Input first, then float, then the name.
+
+169
+00:09:48,936 --> 00:09:51,892
+Exactly the order you learned in step 3.
+
+170
+00:09:52,487 --> 00:09:53,893
+Stage 3: generate.
+
+171
+00:09:53,913 --> 00:09:58,967
+Asha asks the AI for the whole program, to
+compare it with hers.
+
+172
+00:09:59,000 --> 00:10:03,311
+The AI promises: type 30, and it prints
+change 7.50.
+
+173
+00:10:03,331 --> 00:10:04,560
+It sounds sure.
+
+174
+00:10:04,600 --> 00:10:08,116
+Check every line before you trust it.
+
+175
+00:10:19,480 --> 00:10:19,678
+No!
+
+176
+00:10:19,698 --> 00:10:22,226
+Its line 3 has input, but no float.
+
+177
+00:10:22,246 --> 00:10:23,827
+The answer stays text.
+
+178
+00:10:23,847 --> 00:10:26,884
+Let's see what happens when Asha tests it.
+
+179
+00:10:27,487 --> 00:10:28,517
+Stage 4: test.
+
+180
+00:10:28,537 --> 00:10:33,847
+Asha asks for three test answers, with the
+result each one should give.
+
+181
+00:10:33,867 --> 00:10:37,317
+The AI suggests 30, 22.5, and 25.50.
+
+182
+00:10:37,367 --> 00:10:39,414
+She tries the first one.
+
+183
+00:10:39,434 --> 00:10:44,926
+The program shows the question, and then
+it stops with an error.
+
+184
+00:10:45,520 --> 00:10:46,585
+Stage 5: debug.
+
+185
+00:10:46,605 --> 00:10:48,176
+This is today's skill.
+
+186
+00:10:48,196 --> 00:10:51,937
+Asha pastes the code, her answer and the
+full error.
+
+187
+00:10:51,957 --> 00:10:53,600
+A Type Error on line 4.
+
+188
+00:10:53,633 --> 00:10:55,947
+She asks for the cause first.
+
+189
+00:10:55,967 --> 00:11:02,061
+The AI explains: input gives back a
+string, and you cannot subtract a number
+
+190
+00:11:02,081 --> 00:11:02,866
+from text.
+
+191
+00:11:02,886 --> 00:11:04,233
+The fix is float.
+
+192
+00:11:04,267 --> 00:11:06,438
+She runs the fix and types 30.
+
+193
+00:11:06,458 --> 00:11:07,388
+Change: 7.50.
+
+194
+00:11:07,408 --> 00:11:09,141
+Now the promise is true.
+
+195
+00:11:09,753 --> 00:11:11,123
+Stage 6: improve.
+
+196
+00:11:11,143 --> 00:11:16,763
+Asha asks for at most two improvements
+that do not change the output.
+
+197
+00:11:16,800 --> 00:11:19,594
+Suggestion 1, a clearer name, helps.
+
+198
+00:11:19,614 --> 00:11:24,830
+Suggestion 2 says: use int, because
+customers pay with whole notes.
+
+199
+00:11:24,867 --> 00:11:27,976
+Asha uses the AI's own test answer, 25.50.
+
+200
+00:11:27,996 --> 00:11:31,106
+Int cannot read text with a decimal point.
+
+201
+00:11:31,126 --> 00:11:32,000
+Value Error!
+
+202
+00:11:32,020 --> 00:11:33,714
+The AI was wrong again.
+
+203
+00:11:34,320 --> 00:11:41,130
+So Asha keeps suggestion 1 only: the
+clearer name, amount paid, with float.
+
+204
+00:11:41,167 --> 00:11:43,252
+She tests it with 25.50.
+
+205
+00:11:43,272 --> 00:11:44,392
+Change: 3.00.
+
+206
+00:11:44,412 --> 00:11:49,656
+The AI helped at every stage, and Asha
+checked every answer.
+
+207
+00:11:50,253 --> 00:11:51,001
+Quick check.
+
+208
+00:11:51,021 --> 00:11:53,817
+Your program stops after you type an
+answer.
+
+209
+00:11:53,837 --> 00:11:56,185
+What do you paste into the AI prompt?
+
+210
+00:12:07,547 --> 00:12:07,663
+D.
+
+211
+00:12:07,683 --> 00:12:10,457
+The code, your answer and the full error.
+
+212
+00:12:10,477 --> 00:12:12,434
+Then ask for the cause first.
+
+213
+00:12:13,053 --> 00:12:13,600
+Breather.
+
+214
+00:12:13,620 --> 00:12:17,883
+You watched Asha catch two AI mistakes,
+with what you learned today.
+
+215
+00:12:17,933 --> 00:12:21,548
+Next, the four mistakes beginners make
+most with input.
+
+216
+00:12:21,568 --> 00:12:23,794
+You have already seen two of them.
+
+217
+00:12:28,517 --> 00:12:32,433
+Mistake 1 is the same kind of mistake as
+the AI's first one.
+
+218
+00:12:32,453 --> 00:12:35,517
+Line 2 reads the answer, but never
+converts it.
+
+219
+00:12:35,567 --> 00:12:41,010
+So line 3 tries to add 1 to the text 3,
+and Python stops with a Type Error.
+
+220
+00:12:41,030 --> 00:12:44,580
+With plus, the message says can only
+concatenate.
+
+221
+00:12:44,600 --> 00:12:47,494
+With minus, it said unsupported operand.
+
+222
+00:12:47,514 --> 00:12:49,097
+The cause is the same.
+
+223
+00:12:49,133 --> 00:12:53,821
+The fix: convert the answer where you read
+it, with int around input.
+
+224
+00:12:54,420 --> 00:12:57,444
+Mistake 2 is the AI's second mistake.
+
+225
+00:12:57,464 --> 00:12:58,760
+Int for a price.
+
+226
+00:12:58,780 --> 00:13:02,380
+The user types 4.25, and int cannot read
+it.
+
+227
+00:13:02,400 --> 00:13:05,733
+The message says invalid literal with base
+10.
+
+228
+00:13:05,753 --> 00:13:11,273
+A literal is the text Python tried to
+read, and base 10 means normal digits.
+
+229
+00:13:11,293 --> 00:13:13,387
+The fix: use float for money.
+
+230
+00:13:13,987 --> 00:13:14,800
+Now you try.
+
+231
+00:13:14,820 --> 00:13:16,813
+The user answers with a word.
+
+232
+00:13:16,833 --> 00:13:20,216
+Remember the waiter's slip from the idea
+section.
+
+233
+00:13:31,580 --> 00:13:32,628
+A Value Error.
+
+234
+00:13:32,648 --> 00:13:35,910
+Int cannot guess that the word two means
+2.
+
+235
+00:13:35,933 --> 00:13:38,356
+For now, make the prompt say what to type.
+
+236
+00:13:38,376 --> 00:13:42,717
+In later chapters, you will learn to check
+an answer before you convert it.
+
+237
+00:13:43,320 --> 00:13:43,928
+One more.
+
+238
+00:13:43,948 --> 00:13:48,181
+Count the brackets on line 2, like Asha
+learned in Chapter 1.
+
+239
+00:13:59,547 --> 00:14:00,860
+A closing bracket.
+
+240
+00:14:00,880 --> 00:14:05,897
+Int and input each open one, so the line
+needs two closing brackets.
+
+241
+00:14:05,933 --> 00:14:10,402
+This is a syntax error, so the program
+never even asks the question.
+
+242
+00:14:11,020 --> 00:14:11,759
+Quick check.
+
+243
+00:14:11,779 --> 00:14:14,797
+Which line reads a price that can have
+decimals?
+
+244
+00:14:26,180 --> 00:14:26,340
+C.
+
+245
+00:14:26,360 --> 00:14:28,055
+Float around input.
+
+246
+00:14:28,074 --> 00:14:32,475
+Option A keeps text, and option B fails
+for 4.25.
+
+247
+00:14:33,087 --> 00:14:33,955
+Last breather.
+
+248
+00:14:33,975 --> 00:14:36,747
+These errors will not surprise you any
+more.
+
+249
+00:14:36,767 --> 00:14:40,081
+Two questions to think about on your own
+come next.
+
+250
+00:14:44,817 --> 00:14:45,239
+First.
+
+251
+00:14:45,259 --> 00:14:48,482
+A customer types 2.0 for the number of
+teas.
+
+252
+00:14:48,502 --> 00:14:50,104
+What happens with int?
+
+253
+00:14:50,124 --> 00:14:53,569
+And how could float and int together
+accept it?
+
+254
+00:15:04,947 --> 00:15:07,826
+Predict it, then test it after the video.
+
+255
+00:15:08,420 --> 00:15:08,919
+Second.
+
+256
+00:15:08,939 --> 00:15:14,847
+Asha wants the program to ask for the
+price of tea, instead of fixing it at 3.5.
+
+257
+00:15:14,867 --> 00:15:18,256
+Which line changes, and which conversion
+fits?
+
+258
+00:15:29,613 --> 00:15:33,070
+Write it, and test it with a price that
+has decimals.
+
+259
+00:15:33,650 --> 00:15:34,690
+Let's recap.
+
+260
+00:15:34,733 --> 00:15:38,493
+Input shows a prompt, and gives back the
+answer as a string.
+
+261
+00:15:38,533 --> 00:15:43,133
+Int makes a whole number, float a decimal
+number, and str makes text.
+
+262
+00:15:43,167 --> 00:15:46,467
+Python works out int of input from the
+inside out.
+
+263
+00:15:46,500 --> 00:15:51,310
+Int cuts off decimals, and it cannot read
+4.25 or the word two.
+
+264
+00:15:51,333 --> 00:15:56,731
+And with AI: paste the code, your answer
+and the full error, and ask for the cause
+
+265
+00:15:56,751 --> 00:15:57,127
+first.
+
+266
+00:15:57,720 --> 00:15:58,814
+One last check.
+
+267
+00:15:58,834 --> 00:16:02,525
+The answer is not converted, and the user
+types 2.
+
+268
+00:16:02,545 --> 00:16:04,975
+What does tea count times 3 show?
+
+269
+00:16:16,347 --> 00:16:16,538
+B.
+
+270
+00:16:16,558 --> 00:16:16,960
+222.
+
+271
+00:16:16,980 --> 00:16:21,395
+The answer is text, so times 3 repeats it.
+
+272
+00:16:21,415 --> 00:16:22,874
+Convert first!
+
+273
+00:16:23,487 --> 00:16:24,789
+Mission complete!
+
+274
+00:16:24,809 --> 00:16:27,979
+You earned 100 XP and the Listener badge.
+
+275
+00:16:30,217 --> 00:16:31,773
+Now it is your turn.
+
+276
+00:16:31,793 --> 00:16:35,557
+The practice file has eight tasks, worth
+170 XP.
+
+277
+00:16:35,600 --> 00:16:38,830
+Three warm-up tasks, worth 10 XP each.
+
+278
+00:16:38,867 --> 00:16:43,518
+Three apply tasks, worth 20 each,
+including one receipt line that asks for
+
+279
+00:16:43,538 --> 00:16:44,087
+its item.
+
+280
+00:16:44,133 --> 00:16:46,676
+And two stretch tasks, worth 40 each.
+
+281
+00:16:46,696 --> 00:16:50,415
+In the last one, an AI's ticket program
+has two flaws.
+
+282
+00:16:50,435 --> 00:16:52,423
+Fix them one error at a time.
+
+283
+00:16:52,467 --> 00:16:54,060
+Predict first, then run.
+
+284
+00:16:54,080 --> 00:16:56,951
+Try each task before you open the
+solution.
+
+285
+00:16:57,550 --> 00:17:00,453
+Four friends finish their meal at the
+Corner Cafe.
+
+286
+00:17:00,473 --> 00:17:02,908
+They want to add a tip and share the bill.
+
+287
+00:17:02,928 --> 00:17:03,960
+Who pays how much?
+
+288
+00:17:04,000 --> 00:17:08,187
+In Chapter 5, the first boss level, you
+will build a bill splitter.
+
+289
+00:17:08,207 --> 00:17:13,210
+It asks for the total, the tip and the
+number of people, then prints each share.
+
+290
+00:17:13,233 --> 00:17:14,916
+Do the warm-up tasks now.
+
+291
+00:17:14,936 --> 00:17:16,823
+They take about ten minutes.
+
+292
+00:17:16,867 --> 00:17:18,420
+See you at the boss level.
