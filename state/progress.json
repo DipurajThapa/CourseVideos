@@ -63,7 +63,7 @@
     "python-02": {
       "language": "python",
       "number": 2,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-f1911e",
@@ -82,12 +82,14 @@
         {
           "run_id": "2026-11-09-4f3b81",
           "started": "2026-11-09T18:30:57+00:00",
-          "from_status": "changes_requested"
+          "from_status": "changes_requested",
+          "ended": "2026-11-09T19:03:24+00:00",
+          "result": "in_review"
         }
       ],
       "current_run_id": "2026-11-09-4f3b81",
       "path": "chapters/python/02-values-and-variables",
-      "completed": "2026-11-09T10:56:29+00:00",
+      "completed": "2026-11-09T19:03:24+00:00",
       "notes": "Owner request: rebuild the video with the code-quest-video skill (Soft Studio design, one connected story, teach before test, AI at six stages, evergreen content, Kokoro bm_lewis voice); practice XP 170."
     },
     "python-03": {
@@ -247,5 +249,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T18:30:57+00:00"
+  "updated": "2026-11-09T19:03:24+00:00"
 }
