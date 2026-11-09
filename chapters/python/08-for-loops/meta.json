@@ -41,7 +41,7 @@
     "Lists are not used, because they arrive in Chapter 11; every loop goes over a range() or a string.",
     "continue, a loop's else clause and nested loops are left out to keep one new idea per step.",
     "str.isdigit() and the in operator are not used; Step 3 counts hyphens with ==.",
-    "The AI section adds video-only verified files: ai_stamps_mine.py (Asha's while version), ai_stamps_size.py (Debug stage: range(1, size + 1) with size still a string) and ai_stamps_improve.py (Improve stage: the AI's range(10) version, which also changed the text)."
+    "The AI section adds video-only verified files: ai_stamps_mine.py (Asha's while version), ai_stamps_size.py and ai_stamps_size_fixed.py (Debug stage: range(1, size + 1) with size still a string, then the fixed run) and ai_stamps_improve.py (Improve stage: the AI's range(10) version, which also changed the text)."
   ],
   "outstanding_issues": [
     "The error reports in Mistakes 2 and 4 show the short file name; on a learner's computer the full path to the file appears instead.",

@@ -20,7 +20,7 @@
       "body": [
        "To serve tables 1 to 3, Asha's `while` loop needed a start, a condition and an update."
       ],
-      "pre": "table = 1                # 1. the start\nwhile table <= 3:        # 2. the condition\n    print(f\"Serving table {table}\")\n    table = table + 1    # 3. the update\n\n# Forget line 3, and the loop never ends."
+      "pre": "table = 1                # 1. the start\nwhile table <= 3:        # 2. the condition\n    print(f\"Serving table {table}\")\n    table = table + 1    # 3. the update\n\n# Forget the update, and the loop never ends."
      },
      "segments": [
       {
@@ -70,20 +70,15 @@
        ]
       },
       {
-       "say": "Every 5th tea is free. So 5 teas cost the same as 4, and 10 teas cost the same as 9.",
+       "say": "Every 5th tea is free, and the chart works out the free teas by itself.",
        "highlight": [
         5,
         6
        ],
-       "out_highlight": [
-        5,
-        6,
-        10,
-        11
-       ]
+       "out_highlight": []
       },
       {
-       "say": "Ten rows, from a loop of only four lines, with no counter of its own. Let's build it.",
+       "say": "Ten rows, from a loop with no counter of its own. Let's build it.",
        "highlight": [],
        "out_highlight": []
       }
@@ -161,12 +156,9 @@
      },
      "segments": [
       {
-       "say": "Often you know in advance how many times something must happen. A receipt has 5 lines. A loyalty card has 10 stamps. An order code has 12 characters.",
+       "say": "Often you know in advance how many times something must happen: 5 receipt lines, 10 stamps, 12 characters. For these jobs, Python has the for loop.",
        "reveal": 3,
        "focus": 2
-      },
-      {
-       "say": "For these jobs, Python has the for loop. It counts for you, so there is no counter line to forget."
       }
      ]
     }
@@ -443,8 +435,9 @@
        ]
       },
       {
-       "say": "Line 9 prints the length, with len from Chapter 3, and the hyphens.",
+       "say": "Line 8, an empty print, ends the line of characters. Line 9 prints the length, with len from Chapter 3, and the hyphens.",
        "highlight": [
+        8,
         9
        ]
       }
@@ -521,26 +514,29 @@
       }
      ],
      "ask": {
-      "question": "The user types `120.5`, `98` and `143.25`. What total does line 6 print?"
+      "question": "How many times does line 4 ask a question, and how many times do lines 6 and 7 print?"
      },
      "after": [
       {
-       "say": "361.75. 120.5 plus 98 is 218.5, and plus 143.25 is 361.75.",
+       "say": "Line 4 asks three times, once per pass. Lines 6 and 7 print once each, after the loop.",
        "output": "examples/ex04_week_sales.expected",
        "highlight": [
-        5,
-        6
+        4
        ],
        "out_highlight": [
-        4
+        1,
+        2,
+        3
        ]
       },
       {
-       "say": "And the average is 120.58, with two decimal places.",
+       "say": "The total is 361.75, and the average is 120.58, with two decimal places.",
        "highlight": [
+        6,
         7
        ],
        "out_highlight": [
+        4,
         5
        ]
       }
@@ -779,7 +775,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "I am a beginner. My loyalty card has 10 stamps, and every 5th stamp is a free tea. I wrote it with a while loop. Do not write code yet. Should it be a for loop or a while loop, and which range()?"
+        "text": "I am a beginner. My loyalty card has 10 stamps, and every 5th stamp is a free tea. I wrote it with a while loop, and I want to rewrite it with a for loop. Do not write code yet. Is a for loop a good fit, and which range() gives the stamps 1 to 10?"
        },
        {
         "role": "ai",
@@ -790,7 +786,7 @@
      },
      "segments": [
       {
-       "say": "Stage 1: plan. Asha's loyalty card has 10 stamps, and every 5th stamp is a free tea. She asks: for or while, and which range? No code yet."
+       "say": "Stage 1: plan. Asha's loyalty card has 10 stamps, and every 5th stamp is a free tea. She wrote it with a while loop, and wants to rewrite it with for. She asks: is for a good fit, and which range? No code yet."
       },
       {
        "say": "The AI says: a for loop, because you know the number of passes. And range with 1 and 11, because the stop value is never included. A good plan.",
@@ -814,6 +810,8 @@
          3,
          4,
          5,
+         6,
+         7,
          8
         ]
        },
@@ -826,7 +824,7 @@
      },
      "segments": [
       {
-       "say": "Stage 2: write. Asha shows the while loop she wrote herself, and asks the AI to list every value of stamp, without changing anything."
+       "say": "Stage 2: write. Before the rewrite, Asha checks her own while loop. She asks the AI to list every value of stamp, without changing anything."
       },
       {
        "say": "The AI lists 1 to 10: ten passes. Stamps 5 and 10 have no remainder when divided by 5, so they print free tea. Asha's own list says the same.",
@@ -1169,6 +1167,34 @@
     },
     {
      "visual": {
+      "type": "code",
+      "file": "examples/ai_stamps_size_fixed.py",
+      "heading": "The fix, and the checks again",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_stamps_size_fixed.expected",
+      "note": "The user typed: 10"
+     },
+     "segments": [
+      {
+       "say": "Asha applies the fix on line 2, and runs it again with 10.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Then she runs all four checks again. First line, stamp 5, last line, and ten stamps. All pass.",
+       "out_highlight": [
+        2,
+        6,
+        11
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
       "type": "chat",
       "stage": 6,
       "heading": "Improve: which loop is clearer?",
@@ -1179,7 +1205,7 @@
        },
        {
         "role": "ai",
-        "text": "The `for` loop is clearer: there is no counter line to forget.\nOne change: use `range(10)` and print `stamp + 1`, and write \"Free tea\", which looks friendlier."
+        "text": "The `for` loop is clearer: there is no counter line to forget.\nOne change: use `range(10)` and print `stamp + 1`. The output stays the same."
        }
       ],
       "reveal": 1
@@ -1189,7 +1215,7 @@
        "say": "Stage 6: improve. Asha shows both loops, her while loop and the fixed for loop, and asks which one is clearer. She adds: do not change what it prints."
       },
       {
-       "say": "The AI chooses the for loop: there is no counter line to forget. Then it suggests one change: range with 10, print stamp plus 1, and the words free tea, in small letters.",
+       "say": "The AI chooses the for loop: there is no counter line to forget. Then it suggests one change: range with 10, and print stamp plus 1. It says the output stays the same.",
        "reveal": 2,
        "focus": 1
       }
@@ -1329,7 +1355,7 @@
      },
      "segments": [
       {
-       "say": "Mistake 2. Range works only with whole numbers. Point 5 is a float, so Python stops with a Type Error.",
+       "say": "Mistake 2. Range works only with whole numbers. Zero point five is a float, so Python stops with a Type Error.",
        "out_highlight": [
         -1
        ]
