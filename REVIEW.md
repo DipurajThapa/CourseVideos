@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-09T22:44:43+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-09T23:24:03+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -19,6 +19,7 @@ You can also ask Claude to do either.
 - **python-05**: Boss Level 1: The Bill Splitter ([chapters/python/05-project-bill-splitter](chapters/python/05-project-bill-splitter)), video: [chapters/python/05-project-bill-splitter/video/chapter.mp4](chapters/python/05-project-bill-splitter/video/chapter.mp4)
 - **python-06**: Making Decisions: if, elif and else ([chapters/python/06-making-decisions](chapters/python/06-making-decisions)), video: [chapters/python/06-making-decisions/video/chapter.mp4](chapters/python/06-making-decisions/video/chapter.mp4)
 - **python-07**: Repeat Until Done: while Loops ([chapters/python/07-while-loops](chapters/python/07-while-loops)), video: [chapters/python/07-while-loops/video/chapter.mp4](chapters/python/07-while-loops/video/chapter.mp4)
+- **python-08**: Repeat a Set Number of Times: for Loops and range() ([chapters/python/08-for-loops](chapters/python/08-for-loops)), video: [chapters/python/08-for-loops/video/chapter.mp4](chapters/python/08-for-loops/video/chapter.mp4)
 
 ## Changes requested
 
