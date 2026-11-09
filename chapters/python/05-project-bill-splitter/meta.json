@@ -1,0 +1,55 @@
+{
+  "id": "python-05",
+  "title": "Boss Level 1: The Bill Splitter",
+  "language": "python",
+  "type": "project",
+  "module": "M1",
+  "badge": "Fair Share",
+  "xp": {
+    "project": 300,
+    "practice": 170
+  },
+  "concepts": [
+    "planning inputs, calculations and outputs",
+    "input() with int() and float()",
+    "percent as a division by 100",
+    "money in whole cents",
+    "// and % for fair shares",
+    "round()",
+    "f-string receipt columns",
+    "test cases with known results",
+    "ZeroDivisionError"
+  ],
+  "prerequisites": [
+    "python-01",
+    "python-02",
+    "python-03",
+    "python-04"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_tip_flawed.py",
+    "fixed_file": "examples/ai_tip_fixed.py",
+    "flaw": "The AI wrote tip = bill * tip_percent and said a 10 percent tip on 48 would print 4.80. It printed Tip: 480.00, because the percent was not divided by 100. A result worked out by hand caught it; dividing by 100 fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-09",
+  "changes": [
+    "The splitter shares the total in whole cents with // and % and reports the extra cents, instead of rounding each share, so the payments always add up to the total exactly.",
+    "The tip percent and the number of people are whole numbers (int), and the bill is a float, to keep each conversion clear.",
+    "Test runs of the finished program are copies of bill_splitter.py in examples/ (test_*.py), each with its own .stdin file, because one program file can have only one set of typed answers.",
+    "Refusing zero people needs if, which arrives in Chapter 6. The project shows the ZeroDivisionError as a test that breaks the program, and the clear prompt as the fix for now."
+  ],
+  "outstanding_issues": [
+    "The traceback for the zero-people test shows the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
