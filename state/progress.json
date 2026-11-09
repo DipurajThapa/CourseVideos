@@ -17,7 +17,7 @@
     "python-01": {
       "language": "python",
       "number": 1,
-      "status": "in_review",
+      "status": "in_progress",
       "runs": [
         {
           "run_id": "2026-11-09-a25750",
@@ -46,12 +46,17 @@
           "from_status": "changes_requested",
           "ended": "2026-11-09T15:36:49+00:00",
           "result": "in_review"
+        },
+        {
+          "run_id": "2026-11-09-f53271",
+          "started": "2026-11-09T18:03:52+00:00",
+          "from_status": "changes_requested"
         }
       ],
-      "current_run_id": "2026-11-09-8cd4cb",
+      "current_run_id": "2026-11-09-f53271",
       "path": "chapters/python/01-first-program",
       "completed": "2026-11-09T15:36:49+00:00",
-      "notes": "Owner request (2026-11-09): redesign the video screens in a professional, calm 'Soft Studio' style (pastel gradient, frosted cards, bold capital headings, varied deck layouts) and re-render Chapter 1."
+      "notes": "Owner request: replace the narration voice with a fluid, energetic free voice (Kokoro bm_lewis), synthesised per beat, with a cloning option."
     },
     "python-02": {
       "language": "python",
@@ -235,5 +240,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T15:36:49+00:00"
+  "updated": "2026-11-09T18:03:52+00:00"
 }
