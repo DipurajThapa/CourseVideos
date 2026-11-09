@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-08",
+  "rendered_at": "2026-11-09T23:21:22+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "3179ae2efc6e7e71cea37fa2cf60b8a7520a9659fa63a7758753158faf3b0250",
+  "inputs_sha256": "7dc16fe1dac87bfab09b583273910b5f84c16d6865575436cb39c2a64509e77c",
+  "video_sha256": "ffd46dd54e90d0774f8ecb145d3ba727bf61d637eca2332a966284792841350b",
+  "duration_seconds": 1072.7,
+  "size_mb": 44.19,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 953,
+  "questions": 16,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 44.1
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 44.1,
+      "end": 59.733
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 59.733,
+      "end": 70.7
+    },
+    {
+      "id": "idea",
+      "title": "The idea: one value at a time",
+      "section": "The idea",
+      "start": 70.7,
+      "end": 145.067
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: for and range()",
+      "section": "Build it step by step",
+      "start": 145.067,
+      "end": 186.433
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: The three forms of range()",
+      "section": "Build it step by step",
+      "start": 186.433,
+      "end": 240.2
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Loop over a string",
+      "section": "Build it step by step",
+      "start": 240.2,
+      "end": 294.3
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: A running total",
+      "section": "Build it step by step",
+      "start": 294.3,
+      "end": 350.0
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: Count down, and choose a loop",
+      "section": "Build it step by step",
+      "start": 350.0,
+      "end": 432.867
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the price chart",
+      "section": "See the outcome",
+      "start": 432.867,
+      "end": 498.5
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one loyalty card",
+      "section": "Work with AI",
+      "start": 498.5,
+      "end": 810.0
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 810.0,
+      "end": 916.867
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 916.867,
+      "end": 963.067
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 963.067,
+      "end": 1018.867
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1018.867,
+      "end": 1047.067
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1047.067,
+      "end": 1072.7
+    }
+  ]
+}

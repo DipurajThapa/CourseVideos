@@ -705,7 +705,7 @@
       }
      ],
      "ask": {
-      "question": "Which two rows show the same price as the row just above them?"
+      "question": "Which two rows show the same price as the row above them?"
      },
      "after": [
       {
