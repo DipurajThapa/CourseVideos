@@ -1,0 +1,11 @@
+Corner Cafe: end of day
+How many sales today? 3
+Price of sale 1: 4.50
+DEBUG total=4.5
+Price of sale 2: 6.00
+DEBUG total=10.5
+Price of sale 3: 3.50
+DEBUG total=14.0
+Sales:   3
+Total:   14.00
+Average: 4.67

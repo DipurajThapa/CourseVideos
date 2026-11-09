@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-09",
+  "rendered_at": "2026-11-09T23:54:05+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "1e0a2b0dcfd0fb33f110ca1cad9ba6de951da37eb4c01d5405daa5980023967a",
+  "inputs_sha256": "d575b9d431f1be364582d792bf65e5cdfa76dc929193e8f330003ff0f5e40456",
+  "video_sha256": "8bda5f693ad1d99db52f981adbb6c454bf88c870290ca4fbb7968e29e6e0958e",
+  "duration_seconds": 1042.0,
+  "size_mb": 44.06,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.2
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 895,
+  "questions": 15,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 37.5
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 37.5,
+      "end": 54.967
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 54.967,
+      "end": 71.833
+    },
+    {
+      "id": "idea",
+      "title": "The idea: three kinds of bugs",
+      "section": "The idea",
+      "start": 71.833,
+      "end": 131.333
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: A syntax error stops everything",
+      "section": "Build it step by step",
+      "start": 131.333,
+      "end": 179.867
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Read a traceback from the bottom up",
+      "section": "Build it step by step",
+      "start": 179.867,
+      "end": 266.1
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Spot a logic error",
+      "section": "Build it step by step",
+      "start": 266.1,
+      "end": 310.5
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Print debugging",
+      "section": "Build it step by step",
+      "start": 310.5,
+      "end": 369.167
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: A debugging prompt that works",
+      "section": "Build it step by step",
+      "start": 369.167,
+      "end": 426.167
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the day report",
+      "section": "See the outcome",
+      "start": 426.167,
+      "end": 490.7
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one day with no sales",
+      "section": "Work with AI",
+      "start": 490.7,
+      "end": 794.833
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 794.833,
+      "end": 880.8
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 880.8,
+      "end": 927.933
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 927.933,
+      "end": 986.8
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 986.8,
+      "end": 1015.333
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1015.333,
+      "end": 1042.0
+    }
+  ]
+}

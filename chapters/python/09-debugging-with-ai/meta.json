@@ -1,0 +1,62 @@
+{
+  "id": "python-09",
+  "title": "Debugging with AI: Reading Errors and Tracebacks",
+  "language": "python",
+  "type": "lesson",
+  "module": "M2",
+  "badge": "Bug Hunter",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "bug",
+    "syntax error",
+    "runtime error",
+    "logic error",
+    "traceback",
+    "reading a traceback from the bottom up",
+    "most recent call last",
+    "print debugging",
+    "expected result and actual result",
+    "structured debugging prompt",
+    "regression",
+    "TypeError",
+    "NameError",
+    "ValueError",
+    "ZeroDivisionError",
+    "IndentationError",
+    "SyntaxError: '(' was never closed",
+    "SyntaxError: Perhaps you forgot a comma?"
+  ],
+  "prerequisites": [
+    "python-08"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_check_flawed.py",
+    "fixed_file": "examples/ai_check_fixed.py",
+    "flaw": "Asha asked the AI to make her day report print No sales today. for 0 sales and to say exactly what it prints. The AI said it prints No sales today., but its check was if sales >= 0:, which is true for 0, so the program still divided by zero and crashed with ZeroDivisionError. if sales > 0: fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-09",
+  "changes": [
+    "try and except are left out, because they are taught in Chapter 22; the chapter fixes causes instead of catching errors.",
+    "Debugger tools are left out; print debugging works everywhere without setup.",
+    "The logic error adds the loop counter instead of the price, because Chapter 8 already showed a total reset inside a loop.",
+    "The AI section adds video-only verified files: ai_zero_crash.py (the report crashing on 0 sales), ai_test_one.py and ai_test_three.py (the AI's version tested with 1 and 3 sales), ai_fixed_one.py and ai_fixed_three.py (the fixed version tested again), ai_improve_debug.py (the AI's suggestion that leaves a debug line in the output) and ai_report_final.py (the final report).",
+    "tools/storyboard.py now also checks on-screen questions, quiz options and pause text for banned phrases and em dashes."
+  ],
+  "outstanding_issues": [
+    "The error reports in the lesson show the short file name; on a learner's computer the full path to the file appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

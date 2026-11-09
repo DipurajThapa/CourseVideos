@@ -1,0 +1,1263 @@
+1
+00:00:00,250 --> 00:00:03,370
+One evening, Asha runs her end-of-day
+report.
+
+2
+00:00:03,390 --> 00:00:06,230
+It prints a total that is much too small.
+
+3
+00:00:06,267 --> 00:00:08,701
+But there is no error, and no crash.
+
+4
+00:00:08,721 --> 00:00:10,133
+Nothing looks broken.
+
+5
+00:00:10,153 --> 00:00:12,383
+How do you find a bug that hides?
+
+6
+00:00:12,987 --> 00:00:15,272
+This is Code Quest, Chapter 9.
+
+7
+00:00:15,292 --> 00:00:17,577
+Today you become a bug hunter.
+
+8
+00:00:17,600 --> 00:00:20,926
+And an AI assistant will promise to stop a
+crash.
+
+9
+00:00:20,946 --> 00:00:23,658
+Its fix will crash on the same division.
+
+10
+00:00:24,253 --> 00:00:26,196
+So here is today's mission.
+
+11
+00:00:26,216 --> 00:00:30,413
+Asha's end-of-day report, with three bugs
+found and fixed.
+
+12
+00:00:30,433 --> 00:00:35,779
+When it works, its total matches the money
+she took, and she can explain why.
+
+13
+00:00:35,799 --> 00:00:37,172
+Let's start hunting.
+
+14
+00:00:37,750 --> 00:00:39,930
+Tell the three kinds of bugs apart.
+
+15
+00:00:39,967 --> 00:00:42,677
+Read a traceback, from the bottom up.
+
+16
+00:00:42,700 --> 00:00:46,220
+Find a hidden bug by printing values
+inside a loop.
+
+17
+00:00:46,267 --> 00:00:50,207
+Write a debugging prompt that gives an AI
+everything it needs.
+
+18
+00:00:50,233 --> 00:00:54,615
+And test a fix with several cases,
+including the one that failed.
+
+19
+00:00:55,217 --> 00:00:59,957
+A bug is a mistake that makes a program
+stop, or give a wrong result.
+
+20
+00:00:59,977 --> 00:01:02,717
+Every programmer writes bugs, every day.
+
+21
+00:01:02,767 --> 00:01:04,483
+And here is the AI part.
+
+22
+00:01:04,503 --> 00:01:10,487
+A vague question, like my code is wrong,
+fix it, often gets a confident fix for the
+
+23
+00:01:10,507 --> 00:01:11,500
+wrong problem.
+
+24
+00:01:12,083 --> 00:01:16,333
+Bugs come in three kinds, and each one
+shows itself in a different way.
+
+25
+00:01:16,367 --> 00:01:19,418
+A syntax error means Python cannot read
+the file.
+
+26
+00:01:19,438 --> 00:01:22,677
+So it runs nothing at all, not even the
+first print.
+
+27
+00:01:22,700 --> 00:01:25,870
+A runtime error happens while the program
+runs.
+
+28
+00:01:25,890 --> 00:01:29,670
+Some lines print, then Python stops and
+prints a report.
+
+29
+00:01:29,700 --> 00:01:31,852
+A logic error is the sneakiest.
+
+30
+00:01:31,872 --> 00:01:34,515
+The program finishes, with no message.
+
+31
+00:01:34,535 --> 00:01:36,197
+But the result is wrong.
+
+32
+00:01:36,820 --> 00:01:37,616
+Quick check.
+
+33
+00:01:37,636 --> 00:01:41,696
+A program prints two lines, then stops
+with an error report.
+
+34
+00:01:41,716 --> 00:01:43,328
+Which kind of bug is it?
+
+35
+00:01:54,680 --> 00:01:54,810
+A.
+
+36
+00:01:54,830 --> 00:01:56,009
+A runtime error.
+
+37
+00:01:56,029 --> 00:01:59,905
+Some lines ran first, so Python could read
+the file.
+
+38
+00:02:00,520 --> 00:02:01,595
+Take a breather.
+
+39
+00:02:01,615 --> 00:02:03,580
+Here is what you know so far.
+
+40
+00:02:03,600 --> 00:02:06,836
+Next, Asha meets each kind of bug in her
+report.
+
+41
+00:02:11,583 --> 00:02:12,123
+Step 1.
+
+42
+00:02:12,143 --> 00:02:15,163
+Asha's report starts with three lines.
+
+43
+00:02:15,183 --> 00:02:17,243
+Line 2 prints the heading.
+
+44
+00:02:17,263 --> 00:02:18,363
+It is correct.
+
+45
+00:02:18,400 --> 00:02:20,448
+Line 4 prints the tea price.
+
+46
+00:02:20,468 --> 00:02:23,992
+Look at its end: the closing bracket is
+missing.
+
+47
+00:02:35,347 --> 00:02:35,520
+No.
+
+48
+00:02:35,540 --> 00:02:36,941
+Nothing prints at all.
+
+49
+00:02:36,961 --> 00:02:42,237
+Python reads the whole file before it runs
+any line, and it could not read line 4.
+
+50
+00:02:42,267 --> 00:02:44,599
+The report names the file and line 4.
+
+51
+00:02:44,619 --> 00:02:49,177
+The marker points at the opening bracket,
+the one that was never closed.
+
+52
+00:02:49,200 --> 00:02:52,800
+The fix goes at the end of the line: a
+closing bracket.
+
+53
+00:02:52,833 --> 00:02:56,242
+These messages come from Python 3.12 and
+newer.
+
+54
+00:02:56,262 --> 00:02:59,524
+Older versions word some of them
+differently.
+
+55
+00:03:00,117 --> 00:03:00,657
+Step 2.
+
+56
+00:03:00,677 --> 00:03:04,102
+Line 3 asks how many cups of tea were
+sold.
+
+57
+00:03:04,122 --> 00:03:08,027
+Remember Chapter 4: input always gives
+back text.
+
+58
+00:03:08,067 --> 00:03:10,391
+Line 4 prints the answer.
+
+59
+00:03:10,411 --> 00:03:14,986
+Line 5 multiplies the cups by the tea
+price, 3.5.
+
+60
+00:03:26,347 --> 00:03:30,183
+Lines 2, 3 and 4 run, so their output
+appears.
+
+61
+00:03:30,203 --> 00:03:32,530
+Then Python stops at line 5.
+
+62
+00:03:33,120 --> 00:03:35,390
+This report is called a traceback.
+
+63
+00:03:35,410 --> 00:03:37,208
+Read it from the bottom up.
+
+64
+00:03:37,228 --> 00:03:40,710
+The last line names the kind of error, a
+Type Error.
+
+65
+00:03:40,730 --> 00:03:44,750
+A sequence is a value made of parts in
+order, like a string.
+
+66
+00:03:44,800 --> 00:03:50,771
+The two lines above show the code, and the
+markers point at the part that failed:
+
+67
+00:03:50,791 --> 00:03:51,880
+cups times 3.5.
+
+68
+00:03:51,900 --> 00:03:54,610
+Above that: the file, and line 5.
+
+69
+00:03:54,633 --> 00:03:57,851
+And the first line says: most recent call
+last.
+
+70
+00:03:57,871 --> 00:04:00,744
+It means the newest step is at the bottom.
+
+71
+00:04:00,764 --> 00:04:03,913
+In programs this size, there is only one
+step.
+
+72
+00:04:03,933 --> 00:04:08,321
+In Chapter 16, when you write functions,
+tracebacks grow longer.
+
+73
+00:04:08,920 --> 00:04:10,437
+Here is the key idea.
+
+74
+00:04:10,457 --> 00:04:14,390
+The line Python names is where it noticed
+the problem.
+
+75
+00:04:14,410 --> 00:04:16,220
+The cause can be earlier.
+
+76
+00:04:16,267 --> 00:04:19,423
+Line 3 stored the answer as text.
+
+77
+00:04:19,443 --> 00:04:23,947
+So the fix is on line 3: int, around the
+input.
+
+78
+00:04:23,967 --> 00:04:25,770
+Now 12 cups cost 42.00.
+
+79
+00:04:26,350 --> 00:04:26,936
+Step 3.
+
+80
+00:04:26,956 --> 00:04:29,531
+This loop adds up three sales.
+
+81
+00:04:29,551 --> 00:04:32,040
+Line 2 starts the total at 0.
+
+82
+00:04:32,067 --> 00:04:34,121
+Line 3 makes three passes.
+
+83
+00:04:34,141 --> 00:04:37,232
+Line 4 asks for the price of each sale.
+
+84
+00:04:37,252 --> 00:04:39,227
+Line 5 adds to the total.
+
+85
+00:04:39,267 --> 00:04:43,676
+Before you run any program, work out the
+expected result by hand.
+
+86
+00:04:43,696 --> 00:04:46,197
+Otherwise, a wrong answer looks fine.
+
+87
+00:04:57,547 --> 00:04:59,555
+It should print 14.00.
+
+88
+00:04:59,575 --> 00:05:01,307
+But it prints 6.00!
+
+89
+00:05:01,333 --> 00:05:02,965
+No error, no crash.
+
+90
+00:05:02,985 --> 00:05:04,703
+Only a wrong number.
+
+91
+00:05:04,723 --> 00:05:10,179
+That is a logic error, and only your
+expected result caught it.
+
+92
+00:05:10,750 --> 00:05:11,177
+Step 4.
+
+93
+00:05:11,197 --> 00:05:16,282
+To find a hidden bug, print the values of
+your variables while the program runs.
+
+94
+00:05:16,302 --> 00:05:18,260
+This is called print debugging.
+
+95
+00:05:18,300 --> 00:05:20,746
+Asha adds line 6 inside the loop.
+
+96
+00:05:20,766 --> 00:05:24,109
+It shows sale, price and total on every
+pass.
+
+97
+00:05:24,129 --> 00:05:29,340
+It starts with the word DEBUG, so she can
+find it and remove it later.
+
+98
+00:05:29,367 --> 00:05:34,245
+Line 5 runs before the debug line, so you
+see the total after it changes.
+
+99
+00:05:45,613 --> 00:05:46,768
+Total is 1.
+
+100
+00:05:46,788 --> 00:05:48,583
+It should be 4.5.
+
+101
+00:05:48,633 --> 00:05:49,871
+Then 3, then 6.
+
+102
+00:05:49,891 --> 00:05:55,323
+The total grows by the sale number, 1, 2
+and 3, not by the price.
+
+103
+00:05:55,367 --> 00:05:58,788
+So line 5 adds sale, where it should add
+price.
+
+104
+00:05:59,387 --> 00:06:05,075
+Asha changes line 5 to add price, and
+removes the debug line.
+
+105
+00:06:05,095 --> 00:06:08,818
+The total is 14.00, exactly as expected.
+
+106
+00:06:09,417 --> 00:06:09,845
+Step 5.
+
+107
+00:06:09,865 --> 00:06:11,702
+An AI cannot see your screen.
+
+108
+00:06:11,722 --> 00:06:13,174
+So give it four things.
+
+109
+00:06:13,194 --> 00:06:15,095
+The code, and the exact error.
+
+110
+00:06:15,115 --> 00:06:17,657
+If there is none, say: no error message.
+
+111
+00:06:17,700 --> 00:06:22,911
+Then the expected result, worked out by
+hand, and the actual result.
+
+112
+00:06:22,931 --> 00:06:25,450
+The difference points at the bug.
+
+113
+00:06:25,500 --> 00:06:27,879
+Then ask for the cause before the fix.
+
+114
+00:06:27,899 --> 00:06:30,719
+A cause you understand teaches you
+something.
+
+115
+00:06:31,320 --> 00:06:32,086
+Quick check.
+
+116
+00:06:32,106 --> 00:06:35,231
+Your program prints a wrong total, and no
+error.
+
+117
+00:06:35,251 --> 00:06:37,721
+Which parts of the prompt matter most?
+
+118
+00:06:49,080 --> 00:06:49,200
+B.
+
+119
+00:06:49,220 --> 00:06:52,145
+The expected result and the actual result.
+
+120
+00:06:52,165 --> 00:06:56,141
+With no error message, their difference is
+the only clue.
+
+121
+00:06:56,753 --> 00:06:57,321
+Breather.
+
+122
+00:06:57,341 --> 00:07:00,259
+You have found and fixed three kinds of
+bugs.
+
+123
+00:07:00,279 --> 00:07:01,695
+Now, the whole report.
+
+124
+00:07:06,417 --> 00:07:07,720
+Back to the mission.
+
+125
+00:07:07,740 --> 00:07:11,359
+Line 2 prints the heading, and every
+bracket is closed.
+
+126
+00:07:11,379 --> 00:07:15,727
+Line 3 converts the number of sales with
+int, the fix from step 2.
+
+127
+00:07:15,767 --> 00:07:17,997
+Line 4 starts the total at 0.
+
+128
+00:07:18,017 --> 00:07:22,033
+Lines 5 to 7 add up each price: the fix
+from step 4.
+
+129
+00:07:22,053 --> 00:07:26,767
+Range goes up to sales plus 1, so it asks
+once for each sale.
+
+130
+00:07:26,800 --> 00:07:32,705
+Line 8 divides the total by the number of
+sales, and lines 9 to 11 print the report,
+
+131
+00:07:32,725 --> 00:07:34,398
+with two decimal places.
+
+132
+00:07:45,780 --> 00:07:46,957
+Average, 4.67.
+
+133
+00:07:46,977 --> 00:07:53,370
+14 divided by 3 is 4.666 and more, and two
+decimal places round it to 4.67.
+
+134
+00:07:53,400 --> 00:07:57,119
+And the total is 14.00, the money Asha
+took.
+
+135
+00:07:57,139 --> 00:07:58,564
+Mission complete!
+
+136
+00:07:58,584 --> 00:08:01,538
+But Asha has one more test in mind.
+
+137
+00:08:01,558 --> 00:08:05,192
+What happens on a day with no sales at
+all?
+
+138
+00:08:05,212 --> 00:08:10,376
+She will find out, with an AI assistant,
+one stage at a time.
+
+139
+00:08:10,950 --> 00:08:16,440
+This chapter's AI skill is the debugging
+prompt: the code, the exact error, the
+
+140
+00:08:16,460 --> 00:08:19,160
+expected result, and the actual result.
+
+141
+00:08:19,200 --> 00:08:21,027
+Ask for the cause first.
+
+142
+00:08:21,047 --> 00:08:23,258
+Then test every fix yourself.
+
+143
+00:08:23,278 --> 00:08:27,029
+And the safety habits from Chapter 1 still
+apply.
+
+144
+00:08:27,620 --> 00:08:28,628
+Stage 1: plan.
+
+145
+00:08:28,648 --> 00:08:31,785
+Asha types 0 sales, and the report
+crashes.
+
+146
+00:08:31,805 --> 00:08:35,749
+Before any fix, she asks for a plan to
+find the cause.
+
+147
+00:08:35,769 --> 00:08:36,630
+No code yet.
+
+148
+00:08:36,667 --> 00:08:38,418
+The AI gives five steps.
+
+149
+00:08:38,438 --> 00:08:41,592
+Copy the traceback, and read its last
+line.
+
+150
+00:08:41,612 --> 00:08:43,732
+Find the line and its values.
+
+151
+00:08:43,752 --> 00:08:46,167
+Decide what 0 sales should print.
+
+152
+00:08:46,187 --> 00:08:49,046
+Then test 0, and the cases that worked.
+
+153
+00:08:49,653 --> 00:08:50,744
+Stage 2: write.
+
+154
+00:08:50,764 --> 00:08:52,372
+Asha follows the plan.
+
+155
+00:08:52,392 --> 00:08:56,813
+She runs the report with 0, and reads the
+traceback herself.
+
+156
+00:08:56,833 --> 00:09:01,656
+She writes down her reading: a Zero
+Division Error, on line 8, because sales
+
+157
+00:09:01,676 --> 00:09:01,974
+is 0.
+
+158
+00:09:01,994 --> 00:09:06,243
+Then she asks the AI to check her reading,
+without fixing anything.
+
+159
+00:09:06,267 --> 00:09:09,085
+The AI agrees with all three points.
+
+160
+00:09:09,105 --> 00:09:12,869
+Dividing by zero has no answer, so Python
+stops.
+
+161
+00:09:13,487 --> 00:09:14,894
+Stage 3: generate.
+
+162
+00:09:14,914 --> 00:09:19,808
+Asha asks for a check, so that 0 sales
+prints, No sales today.
+
+163
+00:09:19,828 --> 00:09:22,187
+She asks what it prints for 0.
+
+164
+00:09:22,233 --> 00:09:27,148
+The AI adds an if before the average, and
+promises: no sales today.
+
+165
+00:09:27,168 --> 00:09:29,063
+It sounds completely sure.
+
+166
+00:09:29,100 --> 00:09:33,341
+Look at line 8, and remember the boundary
+values from Chapter 6.
+
+167
+00:09:44,713 --> 00:09:44,925
+No.
+
+168
+00:09:44,945 --> 00:09:48,869
+Greater than or equal to 0 is true when
+sales is 0.
+
+169
+00:09:48,889 --> 00:09:52,116
+So the program still reaches the division.
+
+170
+00:09:52,720 --> 00:09:54,332
+Asha runs it with 0.
+
+171
+00:09:54,352 --> 00:09:56,781
+The same crash, now on line 9.
+
+172
+00:09:56,801 --> 00:10:00,209
+The AI's fix crashed on the same division.
+
+173
+00:10:00,820 --> 00:10:01,986
+Stage 4: test.
+
+174
+00:10:02,006 --> 00:10:08,597
+Asha asks for test cases, each with the
+exact input and the expected result: 0
+
+175
+00:10:08,617 --> 00:10:10,800
+sales, 1 sale and 3 sales.
+
+176
+00:10:10,833 --> 00:10:12,871
+The AI lists three cases.
+
+177
+00:10:12,891 --> 00:10:18,879
+1 sale and 0 sales are edge cases: unusual
+answers that often break code.
+
+178
+00:10:19,487 --> 00:10:23,722
+She runs every case on the AI's code.
+
+179
+00:10:23,742 --> 00:10:28,322
+Three sales give 14.00 and 4.67, a pass.
+
+180
+00:10:28,342 --> 00:10:31,542
+One sale of 5.00 passes too.
+
+181
+00:10:32,153 --> 00:10:33,669
+So two cases pass.
+
+182
+00:10:33,689 --> 00:10:37,253
+But the case that matters, 0 sales, fails.
+
+183
+00:10:37,300 --> 00:10:40,877
+The AI's code only works when there was
+nothing to fix.
+
+184
+00:10:41,487 --> 00:10:42,545
+Stage 5: debug.
+
+185
+00:10:42,565 --> 00:10:48,442
+Now Asha writes the full debugging prompt:
+the code, the exact error, the expected
+
+186
+00:10:48,462 --> 00:10:52,397
+result, no sales today, and the actual
+result, a crash.
+
+187
+00:10:52,433 --> 00:10:54,688
+She asks for the cause first.
+
+188
+00:10:54,708 --> 00:10:59,239
+The AI names line 8: greater than or equal
+lets 0 through.
+
+189
+00:10:59,259 --> 00:11:01,984
+The smallest fix is greater than 0.
+
+190
+00:11:02,587 --> 00:11:06,010
+Asha changes line 8 and runs it with 0.
+
+191
+00:11:06,030 --> 00:11:07,335
+No sales today.
+
+192
+00:11:07,355 --> 00:11:08,130
+No crash.
+
+193
+00:11:08,720 --> 00:11:12,751
+A fix can break a case that worked before.
+
+194
+00:11:12,771 --> 00:11:15,548
+So she runs every case again.
+
+195
+00:11:15,568 --> 00:11:21,818
+Three sales: still 14.00 and 4.67, and one
+sale still gives 5.00.
+
+196
+00:11:22,420 --> 00:11:25,118
+All three cases pass on the fixed code.
+
+197
+00:11:25,720 --> 00:11:26,885
+Stage 6: improve.
+
+198
+00:11:26,905 --> 00:11:28,071
+The report works.
+
+199
+00:11:28,091 --> 00:11:33,022
+Asha asks for at most two changes that
+make future bugs easier to find.
+
+200
+00:11:33,042 --> 00:11:36,020
+And she adds: do not change what it
+prints.
+
+201
+00:11:36,067 --> 00:11:41,165
+Suggestion 1: rename sale to sale number,
+so nobody adds it instead of price.
+
+202
+00:11:41,185 --> 00:11:44,887
+That would have made the bug from step 4
+easier to spot!
+
+203
+00:11:44,933 --> 00:11:50,500
+Suggestion 2: keep a debug line inside the
+loop, so the total is always visible.
+
+204
+00:11:51,120 --> 00:11:53,498
+Asha tries both suggestions.
+
+205
+00:11:53,518 --> 00:11:55,640
+Line 5 uses the new name.
+
+206
+00:11:55,667 --> 00:11:59,598
+And line 8 is the debug line the AI wants
+to keep.
+
+207
+00:12:10,980 --> 00:12:11,192
+No.
+
+208
+00:12:11,212 --> 00:12:14,678
+Three extra debug lines appear in the
+report.
+
+209
+00:12:14,698 --> 00:12:17,080
+The AI ignored her instruction.
+
+210
+00:12:17,100 --> 00:12:21,675
+Debug lines are for finding a bug, not for
+the finished report.
+
+211
+00:12:21,695 --> 00:12:24,009
+So Asha keeps suggestion 1 only.
+
+212
+00:12:24,620 --> 00:12:30,206
+Here is the result: a clear name on line
+5, the check on line 8, and the same
+
+213
+00:12:30,226 --> 00:12:31,444
+report as before.
+
+214
+00:12:31,464 --> 00:12:35,667
+Every stage helped, and Asha checked every
+answer herself.
+
+215
+00:12:36,287 --> 00:12:37,144
+Quick check.
+
+216
+00:12:37,164 --> 00:12:40,436
+An AI fixes your code, and says it works
+now.
+
+217
+00:12:40,456 --> 00:12:41,899
+What do you do next?
+
+218
+00:12:53,280 --> 00:12:53,400
+D.
+
+219
+00:12:53,420 --> 00:12:57,041
+Run the case that failed, and the cases
+that worked.
+
+220
+00:12:57,061 --> 00:12:59,212
+A fix can break something else.
+
+221
+00:12:59,820 --> 00:13:00,469
+Breather.
+
+222
+00:13:00,489 --> 00:13:06,486
+Asha caught two AI mistakes: a check that
+let 0 through, and a change she did not
+
+223
+00:13:06,506 --> 00:13:07,080
+ask for.
+
+224
+00:13:07,100 --> 00:13:10,360
+Next, mistakes beginners make while
+debugging.
+
+225
+00:13:15,083 --> 00:13:15,926
+Now you try.
+
+226
+00:13:15,946 --> 00:13:20,095
+Line 3 should print the word Total and the
+value of total.
+
+227
+00:13:31,447 --> 00:13:33,551
+A comma between the two values.
+
+228
+00:13:33,571 --> 00:13:37,047
+And look at the last line: Python even
+suggests it.
+
+229
+00:13:37,067 --> 00:13:40,939
+Python's suggestions are often right, so
+always read them.
+
+230
+00:13:41,553 --> 00:13:42,269
+One more.
+
+231
+00:13:42,289 --> 00:13:44,968
+Asha adds a debug line on line 5.
+
+232
+00:13:44,988 --> 00:13:47,421
+Compare its start with line 4.
+
+233
+00:13:58,780 --> 00:14:03,266
+Line 5 has six spaces at the start, but
+the block uses four.
+
+234
+00:14:03,286 --> 00:14:05,970
+Python reports an Indentation Error.
+
+235
+00:14:06,000 --> 00:14:10,439
+The fix: indent a debug line exactly like
+the line above it.
+
+236
+00:14:11,053 --> 00:14:11,775
+Mistake 3.
+
+237
+00:14:11,795 --> 00:14:16,370
+In many countries, people write four and a
+half as 4 comma 50.
+
+238
+00:14:16,390 --> 00:14:21,633
+Python accepts only a decimal point, so
+float stops with a Value Error.
+
+239
+00:14:21,667 --> 00:14:25,769
+The message even shows the exact text that
+failed.
+
+240
+00:14:25,789 --> 00:14:27,830
+The fix: type 4 point 50.
+
+241
+00:14:28,420 --> 00:14:29,337
+Last breather.
+
+242
+00:14:29,357 --> 00:14:32,950
+Now you know three mistakes that slow down
+a bug hunt.
+
+243
+00:14:33,000 --> 00:14:36,319
+Two questions to think about on your own
+come next.
+
+244
+00:14:41,050 --> 00:14:41,434
+First.
+
+245
+00:14:41,454 --> 00:14:46,411
+A program gives the right total for 1
+sale, but a wrong total for 3 sales.
+
+246
+00:14:46,431 --> 00:14:50,783
+What kind of bug is it, and what would you
+print inside the loop?
+
+247
+00:15:02,147 --> 00:15:05,086
+Think about which values change on every
+pass.
+
+248
+00:15:05,687 --> 00:15:06,129
+Second.
+
+249
+00:15:06,149 --> 00:15:11,149
+What happens if someone types a negative
+number of sales into Asha's report?
+
+250
+00:15:11,169 --> 00:15:12,933
+Predict first, then run it.
+
+251
+00:15:24,313 --> 00:15:27,608
+Then decide what the report should print
+in that case.
+
+252
+00:15:28,183 --> 00:15:28,962
+Let's recap.
+
+253
+00:15:28,982 --> 00:15:31,093
+A syntax error stops everything.
+
+254
+00:15:31,113 --> 00:15:33,091
+A runtime error stops partway.
+
+255
+00:15:33,111 --> 00:15:36,553
+A logic error gives a wrong result, with
+no message.
+
+256
+00:15:36,600 --> 00:15:38,763
+Read a traceback from the bottom up.
+
+257
+00:15:38,783 --> 00:15:43,130
+The line Python names is where it noticed,
+and the cause can be earlier.
+
+258
+00:15:43,167 --> 00:15:46,380
+Print debugging shows values while the
+program runs.
+
+259
+00:15:46,400 --> 00:15:51,416
+And a debugging prompt has the code, the
+exact error, the expected result and the
+
+260
+00:15:51,436 --> 00:15:52,287
+actual result.
+
+261
+00:15:52,333 --> 00:15:56,777
+And after a fix, test the case that
+failed, and the cases that worked.
+
+262
+00:15:57,387 --> 00:15:58,444
+One last check.
+
+263
+00:15:58,464 --> 00:16:01,676
+A program stops on line 12 with a Type
+Error.
+
+264
+00:16:01,696 --> 00:16:03,328
+Where can the cause be?
+
+265
+00:16:14,680 --> 00:16:14,814
+C.
+
+266
+00:16:14,834 --> 00:16:19,503
+On line 12, or on an earlier line, like
+the cups from step 2.
+
+267
+00:16:20,120 --> 00:16:21,439
+Mission complete!
+
+268
+00:16:21,459 --> 00:16:24,825
+You earned 100 XP and the Bug Hunter
+badge.
+
+269
+00:16:27,050 --> 00:16:28,621
+Now it is your turn.
+
+270
+00:16:28,641 --> 00:16:32,440
+The practice file has eight tasks, worth
+170 XP.
+
+271
+00:16:32,467 --> 00:16:37,407
+Three warm-up tasks, worth 10 XP each,
+including reading a traceback.
+
+272
+00:16:37,433 --> 00:16:39,728
+Three apply tasks, worth 20 each.
+
+273
+00:16:39,748 --> 00:16:42,673
+In one, a wrong total looks right by luck.
+
+274
+00:16:42,700 --> 00:16:48,247
+And two stretch tasks, worth 40 each: a
+report with three bugs, and an AI's member
+
+275
+00:16:48,267 --> 00:16:49,130
+price to fix.
+
+276
+00:16:49,167 --> 00:16:52,371
+Work out the expected result before you
+run anything.
+
+277
+00:16:52,391 --> 00:16:54,987
+Try each task before you open the
+solution.
+
+278
+00:16:55,583 --> 00:16:58,743
+Today Asha's report learned to handle 0
+sales.
+
+279
+00:16:58,763 --> 00:17:01,025
+But it still trusts every answer.
+
+280
+00:17:01,045 --> 00:17:04,343
+Type a word instead of a number, and it
+crashes.
+
+281
+00:17:04,367 --> 00:17:09,264
+In Chapter 10, the second boss level, you
+will build a number guessing game.
+
+282
+00:17:09,284 --> 00:17:14,247
+A secret number, hints, a limit on tries,
+and answers that are checked first.
+
+283
+00:17:14,267 --> 00:17:15,926
+Do the warm-up tasks now.
+
+284
+00:17:15,946 --> 00:17:17,807
+They take about ten minutes.
+
+285
+00:17:17,833 --> 00:17:19,509
+See you in Chapter 10.
