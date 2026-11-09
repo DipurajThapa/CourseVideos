@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-04",
   "run_id": "2026-11-09-4b1cb6",
-  "verified_at": "2026-11-09T20:37:53+00:00",
-  "passed": false,
+  "verified_at": "2026-11-09T20:56:00+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -166,23 +166,26 @@
           "sentences": 108,
           "average_words": 11.6,
           "longest": 28
+        },
+        "video/script.md": {
+          "sentences": 704,
+          "average_words": 8.5,
+          "longest": 23
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/04-input-and-conversion",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/04-input-and-conversion",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/04-input-and-conversion",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/04-input-and-conversion",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/04-input-and-conversion"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 17.5
+        "estimated_minutes": 17.5,
+        "duration_seconds": 1040.9,
+        "size_mb": 43.61,
+        "scenes": 16,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "c2a9c5fca319d5d18d4199836e4077151af1cf3db166e76e2551d6b8f87528af"
+  "fingerprint": "f64e7d3b4f2f831338d8230f65568f43e4fc9d4bfdfa2248fe91c6ece6f34711"
 }
