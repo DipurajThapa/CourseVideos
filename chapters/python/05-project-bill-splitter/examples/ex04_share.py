@@ -1,5 +1,5 @@
 # file: examples/ex04_share.py
-share_cents = 1076
+share_cents = 1760
 share = share_cents / 100
 print(share)
 print(f"{share:.2f}")

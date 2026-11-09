@@ -136,7 +136,7 @@ Line 4 uses `round()` because `total * 100` is a `float`, and a `float` can be a
 
 ```python
 # file: examples/ex04_share.py
-share_cents = 1076
+share_cents = 1760
 share = share_cents / 100
 print(share)
 print(f"{share:.2f}")
@@ -145,10 +145,12 @@ print(f"{'Each pays':<16}{share:>8.2f}")
 
 <!-- output: examples/ex04_share.expected -->
 ```output
-10.76
-10.76
-Each pays          10.76
+17.6
+17.60
+Each pays          17.60
 ```
+
+Line 4 prints `17.6`, because Python drops the last zero of a `float`. Line 5 uses `:.2f`, so the amount looks like money: `17.60`.
 
 **Step 5: Put it together.** Here is the complete program. Lines 3 to 5 ask the questions, lines 7 to 12 calculate and lines 14 to 22 print the receipt.
 
