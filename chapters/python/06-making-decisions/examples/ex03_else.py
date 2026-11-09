@@ -5,5 +5,5 @@ if people > 0:
     share = bill / people
     print(f"Each pays: {share:.2f}")
 else:
-    print("The number of people must be 1 or more.")
+    print("People must be 1 or more.")
 print("Done.")

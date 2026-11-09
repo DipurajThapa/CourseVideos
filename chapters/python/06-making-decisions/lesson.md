@@ -85,7 +85,7 @@ Line 7 gives `False` because capital letters matter in text. Line 8 shows that a
 people = int(input("Number of people: "))
 if people == 0:
     print("Please type 1 or more.")
-    print("Nobody can share a bill with zero people.")
+    print("A bill needs 1 person or more.")
 print("Thank you!")
 ```
 
@@ -93,7 +93,7 @@ print("Thank you!")
 ```output
 Number of people: 0
 Please type 1 or more.
-Nobody can share a bill with zero people.
+A bill needs 1 person or more.
 Thank you!
 ```
 
@@ -109,7 +109,7 @@ if people > 0:
     share = bill / people
     print(f"Each pays: {share:.2f}")
 else:
-    print("The number of people must be 1 or more.")
+    print("People must be 1 or more.")
 print("Done.")
 ```
 
@@ -117,7 +117,7 @@ print("Done.")
 ```output
 Bill total: 20
 Number of people: 0
-The number of people must be 1 or more.
+People must be 1 or more.
 Done.
 ```
 
@@ -194,7 +194,7 @@ Here is Asha's cafe checkout. It gives the 10 percent discount only to members a
 # file: examples/ex07_checkout.py
 name = input("Name: ")
 teas = int(input("How many teas? "))
-member = input("Member? (yes/no) ").strip().lower()
+member = input("Member? ").strip().lower()
 
 bill = teas * 3.5
 if member == "yes":
@@ -216,7 +216,7 @@ else:
 ```output
 Name: Asha
 How many teas? 6
-Member? (yes/no) Yes
+Member? Yes
 Bill for Asha: 21.00
 Discount: 2.10
 To pay: 18.90

@@ -2,5 +2,5 @@
 people = int(input("Number of people: "))
 if people == 0:
     print("Please type 1 or more.")
-    print("Nobody can share a bill with zero people.")
+    print("A bill needs 1 person or more.")
 print("Thank you!")

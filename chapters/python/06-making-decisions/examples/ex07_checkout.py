@@ -1,7 +1,7 @@
 # file: examples/ex07_checkout.py
 name = input("Name: ")
 teas = int(input("How many teas? "))
-member = input("Member? (yes/no) ").strip().lower()
+member = input("Member? ").strip().lower()
 
 bill = teas * 3.5
 if member == "yes":
