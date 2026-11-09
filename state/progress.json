@@ -63,7 +63,7 @@
     "python-02": {
       "language": "python",
       "number": 2,
-      "status": "in_review",
+      "status": "in_progress",
       "runs": [
         {
           "run_id": "2026-11-09-f1911e",
@@ -78,12 +78,17 @@
           "from_status": "changes_requested",
           "ended": "2026-11-09T10:56:29+00:00",
           "result": "in_review"
+        },
+        {
+          "run_id": "2026-11-09-4f3b81",
+          "started": "2026-11-09T18:30:57+00:00",
+          "from_status": "changes_requested"
         }
       ],
-      "current_run_id": "2026-11-09-3f211e",
+      "current_run_id": "2026-11-09-4f3b81",
       "path": "chapters/python/02-values-and-variables",
       "completed": "2026-11-09T10:56:29+00:00",
-      "notes": "Owner request (2026-11-09): add the narrated full-chapter walkthrough video (video/storyboard.json rendered to video/chapter.mp4) under the new STANDARDS section 11, and re-verify on Python 3.15.2."
+      "notes": "Owner request: rebuild the video with the code-quest-video skill (Soft Studio design, one connected story, teach before test, AI at six stages, evergreen content, Kokoro bm_lewis voice); practice XP 170."
     },
     "python-03": {
       "language": "python",
@@ -242,5 +247,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T18:23:00+00:00"
+  "updated": "2026-11-09T18:30:57+00:00"
 }
