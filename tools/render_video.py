@@ -96,7 +96,7 @@ def setup() -> int:
     for exe in ("ffmpeg", "ffprobe"):
         if not shutil.which(exe):
             problems.append(f"{exe} is not installed")
-    for module, package in (("PIL", "pillow"), ("pygments", "pygments"), ("piper", f"piper-tts=={PIPER_VERSION}")):
+    for module, package in (("PIL", "pillow"), ("pygments", "pygments"), ("numpy", "numpy")):
         try:
             __import__(module)
         except ImportError:
@@ -105,31 +105,20 @@ def setup() -> int:
                 __import__(module)
             except ImportError:
                 problems.append(f"could not install {package}")
-    model, config = voice_paths()
-    model.parent.mkdir(parents=True, exist_ok=True)
-    for path in (model, config):
-        if not path.exists():
-            try:
-                tmp = path.with_suffix(path.suffix + ".part")
-                urllib.request.urlretrieve(VOICE_URL + path.name, tmp)
-                tmp.rename(path)
-            except Exception as exc:  # network or TLS failure
-                problems.append(f"could not download {path.name}: {exc}")
-    if model.exists() and file_sha(model) != VOICE_SHA256:
-        problems.append(f"voice model checksum mismatch for {model}; delete it and run --setup again")
     import video_theme
     for name in video_theme.REQUIRED_FONTS:
         if not (FONTS / name).exists():
             problems.append(f"missing font {name}")
     if not problems:
-        test = synthesize("Video setup check.")
-        if not test or wav_seconds(test) < 0.3:
-            problems.append("Piper produced no audio")
+        import voice
+        problems += voice.setup()
     if problems:
         print("\n".join(problems))
         return 1
-    ffmpeg = sh(["ffmpeg", "-version"]).stdout.splitlines()[0].split(" ")[2]
-    print(f"ffmpeg {ffmpeg}, piper {PIPER_VERSION}, voice {VOICE}")
+    import voice
+    ffmpeg_v = sh(["ffmpeg", "-version"]).stdout.splitlines()[0].split(" ")[2]
+    d = voice.describe()
+    print(f"ffmpeg {ffmpeg_v}, {d['engine']}, voice {d['voice']}")
     return 0
 
 
@@ -215,25 +204,52 @@ def chapter_kind(chapter: Path) -> str:
 def plan(chapter: Path, board: dict, synth: bool = True) -> list[dict]:
     """Expand every beat into timed states: one picture each, with its audio and caption.
 
+    Consecutive spoken segments of a beat form one "run", spoken in a single take (tools/voice.py),
+    so the narration flows. Each segment's state plays its slice of that take.
     With synth=False (preview) durations are estimates and no audio is made.
     """
+    import voice
     states: list[dict] = []
     for scene in board["scenes"]:
         for b_index, beat in enumerate(scene["beats"]):
             ph = sb.phases(beat)
-            for p_index, phase in enumerate(ph):
-                last = p_index == len(ph) - 1
+            i = 0
+            while i < len(ph):
+                phase = ph[i]
                 base = {"scene": scene, "visual": phase["visual"], "ask": None, "wav": None, "lead": 0.0,
-                        "speech": 0.0, "text": "", "sound": None, "blend": True}
+                        "speech": 0.0, "text": "", "sound": None, "blend": True, "slice": None}
                 if phase["kind"] == "say":
-                    lead = (0.2 if b_index == 0 else 0.1) if p_index == 0 else 0.0
-                    wav = synthesize(phase["text"]) if (synth and phase["text"]) else None
-                    speech = wav_seconds(wav) if wav else len(phase["text"].split()) / sb.WORDS_PER_SECOND
-                    scene_end = last and b_index == len(scene["beats"]) - 1
-                    gap = 0.35 if scene_end else (sb.BEAT_GAP_SECONDS if last else sb.SEGMENT_GAP_SECONDS)
-                    states.append({**base, "wav": wav, "lead": lead, "speech": speech, "text": phase["text"],
-                                   "frames": frames(lead + speech + gap)})
-                elif phase["kind"] == "ask":
+                    j = i
+                    while j < len(ph) and ph[j]["kind"] == "say":
+                        j += 1
+                    run = ph[i:j]
+                    texts = [p["text"] for p in run]
+                    spoken_texts = [x for x in texts if x]
+                    if synth and spoken_texts:
+                        wav, slices = voice.synth_run(spoken_texts)
+                    else:
+                        wav, slices = None, None
+                    k = 0
+                    for r_index, p in enumerate(run):
+                        lead = (0.25 if b_index == 0 else 0.12) if (r_index == 0 and i == 0) else (0.08 if r_index == 0 else 0.0)
+                        if p["text"] and slices:
+                            a0, a1 = slices[k]
+                            k += 1
+                            speech = a1 - a0
+                            sl = (a0, a1)
+                        else:
+                            speech = len(p["text"].split()) / sb.WORDS_PER_SECOND if p["text"] else 0.6
+                            sl = None
+                        run_end = r_index == len(run) - 1
+                        beat_end = run_end and j == len(ph)
+                        scene_end = beat_end and b_index == len(scene["beats"]) - 1
+                        gap = 0.3 if scene_end else (0.45 if run_end else (0.0 if synth else 0.3))
+                        states.append({**base, "visual": p["visual"], "wav": wav if sl else None, "slice": sl,
+                                       "lead": lead, "speech": speech, "text": p["text"],
+                                       "frames": frames(lead + speech + gap)})
+                    i = j
+                    continue
+                if phase["kind"] == "ask":
                     total = phase["seconds"]
                     steps = TIMER_STEPS if synth else 1
                     for k in range(total * steps + 1):
@@ -245,6 +261,7 @@ def plan(chapter: Path, board: dict, synth: bool = True) -> list[dict]:
                                        "blend": k == 0, "frames": frames(1.0 / steps if remaining > 0 else 0.8)})
                 else:
                     states.append({**base, "sound": "pad", "blend": False, "frames": frames(phase["seconds"])})
+                i += 1
     start = 0
     for s in states:
         s["start_frame"] = start
@@ -356,8 +373,9 @@ def description(board: dict, timings: list[dict], chapter: Path) -> str:
               f"- Lesson, code and practice: `{rel}` in the DipurajThapa/CourseVideos repository.",
               "- Every code example in this video was run and checked by the course verification tool.",
               "", "## Disclosure", "",
-              f"The narration is a synthetic voice (Piper text-to-speech, voice {VOICE}). The timer ticks and the "
-              "soft tone on breather cards are generated in code. English captions are included.", ""]
+              f"The narration is a synthetic voice ({__import__('voice').describe()['engine']}, voice "
+              f"{__import__('voice').describe()['voice']}). The timer ticks, the breather tone and the quiet background "
+              "pad are generated in code. English captions are included.", ""]
     return "\n".join(lines)
 
 
@@ -375,9 +393,27 @@ def _tone(rate: int, seconds: float, freqs: list[float], amp: float, decay: floa
     return (amp * wave_ * env).astype(np.float32)
 
 
+def _ambient_bed(rate: int, seconds: float):
+    """A very quiet, slowly moving pad under the whole video, so there is never dead silence
+    between lines. Generated in code (no licence needed), about 40 dB below the voice."""
+    import numpy as np
+    n = int(rate * seconds)
+    tt = np.arange(n) / rate
+    chords = [[110.0, 164.81, 220.0, 277.18], [98.0, 146.83, 196.0, 246.94],
+              [87.31, 130.81, 174.61, 220.0], [98.0, 146.83, 196.0, 293.66]]
+    bed = np.zeros(n, dtype=np.float32)
+    span = 8.0
+    for c, freqs in enumerate(chords):
+        env = np.clip(1 - np.abs(((tt / span - c) % len(chords)) - 0.5) * 1.6, 0, 1) ** 2
+        for f in freqs:
+            bed += (np.sin(2 * np.pi * f * tt) + 0.5 * np.sin(2 * np.pi * f * 1.003 * tt)).astype(np.float32) * env
+    bed *= 0.0025 * (1 + 0.25 * np.sin(2 * np.pi * tt / 11.0))
+    return bed.astype(np.float32)
+
+
 def write_audio(states: list[dict], path: Path) -> None:
     import numpy as np
-    rate = 22050
+    rate = 24000
     for s in states:
         if s["wav"]:
             with wave.open(str(s["wav"])) as wf:
@@ -387,26 +423,39 @@ def write_audio(states: list[dict], path: Path) -> None:
     track = np.zeros(int(total / FPS * rate) + rate, dtype=np.float32)
     tick = _tone(rate, 0.06, [1320], 0.10, decay=0.012)
     done = np.concatenate([_tone(rate, 0.12, [880], 0.12, decay=0.05), _tone(rate, 0.25, [1175], 0.12, decay=0.08)])
+    takes: dict[str, np.ndarray] = {}
     for s in states:
         at = int(s["start_frame"] / FPS * rate)
-        if s["wav"]:
-            with wave.open(str(s["wav"])) as wf:
-                pcm = np.frombuffer(wf.readframes(wf.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+        if s["wav"] and s.get("slice"):
+            key = str(s["wav"])
+            if key not in takes:
+                with wave.open(key) as wf:
+                    takes[key] = np.frombuffer(wf.readframes(wf.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+            a0, a1 = s["slice"]
+            pcm = takes[key][int(a0 * rate):int(a1 * rate)]
             st = at + int(s["lead"] * rate)
-            track[st:st + len(pcm)] += pcm[: len(track) - st]
+            track[st:st + len(pcm)] += pcm[: max(0, len(track) - st)]
         elif s["sound"] in ("tick", "done"):
             snd = tick if s["sound"] == "tick" else done
             track[at:at + len(snd)] += snd[: len(track) - at]
         elif s["sound"] == "pad":
-            snd = _tone(rate, s["frames"] / FPS, [220.0, 277.18, 329.63], 0.035)
+            snd = _tone(rate, s["frames"] / FPS, [220.0, 277.18, 329.63], 0.03)
             track[at:at + len(snd)] += snd[: len(track) - at]
     track = track[: int(total / FPS * rate)]
+    track += _ambient_bed(rate, len(track) / rate)[: len(track)]
     pcm16 = (np.clip(track, -1, 1) * 32767).astype(np.int16)
     with wave.open(str(path), "wb") as out:
         out.setnchannels(1)
         out.setsampwidth(2)
         out.setframerate(rate)
         out.writeframes(pcm16.tobytes())
+
+
+# A light vocal polish: remove rumble, add a little warmth and presence, even out the level,
+# then normalise to the web loudness target.
+VOICE_CHAIN = ("highpass=f=70,equalizer=f=170:t=q:w=1:g=1.5,equalizer=f=3200:t=q:w=1.2:g=2.5,"
+               "acompressor=threshold=-21dB:ratio=2.5:attack=12:release=180:makeup=2,"
+               f"loudnorm=I={LUFS}:TP=-2:LRA=9")
 
 
 def ffmpeg(args: list[str]) -> None:
@@ -479,7 +528,7 @@ def render_sample(chapter: Path, out: Path, seconds: float) -> int:
         out.parent.mkdir(parents=True, exist_ok=True)
         ffmpeg(["-i", str(work / "video.mp4"), "-i", str(work / "audio.wav"), "-i", str(work / "sample.srt"),
                 "-map", "0:v", "-map", "1:a", "-map", "2:s", "-c:v", "copy",
-                "-af", f"loudnorm=I={LUFS}:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                "-af", VOICE_CHAIN, "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                 "-c:s", "mov_text", "-movflags", "+faststart", str(out)])
     print(f"Sample written to {out} ({sum(s['frames'] for s in states) / FPS:.1f}s)")
     return 0
@@ -552,7 +601,7 @@ def render(chapter: Path) -> int:
         ffmpeg(["-i", str(work / "video.mp4"), "-i", str(work / "audio.wav"), "-i", str(chapter / sb.CAPTIONS_FILE),
                 "-f", "ffmetadata", "-i", str(work / "meta.txt"),
                 "-map", "0:v", "-map", "1:a", "-map", "2:s", "-map_metadata", "3", "-map_chapters", "3",
-                "-c:v", "copy", "-af", f"loudnorm=I={LUFS}:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k",
+                "-c:v", "copy", "-af", VOICE_CHAIN, "-c:a", "aac", "-b:a", "192k",
                 "-ar", "48000", "-c:s", "mov_text",
                 "-metadata:s:s:0", "language=eng", "-metadata:s:a:0", "language=eng",
                 "-movflags", "+faststart", str(final_tmp)])
@@ -565,7 +614,6 @@ def render(chapter: Path) -> int:
     if abs(duration - expected) > 1.0 or size_mb > MAX_MB:
         print(f"render check failed: duration {duration:.2f}s vs planned {expected:.2f}s, size {size_mb:.1f} MB")
         return 1
-    model, _ = voice_paths()
     manifest = {
         "chapter_id": board.get("chapter_id"),
         "rendered_at": now_iso(),
@@ -577,8 +625,7 @@ def render(chapter: Path) -> int:
         "size_mb": round(size_mb, 2),
         "format": {"width": W, "height": H, "fps": FPS, "video": "h264", "audio": "aac", "captions": "mov_text",
                    "loudness_lufs": LUFS},
-        "voice": {"engine": f"piper-tts {PIPER_VERSION}", "model": VOICE, "model_sha256": file_sha(model),
-                  "length_scale": LENGTH_SCALE},
+        "voice": __import__("voice").describe(),
         "ffmpeg": sh(["ffmpeg", "-version"]).stdout.splitlines()[0],
         "states": len(states),
         "questions": sum(1 for _, b in sb.beats(board) if sb.ask_of(b)),

@@ -41,7 +41,7 @@ SCRIPT_FILE = "video/script.md"
 VIDEO_OUTPUTS = {VIDEO_FILE, CAPTIONS_FILE, RENDER_MANIFEST, DESCRIPTION_FILE, SCRIPT_FILE}
 
 VISUAL_TYPES = {"title", "bullets", "text", "table", "code", "prompt", "pause", "quiz", "breather", "chat", "end"}
-WORDS_PER_SECOND = 2.5          # Piper john-medium, length scale 1.1 with sentence pauses (re-measure after a voice change)
+WORDS_PER_SECOND = 2.75         # Kokoro bm_lewis at speed 0.95, one take per beat (measured on Chapter 1; re-measure after a voice change)
 BEAT_GAP_SECONDS = 0.6          # silence after each beat
 SEGMENT_GAP_SECONDS = 0.35      # silence between parts of one beat
 ASK_SECONDS = 10                # every on-screen question gets a 10-second digital timer

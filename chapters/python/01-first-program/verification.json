@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-01",
-  "run_id": "2026-11-09-8cd4cb",
-  "verified_at": "2026-11-09T15:36:30+00:00",
+  "run_id": "2026-11-09-f53271",
+  "verified_at": "2026-11-09T18:21:36+00:00",
   "passed": true,
   "toolchains": [
     "Python 3.15.2",
@@ -168,12 +168,12 @@
       "problems": [],
       "details": {
         "estimated_minutes": 16.8,
-        "duration_seconds": 1089.3,
-        "size_mb": 41.04,
+        "duration_seconds": 910.7,
+        "size_mb": 39.38,
         "scenes": 15,
-        "voice": "en_US-john-medium"
+        "voice": null
       }
     }
   ],
-  "fingerprint": "b3704f542db40a196893242bfd886c8915e7480bdcc45e6d27882dcf35c847ab"
+  "fingerprint": "5df457be9aeae4876d20a6b9aec547a020d5f3e4c677f7f2c9cecd7904773718"
 }
