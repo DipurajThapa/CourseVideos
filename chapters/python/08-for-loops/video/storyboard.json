@@ -1,0 +1,1678 @@
+{
+ "chapter_id": "python-08",
+ "number": 8,
+ "version": 3,
+ "title": "Chapter 8: Repeat a Set Number of Times: for Loops and range()",
+ "video_title": "Python Chapter 8: Repeat a Set Number of Times, for Loops and range()",
+ "summary": "Asha's Chapter 7 loop needed a start, a condition and an update: three places to make a mistake. Follow her as she builds a price chart for the cafe counter with for loops and range(): the three forms of range(), counting down, going through the characters of a string and adding up totals. Then watch her rewrite her loyalty card with an AI assistant at all six stages, catching a missing stamp and an ignored instruction by comparing the loops line by line.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the Chapter 7 counter loop and its three places to make a mistake. Then the title and the AI tease, then the finished price chart as the mission.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Three lines to get right",
+      "label": "Chapter 7",
+      "body": [
+       "To serve tables 1 to 3, Asha's `while` loop needed a start, a condition and an update."
+      ],
+      "pre": "table = 1                # 1. the start\nwhile table <= 3:        # 2. the condition\n    print(f\"Serving table {table}\")\n    table = table + 1    # 3. the update\n\n# Forget the update, and the loop never ends."
+     },
+     "segments": [
+      {
+       "say": "Here is Asha's loop from Chapter 7. To serve three tables, she needed three separate lines: a start, a condition, and an update.",
+       "focus": "pre"
+      },
+      {
+       "say": "Three places to make a mistake. Forget the update, and the loop never ends."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 8",
+      "title": "Repeat a Set Number of Times: for Loops and range()",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Pattern Runner badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 8. Today you meet a loop that counts for you."
+      },
+      {
+       "say": "And an AI assistant will rewrite Asha's loyalty card, promise the same ten stamps, and quietly lose a free tea.",
+       "subtitle": "A loop that counts for you."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_price_chart.py",
+      "heading": "Today's mission: a price chart for the counter",
+      "output": "examples/ex06_price_chart.expected"
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission. A price chart for the cafe counter, from 1 tea to 10 teas.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Every 5th tea is free, and the chart works out the free teas by itself.",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": []
+      },
+      {
+       "say": "Ten rows, from a loop with no counter of its own. Let's build it.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write a `for` loop that repeats once for each number in a `range()`.",
+       "Use `range()` with a start, a stop and a step.",
+       "Go through every character of a string.",
+       "Add up a total inside a `for` loop.",
+       "Compare two loops and explain which one is clearer."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write a for loop that repeats once for each number in a range.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Use range with a start, a stop and a step.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Go through every character of a string.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Add up a total inside a for loop.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And compare two loops, and explain which one is clearer.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Known numbers of passes are everywhere.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A receipt has 5 lines.",
+       "A loyalty card has 10 stamps.",
+       "An order code has 12 characters."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Often you know in advance how many times something must happen: 5 receipt lines, 10 stamps, 12 characters. For these jobs, Python has the for loop.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: one value at a time",
+   "direction": "Teach the sequence, the loop variable and the stop rule with the diagram, then the stamp card analogy. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "for: take the next value",
+      "label": "The idea",
+      "body": [
+       "A **sequence** is a group of values in a fixed order."
+      ],
+      "pre": "for table in range(1, 4):     range(1, 4) gives 1, 2, 3\n\n   pass 1:  table = 1  ->  run the block\n   pass 2:  table = 2  ->  run the block\n   pass 3:  table = 3  ->  run the block\n   no values left       ->  continue after the loop"
+     },
+     "segments": [
+      {
+       "say": "A for loop takes values from a sequence, one at a time. A sequence is a group of values in a fixed order, like numbers, or the characters of a string.",
+       "focus": "pre"
+      },
+      {
+       "say": "On each pass, the loop variable gets the next value. Here, table is 1, then 2, then 3. When no values are left, the loop ends."
+      },
+      {
+       "say": "And here is the most important rule. Range stops before the stop value. Range with 1 and 4 gives 1, 2 and 3. Never 4."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Like a stamp card",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "You move from box to box, one at a time, and never skip a box.",
+       "Unlike a stamp card, `range()` leaves out the number written at the end.",
+       "`range(1, 4)`: boxes 1, 2 and 3. There is no box 4."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a stamp card. You move from box to box, one at a time, and you never skip a box."
+      },
+      {
+       "say": "But unlike a stamp card, range leaves out the number at the end. Range with 1 and 4 has boxes 1, 2 and 3. There is no box 4.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which numbers does `range(2, 5)` give?",
+      "options": [
+       "2, 3, 4, 5",
+       "3, 4, 5",
+       "2, 3",
+       "2, 3, 4"
+      ],
+      "answer": 3,
+      "explain": "It starts at 2 and stops before 5."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which numbers does range with 2 and 5 give?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. 2, 3 and 4. It starts at 2, and stops before 5."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A `for` loop takes one value at a time.",
+       "The loop variable gets the next value on each pass.",
+       "`range()` stops before the stop value."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far."
+      },
+      {
+       "say": "Next, Asha rewrites her table loop from Chapter 7."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: for and range()",
+   "direction": "The file types in. Compare with the Chapter 7 loop, then ask how many lines print.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_tables.py",
+      "heading": "Step 1: Repeat with for and range()",
+      "lines": 2,
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. Here is the Chapter 7 loop, written with for. Line 2 says: for table in range with 1 and 4."
+      },
+      {
+       "say": "Line 3 prints the table number. It is indented, so it is the block of the loop.",
+       "lines": 3,
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 4 is not indented. It runs once, after the loop.",
+       "lines": 4,
+       "highlight": [
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many times does line 3 print, and which table is the last one?"
+     },
+     "after": [
+      {
+       "say": "Three times, and the last table is 3. Range stops before 4.",
+       "output": "examples/ex01_tables.expected",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And look: no start line, and no update line. Range does both jobs. One place to get right, not three.",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: The three forms of range()",
+   "direction": "Teach the three forms in words first, then ask for the three outputs, then reveal and summarise in a table.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_range_forms.py",
+      "heading": "Step 2: Three forms of range()",
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 2. Range has three forms. With one number, it starts at 0. So range with 4 gives four values, starting at 0."
+      },
+      {
+       "say": "With two numbers, you give the start and the stop.",
+       "highlight": [
+        5
+       ]
+      },
+      {
+       "say": "With three numbers, the third is the step: how much to add each time. A negative step counts down.",
+       "highlight": [
+        8
+       ]
+      },
+      {
+       "say": "End equals a space, from Chapter 1, keeps each loop's numbers on one line. The empty print ends the line.",
+       "highlight": [
+        3,
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do the three loops print? Remember: each stops before its stop value."
+     },
+     "after": [
+      {
+       "say": "Range with 4 gives 0, 1, 2 and 3. Four values, starting at 0.",
+       "output": "examples/ex02_range_forms.expected",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Range with 2 and 6 gives 2 to 5.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And 10, counting down by 3: 10, 7, 4, 1. The next value would be minus 2, and that is past the stop value, 0.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Loop over a string",
+   "direction": "Teach looping over characters with the order code from Chapter 1, ask the count, reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_order_code.py",
+      "heading": "Step 3: Go through every character",
+      "highlight": [
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 3. A for loop can also take the characters of a string, one at a time. Here is the order code from Chapter 1. Line 3 starts a hyphen counter at 0."
+      },
+      {
+       "say": "Line 4: for character in code. On each pass, character is the next letter, digit or hyphen.",
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Line 5 prints it, with a space after it. Lines 6 and 7 add 1 to the counter, but only when the character is a hyphen.",
+       "highlight": [
+        5,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Line 8, an empty print, ends the line of characters. Line 9 prints the length, with len from Chapter 3, and the hyphens.",
+       "highlight": [
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many times does the block run, and how many hyphens does line 9 report?"
+     },
+     "after": [
+      {
+       "say": "The block runs 12 times, once for each character.",
+       "output": "examples/ex03_order_code.expected",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And 2 hyphens. The if adds 1 only on those two passes.",
+       "highlight": [
+        6,
+        7,
+        9
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: A running total",
+   "direction": "Teach the running total in a for loop with input inside. Ask for the total, reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_week_sales.py",
+      "heading": "Step 4: Add up a total",
+      "highlight": [
+       2
+      ],
+      "note": "The user will type: 120.5, 98, then 143.25"
+     },
+     "segments": [
+      {
+       "say": "Step 4. Asha adds up three days of sales. Line 2 sets the total to 0, once, before the loop."
+      },
+      {
+       "say": "Line 3: for day in range with 1 and 4. So there are three passes, for days 1, 2 and 3.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 4 asks for the sales of that day. The f string puts the day number in the question. Line 5 adds the answer to the total.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Lines 6 and 7 run once, after the loop: the total, and the average, which is the total divided by 3.",
+       "highlight": [
+        6,
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many times does line 4 ask a question, and how many times do lines 6 and 7 print?"
+     },
+     "after": [
+      {
+       "say": "Line 4 asks three times, once per pass. Lines 6 and 7 print once each, after the loop.",
+       "output": "examples/ex04_week_sales.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "The total is 361.75, and the average is 120.58, with two decimal places.",
+       "highlight": [
+        6,
+        7
+       ],
+       "out_highlight": [
+        4,
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: Count down, and choose a loop",
+   "direction": "Teach the negative step with the kettle, ask for the last number, reveal. Then for or while, then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_kettle.py",
+      "heading": "Step 5: Count down",
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 5. The kettle needs 5 minutes. Range with 5, 0 and minus 1 starts at 5, and takes away 1 each time."
+      },
+      {
+       "say": "Line 3 prints the minutes left. Line 4 runs after the loop.",
+       "highlight": [
+        3,
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What is the last number that line 3 prints: 1 or 0?"
+     },
+     "after": [
+      {
+       "say": "1. The stop value is 0, and range stops before it.",
+       "output": "examples/ex05_kettle.expected",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Then line 4: tea is ready.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "for or while?",
+      "label": "Choose a loop",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "`for`: you know the number of passes before the loop starts. 5 minutes, 10 stamps, 12 characters.",
+       "`while`: you wait for something, such as a valid answer or the word `done`."
+      ]
+     },
+     "segments": [
+      {
+       "say": "So which loop should you choose? Use for when you know the number of passes before the loop starts. Five minutes, ten stamps, twelve characters."
+      },
+      {
+       "say": "Use while when you wait for something, like a valid answer, or the word done. Then you cannot know how many passes it will take.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which loop fits best: ask for a PIN until the customer types the right one?",
+      "options": [
+       "`for` with `range(3)`",
+       "`for` with `range(10)`",
+       "`while`",
+       "No loop"
+      ],
+      "answer": 2,
+      "explain": "You wait for the right answer and cannot know the number of passes."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A program asks for a PIN until the customer types the right one. Which loop fits best?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. A while loop. You wait for the right answer, so you cannot know the number of passes."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`range(stop)` starts at 0.",
+       "A third number is the step. A negative step counts down.",
+       "`for` when you know the passes, `while` when you wait."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Sit back, and take a slow breath."
+      },
+      {
+       "say": "You now have every piece of the mission."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the price chart",
+   "direction": "Return to the mission. Explain every line, ask which rows repeat the price above, reveal. Hand over to the AI story.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_price_chart.py",
+      "heading": "Mission complete: the price chart",
+      "highlight": [
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Line 2 stores the tea price. Line 3 prints the column headings."
+      },
+      {
+       "say": "Line 4: for teas in range with 1 and 11. That gives 1 to 10.",
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Line 5 counts the free teas: teas, floor divided by 5, from Chapter 2. 4 teas give 0 free teas. 5 teas give 1.",
+       "highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Line 6 charges only the teas that are not free. Line 7 lines up the columns with the format codes from Chapter 3. And line 8 runs once, after the loop.",
+       "highlight": [
+        6,
+        7,
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which two rows show the same price as the row above them?"
+     },
+     "after": [
+      {
+       "say": "5 teas and 10 teas. At 5 teas, one tea is free, so 5 cost 14.00, the same as 4.",
+       "output": "examples/ex06_price_chart.expected",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "At 10 teas, two are free, so 10 cost 28.00, the same as 9.",
+       "out_highlight": [
+        10,
+        11
+       ]
+      },
+      {
+       "say": "Mission complete! Next, the loyalty card. Asha wrote it with a while loop. Now she will rewrite it with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one loyalty card",
+   "direction": "Teach the comparing skill. One conversation per stage, all about the 10-stamp card. Stage 3 plants the off-by-one, stage 4 catches it with checks and re-runs every check after the fix, stage 6 catches an ignored instruction.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: comparing loops",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Run the AI's loop and yours with the same values.",
+       "Compare the outputs line by line: count the lines, read the last line.",
+       "Then decide which loop is clearer. Never paste private data."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is comparing loops. When an AI writes a loop for a job you already solved, run both with the same values.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Compare the outputs line by line. Then decide which loop is clearer for the next person who reads it. And the safety habits from Chapter 1 still apply.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: for or while?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner. My loyalty card has 10 stamps, and every 5th stamp is a free tea. I wrote it with a while loop, and I want to rewrite it with a for loop. Do not write code yet. Is a for loop a good fit, and which range() gives the stamps 1 to 10?"
+       },
+       {
+        "role": "ai",
+        "text": "A `for` loop. You know the number of passes before the loop starts: 10.\nUse `range(1, 11)`. It gives 1 to 10, because the stop value is never included."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha's loyalty card has 10 stamps, and every 5th stamp is a free tea. She wrote it with a while loop, and wants to rewrite it with for. She asks: is for a good fit, and which range? No code yet."
+      },
+      {
+       "say": "The AI says: a for loop, because you know the number of passes. And range with 1 and 11, because the stop value is never included. A good plan.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: list the values first",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here is the loop I wrote. Do not change it and do not run it. List every value of stamp, and say how many passes there are.",
+        "code": "examples/ai_stamps_mine.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "`stamp` takes 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10: 10 passes.\nStamps 5 and 10 print FREE TEA, because 5 and 10 leave no remainder when divided by 5."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Before the rewrite, Asha checks her own while loop. She asks the AI to list every value of stamp, without changing anything."
+      },
+      {
+       "say": "The AI lists 1 to 10: ten passes. Stamps 5 and 10 have no remainder when divided by 5, so they print free tea. Asha's own list says the same.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_stamps_mine.py",
+      "heading": "Asha's while version: 10 stamps",
+      "highlight": [
+       2,
+       3,
+       8
+      ],
+      "output": "examples/ai_stamps_mine.expected",
+      "out_highlight": [
+       5,
+       10
+      ]
+     },
+     "segments": [
+      {
+       "say": "She runs it. Ten stamps, with free tea on 5 and 10. And notice the three lines from Chapter 7 again: a start, a condition, and an update."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: a for version",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Rewrite my loyalty card with a for loop and range(). Keep the same output: 10 stamps, with FREE TEA on stamps 5 and 10. Show the exact output."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the `for` version. It prints the same 10 lines as yours, with FREE TEA on stamps 5 and 10.",
+        "code": "examples/ai_stamps_flawed.py"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks for a for version with the same output: 10 stamps, with free tea on 5 and 10."
+      },
+      {
+       "say": "The AI gives a short for loop, and promises the same 10 lines. It sounds completely sure.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Look at line 2, and remember where range stops."
+      }
+     ],
+     "ask": {
+      "question": "The AI promises 10 stamps. How many stamps does `range(1, 10)` give?"
+     },
+     "after": [
+      {
+       "say": "Nine. Range with 1 and 10 stops before 10. Asha suspects a problem. Now she proves it with checks."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: checks with expected results",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Before I trust it, list 4 checks for the output: the first line, the last line, the number of lines and stamp 5. Give the exact expected result for each."
+       },
+       {
+        "role": "ai",
+        "text": "1. First line: `Stamp 1: [ ]`.\n2. Stamp 5: `Stamp 5: FREE TEA`.\n3. Last line: `Stamp 10: FREE TEA`.\n4. Number of lines: 10."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks for four checks, each with the exact expected result: the first line, stamp 5, the last line, and the number of lines."
+      },
+      {
+       "say": "The AI lists them. The last line should be stamp 10, free tea. And there should be 10 lines.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_stamps_flawed.py",
+      "heading": "Asha runs the AI's version",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_stamps_flawed.expected"
+     },
+     "segments": [
+      {
+       "say": "She runs the AI's version, and reads the last line first. Stamp 9, an empty box.",
+       "out_highlight": [
+        9
+       ]
+      },
+      {
+       "say": "She counts the lines: nine. The second free tea is missing.",
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "The four checks on the AI's code",
+      "label": "Test",
+      "columns": [
+       "Check",
+       "Expected",
+       "AI's code",
+       "Fixed code"
+      ],
+      "rows": [
+       [
+        "First line",
+        "`Stamp 1: [ ]`",
+        "pass",
+        ""
+       ],
+       [
+        "Stamp 5",
+        "`Stamp 5: FREE TEA`",
+        "pass",
+        ""
+       ],
+       [
+        "Last line",
+        "`Stamp 10: FREE TEA`",
+        "FAIL: `Stamp 9: [ ]`",
+        ""
+       ],
+       [
+        "Number of lines",
+        "10",
+        "FAIL: 9",
+        ""
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "The first line and stamp 5 pass.",
+       "focus_row": 1
+      },
+      {
+       "say": "But the last line fails, and so does the number of lines. This is an off-by-one error, the same kind as in Chapter 7.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_stamps_fixed.py",
+      "heading": "The fix: the stop value is 11",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_stamps_fixed.expected",
+      "out_highlight": [
+       10
+      ]
+     },
+     "segments": [
+      {
+       "say": "The fix is on line 2. The stop value must be one more than the last stamp: range with 1 and 11. Now stamp 10 is there, with its free tea."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "All four checks again, on the fixed code",
+      "label": "Test",
+      "columns": [
+       "Check",
+       "Expected",
+       "AI's code",
+       "Fixed code"
+      ],
+      "rows": [
+       [
+        "First line",
+        "`Stamp 1: [ ]`",
+        "pass",
+        ""
+       ],
+       [
+        "Stamp 5",
+        "`Stamp 5: FREE TEA`",
+        "pass",
+        ""
+       ],
+       [
+        "Last line",
+        "`Stamp 10: FREE TEA`",
+        "FAIL: `Stamp 9: [ ]`",
+        ""
+       ],
+       [
+        "Number of lines",
+        "10",
+        "FAIL: 9",
+        ""
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "A fix can break something else. So Asha runs every check again, on the fixed code.",
+       "rows": [
+        [
+         "First line",
+         "`Stamp 1: [ ]`",
+         "pass",
+         "pass"
+        ],
+        [
+         "Stamp 5",
+         "`Stamp 5: FREE TEA`",
+         "pass",
+         "pass"
+        ],
+        [
+         "Last line",
+         "`Stamp 10: FREE TEA`",
+         "FAIL: `Stamp 9: [ ]`",
+         "pass"
+        ],
+        [
+         "Number of lines",
+         "10",
+         "FAIL: 9",
+         "pass"
+        ]
+       ],
+       "focus_row": null
+      },
+      {
+       "say": "All four pass, and the output matches her while version, line by line.",
+       "rows": [
+        [
+         "First line",
+         "`Stamp 1: [ ]`",
+         "pass",
+         "pass"
+        ],
+        [
+         "Stamp 5",
+         "`Stamp 5: FREE TEA`",
+         "pass",
+         "pass"
+        ],
+        [
+         "Last line",
+         "`Stamp 10: FREE TEA`",
+         "FAIL: `Stamp 9: [ ]`",
+         "pass"
+        ],
+        [
+         "Number of lines",
+         "10",
+         "FAIL: 9",
+         "pass"
+        ]
+       ],
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Now the customer types the size of the card. I got this error. First explain what it means and which line causes it. Then show the smallest fix.",
+        "code": "examples/ai_stamps_size.py",
+        "code_lines": [
+         2,
+         3
+        ],
+        "file": "examples/ai_stamps_size.py",
+        "error": "examples/ai_stamps_size.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "It is a `TypeError` on line 3. `input()` always gives text, so `size` is the text \"10\". Python cannot add the number 1 to text.\nThe fix: convert the answer on line 2, `size = int(input(\"Stamps on the card: \"))`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Now the customer types the size of the card. Python stops with a Type Error. Asha pastes the code and the full error, and asks for the cause first."
+      },
+      {
+       "say": "She reads the error herself too: line 3, can only concatenate. She met that message in Chapter 4.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "The AI agrees. Input always gives text, so size plus 1 fails. The fix is int, on line 2.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_stamps_size_fixed.py",
+      "heading": "The fix, and the checks again",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_stamps_size_fixed.expected",
+      "note": "The user typed: 10"
+     },
+     "segments": [
+      {
+       "say": "Asha applies the fix on line 2, and runs it again with 10.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Then she runs all four checks again. First line, stamp 5, last line, and ten stamps. All pass.",
+       "out_highlight": [
+        2,
+        6,
+        11
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: which loop is clearer?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here are my while loop and my fixed for loop. Which one is clearer for a beginner, and why? Suggest at most one change. Do not change what it prints."
+       },
+       {
+        "role": "ai",
+        "text": "The `for` loop is clearer: there is no counter line to forget.\nOne change: use `range(10)` and print `stamp + 1`. The output stays the same."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha shows both loops, her while loop and the fixed for loop, and asks which one is clearer. She adds: do not change what it prints."
+      },
+      {
+       "say": "The AI chooses the for loop: there is no counter line to forget. Then it suggests one change: range with 10, and print stamp plus 1. It says the output stays the same.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_stamps_improve.py",
+      "heading": "Testing the suggestion",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Compare with the real card before the output appears."
+     },
+     "segments": [
+      {
+       "say": "Asha runs the suggestion, and compares its output with her card, line by line. Line 2 now counts from 0, so every print adds 1 to stamp."
+      }
+     ],
+     "ask": {
+      "question": "Compare with Asha's card: which lines of the output change?"
+     },
+     "after": [
+      {
+       "say": "Stamps 5 and 10. Free tea is now in small letters. Asha had said: do not change what it prints. The AI ignored that.",
+       "output": "examples/ai_stamps_improve.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        5,
+        10
+       ]
+      },
+      {
+       "say": "And stamp plus 1, written three times, is harder to read than range with 1 and 11, which matches the numbers on the card. Asha keeps her fixed for loop.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI says its loop prints the same as yours. What do you check first?",
+      "options": [
+       "Count the lines and read the last line",
+       "Which loop is shorter",
+       "Ask the AI if it is sure",
+       "Which loop uses `for`"
+      ],
+      "answer": 0,
+      "explain": "Off-by-one errors hide at the end. Count the lines and read the last line."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI says its loop prints the same as yours. What do you check first?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Count the lines, and read the last line. Off-by-one errors hide at the end."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Count the lines and read the last line.",
+       "After a fix, run every check again."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha caught two AI mistakes: a missing stamp, and a change she did not ask for."
+      },
+      {
+       "say": "Next, the four mistakes beginners make most with for loops."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 is a spot-it on the stop value, a callback to the AI. Mistake 2 is a real TypeError. Mistake 3 is a spot-it on the total. Mistake 4 is a real SyntaxError. Then a summary table.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_off_by_one.py",
+      "heading": "Mistake 1: your turn to spot it",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Find the mistake before the output appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Asha wants to serve tables 1 to 3. Look at line 2."
+      }
+     ],
+     "ask": {
+      "question": "Asha wants tables 1 to 3. Which table is never served?"
+     },
+     "after": [
+      {
+       "say": "Table 3. Range with 1 and 3 stops before 3. It is the AI's mistake again.",
+       "output": "examples/ex07_off_by_one.expected",
+       "heading": "Mistake 1: a stop value one too small",
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "No error, only a missing table. The fix: the stop value is one more than the last value you want. Range with 1 and 4.",
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_range_float.py",
+      "heading": "Mistake 2: a decimal number in range()",
+      "highlight": [
+       2
+      ],
+      "error": "examples/err01_range_float.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. Range works only with whole numbers. Zero point five is a float, so Python stops with a Type Error.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: use whole numbers. If a number comes from input, convert it with int, not float.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_total_inside.py",
+      "heading": "Mistake 3: spot this one too",
+      "highlight": [],
+      "hidden_text": "Find the reason before the output appears.",
+      "note": "The user will type: 120.5, 98, then 143.25"
+     },
+     "segments": [
+      {
+       "say": "One more. This is step 4 again, with one line in a different place. Compare it with step 4, line by line."
+      }
+     ],
+     "ask": {
+      "question": "The total should be 361.75. What does line 6 print, and why?"
+     },
+     "after": [
+      {
+       "say": "143.25, only the last day. Line 3 is inside the loop, so the total goes back to 0 on every pass.",
+       "output": "examples/ex08_total_inside.expected",
+       "heading": "Mistake 3: the total set to 0 inside the loop",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "No error, only a wrong total. The fix: set the total to 0 once, before the loop.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_no_colon.py",
+      "heading": "Mistake 4: a missing colon",
+      "highlight": [
+       2
+      ],
+      "error": "examples/err02_no_colon.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. Every for line ends with a colon, like if and while. Without it, Python stops before anything runs.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The error even says what it expected: a colon.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "The stop value is one more than the last value.",
+       "`range()` needs whole numbers.",
+       "Set a total to 0 before the loop."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Now you know the four most common for loop mistakes."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Only even-numbered tables, from 2 to 20, get a stamp. Which one `range()` gives exactly those numbers?",
+      "hint": "think about the start, the stop and the step."
+     },
+     "segments": [
+      {
+       "say": "First. Only even-numbered tables, from 2 to 20, get a stamp. Which one range gives exactly those numbers?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Think about the start, the stop and the step. Predict the values first, then run it."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "How could a `for` loop count every letter `a` in `Anna Abbas`, capital or small?",
+      "hint": "which string method from Chapter 3 helps?"
+     },
+     "segments": [
+      {
+       "say": "Second. How could a for loop count every letter a in the name Anna Abbas, capital or small?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Think about which string method from Chapter 3 can help."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check on something new, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A `for` loop runs once for each value in a `range()` or a string.",
+       "`range(start, stop, step)` stops before `stop`. `range(4)` starts at 0.",
+       "A negative step counts down.",
+       "A running total starts at 0 before the loop and grows inside it.",
+       "Use `for` for a known number of passes, `while` when you wait for something.",
+       "Run an AI loop and yours with the same values. Compare every line."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap."
+      },
+      {
+       "say": "A for loop runs once for each value in a range or a string.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Range stops before the stop value, and range with one number starts at 0.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A negative step counts down. And a running total starts at 0 before the loop.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Use for when you know the number of passes, and while when you wait for something.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And with AI: run its loop and yours with the same values, and compare every line.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which numbers does `range(0, 10, 4)` give?",
+      "options": [
+       "0, 4, 8, 12",
+       "0, 4, 8",
+       "4, 8",
+       "0, 4, 8, 10"
+      ],
+      "answer": 1,
+      "explain": "Start at 0, add 4 each time, and stop before 10."
+     },
+     "segments": [
+      {
+       "say": "One last check. Range with 0, 10 and 4. Which numbers does it give?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. 0, 4 and 8. The next value, 12, is past the stop value, 10."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Pattern Runner",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Pattern Runner",
+      "tile": 8
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Pattern Runner badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Count to ten; Countdown; Spell it out",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Times table; Tips for four shifts; Count the words",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Cake price chart; Fix the AI's total",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including a times table.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, an AI's total is 45 instead of 55. Find the missing number, and fix it.",
+       "focus_row": 2
+      },
+      {
+       "say": "List the values of each range before you run it. Try each task before you open the solution.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease debugging with AI: three kinds of problem met today. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 9",
+      "title": "Debugging with AI: Reading Errors and Tracebacks",
+      "subtitle": "Three kinds of error, one method.",
+      "badge": "",
+      "tile": 9
+     },
+     "segments": [
+      {
+       "say": "Today Asha met three kinds of problem. A syntax error, before anything runs. A type error, while the program runs. And a wrong total, with no error at all."
+      },
+      {
+       "say": "In Chapter 9, you will learn to tell them apart, read a full traceback, and debug with AI, step by step."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 9."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}
