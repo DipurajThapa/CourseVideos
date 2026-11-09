@@ -7,7 +7,7 @@
   "badge": "First Run",
   "xp": {
     "lesson": 100,
-    "practice": 160
+    "practice": 170
   },
   "concepts": [
     "program",
@@ -34,15 +34,18 @@
   "research_date": "2026-11-09",
   "changes": [
     "Windows installation now uses the Python install manager, per the current official documentation.",
-    "2026-11-09 revision (owner request): added the narrated full-chapter video (video/storyboard.json rendered to video/chapter.mp4 with captions) and re-verified on Python 3.15.2, the current release, after fixing the setup tool's stale uv."
+    "2026-11-09 revision (owner request): added the narrated full-chapter video (video/storyboard.json rendered to video/chapter.mp4 with captions) and re-verified on Python 3.15.2, the current release, after fixing the setup tool's stale uv.",
+    "2026-11-09 interactive video revision (owner request): Step 5 example line 3 now prints a time (10:30:45) instead of the date, so the AI pair moment's fix is not shown before the puzzle returns; practice XP corrected from 160 to 170 (3 x 10 + 3 x 20 + 2 x 40, STANDARDS section 9)."
   ],
   "outstanding_issues": [
     "Installation steps cannot be tested in the verification environment; they are checked against the official documentation only.",
-    "The narration uses a synthetic voice (Piper, en_US-lessac-medium). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the renderer's PRONOUNCE list."
+    "The narration uses a synthetic voice (Piper, en_US-lessac-medium). The owner should watch the video once and flag any mispronounced word; fixes go in the renderer's PRONOUNCE list.",
+    "The automatic freeze detector flags held slides whose changes are small (highlight moves, timer digits); the picture changes on average every 3 seconds, and the critic judged the remaining holds acceptable."
   ],
   "video": {
     "storyboard": "video/storyboard.json",
     "file": "video/chapter.mp4",
-    "voice": "piper en_US-lessac-medium"
+    "voice": "piper en_US-lessac-medium",
+    "design": "interactive v2: narration-synced highlights, 15 on-screen questions with a 10-second digital timer, 4 quick checks, 4 breathers"
   }
 }

@@ -5,7 +5,7 @@
   "type": "lesson",
   "module": "",
   "badge": "",
-  "xp": {"lesson": 100, "practice": 160},
+  "xp": {"lesson": 100, "practice": 170},
   "concepts": [],
   "prerequisites": [],
   "ai_pair_moment": {"flawed_file": "examples/", "fixed_file": "examples/", "flaw": ""},

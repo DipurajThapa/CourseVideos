@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-01",
-  "run_id": "2026-11-09-74d87e",
-  "verified_at": "2026-11-09T10:55:24+00:00",
+  "run_id": "2026-11-09-f70a58",
+  "verified_at": "2026-11-09T11:49:17+00:00",
   "passed": true,
   "toolchains": [
     "Python 3.15.2",
@@ -144,13 +144,13 @@
       "details": {
         "lesson.md": {
           "sentences": 122,
-          "average_words": 10.6,
+          "average_words": 10.7,
           "longest": 29
         },
         "video/script.md": {
-          "sentences": 301,
-          "average_words": 10.2,
-          "longest": 25
+          "sentences": 583,
+          "average_words": 9.0,
+          "longest": 30
         }
       }
     },
@@ -159,13 +159,13 @@
       "passed": true,
       "problems": [],
       "details": {
-        "estimated_minutes": 12.3,
-        "duration_seconds": 692.0,
-        "size_mb": 16.43,
+        "estimated_minutes": 17.3,
+        "duration_seconds": 954.3,
+        "size_mb": 29.57,
         "scenes": 15,
         "voice": "en_US-lessac-medium"
       }
     }
   ],
-  "fingerprint": "aff6b4373e3d9cb16224335e59980264bb7f599f057ecec71b53c3003bf0442a"
+  "fingerprint": "8fcac0644b13b26688166bec88da568cebfc34f776dd9a1a50a71b0932254d31"
 }

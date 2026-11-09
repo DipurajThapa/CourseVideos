@@ -91,7 +91,7 @@ The lines appear in the same order as the code. Swap two lines in your file and 
 ```python
 # file: examples/ex03_many_values.py
 print("Total items:", 3 + 4)
-print("2026", "11", "09", sep="-")
+print("10", "30", "45", sep=":")
 print("Loading", end="...")
 print("done")
 ```
@@ -99,11 +99,11 @@ print("done")
 <!-- output: examples/ex03_many_values.expected -->
 ```output
 Total items: 7
-2026-11-09
+10:30:45
 Loading...done
 ```
 
-Line 2 shows that `3 + 4` has no quotation marks, so Python calculates it and prints `7`. Line 3 joins the values with a hyphen instead of a space. Line 4 ends with `...` instead of a new line, so line 5 continues on the same line.
+Line 2 shows that `3 + 4` has no quotation marks, so Python calculates it and prints `7`. Line 3 joins the values with a colon instead of a space, so they look like a time. Line 4 ends with `...` instead of a new line, so line 5 continues on the same line.
 
 ## See the outcome
 
