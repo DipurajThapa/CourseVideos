@@ -1,0 +1,4 @@
+2 <class 'int'>
+3.5 <class 'float'>
+Tea <class 'str'>
+True <class 'bool'>
