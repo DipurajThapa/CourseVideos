@@ -146,8 +146,15 @@
     "python-06": {
       "language": "python",
       "number": 6,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-09-ecc1c6",
+          "started": "2026-11-09T21:31:36+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-09-ecc1c6"
     },
     "python-07": {
       "language": "python",
@@ -282,5 +289,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T21:29:56+00:00"
+  "updated": "2026-11-09T21:31:36+00:00"
 }
