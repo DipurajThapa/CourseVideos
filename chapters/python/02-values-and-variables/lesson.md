@@ -68,7 +68,7 @@ Two teas cost 6
 
 The name `customer` has no quotation marks in `print()`, so Python prints its value, `Asha`, and not the word "customer".
 
-Good names make code easy to read. Follow these rules from the Python style guide, called PEP 8:
+Good names make code easy to read. The first rule comes from the Python style guide, called PEP 8. The other three are rules of the language itself, and breaking them causes an error or a bug:
 
 - Use lowercase letters, and join words with an underscore: `tea_price`, not `TeaPrice` or `tp`.
 - A name can contain letters, digits and underscores, but it cannot start with a digit.
@@ -129,7 +129,7 @@ Three operators often surprise beginners:
 
 | Operator | Name | Result for 17 and 5 | Meaning |
 |---|---|---|---|
-| `/` | division | `3.4` | The exact answer. It is always a `float`. |
+| `/` | division | `3.4` | The full answer, with decimals. It is always a `float`. |
 | `//` | floor division | `3` | Each friend gets 3 whole biscuits. |
 | `%` | remainder | `2` | 2 biscuits are left over. |
 
@@ -216,7 +216,7 @@ Discount: 1.3
 To pay: 11.7
 ```
 
-Change `tea_price` to `4` and run it again. Every line that depends on the tea price updates by itself. Notice that `tea_total` is `7.0`, a `float`, because one of its parts was a `float`. For now, the program applies the discount every time. In Chapter 6, you will use `is_member` to decide whether to apply it.
+Change `tea_price` to `4.5` and run it again. Every line that depends on the tea price updates by itself. Notice that `tea_total` is `7.0`, a `float`, because one of its parts was a `float`. For now, the program applies the discount every time. In Chapter 6, you will use `is_member` to decide whether to apply it.
 
 ## Work with AI
 
@@ -235,41 +235,58 @@ The safety habits from Chapter 1 still apply. Never paste passwords, keys or pri
 
 The full prompts are in [ai-prompts.md](ai-prompts.md).
 
-**AI pair moment.** A learner asked an AI assistant: "Write Python code that finds the average of the scores 80, 90 and 100. Tell me what it prints." The AI answered with this code and said it would print `Average: 90.0`.
+**AI pair moment.** Asha wants her cafe program to show the average bill of three tables. She asked an AI assistant: "Write a short Python program that finds the average of three table bills: 18, 24 and 30. Use the names bill_1, bill_2, bill_3 and average. Tell me exactly what it prints." The AI answered with this code and said it would print `Average bill: 24.0`.
 
 ```python
 # file: examples/ai_average_flawed.py
-score_1 = 80
-score_2 = 90
-score_3 = 100
-average = score_1 + score_2 + score_3 / 3
-print("Average:", average)
+bill_1 = 18
+bill_2 = 24
+bill_3 = 30
+average = bill_1 + bill_2 + bill_3 / 3
+print("Average bill:", average)
 ```
 
-The learner ran it. The real output did not match the prediction:
+Asha ran it. The real output did not match the prediction:
 
 <!-- output: examples/ai_average_flawed.expected -->
 ```output
-Average: 203.33333333333334
+Average bill: 52.0
 ```
 
-The AI forgot the order of operations. Python divided only `score_3` by 3, then added the other two scores. Both the code and the prediction were wrong, and the AI sounded sure about both. Brackets fix the order:
+The AI forgot the order of operations. Python divided only `bill_3` by 3, then added the other two bills. Both the code and the prediction were wrong, and the AI sounded sure about both. A quick check catches this flaw: an average must lie between the smallest and the largest value. The largest bill is 30, so 52 is impossible. Brackets fix the order:
 
 ```python
 # file: examples/ai_average_fixed.py
-score_1 = 80
-score_2 = 90
-score_3 = 100
-average = (score_1 + score_2 + score_3) / 3
-print("Average:", average)
+bill_1 = 18
+bill_2 = 24
+bill_3 = 30
+average = (bill_1 + bill_2 + bill_3) / 3
+print("Average bill:", average)
 ```
 
 <!-- output: examples/ai_average_fixed.expected -->
 ```output
-Average: 90.0
+Average bill: 24.0
 ```
 
-A quick check would also catch this flaw. The average of three scores must be between the lowest and the highest score. A result of 203 is impossible.
+Later, Asha asked the AI to improve her program. It suggested `//` instead of `/`, "because bills are whole numbers". She tested the idea with a new set of bills before she changed anything:
+
+```python
+# file: examples/ai_floor_check.py
+bill_1 = 18
+bill_2 = 24
+bill_3 = 31
+print("With /:", (bill_1 + bill_2 + bill_3) / 3)
+print("With //:", (bill_1 + bill_2 + bill_3) // 3)
+```
+
+<!-- output: examples/ai_floor_check.expected -->
+```output
+With /: 24.333333333333332
+With //: 24
+```
+
+`//` drops the part after the decimal point, so the average would be wrong whenever the total does not divide exactly. Asha kept `/`. Test an AI suggestion with new values before you accept it.
 
 ## Common mistakes
 

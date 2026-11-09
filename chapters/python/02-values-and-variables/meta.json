@@ -7,7 +7,7 @@
   "badge": "Name Keeper",
   "xp": {
     "lesson": 100,
-    "practice": 160
+    "practice": 170
   },
   "concepts": [
     "value",
@@ -37,7 +37,7 @@
   "ai_pair_moment": {
     "flawed_file": "examples/ai_average_flawed.py",
     "fixed_file": "examples/ai_average_fixed.py",
-    "flaw": "The AI wrote score_1 + score_2 + score_3 / 3 and predicted 90.0. Python divides before it adds, so the program prints 203.33333333333334. Brackets around the sum fix it."
+    "flaw": "The AI wrote bill_1 + bill_2 + bill_3 / 3 and predicted 24.0. Python divides before it adds, so the program prints 52.0, which is larger than the largest bill. Brackets around the sum fix it."
   },
   "support_files": [],
   "python_version": {
@@ -49,15 +49,16 @@
     "Added round() as a small extra beyond the curriculum entry, because the chapter shows that float results can be inexact and learners need a way to display them.",
     "Used 0.1 + 0.1 + 0.1 (the official tutorial's example) instead of the commonly quoted 0.1 + 0.2.",
     "Changed the cafe bill prices so the final amount is exact and does not need rounding of a half.",
-    "2026-11-09 revision (owner request): added the narrated full-chapter video (video/storyboard.json rendered to video/chapter.mp4 with captions) and re-verified on Python 3.15.2, the current release, after fixing the setup tool's stale uv."
+    "2026-11-09 revision (owner request): added the narrated full-chapter video (video/storyboard.json rendered to video/chapter.mp4 with captions) and re-verified on Python 3.15.2, the current release, after fixing the setup tool's stale uv.",
+    "Revision (owner request): rebuilt the video with the code-quest-video skill (Soft Studio design, Kokoro bm_lewis voice, one story with the AI used at all six stages on one feature). The AI pair moment now averages three cafe bills, with new verified files for the debug and improve stages. Practice XP corrected to 170 (3 x 10 + 3 x 20 + 2 x 40)."
   ],
   "outstanding_issues": [
     "The traceback for Mistake 1 shows the short file name; on a learner's computer the full path to the file appears instead.",
-    "The narration uses a synthetic voice (Piper, en_US-lessac-medium). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the renderer's PRONOUNCE list."
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
   ],
   "video": {
     "storyboard": "video/storyboard.json",
     "file": "video/chapter.mp4",
-    "voice": "piper en_US-lessac-medium"
+    "voice": "kokoro bm_lewis"
   }
 }
