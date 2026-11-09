@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-06",
   "run_id": "2026-11-09-ecc1c6",
-  "verified_at": "2026-11-09T21:46:43+00:00",
+  "verified_at": "2026-11-09T21:49:42+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -19,7 +19,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 24,
+        "files_run": 26,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
@@ -34,6 +34,10 @@
             "Python 3.13.18": "pass"
           },
           "examples/ai_biscuit_mine.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_biscuit_tests.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -74,6 +78,10 @@
             "Python 3.13.18": "pass"
           },
           "examples/ex05_and_or.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex05_or_wrong.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -129,8 +137,8 @@
       "passed": true,
       "problems": [],
       "details": {
-        "code_blocks": 14,
-        "output_blocks": 14
+        "code_blocks": 15,
+        "output_blocks": 15
       }
     },
     {
@@ -167,8 +175,8 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 121,
-          "average_words": 11.2,
+          "sentences": 131,
+          "average_words": 11.0,
           "longest": 30
         }
       }
@@ -188,5 +196,5 @@
       }
     }
   ],
-  "fingerprint": "fe2d250ab8b242af832a02c6b271a79b431d2a3c7ef0e08755d3bc94396e2124"
+  "fingerprint": "011f1f1b0aa4579f63cbf73d784d6dc298263618bb42cc30fb35c8ce01a33d06"
 }

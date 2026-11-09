@@ -110,7 +110,7 @@
        ]
       },
       {
-       "say": "Two decisions, made by the program itself. Let's build them, piece by piece.",
+       "say": "Two decisions, made by the program itself. Let's build them.",
        "highlight": [],
        "out_highlight": []
       }
@@ -262,8 +262,12 @@
        "say": "A condition is a question that Python answers with True or False. You met True and False in Chapter 2. They are the two values of the type bool."
       },
       {
-       "say": "Double equals asks: are these two values equal? Exclamation mark equals asks the opposite: are they different?",
+       "say": "Double equals asks: are these two values equal?",
        "focus_row": 0
+      },
+      {
+       "say": "Exclamation mark equals asks the opposite: are they different?",
+       "focus_row": 1
       },
       {
        "say": "Less than, and greater than. Look closely: 15 is not greater than 15, so that one is False.",
@@ -515,7 +519,8 @@
        ],
        "out_highlight": [
         4
-       ]
+       ],
+       "note": "If the user typed 4, only the last line would print: Thank you!"
       }
      ]
     }
@@ -765,13 +770,35 @@
     },
     {
      "visual": {
+      "type": "code",
+      "file": "examples/ex05_or_wrong.py",
+      "heading": "A common trap: half a comparison",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ex05_or_wrong.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here is why. This line forgets the second day equals. Python checks the word Saturday on its own, and any text that is not empty counts as True."
+      },
+      {
+       "say": "So the music plays on a Monday. Always write a full comparison on each side of or."
+      }
+     ]
+    },
+    {
+     "visual": {
       "type": "quiz",
       "question": "`is_member` is `False` and `to_pay` is `20`. What is `is_member or to_pay >= 15`?",
       "options": [
        "`True`",
        "`False`",
        "An error",
-       "`None`"
+       "`20`"
       ],
       "answer": 0,
       "explain": "`or` needs only one side: 20 >= 15 is True."
@@ -944,7 +971,7 @@
        ]
       },
       {
-       "say": "Mission complete! Now Asha wants to be sure her biscuit rule is right. She uses an AI assistant, one stage at a time.",
+       "say": "Mission complete! And the Chapter 5 crash is gone too: the else from step 3 stops a division by zero. Now Asha wants to be sure her biscuit rule is right. She uses an AI assistant, one stage at a time.",
        "highlight": [],
        "out_highlight": []
       }
@@ -1041,10 +1068,7 @@
      },
      "segments": [
       {
-       "say": "Stage 2: write. Asha writes the condition herself, with greater than or equal. She asks the AI what happens at exactly 15."
-      },
-      {
-       "say": "The AI explains that greater than or equal includes 15 itself.",
+       "say": "Stage 2: write. Asha writes the condition herself, and asks what happens at exactly 15. The AI explains that greater than or equal includes 15.",
        "reveal": 2,
        "focus": 1
       },
@@ -1059,36 +1083,36 @@
      "visual": {
       "type": "chat",
       "stage": 3,
-      "heading": "Generate: ask for an exact prediction",
+      "heading": "Generate: add to my code, change nothing",
       "messages": [
        {
         "role": "you",
-        "text": "Now write the full rule with an else: 'Reward: a free biscuit' for 15 or more, otherwise 'No biscuit this time'. If to_pay is exactly 15.0, tell me exactly what it prints."
+        "text": "Here is my code. Add an else that prints 'No biscuit this time'. Do not change my condition. If to_pay is exactly 15.0, tell me exactly what it prints.",
+        "code": "examples/ai_biscuit_mine.py",
+        "code_lines": [
+         3,
+         4
+        ]
        },
        {
         "role": "ai",
         "text": "Here is the code. For 15.0 it prints `Reward: a free biscuit`.",
         "code": "examples/ai_biscuit_flawed.py"
-       },
-       {
-        "role": "you",
-        "text": "I ran it with 15.0:",
-        "output": "examples/ai_biscuit_flawed.expected"
        }
       ],
       "reveal": 1
      },
      "segments": [
       {
-       "say": "Stage 3: generate. Now Asha wants the full rule, with an else. She asks the AI for the code, and for exactly what it prints at 15.0."
+       "say": "Stage 3: generate. Asha gives the AI her own code. She asks it to add an else, not to change her condition, and to say what 15.0 prints."
       },
       {
-       "say": "The AI writes five lines, and says: a free biscuit. It sounds completely sure.",
+       "say": "The AI sends back the code, and says: a free biscuit. It sounds completely sure.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "Look at line 3 carefully."
+       "say": "Compare its line 3 with the line Asha gave it."
       }
      ],
      "ask": {
@@ -1096,9 +1120,7 @@
      },
      "after": [
       {
-       "say": "Asha runs it. No biscuit this time! The AI was wrong, and it sounded sure.",
-       "reveal": 3,
-       "focus": 2
+       "say": "No. The AI quietly changed greater than or equal into greater than. Asha told it not to touch her condition. She will prove the problem with edge cases."
       }
      ]
     },
@@ -1106,41 +1128,66 @@
      "visual": {
       "type": "chat",
       "stage": 4,
-      "heading": "Test: which edge case failed?",
+      "heading": "Test: run every edge case",
       "messages": [
        {
         "role": "you",
-        "text": "You predicted a biscuit for 15.0, but it printed 'No biscuit this time'. Which edge case did your code fail, and why?"
+        "text": "Before I trust it, list the edge cases for this rule, with the output each one should give."
        },
        {
         "role": "ai",
-        "text": "The boundary value, 15.0. Line 3 uses `>`, which means more than, so 15 is not included. Use `>=`:",
-        "code": "examples/ai_biscuit_fixed.py",
-        "code_lines": [
-         3
-        ]
+        "text": "1. `14.99`: No biscuit this time.\n2. `15.0`: Reward: a free biscuit. This is the boundary value.\n3. `20.0`: Reward: a free biscuit."
        },
        {
         "role": "you",
-        "text": "I ran the fix with 15.0:",
-        "output": "examples/ai_biscuit_fixed.expected"
+        "text": "I ran your three values on your code. 15.0 fails:",
+        "output": "examples/ai_biscuit_tests.expected"
+       },
+       {
+        "role": "ai",
+        "text": "You are right. I changed your `>=` into `>`, so 15 is left out. Put back your condition, `if to_pay >= 15:`."
        }
       ],
       "reveal": 1
      },
      "segments": [
       {
-       "say": "Stage 4: test. The boundary value, 15, was exactly the test from the plan. Asha tells the AI what it predicted, and what really happened."
+       "say": "Stage 4: test. This is today's skill. Asha asks the AI for the edge cases, and the output each one should give."
       },
       {
-       "say": "Now the AI names the cause. Greater than means more than, so 15 is left out. The fix is greater than or equal.",
+       "say": "The AI lists 14.99, the boundary value 15, and 20.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "Asha runs the fix with 15.0. A free biscuit. Prediction and real run agree.",
+       "say": "She runs all three on the AI's own code. 14.99 and 20 are right, but 15.0 prints no biscuit.",
        "reveal": 3,
        "focus": 2
+      },
+      {
+       "say": "Now the AI admits it changed her condition. She puts back her greater than or equal.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_biscuit_fixed.py",
+      "heading": "Her condition, with the else",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_biscuit_fixed.expected",
+      "out_highlight": [
+       1
+      ],
+      "note": "to_pay is 15.0"
+     },
+     "segments": [
+      {
+       "say": "With her own condition back on line 3, 15.0 gets the biscuit. The prediction and the real run agree."
       }
      ]
     },
@@ -1152,7 +1199,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "I typed the rule into my checkout and got this error. First explain the cause and the line. Then show the smallest fix.",
+        "text": "My first try at the rule gave this error. First explain the cause and the line. Then show the smallest fix.",
         "code": "examples/ai_biscuit_typo.py",
         "code_lines": [
          2,
@@ -1163,17 +1210,17 @@
        },
        {
         "role": "ai",
-        "text": "Line 3 uses one `=`, which gives a name a value. A condition must compare. Your rule is 15 or more, so write:\n`if to_pay >= 15:`"
+        "text": "Line 3 uses one `=`, which gives a name a value. Python suggests `==`, but `to_pay == 15` would reward only exactly 15. Your rule is 15 or more, so write:\n`if to_pay >= 15:`"
        }
       ],
       "reveal": 1
      },
      "segments": [
       {
-       "say": "Stage 5: debug. Asha types the rule into her checkout, but with one equals sign. Python stops with a Syntax Error, before any line runs."
+       "say": "Stage 5: debug. Back when Asha first typed the rule, she wrote one equals sign. Python stopped with a Syntax Error, before any line ran."
       },
       {
-       "say": "She asks for the cause first. The AI points to line 3. One equals sign gives a value. A condition must compare.",
+       "say": "She asks for the cause first. The AI points to line 3. Python suggests double equals, but that would reward only exactly 15. The rule is 15 or more, so greater than or equal.",
        "reveal": 2,
        "focus": 1
       }
@@ -1326,14 +1373,10 @@
      },
      "segments": [
       {
-       "say": "Mistake 1 is the one Asha debugged. One equals sign in a condition.",
+       "say": "Mistake 1 is the one Asha debugged: one equals sign in a condition. The message suggests double equals. Ignore the other suggestion; this course does not use it.",
        "out_highlight": [
         -1
        ]
-      },
-      {
-       "say": "The message even suggests the fix: double equals. You can ignore the other suggestion. This course does not use it.",
-       "out_highlight": []
       }
      ]
     },
@@ -1349,14 +1392,10 @@
      },
      "segments": [
       {
-       "say": "Mistake 2. Every if, elif and else line ends with a colon. Here, line 3 has none.",
+       "say": "Mistake 2. Every if, elif and else line ends with a colon. Line 3 has none, and the message says exactly that: expected a colon.",
        "out_highlight": [
         -1
        ]
-      },
-      {
-       "say": "The message says exactly that: expected a colon. The small arrow points to where it should be.",
-       "out_highlight": []
       }
      ]
     },
@@ -1544,24 +1583,24 @@
     {
      "visual": {
       "type": "quiz",
-      "question": "`to_pay` is `60`. The first rule checks `>= 15` (biscuit), then `elif >= 50` (cake). What prints?",
+      "question": "The rules check `>= 50` (cake) first, then `elif >= 15` (biscuit). `to_pay` is exactly `50`. What prints?",
       "options": [
-       "A free cake",
-       "Both rewards",
        "A free biscuit",
-       "No reward"
+       "Both rewards",
+       "No reward",
+       "A free cake"
       ],
-      "answer": 2,
-      "explain": "Python runs only the first True block: 60 >= 15 comes first."
+      "answer": 3,
+      "explain": "50 >= 50 is True, so the first block runs and Python skips the rest."
      },
      "segments": [
       {
-       "say": "One last check. To pay is 60. The first rule checks 15 or more, for a biscuit. The elif checks 50 or more, for a cake. What prints?"
+       "say": "One last check. The cake rule, 50 or more, comes first. Then the biscuit rule, 15 or more. To pay is exactly 50. What prints?"
       }
      ],
      "after": [
       {
-       "say": "C. A free biscuit. Only the first True block runs. That is why the biggest amount goes first."
+       "say": "D. A free cake. 50 is greater than or equal to 50, so the first block runs, and Python skips the rest."
       }
      ]
     },

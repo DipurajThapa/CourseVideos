@@ -165,7 +165,21 @@ False
 True
 ```
 
-Line 5 is `False` because 12 is less than 15. Line 8 needs a full comparison on each side of `or`.
+Line 5 is `False` because 12 is less than 15. Line 8 needs a full comparison on each side of `or`. If you write only the word on the right side, the condition is always `True`.
+
+```python
+# file: examples/ex05_or_wrong.py
+day = "Monday"
+if day == "Friday" or "Saturday":
+    print("Live music tonight!")
+```
+
+<!-- output: examples/ex05_or_wrong.expected -->
+```output
+Live music tonight!
+```
+
+Python checks `"Saturday"` on its own, and any text that is not empty counts as `True`. So the music plays on a Monday. Write `day == "Friday" or day == "Saturday"`.
 
 **Step 6: Compare text answers safely.** A user may type `Yes`, `yes` or `YES `, with a space at the end. `.strip()` removes spaces at both ends and `.lower()` makes every letter small, so all three become `yes`.
 
@@ -242,7 +256,7 @@ The safety habits from Chapter 1 still apply. Never paste passwords, keys or pri
 
 The full prompts are in [ai-prompts.md](ai-prompts.md).
 
-**AI pair moment.** Asha asked an AI assistant: "Write Python code that prints 'Reward: a free biscuit' when to_pay is 15 or more, and 'No biscuit this time' otherwise. If to_pay is exactly 15.0, tell me exactly what it prints." The AI said it would print `Reward: a free biscuit`.
+**AI pair moment.** Asha had written the biscuit rule herself, with `if to_pay >= 15:`. She asked an AI assistant: "Here is my code. Add an else that prints 'No biscuit this time'. Do not change my condition. If to_pay is exactly 15.0, tell me exactly what it prints." The AI said it would print `Reward: a free biscuit`. It gave back this code.
 
 ```python
 # file: examples/ai_biscuit_flawed.py
@@ -260,7 +274,7 @@ Asha ran it with the boundary value, 15.0:
 No biscuit this time
 ```
 
-The AI used `>`, which means "more than", but the rule says "15 or more". The prediction and the code did not agree, and the AI sounded sure. `>=` fixes it:
+The AI quietly changed her `>=` into `>`, even though she asked it not to touch the condition. `>` means "more than", but the rule says "15 or more". The prediction and the code did not agree, and the AI sounded sure. Compare every line of AI code with the code you gave it. Putting back `>=` fixes it:
 
 ```python
 # file: examples/ai_biscuit_fixed.py
