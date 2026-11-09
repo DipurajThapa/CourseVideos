@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-09",
   "run_id": "2026-11-09-4b20cc",
-  "verified_at": "2026-11-09T23:36:29+00:00",
-  "passed": false,
+  "verified_at": "2026-11-09T23:56:30+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -183,26 +183,29 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 124,
-          "average_words": 11.5,
+          "sentences": 125,
+          "average_words": 11.6,
           "longest": 27
+        },
+        "video/script.md": {
+          "sentences": 659,
+          "average_words": 8.8,
+          "longest": 28
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/09-debugging-with-ai",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/09-debugging-with-ai",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/09-debugging-with-ai",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/09-debugging-with-ai",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/09-debugging-with-ai"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.3
+        "estimated_minutes": 17.5,
+        "duration_seconds": 1042.0,
+        "size_mb": 44.06,
+        "scenes": 16,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "ab77d554e2f99af2b5fe4c371af7c9bf5e2ec9837341225f0d08a7455c224bbd"
+  "fingerprint": "6338e77ba31f6b66e787368fafe2acd1f98314bb2709d705addc8cbae8a00d45"
 }

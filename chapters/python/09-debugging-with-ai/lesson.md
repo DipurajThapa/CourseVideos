@@ -53,7 +53,7 @@ print(f"Tea: {price:.2f}"
 SyntaxError: '(' was never closed
 ```
 
-Line 2 is correct, but it never ran: the output does not show `Corner Cafe: end of day`. Python reads the whole file before it runs any line. The report names the file, line 4 and the kind of error. The `^` marker points at the bracket that was never closed. Fix: add `)` at the end of line 4.
+Line 2 is correct, but it never ran: the output does not show `Corner Cafe: end of day`. Python reads the whole file before it runs any line. The report names the file, line 4 and the kind of error. The `^` marker points at the opening bracket that was never closed. Fix: add `)` at the end of line 4. The messages in this chapter come from Python 3.12 and newer; older versions word some of them differently.
 
 **Step 2: Read a traceback from the bottom up.** A **traceback** is the report Python prints when a runtime error stops a program. Here, the user types `12`.
 

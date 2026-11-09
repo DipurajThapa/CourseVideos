@@ -26,12 +26,7 @@
      },
      "segments": [
       {
-       "say": "One evening, Asha runs her end-of-day report. It adds up the cafe's sales.",
-       "reveal": 1,
-       "focus": 0
-      },
-      {
-       "say": "It prints a total that is much too small.",
+       "say": "One evening, Asha runs her end-of-day report. It prints a total that is much too small.",
        "reveal": 2,
        "focus": 1
       },
@@ -55,7 +50,7 @@
        "say": "This is Code Quest, Chapter 9. Today you become a bug hunter."
       },
       {
-       "say": "And an AI assistant will promise to stop a crash. Its fix will crash on the same line.",
+       "say": "And an AI assistant will promise to stop a crash. Its fix will crash on the same division.",
        "subtitle": "Find the cause. Then fix it."
       }
      ]
@@ -65,8 +60,7 @@
       "type": "code",
       "file": "examples/ex07_day_report.py",
       "heading": "Today's mission: a report you can trust",
-      "output": "examples/ex07_day_report.expected",
-      "note": "The user typed: 3, then 4.50, 6.00 and 3.50"
+      "hidden_text": "By the end, you will know every line of this report."
      },
      "segments": [
       {
@@ -74,16 +68,11 @@
        "highlight": [
         3,
         6
-       ],
-       "out_highlight": [
-        7,
-        8
        ]
       },
       {
-       "say": "Its total matches the money she took, and she can explain why. Let's start hunting.",
-       "highlight": [],
-       "out_highlight": []
+       "say": "When it works, its total matches the money she took, and she can explain why. Let's start hunting.",
+       "highlight": []
       }
      ]
     }
@@ -176,7 +165,7 @@
    "id": "idea",
    "section": "The idea",
    "title": "The idea: three kinds of bugs",
-   "direction": "Teach the three kinds with the table, then the recipe analogy. Then a quiz and a breather.",
+   "direction": "Teach the three kinds with the table. Then a quiz and a breather.",
    "beats": [
     {
      "visual": {
@@ -197,7 +186,7 @@
        [
         "Runtime error",
         "While the program runs",
-        "Some output, then a traceback"
+        "Some output, then an error report"
        ],
        [
         "Logic error",
@@ -211,7 +200,7 @@
        "say": "Bugs come in three kinds, and each one shows itself in a different way."
       },
       {
-       "say": "A syntax error means Python cannot read the file. So it runs nothing at all, not even line 1.",
+       "say": "A syntax error means Python cannot read the file. So it runs nothing at all, not even the first print.",
        "focus_row": 0
       },
       {
@@ -221,41 +210,6 @@
       {
        "say": "A logic error is the sneakiest. The program finishes, with no message. But the result is wrong.",
        "focus_row": 2
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "bullets",
-      "heading": "Like a recipe",
-      "label": "Analogy",
-      "reveal": 1,
-      "focus": 0,
-      "items": [
-       "Syntax error: a word nobody can read. Cooking never starts.",
-       "Runtime error: a missing ingredient. Cooking stops halfway.",
-       "Logic error: salt instead of sugar. The cake comes out, and it tastes wrong.",
-       "Unlike a cook, Python never guesses what you meant."
-      ]
-     },
-     "segments": [
-      {
-       "say": "Think of a recipe. A syntax error is a smudged word that nobody can read, so cooking never starts."
-      },
-      {
-       "say": "A runtime error is a missing ingredient, so cooking stops halfway.",
-       "reveal": 2,
-       "focus": 1
-      },
-      {
-       "say": "And a logic error is salt instead of sugar. The cake comes out, and it tastes wrong.",
-       "reveal": 3,
-       "focus": 2
-      },
-      {
-       "say": "But unlike a cook, Python never guesses what you meant.",
-       "reveal": 4,
-       "focus": 3
       }
      ]
     },
@@ -345,7 +299,7 @@
        ]
       },
       {
-       "say": "The report names the file and line 4. And the last line says it: a bracket was never closed.",
+       "say": "The report names the file and line 4. The marker points at the opening bracket, the one that was never closed.",
        "highlight": [
         4
        ],
@@ -354,11 +308,17 @@
        ]
       },
       {
-       "say": "The fix: add the closing bracket at the end of line 4.",
+       "say": "The fix goes at the end of the line: a closing bracket.",
        "highlight": [
         4
        ],
        "out_highlight": []
+      },
+      {
+       "say": "These messages come from Python 3.12 and newer. Older versions word some of them differently.",
+       "out_highlight": [
+        -1
+       ]
       }
      ]
     }
@@ -368,7 +328,7 @@
    "id": "step2",
    "section": "Build it step by step",
    "title": "Step 2: Read a traceback from the bottom up",
-   "direction": "Predict which lines print before the crash. Then read the traceback from the bottom up, one line at a time. Then find the cause one line earlier and show the fix.",
+   "direction": "Predict which lines print before the crash. Then read the traceback from the bottom up, one line at a time. Then find the cause on an earlier line and show the fix.",
    "beats": [
     {
      "visual": {
@@ -425,13 +385,10 @@
      },
      "segments": [
       {
-       "say": "This report is called a traceback. Read it from the bottom up. The last line names the kind of error, a Type Error, and describes it.",
+       "say": "This report is called a traceback. Read it from the bottom up. The last line names the kind of error, a Type Error. A sequence is a value made of parts in order, like a string.",
        "out_highlight": [
         -1
        ]
-      },
-      {
-       "say": "A sequence is a value made of parts in order, and a string is one. Python cannot multiply text by a decimal number."
       },
       {
        "say": "The two lines above show the code, and the markers point at the part that failed: cups times 3.5.",
@@ -447,7 +404,7 @@
        ]
       },
       {
-       "say": "And the first line says: most recent call last. It means the newest step is at the bottom. In programs this size, there is only one step.",
+       "say": "And the first line says: most recent call last. It means the newest step is at the bottom. In programs this size, there is only one step. In Chapter 16, when you write functions, tracebacks grow longer.",
        "out_highlight": [
         4
        ]
@@ -458,7 +415,7 @@
      "visual": {
       "type": "code",
       "file": "examples/ex03_runtime_fixed.py",
-      "heading": "The cause is one line earlier",
+      "heading": "The cause is on an earlier line",
       "highlight": [
        3
       ],
@@ -661,19 +618,11 @@
      },
      "segments": [
       {
-       "say": "Step 5. An AI cannot see your screen. So give it four things. First, the code: the real code, not a description.",
-       "focus_row": 0
-      },
-      {
-       "say": "Second, the exact error: the full traceback. If there is none, say: no error message.",
+       "say": "Step 5. An AI cannot see your screen. So give it four things. The code, and the exact error. If there is none, say: no error message.",
        "focus_row": 1
       },
       {
-       "say": "Third, the expected result, worked out by hand. Without it, a logic error is invisible.",
-       "focus_row": 2
-      },
-      {
-       "say": "Fourth, the actual result: what the program really printed. The difference points at the bug.",
+       "say": "Then the expected result, worked out by hand, and the actual result. The difference points at the bug.",
        "focus_row": 3
       },
       {
@@ -717,10 +666,7 @@
      },
      "segments": [
       {
-       "say": "Breather. Sit back, and take a slow breath."
-      },
-      {
-       "say": "You have found and fixed three kinds of bugs. Now, the whole report."
+       "say": "Breather. You have found and fixed three kinds of bugs. Now, the whole report."
       }
      ]
     }
@@ -783,18 +729,13 @@
        ]
       },
       {
-       "say": "And the total is 14.00, the money Asha took. Mission complete!",
+       "say": "And the total is 14.00, the money Asha took. Mission complete! But Asha has one more test in mind. What happens on a day with no sales at all? She will find out, with an AI assistant, one stage at a time.",
        "highlight": [
         10
        ],
        "out_highlight": [
         7
        ]
-      },
-      {
-       "say": "But Asha has one more test in mind. What happens on a day with no sales at all? She will find out, with an AI assistant, one stage at a time.",
-       "highlight": [],
-       "out_highlight": []
       }
      ]
     }
@@ -997,27 +938,6 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/ai_test_one.py",
-      "heading": "Case 2: one sale",
-      "highlight": [
-       8
-      ],
-      "output": "examples/ai_test_one.expected",
-      "out_highlight": [
-       5,
-       6
-      ],
-      "note": "The user typed: 1, then 5.00"
-     },
-     "segments": [
-      {
-       "say": "She runs every case on the AI's code. One sale of 5.00: total 5.00, average 5.00. A pass."
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
       "file": "examples/ai_test_three.py",
       "heading": "Case 3: three sales",
       "highlight": [
@@ -1032,7 +952,7 @@
      },
      "segments": [
       {
-       "say": "Three sales: 14.00 and 4.67. Another pass."
+       "say": "She runs every case on the AI's code. Three sales give 14.00 and 4.67, a pass. One sale of 5.00 passes too."
       }
      ]
     },
@@ -1087,7 +1007,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "Code: my report with your check. Exact error: below. Expected result for 0 sales: No sales today. Actual result: it crashed. First explain the cause and the line. Then show the smallest fix.",
+        "text": "Code: my report with your check. Exact error: below. Expected result for 0 sales: No sales today. Actual result: it printed the heading, then the error report below. First explain the cause and the line. Then show the smallest fix.",
         "code": "examples/ai_check_flawed.py",
         "code_lines": [
          8,
@@ -1137,27 +1057,6 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/ai_fixed_one.py",
-      "heading": "Run every case again",
-      "highlight": [
-       8
-      ],
-      "output": "examples/ai_fixed_one.expected",
-      "out_highlight": [
-       5,
-       6
-      ],
-      "note": "The user typed: 1, then 5.00"
-     },
-     "segments": [
-      {
-       "say": "A fix can break a case that worked before. So she runs every case again. One sale: still 5.00."
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
       "file": "examples/ai_fixed_three.py",
       "heading": "Run every case again",
       "highlight": [
@@ -1172,7 +1071,7 @@
      },
      "segments": [
       {
-       "say": "Three sales: still 14.00 and 4.67."
+       "say": "A fix can break a case that worked before. So she runs every case again. Three sales: still 14.00 and 4.67, and one sale still gives 5.00."
       }
      ]
     },
@@ -1237,7 +1136,7 @@
        "say": "Stage 6: improve. The report works. Asha asks for at most two changes that make future bugs easier to find. And she adds: do not change what it prints."
       },
       {
-       "say": "Suggestion 1: rename sale to sale number, so nobody adds it instead of price. That would have prevented the bug from step 4!",
+       "say": "Suggestion 1: rename sale to sale number, so nobody adds it instead of price. That would have made the bug from step 4 easier to spot!",
        "reveal": 2,
        "focus": 1
       },
@@ -1259,7 +1158,16 @@
      },
      "segments": [
       {
-       "say": "Asha tries both suggestions. Line 5 uses the new name. Line 8 is the debug line the AI wants to keep."
+       "say": "Asha tries both suggestions. Line 5 uses the new name.",
+       "highlight": [
+        5
+       ]
+      },
+      {
+       "say": "And line 8 is the debug line the AI wants to keep.",
+       "highlight": [
+        8
+       ]
       }
      ],
      "ask": {
@@ -1341,7 +1249,7 @@
        "say": "Breather. Asha caught two AI mistakes: a check that let 0 through, and a change she did not ask for."
       },
       {
-       "say": "Next, four mistakes beginners make while debugging."
+       "say": "Next, mistakes beginners make while debugging."
       }
      ]
     }
@@ -1351,7 +1259,7 @@
    "id": "mistakes",
    "section": "Common mistakes",
    "title": "Common mistakes",
-   "direction": "Mistake 1 is a spot-it with Python's own suggestion. Mistake 2 is top to bottom again. Mistake 3 is a spot-it on indentation. Mistake 4 is the decimal comma.",
+   "direction": "Mistake 1 is a spot-it with Python's own suggestion. Mistake 3 is a spot-it on indentation. Mistake 4 is the decimal comma.",
    "beats": [
     {
      "visual": {
@@ -1389,34 +1297,8 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/err02_before.py",
-      "heading": "Mistake 2: a variable used too early",
-      "highlight": [
-       3
-      ],
-      "error": "examples/err02_before.expected_error"
-     },
-     "segments": [
-      {
-       "say": "Mistake 2. Python runs from top to bottom. On line 3, total does not exist yet, so Python stops with a Name Error.",
-       "out_highlight": [
-        -1
-       ]
-      },
-      {
-       "say": "The fix: move total equals 0 above the loop.",
-       "highlight": [
-        4
-       ],
-       "out_highlight": []
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
       "file": "examples/err03_indent.py",
-      "heading": "Mistake 3: spot this one too",
+      "heading": "Mistake 2: spot this one too",
       "highlight": [
        5
       ],
@@ -1434,7 +1316,7 @@
       {
        "say": "Line 5 has six spaces at the start, but the block uses four. Python reports an Indentation Error.",
        "error": "examples/err03_indent.expected_error",
-       "heading": "Mistake 3: a debug line with the wrong indentation",
+       "heading": "Mistake 2: a debug line with the wrong indentation",
        "out_highlight": [
         -1
        ]
@@ -1453,7 +1335,7 @@
      "visual": {
       "type": "code",
       "file": "examples/err04_decimal_comma.py",
-      "heading": "Mistake 4: a decimal comma",
+      "heading": "Mistake 3: a decimal comma",
       "highlight": [
        2
       ],
@@ -1462,7 +1344,7 @@
      },
      "segments": [
       {
-       "say": "Mistake 4. In many countries, people write four and a half as 4 comma 50. Python accepts only a decimal point, so float stops with a Value Error.",
+       "say": "Mistake 3. In many countries, people write four and a half as 4 comma 50. Python accepts only a decimal point, so float stops with a Value Error.",
        "out_highlight": [
         -1
        ]
@@ -1470,7 +1352,8 @@
       {
        "say": "The message even shows the exact text that failed. The fix: type 4 point 50.",
        "out_highlight": [
-        1
+        1,
+        -1
        ]
       }
      ]
@@ -1486,7 +1369,7 @@
      },
      "segments": [
       {
-       "say": "Last breather. Now you know four mistakes that slow down a bug hunt."
+       "say": "Last breather. Now you know three mistakes that slow down a bug hunt."
       },
       {
        "say": "Two questions to think about on your own come next."
@@ -1560,10 +1443,7 @@
      },
      "segments": [
       {
-       "say": "Let's recap."
-      },
-      {
-       "say": "A syntax error stops everything. A runtime error stops partway. A logic error gives a wrong result, with no message.",
+       "say": "Let's recap. A syntax error stops everything. A runtime error stops partway. A logic error gives a wrong result, with no message.",
        "reveal": 1,
        "focus": 0
       },
@@ -1573,12 +1453,7 @@
        "focus": 2
       },
       {
-       "say": "Print debugging shows values while the program runs.",
-       "reveal": 4,
-       "focus": 3
-      },
-      {
-       "say": "A debugging prompt has the code, the exact error, the expected result and the actual result.",
+       "say": "Print debugging shows values while the program runs. And a debugging prompt has the code, the exact error, the expected result and the actual result.",
        "reveal": 5,
        "focus": 4
       },
