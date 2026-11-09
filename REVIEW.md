@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-09T06:46:20+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-09T06:55:26+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -12,7 +12,7 @@ You can also ask Claude to do either.
 
 ## Ready for review
 
-None.
+- **python-01**: Your First Program and Your AI Study Partner ([chapters/python/01-first-program](chapters/python/01-first-program))
 
 ## Changes requested
 
