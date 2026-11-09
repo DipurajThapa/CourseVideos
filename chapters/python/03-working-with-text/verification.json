@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-03",
   "run_id": "2026-11-09-153b51",
-  "verified_at": "2026-11-09T20:03:51+00:00",
-  "passed": false,
+  "verified_at": "2026-11-09T20:22:54+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -174,23 +174,26 @@
           "sentences": 114,
           "average_words": 11.9,
           "longest": 25
+        },
+        "video/script.md": {
+          "sentences": 703,
+          "average_words": 8.8,
+          "longest": 28
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/03-working-with-text",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/03-working-with-text",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/03-working-with-text",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/03-working-with-text",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/03-working-with-text"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.9
+        "estimated_minutes": 18.5,
+        "duration_seconds": 1098.7,
+        "size_mb": 45.29,
+        "scenes": 17,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "2da56af9ba9d360743fa5cd9ccd094089e33c8f8a4178327866c273e45ca5fdf"
+  "fingerprint": "10ccdc826bc801b4d78c1b405e950089ca8b3b1d0144326090e9a5985619fd38"
 }

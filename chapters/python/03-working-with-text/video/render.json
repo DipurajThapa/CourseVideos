@@ -1,0 +1,152 @@
+{
+  "chapter_id": "python-03",
+  "rendered_at": "2026-11-09T20:20:32+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "adbac753201850ff6f31e2526b01c4011196a2e1722ff78c985c8d41ae1e8952",
+  "inputs_sha256": "f34b921f455f04eca66391f929b70b9e5299525a76b11ee970459857d41d280e",
+  "video_sha256": "785af3c077f3fc5a3435f36ee20c1b29f657b6f20eccc7a54f211822b1717e71",
+  "duration_seconds": 1098.7,
+  "size_mb": 45.29,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 968,
+  "questions": 16,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 49.8
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 49.8,
+      "end": 68.8
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 68.8,
+      "end": 86.8
+    },
+    {
+      "id": "idea",
+      "title": "The idea: strings, indexes and f-strings",
+      "section": "The idea",
+      "start": 86.8,
+      "end": 184.2
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Join strings",
+      "section": "Build it step by step",
+      "start": 184.2,
+      "end": 220.4
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: f-strings",
+      "section": "Build it step by step",
+      "start": 220.4,
+      "end": 261.667
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Two decimal places",
+      "section": "Build it step by step",
+      "start": 261.667,
+      "end": 315.433
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Columns",
+      "section": "Build it step by step",
+      "start": 315.433,
+      "end": 426.167
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: String methods",
+      "section": "Build it step by step",
+      "start": 426.167,
+      "end": 490.533
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: Indexes",
+      "section": "Build it step by step",
+      "start": 490.533,
+      "end": 535.333
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the neat receipt",
+      "section": "See the outcome",
+      "start": 535.333,
+      "end": 604.533
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one receipt line",
+      "section": "Work with AI",
+      "start": 604.533,
+      "end": 819.4
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 819.4,
+      "end": 947.433
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 947.433,
+      "end": 996.067
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 996.067,
+      "end": 1053.7
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1053.7,
+      "end": 1076.967
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1076.967,
+      "end": 1098.7
+    }
+  ]
+}
