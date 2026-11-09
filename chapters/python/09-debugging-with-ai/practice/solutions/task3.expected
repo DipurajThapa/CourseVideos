@@ -1,0 +1,5 @@
+DEBUG cup=1 stamps=2
+DEBUG cup=2 stamps=4
+DEBUG cup=3 stamps=6
+DEBUG cup=4 stamps=8
+Stamps: 8

@@ -1,0 +1,7 @@
+Price of sale 1: 4.50
+DEBUG sale=1 price=4.5 total=1
+Price of sale 2: 6.00
+DEBUG sale=2 price=6.0 total=3
+Price of sale 3: 3.50
+DEBUG sale=3 price=3.5 total=6
+Total: 6.00
