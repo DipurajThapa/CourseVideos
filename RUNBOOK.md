@@ -38,7 +38,7 @@ python3 tools/setup_check.py
 python3 tools/state.py next
 ```
 The output is one of:
-- `{"action": "resume", ...}`: a chapter is `in_progress` or `blocked`. Fetch its `wip/` branch if it exists and continue from what is already there. Re-run every check; do not trust earlier results.
+- `{"action": "resume", ...}`: a chapter is `in_progress` or `blocked`. Fetch its `wip/` branch if it exists and continue from what is already there. A `revise` action reuses the chapter's old branch name, so start it fresh from `main` with `git checkout -B wip/<chapter-id> main`. Re-run every check; do not trust earlier results.
 - `{"action": "revise", ...}`: a chapter is `changes_requested`. Apply the owner's notes on a `wip/` branch, then follow steps 4 to 10.
 - `{"action": "chapter", ...}`: start the named chapter.
 - `{"action": "curriculum", ...}`: the next language has no curriculum. Build it (see "Building a curriculum"), and that is the whole run.
@@ -94,11 +94,11 @@ git merge --no-ff wip/<chapter-id> -m "Merge chapter <chapter-id> for review"
 python3 tools/state.py complete <chapter-id>
 python3 tools/build_review_queue.py
 ```
-`complete` refuses unless `verification.json` passed in this run and its fingerprint matches the chapter files now on `main`. Then write the report (step 10), commit everything on `main`, push, and delete the branch:
+`complete` refuses unless `verification.json` passed in this run and its fingerprint matches the chapter files now on `main`. Then write the report (step 10), commit everything on `main` and push:
 ```bash
 git add -A && git commit -m "chore(state): <chapter-id> ready for review" && git push origin main
-git push origin --delete wip/<chapter-id>
 ```
+Leave the finished `wip/<chapter-id>` branch in place as a record of the work. Do not delete branches; the environment does not allow it, and an old branch for a completed chapter is harmless.
 If the merge conflicts or `complete` refuses, abort the merge (`git merge --abort`), block the chapter (step 8) and report. Never force-push `main`.
 
 ### 8. On a blocker
