@@ -163,8 +163,15 @@
     "python-07": {
       "language": "python",
       "number": 7,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-09-cc180f",
+          "started": "2026-11-09T22:10:32+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-09-cc180f"
     },
     "python-08": {
       "language": "python",
@@ -293,5 +300,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T22:09:19+00:00"
+  "updated": "2026-11-09T22:10:32+00:00"
 }
