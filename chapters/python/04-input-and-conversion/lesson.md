@@ -149,6 +149,26 @@ print(str(4) + " teas")
 | 6 | `int()` ignores spaces at the start and the end of the text. |
 | 7 | `str()` turns a number into text, so `+` can join it to another string. |
 
+Be careful with one difference. `int()` accepts the number 3.9, but not the text `"3.9"`. Run this example to see it.
+
+```python
+# file: examples/ex05_int_text.py
+print(int(3.9))
+print(int("3.9"))
+```
+
+<!-- error: examples/ex05_int_text.expected_error -->
+```output
+3
+Traceback (most recent call last):
+  File "ex05_int_text.py", line 3, in <module>
+    print(int("3.9"))
+          ~~~^^^^^^^
+ValueError: invalid literal for int() with base 10: '3.9'
+```
+
+Text with a decimal point is not a whole number, so `int()` stops with a `ValueError` instead of cutting off the decimals. Use `float()` for that text.
+
 ## See the outcome
 
 Here is Asha's receipt from Chapter 3. Now it asks the customer for the order. This time, the user typed `  omar ` with extra spaces, then `3` teas and `2` sandwiches.
@@ -192,7 +212,7 @@ Sandwich x 2       12.00
 TO PAY             22.50
 ```
 
-Lines 2 to 4 ask the three questions. The name stays text, and the two counts become whole numbers. Line 8 cleans the name with `strip()` and `title()` from Chapter 3. Lines 9 to 14 calculate and build the labels, and lines 16 to 22 print the receipt. Run it again with a different order, and the receipt changes without any change to the code.
+To keep the program short, the member discount from Chapter 3 is left out. Lines 2 to 4 ask the three questions. The name stays text, and the two counts become whole numbers. Line 8 cleans the name with `strip()` and `title()` from Chapter 3. Lines 9 to 14 calculate and build the labels, and lines 16 to 22 print the receipt. Run it again with a different order, and the receipt changes without any change to the code.
 
 ## Work with AI
 

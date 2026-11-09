@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-04",
   "run_id": "2026-11-09-4b1cb6",
-  "verified_at": "2026-11-09T20:34:36+00:00",
+  "verified_at": "2026-11-09T20:37:53+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -19,7 +19,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 22,
+        "files_run": 23,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
@@ -77,6 +77,10 @@
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
+          "examples/ex05_int_text.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/ex06_order.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
@@ -121,8 +125,8 @@
       "passed": true,
       "problems": [],
       "details": {
-        "code_blocks": 13,
-        "output_blocks": 13
+        "code_blocks": 14,
+        "output_blocks": 14
       }
     },
     {
@@ -159,8 +163,8 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 102,
-          "average_words": 11.7,
+          "sentences": 108,
+          "average_words": 11.6,
           "longest": 28
         }
       }
@@ -176,9 +180,9 @@
         "missing video/script.md: run python3 tools/render_video.py chapters/python/04-input-and-conversion"
       ],
       "details": {
-        "estimated_minutes": 16.5
+        "estimated_minutes": 17.5
       }
     }
   ],
-  "fingerprint": "b0913c790b658244230f2f274b9bd162de29e16e00c63aa8b8340ef235773042"
+  "fingerprint": "c2a9c5fca319d5d18d4199836e4077151af1cf3db166e76e2551d6b8f87528af"
 }

@@ -29,7 +29,7 @@
        "subtitle": "Ask. Listen. Convert. Calculate."
       },
       {
-       "say": "And an AI assistant will forget one small step, and promise you a result that never appears."
+       "say": "And an AI assistant will promise you 7.50 of change. Instead, its program will crash."
       }
      ]
     },
@@ -57,7 +57,7 @@
        "focus": 1
       },
       {
-       "say": "Omar wants three teas? Asha has to open the code and change it. That is not how a real till works.",
+       "say": "Omar wants three teas? Asha has to open the code and change it. That is not how a real cafe program works.",
        "reveal": 3,
        "focus": 2
       }
@@ -470,7 +470,7 @@
        ]
       },
       {
-       "say": "So line 4 repeats the text, and prints 33. That is the same silent bug you met in Chapter 2!",
+       "say": "So line 4 repeats the text, and prints 33. That is the same silent bug you met in Chapter 2: no error message, only a wrong answer!",
        "highlight": [
         4
        ],
@@ -558,7 +558,7 @@
      },
      "segments": [
       {
-       "say": "Step 4. A price can have a decimal point, like 4.25. So line 2 uses float."
+       "say": "Step 4. Remember the price stored as text in Chapter 3? You were promised a way to turn text into a number. Here it is: float. A price can have a decimal point, like 4.25, so line 2 uses float."
       },
       {
        "say": "A count is always whole, so line 3 uses int.",
@@ -661,6 +661,15 @@
        ]
       },
       {
+       "say": "Line 3: float turns the text 2.5 into a number, so times 2 gives 5.0.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
        "say": "Now the surprises. Line 4: float accepts text without a decimal point, and adds point 0.",
        "highlight": [
         4
@@ -691,6 +700,39 @@
     },
     {
      "visual": {
+      "type": "code",
+      "file": "examples/ex05_int_text.py",
+      "heading": "Step 5: a number is not text",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ex05_int_text.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "Careful with one difference. Int accepts the number 3.9, and cuts it down to 3."
+      },
+      {
+       "say": "But the text 3.9, in quotation marks, is not a whole number. Int stops with a Value Error, instead of cutting off the decimals.",
+       "highlight": [
+        3
+       ],
+       "error": "examples/ex05_int_text.expected_error",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "So for answers with a decimal point, use float.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
       "type": "quiz",
       "question": "What does `int(7.8)` give?",
       "options": [
@@ -709,7 +751,7 @@
      ],
      "after": [
       {
-       "say": "A, 7. Int cuts off the decimals. It never rounds up."
+       "say": "A, 7. Int cuts off the decimals. It does not round."
       }
      ]
     },
@@ -756,7 +798,7 @@
        "say": "Back to the mission. Lines 2 to 4 ask the three questions. The two counts are converted with int."
       },
       {
-       "say": "Lines 5 and 6 store the prices, as before.",
+       "say": "Lines 5 and 6 store the prices, as before. To keep the program short, the member discount from Chapter 3 is left out this time.",
        "highlight": [
         5,
         6
@@ -787,7 +829,7 @@
        ]
       },
       {
-       "say": "Look at lines 2 to 4 once more. Two answers go into int.",
+       "say": "Look at lines 2 to 4 once more. Which answer is different?",
        "highlight": [
         2,
         3,
@@ -961,7 +1003,7 @@
        "focus": 1
       },
       {
-       "say": "Compare its line 3 with the line Asha wrote."
+       "say": "Check every line before you trust it."
       }
      ],
      "ask": {
@@ -1185,10 +1227,10 @@
      },
      "segments": [
       {
-       "say": "Mistake 1 is the AI's first mistake. Line 2 reads the answer, but never converts it."
+       "say": "Mistake 1 is the same kind of mistake as the AI's first one. Line 2 reads the answer, but never converts it."
       },
       {
-       "say": "So line 3 tries to add 1 to the text 3, and Python stops with a Type Error.",
+       "say": "So line 3 tries to add 1 to the text 3, and Python stops with a Type Error. With plus, the message says can only concatenate. With minus, it said unsupported operand. The cause is the same.",
        "highlight": [
         3
        ],
@@ -1224,7 +1266,7 @@
        ]
       },
       {
-       "say": "The message says invalid literal. Here, a literal means the text Python tried to read as a number. The fix: use float for money.",
+       "say": "The message says invalid literal with base 10. A literal is the text Python tried to read, and base 10 means normal digits. The fix: use float for money.",
        "out_highlight": []
       }
      ]
@@ -1549,10 +1591,10 @@
      },
      "segments": [
       {
-       "say": "Four friends finish their meal at the Corner Cafe, and they want to share the bill. Who pays how much?"
+       "say": "Four friends finish their meal at the Corner Cafe. They want to add a tip and share the bill. Who pays how much?"
       },
       {
-       "say": "In Chapter 5, the first boss level, you will build a bill splitter with everything from Chapters 1 to 4."
+       "say": "In Chapter 5, the first boss level, you will build a bill splitter. It asks for the total, the tip and the number of people, then prints each share."
       },
       {
        "say": "Do the warm-up tasks now. They take about ten minutes.",
