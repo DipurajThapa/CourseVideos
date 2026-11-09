@@ -42,7 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import storyboard as sb  # noqa: E402
 from common import ROOT, load_json, now_iso, save_json  # noqa: E402
 
-RENDERER_VERSION = "1.0.0"
+RENDERER_VERSION = "1.1.0"
 W, H, FPS = 1920, 1080, 30
 PIPER_VERSION = "1.8.0"
 VOICE = "en_US-lessac-medium"
@@ -657,14 +657,21 @@ def captions(beats: list[dict]) -> str:
         text = b["beat"].get("narration", "").strip()
         if not text:
             continue
-        sentences = re.split(r"(?<=[.!?])\s+", text)
         chunks = []
-        for sentence in sentences:
-            words = sentence.split()
-            while words:
-                take = len(words) if len(words) <= 14 else min(12, len(words) // 2 + 1)
-                chunks.append(" ".join(words[:take]))
-                words = words[take:]
+        for sentence in re.split(r"(?<=[.!?])\s+", text):
+            # pack whole clauses (split after commas and colons) into cues of at most 12 words
+            current: list[str] = []
+            for clause in re.split(r"(?<=[,:;])\s+", sentence):
+                words = clause.split()
+                if current and len(current) + len(words) > 12:
+                    chunks.append(" ".join(current))
+                    current = []
+                while len(words) > 12:
+                    chunks.append(" ".join(words[:10]))
+                    words = words[10:]
+                current += words
+            if current:
+                chunks.append(" ".join(current))
         total_words = sum(len(c.split()) for c in chunks)
         t = b["start_frame"] / FPS + b["lead"]
         for chunk in chunks:
@@ -791,7 +798,8 @@ def render(chapter: Path) -> int:
         ffmpeg(["-i", str(work / "video.mp4"), "-i", str(work / "audio.wav"), "-i", str(chapter / sb.CAPTIONS_FILE),
                 "-f", "ffmetadata", "-i", str(work / "meta.txt"),
                 "-map", "0:v", "-map", "1:a", "-map", "2:s", "-map_metadata", "3", "-map_chapters", "3",
-                "-c:v", "copy", "-c:a", "aac", "-b:a", "128k", "-ar", "48000", "-c:s", "mov_text",
+                "-c:v", "copy", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "128k", "-ar", "48000",
+                "-c:s", "mov_text",
                 "-metadata:s:s:0", "language=eng", "-metadata:s:a:0", "language=eng",
                 "-movflags", "+faststart", str(final_tmp)])
         shutil.move(str(final_tmp), chapter / sb.VIDEO_FILE)
