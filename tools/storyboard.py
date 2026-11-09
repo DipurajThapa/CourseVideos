@@ -121,6 +121,33 @@ def spoken_text(beat: dict) -> str:
     return " ".join(p["text"] for p in phases(beat) if p["kind"] == "say" and p["text"])
 
 
+SCREEN_TEXT_KEYS = ("question", "explain", "hint", "heading", "title", "subtitle", "kicker", "note", "badge")
+SCREEN_LIST_KEYS = ("options", "items", "body")
+
+
+def screen_text(beat: dict) -> str:
+    """All text shown on screen in a beat (questions, quiz options, headings, bullets, table cells)."""
+    parts = []
+    ask = ask_of(beat)
+    if ask:
+        parts.append(ask.get("question", ""))
+    for phase in phases(beat):
+        visual = phase["visual"]
+        for key in SCREEN_TEXT_KEYS:
+            if isinstance(visual.get(key), str):
+                parts.append(visual[key])
+        for key in SCREEN_LIST_KEYS:
+            value = visual.get(key)
+            if isinstance(value, list):
+                parts.extend(v for v in value if isinstance(v, str))
+            elif isinstance(value, str):
+                parts.append(value)
+        for row in visual.get("rows", []) or []:
+            if isinstance(row, list):
+                parts.extend(c for c in row if isinstance(c, str))
+    return " ".join(dict.fromkeys(p for p in parts if p))
+
+
 def referenced_files(board: dict) -> list[str]:
     files = []
     for _, beat in beats(board):
@@ -190,7 +217,8 @@ def validate(chapter_dir: Path, board: dict, kind: str, runnable: set[str]) -> l
     banned = [b.strip().lower() for b in (Path(__file__).resolve().parent / "banned_phrases.txt")
               .read_text(encoding="utf-8").splitlines() if b.strip() and not b.startswith("#")]
     for scene in scenes:
-        texts = [scene.get("direction", ""), scene.get("title", "")] + [spoken_text(b) for b in scene.get("beats", [])]
+        texts = ([scene.get("direction", ""), scene.get("title", "")] + [spoken_text(b) for b in scene.get("beats", [])]
+                 + [screen_text(b) for b in scene.get("beats", [])])
         for text in texts:
             low = text.lower()
             for phrase in banned:

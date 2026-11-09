@@ -1,404 +1,1728 @@
 {
-  "chapter_id": "<language>-NN",
-  "number": 0,
-  "title": "Chapter NN: <Title>",
-  "video_title": "<Language> Chapter NN: <Title>",
-  "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
-  "scenes": [
+ "chapter_id": "python-09",
+ "number": 9,
+ "version": 3,
+ "title": "Chapter 9: Debugging with AI: Reading Errors and Tracebacks",
+ "video_title": "Python Chapter 9: Debugging with AI, Reading Errors and Tracebacks",
+ "summary": "Asha's end-of-day report prints a wrong total with no error. Follow her as she learns the three kinds of bugs, reads a traceback from the bottom up, finds a hidden bug with print debugging and writes a debugging prompt with the code, the exact error, the expected result and the actual result. Then watch her handle a day with no sales with an AI assistant at all six stages, catching a check that let 0 through and a change she did not ask for.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the silent bug: a wrong total with no error. Then the title and the AI tease, then the working report as the mission.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
-      "beats": [
-        {
-          "visual": {
-            "type": "title",
-            "kicker": "CHAPTER NN",
-            "title": "<Title>",
-            "subtitle": "<quest line>",
-            "badge": "Reward: 100 XP and the <Badge> badge"
-          },
-          "segments": [
-            {
-              "say": "Welcome to Code Quest, Chapter NN."
-            },
-            {
-              "say": "<one sentence on what the learner will do>."
-            }
-          ]
-        },
-        {
-          "visual": {
-            "type": "code",
-            "heading": "<what to look at>",
-            "file": "examples/<flawed>.py"
-          },
-          "segments": [
-            {
-              "say": "<set up the hook>"
-            },
-            {
-              "say": "<point at the line>",
-              "highlight": [
-                2
-              ]
-            }
-          ],
-          "ask": {
-            "question": "<the question, shown with a 10-second timer>",
-            "seconds": 10
-          },
-          "after": [
-            {
-              "say": "<reveal>",
-              "output": "examples/<flawed>.expected"
-            }
-          ]
-        }
+     "visual": {
+      "type": "bullets",
+      "heading": "A report that is wrong",
+      "label": "One evening",
+      "reveal": 0,
+      "items": [
+       "Asha's end-of-day report adds up the cafe's sales.",
+       "It prints a total that is much too small.",
+       "No error. No crash. Nothing looks broken."
       ]
+     },
+     "segments": [
+      {
+       "say": "One evening, Asha runs her end-of-day report. It adds up the cafe's sales.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "It prints a total that is much too small.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "But there is no error, and no crash. Nothing looks broken. How do you find a bug that hides?",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
     },
     {
-      "id": "learning-goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Learning goals",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 9",
+      "title": "Debugging with AI: Reading Errors and Tracebacks",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Bug Hunter badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 9. Today you become a bug hunter."
+      },
+      {
+       "say": "And an AI assistant will promise to stop a crash. Its fix will crash on the same line.",
+       "subtitle": "Find the cause. Then fix it."
+      }
+     ]
     },
     {
-      "id": "why-this-matters",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Why this matters",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "the-idea",
-      "section": "The idea",
-      "title": "The idea",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "The idea",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "build-it-step-by-step",
-      "section": "Build it step by step",
-      "title": "Build it step by step",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Build it step by step",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "see-the-outcome",
-      "section": "See the outcome",
-      "title": "See the outcome",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "See the outcome",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work-with-ai",
-      "section": "Work with AI",
-      "title": "Work with AI",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Work with AI",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "common-mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Common mistakes",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "think-beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Think beyond",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Recap",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Practice",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "whats-next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "What's next",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_day_report.py",
+      "heading": "Today's mission: a report you can trust",
+      "output": "examples/ex07_day_report.expected",
+      "note": "The user typed: 3, then 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission. Asha's end-of-day report, with three bugs found and fixed.",
+       "highlight": [
+        3,
+        6
+       ],
+       "out_highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Its total matches the money she took, and she can explain why. Let's start hunting.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Tell a syntax error, a runtime error and a logic error apart.",
+       "Read a traceback from the bottom up.",
+       "Find a logic error by printing values inside a loop.",
+       "Write a debugging prompt with the code, the exact error, the expected and the actual result.",
+       "Test a fix with several cases, including the one that failed."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Tell the three kinds of bugs apart.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Read a traceback, from the bottom up.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Find a hidden bug by printing values inside a loop.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Write a debugging prompt that gives an AI everything it needs.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And test a fix with several cases, including the one that failed.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a bug, then the speed point, then the vague AI question.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **bug** is a mistake that makes a program stop or give a wrong result.",
+       "Every programmer writes bugs. Good programmers find them fast.",
+       "A vague question to an AI often gets a confident fix for the wrong problem."
+      ]
+     },
+     "segments": [
+      {
+       "say": "A bug is a mistake that makes a program stop, or give a wrong result. Every programmer writes bugs, every day.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And here is the AI part. A vague question, like my code is wrong, fix it, often gets a confident fix for the wrong problem.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: three kinds of bugs",
+   "direction": "Teach the three kinds with the table, then the recipe analogy. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Three kinds of bugs",
+      "label": "The idea",
+      "columns": [
+       "Kind",
+       "When it happens",
+       "What you see"
+      ],
+      "rows": [
+       [
+        "Syntax error",
+        "Before the program starts",
+        "An error report; no line runs"
+       ],
+       [
+        "Runtime error",
+        "While the program runs",
+        "Some output, then a traceback"
+       ],
+       [
+        "Logic error",
+        "The program finishes",
+        "A wrong result and no error at all"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Bugs come in three kinds, and each one shows itself in a different way."
+      },
+      {
+       "say": "A syntax error means Python cannot read the file. So it runs nothing at all, not even line 1.",
+       "focus_row": 0
+      },
+      {
+       "say": "A runtime error happens while the program runs. Some lines print, then Python stops and prints a report.",
+       "focus_row": 1
+      },
+      {
+       "say": "A logic error is the sneakiest. The program finishes, with no message. But the result is wrong.",
+       "focus_row": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Like a recipe",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "Syntax error: a word nobody can read. Cooking never starts.",
+       "Runtime error: a missing ingredient. Cooking stops halfway.",
+       "Logic error: salt instead of sugar. The cake comes out, and it tastes wrong.",
+       "Unlike a cook, Python never guesses what you meant."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a recipe. A syntax error is a smudged word that nobody can read, so cooking never starts."
+      },
+      {
+       "say": "A runtime error is a missing ingredient, so cooking stops halfway.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And a logic error is salt instead of sugar. The cake comes out, and it tastes wrong.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "But unlike a cook, Python never guesses what you meant.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A program prints two lines, then stops with an error report. Which kind of bug is it?",
+      "options": [
+       "A runtime error",
+       "A syntax error",
+       "A logic error",
+       "It is not a bug"
+      ],
+      "answer": 0,
+      "explain": "Some lines ran, then Python stopped: that is a runtime error."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A program prints two lines, then stops with an error report. Which kind of bug is it?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. A runtime error. Some lines ran first, so Python could read the file."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Syntax error: nothing runs.",
+       "Runtime error: it stops partway.",
+       "Logic error: a wrong result, no message."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far."
+      },
+      {
+       "say": "Next, Asha meets each kind of bug in her report."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: A syntax error stops everything",
+   "direction": "Show the file with the missing bracket, ask whether line 2 prints, then read the report.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_syntax.py",
+      "heading": "Step 1: One missing bracket",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict what prints before the report appears."
+     },
+     "segments": [
+      {
+       "say": "Step 1. Asha's report starts with three lines. Line 2 prints the heading. It is correct."
+      },
+      {
+       "say": "Line 4 prints the tea price. Look at its end: the closing bracket is missing.",
+       "highlight": [
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Line 2 is correct. Does it print before Python reports the error?"
+     },
+     "after": [
+      {
+       "say": "No. Nothing prints at all. Python reads the whole file before it runs any line, and it could not read line 4.",
+       "error": "examples/ex01_syntax.expected_error",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The report names the file and line 4. And the last line says it: a bracket was never closed.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The fix: add the closing bracket at the end of line 4.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Read a traceback from the bottom up",
+   "direction": "Predict which lines print before the crash. Then read the traceback from the bottom up, one line at a time. Then find the cause one line earlier and show the fix.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_runtime.py",
+      "heading": "Step 2: A crash partway",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict what prints before the report appears.",
+      "note": "The user will type: 12"
+     },
+     "segments": [
+      {
+       "say": "Step 2. Line 3 asks how many cups of tea were sold. Remember Chapter 4: input always gives back text."
+      },
+      {
+       "say": "Line 4 prints the answer. Line 5 multiplies the cups by the tea price, 3.5.",
+       "highlight": [
+        4,
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types 12. Which lines print before Python stops?"
+     },
+     "after": [
+      {
+       "say": "Lines 2, 3 and 4 run, so their output appears. Then Python stops at line 5.",
+       "error": "examples/ex02_runtime.expected_error",
+       "highlight": [
+        2,
+        3,
+        4
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_runtime.py",
+      "heading": "Read it from the bottom up",
+      "highlight": [
+       5
+      ],
+      "error": "examples/ex02_runtime.expected_error"
+     },
+     "segments": [
+      {
+       "say": "This report is called a traceback. Read it from the bottom up. The last line names the kind of error, a Type Error, and describes it.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "A sequence is a value made of parts in order, and a string is one. Python cannot multiply text by a decimal number."
+      },
+      {
+       "say": "The two lines above show the code, and the markers point at the part that failed: cups times 3.5.",
+       "out_highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Above that: the file, and line 5.",
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "And the first line says: most recent call last. It means the newest step is at the bottom. In programs this size, there is only one step.",
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_runtime_fixed.py",
+      "heading": "The cause is one line earlier",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ex03_runtime_fixed.expected",
+      "note": "The user typed: 12"
+     },
+     "segments": [
+      {
+       "say": "Here is the key idea. The line Python names is where it noticed the problem. The cause can be earlier."
+      },
+      {
+       "say": "Line 3 stored the answer as text. So the fix is on line 3: int, around the input.",
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Now 12 cups cost 42.00.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Spot a logic error",
+   "direction": "Teach: work out the expected result first. Ask for the expected total, then reveal the wrong one.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_logic.py",
+      "heading": "Step 3: Add up three sales",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Work out the expected total first.",
+      "note": "The user will type: 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Step 3. This loop adds up three sales. Line 2 starts the total at 0."
+      },
+      {
+       "say": "Line 3 makes three passes. Line 4 asks for the price of each sale. Line 5 adds to the total.",
+       "highlight": [
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Before you run any program, work out the expected result by hand. Otherwise, a wrong answer looks fine.",
+       "highlight": []
+      }
+     ],
+     "ask": {
+      "question": "The user types 4.50, 6.00 and 3.50. What total should the program print?"
+     },
+     "after": [
+      {
+       "say": "It should print 14.00. But it prints 6.00!",
+       "output": "examples/ex04_logic.expected",
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "No error, no crash. Only a wrong number. That is a logic error, and only your expected result caught it.",
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Print debugging",
+   "direction": "Teach print debugging with one debug line, ask what it shows after sale 1, reveal, find the cause, fix.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_print_debug.py",
+      "heading": "Step 4: Look inside the loop",
+      "highlight": [
+       6
+      ],
+      "hidden_text": "Predict the first DEBUG line.",
+      "note": "The user will type: 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Step 4. To find a hidden bug, print the values of your variables while the program runs. This is called print debugging."
+      },
+      {
+       "say": "Asha adds line 6 inside the loop. It shows sale, price and total on every pass. It starts with the word DEBUG, so she can find it and remove it later."
+      },
+      {
+       "say": "Line 5 runs before the debug line, so you see the total after it changes.",
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "On the first pass, sale is 1 and price is 4.5. What total does the DEBUG line show?"
+     },
+     "after": [
+      {
+       "say": "Total is 1. It should be 4.5.",
+       "output": "examples/ex05_print_debug.expected",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Then 3, then 6. The total grows by the sale number, 1, 2 and 3, not by the price.",
+       "out_highlight": [
+        4,
+        6
+       ]
+      },
+      {
+       "say": "So line 5 adds sale, where it should add price.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_logic_fixed.py",
+      "heading": "The fix: add the price",
+      "highlight": [
+       5
+      ],
+      "output": "examples/ex06_logic_fixed.expected",
+      "out_highlight": [
+       4
+      ],
+      "note": "The user typed: 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Asha changes line 5 to add price, and removes the debug line. The total is 14.00, exactly as expected."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: A debugging prompt that works",
+   "direction": "Teach the four parts of the prompt, row by row, then the cause-first rule. Quiz, then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Step 5: Four parts of a debugging prompt",
+      "label": "Build it",
+      "columns": [
+       "Part",
+       "What to paste"
+      ],
+      "rows": [
+       [
+        "Code",
+        "The whole program, or the lines around the problem"
+       ],
+       [
+        "Exact error",
+        "The full traceback, or \"no error message\""
+       ],
+       [
+        "Expected result",
+        "What you wanted, worked out by hand"
+       ],
+       [
+        "Actual result",
+        "What the program really printed"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 5. An AI cannot see your screen. So give it four things. First, the code: the real code, not a description.",
+       "focus_row": 0
+      },
+      {
+       "say": "Second, the exact error: the full traceback. If there is none, say: no error message.",
+       "focus_row": 1
+      },
+      {
+       "say": "Third, the expected result, worked out by hand. Without it, a logic error is invisible.",
+       "focus_row": 2
+      },
+      {
+       "say": "Fourth, the actual result: what the program really printed. The difference points at the bug.",
+       "focus_row": 3
+      },
+      {
+       "say": "Then ask for the cause before the fix. A cause you understand teaches you something.",
+       "focus_row": null
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Your program prints a wrong total and no error. Which parts of the prompt matter most?",
+      "options": [
+       "The traceback only",
+       "The expected result and the actual result",
+       "Your name and the date",
+       "A request to rewrite everything"
+      ],
+      "answer": 1,
+      "explain": "With no error message, only the difference between expected and actual shows the bug."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Your program prints a wrong total, and no error. Which parts of the prompt matter most?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. The expected result and the actual result. With no error message, their difference is the only clue."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Read a traceback from the bottom up.",
+       "The cause can be on an earlier line.",
+       "Print values to find a hidden bug."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Sit back, and take a slow breath."
+      },
+      {
+       "say": "You have found and fixed three kinds of bugs. Now, the whole report."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the day report",
+   "direction": "Return to the mission. Connect each line to a fix from the steps, ask for the average line, reveal. Hand over to the zero-sales test.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_day_report.py",
+      "heading": "Mission complete: the day report",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the average before the output appears.",
+      "note": "The user will type: 3, then 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Line 2 prints the heading, and every bracket is closed. Line 3 converts the number of sales with int, the fix from step 2."
+      },
+      {
+       "say": "Line 4 starts the total at 0. Lines 5 to 7 add up each price: the fix from step 4. Range goes up to sales plus 1, so it asks once for each sale.",
+       "highlight": [
+        4,
+        5,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Line 8 divides the total by the number of sales, and lines 9 to 11 print the report, with two decimal places.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The total is 14.00 and there are 3 sales. What does line 11 print?"
+     },
+     "after": [
+      {
+       "say": "Average, 4.67. 14 divided by 3 is 4.666 and more, and two decimal places round it to 4.67.",
+       "output": "examples/ex07_day_report.expected",
+       "highlight": [
+        8,
+        11
+       ],
+       "out_highlight": [
+        8
+       ]
+      },
+      {
+       "say": "And the total is 14.00, the money Asha took. Mission complete!",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        7
+       ]
+      },
+      {
+       "say": "But Asha has one more test in mind. What happens on a day with no sales at all? She will find out, with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one day with no sales",
+   "direction": "Teach the structured prompt skill. One conversation per stage, all about 0 sales. Stage 3 plants the >= mistake, stage 4 catches it with a case list, stage 5 fixes it and re-runs every case, stage 6 catches an ignored instruction.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: the debugging prompt",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Give the code, the exact error, the expected result and the actual result.",
+       "Ask for the cause before the fix.",
+       "Test every fix yourself. Never paste private data."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is the debugging prompt: the code, the exact error, the expected result, and the actual result.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Ask for the cause first. Then test every fix yourself. And the safety habits from Chapter 1 still apply.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: a bug hunt, not a fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner. My day report crashes when I type 0 sales. Do not fix anything yet and do not write code. Give me a short plan to find the cause."
+       },
+       {
+        "role": "ai",
+        "text": "1. Run it with 0 and copy the full traceback.\n2. Read the last line: the kind of error.\n3. Find the line number and the values used on that line.\n4. Decide what the report should print for 0 sales.\n5. Change one thing, then test 0 and the cases that already worked."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha types 0 sales, and the report crashes. Before any fix, she asks for a plan to find the cause. No code yet."
+      },
+      {
+       "say": "The AI gives five steps. Copy the traceback, and read its last line. Find the line and its values. Decide what 0 sales should print. Then test 0, and the cases that worked.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: read it yourself first",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here is the error for 0 sales. My reading: the kind of error is ZeroDivisionError, it happened on line 8, and the cause is that sales is 0. Do not fix the code. Is my reading right?",
+        "code": "examples/ai_zero_crash.py",
+        "code_lines": [
+         8
+        ],
+        "file": "examples/ai_zero_crash.py",
+        "error": "examples/ai_zero_crash.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "Yes, all three points are right. The markers point at `total / sales`. Dividing by zero has no answer, so Python stops."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha follows the plan. She runs the report with 0, and reads the traceback herself."
+      },
+      {
+       "say": "She writes down her reading: a Zero Division Error, on line 8, because sales is 0. Then she asks the AI to check her reading, without fixing anything."
+      },
+      {
+       "say": "The AI agrees with all three points. Dividing by zero has no answer, so Python stops.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: a check for 0 sales",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Add a check so that 0 sales prints No sales today. instead of crashing. Change only what is needed. Tell me exactly what it prints for 0 sales."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the check. For 0 sales, the report prints `No sales today.`",
+        "code": "examples/ai_check_flawed.py",
+        "code_lines": [
+         8,
+         9,
+         10,
+         11,
+         12,
+         13,
+         14
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks for a check, so that 0 sales prints, No sales today. She asks what it prints for 0."
+      },
+      {
+       "say": "The AI adds an if before the average, and promises: no sales today. It sounds completely sure.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Look at line 8, and remember the boundary values from Chapter 6."
+      }
+     ],
+     "ask": {
+      "question": "The AI says 0 sales prints `No sales today.` Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Greater than or equal to 0 is true when sales is 0. So the program still reaches the division."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_check_flawed.py",
+      "heading": "Asha runs it with 0",
+      "highlight": [
+       8,
+       9
+      ],
+      "error": "examples/ai_check_flawed.expected_error",
+      "note": "The user typed: 0"
+     },
+     "segments": [
+      {
+       "say": "Asha runs it with 0. The same crash, now on line 9. The AI's fix crashed on the same division.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: a list of cases",
+      "messages": [
+       {
+        "role": "you",
+        "text": "List test cases for my report, with the exact input and the expected last lines for each. Include 0 sales, 1 sale and 3 sales."
+       },
+       {
+        "role": "ai",
+        "text": "1. 0 sales: `No sales today.`\n2. 1 sale of 5.00: Total 5.00, Average 5.00.\n3. 3 sales of 4.50, 6.00 and 3.50: Total 14.00, Average 4.67."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks for test cases, each with the exact input and the expected result: 0 sales, 1 sale and 3 sales."
+      },
+      {
+       "say": "The AI lists three cases. 1 sale and 0 sales are edge cases: unusual answers that often break code.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_test_one.py",
+      "heading": "Case 2: one sale",
+      "highlight": [
+       8
+      ],
+      "output": "examples/ai_test_one.expected",
+      "out_highlight": [
+       5,
+       6
+      ],
+      "note": "The user typed: 1, then 5.00"
+     },
+     "segments": [
+      {
+       "say": "She runs every case on the AI's code. One sale of 5.00: total 5.00, average 5.00. A pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_test_three.py",
+      "heading": "Case 3: three sales",
+      "highlight": [
+       8
+      ],
+      "output": "examples/ai_test_three.expected",
+      "out_highlight": [
+       7,
+       8
+      ],
+      "note": "The user typed: 3, then 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Three sales: 14.00 and 4.67. Another pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Three cases on the AI's code",
+      "label": "Test",
+      "columns": [
+       "Case",
+       "Expected",
+       "AI's code",
+       "Fixed code"
+      ],
+      "rows": [
+       [
+        "0 sales",
+        "`No sales today.`",
+        "FAIL: `ZeroDivisionError`",
+        ""
+       ],
+       [
+        "1 sale of 5.00",
+        "Total 5.00, Average 5.00",
+        "pass",
+        ""
+       ],
+       [
+        "3 sales: 4.50, 6.00, 3.50",
+        "Total 14.00, Average 4.67",
+        "pass",
+        ""
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "So two cases pass. But the case that matters, 0 sales, fails.",
+       "focus_row": 0
+      },
+      {
+       "say": "The AI's code only works when there was nothing to fix.",
+       "focus_row": null
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the structured prompt",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Code: my report with your check. Exact error: below. Expected result for 0 sales: No sales today. Actual result: it crashed. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_check_flawed.py",
+        "code_lines": [
+         8,
+         9
+        ],
+        "file": "examples/ai_check_flawed.py",
+        "error": "examples/ai_check_flawed.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "The cause is line 8. `sales >= 0` is true when sales is 0, so line 9 still divides by 0.\nThe smallest fix: `if sales > 0:`"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Now Asha writes the full debugging prompt: the code, the exact error, the expected result, no sales today, and the actual result, a crash."
+      },
+      {
+       "say": "She asks for the cause first. The AI names line 8: greater than or equal lets 0 through. The smallest fix is greater than 0.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_check_fixed.py",
+      "heading": "The fix: greater than 0",
+      "highlight": [
+       8
+      ],
+      "output": "examples/ai_check_fixed.expected",
+      "out_highlight": [
+       3
+      ],
+      "note": "The user typed: 0"
+     },
+     "segments": [
+      {
+       "say": "Asha changes line 8 and runs it with 0. No sales today. No crash."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_fixed_one.py",
+      "heading": "Run every case again",
+      "highlight": [
+       8
+      ],
+      "output": "examples/ai_fixed_one.expected",
+      "out_highlight": [
+       5,
+       6
+      ],
+      "note": "The user typed: 1, then 5.00"
+     },
+     "segments": [
+      {
+       "say": "A fix can break a case that worked before. So she runs every case again. One sale: still 5.00."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_fixed_three.py",
+      "heading": "Run every case again",
+      "highlight": [
+       8
+      ],
+      "output": "examples/ai_fixed_three.expected",
+      "out_highlight": [
+       7,
+       8
+      ],
+      "note": "The user typed: 3, then 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Three sales: still 14.00 and 4.67."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Every case again, on the fixed code",
+      "label": "Test",
+      "columns": [
+       "Case",
+       "Expected",
+       "AI's code",
+       "Fixed code"
+      ],
+      "rows": [
+       [
+        "0 sales",
+        "`No sales today.`",
+        "FAIL: `ZeroDivisionError`",
+        "pass"
+       ],
+       [
+        "1 sale of 5.00",
+        "Total 5.00, Average 5.00",
+        "pass",
+        "pass"
+       ],
+       [
+        "3 sales: 4.50, 6.00, 3.50",
+        "Total 14.00, Average 4.67",
+        "pass",
+        "pass"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "All three cases pass on the fixed code.",
+       "focus_row": 0
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: easier to debug next time",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My report works. Suggest at most two changes that make future bugs easier to find, each with one reason. Do not change what it prints."
+       },
+       {
+        "role": "ai",
+        "text": "1. Rename `sale` to `sale_number`, so nobody adds it by mistake instead of `price`.\n2. Keep a debug line inside the loop, so you can always see the total."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. The report works. Asha asks for at most two changes that make future bugs easier to find. And she adds: do not change what it prints."
+      },
+      {
+       "say": "Suggestion 1: rename sale to sale number, so nobody adds it instead of price. That would have prevented the bug from step 4!",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Suggestion 2: keep a debug line inside the loop, so the total is always visible."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_improve_debug.py",
+      "heading": "Testing suggestion 2",
+      "highlight": [
+       8
+      ],
+      "hidden_text": "Predict the change before the output appears.",
+      "note": "The user will type: 3, then 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Asha tries both suggestions. Line 5 uses the new name. Line 8 is the debug line the AI wants to keep."
+      }
+     ],
+     "ask": {
+      "question": "Asha said: do not change what it prints. Does suggestion 2 keep that promise?"
+     },
+     "after": [
+      {
+       "say": "No. Three extra debug lines appear in the report. The AI ignored her instruction.",
+       "output": "examples/ai_improve_debug.expected",
+       "out_highlight": [
+        4,
+        6,
+        8
+       ]
+      },
+      {
+       "say": "Debug lines are for finding a bug, not for the finished report. So Asha keeps suggestion 1 only.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_report_final.py",
+      "heading": "The finished report",
+      "highlight": [
+       5,
+       8
+      ],
+      "output": "examples/ai_report_final.expected",
+      "out_highlight": [
+       7,
+       8
+      ],
+      "note": "The user typed: 3, then 4.50, 6.00 and 3.50"
+     },
+     "segments": [
+      {
+       "say": "Here is the result: a clear name on line 5, the check on line 8, and the same report as before. Every stage helped, and Asha checked every answer herself."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI fixes your code and says it works now. What do you do next?",
+      "options": [
+       "Trust it: it explained the fix",
+       "Run only the case that failed",
+       "Ask it if it is sure",
+       "Run the case that failed and the cases that worked"
+      ],
+      "answer": 3,
+      "explain": "A fix can break something else. Test the failing case and the old cases."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI fixes your code, and says it works now. What do you do next?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Run the case that failed, and the cases that worked. A fix can break something else."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Code, exact error, expected, actual.",
+       "After a fix, run every case again."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha caught two AI mistakes: a check that let 0 through, and a change she did not ask for."
+      },
+      {
+       "say": "Next, four mistakes beginners make while debugging."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 is a spot-it with Python's own suggestion. Mistake 2 is top to bottom again. Mistake 3 is a spot-it on indentation. Mistake 4 is the decimal comma.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_comma.py",
+      "heading": "Mistake 1: your turn to spot it",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Find the mistake before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Line 3 should print the word Total and the value of total."
+      }
+     ],
+     "ask": {
+      "question": "What is missing on line 3?"
+     },
+     "after": [
+      {
+       "say": "A comma between the two values. And look at the last line: Python even suggests it.",
+       "error": "examples/err01_comma.expected_error",
+       "heading": "Mistake 1: a missing comma",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Python's suggestions are often right, so always read them.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_before.py",
+      "heading": "Mistake 2: a variable used too early",
+      "highlight": [
+       3
+      ],
+      "error": "examples/err02_before.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. Python runs from top to bottom. On line 3, total does not exist yet, so Python stops with a Name Error.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: move total equals 0 above the loop.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_indent.py",
+      "heading": "Mistake 3: spot this one too",
+      "highlight": [
+       5
+      ],
+      "hidden_text": "Find the mistake before the error appears."
+     },
+     "segments": [
+      {
+       "say": "One more. Asha adds a debug line on line 5. Compare its start with line 4."
+      }
+     ],
+     "ask": {
+      "question": "Why will Python refuse line 5?"
+     },
+     "after": [
+      {
+       "say": "Line 5 has six spaces at the start, but the block uses four. Python reports an Indentation Error.",
+       "error": "examples/err03_indent.expected_error",
+       "heading": "Mistake 3: a debug line with the wrong indentation",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: indent a debug line exactly like the line above it.",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_decimal_comma.py",
+      "heading": "Mistake 4: a decimal comma",
+      "highlight": [
+       2
+      ],
+      "error": "examples/err04_decimal_comma.expected_error",
+      "note": "The user typed: 4,50"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. In many countries, people write four and a half as 4 comma 50. Python accepts only a decimal point, so float stops with a Value Error.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The message even shows the exact text that failed. The fix: type 4 point 50.",
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Read Python's suggestions.",
+       "Create a variable before you use it.",
+       "Indent a debug line like its neighbours."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Now you know four mistakes that slow down a bug hunt."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "A program gives the right total for 1 sale, but a wrong total for 3 sales. What kind of bug is it, and what would you print inside the loop?",
+      "hint": "think about which values change on every pass."
+     },
+     "segments": [
+      {
+       "say": "First. A program gives the right total for 1 sale, but a wrong total for 3 sales. What kind of bug is it, and what would you print inside the loop?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Think about which values change on every pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "What happens if someone types a negative number of sales into Asha's report?",
+      "hint": "predict first, then run it."
+     },
+     "segments": [
+      {
+       "say": "Second. What happens if someone types a negative number of sales into Asha's report? Predict first, then run it."
+      }
+     ],
+     "after": [
+      {
+       "say": "Then decide what the report should print in that case."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "Syntax error: nothing runs. Runtime error: a traceback partway. Logic error: a wrong result, no message.",
+       "Read a traceback from the bottom up.",
+       "The line Python names is where it noticed. The cause can be earlier.",
+       "Print debugging shows values while the program runs. Remove it afterwards.",
+       "A debugging prompt: code, exact error, expected result, actual result. Cause first.",
+       "After a fix, test the case that failed and the cases that worked."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap."
+      },
+      {
+       "say": "A syntax error stops everything. A runtime error stops partway. A logic error gives a wrong result, with no message.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Read a traceback from the bottom up. The line Python names is where it noticed, and the cause can be earlier.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Print debugging shows values while the program runs.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "A debugging prompt has the code, the exact error, the expected result and the actual result.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And after a fix, test the case that failed, and the cases that worked.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A program stops on line 12 with a `TypeError`. Where can the cause be?",
+      "options": [
+       "Only on line 12",
+       "Only on the last line of the file",
+       "On line 12 or on an earlier line",
+       "Nowhere: it is a mistake in Python"
+      ],
+      "answer": 2,
+      "explain": "Line 12 is where Python noticed. A value can be wrong from an earlier line."
+     },
+     "segments": [
+      {
+       "say": "One last check. A program stops on line 12 with a Type Error. Where can the cause be?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. On line 12, or on an earlier line, like the cups from step 2."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Bug Hunter",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Bug Hunter",
+      "tile": 9
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Bug Hunter badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Fix the syntax error; Read the traceback; Add a debug line",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Find the logic error; The missing table; No ratings yet",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Three bugs, one report; Fix the AI's member price",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-up tasks, worth 10 XP each, including reading a traceback.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each. In one, a wrong total looks right by luck.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each: a report with three bugs, and an AI's member price to fix.",
+       "focus_row": 2
+      },
+      {
+       "say": "Work out the expected result before you run anything. Try each task before you open the solution.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease the guessing game: decisions, loops and input checks together. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 10",
+      "title": "Boss Level 2: The Number Guessing Game",
+      "subtitle": "Decisions, loops and input checks, together.",
+      "badge": "",
+      "tile": 10
+     },
+     "segments": [
+      {
+       "say": "Today Asha's report learned to handle 0 sales. But it still trusts every answer. Type a word instead of a number, and it crashes."
+      },
+      {
+       "say": "In Chapter 10, the second boss level, you will build a number guessing game. A secret number, hints, a limit on tries, and answers that are checked first."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 10."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }
