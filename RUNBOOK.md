@@ -90,6 +90,7 @@ First run `python3 tools/verify_chapter.py <chapter>` once and fix every failure
    ```
    Open each `contact_N.png` with the Read tool, and open full-size frames for every code, table and pause beat. Fix the storyboard until no text overflows, is cut off, overlaps or is too small to read, every highlight points at the line the narration names, and every output appears only after its pause.
    Then spawn an independent critic (Agent tool) with the storyboard, the lesson and the contact sheet paths. Ask it to score the animatic 0 to 10 against: covers every section in order; every question visible with its timer; highlights match the narration; real breathers; nothing cut off or too small; interactivity; pacing for second-language beginners; clarity; hook and payoff; ending. Fix every MUST failure and anything below 8, then preview again.
+   Optionally render a 1-minute sample for an early look: `python3 tools/render_video.py <chapter> --sample <scratch-dir>/sample.mp4`.
 3. Render the video (about 8 to 12 minutes for a 15-minute video; run it in the background and check back):
    ```bash
    python3 tools/render_video.py chapters/<language>/<NN>-<slug>

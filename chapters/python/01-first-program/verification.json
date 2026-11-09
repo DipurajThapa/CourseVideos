@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-01",
-  "run_id": "2026-11-09-f70a58",
-  "verified_at": "2026-11-09T11:49:17+00:00",
+  "run_id": "2026-11-09-8cd4cb",
+  "verified_at": "2026-11-09T15:36:30+00:00",
   "passed": true,
   "toolchains": [
     "Python 3.15.2",
@@ -19,17 +19,25 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 18,
+        "files_run": 20,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
         ],
         "results": {
-          "examples/ai_date_fixed.py": {
+          "examples/ai_code_fixed.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
-          "examples/ai_date_flawed.py": {
+          "examples/ai_code_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_receipt_final.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_receipt_typo.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -144,13 +152,13 @@
       "details": {
         "lesson.md": {
           "sentences": 122,
-          "average_words": 10.7,
+          "average_words": 10.6,
           "longest": 29
         },
         "video/script.md": {
-          "sentences": 583,
-          "average_words": 9.0,
-          "longest": 30
+          "sentences": 647,
+          "average_words": 8.9,
+          "longest": 26
         }
       }
     },
@@ -159,13 +167,13 @@
       "passed": true,
       "problems": [],
       "details": {
-        "estimated_minutes": 17.3,
-        "duration_seconds": 954.3,
-        "size_mb": 29.57,
+        "estimated_minutes": 16.8,
+        "duration_seconds": 1089.3,
+        "size_mb": 41.04,
         "scenes": 15,
-        "voice": "en_US-lessac-medium"
+        "voice": "en_US-john-medium"
       }
     }
   ],
-  "fingerprint": "8fcac0644b13b26688166bec88da568cebfc34f776dd9a1a50a71b0932254d31"
+  "fingerprint": "b3704f542db40a196893242bfd886c8915e7480bdcc45e6d27882dcf35c847ab"
 }

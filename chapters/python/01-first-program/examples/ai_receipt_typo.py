@@ -1,0 +1,11 @@
+# file: examples/ai_receipt_typo.py
+print("=========================")
+print("   CORNER CAFE RECEIPT")
+print("CAFE", "1024", "T4", sep="-")
+print("=========================")
+print("Tea", "USD 3", sep=" ............. ")
+print("Sandwich", "USD 7", sep=" ........ ")
+print("Items:", 1 + 1)
+print("Total: USD", 3 + 7)
+print("=========================")
+Print("Thank you. See you soon!")
