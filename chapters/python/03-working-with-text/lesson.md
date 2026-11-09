@@ -23,9 +23,9 @@ Almost every program shows text to people: a receipt, a message, a menu or a rep
 A **string** is a sequence of characters, such as letters, digits, spaces and symbols. Each character has a position, called its **index**. The first index is 0, not 1.
 
 ```text
- text:     C   A   F   E   -   1   0   2   4
- index:    0   1   2   3   4   5   6   7   8
- from end: -9  -8  -7  -6  -5  -4  -3  -2  -1
+ text:       C   A   F   E   -   1   0   2   4   -   T   4
+ index:      0   1   2   3   4   5   6   7   8   9  10  11
+ from end: -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2  -1
 ```
 
 You build a message in one of two ways:
@@ -35,7 +35,7 @@ You build a message in one of two ways:
 | Join with `+` | `"Hello, " + name` | Joining two or three strings |
 | f-string | `f"Hello, {name}"` | Mixing text with numbers and formatting them |
 
-An **f-string** is a string with the letter `f` in front of its opening quotation mark. Inside it, anything in curly brackets `{ }` is worked out, and its value goes into the text. Think of an f-string as a form with blank boxes. Python fills each box with a value. The comparison stops at one point: a box can also say how to show the value, for example with two decimal places.
+An **f-string** is a string with the letter `f` in front of its opening quotation mark. Inside it, anything in curly brackets `{ }` is worked out, and its value goes into the text. Think of an f-string as a form with blank boxes. Python fills each box with a value. Unlike a paper form, a box can also say how to show the value, for example with two decimal places.
 
 A string cannot be changed after it is made. Methods such as `upper()` do not change a string. They give you a new string, and the original stays the same.
 
@@ -283,7 +283,7 @@ With .2f: 3.50 and 12.50
 With .2: 3.5 and 1.2e+01
 ```
 
-Without the `f`, `.2` means two significant digits in total, not two decimal places. It looked right for 3.5 but turned 12.5 into `1.2e+01`. Asha kept `.2f`. A suggestion that works for one value can fail for another, so test with more than one.
+Without the `f`, `.2` keeps two significant digits, not two decimal places. It showed 3.5 without its zero, and it turned 12.5 into `1.2e+01`, which is 12 in scientific notation. Asha kept `.2f`. A suggestion that works for one value can fail for another, so test with more than one.
 
 ## Common mistakes
 

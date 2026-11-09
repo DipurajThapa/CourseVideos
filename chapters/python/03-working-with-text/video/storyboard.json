@@ -52,12 +52,7 @@
        "focus": 0
       },
       {
-       "say": "The amount to pay was 11.7. A real receipt says 11.70.",
-       "reveal": 2,
-       "focus": 1
-      },
-      {
-       "say": "And the prices were all over the place. Customers notice that.",
+       "say": "The amount to pay was 11.7, not 11.70, and the prices were all over the place. Customers notice that.",
        "reveal": 3,
        "focus": 2
       }
@@ -128,11 +123,7 @@
      },
      "segments": [
       {
-       "say": "Here is the plan. Five goals, one receipt.",
-       "reveal": 0
-      },
-      {
-       "say": "Join strings, and build messages with f strings.",
+       "say": "Here is the plan. Join strings, and build messages with f strings.",
        "reveal": 1,
        "focus": 0
       },
@@ -181,22 +172,12 @@
      },
      "segments": [
       {
-       "say": "Almost every program shows text to people.",
-       "reveal": 1,
-       "focus": 0
-      },
-      {
-       "say": "Think of a receipt, a menu, a message on your phone, or a report at work.",
+       "say": "Almost every program shows text to people: a receipt, a menu, a message on your phone, or a report at work.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "The data inside can be perfect. But if the text is messy, people do not trust it.",
-       "reveal": 3,
-       "focus": 2
-      },
-      {
-       "say": "So today, Asha makes her output look as good as her maths.",
+       "say": "The data inside can be perfect. But if the text is messy, people do not trust it. So today, Asha makes her output look as good as her maths.",
        "reveal": 4,
        "focus": 3
       }
@@ -218,7 +199,7 @@
       "body": [
        "Each character has a position, called its **index**. The first index is **0**."
       ],
-      "pre": " text:     C   A   F   E   -   1   0   2   4\n index:    0   1   2   3   4   5   6   7   8\n from end: -9  -8  -7  -6  -5  -4  -3  -2  -1"
+      "pre": " text:       C   A   F   E   -   1   0   2   4   -   T   4\n index:      0   1   2   3   4   5   6   7   8   9  10  11\n from end: -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2  -1"
      },
      "segments": [
       {
@@ -280,7 +261,7 @@
       "items": [
        "An `f` before the quotation mark makes an f-string.",
        "Each `{ }` is a box that Python fills with a value.",
-       "Where it stops working: a box can also say **how** to show the value.",
+       "Unlike a paper form, a box can also say **how** to show the value.",
        "A string never changes. Methods give you a **new** string."
       ]
      },
@@ -294,7 +275,7 @@
        "focus": 1
       },
       {
-       "say": "The comparison stops at one point. A box can also say how to show the value, for example with two decimal places.",
+       "say": "Unlike a paper form, a box can also say how to show the value, for example with two decimal places.",
        "reveal": 3,
        "focus": 2
       },
@@ -490,7 +471,7 @@
        ]
       },
       {
-       "say": "Dot 2 f means: a decimal number, with exactly two digits after the point.",
+       "say": "Dot 2 f means: a decimal number, with exactly two digits after the point. With more digits, Python rounds, like round in Chapter 2.",
        "highlight": [
         5,
         6,
@@ -603,7 +584,7 @@
      },
      "segments": [
       {
-       "say": "Line 4 prints a header. Inside the brackets, Asha writes text in single quotation marks."
+       "say": "Line 4 prints a header. Inside the brackets, Asha writes text in single quotation marks, because the f string itself uses double ones. Mixing them tells Python where each string ends."
       },
       {
        "say": "Lines 5 and 6 use the same widths: 10 on the left for the name, and 8 on the right for the price, with dot 2 f.",
@@ -652,11 +633,11 @@
       "question": "Which code shows the price `6` as `6.00`, right-aligned in 8 characters?",
       "options": [
        "`{price:<8.2f}`",
-       "`{price:>8.2f}`",
        "`{price:^8}`",
-       "`{price:8.2}`"
+       "`{price:8.2}`",
+       "`{price:>8.2f}`"
       ],
-      "answer": 1,
+      "answer": 3,
       "explain": "`>` aligns right, `8` is the width and `.2f` gives two decimal places."
      },
      "segments": [
@@ -666,7 +647,7 @@
      ],
      "after": [
       {
-       "say": "B. The arrow points right, 8 is the width, and dot 2 f gives two decimals."
+       "say": "D. The arrow points right, 8 is the width, and dot 2 f gives two decimals."
       }
      ]
     },
@@ -681,7 +662,7 @@
      },
      "segments": [
       {
-       "say": "Breather. Unclench your jaw. You can already format numbers like a professional."
+       "say": "Breather. Relax your shoulders. You can already format numbers like a professional."
       },
       {
        "say": "Next, Asha cleans up the text itself."
@@ -918,6 +899,13 @@
        ]
       },
       {
+       "say": "Line 13 builds the tea label with an f string. Line 14 repeats a hyphen 24 times, the way text times a number worked in Chapter 2.",
+       "highlight": [
+        13,
+        14
+       ]
+      },
+      {
        "say": "Line 16 centres the cafe name, filled with equals signs. Then every amount line uses 16 characters for the label and 8 for the amount.",
        "highlight": [
         16,
@@ -1098,7 +1086,7 @@
        "focus": 1
       },
       {
-       "say": "Look at line 4 carefully. Remember how an f string starts."
+       "say": "Look at line 4 carefully."
       }
      ],
      "ask": {
@@ -1162,7 +1150,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "My price came from a list of text, so I stored it with quotation marks. Now I get this error. First explain the cause and the line, then the smallest fix.",
+        "text": "I copied my price from the menu sheet, so I stored it with quotation marks. Now I get this error. First explain the cause and the line, then the smallest fix.",
         "code": "examples/ai_line_text_price.py",
         "code_lines": [
          3,
@@ -1180,7 +1168,7 @@
      },
      "segments": [
       {
-       "say": "Stage 5: debug. Later, Asha copies a price from a list of text, so it has quotation marks. Python stops with a Value Error. She pastes the code and the full error."
+       "say": "Stage 5: debug. Later, Asha copies a price from the menu sheet, with quotation marks around it. Python stops with a Value Error. She pastes the code and the full error."
       },
       {
        "say": "She asks for the cause first. The AI explains that the f code only works for numbers, and the price is a string. The fix: remove the quotation marks.",
@@ -1227,9 +1215,48 @@
        "focus": 1
       },
       {
-       "say": "Asha tests both codes with two prices. For 3.5, dot 2 looks fine. But for 12.5, it prints one point two, e plus zero one! Dot 2 means two digits in total. The AI was wrong again.",
+       "say": "Asha does not accept it yet. She tests both codes with two prices.",
        "reveal": 3,
        "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_short_spec.py",
+      "heading": "Asha's test: dot 2 f against dot 2",
+      "highlight": [
+       4
+      ],
+      "output": "examples/ai_short_spec.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "With dot 2 f, both prices show two decimal places: 3.50 and 12.50."
+      },
+      {
+       "say": "With dot 2, the price 3.5 loses its zero. And 12.5 becomes one point two, e plus zero one. That is 12, in scientific notation!",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Dot 2 keeps two significant digits, not two decimal places. The AI was wrong again.",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
       }
      ]
     },
@@ -1254,30 +1281,6 @@
       },
       {
        "say": "Both prices line up, with two decimals. Two AI mistakes caught, both by comparing the real output with the target."
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "quiz",
-      "question": "AI code prints `{price:.2f}` as plain text. What is missing?",
-      "options": [
-       "A colon",
-       "The `f` before the opening quotation mark",
-       "A width",
-       "The `print()` call"
-      ],
-      "answer": 1,
-      "explain": "Without the `f`, curly brackets are ordinary characters."
-     },
-     "segments": [
-      {
-       "say": "Quick check. Some code prints the curly brackets and the format code as plain text. What is missing?"
-      }
-     ],
-     "after": [
-      {
-       "say": "B. The f before the opening quotation mark."
       }
      ]
     },
@@ -1421,78 +1424,10 @@
      },
      "segments": [
       {
-       "say": "Mistake 4 is the one Asha debugged with the AI. A price in quotation marks is a string.",
-       "highlight": [
-        2
-       ]
-      },
-      {
-       "say": "Dot 2 f only works for numbers, so Python stops with a Value Error.",
-       "highlight": [
-        3
-       ],
+       "say": "Mistake 4 is the Value Error Asha debugged with the AI: dot 2 f on a price in quotation marks. Store a number instead, and in Chapter 4 you will learn to turn text into a number.",
        "out_highlight": [
         -1
        ]
-      },
-      {
-       "say": "Store a number instead. In Chapter 4, you will learn to turn text into a number.",
-       "out_highlight": []
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "table",
-      "heading": "Read the last line first",
-      "label": "Common mistakes",
-      "columns": [
-       "Error",
-       "Usual cause",
-       "Fix"
-      ],
-      "rows": [
-       [
-        "`TypeError: can only concatenate str ...`",
-        "`+` with text and a number",
-        "Use an f-string"
-       ],
-       [
-        "`IndexError: string index out of range`",
-        "An index that is too large",
-        "Last index is `len() - 1`"
-       ],
-       [
-        "`TypeError: ... does not support item assignment`",
-        "Changing one character",
-        "Make a new string"
-       ],
-       [
-        "`ValueError: Unknown format code 'f' ...`",
-        "`.2f` on text",
-        "Store a number"
-       ]
-      ]
-     },
-     "segments": [
-      {
-       "say": "Here are all four, by the last line of the error."
-      },
-      {
-       "say": "Can only concatenate: a plus sign with text and a number.",
-       "focus_row": 0
-      },
-      {
-       "say": "Index out of range: an index that is too large.",
-       "focus_row": 1
-      },
-      {
-       "say": "Does not support item assignment: changing one character.",
-       "focus_row": 2
-      },
-      {
-       "say": "Unknown format code f: dot 2 f used on text.",
-       "focus_row": 3
       }
      ]
     },
@@ -1502,11 +1437,11 @@
       "question": "A string has 5 characters. What is its last index?",
       "options": [
        "5",
+       "6",
        "4",
-       "0",
-       "6"
+       "0"
       ],
-      "answer": 1,
+      "answer": 2,
       "explain": "Indexes start at 0, so 5 characters have the indexes 0 to 4."
      },
      "segments": [
@@ -1516,7 +1451,7 @@
      ],
      "after": [
       {
-       "say": "B, 4. Five characters have the indexes 0, 1, 2, 3 and 4."
+       "say": "C, 4. Five characters have the indexes 0, 1, 2, 3 and 4."
       }
      ]
     },
@@ -1724,7 +1659,7 @@
        "focus_row": 0
       },
       {
-       "say": "Three apply tasks, worth 20 each, including a menu in columns.",
+       "say": "Three apply tasks, worth 20 each.",
        "focus_row": 1
       },
       {
