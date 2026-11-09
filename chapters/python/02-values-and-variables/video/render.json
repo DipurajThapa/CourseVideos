@@ -1,141 +1,145 @@
 {
   "chapter_id": "python-02",
-  "rendered_at": "2026-11-09T10:51:06+00:00",
-  "renderer_version": "1.1.0",
-  "storyboard_sha256": "4b70cc1e53c91969589bc52afebc2338a412dbc862e73b655fa3bec188fd4d7c",
-  "inputs_sha256": "dacd5ae9d9f44988d5eb204307850bd9ce0ede6b2aba6e50dfdf48db2d6b009e",
-  "video_sha256": "f83a46e3e7ea6de69fdf1774ff27a9959ee174ab07609f77190a2317cb740f5b",
-  "duration_seconds": 848.6,
-  "size_mb": 20.54,
+  "rendered_at": "2026-11-09T18:59:13+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "3cc1c3b4b2dee1e87d7e1aadabcb9c2e39093738963ef75588ab1bac387e510d",
+  "inputs_sha256": "e50df19f79431edb9533a6695715064d3db45f90ff7e5a29755aeca7b98a5427",
+  "video_sha256": "2e11949670abf3299e9e6e6dd90e08e95da3fdd8320a822f14c3408b70b3f2c1",
+  "duration_seconds": 1105.6,
+  "size_mb": 45.9,
   "format": {
     "width": 1920,
     "height": 1080,
     "fps": 30,
     "video": "h264",
     "audio": "aac",
-    "captions": "mov_text"
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.2
   },
   "voice": {
-    "engine": "piper-tts 1.8.0",
-    "model": "en_US-lessac-medium",
-    "model_sha256": "5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f",
-    "length_scale": "1.18"
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
   },
   "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
-  "beats": 63,
-  "pauses": 8,
+  "states": 981,
+  "questions": 16,
+  "breathers": 4,
   "scenes": [
     {
       "id": "intro",
       "title": "Introduction",
       "section": "Introduction",
       "start": 0.0,
-      "end": 46.667
+      "end": 50.4
     },
     {
       "id": "goals",
       "title": "Learning goals",
       "section": "Learning goals",
-      "start": 46.667,
-      "end": 75.567
+      "start": 50.4,
+      "end": 67.867
     },
     {
       "id": "why",
       "title": "Why this matters",
       "section": "Why this matters",
-      "start": 75.567,
-      "end": 116.5
+      "start": 67.867,
+      "end": 90.5
     },
     {
       "id": "idea",
-      "title": "The idea: values, types and assignment",
+      "title": "The idea: values, types and names",
       "section": "The idea",
-      "start": 116.5,
-      "end": 177.8
+      "start": 90.5,
+      "end": 190.5
     },
     {
       "id": "step1",
-      "title": "Step 1: Your first variables",
+      "title": "Step 1: First variables",
       "section": "Build it step by step",
-      "start": 177.8,
-      "end": 247.7
+      "start": 190.5,
+      "end": 270.7
     },
     {
       "id": "step2",
-      "title": "Step 2: Check the type of a value",
+      "title": "Step 2: Check a type",
       "section": "Build it step by step",
-      "start": 247.7,
-      "end": 284.967
+      "start": 270.7,
+      "end": 309.8
     },
     {
       "id": "step3",
-      "title": "Step 3: Calculate with operators",
+      "title": "Step 3: Operators",
       "section": "Build it step by step",
-      "start": 284.967,
-      "end": 361.267
+      "start": 309.8,
+      "end": 372.433
     },
     {
       "id": "step4",
       "title": "Step 4: Change a variable",
       "section": "Build it step by step",
-      "start": 361.267,
-      "end": 395.4
+      "start": 372.433,
+      "end": 409.233
     },
     {
       "id": "step5",
-      "title": "Step 5: The order of operations",
+      "title": "Step 5: Order of operations",
       "section": "Build it step by step",
-      "start": 395.4,
-      "end": 455.667
+      "start": 409.233,
+      "end": 509.167
     },
     {
       "id": "outcome",
-      "title": "See the outcome: the cafe bill",
+      "title": "See the outcome: the self-updating bill",
       "section": "See the outcome",
-      "start": 455.667,
-      "end": 518.467
+      "start": 509.167,
+      "end": 570.067
     },
     {
       "id": "ai",
-      "title": "Work with AI: predict, then run",
+      "title": "Work with AI: six stages, one average",
       "section": "Work with AI",
-      "start": 518.467,
-      "end": 640.933
+      "start": 570.067,
+      "end": 787.567
     },
     {
       "id": "mistakes",
       "title": "Common mistakes",
       "section": "Common mistakes",
-      "start": 640.933,
-      "end": 722.867
+      "start": 787.567,
+      "end": 945.7
     },
     {
       "id": "beyond",
       "title": "Think beyond",
       "section": "Think beyond",
-      "start": 722.867,
-      "end": 764.967
+      "start": 945.7,
+      "end": 992.333
     },
     {
       "id": "recap",
       "title": "Recap",
       "section": "Recap",
-      "start": 764.967,
-      "end": 804.667
+      "start": 992.333,
+      "end": 1055.7
     },
     {
       "id": "practice",
       "title": "Practice",
       "section": "Practice",
-      "start": 804.667,
-      "end": 831.633
+      "start": 1055.7,
+      "end": 1081.567
     },
     {
       "id": "next",
       "title": "What's next",
       "section": "What's next",
-      "start": 831.633,
-      "end": 848.6
+      "start": 1081.567,
+      "end": 1105.6
     }
   ]
 }

@@ -68,7 +68,7 @@ Two teas cost 6
 
 The name `customer` has no quotation marks in `print()`, so Python prints its value, `Asha`, and not the word "customer".
 
-Good names make code easy to read. The first rule comes from the Python style guide, called PEP 8. The other three are rules of the language itself, and breaking them causes an error or a bug:
+Good names make code easy to read. The first rule comes from the Python style guide, called PEP 8. The other three are rules of the language itself. Breaking them causes an error or a bug.
 
 - Use lowercase letters, and join words with an underscore: `tea_price`, not `TeaPrice` or `tp`.
 - A name can contain letters, digits and underscores, but it cannot start with a digit.
@@ -269,7 +269,7 @@ print("Average bill:", average)
 Average bill: 24.0
 ```
 
-Later, Asha asked the AI to improve her program. It suggested `//` instead of `/`, "because bills are whole numbers". She tested the idea with a new set of bills before she changed anything:
+Later, Asha asked the AI to improve her program. It suggested `//` instead of `/`, "because bills are whole numbers". Before she changed anything, she tested the idea with a new set of bills.
 
 ```python
 # file: examples/ai_floor_check.py
