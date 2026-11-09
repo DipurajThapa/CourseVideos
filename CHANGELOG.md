@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-04 "Talking Back: Input and Type Conversion" ready for review (17:20 video; change calculator with six AI stages). Verifier now echoes typed answers for Python examples with .stdin files.
 - python-03 "Working with Text: Strings and f-strings" ready for review (18:18 video; critic 8.5/10, all fixes applied).
 - python-02 video rebuilt with the code-quest-video skill: cafe-bill story, six AI stages on the average bill, Lewis voice (18:25). Every future episode now follows the skill (RUNBOOK, CLAUDE.md, daily task).
 - Course voice changed to Kokoro bm_lewis (free, Apache-2.0), spoken one take per beat with a light audio polish; optional voice cloning engine added. python-01 re-rendered (15:10).
