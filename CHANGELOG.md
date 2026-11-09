@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- 2026-11-09: Video pipeline added (storyboard, Piper narration, 1080p render, verification); python-01 revised with an 11:32 narrated video, re-verified on Python 3.15.2 and 3.13.
 - 2026-11-09: python-02 "Values and Variables: Giving Data a Name" ready for review (scheduled run; 9/9 checks passed on Python 3.14 and 3.13).
 - 2026-11-09: python-01 "Your First Program and Your AI Study Partner" ready for review (pilot run; 9/9 checks passed on Python 3.14 and 3.13).
 - 2026-11-09: Course system set up: standards, runbook, verification and state tools, Python curriculum (28 chapters).

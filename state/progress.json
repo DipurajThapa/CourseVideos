@@ -17,7 +17,7 @@
     "python-01": {
       "language": "python",
       "number": 1,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-a25750",
@@ -29,12 +29,14 @@
         {
           "run_id": "2026-11-09-74d87e",
           "started": "2026-11-09T10:39:40+00:00",
-          "from_status": "changes_requested"
+          "from_status": "changes_requested",
+          "ended": "2026-11-09T10:55:36+00:00",
+          "result": "in_review"
         }
       ],
       "current_run_id": "2026-11-09-74d87e",
       "path": "chapters/python/01-first-program",
-      "completed": "2026-11-09T06:55:26+00:00",
+      "completed": "2026-11-09T10:55:36+00:00",
       "notes": "Owner request (2026-11-09): add the narrated full-chapter walkthrough video (video/storyboard.json rendered to video/chapter.mp4) under the new STANDARDS section 11, and re-verify on Python 3.15.2."
     },
     "python-02": {
@@ -212,5 +214,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T10:39:40+00:00"
+  "updated": "2026-11-09T10:55:36+00:00"
 }
