@@ -4,7 +4,7 @@
 
 ## The mission
 
-Four friends finish lunch at the Corner Cafe. The bill is 37.45, and they want to add a 15 percent tip. One friend types the numbers into a phone calculator and gets 10.7675 each. Nobody can pay 10.7675. Somebody rounds it to 10.77, and now the four payments add up to 43.08, one cent more than the real total.
+Four friends finish lunch at the Corner Cafe. The bill is 37.45, and with a 15 percent tip the receipt says 43.07. One friend divides 43.07 by 4 on a phone calculator and gets 10.7675 each. Nobody can pay 10.7675. Somebody rounds it to 10.77, and now the four payments add up to 43.08, one cent more than the real total.
 
 Asha wants a tool that the cafe can give to every table. Your mission is to build it. It asks three questions, shows a neat receipt and tells each person exactly what to pay. If the total does not share out evenly, it also says how many cents are left over, so the table can decide who pays them.
 
@@ -296,7 +296,7 @@ A `ZeroDivisionError` happens when a program divides by zero. Older versions of 
 
 ## Improve it with AI
 
-When the program worked, Asha asked an AI assistant to review it: "Suggest one way to make this program simpler. Do not change what it prints." The AI suggested replacing the three cent lines with one line, `share = round(total / people, 2)`. It sounded reasonable, so she tested it with the mission's numbers before she changed anything:
+When the program worked, Asha asked an AI assistant to review it: "Suggest one way to make this program simpler. Do not change what it prints." The AI suggested replacing the two share lines, 10 and 12, with one line: `share = round(total / people, 2)`. It sounded reasonable, so she tested it with the mission's numbers before she changed anything:
 
 ```python
 # file: examples/ai_round_share.py

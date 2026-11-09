@@ -40,19 +40,20 @@
       "label": "The problem",
       "reveal": 0,
       "items": [
-       "The bill is 37.45, plus a 15% tip: 43.07 in total.",
+       "The bill is 37.45, plus a 15% tip. The receipt says 43.07.",
        "A phone calculator says each friend pays **10.7675**.",
-       "Nobody can pay 10.7675. So each friend pays **10.77**."
+       "Nobody can pay 10.7675. So each friend pays **10.77**.",
+       "10.77 + 10.77 + 10.77 + 10.77 = ?"
       ]
      },
      "segments": [
       {
-       "say": "Four friends finish lunch at the Corner Cafe. The bill is 37.45. With a 15 percent tip, the total is 43.07.",
+       "say": "Four friends finish lunch at the Corner Cafe. The bill is 37.45. With a 15 percent tip, the receipt says 43.07, to the cent.",
        "reveal": 1,
        "focus": 0
       },
       {
-       "say": "One friend divides on a phone calculator. Each person pays 10.7675.",
+       "say": "One friend divides 43.07 by 4 on a phone calculator. Each person pays 10.7675.",
        "reveal": 2,
        "focus": 1
       },
@@ -60,6 +61,11 @@
        "say": "Nobody can pay that. So they round it, and each friend pays 10.77.",
        "reveal": 3,
        "focus": 2
+      },
+      {
+       "say": "So how much do they pay together?",
+       "reveal": 4,
+       "focus": 3
       }
      ],
      "ask": {
@@ -155,7 +161,7 @@
        "focus_row": 0
       },
       {
-       "say": "From Chapter 2, variables, and three kinds of division: single slash, double slash and percent.",
+       "say": "From Chapter 2, variables, division with one slash and two slashes, and the remainder operator.",
        "focus_row": 1
       },
       {
@@ -212,7 +218,7 @@
        ]
       },
       {
-       "say": "Twenty-two lines of code. By the end of this video, you will understand every one.",
+       "say": "About twenty lines of code. By the end of this video, you will understand every one.",
        "out_highlight": []
       }
      ]
@@ -382,7 +388,7 @@
        "focus": 1
       },
       {
-       "say": "Whole numbers share out with double slash, and the percent sign gives what is left over. You did this with biscuits in Chapter 2.",
+       "say": "Whole numbers share out with double slash, and the remainder operator gives what is left over. You did this with biscuits in Chapter 2.",
        "reveal": 3,
        "focus": 2
       }
@@ -531,7 +537,7 @@
        "say": "Stage 3: generate. Asha asks the AI for the tip and total lines, and asks what they print."
       },
       {
-       "say": "The AI writes four short lines, and says they print a tip of 4.80. It sounds sure.",
+       "say": "The AI writes a few short lines, and says they print a tip of 4.80. It sounds sure.",
        "reveal": 2,
        "focus": 1
       },
@@ -577,7 +583,7 @@
      },
      "segments": [
       {
-       "say": "Stage 4: test. Asha runs the lines. The tip is 480! A tip ten times bigger than the bill. Her hand result catches it at once."
+       "say": "Stage 4: test. Asha runs the lines. The tip is 480! Ten times bigger than the whole bill. Her hand result catches it immediately."
       },
       {
        "say": "She shows the AI the real output. This time it names the cause: a percent must be divided by 100.",
@@ -612,7 +618,7 @@
      },
      "segments": [
       {
-       "say": "Step 3, the heart of the tool. Asha uses the mission's numbers: a total of 43.07, and 4 people."
+       "say": "Step 3, the most important part. Asha uses the mission's numbers: a total of 43.07, and 4 people."
       },
       {
        "say": "Line 4 multiplies by 100 to get cents. It uses round, because a float can be a tiny amount below the whole number you expect.",
@@ -628,7 +634,7 @@
        ]
       },
       {
-       "say": "Line 6 uses the percent sign to find the cents left over.",
+       "say": "Line 6 uses the remainder operator to find the cents left over.",
        "lines": 6,
        "highlight": [
         6
@@ -918,26 +924,21 @@
     },
     {
      "visual": {
-      "type": "code",
-      "file": "examples/test_decimal.py",
+      "type": "text",
       "heading": "Test 2: the mission's bill",
-      "highlight": [
-       3,
-       4,
-       5
-      ],
-      "note": "The user will type: 37.45, then 15, then 4"
+      "label": "Test it",
+      "body": [
+       "The user types **37.45**, then **15**, then **4**.",
+       "The total is **4307 cents**, shared by **4 people**.",
+       "You worked these cents out in step 3."
+      ]
      },
      "segments": [
       {
        "say": "Test 2 runs the same program with the mission's numbers: 37.45, a 15 percent tip, and 4 people."
       },
       {
-       "say": "You already worked out these cents in step 3.",
-       "highlight": [
-        10,
-        11
-       ]
+       "say": "The total is 4307 cents, shared by 4. You already worked these cents out in step 3."
       }
      ],
      "ask": {
@@ -945,24 +946,85 @@
      },
      "after": [
       {
+       "say": "Let's run it and see."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_decimal.py",
+      "heading": "Test 2: the mission's bill",
+      "highlight": [
+       10,
+       11
+      ],
+      "note": "The user typed: 37.45, then 15, then 4",
+      "output": "examples/test_decimal.expected",
+      "out_highlight": [
+       10,
+       11
+      ]
+     },
+     "segments": [
+      {
        "say": "Each pays 10.76, with 3 extra cents. Four times 10.76 is 43.04, and 3 cents more makes exactly 43.07.",
-       "output": "examples/test_decimal.expected",
        "highlight": [
         21,
         22
-       ],
-       "out_highlight": [
-        10,
-        11
        ]
       },
       {
-       "say": "The tip, 5.6175, shows as 5.62. The no tip and one person tests pass too.",
-       "highlight": [],
+       "say": "The tip, 5.6175, shows as 5.62.",
+       "highlight": [
+        18
+       ],
        "out_highlight": [
-        7,
-        8
+        7
        ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_no_tip.py",
+      "heading": "Test 3: no tip",
+      "highlight": [
+       18
+      ],
+      "note": "The user typed: 20, then 0, then 2",
+      "output": "examples/test_no_tip.expected",
+      "out_highlight": [
+       7,
+       8,
+       10
+      ]
+     },
+     "segments": [
+      {
+       "say": "Test 3, no tip. The tip is 0.00, and each person pays 10.00, as worked out."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_one_person.py",
+      "heading": "Test 4: one person",
+      "highlight": [
+       21
+      ],
+      "note": "The user typed: 12.5, then 10, then 1",
+      "output": "examples/test_one_person.expected",
+      "out_highlight": [
+       8,
+       10
+      ]
+     },
+     "segments": [
+      {
+       "say": "Test 4, one person. The total is 13.75, and the one person pays all of it. All four tests pass."
       }
      ]
     },
@@ -992,7 +1054,7 @@
      },
      "segments": [
       {
-       "say": "Stage 5: debug. A friend tries to break the tool, and types 0 for the number of people. The program stops with an error on line 10."
+       "say": "Stage 5: debug. A friend tries to break the tool, and types 0 for the number of people. The program stops with an error. Asha reads it: line 10."
       },
       {
        "say": "Asha pastes the lines and the full error, and asks for the cause first. The AI explains: nothing can be shared between zero people.",
@@ -1049,7 +1111,7 @@
        },
        {
         "role": "ai",
-        "text": "Replace the four cent lines with one line: `share = round(total / people, 2)`. It is shorter and gives the same result."
+        "text": "Replace the two share lines, 10 and 12, with one line: `share = round(total / people, 2)`. It is shorter and gives the same result."
        }
       ],
       "reveal": 1
@@ -1059,7 +1121,7 @@
        "say": "Stage 6: improve. Asha asks for one way to make the program simpler, without changing what it prints."
       },
       {
-       "say": "The AI suggests replacing the four cent lines with one line: round the total divided by the people, to 2 places.",
+       "say": "The AI suggests replacing the two share lines, 10 and 12, with one line: round the total divided by the people, to 2 places.",
        "reveal": 2,
        "focus": 1
       },
@@ -1140,7 +1202,7 @@
        [
         "Debug",
         "Explained ZeroDivisionError",
-        "Read the line number herself"
+        "Read the error: line 10"
        ],
        [
         "Improve",
@@ -1202,7 +1264,7 @@
      },
      "segments": [
       {
-       "say": "Last breather. You built, tested and improved a real tool, with an AI as a partner, and you stayed in charge."
+       "say": "Last breather. You built, tested and improved a real tool, with an AI as a partner, and you made the decisions."
       },
       {
        "say": "Let's recap."
@@ -1251,7 +1313,7 @@
        "focus": 2
       },
       {
-       "say": "Share money in whole cents: double slash for each share, and the percent sign for what is left.",
+       "say": "Share money in whole cents: double slash for each share, and the remainder operator for what is left.",
        "reveal": 4,
        "focus": 3
       },
