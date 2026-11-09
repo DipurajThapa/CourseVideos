@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-09T10:55:45+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-09T10:56:29+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -13,10 +13,11 @@ You can also ask Claude to do either.
 ## Ready for review
 
 - **python-01**: Your First Program and Your AI Study Partner ([chapters/python/01-first-program](chapters/python/01-first-program)), video: [chapters/python/01-first-program/video/chapter.mp4](chapters/python/01-first-program/video/chapter.mp4). Owner request (2026-11-09): add the narrated full-chapter walkthrough video (video/storyboard.json rendered to video/chapter.mp4) under the new STANDARDS section 11, and re-verify on Python 3.15.2.
+- **python-02**: Values and Variables: Giving Data a Name ([chapters/python/02-values-and-variables](chapters/python/02-values-and-variables)), video: [chapters/python/02-values-and-variables/video/chapter.mp4](chapters/python/02-values-and-variables/video/chapter.mp4). Owner request (2026-11-09): add the narrated full-chapter walkthrough video (video/storyboard.json rendered to video/chapter.mp4) under the new STANDARDS section 11, and re-verify on Python 3.15.2.
 
 ## Changes requested
 
-- **python-02**: Values and Variables: Giving Data a Name ([chapters/python/02-values-and-variables](chapters/python/02-values-and-variables)), video: [chapters/python/02-values-and-variables/video/chapter.mp4](chapters/python/02-values-and-variables/video/chapter.mp4). Owner request (2026-11-09): add the narrated full-chapter walkthrough video (video/storyboard.json rendered to video/chapter.mp4) under the new STANDARDS section 11, and re-verify on Python 3.15.2.
+None.
 
 ## Blocked
 

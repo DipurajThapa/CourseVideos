@@ -38,7 +38,7 @@ python3 tools/setup_check.py
 python3 tools/state.py next
 ```
 The output is one of:
-- `{"action": "resume", ...}`: a chapter is `in_progress` or `blocked`. Fetch its `wip/` branch if it exists and continue from what is already there. A `revise` action reuses the chapter's old branch name, so start it fresh from `main` with `git checkout -B wip/<chapter-id> main`. Re-run every check; do not trust earlier results.
+- `{"action": "resume", ...}`: a chapter is `in_progress` or `blocked`. Fetch its `wip/` branch if it exists and continue from what is already there. A `revise` action reuses the chapter's old branch, which already exists on GitHub: check it out from `origin/wip/<chapter-id>` and merge `main` into it (the commands below). Never recreate it from `main` with `checkout -B ... main`: the push would then need a force push, which is not allowed. Re-run every check; do not trust earlier results.
 - `{"action": "revise", ...}`: a chapter is `changes_requested`. Apply the owner's notes on a `wip/` branch, then follow steps 4 to 11. If the notes change anything the video shows, update the storyboard and render the video again.
 - `{"action": "chapter", ...}`: start the named chapter.
 - `{"action": "curriculum", ...}`: the next language has no curriculum. Build it (see "Building a curriculum"), and that is the whole run.
@@ -49,9 +49,9 @@ Then mark the start on `main` (this records the run id), and only then create or
 python3 tools/state.py start <chapter-id>
 git add state/ && git commit -m "chore(state): start <chapter-id>" && git push origin main
 git fetch origin
-git checkout -B wip/<chapter-id> origin/wip/<chapter-id>   # when resuming and the branch exists
+git checkout -B wip/<chapter-id> origin/wip/<chapter-id>   # when resuming or revising and the branch exists
 git checkout -B wip/<chapter-id>                           # otherwise
-git merge main                                             # resumed branch picks up the new run id
+git merge main                                             # picks up the new run id and the latest tools
 ```
 
 ### 3. Review before writing
