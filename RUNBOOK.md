@@ -144,7 +144,12 @@ Write `reports/<YYYY-MM-DD>-<chapter-id>.md` and add one line to `CHANGELOG.md` 
 - Outstanding issues and blockers, and what the owner needs to do.
 - Next item in the queue.
 
-Deliver the video to the owner with the SendUserFile tool (`video/chapter.mp4`, status `proactive`), then finish the run with a concise completion report in the same format as the final message.
+Deliver the video to the owner:
+1. Copy `video/chapter.mp4` to a file named `Chapter <N> - <chapter title>.mp4`, with characters Windows does not allow in file names replaced (a colon becomes a comma), for example `Chapter 2 - Values and Variables, Giving Data a Name.mp4`.
+2. Send that file with the SendUserFile tool (status `proactive`).
+3. Save it to the owner's folder `C:\Dipuraj\Video\Coding101\<Language>` (for example `C:\Dipuraj\Video\Coding101\Python`) with the remote-devices commit tool, using the `file_uuid` that SendUserFile returned. If the owner's computer is not reachable in this run, say so in the report and the notification; the file stays downloadable from the conversation.
+
+Then finish the run with a concise completion report in the same format as the final message.
 
 ## Building a curriculum
 
