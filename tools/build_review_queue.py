@@ -46,6 +46,8 @@ def main() -> None:
             extra = info.get("block_reason") or info.get("notes") or ""
             path = info.get("path")
             link = f" ([{path}]({path}))" if path else ""
+            if path and (ROOT / path / "video" / "chapter.mp4").exists():
+                link += f", video: [{path}/video/chapter.mp4]({path}/video/chapter.mp4)"
             lines.append(f"- **{cid}**: {titles.get(cid, '')}{link}" + (f". {extra}" if extra else ""))
     lines += [
         "",
@@ -55,6 +57,7 @@ def main() -> None:
         "- Does each example run and teach one clear idea? See `verification.json`.",
         "- Is the language simple, specific and free of filler?",
         "- Does `## Work with AI` give prompts a beginner can use today?",
+        "- Watch `video/chapter.mp4`: is the narration clear, does every picture match what is said, and is it free of errors?",
         "- Is the difficulty right after the previous chapter?",
         "",
     ]

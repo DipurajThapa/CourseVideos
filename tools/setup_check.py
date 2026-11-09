@@ -4,6 +4,13 @@
 For Python, the tool also tries to install the newest stable CPython with uv, so
 examples are verified on the current release as well as the system interpreter.
 Pre-releases (alpha, beta, release candidate) are never used.
+
+uv is always upgraded with pip and run as `python3 -m uv`. An older uv binary
+earlier on PATH has a stale list of Python builds and silently misses new
+releases (this is why Python 3.15.2 was missed on 2026-11-09).
+
+It also prepares the video toolchain (ffmpeg, ffprobe, Pillow, Piper and the
+pinned narration voice) by calling tools/render_video.py --setup.
 """
 from __future__ import annotations
 
@@ -29,19 +36,19 @@ def is_stable(version_text: str) -> bool:
 
 
 def newest_stable_python() -> str | None:
-    if not shutil.which("uv"):
-        sh([sys.executable, "-m", "pip", "install", "--quiet", "--break-system-packages", "uv"])
-    if not shutil.which("uv"):
+    sh([sys.executable, "-m", "pip", "install", "--quiet", "--upgrade", "--break-system-packages", "uv"])
+    uv = [sys.executable, "-m", "uv"]
+    if sh(uv + ["--version"]).returncode != 0:
         return None
     for minor in CANDIDATE_PYTHONS:
-        sh(["uv", "python", "install", minor])
-        found = sh(["uv", "python", "find", minor])
+        sh(uv + ["python", "install", minor])
+        found = sh(uv + ["python", "find", minor])
         exe = found.stdout.strip()
         if found.returncode == 0 and exe:
             version = sh([exe, "--version"]).stdout.strip()
             if is_stable(version):
                 return exe
-            sh(["uv", "python", "uninstall", minor])
+            sh(uv + ["python", "uninstall", minor])
     return None
 
 
@@ -54,6 +61,10 @@ def main() -> int:
     report["python"] = [p for p in dict.fromkeys(pythons) if p]
     for name in ("node", "java", "gcc", "g++"):
         report[name] = shutil.which(name)
+    video = sh([sys.executable, str(Path(__file__).resolve().parent / "render_video.py"), "--setup"], timeout=900)
+    report["video"] = video.stdout.strip().splitlines()[-1] if video.returncode == 0 and video.stdout.strip() else None
+    if video.returncode != 0:
+        print("Video setup failed:\n" + (video.stdout + video.stderr)[-1500:])
     save_json(TOOLCHAINS_FILE, report)
 
     print(json.dumps(report, indent=2))

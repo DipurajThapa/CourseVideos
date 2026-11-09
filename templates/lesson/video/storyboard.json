@@ -1,0 +1,257 @@
+{
+  "chapter_id": "<language>-NN",
+  "number": 0,
+  "title": "Chapter NN: <Title>",
+  "video_title": "<Language> Chapter NN: <Title>",
+  "summary": "<two sentences for the upload description>",
+  "_help": "See STANDARDS.md section 11. Visual types: title, bullets (items, reveal), text (body, pre), table (columns, rows), code (file, highlight, output or error, note, hidden_text), prompt (label, prompt, check), pause (question, seconds), end. Delete this key.",
+  "scenes": [
+    {
+      "id": "intro",
+      "section": "Introduction",
+      "title": "Introduction",
+      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
+      "beats": [
+        {
+          "narration": "Welcome to Code Quest, Chapter NN: <title>. <one sentence on what the learner will do>.",
+          "visual": {
+            "type": "title",
+            "kicker": "CHAPTER NN",
+            "title": "<Title>",
+            "subtitle": "<quest line>",
+            "badge": "Reward: 100 XP and the <Badge> badge"
+          }
+        },
+        {
+          "narration": "<the hook, spoken>",
+          "visual": {
+            "type": "code",
+            "heading": "<what the learner should look at>",
+            "file": "examples/<flawed>.py",
+            "highlight": [
+              2
+            ]
+          }
+        },
+        {
+          "narration": "<ask the learner to predict>",
+          "visual": {
+            "type": "pause",
+            "question": "<the question on screen>",
+            "seconds": 5
+          }
+        },
+        {
+          "narration": "<reveal and promise the explanation>",
+          "visual": {
+            "type": "code",
+            "heading": "The real output",
+            "file": "examples/<flawed>.py",
+            "highlight": [
+              2
+            ],
+            "output": "examples/<flawed>.expected"
+          }
+        }
+      ]
+    },
+    {
+      "id": "learning-goals",
+      "section": "Learning goals",
+      "title": "Learning goals",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Learning goals",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "why-this-matters",
+      "section": "Why this matters",
+      "title": "Why this matters",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Why this matters",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "the-idea",
+      "section": "The idea",
+      "title": "The idea",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "The idea",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "build-it-step-by-step",
+      "section": "Build it step by step",
+      "title": "Build it step by step",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Build it step by step",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "see-the-outcome",
+      "section": "See the outcome",
+      "title": "See the outcome",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "See the outcome",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "work-with-ai",
+      "section": "Work with AI",
+      "title": "Work with AI",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Work with AI",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "section": "Common mistakes",
+      "title": "Common mistakes",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Common mistakes",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "think-beyond",
+      "section": "Think beyond",
+      "title": "Think beyond",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Think beyond",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "section": "Recap",
+      "title": "Recap",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Recap",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "section": "Practice",
+      "title": "Practice",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "Practice",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "whats-next",
+      "section": "What's next",
+      "title": "What's next",
+      "direction": "<what the editor should do in this scene>",
+      "beats": [
+        {
+          "narration": "<spoken narration for this beat>",
+          "visual": {
+            "type": "bullets",
+            "heading": "What's next",
+            "items": [
+              "<item>"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

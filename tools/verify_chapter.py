@@ -12,12 +12,14 @@ Checks:
   ai_prompts     all six AI activities are covered
   sources        at least 3 dated sources, at least 1 official
   language       banned phrases, em dashes, sentence length
-  video          eight scenes in the video script
+  video          storyboard covers every section with verified code; the rendered
+                 chapter.mp4 (narration, captions, 1080p) matches the storyboard and files
 
 Only a full pass sets "passed": true. Never edit verification.json by hand.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -29,6 +31,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import ROOT, TOOLCHAINS_FILE, fingerprint, load_json, load_state, now_iso, save_json  # noqa: E402
+import storyboard as sb  # noqa: E402
 
 TIMEOUT = 15
 SOURCE_EXTENSIONS = {
@@ -148,7 +151,7 @@ def check_structure(cdir: Path, meta: dict, report: Report) -> str:
     problems = []
     kind = meta.get("type", "lesson")
     main_doc = "project.md" if kind == "project" else "lesson.md"
-    for rel in [main_doc, "ai-prompts.md", "practice/practice.md", "sources.md", "video/script.md", "meta.json"]:
+    for rel in [main_doc, "ai-prompts.md", "practice/practice.md", "sources.md", "video/storyboard.json", "meta.json"]:
         if not (cdir / rel).exists():
             problems.append(f"missing {rel}")
     missing_keys = [k for k in META_KEYS if k not in meta]
@@ -405,18 +408,61 @@ def check_language(cdir: Path, main_doc: str, report: Report) -> None:
     report.add("language", problems, stats)
 
 
-def check_video(cdir: Path, report: Report) -> None:
-    path = cdir / "video" / "script.md"
-    if not path.exists():
-        report.add("video", ["missing video/script.md"])
+def check_video(cdir: Path, report: Report, kind: str) -> None:
+    """The storyboard is valid and the rendered video matches it and the verified files."""
+    problems: list[str] = []
+    details: dict = {}
+    if not (cdir / sb.STORYBOARD).exists():
+        report.add("video", [f"missing {sb.STORYBOARD}"])
         return
-    text = path.read_text(encoding="utf-8")
-    scenes = re.findall(r"^## Scene (\d+)", text, re.M)
-    problems = [] if len(scenes) == 8 else [f"expected 8 scenes, found {len(scenes)}"]
-    for label in ("Narration", "On screen", "Interaction"):
-        if text.count(f"**{label}") < 8:
-            problems.append(f"every scene needs a '**{label}**' line")
-    report.add("video", problems, {"scenes": len(scenes)})
+    try:
+        board = sb.load(cdir)
+    except json.JSONDecodeError as exc:
+        report.add("video", [f"{sb.STORYBOARD} is not valid JSON: {exc}"])
+        return
+    language = cdir.parent.name
+    files, _ = runnable_files(cdir, language)
+    runnable = {f.relative_to(cdir).as_posix() for f in files}
+    problems += sb.validate(cdir, board, kind, runnable)
+    details["estimated_minutes"] = round(sb.estimate_seconds(board) / 60, 1)
+    for rel in (sb.VIDEO_FILE, sb.CAPTIONS_FILE, sb.RENDER_MANIFEST, sb.DESCRIPTION_FILE, sb.SCRIPT_FILE):
+        if not (cdir / rel).exists():
+            problems.append(f"missing {rel}: run python3 tools/render_video.py {cdir.relative_to(ROOT).as_posix()}")
+    if problems:
+        report.add("video", problems, details)
+        return
+    manifest = load_json(cdir / sb.RENDER_MANIFEST)
+    if manifest.get("storyboard_sha256") != sb.storyboard_sha(cdir):
+        problems.append("storyboard.json changed after the video was rendered; render again")
+    if manifest.get("inputs_sha256") != sb.inputs_sha(cdir, board):
+        problems.append("a code or output file shown in the video changed after rendering; render again")
+    video = cdir / sb.VIDEO_FILE
+    if manifest.get("video_sha256") != hashlib.sha256(video.read_bytes()).hexdigest():
+        problems.append("chapter.mp4 does not match render.json; render again")
+    if (cdir / sb.SCRIPT_FILE).read_text(encoding="utf-8") != sb.script_markdown(board, manifest):
+        problems.append("video/script.md is out of date; run tools/render_video.py --script")
+    if shutil.which("ffprobe"):
+        probe = run(["ffprobe", "-v", "error", "-show_entries",
+                     "format=duration:stream=codec_type,codec_name,width,height", "-of", "json", str(video)])
+        info = json.loads(probe.stdout or "{}")
+        kinds = {s.get("codec_type"): s for s in info.get("streams", [])}
+        duration = float(info.get("format", {}).get("duration", 0))
+        if "video" not in kinds or (kinds["video"].get("width"), kinds["video"].get("height")) != (1920, 1080):
+            problems.append("chapter.mp4 needs a 1920x1080 video stream")
+        if "audio" not in kinds:
+            problems.append("chapter.mp4 has no narration audio")
+        if "subtitle" not in kinds:
+            problems.append("chapter.mp4 has no caption track")
+        if abs(duration - float(manifest.get("duration_seconds", 0))) > 1:
+            problems.append("chapter.mp4 duration does not match render.json")
+        if not sb.MIN_MINUTES * 60 <= duration <= sb.MAX_MINUTES * 60:
+            problems.append(f"video length {duration / 60:.1f} min is outside {sb.MIN_MINUTES} to "
+                            f"{sb.MAX_MINUTES} min")
+        details.update({"duration_seconds": round(duration, 1), "size_mb": manifest.get("size_mb"),
+                        "scenes": len(manifest.get("scenes", [])), "voice": manifest.get("voice", {}).get("model")})
+    else:
+        problems.append("ffprobe is not available, so the video could not be checked")
+    report.add("video", problems, details)
 
 
 # ---------------------------------------------------------------- main
@@ -441,7 +487,7 @@ def main() -> int:
     check_ai_prompts(cdir, report)
     check_sources(cdir, language, report)
     check_language(cdir, main_doc, report)
-    check_video(cdir, report)
+    check_video(cdir, report, meta.get("type", "lesson"))
 
     state = load_state()
     run_id = state["chapters"].get(meta.get("id", ""), {}).get("current_run_id")

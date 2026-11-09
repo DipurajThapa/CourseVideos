@@ -94,6 +94,22 @@ Safety habits taught from Chapter 1: never paste passwords, keys or private data
 - Each chapter is slightly harder than the last. Projects combine every concept in their module.
 - Reuse the running examples and names established earlier where it helps learners connect ideas.
 
-## 11. Video script
+## 11. Chapter video
 
-Each chapter includes `video/script.md`: a 3 to 6 minute script in eight scenes (hook, why, mental model, build, outcome, AI pair moment, think beyond, recap). Each scene lists narration, on-screen content and an interaction point. The script uses only content and code already verified in the chapter. It feeds the video production skill.
+Every chapter ships with a narrated video that walks through the complete chapter. The video is part of the chapter: a chapter without a passing, rendered video cannot be completed.
+
+**Direction: `video/storyboard.json`.** The author writes the storyboard; everything else is generated from it.
+- Scenes follow the chapter: an introduction with a hook, then one or more scenes for every section heading (section 3), in the same order. For a lesson that means learning goals, why, the idea, every build step, the outcome, Work with AI (with the AI pair moment), every common mistake, think beyond, recap, practice and what's next.
+- Each scene has an `id`, a `section` (the exact heading), a `title`, a `direction` note for the editor, and `beats`. A beat is one piece of narration plus the exact picture on screen while it is spoken.
+- Visual types: `title`, `bullets` (with `reveal` for step-by-step reveals), `text` (paragraphs and an optional `pre` diagram), `table`, `code`, `prompt` (an AI prompt card), `pause` (an interaction point with a countdown) and `end`.
+- A `code` beat names a verified file in `examples/` or `practice/solutions/`, the lines to `highlight`, and optionally its `output` (`.expected`) or `error` (`.expected_error`). The video never shows code or output that is not a verified file. Show the code first with the output hidden, pause so the learner can predict, then reveal the output.
+- Narration is spoken English that follows section 4. Write it as you would say it: no symbols such as `_`, `=`, `/`, `%`, `*`, `#` or backticks ("tea price", "double slash", "ex 0 1"). Refer to line numbers as the lesson does.
+- At least three `pause` beats. Target length 10 to 15 minutes; the tool accepts 8 to 20.
+
+**Rendering: `python3 tools/render_video.py <chapter>`.** It produces, in `video/`:
+- `chapter.mp4`: 1920x1080, 30 fps, H.264 video, AAC narration, soft English captions and scene chapter markers.
+- `chapter.srt`: captions for upload; `description.md`: an upload description with scene timestamps and the synthetic-voice disclosure; `render.json`: the inputs, voice and tool versions; `script.md`: the human-readable script with real timings.
+- Narration uses Piper, a free offline neural text-to-speech engine, with one pinned voice (`en_US-lessac-medium`) so every chapter sounds the same. Disclose the synthetic voice wherever the video is published.
+- The renderer follows the `video-making` skill: one encoded file per scene with identical settings, joined with the concat demuxer and `-c copy`, sound added with `-c:v copy`, temporary names renamed only on success, held stills without zoom.
+
+`tools/verify_chapter.py` checks the storyboard (coverage, verified files, speakable narration, pauses, length) and the rendered video (hashes of the storyboard and every file it shows, 1080p video, audio, captions, duration). Any change to the storyboard or to a file the video shows requires a new render.

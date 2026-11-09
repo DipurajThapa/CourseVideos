@@ -24,7 +24,10 @@ chapters/<language>/<NN>-<slug>/
   examples/            every runnable example with its verified .expected output
   ai-prompts.md        six prompt cards: plan, write, generate, debug, test, improve
   practice/            8 tasks in three tiers, with verified solutions
-  video/script.md      an eight-scene script for the chapter video
+  video/storyboard.json  the video direction: scenes, beats, narration and what is on screen
+  video/chapter.mp4      the narrated full-chapter video (1080p, captions, scene markers)
+  video/chapter.srt      captions; video/description.md upload text; video/render.json render record
+  video/script.md        human-readable script with timings (generated from the storyboard)
   sources.md           sources, access dates and what each confirmed
   meta.json            metadata, changes and outstanding issues
   verification.json    machine-written proof of what was tested, when and on what
@@ -35,7 +38,8 @@ chapters/<language>/<NN>-<slug>/
 1. `tools/state.py next` picks the single next item: resume interrupted work, apply requested changes, start the next chapter, or build the next language's curriculum.
 2. The run researches the topic on official documentation and credible sources, then writes the chapter on a `wip/<chapter-id>` branch, pushing checkpoints as it goes.
 3. `tools/verify_chapter.py` executes every example and solution on every available toolchain, checks lesson code against the tested files, and checks structure, sources and plain-language rules.
-4. Only a fully passing chapter is merged into `main` with status `in_review`, and a report lands in `reports/`.
+4. `tools/render_video.py` turns the storyboard into a narrated walkthrough video of the whole chapter, and the verification tool checks that the video matches the verified files.
+5. Only a fully passing chapter is merged into `main` with status `in_review`, and a report lands in `reports/`.
 
 Full procedure: [`RUNBOOK.md`](RUNBOOK.md). Content rules: [`STANDARDS.md`](STANDARDS.md).
 

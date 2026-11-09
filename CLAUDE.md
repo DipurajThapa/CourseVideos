@@ -10,3 +10,4 @@ This repository is an automated coding course. When you work here:
 6. Check facts that change over time (language versions, installation steps, AI tool behaviour) on official sites during the run. Record every source with its access date.
 7. If you cannot finish, block the chapter with a specific reason and report it. Never mark incomplete work as complete.
 8. The course owner is Dipuraj Thapa. When he asks to approve or request changes, use `tools/state.py`.
+9. Every chapter ships with a narrated full-chapter video rendered by `tools/render_video.py` from `video/storyboard.json` (STANDARDS.md section 11). Load the `video-making` skill before rendering. A chapter whose video is missing or out of date is not complete.
