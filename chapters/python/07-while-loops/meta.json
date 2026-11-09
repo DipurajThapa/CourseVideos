@@ -43,7 +43,7 @@
     "continue and the else clause of a loop are left out to keep one new idea per step; the curriculum lists while loops, conditions, counters and break.",
     "Augmented assignment (+= and -=) is introduced in Step 3 because running totals and counters use it on every pass.",
     "The infinite loop in Mistake 3 and the AI's countdown in practice task 8 are illustrative fragments, so the verification tool never runs a program that does not end.",
-    "The AI section adds video-only verified files: ai_teas_mine.py (Write stage), ai_tries_test_ok.py (Test stage: one wrong answer, then 5) and ai_tries_improve.py (Improve stage: tries <= 3 asks a fourth time)."
+    "The AI section adds video-only verified files: ai_teas_mine.py (Write stage), ai_case_*.py (Test stage: four edge cases run on the AI's code), ai_fix_case_*.py (the same cases run again on the fixed code) and ai_tries_improve.py (Improve stage: tries <= 3 asks a fourth time)."
   ],
   "outstanding_issues": [
     "The error report in Mistake 1 shows the short file name; on a learner's computer the full path to the file appears instead.",

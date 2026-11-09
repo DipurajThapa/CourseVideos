@@ -14,6 +14,23 @@
    "beats": [
     {
      "visual": {
+      "type": "text",
+      "heading": "One wrong answer, and it gives up",
+      "label": "Chapter 6",
+      "body": [
+       "The customer typed 0 people. The program printed a message, and ended."
+      ],
+      "pre": "Bill total: 20\nNumber of people: 0\nPeople must be 1 or more.\nDone."
+     },
+     "segments": [
+      {
+       "say": "One wrong answer. The program prints a message, and then it ends. The customer has to start again.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
       "type": "title",
       "kicker": "CHAPTER 7",
       "title": "Repeat Until Done: while Loops",
@@ -35,36 +52,6 @@
     },
     {
      "visual": {
-      "type": "bullets",
-      "heading": "A program that gives up",
-      "label": "Previously",
-      "reveal": 0,
-      "items": [
-       "In Chapter 6, a wrong answer printed: `People must be 1 or more.`",
-       "Then the program ended. The customer had to start again.",
-       "And the checkout took one order, with a fixed number of teas."
-      ]
-     },
-     "segments": [
-      {
-       "say": "In Chapter 6, Asha's program learned to say: people must be 1 or more.",
-       "reveal": 1,
-       "focus": 0
-      },
-      {
-       "say": "But then it simply ended. The customer had to run it again from the start.",
-       "reveal": 2,
-       "focus": 1
-      },
-      {
-       "say": "And her checkout took one order only. A real cafe takes items until the customer says: that's all.",
-       "reveal": 3,
-       "focus": 2
-      }
-     ]
-    },
-    {
-     "visual": {
       "type": "code",
       "file": "examples/ex06_order_loop.py",
       "heading": "Today's mission: an order that keeps going",
@@ -73,7 +60,7 @@
      },
      "segments": [
       {
-       "say": "So here is today's mission. Asha's order loop asks for an item, again and again.",
+       "say": "And a real cafe takes items until the customer says: that is all. So here is today's mission. Asha's order loop asks for an item, again and again.",
        "highlight": [
         4,
         5
@@ -188,14 +175,12 @@
      },
      "segments": [
       {
-       "say": "Real programs repeat. A cash machine asks for your PIN again after a wrong try. A shop's till scans items until the cashier presses Total.",
-       "reveal": 2,
-       "focus": 1
-      },
-      {
-       "say": "A game keeps running until you quit. Each of these is a loop: a block of code that runs again and again, until a condition says stop.",
+       "say": "Real programs repeat. A cash machine asks for your PIN again. A shop's till scans items until the cashier presses Total. A game runs until you quit.",
        "reveal": 3,
        "focus": 2
+      },
+      {
+       "say": "Each of these is a loop: a block of code that runs again and again, until a condition says stop."
       }
      ]
     }
@@ -459,14 +444,14 @@
        "say": "Step 3. Asha adds up prices. Line 2 starts a running total at 0: a variable that grows on every pass. Line 3 starts a counter."
       },
       {
-       "say": "The user types 0 to finish. A value that means stop is called a stop value. Line 5 loops while the price is not 0.",
+       "say": "Line 4 asks for the first price, before the loop. The user types 0 to finish. A value that means stop is called a stop value. Line 5 loops while the price is not 0.",
        "highlight": [
         4,
         5
        ]
       },
       {
-       "say": "Line 6 says total plus equals price. That is short for: total equals total plus price. Line 7 adds 1 to the count, the same way.",
+       "say": "Line 6 says total plus equals price. That is short for: total equals total plus price. Line 7 adds 1 to the count, the same way. And minus equals takes away, in the same way.",
        "highlight": [
         6,
         7
@@ -604,7 +589,7 @@
      },
      "segments": [
       {
-       "say": "Breather. Roll your shoulders, and take a slow breath."
+       "say": "Breather. Sit back, and take a slow breath."
       },
       {
        "say": "Next, a tool that shows exactly what a loop does: the trace table."
@@ -696,18 +681,104 @@
      "segments": [
       {
        "say": "Pass 1. Cups is 1. 1 is less than 20, so it doubles to 2.",
+       "rows": [
+        [
+         "1",
+         "1",
+         "`True`",
+         "2"
+        ]
+       ],
        "focus_row": 0
       },
       {
        "say": "Pass 2: 2 becomes 4. Pass 3: 4 becomes 8.",
+       "rows": [
+        [
+         "1",
+         "1",
+         "`True`",
+         "2"
+        ],
+        [
+         "2",
+         "2",
+         "`True`",
+         "4"
+        ],
+        [
+         "3",
+         "4",
+         "`True`",
+         "8"
+        ]
+       ],
        "focus_row": 2
       },
       {
        "say": "Pass 4: 8 becomes 16.",
+       "rows": [
+        [
+         "1",
+         "1",
+         "`True`",
+         "2"
+        ],
+        [
+         "2",
+         "2",
+         "`True`",
+         "4"
+        ],
+        [
+         "3",
+         "4",
+         "`True`",
+         "8"
+        ],
+        [
+         "4",
+         "8",
+         "`True`",
+         "16"
+        ]
+       ],
        "focus_row": 3
       },
       {
-       "say": "Now cups is 16 at the check. Look at the table and think.",
+       "say": "Now cups is 16 at the check. Fill in the next row in your head.",
+       "rows": [
+        [
+         "1",
+         "1",
+         "`True`",
+         "2"
+        ],
+        [
+         "2",
+         "2",
+         "`True`",
+         "4"
+        ],
+        [
+         "3",
+         "4",
+         "`True`",
+         "8"
+        ],
+        [
+         "4",
+         "8",
+         "`True`",
+         "16"
+        ],
+        [
+         "5",
+         "16",
+         "?",
+         "?"
+        ]
+       ],
        "focus_row": 4
       }
      ],
@@ -717,10 +788,80 @@
      "after": [
       {
        "say": "32. 16 is still less than 20, so pass 5 runs completely, and doubles it to 32.",
+       "rows": [
+        [
+         "1",
+         "1",
+         "`True`",
+         "2"
+        ],
+        [
+         "2",
+         "2",
+         "`True`",
+         "4"
+        ],
+        [
+         "3",
+         "4",
+         "`True`",
+         "8"
+        ],
+        [
+         "4",
+         "8",
+         "`True`",
+         "16"
+        ],
+        [
+         "5",
+         "16",
+         "`True`",
+         "32"
+        ]
+       ],
        "focus_row": 4
       },
       {
        "say": "Only then does the check find False. Python checks the condition only at the top of each pass.",
+       "rows": [
+        [
+         "1",
+         "1",
+         "`True`",
+         "2"
+        ],
+        [
+         "2",
+         "2",
+         "`True`",
+         "4"
+        ],
+        [
+         "3",
+         "4",
+         "`True`",
+         "8"
+        ],
+        [
+         "4",
+         "8",
+         "`True`",
+         "16"
+        ],
+        [
+         "5",
+         "16",
+         "`True`",
+         "32"
+        ],
+        [
+         "–",
+         "32",
+         "`False`",
+         "loop ends"
+        ]
+       ],
        "focus_row": 5
       }
      ]
@@ -887,7 +1028,7 @@
        "say": "Stage 1: plan. The number of teas must be from 1 to 10. Asha asks for the loop condition, the value that must change, and test answers. No code yet."
       },
       {
-       "say": "The AI names the condition, says the new answer is what ends the loop, and lists test answers, including the boundary values 1 and 10.",
+       "say": "The AI names the condition, says the new answer is what ends the loop, and lists test answers, including 1 and 10, the points where the result changes. These are called boundary values.",
        "reveal": 2,
        "focus": 1
       }
@@ -907,7 +1048,8 @@
          2,
          3,
          4,
-         5
+         5,
+         6
         ]
        },
        {
@@ -965,7 +1107,7 @@
        "say": "Stage 3: generate. Asha wants a limit: at most 3 tries, and then use 1 tea. She asks what 0, 0 and 0 print."
       },
       {
-       "say": "The AI says: three questions, then too many tries. It sounds completely sure.",
+       "say": "The AI says: three questions, then too many tries. It gives no warning at all.",
        "reveal": 2,
        "focus": 1
       },
@@ -994,29 +1136,84 @@
        },
        {
         "role": "ai",
-        "text": "1. `4`: one question, then Teas: 4.\n2. `0`, then `5`: two questions, then Teas: 5.\n3. `0`, `0`, `0`: three questions, then Too many tries. Using 1 tea. Teas: 1."
+        "text": "1. `1`: Teas: 1. 2. `10`: Teas: 10. These are the boundary values.\n3. `11`, then `5`: two questions, then Teas: 5.\n4. `0`, `0`, then `5`: three questions, then Teas: 5.\n5. `0`, `0`, `0`: three questions, then Too many tries. Using 1 tea."
        },
        {
         "role": "you",
-        "text": "Case 2 passes:",
-        "output": "examples/ai_tries_test_ok.expected"
+        "text": "I ran case 4 on your code. It passes:",
+        "output": "examples/ai_case_0_0_5.expected"
        }
       ],
       "reveal": 1
      },
      "segments": [
       {
-       "say": "Stage 4: test. Asha asks for edge cases, with the exact output each one should give."
+       "say": "Stage 4: test. Asha asks for edge cases: unusual answers that can break a rule. And the exact output each one should give."
       },
       {
-       "say": "The AI lists three cases. Case 3 is three wrong answers: it should ask three times, then use 1 tea.",
+       "say": "The AI lists five. 1 and 10 are boundary values, the points where the result changes. The last case is three wrong answers: three questions, then 1 tea.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "She runs case 2, one wrong answer, then 5. It passes.",
+       "say": "She runs every case on the AI's code. Here is case 4: three questions, then 5. It passes.",
        "reveal": 3,
        "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Asha runs every case on the AI's code",
+      "label": "Test",
+      "columns": [
+       "Answers",
+       "Expected",
+       "AI's code",
+       "Fixed code"
+      ],
+      "rows": [
+       [
+        "`1`",
+        "Teas: 1",
+        "pass",
+        ""
+       ],
+       [
+        "`10`",
+        "Teas: 10",
+        "pass",
+        ""
+       ],
+       [
+        "`11`, then `5`",
+        "2 questions, Teas: 5",
+        "pass",
+        ""
+       ],
+       [
+        "`0`, `0`, then `5`",
+        "3 questions, Teas: 5",
+        "pass",
+        ""
+       ],
+       [
+        "`0`, `0`, `0`",
+        "3 questions, Too many tries",
+        "FAIL: asks a 4th time",
+        ""
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Cases 1 to 4 pass. 1 and 10 are accepted, and wrong answers are asked again.",
+       "focus_row": 2
+      },
+      {
+       "say": "But case 5 fails. Three wrong answers should end in too many tries. The program asks a fourth time.",
+       "focus_row": 4
       }
      ]
     },
@@ -1033,8 +1230,9 @@
      },
      "segments": [
       {
-       "say": "Then case 3. She types 0 three times. The program does not stop. It asks a fourth time.",
+       "say": "Here is case 5. She types 0 three times. The program does not stop. It asks a fourth time.",
        "out_highlight": [
+        6,
         7
        ]
       },
@@ -1054,7 +1252,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "Case 3 failed: it asked a fourth time, and took my 5. First trace the loop for 0, 0, 0 in a table, one line per pass. Then tell me which value never changes, and the smallest fix.",
+        "text": "Case 5 failed: it asked a fourth time, and took my 5. First trace the loop for 0, 0, 0 in a table, one line per pass. Then tell me which value never changes, and the smallest fix.",
         "code": "examples/ai_tries_flawed.py",
         "code_lines": [
          4,
@@ -1077,6 +1275,55 @@
        "say": "The trace shows it clearly. Tries is 1 on every pass. Nothing inside the loop changes it, so tries less than 3 is always True. The fix: tries plus equals 1, inside the loop.",
        "reveal": 2,
        "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Asha checks the AI's trace",
+      "label": "Debug",
+      "columns": [
+       "Pass",
+       "`teas` at the check",
+       "`tries` at the check",
+       "Condition"
+      ],
+      "rows": [
+       [
+        "1",
+        "0",
+        "1",
+        "`True`"
+       ],
+       [
+        "2",
+        "0",
+        "1",
+        "`True`"
+       ],
+       [
+        "3",
+        "0",
+        "1",
+        "`True`"
+       ],
+       [
+        "–",
+        "5",
+        "1",
+        "`False`: 5 is valid"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha writes the trace as a table, like step 5. Three passes, and tries is 1 every time.",
+       "focus_row": 2
+      },
+      {
+       "say": "That matches her run: one first question, plus three passes, is four questions. The trace and the run agree.",
+       "focus_row": 3
       }
      ]
     },
@@ -1106,6 +1353,125 @@
         6,
         7
        ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "All cases again, on the fixed code",
+      "label": "Test",
+      "columns": [
+       "Answers",
+       "Expected",
+       "AI's code",
+       "Fixed code"
+      ],
+      "rows": [
+       [
+        "`1`",
+        "Teas: 1",
+        "pass",
+        ""
+       ],
+       [
+        "`10`",
+        "Teas: 10",
+        "pass",
+        ""
+       ],
+       [
+        "`11`, then `5`",
+        "2 questions, Teas: 5",
+        "pass",
+        ""
+       ],
+       [
+        "`0`, `0`, then `5`",
+        "3 questions, Teas: 5",
+        "pass",
+        ""
+       ],
+       [
+        "`0`, `0`, `0`",
+        "3 questions, Too many tries",
+        "FAIL: asks a 4th time",
+        ""
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "A fix can break something else. So Asha runs every case again, on the fixed code.",
+       "rows": [
+        [
+         "`1`",
+         "Teas: 1",
+         "pass",
+         "pass"
+        ],
+        [
+         "`10`",
+         "Teas: 10",
+         "pass",
+         "pass"
+        ],
+        [
+         "`11`, then `5`",
+         "2 questions, Teas: 5",
+         "pass",
+         "pass"
+        ],
+        [
+         "`0`, `0`, then `5`",
+         "3 questions, Teas: 5",
+         "pass",
+         "pass"
+        ],
+        [
+         "`0`, `0`, `0`",
+         "3 questions, Too many tries",
+         "FAIL: asks a 4th time",
+         "pass"
+        ]
+       ],
+       "focus_row": null
+      },
+      {
+       "say": "All five pass. Now she trusts it.",
+       "rows": [
+        [
+         "`1`",
+         "Teas: 1",
+         "pass",
+         "pass"
+        ],
+        [
+         "`10`",
+         "Teas: 10",
+         "pass",
+         "pass"
+        ],
+        [
+         "`11`, then `5`",
+         "2 questions, Teas: 5",
+         "pass",
+         "pass"
+        ],
+        [
+         "`0`, `0`, then `5`",
+         "3 questions, Teas: 5",
+         "pass",
+         "pass"
+        ],
+        [
+         "`0`, `0`, `0`",
+         "3 questions, Too many tries",
+         "FAIL: asks a 4th time",
+         "pass"
+        ]
+       ],
+       "focus_row": 4
       }
      ]
     },
@@ -1185,7 +1551,7 @@
        ]
       },
       {
-       "say": "The AI was wrong again. Asha keeps less than 3, and adds only the comment.",
+       "say": "And Asha had said: do not change how many times it asks. The AI ignored that. She keeps less than 3, and adds only the comment.",
        "out_highlight": [
         8
        ]
@@ -1197,10 +1563,10 @@
       "type": "quiz",
       "question": "A loop never ends. What do you ask the AI for first?",
       "options": [
-       "A new loop",
+       "Add `break` to the loop",
        "A trace table of each pass",
-       "A shorter program",
-       "A new variable name"
+       "Rewrite the whole loop",
+       "Run it with other answers"
       ],
       "answer": 1,
       "explain": "A trace shows which value never changes, before any fix."
@@ -1373,7 +1739,7 @@
      },
      "segments": [
       {
-       "say": "Last breather. Loops will not surprise you any more."
+       "say": "Last breather. Now you know the four most common loop mistakes."
       },
       {
        "say": "Two questions to think about on your own come next."
@@ -1595,7 +1961,7 @@
        "say": "To serve tables 1 to 3, Asha needed a counter, a condition and a line that changes it. Three places to make a mistake, as you saw today."
       },
       {
-       "say": "In Chapter 8, for loops and range repeat a block a set number of times, with no counter of your own."
+       "say": "In Chapter 8, for loops and range repeat a block a set number of times, with no counter of your own. And a for loop can go through every letter of a word."
       },
       {
        "say": "Do the warm-up tasks now. They take about ten minutes.",

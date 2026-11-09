@@ -1,4 +1,4 @@
-# file: examples/ai_tries_test_ok.py
+# file: examples/ai_case_0_0_5.py
 tries = 1
 teas = int(input("How many teas? (1 to 10) "))
 while (teas < 1 or teas > 10) and tries < 3:

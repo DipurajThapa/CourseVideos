@@ -281,7 +281,7 @@ Too many tries. Using 1 tea.
 Teas: 1
 ```
 
-The brackets on line 4 matter: Python checks the whole `or` part first, then the `and`. Every value in a loop condition needs a line inside the loop that can change it.
+Asha ran all her test cases again on the fixed code: 1, 10, 11 then 5, 0 then 0 then 5, and three 0 answers. All five passed. The brackets on line 4 matter: Python checks the whole `or` part first, then the `and`. Every value in a loop condition needs a line inside the loop that can change it.
 
 ## Common mistakes
 

@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-07",
   "run_id": "2026-11-09-cc180f",
-  "verified_at": "2026-11-09T22:14:20+00:00",
+  "verified_at": "2026-11-09T22:20:57+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -169,28 +169,6 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "scene intro: narration contains unspeakable characters ['<', '>']: 'Welcome to Code Quest, Chapter NN. <one sentence on what the learner w'",
-        "scene intro: narration contains unspeakable characters ['<', '>']: '<set up the hook> <point at the line> <reveal>'",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: output examples/<flawed>.expected must be an existing .expected file",
-        "scene learning-goals: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene why-this-matters: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene the-idea: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene build-it-step-by-step: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene see-the-outcome: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene work-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene common-mistakes: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene think-beyond: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene recap: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene practice: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene whats-next: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "need at least 6 on-screen questions with a timer, found 1",
-        "need at least 2 quick-check quizzes, found 0",
-        "need at least 2 breathers for 1 minutes, found 0",
-        "estimated length 1.1 min is outside 8 to 20 min",
         "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/07-while-loops",
         "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/07-while-loops",
         "missing video/render.json: run python3 tools/render_video.py chapters/python/07-while-loops",
@@ -198,9 +176,9 @@
         "missing video/script.md: run python3 tools/render_video.py chapters/python/07-while-loops"
       ],
       "details": {
-        "estimated_minutes": 1.1
+        "estimated_minutes": 17.9
       }
     }
   ],
-  "fingerprint": "30eac6da287ec42975bd234eb1346ae03c49ff7fb009372a17ad3d8eec63a56f"
+  "fingerprint": "f8e7959c2b70d70d2aeaa1eccd337b2f03a530704268c5047d417b9b34b28ec0"
 }
