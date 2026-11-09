@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-06 "Making Decisions: if, elif and else" ready for review (18:38 video, critic 8/10 with fixes applied). Theme now draws code without ligatures.
 - python-05 Boss Level 1 "The Bill Splitter" ready for review: whole-cent splitting with // and %, four hand-checked tests, six AI stages with two AI mistakes caught by tests (15:27). Module 1 complete.
 - python-04 "Talking Back: Input and Type Conversion" ready for review (17:20 video; change calculator with six AI stages). Verifier now echoes typed answers for Python examples with .stdin files.
 - python-03 "Working with Text: Strings and f-strings" ready for review (18:18 video; critic 8.5/10, all fixes applied).
