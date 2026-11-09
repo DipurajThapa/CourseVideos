@@ -1,0 +1,54 @@
+{
+  "id": "python-04",
+  "title": "Talking Back: Input and Type Conversion",
+  "language": "python",
+  "type": "lesson",
+  "module": "M1",
+  "badge": "Listener",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "input()",
+    "prompt",
+    "string answer",
+    "type conversion",
+    "int()",
+    "float()",
+    "str()",
+    "nested function call",
+    "truncation",
+    "TypeError",
+    "ValueError",
+    "SyntaxError"
+  ],
+  "prerequisites": [
+    "python-03"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_change_flawed.py",
+    "fixed_file": "examples/ai_change_fixed.py",
+    "flaw": "The AI forgot to convert the answer from input() and predicted 'Change: 7.50'. With the answer 30, Python stopped with TypeError: unsupported operand type(s) for -: 'str' and 'float'. Wrapping input() in float() fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-09",
+  "changes": [
+    "Added str() as a small extra beside int() and float(), so learners know the conversion in both directions.",
+    "Examples that read input use .stdin files. tools/verify_chapter.py now echoes each typed answer after its prompt for Python, so every expected output shows the terminal exactly as the learner sees it.",
+    "Answer checking (if, try and except) is left to later chapters; Mistake 3 tells the learner to make the prompt say what to type for now."
+  ],
+  "outstanding_issues": [
+    "The tracebacks in Common mistakes show the short file name; on a learner's computer the full path to the file appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

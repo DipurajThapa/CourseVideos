@@ -65,7 +65,7 @@ Safety habits taught from Chapter 1: never paste passwords, keys or private data
 ## 6. Code rules
 
 - Every code block in a lesson that the learner could run must be a real file, marked by its first line: `# file: examples/<name>.py` (use the language's comment syntax). The tool checks that the block matches the file exactly.
-- Every runnable file has a `.expected` file with its exact standard output. If it reads input, a `.stdin` file provides it. If it is meant to fail, an `.expected_error` file holds a line that must appear in the error output.
+- Every runnable file has a `.expected` file with its exact standard output. If it reads input, a `.stdin` file provides it; for Python, the verifier echoes each typed answer after its prompt, so `.expected` shows the terminal exactly as the learner sees it (`How many teas? 2`). If it is meant to fail, an `.expected_error` file holds a line that must appear in the error output.
 - Code that is shown only to illustrate (for example a fragment) starts with `# illustrative` and is never presented as runnable.
 - Use current, idiomatic style for the language version in `curriculum/<language>.json`. Follow the official style guide (PEP 8 for Python).
 - Keep examples short: 25 lines or fewer for lessons, unless a project needs more.
