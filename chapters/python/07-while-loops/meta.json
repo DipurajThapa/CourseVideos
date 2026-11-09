@@ -1,0 +1,57 @@
+{
+  "id": "python-07",
+  "title": "Repeat Until Done: while Loops",
+  "language": "python",
+  "type": "lesson",
+  "module": "M2",
+  "badge": "Loop Tamer",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "loop",
+    "while",
+    "pass",
+    "counter",
+    "running total",
+    "+= and -=",
+    "stop value",
+    "while True",
+    "break",
+    "trace table",
+    "infinite loop",
+    "Ctrl+C and KeyboardInterrupt",
+    "off-by-one error",
+    "NameError"
+  ],
+  "prerequisites": [
+    "python-06"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_tries_flawed.py",
+    "fixed_file": "examples/ai_tries_fixed.py",
+    "flaw": "Asha asked the AI to add a limit of 3 tries to her loop and to say what the answers 0, 0, 0 print. The AI predicted 'Too many tries. Using 1 tea.' after 3 questions, but its code never changes tries inside the loop, so tries < 3 is always True and the program asks a fourth time (with 5 typed, it prints Teas: 5). Adding tries += 1 inside the loop fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-09",
+  "changes": [
+    "continue and the else clause of a loop are left out to keep one new idea per step; the curriculum lists while loops, conditions, counters and break.",
+    "Augmented assignment (+= and -=) is introduced in Step 3 because running totals and counters use it on every pass.",
+    "The infinite loop in Mistake 3 and the AI's countdown in practice task 8 are illustrative fragments, so the verification tool never runs a program that does not end.",
+    "The AI section adds video-only verified files: ai_teas_mine.py (Write stage), ai_tries_test_ok.py (Test stage: one wrong answer, then 5) and ai_tries_improve.py (Improve stage: tries <= 3 asks a fourth time)."
+  ],
+  "outstanding_issues": [
+    "The error report in Mistake 1 shows the short file name; on a learner's computer the full path to the file appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
