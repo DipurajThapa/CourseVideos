@@ -1,0 +1,1149 @@
+1
+00:00:00,250 --> 00:00:02,697
+Welcome to Code Quest, Chapter 5.
+
+2
+00:00:02,717 --> 00:00:04,940
+This is your first boss level!
+
+3
+00:00:04,967 --> 00:00:06,261
+No new topic today.
+
+4
+00:00:06,281 --> 00:00:10,687
+You will build a real tool with everything
+from Chapters 1 to 4.
+
+5
+00:00:10,733 --> 00:00:15,251
+And an AI assistant will make two
+confident mistakes about money.
+
+6
+00:00:15,271 --> 00:00:17,135
+Your tests will catch both.
+
+7
+00:00:17,753 --> 00:00:21,592
+Four friends finish lunch at the Corner
+Cafe.
+
+8
+00:00:21,612 --> 00:00:23,135
+The bill is 37.45.
+
+9
+00:00:23,155 --> 00:00:28,193
+With a 15 percent tip, the receipt says
+43.07, to the cent.
+
+10
+00:00:28,233 --> 00:00:32,346
+One friend divides 43.07 by 4 on a phone
+calculator.
+
+11
+00:00:32,366 --> 00:00:34,333
+Each person pays 10.7675.
+
+12
+00:00:34,367 --> 00:00:36,288
+Nobody can pay that.
+
+13
+00:00:36,308 --> 00:00:40,657
+So they round it, and each friend pays
+10.77.
+
+14
+00:00:40,700 --> 00:00:44,200
+So how much do they pay together?
+
+15
+00:00:55,580 --> 00:00:56,032
+43.08.
+
+16
+00:00:56,052 --> 00:00:59,883
+That is one cent more than the real total,
+43.07.
+
+17
+00:00:59,903 --> 00:01:03,970
+Somebody paid a cent too much, and nobody
+knows who.
+
+18
+00:01:04,000 --> 00:01:04,537
+Small?
+
+19
+00:01:04,557 --> 00:01:04,908
+Yes.
+
+20
+00:01:04,928 --> 00:01:08,343
+But a cafe serves hundreds of tables.
+
+21
+00:01:08,363 --> 00:01:12,799
+Asha wants a tool that gets it right every
+time.
+
+22
+00:01:13,383 --> 00:01:14,733
+Here is the mission.
+
+23
+00:01:14,753 --> 00:01:20,004
+Asha's tool asks three questions: the
+bill, the tip percent and the number of
+
+24
+00:01:20,024 --> 00:01:20,483
+people.
+
+25
+00:01:20,533 --> 00:01:24,413
+It prints a neat receipt, like the one
+from Chapter 3.
+
+26
+00:01:24,433 --> 00:01:27,513
+It tells each person exactly what to pay.
+
+27
+00:01:27,533 --> 00:01:32,126
+And if the money does not share out
+evenly, it says how many cents are left
+
+28
+00:01:32,146 --> 00:01:32,433
+over.
+
+29
+00:01:33,053 --> 00:01:34,913
+And you already know every piece.
+
+30
+00:01:34,933 --> 00:01:38,423
+From Chapter 1, print, and the top to
+bottom order.
+
+31
+00:01:38,467 --> 00:01:43,625
+From Chapter 2, variables, division with
+one slash and two slashes, and the
+
+32
+00:01:43,645 --> 00:01:44,937
+remainder operator.
+
+33
+00:01:44,967 --> 00:01:48,227
+From Chapter 3, f strings for neat
+columns.
+
+34
+00:01:48,267 --> 00:01:52,735
+And from Chapter 4, questions with input,
+and converting the answers.
+
+35
+00:01:53,317 --> 00:01:54,841
+Here is where we are going.
+
+36
+00:01:54,861 --> 00:01:56,957
+You do not need to read the code yet.
+
+37
+00:01:56,977 --> 00:01:58,787
+Look at the output on the right.
+
+38
+00:01:58,833 --> 00:02:03,170
+Three friends share a bill of 48, with a
+10 percent tip.
+
+39
+00:02:03,190 --> 00:02:05,503
+The tool asks three questions.
+
+40
+00:02:05,533 --> 00:02:09,435
+Then it prints the bill, the tip and the
+total, lined up in one column, 24
+
+41
+00:02:09,455 --> 00:02:10,313
+characters wide.
+
+42
+00:02:10,333 --> 00:02:15,533
+Each person pays 17.60, and there are no
+extra cents this time.
+
+43
+00:02:15,567 --> 00:02:17,187
+About twenty lines of code.
+
+44
+00:02:17,207 --> 00:02:20,590
+By the end of this video, you will
+understand every one.
+
+45
+00:02:21,183 --> 00:02:24,379
+Before building, Asha writes down what
+done means.
+
+46
+00:02:24,399 --> 00:02:26,758
+These are called acceptance criteria.
+
+47
+00:02:26,778 --> 00:02:29,523
+The tool is finished when all six are
+true.
+
+48
+00:02:29,567 --> 00:02:29,902
+One.
+
+49
+00:02:29,922 --> 00:02:33,717
+It asks the three questions, in this
+order.
+
+50
+00:02:33,767 --> 00:02:34,040
+Two.
+
+51
+00:02:34,060 --> 00:02:36,900
+The bill can have decimals, like 37.45.
+
+52
+00:02:36,920 --> 00:02:41,227
+The tip percent and the number of people
+are whole numbers.
+
+53
+00:02:41,267 --> 00:02:41,716
+Three.
+
+54
+00:02:41,736 --> 00:02:44,927
+Money shows two decimal places, lined up.
+
+55
+00:02:44,967 --> 00:02:45,338
+Four.
+
+56
+00:02:45,358 --> 00:02:48,707
+Each share is rounded down to a whole
+cent.
+
+57
+00:02:48,733 --> 00:02:49,064
+Five.
+
+58
+00:02:49,084 --> 00:02:54,682
+The extra cents are shown, so the shares
+and the extra cents add up to the total
+
+59
+00:02:54,702 --> 00:02:55,243
+exactly.
+
+60
+00:02:55,267 --> 00:02:55,784
+And six.
+
+61
+00:02:55,804 --> 00:02:59,682
+It passes at least four tests that you
+worked out by hand.
+
+62
+00:03:00,287 --> 00:03:02,354
+Quick check, using criterion two.
+
+63
+00:03:02,374 --> 00:03:05,579
+Which answer should the program convert
+with float?
+
+64
+00:03:16,947 --> 00:03:17,063
+A.
+
+65
+00:03:17,083 --> 00:03:18,090
+The bill total.
+
+66
+00:03:18,110 --> 00:03:19,526
+It can have decimals.
+
+67
+00:03:19,546 --> 00:03:22,879
+The other two are whole numbers, so they
+use int.
+
+68
+00:03:23,487 --> 00:03:24,477
+Take a breather.
+
+69
+00:03:24,497 --> 00:03:27,887
+You know the problem, the mission and what
+done means.
+
+70
+00:03:27,933 --> 00:03:33,370
+Next, Asha plans the tool with an AI
+assistant, before she writes any code.
+
+71
+00:03:38,117 --> 00:03:39,200
+Stage 1: plan.
+
+72
+00:03:39,220 --> 00:03:43,377
+Asha tells the AI what she knows, and what
+she wants.
+
+73
+00:03:43,397 --> 00:03:45,427
+And she says: no code yet.
+
+74
+00:03:45,467 --> 00:03:50,580
+The AI lists the inputs with their types,
+the calculations in order, and the
+
+75
+00:03:50,600 --> 00:03:51,121
+outputs.
+
+76
+00:03:51,141 --> 00:03:52,337
+It is a good plan.
+
+77
+00:03:52,367 --> 00:03:57,695
+But look at the last calculation: each
+share is the total, divided by the people.
+
+78
+00:03:57,715 --> 00:04:00,733
+That is exactly what the phone calculator
+did.
+
+79
+00:04:01,353 --> 00:04:03,750
+Asha remembers the mission.
+
+80
+00:04:03,770 --> 00:04:08,673
+43.07 divided by 4 is 10.7675, and nobody
+can pay that.
+
+81
+00:04:08,700 --> 00:04:14,182
+So she adds one step to the plan: work in
+whole cents.
+
+82
+00:04:14,202 --> 00:04:16,220
+43.07 is 4307 cents.
+
+83
+00:04:16,267 --> 00:04:23,078
+Whole numbers share out with double slash,
+and the remainder operator gives what is
+
+84
+00:04:23,098 --> 00:04:23,901
+left over.
+
+85
+00:04:23,921 --> 00:04:27,193
+You did this with biscuits in Chapter 2.
+
+86
+00:04:27,787 --> 00:04:28,828
+Stage 2: write.
+
+87
+00:04:28,848 --> 00:04:31,657
+Asha writes the three questions herself.
+
+88
+00:04:31,677 --> 00:04:36,397
+Then she asks the AI to check the types,
+without changing anything.
+
+89
+00:04:36,433 --> 00:04:41,471
+The AI agrees with her: a float for the
+bill, and an int for the tip percent and
+
+90
+00:04:41,491 --> 00:04:42,420
+for the people.
+
+91
+00:04:42,440 --> 00:04:44,316
+You cannot have half a person!
+
+92
+00:04:44,917 --> 00:04:45,956
+Time to build.
+
+93
+00:04:45,976 --> 00:04:51,027
+Line 2 prints a centred header, with
+equals signs, as in Chapter 3.
+
+94
+00:04:51,067 --> 00:04:53,945
+Lines 3 to 5 ask the three questions.
+
+95
+00:04:53,965 --> 00:04:57,627
+Each answer is converted as soon as it is
+read.
+
+96
+00:04:57,667 --> 00:04:59,370
+Line 6 is only a check.
+
+97
+00:04:59,390 --> 00:05:01,918
+It prints the type of each answer.
+
+98
+00:05:13,280 --> 00:05:13,554
+Int.
+
+99
+00:05:13,574 --> 00:05:19,060
+The answer was the text 3, and int on line
+5 turned it into a whole number.
+
+100
+00:05:19,100 --> 00:05:21,806
+The finished program does not need line 6.
+
+101
+00:05:21,826 --> 00:05:23,558
+It was only there to check.
+
+102
+00:05:24,150 --> 00:05:25,526
+Step 2: the tip.
+
+103
+00:05:25,546 --> 00:05:27,010
+First, the maths.
+
+104
+00:05:27,030 --> 00:05:29,890
+A percent is a number out of 100.
+
+105
+00:05:29,933 --> 00:05:34,894
+So 10 percent of 48 is 48 times 10,
+divided by 100.
+
+106
+00:05:34,914 --> 00:05:36,164
+That is 4.80.
+
+107
+00:05:36,184 --> 00:05:40,558
+Asha works this out by hand, before any
+code.
+
+108
+00:05:41,153 --> 00:05:42,509
+Stage 3: generate.
+
+109
+00:05:42,529 --> 00:05:47,933
+Asha asks the AI for the tip and total
+lines, and asks what they print.
+
+110
+00:05:47,967 --> 00:05:53,535
+The AI writes a few short lines, and says
+they print a tip of 4.80.
+
+111
+00:05:53,555 --> 00:05:54,787
+It sounds sure.
+
+112
+00:05:54,833 --> 00:05:56,746
+Read line 4 carefully.
+
+113
+00:06:08,113 --> 00:06:08,346
+No.
+
+114
+00:06:08,366 --> 00:06:12,561
+Line 4 multiplies by 10, and never divides
+by 100.
+
+115
+00:06:12,581 --> 00:06:15,089
+Let's see what really happens.
+
+116
+00:06:15,687 --> 00:06:16,781
+Stage 4: test.
+
+117
+00:06:16,801 --> 00:06:18,373
+Asha runs the lines.
+
+118
+00:06:18,393 --> 00:06:19,567
+The tip is 480!
+
+119
+00:06:19,587 --> 00:06:22,512
+Ten times bigger than the whole bill.
+
+120
+00:06:22,532 --> 00:06:25,617
+Her hand result catches it immediately.
+
+121
+00:06:25,667 --> 00:06:28,596
+She shows the AI the real output.
+
+122
+00:06:28,616 --> 00:06:34,227
+This time it names the cause: a percent
+must be divided by 100.
+
+123
+00:06:34,267 --> 00:06:35,669
+She runs the fix.
+
+124
+00:06:35,689 --> 00:06:37,927
+4.80, and a total of 52.80.
+
+125
+00:06:37,947 --> 00:06:41,189
+Now the code and her hand result agree.
+
+126
+00:06:41,783 --> 00:06:44,410
+Step 3, the most important part.
+
+127
+00:06:44,430 --> 00:06:49,703
+Asha uses the mission's numbers: a total
+of 43.07, and 4 people.
+
+128
+00:06:49,733 --> 00:06:52,330
+Line 4 multiplies by 100 to get cents.
+
+129
+00:06:52,350 --> 00:06:57,701
+It uses round, because a float can be a
+tiny amount below the whole number you
+
+130
+00:06:57,721 --> 00:06:58,183
+expect.
+
+131
+00:06:58,233 --> 00:07:03,273
+Line 5 shares the cents with double slash:
+whole cents only.
+
+132
+00:07:03,300 --> 00:07:09,640
+Line 6 uses the remainder operator to find
+the cents left over.
+
+133
+00:07:09,667 --> 00:07:12,342
+Lines 7 to 9 print the three numbers.
+
+134
+00:07:12,362 --> 00:07:17,733
+And line 10 is a check: each share times
+the people, plus the extra cents.
+
+135
+00:07:29,113 --> 00:07:31,786
+4307, the total in cents.
+
+136
+00:07:31,806 --> 00:07:33,078
+And it does!
+
+137
+00:07:33,098 --> 00:07:36,093
+Every cent is accounted for.
+
+138
+00:07:36,133 --> 00:07:41,291
+Each person pays 1076 cents, and 3 cents
+are left over.
+
+139
+00:07:41,887 --> 00:07:42,732
+Quick check.
+
+140
+00:07:42,752 --> 00:07:44,825
+Seven people share 100 cents.
+
+141
+00:07:44,845 --> 00:07:47,350
+How many extra cents are left over?
+
+142
+00:07:58,713 --> 00:07:59,182
+C, 2.
+
+143
+00:07:59,202 --> 00:08:01,726
+Each person gets 14 cents.
+
+144
+00:08:01,746 --> 00:08:05,541
+14 times 7 is 98, and 2 cents are left.
+
+145
+00:08:06,117 --> 00:08:06,703
+Step 4.
+
+146
+00:08:06,723 --> 00:08:10,599
+To show money again, divide the cents by
+100.
+
+147
+00:08:10,619 --> 00:08:12,677
+1760 cents becomes 17.6.
+
+148
+00:08:12,700 --> 00:08:14,630
+Line 4 prints 17.6.
+
+149
+00:08:14,650 --> 00:08:18,530
+Python drops the last zero of a float.
+
+150
+00:08:18,567 --> 00:08:23,317
+Line 5 adds dot 2 f, so it looks like
+money: 17.60.
+
+151
+00:08:23,367 --> 00:08:30,471
+And line 6 puts it in a receipt line: 16
+characters for the label, 8 for the
+
+152
+00:08:30,491 --> 00:08:31,127
+amount.
+
+153
+00:08:31,717 --> 00:08:33,379
+Step 5: put it together.
+
+154
+00:08:33,399 --> 00:08:37,867
+Lines 2 to 5 are the header and the three
+questions from step 1.
+
+155
+00:08:37,900 --> 00:08:43,850
+Lines 7 and 8 are the tip and the total,
+with the percent divided by 100.
+
+156
+00:08:43,900 --> 00:08:48,120
+Lines 9 to 12 are the whole cents from
+steps 3 and 4.
+
+157
+00:08:48,167 --> 00:08:54,308
+Line 14 builds the tip label with an f
+string, so the receipt says Tip 10
+
+158
+00:08:54,328 --> 00:08:54,983
+percent.
+
+159
+00:08:55,003 --> 00:08:57,937
+Line 15 makes a line of 24 hyphens.
+
+160
+00:08:57,967 --> 00:09:00,390
+Lines 16 to 22 print the receipt.
+
+161
+00:09:00,410 --> 00:09:06,239
+The last line prints the extra cents
+without dot 2 f, because cents are a whole
+
+162
+00:09:06,259 --> 00:09:06,758
+number.
+
+163
+00:09:18,113 --> 00:09:18,794
+17.60.
+
+164
+00:09:18,814 --> 00:09:26,733
+5280 cents, shared by 3, is 1760 cents
+each, with nothing left over.
+
+165
+00:09:26,767 --> 00:09:33,123
+Every line matches the destination you saw
+at the start.
+
+166
+00:09:33,720 --> 00:09:34,270
+Breather.
+
+167
+00:09:34,290 --> 00:09:35,410
+The tool is built.
+
+168
+00:09:35,430 --> 00:09:37,690
+Roll your shoulders and breathe out.
+
+169
+00:09:37,733 --> 00:09:39,675
+But built is not finished.
+
+170
+00:09:39,695 --> 00:09:41,787
+Criterion six says: test it.
+
+171
+00:09:46,517 --> 00:09:51,367
+A test is a set of answers whose correct
+result you worked out first.
+
+172
+00:09:51,387 --> 00:09:52,497
+Asha plans four.
+
+173
+00:09:52,533 --> 00:09:55,563
+The normal case, which you ran in step 5.
+
+174
+00:09:55,600 --> 00:09:58,640
+A bill with decimals: the case from the
+mission.
+
+175
+00:09:58,667 --> 00:10:00,257
+A tip of zero.
+
+176
+00:10:00,300 --> 00:10:02,257
+And one person, who pays it all.
+
+177
+00:10:02,853 --> 00:10:09,609
+Test 2 runs the same program with the
+mission's numbers: 37.45, a 15 percent
+
+178
+00:10:09,629 --> 00:10:11,213
+tip, and 4 people.
+
+179
+00:10:11,233 --> 00:10:14,738
+The total is 4307 cents, shared by 4.
+
+180
+00:10:14,758 --> 00:10:19,025
+You already worked these cents out in step
+3.
+
+181
+00:10:30,380 --> 00:10:31,939
+Let's run it and see.
+
+182
+00:10:32,553 --> 00:10:37,181
+Each pays 10.76, with 3 extra cents.
+
+183
+00:10:37,201 --> 00:10:45,443
+Four times 10.76 is 43.04, and 3 cents
+more makes exactly 43.07.
+
+184
+00:10:45,467 --> 00:10:50,713
+The tip, 5.6175, shows as 5.62.
+
+185
+00:10:51,320 --> 00:10:52,961
+Test 3, no tip.
+
+186
+00:10:52,981 --> 00:10:59,492
+The tip is 0.00, and each person pays
+10.00, as worked out.
+
+187
+00:11:00,087 --> 00:11:01,745
+Test 4, one person.
+
+188
+00:11:01,765 --> 00:11:06,513
+The total is 13.75, and the one person
+pays all of it.
+
+189
+00:11:06,533 --> 00:11:08,280
+All four tests pass.
+
+190
+00:11:08,887 --> 00:11:09,875
+Stage 5: debug.
+
+191
+00:11:09,895 --> 00:11:14,649
+A friend tries to break the tool, and
+types 0 for the number of people.
+
+192
+00:11:14,669 --> 00:11:16,800
+The program stops with an error.
+
+193
+00:11:16,820 --> 00:11:18,347
+Asha reads it: line 10.
+
+194
+00:11:18,367 --> 00:11:23,027
+Asha pastes the lines and the full error,
+and asks for the cause first.
+
+195
+00:11:23,047 --> 00:11:26,917
+The AI explains: nothing can be shared
+between zero people.
+
+196
+00:11:26,967 --> 00:11:30,667
+To refuse a bad answer, the program must
+make a decision.
+
+197
+00:11:30,687 --> 00:11:33,473
+That needs if, which you meet in Chapter
+6.
+
+198
+00:11:33,493 --> 00:11:35,562
+For now, a clear question helps.
+
+199
+00:11:36,153 --> 00:11:36,718
+Breather.
+
+200
+00:11:36,738 --> 00:11:39,703
+Four tests passed, and one test found a
+limit.
+
+201
+00:11:39,733 --> 00:11:43,268
+Last stage: can the AI make the tool
+better?
+
+202
+00:11:48,017 --> 00:11:49,221
+Stage 6: improve.
+
+203
+00:11:49,241 --> 00:11:55,197
+Asha asks for one way to make the program
+simpler, without changing what it prints.
+
+204
+00:11:55,233 --> 00:12:01,440
+The AI suggests replacing the two share
+lines, 10 and 12, with one line: round the
+
+205
+00:12:01,460 --> 00:12:04,553
+total divided by the people, to 2 places.
+
+206
+00:12:04,600 --> 00:12:05,449
+Shorter, yes.
+
+207
+00:12:05,469 --> 00:12:08,257
+Think about the mission before you answer.
+
+208
+00:12:19,613 --> 00:12:20,893
+Asha does not guess.
+
+209
+00:12:20,913 --> 00:12:23,493
+She tests it with the mission's numbers.
+
+210
+00:12:24,087 --> 00:12:26,152
+Line 4 is the AI's line.
+
+211
+00:12:26,172 --> 00:12:28,847
+Line 6 adds up the four shares.
+
+212
+00:12:28,867 --> 00:12:32,451
+Each pays 10.77, and the shares add up to
+43.08.
+
+213
+00:12:32,471 --> 00:12:36,507
+One cent too much: the exact problem from
+the mission!
+
+214
+00:12:36,533 --> 00:12:39,124
+So Asha keeps her cent lines.
+
+215
+00:12:39,144 --> 00:12:44,615
+A suggestion that changes the result is
+not a simplification.
+
+216
+00:12:45,220 --> 00:12:47,920
+Here are all six stages on one tool.
+
+217
+00:12:47,967 --> 00:12:49,927
+The AI helped every time.
+
+218
+00:12:49,947 --> 00:12:54,047
+It planned, checked, wrote, explained and
+suggested.
+
+219
+00:12:54,067 --> 00:12:57,427
+And it was wrong twice: the tip, and the
+rounding.
+
+220
+00:12:57,467 --> 00:12:59,444
+Both times, a test caught it.
+
+221
+00:12:59,464 --> 00:13:01,855
+The same test you work out by hand.
+
+222
+00:13:02,453 --> 00:13:03,317
+Quick check.
+
+223
+00:13:03,337 --> 00:13:05,823
+Your program passes all its tests.
+
+224
+00:13:05,843 --> 00:13:08,033
+An AI suggests a simpler line.
+
+225
+00:13:08,053 --> 00:13:09,580
+What do you do first?
+
+226
+00:13:20,947 --> 00:13:21,103
+D.
+
+227
+00:13:21,123 --> 00:13:24,538
+Run your tests again with the new line.
+
+228
+00:13:24,558 --> 00:13:27,533
+That is how Asha caught the 43.08.
+
+229
+00:13:28,153 --> 00:13:29,129
+Last breather.
+
+230
+00:13:29,149 --> 00:13:34,532
+You built, tested and improved a real
+tool, with an AI as a partner, and you
+
+231
+00:13:34,552 --> 00:13:35,883
+made the decisions.
+
+232
+00:13:35,933 --> 00:13:36,970
+Let's recap.
+
+233
+00:13:41,717 --> 00:13:44,057
+Here is what you used in this boss level.
+
+234
+00:13:44,100 --> 00:13:48,420
+Plan first: inputs, calculations in order,
+then outputs.
+
+235
+00:13:48,467 --> 00:13:50,765
+Convert each answer as you read it.
+
+236
+00:13:50,785 --> 00:13:53,017
+Float for amounts, int for counts.
+
+237
+00:13:53,067 --> 00:13:55,837
+A percent is divided by 100.
+
+238
+00:13:55,867 --> 00:14:00,976
+Share money in whole cents: double slash
+for each share, and the remainder operator
+
+239
+00:14:00,996 --> 00:14:02,027
+for what is left.
+
+240
+00:14:02,067 --> 00:14:07,087
+And test with results you worked out
+first, including every AI suggestion.
+
+241
+00:14:07,687 --> 00:14:08,815
+One last check.
+
+242
+00:14:08,835 --> 00:14:12,718
+Which line calculates a 15 percent tip on
+the bill?
+
+243
+00:14:24,080 --> 00:14:24,272
+B.
+
+244
+00:14:24,292 --> 00:14:26,920
+Times 15, divided by 100.
+
+245
+00:14:26,940 --> 00:14:29,991
+Exactly the fix from stage 4.
+
+246
+00:14:30,587 --> 00:14:32,150
+Boss level complete!
+
+247
+00:14:32,170 --> 00:14:35,553
+You earned 300 XP and the Fair Share
+badge.
+
+248
+00:14:35,573 --> 00:14:37,215
+And Module 1 is done.
+
+249
+00:14:39,320 --> 00:14:44,270
+The practice file has eight more money
+tasks, worth 170 XP.
+
+250
+00:14:44,300 --> 00:14:48,560
+Three warm-ups, worth 10 XP each,
+including sharing sweets.
+
+251
+00:14:48,600 --> 00:14:53,060
+Three apply tasks, worth 20 each, such as
+a fixed service charge.
+
+252
+00:14:53,100 --> 00:14:55,750
+And two stretch tasks, worth 40 each.
+
+253
+00:14:55,770 --> 00:14:58,780
+In the last one, you fix an AI's splitter.
+
+254
+00:14:58,800 --> 00:15:02,090
+Work out each result by hand before you
+run your code.
+
+255
+00:15:02,683 --> 00:15:04,794
+Asha's tool still has two limits.
+
+256
+00:15:04,814 --> 00:15:07,313
+It crashes when someone types 0 people.
+
+257
+00:15:07,333 --> 00:15:11,123
+And it shows the extra cents, but cannot
+say who pays them.
+
+258
+00:15:11,167 --> 00:15:13,818
+Both need the program to make a decision.
+
+259
+00:15:13,838 --> 00:15:19,225
+In Chapter 6, you will learn if, elif and
+else, and your programs will react to the
+
+260
+00:15:19,245 --> 00:15:19,747
+answers.
+
+261
+00:15:19,767 --> 00:15:21,516
+Do the warm-up tasks now.
+
+262
+00:15:21,536 --> 00:15:23,497
+They take about ten minutes.
+
+263
+00:15:23,533 --> 00:15:25,274
+See you in Chapter 6.

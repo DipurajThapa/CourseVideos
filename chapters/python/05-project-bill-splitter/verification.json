@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-05",
   "run_id": "2026-11-09-d9534f",
-  "verified_at": "2026-11-09T21:09:44+00:00",
-  "passed": false,
+  "verified_at": "2026-11-09T21:29:38+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -154,23 +154,26 @@
           "sentences": 97,
           "average_words": 13.6,
           "longest": 29
+        },
+        "video/script.md": {
+          "sentences": 658,
+          "average_words": 8.8,
+          "longest": 25
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/05-project-bill-splitter",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/05-project-bill-splitter",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/05-project-bill-splitter",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/05-project-bill-splitter",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/05-project-bill-splitter"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 14.7
+        "estimated_minutes": 15.1,
+        "duration_seconds": 927.8,
+        "size_mb": 39.25,
+        "scenes": 14,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "e206fc315b28f3972df1a49dc9ec03fafe5f3ae470621af2db5e85879bd8c046"
+  "fingerprint": "52680bd78c0190c143110841919185ddb227415dc43119d20d2412198e75aa27"
 }
