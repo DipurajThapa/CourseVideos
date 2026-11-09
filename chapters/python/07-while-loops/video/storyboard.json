@@ -1,404 +1,1614 @@
 {
-  "chapter_id": "<language>-NN",
-  "number": 0,
-  "title": "Chapter NN: <Title>",
-  "video_title": "<Language> Chapter NN: <Title>",
-  "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
-  "scenes": [
+ "chapter_id": "python-07",
+ "number": 7,
+ "version": 3,
+ "title": "Chapter 7: Repeat Until Done: while Loops",
+ "video_title": "Python Chapter 7: Repeat Until Done, while Loops",
+ "summary": "Asha's program gave up after one bad answer, and her checkout took one order only. Follow her as she builds an order loop that keeps going until the customer types done: counters, asking again until an answer is valid, running totals and stop values, while True and break, and trace tables. Then watch her add a limit of three tries with an AI assistant at all six stages, catching two AI mistakes with a test, a trace and by counting the questions.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the program that gave up after one bad answer. Show the finished order loop as the mission, then the AI tease. No question yet.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
-      "beats": [
-        {
-          "visual": {
-            "type": "title",
-            "kicker": "CHAPTER NN",
-            "title": "<Title>",
-            "subtitle": "<quest line>",
-            "badge": "Reward: 100 XP and the <Badge> badge"
-          },
-          "segments": [
-            {
-              "say": "Welcome to Code Quest, Chapter NN."
-            },
-            {
-              "say": "<one sentence on what the learner will do>."
-            }
-          ]
-        },
-        {
-          "visual": {
-            "type": "code",
-            "heading": "<what to look at>",
-            "file": "examples/<flawed>.py"
-          },
-          "segments": [
-            {
-              "say": "<set up the hook>"
-            },
-            {
-              "say": "<point at the line>",
-              "highlight": [
-                2
-              ]
-            }
-          ],
-          "ask": {
-            "question": "<the question, shown with a 10-second timer>",
-            "seconds": 10
-          },
-          "after": [
-            {
-              "say": "<reveal>",
-              "output": "examples/<flawed>.expected"
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 7",
+      "title": "Repeat Until Done: while Loops",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Loop Tamer badge"
+     },
+     "segments": [
+      {
+       "say": "Welcome back to Code Quest. This is Chapter 7."
+      },
+      {
+       "say": "Today your programs learn to repeat. They keep going until the job is done.",
+       "subtitle": "Keep going until the job is done."
+      },
+      {
+       "say": "And an AI assistant will promise three tries. Its loop will ask a fourth time."
+      }
+     ]
     },
     {
-      "id": "learning-goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Learning goals",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
+     "visual": {
+      "type": "bullets",
+      "heading": "A program that gives up",
+      "label": "Previously",
+      "reveal": 0,
+      "items": [
+       "In Chapter 6, a wrong answer printed: `People must be 1 or more.`",
+       "Then the program ended. The customer had to start again.",
+       "And the checkout took one order, with a fixed number of teas."
       ]
+     },
+     "segments": [
+      {
+       "say": "In Chapter 6, Asha's program learned to say: people must be 1 or more.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "But then it simply ended. The customer had to run it again from the start.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And her checkout took one order only. A real cafe takes items until the customer says: that's all.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
     },
     {
-      "id": "why-this-matters",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Why this matters",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "the-idea",
-      "section": "The idea",
-      "title": "The idea",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "The idea",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "build-it-step-by-step",
-      "section": "Build it step by step",
-      "title": "Build it step by step",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Build it step by step",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "see-the-outcome",
-      "section": "See the outcome",
-      "title": "See the outcome",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "See the outcome",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work-with-ai",
-      "section": "Work with AI",
-      "title": "Work with AI",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Work with AI",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "common-mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Common mistakes",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "think-beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Think beyond",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Recap",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Practice",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "whats-next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "What's next",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_order_loop.py",
+      "heading": "Today's mission: an order that keeps going",
+      "output": "examples/ex06_order_loop.expected",
+      "note": "The user typed: tea, Cake, coffee, tea, done"
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission. Asha's order loop asks for an item, again and again.",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        5
+       ]
+      },
+      {
+       "say": "Coffee is not on the menu, so it says sorry, and asks again.",
+       "highlight": [
+        14,
+        15
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "When the customer types done, the loop stops, and the program prints the items and the total.",
+       "highlight": [
+        6,
+        7,
+        16,
+        17
+       ],
+       "out_highlight": [
+        6,
+        7,
+        8
+       ]
+      },
+      {
+       "say": "One loop, any number of items. Let's build it.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write a `while` loop that repeats while its condition is `True`.",
+       "Use a counter and a running total that change on every pass.",
+       "Ask a question again until the answer is valid.",
+       "Stop a loop with a stop value or with `break`.",
+       "Trace a loop in a table and explain why it never ends."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write a while loop that repeats while a condition is True.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Use a counter and a running total.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Ask a question again until the answer is valid.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Stop a loop with a stop value, or with break.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And trace a loop in a table, to see why it ends, or why it never does.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Connect loops to machines the learner uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A cash machine asks for your PIN again after a wrong try.",
+       "A shop's till scans items until the cashier presses Total.",
+       "A game keeps running until you quit."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Real programs repeat. A cash machine asks for your PIN again after a wrong try. A shop's till scans items until the cashier presses Total.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A game keeps running until you quit. Each of these is a loop: a block of code that runs again and again, until a condition says stop.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: check, run, go back",
+   "direction": "Teach the loop diagram, then the rule that something must change, then the waiter analogy. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "while: check, run, go back",
+      "label": "The idea",
+      "body": [
+       "One run of the block is called a **pass**."
+      ],
+      "pre": "        +--------------------------+\n        |                          |\n        v                          |\n   table <= 3 ?                    |\n    /        \\                     |\n True        False                 |\n   |           |                   |\n run the     continue after        |\n block       the loop              |\n   |                               |\n   +-------------------------------+\n     (go back and check again)"
+     },
+     "segments": [
+      {
+       "say": "A while loop checks a condition, the same way as if. If it is True, Python runs the indented block.",
+       "focus": "pre"
+      },
+      {
+       "say": "But then, unlike if, Python goes back to the top and checks the condition again. One run of the block is called a pass."
+      },
+      {
+       "say": "When the condition is False, Python skips the block, and continues after the loop."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "The one rule of every loop",
+      "label": "The idea",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "Something inside the block must change the value that the condition checks.",
+       "If nothing changes, the condition stays `True`, and the loop never ends.",
+       "Like a waiter who asks every table \"Anything else?\", but never notices when to stop."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here is the one rule of every loop. Something inside the block must change the value that the condition checks."
+      },
+      {
+       "say": "If nothing changes, the condition stays True forever, and the loop never ends.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Think of a waiter who asks every table: anything else? Unlike a real waiter, Python never gets tired, and never notices that something is wrong.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "What must a line inside a `while` loop do, so that the loop can end?",
+      "options": [
+       "Print a message",
+       "Repeat the condition",
+       "Change a value the condition checks",
+       "Start with `while`"
+      ],
+      "answer": 2,
+      "explain": "Only a change to the checked value can make the condition `False`."
+     },
+     "segments": [
+      {
+       "say": "Quick check. What must a line inside a while loop do, so that the loop can end?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Change a value that the condition checks. That is the only way the condition can become False."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`while` checks, runs the block, and goes back.",
+       "One run of the block is a pass.",
+       "Something inside must change, or the loop never ends."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far."
+      },
+      {
+       "say": "Next, Asha serves her first tables, one pass at a time."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: A counter",
+   "direction": "The file types in. Name the counter and the line that changes it, then ask how many tables are served.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_count.py",
+      "heading": "Step 1: Repeat with a counter",
+      "lines": 3,
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. Asha serves tables 1 to 3. Line 2 creates a counter, table, and sets it to 1. A counter is a variable that counts the passes."
+      },
+      {
+       "say": "Line 3 is the loop: while table is less than or equal to 3.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 4 prints the table number. Line 5 adds 1 to the counter. That is the line that changes the value the condition checks.",
+       "lines": 5,
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 6 is not indented, so it is outside the loop.",
+       "lines": 6,
+       "highlight": [
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many times does line 4 print, and which line prints last?"
+     },
+     "after": [
+      {
+       "say": "Three times: tables 1, 2 and 3.",
+       "output": "examples/ex01_count.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "After the third pass, table is 4. 4 is not less than or equal to 3, so the loop ends, and line 6 prints once.",
+       "highlight": [
+        3,
+        6
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Ask again until valid",
+   "direction": "This fixes the Chapter 6 problem. Teach the two input lines, ask how many messages, reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_ask_again.py",
+      "heading": "Step 2: Ask again until the answer is valid",
+      "highlight": [
+       2
+      ],
+      "note": "The user will type: 0, then -2, then 4"
+     },
+     "segments": [
+      {
+       "say": "Step 2. This fixes the problem from Chapter 6. Line 2 asks once, before the loop, so people has a value when line 3 checks it."
+      },
+      {
+       "say": "Line 3: while people is less than 1. Line 4 explains the rule.",
+       "highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "And line 5 asks again, inside the loop. That new answer is the change that can end the loop.",
+       "highlight": [
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types `0`, then `-2`, then `4`. How many times does `Please type 1 or more.` print?"
+     },
+     "after": [
+      {
+       "say": "Twice. Once for 0, and once for minus 2. Both are less than 1.",
+       "output": "examples/ex02_ask_again.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        2,
+        4
+       ]
+      },
+      {
+       "say": "Then 4 makes the condition False. The loop ends, and line 6 shows the table.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        6
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: A running total",
+   "direction": "Teach the running total, the stop value and plus equals. Ask whether the stop value is added, then reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_running_total.py",
+      "heading": "Step 3: Keep a running total",
+      "highlight": [
+       2,
+       3
+      ],
+      "note": "The user will type: 3.5, 4, 2.25, then 0"
+     },
+     "segments": [
+      {
+       "say": "Step 3. Asha adds up prices. Line 2 starts a running total at 0: a variable that grows on every pass. Line 3 starts a counter."
+      },
+      {
+       "say": "The user types 0 to finish. A value that means stop is called a stop value. Line 5 loops while the price is not 0.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 6 says total plus equals price. That is short for: total equals total plus price. Line 7 adds 1 to the count, the same way.",
+       "highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "And line 8 asks for the next price, as the last line of the pass.",
+       "highlight": [
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types `3.5`, `4`, `2.25`, then `0`. What are the items and the total?"
+     },
+     "after": [
+      {
+       "say": "Three items, and a total of 9.75.",
+       "output": "examples/ex03_running_total.expected",
+       "highlight": [
+        9,
+        10
+       ],
+       "out_highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "The stop value is not added. Line 5 checks the 0 first, so line 6 never adds it.",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: while True and break",
+   "direction": "Teach while True and break, ask what Done does, reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_break.py",
+      "heading": "Step 4: Stop from inside with break",
+      "highlight": [
+       2
+      ],
+      "note": "The user will type: tea, Cake, then Done"
+     },
+     "segments": [
+      {
+       "say": "Step 4. Line 2 says while True. That condition never becomes False on its own."
+      },
+      {
+       "say": "Line 3 asks for an item, and cleans it with strip and lower, as in Chapter 6.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Lines 4 and 5: if the item is done, break. Break ends the loop immediately, and Python continues after it.",
+       "highlight": [
+        4,
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types `Done` with a capital D. Does line 6 run for that answer?"
+     },
+     "after": [
+      {
+       "say": "No. Strip and lower turn Done into done, so break runs first, and line 6 is skipped.",
+       "output": "examples/ex04_break.expected",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Then line 7 runs after the loop: order closed.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`cups = 1`, then `while cups < 5:` with `cups = cups + 2` inside. What is `cups` after the loop?",
+      "options": [
+       "`5`",
+       "`3`",
+       "`7`",
+       "`4`"
+      ],
+      "answer": 0,
+      "explain": "1 becomes 3, then 5. 5 < 5 is False, so the loop ends at 5."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Cups starts at 1. While cups is less than 5, cups goes up by 2. What is cups after the loop?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. 5. 1 becomes 3, then 5. 5 is not less than 5, so the loop ends."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Ask before the loop, and again inside it.",
+       "`total += price` adds to a running total.",
+       "`break` ends a loop immediately."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Roll your shoulders, and take a slow breath."
+      },
+      {
+       "say": "Next, a tool that shows exactly what a loop does: the trace table."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: A trace table",
+   "direction": "Teach the trace table on the doubling loop, row by row, then ask for the last number, then reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_trace.py",
+      "heading": "Step 5: Trace the loop",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "hidden_text": "Fill in the trace table first."
+     },
+     "segments": [
+      {
+       "say": "Step 5. Cups starts at 1. While cups is less than 20, line 4 doubles it, and line 5 prints it."
+      },
+      {
+       "say": "A trace table writes down the value of each variable on every pass. Let's fill one in.",
+       "highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Trace table: cups doubles",
+      "label": "Build it",
+      "columns": [
+       "Pass",
+       "`cups` at the check",
+       "`cups < 20`",
+       "`cups` after line 4"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "`True`",
+        "2"
+       ],
+       [
+        "2",
+        "2",
+        "`True`",
+        "4"
+       ],
+       [
+        "3",
+        "4",
+        "`True`",
+        "8"
+       ],
+       [
+        "4",
+        "8",
+        "`True`",
+        "16"
+       ],
+       [
+        "5",
+        "16",
+        "`True`",
+        "32"
+       ],
+       [
+        "–",
+        "32",
+        "`False`",
+        "loop ends"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Pass 1. Cups is 1. 1 is less than 20, so it doubles to 2.",
+       "focus_row": 0
+      },
+      {
+       "say": "Pass 2: 2 becomes 4. Pass 3: 4 becomes 8.",
+       "focus_row": 2
+      },
+      {
+       "say": "Pass 4: 8 becomes 16.",
+       "focus_row": 3
+      },
+      {
+       "say": "Now cups is 16 at the check. Look at the table and think.",
+       "focus_row": 4
+      }
+     ],
+     "ask": {
+      "question": "What is the last number that line 5 prints: 16 or 32?"
+     },
+     "after": [
+      {
+       "say": "32. 16 is still less than 20, so pass 5 runs completely, and doubles it to 32.",
+       "focus_row": 4
+      },
+      {
+       "say": "Only then does the check find False. Python checks the condition only at the top of each pass.",
+       "focus_row": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_trace.py",
+      "heading": "Step 5: The real run agrees",
+      "highlight": [
+       4,
+       5
+      ],
+      "output": "examples/ex05_trace.expected",
+      "out_highlight": [
+       5,
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "And the real run agrees with the table: 2, 4, 8, 16, 32, then stopped at 32."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the order loop",
+   "direction": "Return to the mission. Explain every group of lines, ask for the items and total, reveal. Hand over to the AI story.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_order_loop.py",
+      "heading": "Mission complete: the order loop",
+      "highlight": [
+       2,
+       3
+      ],
+      "note": "The user will type: tea, Cake, coffee, tea, done"
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Lines 2 and 3 start a running total and a counter at 0."
+      },
+      {
+       "say": "Line 4 starts the loop with while True. Lines 5 to 7 ask for an item, clean it, and break on done.",
+       "highlight": [
+        4,
+        5,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Lines 8 to 13 are the decisions from Chapter 6. Tea adds 3.5, cake adds 4, and each adds 1 to the count.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+       ]
+      },
+      {
+       "say": "Lines 14 and 15 catch anything else. And lines 16 and 17 run once, after the loop.",
+       "highlight": [
+        14,
+        15,
+        16,
+        17
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types tea, Cake, coffee, tea, done. What are the items and the total?"
+     },
+     "after": [
+      {
+       "say": "Coffee gets a sorry, and changes nothing.",
+       "output": "examples/ex06_order_loop.expected",
+       "highlight": [
+        14,
+        15
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Two teas and a cake: 3 items, and 3.5 plus 4 plus 3.5 is 11.00.",
+       "highlight": [
+        16,
+        17
+       ],
+       "out_highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Mission complete! Next, Asha protects the How many teas question. She uses an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one limit",
+   "direction": "Teach the tracing skill. Then one conversation per stage, all about the teas question and a limit of 3 tries. Stage 3 plants the mistake, stages 4 and 5 catch it, stage 6 catches a second.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: tracing",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Ask AI to trace a loop for one set of answers, one line per pass.",
+       "A trace shows which value changes on each pass, and which never does.",
+       "Run the same answers yourself. Never paste private data."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is tracing. You ask the AI to trace a loop for one set of answers, one line per pass.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Then you run the same answers yourself. And the safety habits from Chapter 1 still apply.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: the condition and the test answers",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner learning while loops. The number of teas must be from 1 to 10. If it is not, my program asks again. Do not write code yet. Tell me the loop condition, which value must change inside the loop, and some test answers."
+       },
+       {
+        "role": "ai",
+        "text": "1. Repeat while teas is less than 1 or more than 10.\n2. Inside the loop, ask again and store the new answer in `teas`. That is the value that can end the loop.\n3. Test answers: 3. Then 0, then 3. Then 12, then 3. And the boundary values 1 and 10."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. The number of teas must be from 1 to 10. Asha asks for the loop condition, the value that must change, and test answers. No code yet."
+      },
+      {
+       "say": "The AI names the condition, says the new answer is what ends the loop, and lists test answers, including the boundary values 1 and 10.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then ask for a trace",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote the loop myself. Do not change it. Trace it for the answers 0, then 12, then 3: one line per pass.",
+        "code": "examples/ai_teas_mine.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Pass 1: `teas` is 0. The condition is True: message, then the answer 12.\nPass 2: `teas` is 12. True: message, then the answer 3.\nCheck: `teas` is 3. False, so the loop ends and line 6 prints `Teas: 3`."
+       },
+       {
+        "role": "you",
+        "text": "My trace said the same. I ran it:",
+        "output": "examples/ai_teas_mine.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes the loop herself, and asks the AI to trace it for 0, 12 and 3. The AI traces two passes, then a check that is False.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Asha traced it too, and she runs it. All three agree.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: add a limit of 3 tries",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Add a limit to my loop: at most 3 tries. After 3 wrong answers, print 'Too many tries. Using 1 tea.' and use 1. If the answers are 0, 0 and 0, tell me exactly what it prints."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the code. With 0, 0 and 0 it asks 3 times, then prints `Too many tries. Using 1 tea.` and `Teas: 1`.",
+        "code": "examples/ai_tries_flawed.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha wants a limit: at most 3 tries, and then use 1 tea. She asks what 0, 0 and 0 print."
+      },
+      {
+       "say": "The AI says: three questions, then too many tries. It sounds completely sure.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Look at the condition on line 4, and remember the one rule of every loop."
+      }
+     ],
+     "ask": {
+      "question": "Line 4 checks `tries < 3`. Which line inside the loop changes `tries`?"
+     },
+     "after": [
+      {
+       "say": "None of them. Lines 5 and 6 print and ask, but tries stays 1. Asha suspects a bug. Now she proves it with tests."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: run every edge case",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Before I trust it, list the edge cases, with the exact output each one should give."
+       },
+       {
+        "role": "ai",
+        "text": "1. `4`: one question, then Teas: 4.\n2. `0`, then `5`: two questions, then Teas: 5.\n3. `0`, `0`, `0`: three questions, then Too many tries. Using 1 tea. Teas: 1."
+       },
+       {
+        "role": "you",
+        "text": "Case 2 passes:",
+        "output": "examples/ai_tries_test_ok.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks for edge cases, with the exact output each one should give."
+      },
+      {
+       "say": "The AI lists three cases. Case 3 is three wrong answers: it should ask three times, then use 1 tea.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "She runs case 2, one wrong answer, then 5. It passes.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tries_flawed.py",
+      "heading": "Case 3: three wrong answers",
+      "highlight": [
+       4
+      ],
+      "output": "examples/ai_tries_flawed.expected",
+      "note": "The user typed: 0, 0, 0, then 5"
+     },
+     "segments": [
+      {
+       "say": "Then case 3. She types 0 three times. The program does not stop. It asks a fourth time.",
+       "out_highlight": [
+        7
+       ]
+      },
+      {
+       "say": "She types 5, and it takes it. The limit never worked. With more zeros, it would ask forever.",
+       "out_highlight": [
+        8
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: a trace before a fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Case 3 failed: it asked a fourth time, and took my 5. First trace the loop for 0, 0, 0 in a table, one line per pass. Then tell me which value never changes, and the smallest fix.",
+        "code": "examples/ai_tries_flawed.py",
+        "code_lines": [
+         4,
+         5,
+         6
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Pass 1: `teas` 0, `tries` 1. True.\nPass 2: `teas` 0, `tries` 1. True.\nPass 3: `teas` 0, `tries` 1. True.\n`tries` is 1 on every pass. No line inside the loop changes it, so `tries < 3` is always True. Fix: add `tries += 1` as the last line inside the loop."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha pastes the loop and the failed run. She asks for a trace table first, then the value that never changes, then the fix."
+      },
+      {
+       "say": "The trace shows it clearly. Tries is 1 on every pass. Nothing inside the loop changes it, so tries less than 3 is always True. The fix: tries plus equals 1, inside the loop.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tries_fixed.py",
+      "heading": "The fix: tries changes on every pass",
+      "highlight": [
+       7
+      ],
+      "output": "examples/ai_tries_fixed.expected",
+      "note": "The user typed: 0, 0, 0"
+     },
+     "segments": [
+      {
+       "say": "Here is the fix on line 7. Now tries goes 1, 2, 3, and the third wrong answer ends the loop.",
+       "out_highlight": [
+        1,
+        3,
+        5
+       ]
+      },
+      {
+       "say": "Too many tries, using 1 tea. Exactly what the AI promised in the first place.",
+       "out_highlight": [
+        6,
+        7
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: count the questions",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Suggest at most two readability improvements, each with one reason. Do not change how many times it asks.",
+        "code": "examples/ai_tries_fixed.py",
+        "code_lines": [
+         4,
+         5,
+         6,
+         7
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "1. Add a comment above the loop: `# Ask at most 3 times`.\n2. Change `tries < 3` to `tries <= 3`, so the customer gets three full tries."
+       },
+       {
+        "role": "you",
+        "text": "Suggestion 2 changes a condition. Before I accept it, I will count the questions it asks."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for at most two readability improvements that do not change how many times it asks."
+      },
+      {
+       "say": "Suggestion 1, a comment, helps a reader. Suggestion 2 says: change less than 3 to less than or equal to 3, for three full tries.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Asha does not accept it yet. She will count the questions.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tries_improve.py",
+      "heading": "Testing suggestion 2",
+      "highlight": [
+       4,
+       7
+      ],
+      "hidden_text": "Count the questions before the output appears.",
+      "note": "The user will type: 0 every time"
+     },
+     "segments": [
+      {
+       "say": "Here is the suggested condition on line 4: tries less than or equal to 3. Trace it in your head. Tries is 1, then 2, then 3."
+      }
+     ],
+     "ask": {
+      "question": "With `tries <= 3`, how many times does it ask before `Too many tries`?"
+     },
+     "after": [
+      {
+       "say": "Four times. When tries is 3, the condition is still True, so there is one more pass.",
+       "output": "examples/ai_tries_improve.expected",
+       "out_highlight": [
+        1,
+        3,
+        5,
+        7
+       ]
+      },
+      {
+       "say": "The AI was wrong again. Asha keeps less than 3, and adds only the comment.",
+       "out_highlight": [
+        8
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A loop never ends. What do you ask the AI for first?",
+      "options": [
+       "A new loop",
+       "A trace table of each pass",
+       "A shorter program",
+       "A new variable name"
+      ],
+      "answer": 1,
+      "explain": "A trace shows which value never changes, before any fix."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A loop never ends. What do you ask the AI for first?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. A trace table of each pass. It shows which value never changes."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Every value in the condition needs a line that changes it.",
+       "Count the questions: `<` and `<=` differ by one pass."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha caught two AI mistakes, with a trace, and by counting."
+      },
+      {
+       "say": "Next, the four mistakes beginners make most with loops. You have already seen one of them."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 is a real error. Mistake 2 is a spot-it question about the counter. Mistake 3 shows the never-ending loop as a fragment and how to stop it. Mistake 4 is a spot-it on capital letters.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_not_created.py",
+      "heading": "Mistake 1: a name with no value yet",
+      "highlight": [
+       2
+      ],
+      "error": "examples/err01_not_created.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. The condition on line 2 is checked before the first pass. But answer does not exist yet.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Python stops with a Name Error. The fix: ask once before the loop, as in step 2, or use while True with break, as in step 4.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_off_by_one.py",
+      "heading": "Mistake 2: your turn to spot it",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Find the mistake before the output appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Asha wants to serve tables 1 to 3. Compare line 3 with step 1."
+      }
+     ],
+     "ask": {
+      "question": "Asha wants tables 1 to 3. Which table is never served, and why?"
+     },
+     "after": [
+      {
+       "say": "Table 3. Less than 3 is False when table is 3, so the loop stops one pass too early.",
+       "output": "examples/ex07_off_by_one.expected",
+       "heading": "Mistake 2: one pass too few",
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "No error, only a missing table. This is called an off-by-one error. The fix: less than or equal to 3.",
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Mistake 3: a loop that never ends",
+      "label": "Common mistakes",
+      "body": [
+       "Illustrative only: do not run it as it is. To stop a running program, click in the terminal and press **Ctrl+C**."
+      ],
+      "pre": "# illustrative: the counter never changes\ntable = 1\nwhile table <= 3:\n    print(f\"Serving table {table}\")\n\n# prints \"Serving table 1\" again and again\n# Ctrl+C stops it: KeyboardInterrupt"
+     },
+     "segments": [
+      {
+       "say": "Mistake 3 is the one the AI made. Nothing inside this loop changes table, so it prints table 1 again and again, forever.",
+       "focus": "pre"
+      },
+      {
+       "say": "If a program never stops, click in the terminal and press Control and C together. Python stops with a Keyboard Interrupt message."
+      },
+      {
+       "say": "The fix: add the line that changes the counter, inside the loop."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_done_case.py",
+      "heading": "Mistake 4: spot this one too",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Find the reason before the output appears.",
+      "note": "The user will type: tea, Done, then done"
+     },
+     "segments": [
+      {
+       "say": "One more. The loop stops on done, in small letters. The user types Done, with a capital D."
+      }
+     ],
+     "ask": {
+      "question": "The user types `Done` with a capital D. What happens?"
+     },
+     "after": [
+      {
+       "say": "Done is added to the order as if it were an item. The loop keeps going until done in small letters.",
+       "output": "examples/ex08_done_case.expected",
+       "heading": "Mistake 4: capital letters in a stop value",
+       "out_highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "The fix is the one from step 4: compare the answer after strip and lower.",
+       "out_highlight": [
+        5,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Give every name a value before the loop.",
+       "Check the last pass: `<` or `<=`?",
+       "Ctrl+C stops a loop that never ends."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Loops will not surprise you any more."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "The kettle needs 5 minutes. How do you count down from 5 to 1, then print `Tea is ready!`?",
+      "hint": "which value changes on each pass, and in which direction?"
+     },
+     "segments": [
+      {
+       "say": "First. The cafe kettle needs 5 minutes. How would you count down from 5 to 1, and then print: tea is ready?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Think about the value that changes on each pass, and its direction. Minus equals takes away."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "How could the order loop stop after 10 items, even if nobody types `done`?"
+     },
+     "segments": [
+      {
+       "say": "Second. How could Asha's order loop stop after 10 items, even if the customer never types done?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Trace your loop with 10 items before you run it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check on something new, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A `while` loop repeats its block while the condition is `True`.",
+       "A line inside the loop must change the value the condition checks.",
+       "A counter counts passes; a running total grows. `+=` and `-=` are short forms.",
+       "A stop value or `break` ends the loop when the user is finished.",
+       "A trace table shows every value on every pass.",
+       "Ask AI to trace a loop, then run the same answers yourself."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap."
+      },
+      {
+       "say": "A while loop repeats its block while the condition is True.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "A line inside the loop must change the value that the condition checks.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A counter counts passes, and a running total grows. Plus equals and minus equals are short forms.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "A stop value or break ends the loop. And a trace table shows every value on every pass.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And with AI: ask for a trace, then run the same answers yourself.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`n = 10`, then `while n > 0:` with `print(n)` and `n -= 3` inside. How many numbers print?",
+      "options": [
+       "3",
+       "5",
+       "10",
+       "4"
+      ],
+      "answer": 3,
+      "explain": "10, 7, 4 and 1 print. Then n is -2, and -2 > 0 is False."
+     },
+     "segments": [
+      {
+       "say": "One last check. N starts at 10. While n is greater than 0, the loop prints n, then takes away 3. How many numbers print?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Four: 10, 7, 4 and 1. Then n is minus 2, and the loop ends."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Loop Tamer",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Loop Tamer",
+      "tile": 7
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Loop Tamer badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Count to five; Countdown; Predict the passes",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "A valid age; Savings goal; Average score",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Menu with help; Fix the AI's kettle timer",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including a savings goal.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, an AI's kettle timer never ends. Trace it, and fix it.",
+       "focus_row": 2
+      },
+      {
+       "say": "Trace each loop before you run it. Try each task before you open the solution.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease for and range as the fix for counter mistakes. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 8",
+      "title": "Repeat a Set Number of Times: for Loops and range()",
+      "subtitle": "Repeat a known number of times, in one line.",
+      "badge": "",
+      "tile": 8
+     },
+     "segments": [
+      {
+       "say": "To serve tables 1 to 3, Asha needed a counter, a condition and a line that changes it. Three places to make a mistake, as you saw today."
+      },
+      {
+       "say": "In Chapter 8, for loops and range repeat a block a set number of times, with no counter of your own."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 8."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }
