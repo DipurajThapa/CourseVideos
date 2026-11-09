@@ -17,7 +17,7 @@
     "python-01": {
       "language": "python",
       "number": 1,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-a25750",
@@ -36,12 +36,14 @@
         {
           "run_id": "2026-11-09-f70a58",
           "started": "2026-11-09T11:30:12+00:00",
-          "from_status": "changes_requested"
+          "from_status": "changes_requested",
+          "ended": "2026-11-09T11:50:44+00:00",
+          "result": "in_review"
         }
       ],
       "current_run_id": "2026-11-09-f70a58",
       "path": "chapters/python/01-first-program",
-      "completed": "2026-11-09T10:55:36+00:00",
+      "completed": "2026-11-09T11:50:44+00:00",
       "notes": "Owner request (2026-11-09): redesign the video to be interactive: breathers, questions kept on screen with a 10-second digital timer, and highlights that follow the narration."
     },
     "python-02": {
@@ -226,5 +228,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T11:30:12+00:00"
+  "updated": "2026-11-09T11:50:44+00:00"
 }
