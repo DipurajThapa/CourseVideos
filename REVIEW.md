@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-09T22:09:19+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-09T22:44:43+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -18,6 +18,7 @@ You can also ask Claude to do either.
 - **python-04**: Talking Back: Input and Type Conversion ([chapters/python/04-input-and-conversion](chapters/python/04-input-and-conversion)), video: [chapters/python/04-input-and-conversion/video/chapter.mp4](chapters/python/04-input-and-conversion/video/chapter.mp4)
 - **python-05**: Boss Level 1: The Bill Splitter ([chapters/python/05-project-bill-splitter](chapters/python/05-project-bill-splitter)), video: [chapters/python/05-project-bill-splitter/video/chapter.mp4](chapters/python/05-project-bill-splitter/video/chapter.mp4)
 - **python-06**: Making Decisions: if, elif and else ([chapters/python/06-making-decisions](chapters/python/06-making-decisions)), video: [chapters/python/06-making-decisions/video/chapter.mp4](chapters/python/06-making-decisions/video/chapter.mp4)
+- **python-07**: Repeat Until Done: while Loops ([chapters/python/07-while-loops](chapters/python/07-while-loops)), video: [chapters/python/07-while-loops/video/chapter.mp4](chapters/python/07-while-loops/video/chapter.mp4)
 
 ## Changes requested
 

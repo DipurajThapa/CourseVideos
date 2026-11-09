@@ -163,15 +163,19 @@
     "python-07": {
       "language": "python",
       "number": 7,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-cc180f",
           "started": "2026-11-09T22:10:32+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-09T22:44:43+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-09-cc180f"
+      "current_run_id": "2026-11-09-cc180f",
+      "path": "chapters/python/07-while-loops",
+      "completed": "2026-11-09T22:44:43+00:00"
     },
     "python-08": {
       "language": "python",
@@ -300,5 +304,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T22:10:32+00:00"
+  "updated": "2026-11-09T22:44:43+00:00"
 }

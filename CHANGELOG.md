@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-07 "Repeat Until Done: while Loops" ready for review (18:04 video, critic 7.3/10 with all fixes applied): order loop, trace tables, AI limit of 3 tries caught by edge-case tests and a trace.
 - python-06 "Making Decisions: if, elif and else" ready for review (18:38 video, critic 8/10 with fixes applied). Theme now draws code without ligatures.
 - python-05 Boss Level 1 "The Bill Splitter" ready for review: whole-cent splitting with // and %, four hand-checked tests, six AI stages with two AI mistakes caught by tests (15:27). Module 1 complete.
 - python-04 "Talking Back: Input and Type Conversion" ready for review (17:20 video; change calculator with six AI stages). Verifier now echoes typed answers for Python examples with .stdin files.
