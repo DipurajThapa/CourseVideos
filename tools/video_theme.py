@@ -16,7 +16,21 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, features as _pil_features
+
+# Code must look exactly as the learner types it. JetBrains Mono draws ligatures by default
+# (">=" as one arrow-like glyph, "==" as a long bar, "!=" as a crossed sign), which would hide the
+# characters a beginner has to type. Turn ligatures off for every piece of text the theme draws.
+_NO_LIGATURES = ["-liga", "-calt", "-dlig"] if _pil_features.check("raqm") else None
+if _NO_LIGATURES and not getattr(ImageDraw.ImageDraw, "_cq_no_ligatures", False):
+    def _wrap(method):
+        def inner(self, *args, **kwargs):
+            kwargs.setdefault("features", _NO_LIGATURES)
+            return method(self, *args, **kwargs)
+        return inner
+    for _name in ("text", "textlength", "textbbox"):
+        setattr(ImageDraw.ImageDraw, _name, _wrap(getattr(ImageDraw.ImageDraw, _name)))
+    ImageDraw.ImageDraw._cq_no_ligatures = True
 
 W, H = 1920, 1080
 FONTS = Path(__file__).resolve().parent / "video" / "fonts"

@@ -1,0 +1,152 @@
+{
+  "chapter_id": "python-06",
+  "rendered_at": "2026-11-09T22:06:58+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "c06bf417868e57495c69a03abcad5d6ec2355140dc2a0bc59dbbd75782fcb03b",
+  "inputs_sha256": "faa06f61ad5fb153c95d5c6bfce2cb88095a83104ef0c69f706e8b168e2e2d1b",
+  "video_sha256": "3cc40935144eadad2291aac2a839613b90c4a2d751c4f00258865aed303f4720",
+  "duration_seconds": 1118.6,
+  "size_mb": 46.09,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 1013,
+  "questions": 17,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 57.9
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 57.9,
+      "end": 77.1
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 77.1,
+      "end": 93.033
+    },
+    {
+      "id": "idea",
+      "title": "The idea: conditions are True or False",
+      "section": "The idea",
+      "start": 93.033,
+      "end": 201.067
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Compare values",
+      "section": "Build it step by step",
+      "start": 201.067,
+      "end": 253.267
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: if",
+      "section": "Build it step by step",
+      "start": 253.267,
+      "end": 292.967
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: else",
+      "section": "Build it step by step",
+      "start": 292.967,
+      "end": 337.967
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: elif and boundary values",
+      "section": "Build it step by step",
+      "start": 337.967,
+      "end": 390.533
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: and, or, not",
+      "section": "Build it step by step",
+      "start": 390.533,
+      "end": 498.767
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: Safe text answers",
+      "section": "Build it step by step",
+      "start": 498.767,
+      "end": 537.733
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the checkout that decides",
+      "section": "See the outcome",
+      "start": 537.733,
+      "end": 603.633
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one rule",
+      "section": "Work with AI",
+      "start": 603.633,
+      "end": 861.367
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 861.367,
+      "end": 957.967
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 957.967,
+      "end": 1004.067
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 1004.067,
+      "end": 1068.4
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1068.4,
+      "end": 1096.0
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1096.0,
+      "end": 1118.6
+    }
+  ]
+}

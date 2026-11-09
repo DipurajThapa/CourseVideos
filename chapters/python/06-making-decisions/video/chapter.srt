@@ -1,0 +1,1355 @@
+1
+00:00:00,250 --> 00:00:02,338
+Welcome back to Code Quest.
+
+2
+00:00:02,358 --> 00:00:05,540
+This is Chapter 6, the start of Module 2.
+
+3
+00:00:05,567 --> 00:00:07,930
+Today your programs learn to decide.
+
+4
+00:00:07,950 --> 00:00:11,307
+They check a fact, and then they choose
+what to do.
+
+5
+00:00:11,333 --> 00:00:16,019
+And an AI assistant will promise a free
+biscuit for exactly 15.
+
+6
+00:00:16,039 --> 00:00:17,886
+Its own code will say no.
+
+7
+00:00:18,487 --> 00:00:21,360
+Remember the bill splitter from Chapter 5?
+
+8
+00:00:21,380 --> 00:00:26,527
+Someone typed 0 people, and the program
+crashed with a Zero Division Error.
+
+9
+00:00:26,567 --> 00:00:29,395
+And it could not treat customers
+differently.
+
+10
+00:00:29,415 --> 00:00:32,497
+A member and a visitor got exactly the
+same bill.
+
+11
+00:00:32,533 --> 00:00:36,487
+It ran every line, every time, whatever
+the answers were.
+
+12
+00:00:37,087 --> 00:00:39,040
+So here is today's mission.
+
+13
+00:00:39,060 --> 00:00:42,987
+Asha's checkout asks three questions, as
+in Chapter 4.
+
+14
+00:00:43,033 --> 00:00:44,170
+Then it decides.
+
+15
+00:00:44,190 --> 00:00:46,628
+Members get a 10 percent discount.
+
+16
+00:00:46,648 --> 00:00:49,013
+Everyone else pays the full bill.
+
+17
+00:00:49,033 --> 00:00:50,451
+And it decides again.
+
+18
+00:00:50,471 --> 00:00:53,393
+Pay 15 or more, and you get a free
+biscuit.
+
+19
+00:00:53,433 --> 00:00:56,374
+Two decisions, made by the program itself.
+
+20
+00:00:56,394 --> 00:00:57,572
+Let's build them.
+
+21
+00:00:58,150 --> 00:01:01,640
+Write comparisons, the questions a program
+can ask.
+
+22
+00:01:01,667 --> 00:01:05,867
+Write if, elif and else blocks, with
+colons and indentation.
+
+23
+00:01:05,900 --> 00:01:09,150
+Combine conditions with and, or, and not.
+
+24
+00:01:09,200 --> 00:01:14,080
+Compare text answers safely, whatever
+capital letters the user types.
+
+25
+00:01:14,100 --> 00:01:16,761
+And fix the errors that beginners meet
+with if.
+
+26
+00:01:17,350 --> 00:01:19,777
+Real programs decide all the time.
+
+27
+00:01:19,797 --> 00:01:22,296
+A cash machine checks your balance.
+
+28
+00:01:22,316 --> 00:01:25,390
+A shop gives free delivery for a big
+order.
+
+29
+00:01:25,433 --> 00:01:29,199
+A login page lets you in only when the
+password matches.
+
+30
+00:01:29,219 --> 00:01:32,713
+Each one checks a fact, and then chooses
+what to do.
+
+31
+00:01:33,283 --> 00:01:37,360
+A condition is a question that Python
+answers with True or False.
+
+32
+00:01:37,380 --> 00:01:39,629
+You met True and False in Chapter 2.
+
+33
+00:01:39,649 --> 00:01:42,213
+They are the two values of the type bool.
+
+34
+00:01:42,233 --> 00:01:45,873
+Double equals asks: are these two values
+equal?
+
+35
+00:01:45,900 --> 00:01:51,180
+Exclamation mark equals asks the opposite:
+are they different?
+
+36
+00:01:51,200 --> 00:01:52,941
+Less than, and greater than.
+
+37
+00:01:52,961 --> 00:01:56,840
+Look closely: 15 is not greater than 15,
+so that one is False.
+
+38
+00:01:56,867 --> 00:02:00,979
+Add an equals sign, and the value itself
+is included.
+
+39
+00:02:00,999 --> 00:02:05,267
+15 is greater than or equal to 15, so this
+one is True.
+
+40
+00:02:05,300 --> 00:02:08,793
+And remember: one equals sign gives a name
+a value.
+
+41
+00:02:08,813 --> 00:02:10,997
+Two equals signs ask a question.
+
+42
+00:02:11,620 --> 00:02:14,057
+An if statement asks a condition.
+
+43
+00:02:14,077 --> 00:02:17,407
+If the answer is True, Python runs the
+block.
+
+44
+00:02:17,427 --> 00:02:19,790
+If it is False, Python skips it.
+
+45
+00:02:19,833 --> 00:02:25,296
+The block is the group of lines that are
+indented, four spaces in, under the line
+
+46
+00:02:25,316 --> 00:02:26,853
+that ends with a colon.
+
+47
+00:02:26,900 --> 00:02:30,551
+The last line is not indented, so it
+always runs.
+
+48
+00:02:31,153 --> 00:02:33,595
+Think of a gate at the cafe door.
+
+49
+00:02:33,615 --> 00:02:36,878
+It checks one fact: is this person a
+member?
+
+50
+00:02:36,898 --> 00:02:37,997
+True, it opens.
+
+51
+00:02:38,017 --> 00:02:39,713
+False, it stays closed.
+
+52
+00:02:39,733 --> 00:02:43,168
+But unlike a person at a door, the gate
+cannot guess.
+
+53
+00:02:43,188 --> 00:02:47,730
+Yes with a capital Y and yes with a small
+y are two different answers.
+
+54
+00:02:48,353 --> 00:02:49,231
+Quick check.
+
+55
+00:02:49,251 --> 00:02:50,802
+To pay is exactly 15.
+
+56
+00:02:50,822 --> 00:02:53,346
+Which of these conditions is True?
+
+57
+00:03:04,713 --> 00:03:04,854
+C.
+
+58
+00:03:04,874 --> 00:03:06,858
+Greater than or equal to.
+
+59
+00:03:06,878 --> 00:03:09,663
+The equals sign includes 15 itself.
+
+60
+00:03:10,253 --> 00:03:11,311
+Take a breather.
+
+61
+00:03:11,331 --> 00:03:13,263
+Here is what you know so far.
+
+62
+00:03:13,300 --> 00:03:16,565
+Next, Asha asks Python her first
+questions.
+
+63
+00:03:21,317 --> 00:03:21,826
+Step 1.
+
+64
+00:03:21,846 --> 00:03:24,168
+Asha stores the tea price, 3.5.
+
+65
+00:03:24,188 --> 00:03:26,737
+Line 3 asks: is it greater than 3?
+
+66
+00:03:26,767 --> 00:03:34,037
+Line 4 asks if it equals 3.5, and line 5
+asks if it is different from 3.5.
+
+67
+00:03:34,067 --> 00:03:37,786
+Line 6 asks if it is less than or equal to
+3.
+
+68
+00:03:37,806 --> 00:03:39,947
+Line 7 compares two words.
+
+69
+00:03:39,967 --> 00:03:43,674
+And line 8 asks for the type of a
+comparison.
+
+70
+00:03:55,047 --> 00:03:56,913
+Lines 3 and 4 are True.
+
+71
+00:03:56,933 --> 00:04:01,917
+Line 5 is False, because the price is not
+different from 3.5.
+
+72
+00:04:01,967 --> 00:04:03,408
+Line 7 is False too.
+
+73
+00:04:03,428 --> 00:04:09,107
+Tea with a capital T and tea with a small
+t are different text, like the gate.
+
+74
+00:04:09,133 --> 00:04:12,919
+And line 8 shows the type of a comparison:
+bool.
+
+75
+00:04:13,517 --> 00:04:14,035
+Step 2.
+
+76
+00:04:14,055 --> 00:04:16,878
+Line 2 asks for the number of people.
+
+77
+00:04:16,898 --> 00:04:22,027
+Line 3 is the if: the condition, people
+equals 0, and then a colon.
+
+78
+00:04:22,067 --> 00:04:24,224
+Lines 4 and 5 are indented.
+
+79
+00:04:24,244 --> 00:04:25,757
+They are the block.
+
+80
+00:04:25,800 --> 00:04:27,568
+Line 6 is not indented.
+
+81
+00:04:27,588 --> 00:04:29,433
+It is outside the block.
+
+82
+00:04:40,813 --> 00:04:46,033
+The condition is True, so both lines of
+the block run, and then line 6.
+
+83
+00:04:46,067 --> 00:04:49,056
+Type 4 instead, and the condition is
+False.
+
+84
+00:04:49,076 --> 00:04:52,626
+Python skips the block, and prints only:
+Thank you.
+
+85
+00:04:53,217 --> 00:04:53,717
+Step 3.
+
+86
+00:04:53,737 --> 00:04:57,136
+This is the fix for the bill splitter's
+crash.
+
+87
+00:04:57,156 --> 00:05:01,001
+Line 4 asks: is the number of people
+greater than 0?
+
+88
+00:05:01,021 --> 00:05:03,677
+If so, lines 5 and 6 share the bill.
+
+89
+00:05:03,700 --> 00:05:04,966
+Line 7 says else.
+
+90
+00:05:04,986 --> 00:05:08,220
+Its block runs when the condition is
+False.
+
+91
+00:05:08,267 --> 00:05:11,695
+Exactly one of the two blocks runs, never
+both.
+
+92
+00:05:11,715 --> 00:05:13,749
+Then line 9 runs either way.
+
+93
+00:05:25,113 --> 00:05:25,328
+No.
+
+94
+00:05:25,348 --> 00:05:29,318
+0 is not greater than 0, so the condition
+is False.
+
+95
+00:05:29,338 --> 00:05:31,743
+Python jumps to the else block.
+
+96
+00:05:31,767 --> 00:05:35,027
+The division never happens, so there is no
+crash.
+
+97
+00:05:35,047 --> 00:05:37,639
+A clear message instead, and then Done.
+
+98
+00:05:38,217 --> 00:05:38,744
+Step 4.
+
+99
+00:05:38,764 --> 00:05:40,698
+The cafe has two rewards.
+
+100
+00:05:40,718 --> 00:05:44,217
+A free cake for 50 or more, on lines 3 and
+4.
+
+101
+00:05:44,267 --> 00:05:45,353
+Elif means else if.
+
+102
+00:05:45,373 --> 00:05:48,207
+Lines 5 and 6 give a free biscuit for 15
+or more.
+
+103
+00:05:48,233 --> 00:05:52,043
+And the else block catches everything
+else.
+
+104
+00:05:52,067 --> 00:05:57,506
+Python checks from the top, and runs only
+the first block whose condition is True.
+
+105
+00:05:57,526 --> 00:05:59,037
+Then it skips the rest.
+
+106
+00:06:10,413 --> 00:06:11,602
+A free biscuit.
+
+107
+00:06:11,622 --> 00:06:15,149
+Line 3 is False, because 15 is less than
+50.
+
+108
+00:06:15,169 --> 00:06:19,823
+Line 5 is True, because greater than or
+equal includes 15.
+
+109
+00:06:19,867 --> 00:06:24,702
+Exactly 15 is a boundary value: the point
+where the result changes.
+
+110
+00:06:24,722 --> 00:06:28,543
+And notice the order: the biggest amount
+comes first.
+
+111
+00:06:28,563 --> 00:06:30,210
+It matters later today.
+
+112
+00:06:30,783 --> 00:06:31,287
+Step 5.
+
+113
+00:06:31,307 --> 00:06:33,754
+Sometimes one fact is not enough.
+
+114
+00:06:33,774 --> 00:06:36,893
+And is True only when both sides are True.
+
+115
+00:06:36,933 --> 00:06:39,713
+Or is True when at least one side is True.
+
+116
+00:06:39,733 --> 00:06:42,960
+And not turns True into False, and False
+into True.
+
+117
+00:06:43,553 --> 00:06:46,533
+Asha is a member, but she pays only 12.
+
+118
+00:06:46,567 --> 00:06:49,233
+Line 5 joins two facts with and.
+
+119
+00:06:49,253 --> 00:06:52,592
+Line 6 joins the same two facts with or.
+
+120
+00:07:03,947 --> 00:07:05,172
+Line 5 is False.
+
+121
+00:07:05,192 --> 00:07:09,997
+She is a member, but 12 is not 15 or more,
+and and needs both.
+
+122
+00:07:10,033 --> 00:07:11,208
+Line 6 is True.
+
+123
+00:07:11,228 --> 00:07:14,313
+Or needs only one, and she is a member.
+
+124
+00:07:14,333 --> 00:07:16,466
+Line 7, not a member, is False.
+
+125
+00:07:16,486 --> 00:07:19,661
+And line 8 is True, because the day is
+Friday.
+
+126
+00:07:19,681 --> 00:07:22,439
+Each side of or needs a full comparison.
+
+127
+00:07:23,053 --> 00:07:23,878
+Here is why.
+
+128
+00:07:23,898 --> 00:07:26,692
+This line forgets the second day equals.
+
+129
+00:07:26,712 --> 00:07:32,390
+Python checks the word Saturday on its
+own, and any text that is not empty counts
+
+130
+00:07:32,410 --> 00:07:32,953
+as True.
+
+131
+00:07:33,000 --> 00:07:34,960
+So the music plays on a Monday.
+
+132
+00:07:34,980 --> 00:07:38,154
+Always write a full comparison on each
+side of or.
+
+133
+00:07:38,753 --> 00:07:39,662
+Quick check.
+
+134
+00:07:39,682 --> 00:07:42,524
+Is member is False, and to pay is 20.
+
+135
+00:07:42,544 --> 00:07:47,010
+What is: is member, or to pay greater than
+or equal to 15?
+
+136
+00:07:58,380 --> 00:07:58,515
+A.
+
+137
+00:07:58,535 --> 00:07:58,903
+True.
+
+138
+00:07:58,923 --> 00:08:05,036
+The customer is not a member, but 20 is 15
+or more, and or needs only one side.
+
+139
+00:08:05,653 --> 00:08:06,170
+Breather.
+
+140
+00:08:06,190 --> 00:08:08,793
+Roll your shoulders, and take a slow
+breath.
+
+141
+00:08:08,833 --> 00:08:14,272
+One more piece, and Asha's checkout is
+ready: answers typed by real people.
+
+142
+00:08:19,017 --> 00:08:19,487
+Step 6.
+
+143
+00:08:19,507 --> 00:08:23,763
+Real people type Yes, or yes, or yes with
+a space at the end.
+
+144
+00:08:23,783 --> 00:08:26,357
+To the gate, those are all different.
+
+145
+00:08:26,400 --> 00:08:28,995
+So line 3 cleans the answer first.
+
+146
+00:08:29,015 --> 00:08:31,918
+Strip removes the spaces at both ends.
+
+147
+00:08:31,938 --> 00:08:35,610
+Lower makes every letter small, as in
+Chapter 3.
+
+148
+00:08:35,633 --> 00:08:39,055
+Only then does it compare with yes, in
+small letters.
+
+149
+00:08:50,413 --> 00:08:51,571
+Yes, it is True.
+
+150
+00:08:51,591 --> 00:08:55,179
+After strip and lower, the answer is
+exactly yes.
+
+151
+00:08:55,199 --> 00:08:57,388
+So the member discount prints.
+
+152
+00:08:57,983 --> 00:08:59,222
+Back to the mission.
+
+153
+00:08:59,242 --> 00:09:01,173
+Lines 2 to 4 ask the questions.
+
+154
+00:09:01,193 --> 00:09:05,453
+Line 4 cleans the member answer straight
+away, with strip and lower.
+
+155
+00:09:05,500 --> 00:09:09,810
+Line 6 works out the bill: the number of
+teas times 3.5.
+
+156
+00:09:09,833 --> 00:09:12,260
+Lines 7 to 10 decide the discount.
+
+157
+00:09:12,280 --> 00:09:13,915
+Members get 10 percent.
+
+158
+00:09:13,935 --> 00:09:16,433
+Everyone else gets a discount of 0.
+
+159
+00:09:16,467 --> 00:09:21,367
+Line 11 takes the discount away, and lines
+13 to 15 print the bill.
+
+160
+00:09:21,400 --> 00:09:26,180
+Lines 16 to 19 decide the reward: a
+biscuit for 15 or more.
+
+161
+00:09:37,547 --> 00:09:39,497
+Six teas cost 21.00.
+
+162
+00:09:39,517 --> 00:09:43,537
+She is a member, so the discount is 2.10.
+
+163
+00:09:43,567 --> 00:09:44,762
+She pays 18.90.
+
+164
+00:09:44,782 --> 00:09:48,247
+That is 15 or more, so yes: a free
+biscuit!
+
+165
+00:09:48,267 --> 00:09:49,538
+Mission complete!
+
+166
+00:09:49,558 --> 00:09:55,846
+And the Chapter 5 crash is gone too: the
+else from step 3 stops a division by zero.
+
+167
+00:09:55,866 --> 00:09:59,797
+Now Asha wants to be sure her biscuit rule
+is right.
+
+168
+00:09:59,817 --> 00:10:03,293
+She uses an AI assistant, one stage at a
+time.
+
+169
+00:10:03,883 --> 00:10:10,187
+This chapter's AI skill is asking for edge
+cases: unusual inputs that can break a
+
+170
+00:10:10,207 --> 00:10:14,403
+condition, like exactly 15, zero, or a
+capital letter.
+
+171
+00:10:14,433 --> 00:10:17,824
+Ask the AI to list them, then run every
+one.
+
+172
+00:10:17,844 --> 00:10:21,622
+And the safety habits from Chapter 1 still
+apply.
+
+173
+00:10:22,220 --> 00:10:23,329
+Stage 1: plan.
+
+174
+00:10:23,349 --> 00:10:30,022
+Asha describes the biscuit rule in words,
+and asks for the boundary values to test.
+
+175
+00:10:30,042 --> 00:10:30,990
+No code yet.
+
+176
+00:10:31,033 --> 00:10:35,937
+The AI lists 14.99, 15 and 20, with the
+result for each.
+
+177
+00:10:35,957 --> 00:10:40,420
+15 is the boundary value, where the result
+changes.
+
+178
+00:10:41,020 --> 00:10:42,133
+Stage 2: write.
+
+179
+00:10:42,153 --> 00:10:47,496
+Asha writes the condition herself, and
+asks what happens at exactly 15.
+
+180
+00:10:47,516 --> 00:10:51,650
+The AI explains that greater than or equal
+includes 15.
+
+181
+00:10:51,700 --> 00:10:53,743
+Asha runs it with 15.0.
+
+182
+00:10:53,763 --> 00:10:55,358
+The reward prints.
+
+183
+00:10:55,378 --> 00:10:58,856
+The explanation and the real run agree.
+
+184
+00:10:59,453 --> 00:11:00,865
+Stage 3: generate.
+
+185
+00:11:00,885 --> 00:11:03,331
+Asha gives the AI her own code.
+
+186
+00:11:03,351 --> 00:11:09,456
+She asks it to add an else, not to change
+her condition, and to say what 15.0
+
+187
+00:11:09,476 --> 00:11:10,013
+prints.
+
+188
+00:11:10,033 --> 00:11:14,119
+The AI sends back the code, and says: a
+free biscuit.
+
+189
+00:11:14,139 --> 00:11:16,133
+It sounds completely sure.
+
+190
+00:11:16,167 --> 00:11:19,368
+Compare its line 3 with the line Asha gave
+it.
+
+191
+00:11:30,747 --> 00:11:30,932
+No.
+
+192
+00:11:30,952 --> 00:11:35,253
+The AI quietly changed greater than or
+equal into greater than.
+
+193
+00:11:35,273 --> 00:11:37,996
+Asha told it not to touch her condition.
+
+194
+00:11:38,016 --> 00:11:40,945
+She will prove the problem with edge
+cases.
+
+195
+00:11:41,553 --> 00:11:42,554
+Stage 4: test.
+
+196
+00:11:42,574 --> 00:11:44,159
+This is today's skill.
+
+197
+00:11:44,179 --> 00:11:49,483
+Asha asks the AI for the edge cases, and
+the output each one should give.
+
+198
+00:11:49,533 --> 00:11:54,663
+The AI lists 14.99, the boundary value 15,
+and 20.
+
+199
+00:11:54,700 --> 00:11:57,722
+She runs all three on the AI's own code.
+
+200
+00:11:57,742 --> 00:12:01,600
+14.99 and 20 are right, but 15.0 prints no
+biscuit.
+
+201
+00:12:01,633 --> 00:12:05,068
+Now the AI admits it changed her
+condition.
+
+202
+00:12:05,088 --> 00:12:08,281
+She puts back her greater than or equal.
+
+203
+00:12:08,887 --> 00:12:13,730
+With her own condition back on line 3,
+15.0 gets the biscuit.
+
+204
+00:12:13,750 --> 00:12:16,760
+The prediction and the real run agree.
+
+205
+00:12:17,353 --> 00:12:18,341
+Stage 5: debug.
+
+206
+00:12:18,361 --> 00:12:22,572
+Back when Asha first typed the rule, she
+wrote one equals sign.
+
+207
+00:12:22,592 --> 00:12:26,333
+Python stopped with a Syntax Error, before
+any line ran.
+
+208
+00:12:26,367 --> 00:12:28,529
+She asks for the cause first.
+
+209
+00:12:28,549 --> 00:12:30,335
+The AI points to line 3.
+
+210
+00:12:30,355 --> 00:12:35,527
+Python suggests double equals, but that
+would reward only exactly 15.
+
+211
+00:12:35,547 --> 00:12:39,214
+The rule is 15 or more, so greater than or
+equal.
+
+212
+00:12:39,820 --> 00:12:40,997
+Stage 6: improve.
+
+213
+00:12:41,017 --> 00:12:42,195
+The rewards work.
+
+214
+00:12:42,215 --> 00:12:47,337
+Asha asks for at most two readability
+improvements that do not change the
+
+215
+00:12:47,357 --> 00:12:47,830
+output.
+
+216
+00:12:47,867 --> 00:12:50,526
+Suggestion 1, a comment, helps a reader.
+
+217
+00:12:50,546 --> 00:12:55,817
+Suggestion 2 says: check the biscuit rule
+first, because it is the most common.
+
+218
+00:12:55,867 --> 00:12:58,079
+Remember the order from step 4?
+
+219
+00:12:58,099 --> 00:13:00,024
+Asha does not trust it yet.
+
+220
+00:13:00,044 --> 00:13:02,545
+She tests it with a big amount, 60.
+
+221
+00:13:03,153 --> 00:13:05,303
+Here is the suggested order.
+
+222
+00:13:05,323 --> 00:13:08,325
+The biscuit rule on line 3 comes first.
+
+223
+00:13:08,345 --> 00:13:11,191
+The cake rule on line 5 comes second.
+
+224
+00:13:22,547 --> 00:13:24,601
+A free biscuit, not a cake!
+
+225
+00:13:24,621 --> 00:13:30,287
+60 is 15 or more, so line 3 is True first,
+and Python never checks line 5.
+
+226
+00:13:30,333 --> 00:13:31,923
+The AI was wrong again.
+
+227
+00:13:31,943 --> 00:13:37,453
+Asha keeps her order, with the biggest
+amount first, and adds only the comment.
+
+228
+00:13:38,053 --> 00:13:38,842
+Quick check.
+
+229
+00:13:38,862 --> 00:13:40,391
+The rule is 15 or more.
+
+230
+00:13:40,411 --> 00:13:45,713
+Which test value catches greater than
+written instead of greater than or equal?
+
+231
+00:13:57,080 --> 00:13:57,214
+B.
+
+232
+00:13:57,234 --> 00:13:58,980
+15, the boundary value.
+
+233
+00:13:59,000 --> 00:14:03,281
+That is the only value where the two
+operators disagree.
+
+234
+00:14:03,887 --> 00:14:04,494
+Breather.
+
+235
+00:14:04,514 --> 00:14:10,072
+Asha caught two AI mistakes, with two
+things you learned today: boundary values,
+
+236
+00:14:10,092 --> 00:14:11,397
+and the elif order.
+
+237
+00:14:11,433 --> 00:14:14,691
+Next, the four mistakes beginners make
+most with if.
+
+238
+00:14:14,711 --> 00:14:16,896
+You have already met the first one.
+
+239
+00:14:21,617 --> 00:14:26,397
+Mistake 1 is the one Asha debugged: one
+equals sign in a condition.
+
+240
+00:14:26,417 --> 00:14:28,905
+The message suggests double equals.
+
+241
+00:14:28,925 --> 00:14:32,989
+Ignore the other suggestion; this course
+does not use it.
+
+242
+00:14:33,587 --> 00:14:34,360
+Mistake 2.
+
+243
+00:14:34,380 --> 00:14:38,088
+Every if, elif and else line ends with a
+colon.
+
+244
+00:14:38,108 --> 00:14:43,562
+Line 3 has none, and the message says
+exactly that: expected a colon.
+
+245
+00:14:44,153 --> 00:14:44,938
+Now you try.
+
+246
+00:14:44,958 --> 00:14:48,826
+Remember how Python knows which lines
+belong to the block.
+
+247
+00:15:00,180 --> 00:15:04,622
+Line 4 is not indented, so the if on line
+3 has no block.
+
+248
+00:15:04,642 --> 00:15:07,440
+Python reports an Indentation Error.
+
+249
+00:15:07,467 --> 00:15:10,423
+The fix: indent line 4 by four spaces.
+
+250
+00:15:10,443 --> 00:15:14,183
+Most code editors do it for you after the
+colon.
+
+251
+00:15:14,787 --> 00:15:15,404
+One more.
+
+252
+00:15:15,424 --> 00:15:19,440
+Asha is a member, and the answer stored on
+line 2 is Yes.
+
+253
+00:15:19,460 --> 00:15:20,715
+Think of the gate.
+
+254
+00:15:32,080 --> 00:15:36,299
+Yes with a capital Y is not equal to yes
+with a small y.
+
+255
+00:15:36,319 --> 00:15:40,840
+No error at all, a wrong result, and a
+member pays too much.
+
+256
+00:15:40,867 --> 00:15:45,870
+The fix is the one from step 6: compare
+the answer after strip and lower.
+
+257
+00:15:46,487 --> 00:15:47,355
+Last breather.
+
+258
+00:15:47,375 --> 00:15:50,147
+These errors will not surprise you any
+more.
+
+259
+00:15:50,167 --> 00:15:53,481
+Two questions to think about on your own
+come next.
+
+260
+00:15:58,217 --> 00:15:58,618
+First.
+
+261
+00:15:58,638 --> 00:16:03,109
+Asha wants the free biscuit only for
+members who pay 15 or more.
+
+262
+00:16:03,129 --> 00:16:05,636
+Which word joins the two conditions?
+
+263
+00:16:17,013 --> 00:16:22,322
+Write it, then test it with a member who
+pays 12, and a visitor who pays 20.
+
+264
+00:16:22,920 --> 00:16:23,411
+Second.
+
+265
+00:16:23,431 --> 00:16:26,186
+Some customers type y, instead of yes.
+
+266
+00:16:26,206 --> 00:16:29,398
+How could one condition accept both
+answers?
+
+267
+00:16:40,780 --> 00:16:43,721
+Predict which answers still fail, then
+test them.
+
+268
+00:16:44,317 --> 00:16:45,357
+Let's recap.
+
+269
+00:16:45,400 --> 00:16:49,410
+A condition works out to True or False,
+the two values of bool.
+
+270
+00:16:49,433 --> 00:16:50,928
+Double equals compares.
+
+271
+00:16:50,948 --> 00:16:53,363
+One equals sign gives a name a value.
+
+272
+00:16:53,400 --> 00:16:58,537
+If runs its indented block only when the
+condition is True, and else runs when it
+
+273
+00:16:58,557 --> 00:16:59,110
+is False.
+
+274
+00:16:59,133 --> 00:17:02,690
+Only the first True elif block runs, so
+order matters.
+
+275
+00:17:02,710 --> 00:17:05,075
+And, or, and not combine conditions.
+
+276
+00:17:05,095 --> 00:17:07,923
+Clean text answers before you compare
+them.
+
+277
+00:17:07,967 --> 00:17:11,884
+And with AI: ask for the edge cases, and
+run every one.
+
+278
+00:17:12,487 --> 00:17:13,609
+One last check.
+
+279
+00:17:13,629 --> 00:17:16,580
+The cake rule, 50 or more, comes first.
+
+280
+00:17:16,600 --> 00:17:19,169
+Then the biscuit rule, 15 or more.
+
+281
+00:17:19,189 --> 00:17:20,769
+To pay is exactly 50.
+
+282
+00:17:20,789 --> 00:17:21,683
+What prints?
+
+283
+00:17:33,047 --> 00:17:33,183
+D.
+
+284
+00:17:33,203 --> 00:17:34,122
+A free cake.
+
+285
+00:17:34,142 --> 00:17:40,380
+50 is greater than or equal to 50, so the
+first block runs, and Python skips the
+
+286
+00:17:40,400 --> 00:17:40,771
+rest.
+
+287
+00:17:41,387 --> 00:17:42,710
+Mission complete!
+
+288
+00:17:42,730 --> 00:17:46,423
+You earned 100 XP and the Decision Maker
+badge.
+
+289
+00:17:48,650 --> 00:17:50,236
+Now it is your turn.
+
+290
+00:17:50,256 --> 00:17:54,090
+The practice file has eight tasks, worth
+170 XP.
+
+291
+00:17:54,133 --> 00:17:57,433
+Three warm-up tasks, worth 10 XP each.
+
+292
+00:17:57,467 --> 00:18:02,127
+Three apply tasks, worth 20 each,
+including the cafe's opening hours.
+
+293
+00:18:02,167 --> 00:18:04,797
+And two stretch tasks, worth 40 each.
+
+294
+00:18:04,817 --> 00:18:09,595
+In the last one, an AI's delivery rule
+fails at its boundary value.
+
+295
+00:18:09,615 --> 00:18:10,097
+Fix it.
+
+296
+00:18:10,133 --> 00:18:12,890
+Test every program with the boundary
+value.
+
+297
+00:18:12,910 --> 00:18:15,666
+Try each task before you open the
+solution.
+
+298
+00:18:16,250 --> 00:18:19,824
+Asha's program now says: people must be 1
+or more.
+
+299
+00:18:19,844 --> 00:18:21,550
+But then it simply ends.
+
+300
+00:18:21,570 --> 00:18:23,850
+The customer has to start again.
+
+301
+00:18:23,900 --> 00:18:29,379
+In Chapter 7, you will use while loops to
+ask the question again, and again, until
+
+302
+00:18:29,399 --> 00:18:30,720
+the answer is valid.
+
+303
+00:18:30,767 --> 00:18:32,459
+Do the warm-up tasks now.
+
+304
+00:18:32,479 --> 00:18:34,377
+They take about ten minutes.
+
+305
+00:18:34,400 --> 00:18:36,109
+See you in Chapter 7.

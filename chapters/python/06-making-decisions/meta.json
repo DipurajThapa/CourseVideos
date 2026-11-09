@@ -1,0 +1,64 @@
+{
+  "id": "python-06",
+  "title": "Making Decisions: if, elif and else",
+  "language": "python",
+  "type": "lesson",
+  "module": "M2",
+  "badge": "Decision Maker",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "condition",
+    "bool",
+    "comparison operator",
+    "==",
+    "!=",
+    "<",
+    ">",
+    "<=",
+    ">=",
+    "if",
+    "else",
+    "elif",
+    "block",
+    "indentation",
+    "boundary value",
+    "edge case",
+    "and",
+    "or",
+    "not",
+    "strip() and lower() for answers",
+    "SyntaxError",
+    "IndentationError"
+  ],
+  "prerequisites": [
+    "python-05"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_biscuit_flawed.py",
+    "fixed_file": "examples/ai_biscuit_fixed.py",
+    "flaw": "Asha asked the AI to add an else to her own rule, if to_pay >= 15:, without changing her condition, and to say what 15.0 prints. The AI predicted 'Reward: a free biscuit' but quietly changed >= to >, so the program prints 'No biscuit this time' for the boundary value. Putting back >= fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-09",
+  "changes": [
+    "Chained comparisons (8 <= hour < 18) and nested if blocks are left out to keep one new idea per step; the practice uses and, and puts divisions inside else.",
+    "Added the AI skill's key term, edge case, together with boundary value, because the curriculum's AI skill is asking AI for edge cases.",
+    "The AI section adds video-only verified files: ai_biscuit_mine.py (Write stage), ai_biscuit_tests.py (Test stage: 14.99, 15.0 and 20.0 on the AI's code) and ai_biscuit_typo.py (Debug stage). Step 5 shows the common wrong form day == \"Friday\" or \"Saturday\" with its real output (ex05_or_wrong.py)."
+  ],
+  "outstanding_issues": [
+    "The error reports in Common mistakes show the short file name; on a learner's computer the full path to the file appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

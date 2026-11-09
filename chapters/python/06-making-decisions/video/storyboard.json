@@ -1,0 +1,1719 @@
+{
+ "chapter_id": "python-06",
+ "number": 6,
+ "version": 3,
+ "title": "Chapter 6: Making Decisions: if, elif and else",
+ "video_title": "Python Chapter 6: Making Decisions, if, elif and else",
+ "summary": "Asha's bill splitter crashed with zero people and treated every customer the same. Follow her as she makes her cafe checkout decide: comparisons, if, else, elif and boundary values, and, or and not, and safe text answers. Then watch her build a free-biscuit rule with an AI assistant at all six stages, catching two AI mistakes with edge-case tests.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the crash from Chapter 5. Show the finished checkout that decides as the mission, then the AI tease. No question yet.",
+   "beats": [
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 6",
+      "title": "Making Decisions: if, elif and else",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Decision Maker badge"
+     },
+     "segments": [
+      {
+       "say": "Welcome back to Code Quest. This is Chapter 6, the start of Module 2."
+      },
+      {
+       "say": "Today your programs learn to decide. They check a fact, and then they choose what to do.",
+       "subtitle": "Check a fact. Choose what to do."
+      },
+      {
+       "say": "And an AI assistant will promise a free biscuit for exactly 15. Its own code will say no."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A program that cannot say no",
+      "label": "Previously",
+      "reveal": 0,
+      "items": [
+       "The Chapter 5 bill splitter crashed with 0 people: `ZeroDivisionError`.",
+       "It could not give a discount only to members.",
+       "It ran every line, every time, whatever the answers were."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Remember the bill splitter from Chapter 5? Someone typed 0 people, and the program crashed with a Zero Division Error.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "And it could not treat customers differently. A member and a visitor got exactly the same bill.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "It ran every line, every time, whatever the answers were.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_checkout.py",
+      "heading": "Today's mission: a checkout that decides",
+      "output": "examples/ex07_checkout.expected",
+      "note": "The user typed: Asha, then 6, then Yes"
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission. Asha's checkout asks three questions, as in Chapter 4.",
+       "highlight": [
+        2,
+        3,
+        4
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Then it decides. Members get a 10 percent discount. Everyone else pays the full bill.",
+       "highlight": [
+        7,
+        8,
+        9,
+        10
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "And it decides again. Pay 15 or more, and you get a free biscuit.",
+       "highlight": [
+        16,
+        17,
+        18,
+        19
+       ],
+       "out_highlight": [
+        7
+       ]
+      },
+      {
+       "say": "Two decisions, made by the program itself. Let's build them.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write comparisons with `==`, `!=`, `<`, `>`, `<=` and `>=`.",
+       "Write `if`, `elif` and `else` blocks with colons and indentation.",
+       "Combine conditions with `and`, `or` and `not`.",
+       "Compare text answers safely with `.strip()` and `.lower()`.",
+       "Fix the `SyntaxError` and `IndentationError` that `if` causes."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write comparisons, the questions a program can ask.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Write if, elif and else blocks, with colons and indentation.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Combine conditions with and, or, and not.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Compare text answers safely, whatever capital letters the user types.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And fix the errors that beginners meet with if.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Connect decisions to apps the learner uses every day.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A cash machine checks your balance before it pays out.",
+       "A shop gives free delivery when the order is big enough.",
+       "A login page lets you in only when the password matches."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Real programs decide all the time. A cash machine checks your balance. A shop gives free delivery for a big order.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A login page lets you in only when the password matches. Each one checks a fact, and then chooses what to do.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: conditions are True or False",
+   "direction": "Teach comparison operators with the table, then the if diagram, then the gate analogy. Then a quiz on the boundary, then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Six comparison operators",
+      "label": "The idea",
+      "columns": [
+       "Operator",
+       "Meaning",
+       "Example",
+       "Result"
+      ],
+      "rows": [
+       [
+        "`==`",
+        "is equal to",
+        "`3.5 == 3.5`",
+        "`True`"
+       ],
+       [
+        "`!=`",
+        "is not equal to",
+        "`3.5 != 3.5`",
+        "`False`"
+       ],
+       [
+        "`<`",
+        "is less than",
+        "`12 < 15`",
+        "`True`"
+       ],
+       [
+        "`>`",
+        "is greater than",
+        "`15 > 15`",
+        "`False`"
+       ],
+       [
+        "`<=`",
+        "is less than or equal to",
+        "`15 <= 15`",
+        "`True`"
+       ],
+       [
+        "`>=`",
+        "is greater than or equal to",
+        "`15 >= 15`",
+        "`True`"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "A condition is a question that Python answers with True or False. You met True and False in Chapter 2. They are the two values of the type bool."
+      },
+      {
+       "say": "Double equals asks: are these two values equal?",
+       "focus_row": 0
+      },
+      {
+       "say": "Exclamation mark equals asks the opposite: are they different?",
+       "focus_row": 1
+      },
+      {
+       "say": "Less than, and greater than. Look closely: 15 is not greater than 15, so that one is False.",
+       "focus_row": 3
+      },
+      {
+       "say": "Add an equals sign, and the value itself is included. 15 is greater than or equal to 15, so this one is True.",
+       "focus_row": 5
+      },
+      {
+       "say": "And remember: one equals sign gives a name a value. Two equals signs ask a question.",
+       "focus_row": null
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "if runs a block only when it is True",
+      "label": "The idea",
+      "body": [
+       "The **block** is the group of indented lines under the line that ends with a colon."
+      ],
+      "pre": "  if people == 0:                      <- condition, then a colon\n      print(\"Please type 1 or more.\")  <- the block: 4 spaces in\n  print(\"Thank you!\")                  <- not indented: always runs\n\n          people == 0 ?\n           /        \\\n        True        False\n          |           |\n   run the block   skip it\n           \\        /\n     continue with the next line"
+     },
+     "segments": [
+      {
+       "say": "An if statement asks a condition. If the answer is True, Python runs the block. If it is False, Python skips it.",
+       "focus": "pre"
+      },
+      {
+       "say": "The block is the group of lines that are indented, four spaces in, under the line that ends with a colon."
+      },
+      {
+       "say": "The last line is not indented, so it always runs."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A condition is like a gate",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "A gate at the cafe door checks one fact: is this person a member?",
+       "True: the gate opens. False: it stays closed.",
+       "Unlike a person, the gate cannot guess: `\"Yes\"` and `\"yes\"` are different answers."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a gate at the cafe door. It checks one fact: is this person a member? True, it opens. False, it stays closed.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "But unlike a person at a door, the gate cannot guess. Yes with a capital Y and yes with a small y are two different answers.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`to_pay` is exactly `15`. Which condition is `True`?",
+      "options": [
+       "`to_pay > 15`",
+       "`to_pay < 15`",
+       "`to_pay >= 15`",
+       "`to_pay != 15`"
+      ],
+      "answer": 2,
+      "explain": "`>=` includes the value itself, so 15 >= 15 is True."
+     },
+     "segments": [
+      {
+       "say": "Quick check. To pay is exactly 15. Which of these conditions is True?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Greater than or equal to. The equals sign includes 15 itself."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A condition is `True` or `False`.",
+       "`==` asks; one `=` gives a value.",
+       "`if` runs its indented block only when `True`."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far."
+      },
+      {
+       "say": "Next, Asha asks Python her first questions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Compare values",
+   "direction": "Each comparison is explained before the prediction. Reveal the output after the question.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_compare.py",
+      "heading": "Step 1: Ask Python questions",
+      "highlight": [
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. Asha stores the tea price, 3.5. Line 3 asks: is it greater than 3?"
+      },
+      {
+       "say": "Line 4 asks if it equals 3.5, and line 5 asks if it is different from 3.5.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 6 asks if it is less than or equal to 3. Line 7 compares two words.",
+       "highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "And line 8 asks for the type of a comparison.",
+       "highlight": [
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do line 5 and line 7 print?"
+     },
+     "after": [
+      {
+       "say": "Lines 3 and 4 are True. Line 5 is False, because the price is not different from 3.5.",
+       "output": "examples/ex01_compare.expected",
+       "highlight": [
+        3,
+        4,
+        5
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 7 is False too. Tea with a capital T and tea with a small t are different text, like the gate.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "And line 8 shows the type of a comparison: bool.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        6
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: if",
+   "direction": "The file types in. Teach the colon and the block, then ask which lines run for the typed answer 0.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_if.py",
+      "heading": "Step 2: Run a block only when it is True",
+      "lines": 3,
+      "highlight": [
+       3
+      ],
+      "note": "The user will type: 0"
+     },
+     "segments": [
+      {
+       "say": "Step 2. Line 2 asks for the number of people. Line 3 is the if: the condition, people equals 0, and then a colon."
+      },
+      {
+       "say": "Lines 4 and 5 are indented. They are the block.",
+       "lines": 5,
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 6 is not indented. It is outside the block.",
+       "lines": 6,
+       "highlight": [
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types `0`. Which lines print?"
+     },
+     "after": [
+      {
+       "say": "The condition is True, so both lines of the block run, and then line 6.",
+       "output": "examples/ex02_if.expected",
+       "highlight": [
+        4,
+        5,
+        6
+       ],
+       "out_highlight": [
+        2,
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Type 4 instead, and the condition is False. Python skips the block, and prints only: Thank you.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        4
+       ],
+       "note": "If the user typed 4, only the last line would print: Thank you!"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: else",
+   "direction": "Call back to the Chapter 5 crash. Teach that exactly one of two blocks runs, ask, then reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_else.py",
+      "heading": "Step 3: Two paths with else",
+      "highlight": [
+       4,
+       5,
+       6
+      ],
+      "note": "The user will type: 20, then 0"
+     },
+     "segments": [
+      {
+       "say": "Step 3. This is the fix for the bill splitter's crash. Line 4 asks: is the number of people greater than 0? If so, lines 5 and 6 share the bill."
+      },
+      {
+       "say": "Line 7 says else. Its block runs when the condition is False.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Exactly one of the two blocks runs, never both. Then line 9 runs either way.",
+       "highlight": [
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types `0` people. Does line 5, the division, run?"
+     },
+     "after": [
+      {
+       "say": "No. 0 is not greater than 0, so the condition is False. Python jumps to the else block.",
+       "output": "examples/ex03_else.expected",
+       "highlight": [
+        7,
+        8
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "The division never happens, so there is no crash. A clear message instead, and then Done.",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: elif and boundary values",
+   "direction": "Teach elif as a ladder checked from the top, ask about the boundary value, then explain why order matters.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_elif.py",
+      "heading": "Step 4: More paths with elif",
+      "highlight": [
+       3,
+       4
+      ],
+      "note": "The user will type: 15"
+     },
+     "segments": [
+      {
+       "say": "Step 4. The cafe has two rewards. A free cake for 50 or more, on lines 3 and 4."
+      },
+      {
+       "say": "Elif means else if. Lines 5 and 6 give a free biscuit for 15 or more.",
+       "highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "And the else block catches everything else.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Python checks from the top, and runs only the first block whose condition is True. Then it skips the rest.",
+       "highlight": [
+        3,
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The customer pays exactly `15`. Which reward prints?"
+     },
+     "after": [
+      {
+       "say": "A free biscuit. Line 3 is False, because 15 is less than 50. Line 5 is True, because greater than or equal includes 15.",
+       "output": "examples/ex04_elif.expected",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Exactly 15 is a boundary value: the point where the result changes. And notice the order: the biggest amount comes first. It matters later today.",
+       "highlight": [
+        3,
+        5
+       ],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: and, or, not",
+   "direction": "Teach the three rules first, then predict two lines, reveal, then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Step 5: Combine conditions",
+      "label": "Build it",
+      "columns": [
+       "Word",
+       "True when",
+       "Example"
+      ],
+      "rows": [
+       [
+        "`and`",
+        "both sides are `True`",
+        "member and paid 15 or more"
+       ],
+       [
+        "`or`",
+        "at least one side is `True`",
+        "Friday or Saturday"
+       ],
+       [
+        "`not`",
+        "turns `True` into `False`, and back",
+        "not a member"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 5. Sometimes one fact is not enough. And is True only when both sides are True.",
+       "focus_row": 0
+      },
+      {
+       "say": "Or is True when at least one side is True.",
+       "focus_row": 1
+      },
+      {
+       "say": "And not turns True into False, and False into True.",
+       "focus_row": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_and_or.py",
+      "heading": "Step 5: and, or, not in action",
+      "highlight": [
+       2,
+       3,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha is a member, but she pays only 12."
+      },
+      {
+       "say": "Line 5 joins two facts with and. Line 6 joins the same two facts with or.",
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do line 5 and line 6 print?"
+     },
+     "after": [
+      {
+       "say": "Line 5 is False. She is a member, but 12 is not 15 or more, and and needs both.",
+       "output": "examples/ex05_and_or.expected",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 6 is True. Or needs only one, and she is a member.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 7, not a member, is False. And line 8 is True, because the day is Friday. Each side of or needs a full comparison.",
+       "highlight": [
+        7,
+        8
+       ],
+       "out_highlight": [
+        3,
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_or_wrong.py",
+      "heading": "A common trap: half a comparison",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ex05_or_wrong.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here is why. This line forgets the second day equals. Python checks the word Saturday on its own, and any text that is not empty counts as True."
+      },
+      {
+       "say": "So the music plays on a Monday. Always write a full comparison on each side of or."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`is_member` is `False` and `to_pay` is `20`. What is `is_member or to_pay >= 15`?",
+      "options": [
+       "`True`",
+       "`False`",
+       "An error",
+       "`20`"
+      ],
+      "answer": 0,
+      "explain": "`or` needs only one side: 20 >= 15 is True."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Is member is False, and to pay is 20. What is: is member, or to pay greater than or equal to 15?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. True. The customer is not a member, but 20 is 15 or more, and or needs only one side."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`else` runs when the condition is `False`.",
+       "Python runs the first `elif` that is `True`.",
+       "`and` needs both; `or` needs one."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Roll your shoulders, and take a slow breath."
+      },
+      {
+       "say": "One more piece, and Asha's checkout is ready: answers typed by real people."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: Safe text answers",
+   "direction": "Teach strip and lower on the answer, then ask about the typed answer with a capital and a space, then reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_lower.py",
+      "heading": "Step 6: Compare text answers safely",
+      "highlight": [
+       2
+      ],
+      "note": "The user will type: Yes  (with a space at the end)"
+     },
+     "segments": [
+      {
+       "say": "Step 6. Real people type Yes, or yes, or yes with a space at the end. To the gate, those are all different."
+      },
+      {
+       "say": "So line 3 cleans the answer first. Strip removes the spaces at both ends. Lower makes every letter small, as in Chapter 3.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Only then does it compare with yes, in small letters.",
+       "highlight": [
+        3,
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types `Yes ` with a capital Y and a space. Is the condition on line 3 `True`?"
+     },
+     "after": [
+      {
+       "say": "Yes, it is True. After strip and lower, the answer is exactly yes. So the member discount prints.",
+       "output": "examples/ex06_lower.expected",
+       "highlight": [
+        3,
+        4
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the checkout that decides",
+   "direction": "Return to the mission. Explain every group of lines, ask about the reward for Asha's answers, reveal. Hand over to the AI story.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_checkout.py",
+      "heading": "Mission complete: the checkout",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "note": "The user will type: Asha, then 6, then Yes"
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Lines 2 to 4 ask the questions. Line 4 cleans the member answer straight away, with strip and lower."
+      },
+      {
+       "say": "Line 6 works out the bill: the number of teas times 3.5.",
+       "highlight": [
+        6
+       ]
+      },
+      {
+       "say": "Lines 7 to 10 decide the discount. Members get 10 percent. Everyone else gets a discount of 0.",
+       "highlight": [
+        7,
+        8,
+        9,
+        10
+       ]
+      },
+      {
+       "say": "Line 11 takes the discount away, and lines 13 to 15 print the bill.",
+       "highlight": [
+        11,
+        13,
+        14,
+        15
+       ]
+      },
+      {
+       "say": "Lines 16 to 19 decide the reward: a biscuit for 15 or more.",
+       "highlight": [
+        16,
+        17,
+        18,
+        19
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Asha types `6` teas and `Yes`. Does she get the free biscuit?"
+     },
+     "after": [
+      {
+       "say": "Six teas cost 21.00. She is a member, so the discount is 2.10.",
+       "output": "examples/ex07_checkout.expected",
+       "highlight": [
+        6,
+        8
+       ],
+       "out_highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "She pays 18.90. That is 15 or more, so yes: a free biscuit!",
+       "highlight": [
+        16,
+        17
+       ],
+       "out_highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Mission complete! And the Chapter 5 crash is gone too: the else from step 3 stops a division by zero. Now Asha wants to be sure her biscuit rule is right. She uses an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one rule",
+   "direction": "Teach the edge case skill first. Then one conversation per stage, all about the free-biscuit rule. Stage 3 plants the boundary mistake; stage 4 catches it; stage 6 catches a wrong order.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: edge cases",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "An **edge case** is an unusual input that can break a condition.",
+       "Boundary values, zero, and answers with capitals or spaces are edge cases.",
+       "Ask AI for the edge cases, then run every one. Never paste private data."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is asking for edge cases: unusual inputs that can break a condition, like exactly 15, zero, or a capital letter.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Ask the AI to list them, then run every one. And the safety habits from Chapter 1 still apply.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: the rule and its boundary values",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner learning if. My cafe gives a free biscuit when the amount to pay is 15 or more. Do not write code yet. List the condition in words, and the boundary values I should test, with the result for each."
+       },
+       {
+        "role": "ai",
+        "text": "1. The condition: the amount to pay is 15 or more.\n2. Test 14.99: no biscuit.\n3. Test 15: a biscuit. This is the boundary value, where the result changes.\n4. Test 20: a biscuit."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha describes the biscuit rule in words, and asks for the boundary values to test. No code yet."
+      },
+      {
+       "say": "The AI lists 14.99, 15 and 20, with the result for each. 15 is the boundary value, where the result changes.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then check the boundary",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote the condition myself. Do not change it. Does the block run when to_pay is exactly 15? Which operator decides it?",
+        "code": "examples/ai_biscuit_mine.py",
+        "code_lines": [
+         2,
+         3,
+         4
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Yes. `>=` means greater than or equal to, so the value 15 itself is included. The block runs and prints the reward."
+       },
+       {
+        "role": "you",
+        "text": "I ran it with 15.0, and it agrees:",
+        "output": "examples/ai_biscuit_mine.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes the condition herself, and asks what happens at exactly 15. The AI explains that greater than or equal includes 15.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Asha runs it with 15.0. The reward prints. The explanation and the real run agree.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: add to my code, change nothing",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here is my code. Add an else that prints 'No biscuit this time'. Do not change my condition. If to_pay is exactly 15.0, tell me exactly what it prints.",
+        "code": "examples/ai_biscuit_mine.py",
+        "code_lines": [
+         3,
+         4
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Here is the code. For 15.0 it prints `Reward: a free biscuit`.",
+        "code": "examples/ai_biscuit_flawed.py"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha gives the AI her own code. She asks it to add an else, not to change her condition, and to say what 15.0 prints."
+      },
+      {
+       "say": "The AI sends back the code, and says: a free biscuit. It sounds completely sure.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Compare its line 3 with the line Asha gave it."
+      }
+     ],
+     "ask": {
+      "question": "The AI says this prints `Reward: a free biscuit` for 15.0. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. The AI quietly changed greater than or equal into greater than. Asha told it not to touch her condition. She will prove the problem with edge cases."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: run every edge case",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Before I trust it, list the edge cases for this rule, with the output each one should give."
+       },
+       {
+        "role": "ai",
+        "text": "1. `14.99`: No biscuit this time.\n2. `15.0`: Reward: a free biscuit. This is the boundary value.\n3. `20.0`: Reward: a free biscuit."
+       },
+       {
+        "role": "you",
+        "text": "I ran your three values on your code. 15.0 fails:",
+        "output": "examples/ai_biscuit_tests.expected"
+       },
+       {
+        "role": "ai",
+        "text": "You are right. I changed your `>=` into `>`, so 15 is left out. Put back your condition, `if to_pay >= 15:`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. This is today's skill. Asha asks the AI for the edge cases, and the output each one should give."
+      },
+      {
+       "say": "The AI lists 14.99, the boundary value 15, and 20.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "She runs all three on the AI's own code. 14.99 and 20 are right, but 15.0 prints no biscuit.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Now the AI admits it changed her condition. She puts back her greater than or equal.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_biscuit_fixed.py",
+      "heading": "Her condition, with the else",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_biscuit_fixed.expected",
+      "out_highlight": [
+       1
+      ],
+      "note": "to_pay is 15.0"
+     },
+     "segments": [
+      {
+       "say": "With her own condition back on line 3, 15.0 gets the biscuit. The prediction and the real run agree."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My first try at the rule gave this error. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_biscuit_typo.py",
+        "code_lines": [
+         2,
+         3
+        ],
+        "file": "examples/ai_biscuit_typo.py",
+        "error": "examples/ai_biscuit_typo.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "Line 3 uses one `=`, which gives a name a value. Python suggests `==`, but `to_pay == 15` would reward only exactly 15. Your rule is 15 or more, so write:\n`if to_pay >= 15:`"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Back when Asha first typed the rule, she wrote one equals sign. Python stopped with a Syntax Error, before any line ran."
+      },
+      {
+       "say": "She asks for the cause first. The AI points to line 3. Python suggests double equals, but that would reward only exactly 15. The rule is 15 or more, so greater than or equal.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: test every suggestion",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here are my reward rules. Suggest at most two improvements for readability, each with one reason. Do not change what it prints for any amount.",
+        "code": "examples/ex04_elif.py",
+        "code_lines": [
+         3,
+         4,
+         5,
+         6
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "1. Add a comment above the rules: `# Rewards: cake for 50 or more, biscuit for 15 or more`.\n2. Check the biscuit rule first, because it is the most common reward."
+       },
+       {
+        "role": "you",
+        "text": "Before I change anything, I will test suggestion 2 with a big amount, 60.0."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. The rewards work. Asha asks for at most two readability improvements that do not change the output."
+      },
+      {
+       "say": "Suggestion 1, a comment, helps a reader. Suggestion 2 says: check the biscuit rule first, because it is the most common.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Remember the order from step 4? Asha does not trust it yet. She tests it with a big amount, 60.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_reward_order.py",
+      "heading": "Testing suggestion 2 with 60.0",
+      "highlight": [
+       3,
+       4,
+       5,
+       6
+      ],
+      "hidden_text": "Predict the reward for 60.0 before it appears."
+     },
+     "segments": [
+      {
+       "say": "Here is the suggested order. The biscuit rule on line 3 comes first. The cake rule on line 5 comes second."
+      }
+     ],
+     "ask": {
+      "question": "To pay is `60.0`. Which reward prints?"
+     },
+     "after": [
+      {
+       "say": "A free biscuit, not a cake! 60 is 15 or more, so line 3 is True first, and Python never checks line 5.",
+       "output": "examples/ai_reward_order.expected",
+       "highlight": [
+        3,
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The AI was wrong again. Asha keeps her order, with the biggest amount first, and adds only the comment.",
+       "highlight": [
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "The rule is \"15 or more\". Which test value catches `>` written instead of `>=`?",
+      "options": [
+       "`10`",
+       "`15`",
+       "`100`",
+       "`0`"
+      ],
+      "answer": 1,
+      "explain": "15 is the boundary value: `>` and `>=` give different results only there."
+     },
+     "segments": [
+      {
+       "say": "Quick check. The rule is 15 or more. Which test value catches greater than written instead of greater than or equal?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. 15, the boundary value. That is the only value where the two operators disagree."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Test the boundary value every time.",
+       "In an elif ladder, the biggest amount comes first."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha caught two AI mistakes, with two things you learned today: boundary values, and the elif order."
+      },
+      {
+       "say": "Next, the four mistakes beginners make most with if. You have already met the first one."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 calls back to the debug stage. Mistakes 3 and 4 are spot-it questions on rules taught earlier. Then a summary table and a quiz.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_single_equals.py",
+      "heading": "Mistake 1: one = in a condition",
+      "highlight": [
+       3
+      ],
+      "error": "examples/err01_single_equals.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1 is the one Asha debugged: one equals sign in a condition. The message suggests double equals. Ignore the other suggestion; this course does not use it.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_colon.py",
+      "heading": "Mistake 2: a missing colon",
+      "highlight": [
+       3
+      ],
+      "error": "examples/err02_colon.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. Every if, elif and else line ends with a colon. Line 3 has none, and the message says exactly that: expected a colon.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_indent.py",
+      "heading": "Mistake 3: your turn to spot it",
+      "highlight": [
+       3,
+       4
+      ],
+      "hidden_text": "Find the mistake before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Remember how Python knows which lines belong to the block."
+      }
+     ],
+     "ask": {
+      "question": "What is wrong with line 4?"
+     },
+     "after": [
+      {
+       "say": "Line 4 is not indented, so the if on line 3 has no block. Python reports an Indentation Error.",
+       "error": "examples/err03_indent.expected_error",
+       "heading": "Mistake 3: a block that is not indented",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: indent line 4 by four spaces. Most code editors do it for you after the colon.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_case.py",
+      "heading": "Mistake 4: spot this one too",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Find the reason before the answer appears."
+     },
+     "segments": [
+      {
+       "say": "One more. Asha is a member, and the answer stored on line 2 is Yes. Think of the gate."
+      }
+     ],
+     "ask": {
+      "question": "Asha is a member. Why does this program print `No discount`?"
+     },
+     "after": [
+      {
+       "say": "Yes with a capital Y is not equal to yes with a small y. No error at all, a wrong result, and a member pays too much.",
+       "output": "examples/ex08_case.expected",
+       "heading": "Mistake 4: capital letters in a text answer",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The fix is the one from step 6: compare the answer after strip and lower.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`==` compares; `:` ends the line.",
+       "Indent the block by 4 spaces.",
+       "Clean text answers before you compare them."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. These errors will not surprise you any more."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "The biscuit is only for members who pay 15 or more. Which word joins the two conditions?",
+      "hint": "test it with a member who pays 12, and a visitor who pays 20."
+     },
+     "segments": [
+      {
+       "say": "First. Asha wants the free biscuit only for members who pay 15 or more. Which word joins the two conditions?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Write it, then test it with a member who pays 12, and a visitor who pays 20."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Some customers type `y` instead of `yes`. How could one condition accept both?"
+     },
+     "segments": [
+      {
+       "say": "Second. Some customers type y, instead of yes. How could one condition accept both answers?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Predict which answers still fail, then test them."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A condition works out to `True` or `False`, the two values of `bool`.",
+       "`==` compares. One `=` gives a name a value.",
+       "`if` runs its indented block only when the condition is `True`; `else` when it is `False`.",
+       "Python runs only the first `elif` block that is `True`, so order matters.",
+       "`and`, `or` and `not` combine conditions. Compare text after `.strip().lower()`.",
+       "Ask AI for edge cases, such as boundary values, and run every one."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap."
+      },
+      {
+       "say": "A condition works out to True or False, the two values of bool.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Double equals compares. One equals sign gives a name a value.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "If runs its indented block only when the condition is True, and else runs when it is False.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Only the first True elif block runs, so order matters. And, or, and not combine conditions. Clean text answers before you compare them.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And with AI: ask for the edge cases, and run every one.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "The rules check `>= 50` (cake) first, then `elif >= 15` (biscuit). `to_pay` is exactly `50`. What prints?",
+      "options": [
+       "A free biscuit",
+       "Both rewards",
+       "No reward",
+       "A free cake"
+      ],
+      "answer": 3,
+      "explain": "50 >= 50 is True, so the first block runs and Python skips the rest."
+     },
+     "segments": [
+      {
+       "say": "One last check. The cake rule, 50 or more, comes first. Then the biscuit rule, 15 or more. To pay is exactly 50. What prints?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. A free cake. 50 is greater than or equal to 50, so the first block runs, and Python skips the rest."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Decision Maker",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Decision Maker",
+      "tile": 6
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Decision Maker badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Even or odd; Adult or child ticket; Predict the conditions",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Opening hours; Quiz grade; A safe yes",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "A bill splitter that checks; Fix the AI's delivery fee",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including the cafe's opening hours.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, an AI's delivery rule fails at its boundary value. Fix it.",
+       "focus_row": 2
+      },
+      {
+       "say": "Test every program with the boundary value. Try each task before you open the solution.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease while loops as the fix for a program that gives up after one bad answer. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 7",
+      "title": "Repeat Until Done: while Loops",
+      "subtitle": "Ask again until the answer is valid.",
+      "badge": "",
+      "tile": 7
+     },
+     "segments": [
+      {
+       "say": "Asha's program now says: people must be 1 or more. But then it simply ends. The customer has to start again."
+      },
+      {
+       "say": "In Chapter 7, you will use while loops to ask the question again, and again, until the answer is valid."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 7."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}
