@@ -34,15 +34,19 @@
     "python-02": {
       "language": "python",
       "number": 2,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-f1911e",
           "started": "2026-11-09T10:09:52+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-09T10:14:38+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-09-f1911e"
+      "current_run_id": "2026-11-09-f1911e",
+      "path": "chapters/python/02-values-and-variables",
+      "completed": "2026-11-09T10:14:38+00:00"
     },
     "python-03": {
       "language": "python",
@@ -201,5 +205,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T10:09:52+00:00"
+  "updated": "2026-11-09T10:14:38+00:00"
 }
