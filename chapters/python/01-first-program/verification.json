@@ -1,0 +1,167 @@
+{
+  "chapter_id": "python-01",
+  "run_id": "2026-11-09-a25750",
+  "verified_at": "2026-11-09T06:55:12+00:00",
+  "passed": true,
+  "toolchains": [
+    "Python 3.14.6",
+    "Python 3.13.18"
+  ],
+  "checks": [
+    {
+      "name": "structure",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "code",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "files_run": 18,
+        "toolchains": [
+          "Python 3.14.6",
+          "Python 3.13.18"
+        ],
+        "results": {
+          "examples/ai_date_fixed.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_date_flawed.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err01_missing_quote.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err02_capital_p.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err03_curly_quotes.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err04_missing_bracket.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex01_hello.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex02_order.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex03_many_values.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex04_receipt.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task1.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task2.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task3.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task4.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task5.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task6.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task7.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task8.py": {
+            "Python 3.14.6": "pass",
+            "Python 3.13.18": "pass"
+          }
+        }
+      }
+    },
+    {
+      "name": "lesson_blocks",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "code_blocks": 10,
+        "output_blocks": 10
+      }
+    },
+    {
+      "name": "ai_pair",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "practice",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "tasks": 8
+      }
+    },
+    {
+      "name": "ai_prompts",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "sources",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "sources": 7
+      }
+    },
+    {
+      "name": "language",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "lesson.md": {
+          "sentences": 122,
+          "average_words": 10.6,
+          "longest": 29
+        },
+        "video/script.md": {
+          "sentences": 78,
+          "average_words": 8.2,
+          "longest": 20
+        }
+      }
+    },
+    {
+      "name": "video",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "scenes": 8
+      }
+    }
+  ],
+  "fingerprint": "d0362df3771407cbe3da71b3d4fba153b00f65399eaba5298d6117152b7922ea"
+}

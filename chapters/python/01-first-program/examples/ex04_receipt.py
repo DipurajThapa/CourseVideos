@@ -1,0 +1,10 @@
+# file: examples/ex04_receipt.py
+print("=========================")
+print("   CORNER CAFE RECEIPT")
+print("=========================")
+print("Tea", "USD 3", sep=" ............. ")
+print("Sandwich", "USD 7", sep=" ........ ")
+print("Items:", 1 + 1)
+print("Total: USD", 3 + 7)
+print("=========================")
+print("Thank you. See you soon!")
