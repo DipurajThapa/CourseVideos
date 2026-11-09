@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:09.
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 15:11.
 
-## Scene 1: Introduction (0:00 to 0:37)
+## Scene 1: Introduction (0:00 to 0:30)
 
 **Section:** Introduction
 
@@ -23,7 +23,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Along the way, an AI assistant will be confidently wrong. Your job is to catch it.
   **On screen:** Code `examples/ex04_receipt.py`, output `examples/ex04_receipt.expected`
 
-## Scene 2: Learning goals (0:37 to 1:05)
+## Scene 2: Learning goals (0:30 to 0:53)
 
 **Section:** Learning goals
 
@@ -57,7 +57,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Read an error message and find the line that caused it.
     - Use an AI assistant at every stage, safely, and check its answers.
 
-## Scene 3: Why this matters (1:05 to 1:35)
+## Scene 3: Why this matters (0:53 to 1:16)
 
 **Section:** Why this matters
 
@@ -82,7 +82,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - AI can write code. It is often right, and sometimes wrong while sounding sure.
     - **You** run the code. **You** decide if it is correct.
 
-## Scene 4: The idea: Python reads from top to bottom (1:35 to 3:00)
+## Scene 4: The idea: Python reads from top to bottom (1:16 to 2:31)
 
 **Section:** The idea
 
@@ -128,7 +128,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Text in quotation marks is a string.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Step 1: Install Python (3:00 to 3:46)
+## Scene 5: Step 1: Install Python (2:31 to 3:07)
 
 **Section:** Build it step by step
 
@@ -149,7 +149,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** On macOS and Linux, type python3 instead. You should see a line that starts with Python 3.
   **On screen:** Table: Check the version (row 2 in focus)
 
-## Scene 6: Steps 2 and 3: Asha's first program (3:46 to 4:42)
+## Scene 6: Steps 2 and 3: Asha's first program (3:07 to 3:52)
 
 **Section:** Build it step by step
 
@@ -174,7 +174,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The quotation marks do not appear. They only mark where the text starts and ends.
   **On screen:** Code `examples/ex01_hello.py`, line 2, 3 highlighted, output `examples/ex01_hello.expected`
 
-## Scene 7: Step 4: Order matters (4:42 to 5:27)
+## Scene 7: Step 4: Order matters (3:52 to 4:31)
 
 **Section:** Build it step by step
 
@@ -194,7 +194,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Swap two lines in your file and run it again. The output changes, because Python always runs from top to bottom.
   **On screen:** Code `examples/ex02_order.py`, lines 1 to 4 typed in, output `examples/ex02_order.expected`
 
-## Scene 8: Step 5: Spacing with sep and end (5:27 to 7:19)
+## Scene 8: Step 5: Spacing with sep and end (4:31 to 6:07)
 
 **Section:** Build it step by step
 
@@ -236,7 +236,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `sep` goes between values; `end` goes after them.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: See the outcome: the cafe receipt (7:19 to 8:10)
+## Scene 9: See the outcome: the cafe receipt (6:07 to 6:52)
 
 **Section:** See the outcome
 
@@ -256,7 +256,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The receipt works. But it has no order code. Asha wants to add one, and she will use an AI assistant to help, one stage at a time.
   **On screen:** Code `examples/ex04_receipt.py`, line 3 highlighted, output `examples/ex04_receipt.expected`
 
-## Scene 10: Work with AI: six stages, one receipt (8:10 to 12:41)
+## Scene 10: Work with AI: six stages, one receipt (6:52 to 10:34)
 
 **Section:** Work with AI
 
@@ -359,7 +359,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Run it, compare it, then trust it.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: Common mistakes (12:41 to 15:30)
+## Scene 11: Common mistakes (10:34 to 12:56)
 
 **Section:** Common mistakes
 
@@ -415,7 +415,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Then find the line number.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Think beyond (15:30 to 16:22)
+## Scene 12: Think beyond (12:56 to 13:42)
 
 **Section:** Think beyond
 
@@ -432,7 +432,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Keep your answer. You will use it in every chapter.
   **On screen:** Question card: "AI code runs with no error. What two things do you check before you trust it?"
 
-## Scene 13: Recap (16:22 to 17:22)
+## Scene 13: Recap (13:42 to 14:34)
 
 **Section:** Recap
 
@@ -474,7 +474,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** First Run You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 14: Practice (17:22 to 17:48)
+## Scene 14: Practice (14:34 to 14:54)
 
 **Section:** Practice
 
@@ -491,7 +491,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Try each task before you open the solution.
   **On screen:** Table: Practice: 8 tasks, 170 XP
 
-## Scene 15: What's next (17:48 to 18:09)
+## Scene 15: What's next (14:54 to 15:11)
 
 **Section:** What's next
 

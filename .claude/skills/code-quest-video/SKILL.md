@@ -15,7 +15,11 @@ The owner approved this style on 2026-11-09 (Chapter 1). Keep it for every chapt
 - Footer on every screen: course name, section, chapter tile, progress line.
 
 ## Voice
-- Piper `en_US-john-medium` (deep, calm male), chosen by the owner. Pinned in `tools/render_video.py`; do not change it without the owner.
+- Kokoro `bm_lewis` (deep, calm, lively British male), speed 0.95, approved by the owner as the course voice for all videos. Pinned in `tools/voice.py`; never change it without the owner.
+- Audio finish (automatic in the renderer): one take per beat, light vocal polish (high-pass, warmth, presence, gentle compression), a very quiet generated background pad so there is no dead silence, and a measured loudness correction to about -14 LUFS.
+- Write narration for the ear: short sentences, varied rhythm, a few questions and exclamations, and natural spoken connectors ("So", "Now", "Here is the thing"). Monotone audio usually starts in a flat script.
+- Each beat is spoken in one take; keep segments as whole sentences so the highlight boundaries land on pauses.
+- To narrate in the owner's own voice, set `COURSE_VOICE_ENGINE=clone` and `COURSE_VOICE_REF` to a clean 10 to 30 second recording (Chatterbox, MIT, about 1.5 to 2 hours per chapter on CPU).
 
 ## Story (write this before any storyboard JSON)
 1. Mission: one concrete, relatable thing the character builds in this chapter, reusing the lesson's running example. Show the finished result in the opening.

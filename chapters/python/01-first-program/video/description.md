@@ -5,20 +5,20 @@ Follow Asha as she builds a receipt for her family's Corner Cafe: install Python
 ## Chapters
 
 0:00 Introduction
-0:37 Learning goals
-1:04 Why this matters
-1:34 The idea: Python reads from top to bottom
-3:00 Step 1: Install Python
-3:45 Steps 2 and 3: Asha's first program
-4:42 Step 4: Order matters
-5:27 Step 5: Spacing with sep and end
-7:18 See the outcome: the cafe receipt
-8:09 Work with AI: six stages, one receipt
-12:41 Common mistakes
-15:29 Think beyond
-16:21 Recap
-17:21 Practice
-17:47 What's next
+0:30 Learning goals
+0:52 Why this matters
+1:16 The idea: Python reads from top to bottom
+2:30 Step 1: Install Python
+3:07 Steps 2 and 3: Asha's first program
+3:51 Step 4: Order matters
+4:30 Step 5: Spacing with sep and end
+6:07 See the outcome: the cafe receipt
+6:52 Work with AI: six stages, one receipt
+10:33 Common mistakes
+12:55 Think beyond
+13:42 Recap
+14:33 Practice
+14:53 What's next
 
 ## How to use this video
 
@@ -32,4 +32,4 @@ Follow Asha as she builds a receipt for her family's Corner Cafe: install Python
 
 ## Disclosure
 
-The narration is a synthetic voice (Piper text-to-speech, voice en_US-john-medium). The timer ticks and the soft tone on breather cards are generated in code. English captions are included.
+The narration is a synthetic voice (kokoro-onnx 0.6.1, model v1.0 (Apache-2.0), voice bm_lewis). The timer ticks, the breather tone and the quiet background pad are generated in code. English captions are included.

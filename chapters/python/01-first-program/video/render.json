@@ -1,12 +1,12 @@
 {
   "chapter_id": "python-01",
-  "rendered_at": "2026-11-09T15:16:56+00:00",
+  "rendered_at": "2026-11-09T18:07:44+00:00",
   "renderer_version": "3.0.0",
   "storyboard_sha256": "c77dccfbe8d968f42cbb74801fe402da23d05f24bcc07961c7977d60a7009ac1",
   "inputs_sha256": "724a271dde6951a815824e2116c567b833db880b9ae5bc1bce368fb3c3b27be0",
-  "video_sha256": "4a54c8e20e7af0ea60583ba7a7f6f25b882f955f8ff34e79a56aa39f00104b28",
-  "duration_seconds": 1089.3,
-  "size_mb": 41.04,
+  "video_sha256": "47537708e7652383afde8d3875546770e26d36afd757f3d22003fa103f5daf47",
+  "duration_seconds": 910.7,
+  "size_mb": 39.38,
   "format": {
     "width": 1920,
     "height": 1080,
@@ -15,14 +15,14 @@
     "audio": "aac",
     "captions": "mov_text",
     "loudness_lufs": -14,
-    "measured_lufs": -15.2,
-    "true_peak_dbtp": -1.8
+    "measured_lufs": -15.0,
+    "true_peak_dbtp": -2.2
   },
   "voice": {
-    "engine": "piper-tts 1.8.0",
-    "model": "en_US-john-medium",
-    "model_sha256": "789c6c875726e627ddee93d51d8727859abe9c091c3d141591f4b83c2072e988",
-    "length_scale": "1.1"
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
   },
   "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
   "states": 753,
@@ -34,105 +34,105 @@
       "title": "Introduction",
       "section": "Introduction",
       "start": 0.0,
-      "end": 37.133
+      "end": 30.233
     },
     {
       "id": "goals",
       "title": "Learning goals",
       "section": "Learning goals",
-      "start": 37.133,
-      "end": 64.733
+      "start": 30.233,
+      "end": 52.6
     },
     {
       "id": "why",
       "title": "Why this matters",
       "section": "Why this matters",
-      "start": 64.733,
-      "end": 94.667
+      "start": 52.6,
+      "end": 76.333
     },
     {
       "id": "idea",
       "title": "The idea: Python reads from top to bottom",
       "section": "The idea",
-      "start": 94.667,
-      "end": 180.467
+      "start": 76.333,
+      "end": 150.6
     },
     {
       "id": "install",
       "title": "Step 1: Install Python",
       "section": "Build it step by step",
-      "start": 180.467,
-      "end": 225.867
+      "start": 150.6,
+      "end": 187.333
     },
     {
       "id": "step2",
       "title": "Steps 2 and 3: Asha's first program",
       "section": "Build it step by step",
-      "start": 225.867,
-      "end": 282.267
+      "start": 187.333,
+      "end": 231.9
     },
     {
       "id": "step4",
       "title": "Step 4: Order matters",
       "section": "Build it step by step",
-      "start": 282.267,
-      "end": 327.0
+      "start": 231.9,
+      "end": 270.633
     },
     {
       "id": "step5",
       "title": "Step 5: Spacing with sep and end",
       "section": "Build it step by step",
-      "start": 327.0,
-      "end": 438.9
+      "start": 270.633,
+      "end": 367.333
     },
     {
       "id": "outcome",
       "title": "See the outcome: the cafe receipt",
       "section": "See the outcome",
-      "start": 438.9,
-      "end": 489.9
+      "start": 367.333,
+      "end": 412.333
     },
     {
       "id": "ai",
       "title": "Work with AI: six stages, one receipt",
       "section": "Work with AI",
-      "start": 489.9,
-      "end": 761.0
+      "start": 412.333,
+      "end": 633.6
     },
     {
       "id": "mistakes",
       "title": "Common mistakes",
       "section": "Common mistakes",
-      "start": 761.0,
-      "end": 929.6
+      "start": 633.6,
+      "end": 775.5
     },
     {
       "id": "beyond",
       "title": "Think beyond",
       "section": "Think beyond",
-      "start": 929.6,
-      "end": 981.533
+      "start": 775.5,
+      "end": 822.433
     },
     {
       "id": "recap",
       "title": "Recap",
       "section": "Recap",
-      "start": 981.533,
-      "end": 1041.633
+      "start": 822.433,
+      "end": 873.967
     },
     {
       "id": "practice",
       "title": "Practice",
       "section": "Practice",
-      "start": 1041.633,
-      "end": 1067.8
+      "start": 873.967,
+      "end": 893.633
     },
     {
       "id": "next",
       "title": "What's next",
       "section": "What's next",
-      "start": 1067.8,
-      "end": 1089.233
+      "start": 893.633,
+      "end": 910.7
     }
   ]
 }
