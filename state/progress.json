@@ -17,7 +17,7 @@
     "python-01": {
       "language": "python",
       "number": 1,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-a25750",
@@ -50,12 +50,14 @@
         {
           "run_id": "2026-11-09-f53271",
           "started": "2026-11-09T18:03:52+00:00",
-          "from_status": "changes_requested"
+          "from_status": "changes_requested",
+          "ended": "2026-11-09T18:23:00+00:00",
+          "result": "in_review"
         }
       ],
       "current_run_id": "2026-11-09-f53271",
       "path": "chapters/python/01-first-program",
-      "completed": "2026-11-09T15:36:49+00:00",
+      "completed": "2026-11-09T18:23:00+00:00",
       "notes": "Owner request: replace the narration voice with a fluid, energetic free voice (Kokoro bm_lewis), synthesised per beat, with a cloning option."
     },
     "python-02": {
@@ -240,5 +242,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T18:03:52+00:00"
+  "updated": "2026-11-09T18:23:00+00:00"
 }
