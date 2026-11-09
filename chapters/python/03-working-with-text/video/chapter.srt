@@ -1,0 +1,1295 @@
+1
+00:00:00,250 --> 00:00:02,216
+Welcome back to Code Quest.
+
+2
+00:00:02,236 --> 00:00:03,540
+This is Chapter 3.
+
+3
+00:00:03,567 --> 00:00:08,557
+Today you will turn plain values into
+clear, tidy text that people trust.
+
+4
+00:00:08,600 --> 00:00:13,210
+And an AI assistant will make a mistake
+that gives no error at all.
+
+5
+00:00:13,230 --> 00:00:14,869
+You will spot it anyway.
+
+6
+00:00:15,487 --> 00:00:18,692
+In Chapter 2, Asha's bill updated itself.
+
+7
+00:00:18,712 --> 00:00:20,265
+The maths was right.
+
+8
+00:00:20,285 --> 00:00:21,917
+But look at the text.
+
+9
+00:00:21,967 --> 00:00:29,010
+The amount to pay was 11.7, not 11.70, and
+the prices were all over the place.
+
+10
+00:00:29,030 --> 00:00:31,002
+Customers notice that.
+
+11
+00:00:31,620 --> 00:00:33,370
+So here is today's mission.
+
+12
+00:00:33,390 --> 00:00:37,500
+A receipt with a clean customer name and a
+title in the middle.
+
+13
+00:00:37,533 --> 00:00:43,243
+Every amount has two decimal places, and
+every price sits in one straight column.
+
+14
+00:00:43,267 --> 00:00:47,419
+By the end of this video, you will
+understand every line of it.
+
+15
+00:00:47,439 --> 00:00:49,473
+Let's build it, piece by piece.
+
+16
+00:00:50,050 --> 00:00:51,356
+Here is the plan.
+
+17
+00:00:51,376 --> 00:00:55,100
+Join strings, and build messages with f
+strings.
+
+18
+00:00:55,133 --> 00:00:58,283
+Show any number with exactly two decimal
+places.
+
+19
+00:00:58,333 --> 00:01:01,533
+Line up text and numbers in neat columns.
+
+20
+00:01:01,567 --> 00:01:04,077
+Clean up text with a few handy methods.
+
+21
+00:01:04,100 --> 00:01:08,477
+And read single characters, and fix the
+errors beginners meet with text.
+
+22
+00:01:09,050 --> 00:01:14,970
+Almost every program shows text to people:
+a receipt, a menu, a message on your
+
+23
+00:01:14,990 --> 00:01:17,000
+phone, or a report at work.
+
+24
+00:01:17,033 --> 00:01:19,133
+The data inside can be perfect.
+
+25
+00:01:19,153 --> 00:01:22,485
+But if the text is messy, people do not
+trust it.
+
+26
+00:01:22,505 --> 00:01:26,451
+So today, Asha makes her output look as
+good as her maths.
+
+27
+00:01:27,050 --> 00:01:28,213
+First, the idea.
+
+28
+00:01:28,233 --> 00:01:34,054
+A string is a sequence of characters:
+letters, digits, spaces and symbols, in a
+
+29
+00:01:34,074 --> 00:01:34,350
+row.
+
+30
+00:01:34,400 --> 00:01:37,940
+Each character has a position, called its
+index.
+
+31
+00:01:37,960 --> 00:01:39,794
+And here is the surprise.
+
+32
+00:01:39,814 --> 00:01:41,870
+The first index is 0, not 1.
+
+33
+00:01:41,900 --> 00:01:44,046
+You can also count from the end.
+
+34
+00:01:44,066 --> 00:01:46,550
+Minus 1 is always the last character.
+
+35
+00:01:47,153 --> 00:01:50,280
+There are two ways to build a message from
+your variables.
+
+36
+00:01:50,300 --> 00:01:52,988
+You can join strings with a plus sign.
+
+37
+00:01:53,008 --> 00:01:55,910
+That works well for a few pieces of text.
+
+38
+00:01:55,933 --> 00:01:57,663
+Or you can use an f string.
+
+39
+00:01:57,683 --> 00:02:01,161
+It mixes text and numbers, and it can
+format them too.
+
+40
+00:02:01,753 --> 00:02:06,573
+An f string starts with the letter f,
+right before the opening quotation mark.
+
+41
+00:02:06,600 --> 00:02:09,221
+Think of it as a form with blank boxes.
+
+42
+00:02:09,241 --> 00:02:14,030
+Each pair of curly brackets is a box, and
+Python fills it with a value.
+
+43
+00:02:14,067 --> 00:02:19,585
+Unlike a paper form, a box can also say
+how to show the value, for example with
+
+44
+00:02:19,605 --> 00:02:20,917
+two decimal places.
+
+45
+00:02:20,967 --> 00:02:21,890
+One more rule.
+
+46
+00:02:21,910 --> 00:02:25,058
+A string can never be changed after it is
+made.
+
+47
+00:02:25,078 --> 00:02:26,811
+You always make a new one.
+
+48
+00:02:27,420 --> 00:02:28,245
+Quick check.
+
+49
+00:02:28,265 --> 00:02:32,819
+In the word cafe, in capitals, what is the
+index of the letter F?
+
+50
+00:02:44,180 --> 00:02:44,598
+B, 2.
+
+51
+00:02:44,618 --> 00:02:46,965
+C is 0, A is 1, and F is 2.
+
+52
+00:02:46,985 --> 00:02:51,961
+Counting from 0 takes practice, so keep
+this one in mind.
+
+53
+00:02:52,553 --> 00:02:53,607
+Take a breather.
+
+54
+00:02:53,627 --> 00:02:55,553
+Here is what you know so far.
+
+55
+00:02:55,600 --> 00:02:59,728
+Next, Asha starts building her text, one
+piece at a time.
+
+56
+00:03:04,450 --> 00:03:04,951
+Step 1.
+
+57
+00:03:04,971 --> 00:03:09,193
+Joining strings with a plus sign is called
+concatenation.
+
+58
+00:03:09,213 --> 00:03:10,830
+Asha stores two words.
+
+59
+00:03:10,867 --> 00:03:12,227
+Line 4 joins them.
+
+60
+00:03:12,247 --> 00:03:18,437
+The plus sign adds no space by itself, so
+Asha adds a space string in the middle.
+
+61
+00:03:18,467 --> 00:03:22,228
+Line 5 joins five pieces into a welcome
+message.
+
+62
+00:03:33,580 --> 00:03:37,149
+Welcome to the Corner Cafe, with an
+exclamation mark.
+
+63
+00:03:37,169 --> 00:03:40,060
+Every space is there because Asha typed
+it.
+
+64
+00:03:40,650 --> 00:03:41,200
+Step 2.
+
+65
+00:03:41,220 --> 00:03:46,330
+Asha stores her customer, a count and a
+price, as in Chapter 2.
+
+66
+00:03:46,367 --> 00:03:47,918
+Line 5 is an f string.
+
+67
+00:03:47,938 --> 00:03:52,347
+The name inside the curly brackets is
+replaced with its value.
+
+68
+00:03:52,367 --> 00:03:55,873
+Inside the brackets you can also put a
+calculation.
+
+69
+00:03:55,893 --> 00:03:57,671
+Python works it out first.
+
+70
+00:04:09,047 --> 00:04:11,337
+Line 5 says hello to Asha.
+
+71
+00:04:11,367 --> 00:04:14,417
+And line 6 says 2 teas cost 7.0.
+
+72
+00:04:14,437 --> 00:04:16,432
+No plus signs needed.
+
+73
+00:04:16,452 --> 00:04:21,325
+But 7.0 still looks untidy, so let's fix
+that next.
+
+74
+00:04:21,917 --> 00:04:22,440
+Step 3.
+
+75
+00:04:22,460 --> 00:04:25,467
+Line 4 prints the amount the plain way.
+
+76
+00:04:25,500 --> 00:04:30,844
+On line 5, after the name, there is a
+colon and a short code: dot 2 f.
+
+77
+00:04:30,864 --> 00:04:33,220
+That is a format specification.
+
+78
+00:04:33,267 --> 00:04:38,547
+Dot 2 f means: a decimal number, with
+exactly two digits after the point.
+
+79
+00:04:38,567 --> 00:04:42,686
+With more digits, Python rounds, like
+round in Chapter 2.
+
+80
+00:04:54,047 --> 00:04:56,514
+Line 4 still shows 11.7.
+
+81
+00:04:56,534 --> 00:04:58,483
+Line 5 shows 11.70.
+
+82
+00:04:58,503 --> 00:05:02,007
+The format added the missing zero.
+
+83
+00:05:02,033 --> 00:05:06,063
+Line 6 shows the discount as 1.30.
+
+84
+00:05:06,100 --> 00:05:10,195
+And line 7 rounds ten divided by three to
+3.33.
+
+85
+00:05:10,215 --> 00:05:12,910
+The value itself never changes.
+
+86
+00:05:12,930 --> 00:05:15,099
+Only the way it is shown.
+
+87
+00:05:15,683 --> 00:05:16,154
+Step 4.
+
+88
+00:05:16,174 --> 00:05:20,993
+To line up columns, the format can also
+set a width and an alignment.
+
+89
+00:05:21,033 --> 00:05:25,899
+A less than arrow and a number: the value
+takes at least that many characters,
+
+90
+00:05:25,919 --> 00:05:26,713
+aligned left.
+
+91
+00:05:26,733 --> 00:05:29,465
+A greater than arrow aligns it right.
+
+92
+00:05:29,485 --> 00:05:31,473
+That is perfect for prices.
+
+93
+00:05:31,500 --> 00:05:33,500
+A caret centres the value.
+
+94
+00:05:33,533 --> 00:05:37,762
+And a character before the arrow fills the
+empty space instead of spaces.
+
+95
+00:05:38,353 --> 00:05:39,877
+Line 4 prints a header.
+
+96
+00:05:39,897 --> 00:05:45,112
+Inside the brackets, Asha writes text in
+single quotation marks, because the f
+
+97
+00:05:45,132 --> 00:05:47,192
+string itself uses double ones.
+
+98
+00:05:47,212 --> 00:05:50,413
+Mixing them tells Python where each string
+ends.
+
+99
+00:05:50,433 --> 00:05:55,915
+Lines 5 and 6 use the same widths: 10 on
+the left for the name, and 8 on the right
+
+100
+00:05:55,935 --> 00:05:57,793
+for the price, with dot 2 f.
+
+101
+00:05:57,833 --> 00:06:03,397
+Line 7 centres the word menu in 18
+characters, and fills the space with
+
+102
+00:06:03,417 --> 00:06:03,868
+stars.
+
+103
+00:06:15,247 --> 00:06:15,517
+Yes.
+
+104
+00:06:15,537 --> 00:06:21,396
+Every name takes 10 characters and every
+price takes 8, so both prices end in the
+
+105
+00:06:21,416 --> 00:06:22,267
+same column.
+
+106
+00:06:22,300 --> 00:06:28,497
+And line 7 gives six stars, the word menu
+with a space on each side, and six more
+
+107
+00:06:28,517 --> 00:06:28,957
+stars.
+
+108
+00:06:29,553 --> 00:06:30,551
+Quick check.
+
+109
+00:06:30,571 --> 00:06:36,317
+Which code shows the price 6 as 6.00,
+right aligned in 8 characters?
+
+110
+00:06:47,680 --> 00:06:47,811
+D.
+
+111
+00:06:47,831 --> 00:06:53,173
+The arrow points right, 8 is the width,
+and dot 2 f gives two decimals.
+
+112
+00:06:53,787 --> 00:06:54,322
+Breather.
+
+113
+00:06:54,342 --> 00:06:55,619
+Relax your shoulders.
+
+114
+00:06:55,639 --> 00:06:58,767
+You can already format numbers like a
+professional.
+
+115
+00:06:58,800 --> 00:07:01,695
+Next, Asha cleans up the text itself.
+
+116
+00:07:06,417 --> 00:07:06,884
+Step 5.
+
+117
+00:07:06,904 --> 00:07:10,159
+A method is a function that belongs to a
+value.
+
+118
+00:07:10,179 --> 00:07:12,877
+You call it with a dot after the value.
+
+119
+00:07:12,900 --> 00:07:16,180
+Strip removes spaces at the start and the
+end.
+
+120
+00:07:16,200 --> 00:07:19,300
+Title gives each word a capital first
+letter.
+
+121
+00:07:19,333 --> 00:07:23,893
+Upper and lower change every letter to
+capitals, or to small letters.
+
+122
+00:07:23,933 --> 00:07:26,913
+And replace swaps one part of the text for
+another.
+
+123
+00:07:27,520 --> 00:07:31,799
+A customer typed a name with extra spaces,
+and no capitals.
+
+124
+00:07:31,819 --> 00:07:33,620
+Asha strips it on line 3.
+
+125
+00:07:33,667 --> 00:07:37,567
+Lines 5 to 7 try title, upper and replace.
+
+126
+00:07:37,600 --> 00:07:38,858
+Line 8 uses len.
+
+127
+00:07:38,878 --> 00:07:44,367
+The len function counts every character in
+a string, spaces included.
+
+128
+00:07:55,747 --> 00:07:57,527
+Strip removed the spaces.
+
+129
+00:07:57,547 --> 00:08:01,057
+Title, upper and replace each gave a new
+version.
+
+130
+00:08:01,100 --> 00:08:03,113
+And line 8 prints 13 and 9.
+
+131
+00:08:03,133 --> 00:08:06,051
+The typed name still has 13 characters.
+
+132
+00:08:06,071 --> 00:08:10,193
+Strip made a new string, and the old one
+never changed.
+
+133
+00:08:10,783 --> 00:08:11,338
+Step 6.
+
+134
+00:08:11,358 --> 00:08:14,538
+Remember the order code from Chapter 1?
+
+135
+00:08:14,558 --> 00:08:16,753
+Asha stores it as a string.
+
+136
+00:08:16,800 --> 00:08:21,552
+To read one character, write its index in
+square brackets after the string.
+
+137
+00:08:21,572 --> 00:08:23,842
+Use the rules from the idea section.
+
+138
+00:08:35,213 --> 00:08:38,023
+Index 0 is C, the first character.
+
+139
+00:08:38,067 --> 00:08:41,484
+Index 5 is the 1 right after the hyphen.
+
+140
+00:08:41,504 --> 00:08:45,007
+Count from 0: C, A, F, E, hyphen, then 1.
+
+141
+00:08:45,033 --> 00:08:47,741
+Minus 1 is the last character, 4.
+
+142
+00:08:47,761 --> 00:08:50,303
+And minus 2 is the T before it.
+
+143
+00:08:50,333 --> 00:08:54,988
+The code has 12 characters, so its indexes
+go from 0 to 11.
+
+144
+00:08:55,583 --> 00:08:57,009
+Back to the mission.
+
+145
+00:08:57,029 --> 00:09:03,079
+Lines 2 to 6 store the values, and lines 8
+to 11 do the maths, exactly as in Chapter
+
+146
+00:09:03,099 --> 00:09:03,223
+2.
+
+147
+00:09:03,267 --> 00:09:09,097
+Line 12 cleans the name with two methods
+in a row: strip first, then title.
+
+148
+00:09:09,133 --> 00:09:12,833
+Line 13 builds the tea label with an f
+string.
+
+149
+00:09:12,853 --> 00:09:19,543
+Line 14 repeats a hyphen 24 times, the way
+text times a number worked in Chapter 2.
+
+150
+00:09:19,567 --> 00:09:23,770
+Line 16 centres the cafe name, filled with
+equals signs.
+
+151
+00:09:23,790 --> 00:09:29,577
+Then every amount line uses 16 characters
+for the label and 8 for the amount.
+
+152
+00:09:29,600 --> 00:09:31,124
+Asha runs it.
+
+153
+00:09:42,480 --> 00:09:44,071
+Tea x 2, and 8.50.
+
+154
+00:09:44,091 --> 00:09:48,634
+Two teas at 4.25 is 8.5, and dot 2 f adds
+the zero.
+
+155
+00:09:48,654 --> 00:09:51,140
+It stays in the same column.
+
+156
+00:09:51,167 --> 00:09:54,110
+The receipt looks professional now.
+
+157
+00:09:54,130 --> 00:09:59,443
+Next, Asha wants a tool that prints one
+tidy line for any item.
+
+158
+00:09:59,463 --> 00:10:04,184
+She builds it with an AI assistant, one
+stage at a time.
+
+159
+00:10:04,783 --> 00:10:07,773
+This chapter's AI skill is a precise
+prompt.
+
+160
+00:10:07,800 --> 00:10:13,110
+When you want text in an exact shape, show
+the AI the exact output you want.
+
+161
+00:10:13,133 --> 00:10:17,583
+Then compare its result with your target,
+character by character.
+
+162
+00:10:17,633 --> 00:10:19,904
+And the safety habits still apply.
+
+163
+00:10:19,924 --> 00:10:23,811
+No private data, and you run every piece
+of code yourself.
+
+164
+00:10:24,420 --> 00:10:25,481
+Stage 1: plan.
+
+165
+00:10:25,501 --> 00:10:31,273
+Asha describes the exact line she wants,
+and asks for the widths and codes.
+
+166
+00:10:31,293 --> 00:10:32,200
+No code yet.
+
+167
+00:10:32,233 --> 00:10:38,083
+The AI plans 16 characters on the left, 8
+on the right, and dot 2 f.
+
+168
+00:10:38,103 --> 00:10:39,810
+And 16 plus 8 is 24.
+
+169
+00:10:39,830 --> 00:10:41,881
+That matches her target.
+
+170
+00:10:42,487 --> 00:10:43,439
+Stage 2: write.
+
+171
+00:10:43,459 --> 00:10:45,709
+Asha writes the header row herself.
+
+172
+00:10:45,729 --> 00:10:50,637
+She asks the AI to predict it, with a dot
+for every space, so she can count.
+
+173
+00:10:50,667 --> 00:10:55,877
+The AI predicts the word item, 15 dots,
+then the word price.
+
+174
+00:10:55,900 --> 00:10:58,192
+Asha counts 24 characters too.
+
+175
+00:10:58,212 --> 00:11:00,350
+She runs it, and it matches.
+
+176
+00:11:00,953 --> 00:11:02,286
+Stage 3: generate.
+
+177
+00:11:02,306 --> 00:11:04,165
+Now the item line itself.
+
+178
+00:11:04,185 --> 00:11:08,373
+Asha asks for the code, and asks exactly
+what it prints.
+
+179
+00:11:08,400 --> 00:11:13,227
+The AI gives a line, and promises
+Sandwich, spaces, then 6.00.
+
+180
+00:11:13,247 --> 00:11:14,400
+It sounds sure.
+
+181
+00:11:14,433 --> 00:11:17,543
+Look at line 4 carefully.
+
+182
+00:11:28,913 --> 00:11:29,759
+Asha runs it.
+
+183
+00:11:29,779 --> 00:11:33,622
+It prints the curly brackets and the
+codes, as plain text!
+
+184
+00:11:33,642 --> 00:11:36,419
+And there is no error message to warn her.
+
+185
+00:11:37,020 --> 00:11:38,064
+Stage 4: test.
+
+186
+00:11:38,084 --> 00:11:43,310
+Asha compares the real output with her
+target, and gives the AI both.
+
+187
+00:11:43,333 --> 00:11:45,788
+Now the AI names the cause.
+
+188
+00:11:45,808 --> 00:11:50,280
+The f is missing, so the brackets are
+plain text.
+
+189
+00:11:50,300 --> 00:11:52,113
+One letter fixes it.
+
+190
+00:11:52,133 --> 00:11:53,963
+Asha runs the fixed line.
+
+191
+00:11:53,983 --> 00:11:56,183
+Sandwich, twelve spaces, 6.00.
+
+192
+00:11:56,203 --> 00:11:57,589
+Exactly her target.
+
+193
+00:11:58,187 --> 00:11:59,220
+Stage 5: debug.
+
+194
+00:11:59,240 --> 00:12:04,769
+Later, Asha copies a price from the menu
+sheet, with quotation marks around it.
+
+195
+00:12:04,789 --> 00:12:07,017
+Python stops with a Value Error.
+
+196
+00:12:07,037 --> 00:12:09,757
+She pastes the code and the full error.
+
+197
+00:12:09,800 --> 00:12:11,868
+She asks for the cause first.
+
+198
+00:12:11,888 --> 00:12:17,774
+The AI explains that the f code only works
+for numbers, and the price is a string.
+
+199
+00:12:17,794 --> 00:12:20,366
+The fix: remove the quotation marks.
+
+200
+00:12:20,987 --> 00:12:22,329
+Stage 6: improve.
+
+201
+00:12:22,349 --> 00:12:23,531
+The line works.
+
+202
+00:12:23,551 --> 00:12:26,657
+Asha asks for at most two improvements.
+
+203
+00:12:26,700 --> 00:12:30,375
+Suggestion 1 is good: test with a larger
+price.
+
+204
+00:12:30,395 --> 00:12:35,170
+Suggestion 2 says dot 2 is the same as dot
+2 f, only shorter.
+
+205
+00:12:35,200 --> 00:12:37,177
+Asha does not accept it yet.
+
+206
+00:12:37,197 --> 00:12:39,816
+She tests both codes with two prices.
+
+207
+00:12:40,420 --> 00:12:46,160
+With dot 2 f, both prices show two decimal
+places: 3.50 and 12.50.
+
+208
+00:12:46,200 --> 00:12:49,691
+With dot 2, the price 3.5 loses its zero.
+
+209
+00:12:49,711 --> 00:12:53,802
+And 12.5 becomes one point two, e plus
+zero one.
+
+210
+00:12:53,822 --> 00:12:56,800
+That is 12, in scientific notation!
+
+211
+00:12:56,833 --> 00:13:02,721
+Dot 2 keeps two significant digits, not
+two decimal places.
+
+212
+00:13:02,741 --> 00:13:05,023
+The AI was wrong again.
+
+213
+00:13:05,620 --> 00:13:08,019
+So Asha keeps suggestion 1 only.
+
+214
+00:13:08,039 --> 00:13:12,780
+She tests a second item with a larger
+price, and keeps dot 2 f.
+
+215
+00:13:12,800 --> 00:13:15,625
+Both prices line up, with two decimals.
+
+216
+00:13:15,645 --> 00:13:21,024
+Two AI mistakes caught, both by comparing
+the real output with the target.
+
+217
+00:13:21,620 --> 00:13:22,205
+Breather.
+
+218
+00:13:22,225 --> 00:13:27,924
+You watched Asha use AI at all six stages,
+and catch two mistakes by comparing output
+
+219
+00:13:27,944 --> 00:13:29,000
+with her target.
+
+220
+00:13:29,033 --> 00:13:33,145
+Next, the four errors beginners meet most
+often with text.
+
+221
+00:13:33,165 --> 00:13:34,925
+You have met one already.
+
+222
+00:13:39,650 --> 00:13:40,405
+Mistake 1.
+
+223
+00:13:40,425 --> 00:13:43,970
+Asha joins text and a number with a plus
+sign.
+
+224
+00:13:43,990 --> 00:13:47,380
+The plus sign only joins strings to
+strings.
+
+225
+00:13:47,400 --> 00:13:52,610
+So Python stops with a Type Error, the
+same message you met in Chapter 2.
+
+226
+00:13:52,633 --> 00:13:54,095
+The fix is an f string.
+
+227
+00:13:54,115 --> 00:13:56,542
+It turns the number into text for you.
+
+228
+00:13:57,153 --> 00:13:58,017
+Now you try.
+
+229
+00:13:58,037 --> 00:14:00,522
+The table code has two characters.
+
+230
+00:14:00,542 --> 00:14:02,658
+Remember where indexes start.
+
+231
+00:14:14,013 --> 00:14:15,822
+Index 2 does not exist.
+
+232
+00:14:15,842 --> 00:14:22,103
+Two characters have the indexes 0 and 1
+only, so Python reports an Index Error.
+
+233
+00:14:22,133 --> 00:14:25,433
+The last index is always one less than the
+length.
+
+234
+00:14:25,453 --> 00:14:27,955
+Or use minus 1 for the last character.
+
+235
+00:14:28,553 --> 00:14:29,109
+One more.
+
+236
+00:14:29,129 --> 00:14:32,179
+Asha wants a capital A at the start of the
+name.
+
+237
+00:14:32,199 --> 00:14:34,865
+Think about the rule for changing strings.
+
+238
+00:14:46,247 --> 00:14:50,651
+A string cannot be changed after it is
+made, not even one letter.
+
+239
+00:14:50,671 --> 00:14:54,327
+Python says a string does not support item
+assignment.
+
+240
+00:14:54,367 --> 00:14:59,521
+The fix: make a new string, for example
+with the title method, and give it the
+
+241
+00:14:59,541 --> 00:14:59,853
+name.
+
+242
+00:15:00,453 --> 00:15:06,229
+Mistake 4 is the Value Error Asha debugged
+with the AI: dot 2 f on a price in
+
+243
+00:15:06,249 --> 00:15:07,434
+quotation marks.
+
+244
+00:15:07,454 --> 00:15:13,681
+Store a number instead, and in Chapter 4
+you will learn to turn text into a number.
+
+245
+00:15:14,287 --> 00:15:15,148
+Quick check.
+
+246
+00:15:15,168 --> 00:15:17,057
+A string has 5 characters.
+
+247
+00:15:17,077 --> 00:15:18,747
+What is its last index?
+
+248
+00:15:30,113 --> 00:15:30,570
+C, 4.
+
+249
+00:15:30,590 --> 00:15:35,341
+Five characters have the indexes 0, 1, 2,
+3 and 4.
+
+250
+00:15:35,953 --> 00:15:36,822
+Last breather.
+
+251
+00:15:36,842 --> 00:15:39,613
+These errors will not surprise you any
+more.
+
+252
+00:15:39,633 --> 00:15:42,947
+Two questions to think about on your own
+come next.
+
+253
+00:15:47,683 --> 00:15:48,068
+First.
+
+254
+00:15:48,088 --> 00:15:53,458
+Asha wants only the first letter of a
+customer's name, as a capital, for a table
+
+255
+00:15:53,478 --> 00:15:53,795
+card.
+
+256
+00:15:53,815 --> 00:15:56,961
+Which index and which method would you
+combine?
+
+257
+00:16:08,313 --> 00:16:11,979
+Write it and test it with the name omar,
+after the video.
+
+258
+00:16:12,587 --> 00:16:13,051
+Second.
+
+259
+00:16:13,071 --> 00:16:16,099
+A new receipt printer is 32 characters
+wide.
+
+260
+00:16:16,119 --> 00:16:21,570
+Which numbers in Asha's receipt would you
+change, so the columns still line up?
+
+261
+00:16:32,947 --> 00:16:35,743
+Predict the new output first, then test
+it.
+
+262
+00:16:36,317 --> 00:16:37,327
+Let's recap.
+
+263
+00:16:37,367 --> 00:16:39,566
+A string is a row of characters.
+
+264
+00:16:39,586 --> 00:16:42,617
+Indexes start at 0, and minus 1 is the
+last.
+
+265
+00:16:42,667 --> 00:16:44,428
+A plus sign joins strings.
+
+266
+00:16:44,448 --> 00:16:48,127
+An f string puts values into text with
+curly brackets.
+
+267
+00:16:48,167 --> 00:16:52,427
+Dot 2 f shows two decimal places, and a
+number sets the width.
+
+268
+00:16:52,467 --> 00:16:55,737
+The arrows align left and right, and the
+caret centres.
+
+269
+00:16:55,767 --> 00:16:57,757
+Methods give you a new string.
+
+270
+00:16:57,777 --> 00:16:59,567
+The original never changes.
+
+271
+00:16:59,600 --> 00:17:04,677
+And with AI: show the exact output you
+want, and test with more than one value.
+
+272
+00:17:05,287 --> 00:17:06,848
+One last check.
+
+273
+00:17:06,868 --> 00:17:09,273
+Which line prints 7.00?
+
+274
+00:17:20,647 --> 00:17:20,770
+A.
+
+275
+00:17:20,790 --> 00:17:26,430
+It needs both the f before the quotation
+mark, and dot 2 f inside the brackets.
+
+276
+00:17:27,020 --> 00:17:28,355
+Mission complete!
+
+277
+00:17:28,375 --> 00:17:31,704
+You earned 100 XP and the Wordsmith badge.
+
+278
+00:17:33,950 --> 00:17:35,521
+Now it is your turn.
+
+279
+00:17:35,541 --> 00:17:39,340
+The practice file has eight tasks, worth
+170 XP.
+
+280
+00:17:39,367 --> 00:17:42,647
+Three warm-up tasks, worth 10 XP each.
+
+281
+00:17:42,667 --> 00:17:45,187
+Three apply tasks, worth 20 each.
+
+282
+00:17:45,233 --> 00:17:47,792
+And two stretch tasks, worth 40 each.
+
+283
+00:17:47,812 --> 00:17:52,043
+In the last one, you fix an AI's receipt
+line with two flaws.
+
+284
+00:17:52,067 --> 00:17:53,686
+Predict first, then run.
+
+285
+00:17:53,706 --> 00:17:56,623
+Try each task before you open the
+solution.
+
+286
+00:17:57,217 --> 00:17:59,015
+Asha's receipt looks great.
+
+287
+00:17:59,035 --> 00:18:02,044
+But every value is still typed into the
+code.
+
+288
+00:18:02,064 --> 00:18:05,007
+Every customer gets two teas and a
+sandwich!
+
+289
+00:18:05,033 --> 00:18:09,694
+In Chapter 4, your programs will ask
+questions, and use the answers the
+
+290
+00:18:09,714 --> 00:18:10,683
+customer types.
+
+291
+00:18:10,733 --> 00:18:12,487
+Do the warm-up tasks now.
+
+292
+00:18:12,507 --> 00:18:14,473
+They take about ten minutes.
+
+293
+00:18:14,500 --> 00:18:16,227
+See you in Chapter 4.

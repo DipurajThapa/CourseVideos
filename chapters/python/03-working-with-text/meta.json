@@ -1,0 +1,63 @@
+{
+  "id": "python-03",
+  "title": "Working with Text: Strings and f-strings",
+  "language": "python",
+  "type": "lesson",
+  "module": "M1",
+  "badge": "Wordsmith",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "string",
+    "concatenation",
+    "f-string",
+    "format specification",
+    ".2f",
+    "width",
+    "alignment",
+    "fill character",
+    "method",
+    "strip()",
+    "title()",
+    "upper()",
+    "lower()",
+    "replace()",
+    "len()",
+    "index",
+    "negative index",
+    "immutability",
+    "IndexError",
+    "ValueError"
+  ],
+  "prerequisites": [
+    "python-02"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_line_flawed.py",
+    "fixed_file": "examples/ai_line_fixed.py",
+    "flaw": "The AI left out the f before the opening quotation mark and predicted 'Sandwich            6.00'. Without the f, the curly brackets are plain text, so Python printed '{item:<16}{price:>8.2f}' with no error. Adding the f fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-09",
+  "changes": [
+    "Indexing is taught for single characters only; slicing is left to Chapter 11, where it is taught with lists, to keep this chapter focused.",
+    "Added len() as a small extra, because counting characters is needed to understand indexes and column widths.",
+    "Used '=' as the fill character for the receipt title, so the expected output has no invisible trailing spaces.",
+    "The AI improve-stage example uses decimal prices, because a precision without a type raises an error for whole numbers."
+  ],
+  "outstanding_issues": [
+    "The tracebacks in Common mistakes show the short file name; on a learner's computer the full path to the file appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
