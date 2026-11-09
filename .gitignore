@@ -1,0 +1,6 @@
+.toolchains.json
+__pycache__/
+*.pyc
+*.class
+prog.out
+.DS_Store

@@ -1,0 +1,37 @@
+# One phrase per line, matched case-insensitively on word boundaries in every chapter .md file.
+# These are idioms, filler or hype that make text vague or hard for second-language readers.
+dive in
+dive into
+deep dive
+let's dive
+game changer
+game-changer
+piece of cake
+under the hood
+in a nutshell
+rocket science
+no-brainer
+supercharge
+unleash
+seamless
+seamlessly
+easy peasy
+a breeze
+on the fly
+out of the box
+silver bullet
+low-hanging fruit
+at the end of the day
+it goes without saying
+needless to say
+simply put
+basically
+obviously
+just
+level up
+journey
+delve
+harness the power
+unlock the power
+cutting-edge
+revolutionary

@@ -1,0 +1,415 @@
+{
+  "language": "python",
+  "display_name": "Python",
+  "status": "in_review",
+  "version_policy": {
+    "minimum": "3.12",
+    "target": "latest stable release, checked each run on python.org",
+    "verified_against_at_creation": "3.14.6 and 3.13 (latest stable 3.15.2 confirmed on python.org on 2026-11-09; uv did not yet offer a stable 3.15 build)"
+  },
+  "official_docs": "https://docs.python.org/3/",
+  "style_guide": "https://peps.python.org/pep-0008/",
+  "file_extension": ".py",
+  "modules": [
+    {
+      "id": "M1",
+      "title": "First Contact: Talking to the Computer",
+      "chapters": [
+        {
+          "id": "python-01",
+          "number": 1,
+          "slug": "first-program",
+          "type": "lesson",
+          "title": "Your First Program and Your AI Study Partner",
+          "concept": "What a program is, how Python runs code line by line, and the print() function",
+          "why": "Every program a computer runs is a list of instructions; learners must see one run before anything else makes sense",
+          "outcome": "Run a Python file that prints a short message, read an error message, and use an AI assistant to explain code safely",
+          "ai_skill": "Using AI as a tutor that explains, not a machine that does the work; safe prompting habits",
+          "prerequisites": [],
+          "badge": "First Run"
+        },
+        {
+          "id": "python-02",
+          "number": 2,
+          "slug": "values-and-variables",
+          "type": "lesson",
+          "title": "Values and Variables: Giving Data a Name",
+          "concept": "Values, the types int, float, str and bool, variables and assignment, and arithmetic operators",
+          "why": "Programs work with data; naming data lets a program store it, change it and reuse it",
+          "outcome": "Store values in well-named variables, calculate with them and predict the result before running",
+          "ai_skill": "Asking AI to predict output, then checking the prediction by running the code",
+          "prerequisites": ["python-01"],
+          "badge": "Name Keeper"
+        },
+        {
+          "id": "python-03",
+          "number": 3,
+          "slug": "working-with-text",
+          "type": "lesson",
+          "title": "Working with Text: Strings and f-strings",
+          "concept": "Strings, joining text, f-strings, common string methods and indexing",
+          "why": "Most programs show messages, labels and reports to people; text handling is everywhere",
+          "outcome": "Build clear, formatted messages from variables using f-strings and string methods",
+          "ai_skill": "Writing a precise prompt with an example of the exact output wanted",
+          "prerequisites": ["python-02"],
+          "badge": "Wordsmith"
+        },
+        {
+          "id": "python-04",
+          "number": 4,
+          "slug": "input-and-conversion",
+          "type": "lesson",
+          "title": "Talking Back: Input and Type Conversion",
+          "concept": "input(), converting text to numbers with int() and float(), and the errors conversion can raise",
+          "why": "Useful programs react to the person using them; user input always arrives as text",
+          "outcome": "Write a program that asks questions, converts answers and calculates a result",
+          "ai_skill": "Giving AI the exact error message and code, and asking for the cause before the fix",
+          "prerequisites": ["python-03"],
+          "badge": "Listener"
+        },
+        {
+          "id": "python-05",
+          "number": 5,
+          "slug": "project-bill-splitter",
+          "type": "project",
+          "title": "Boss Level 1: The Bill Splitter",
+          "concept": "Combining output, variables, strings, input and conversion into one small tool",
+          "why": "Combining concepts into a working tool is how programming knowledge becomes a skill",
+          "outcome": "Build a bill splitter that asks for the total, tip and number of people, then prints each share",
+          "ai_skill": "Planning a program with AI before writing it, then reviewing AI suggestions critically",
+          "prerequisites": ["python-01", "python-02", "python-03", "python-04"],
+          "badge": "Fair Share"
+        }
+      ]
+    },
+    {
+      "id": "M2",
+      "title": "Decisions and Repetition",
+      "chapters": [
+        {
+          "id": "python-06",
+          "number": 6,
+          "slug": "making-decisions",
+          "type": "lesson",
+          "title": "Making Decisions: if, elif and else",
+          "concept": "Booleans, comparison and logical operators, if, elif and else, and indentation",
+          "why": "Real programs choose what to do based on data, such as approving a payment or showing a warning",
+          "outcome": "Write programs that choose between several paths based on input",
+          "ai_skill": "Asking AI for edge cases that would break a condition",
+          "prerequisites": ["python-04"],
+          "badge": "Decision Maker"
+        },
+        {
+          "id": "python-07",
+          "number": 7,
+          "slug": "while-loops",
+          "type": "lesson",
+          "title": "Repeat Until Done: while Loops",
+          "concept": "while loops, loop conditions, counters, break and avoiding infinite loops",
+          "why": "Many tasks repeat until a condition changes, such as asking again until the input is valid",
+          "outcome": "Write a loop that validates input and stops at the right moment",
+          "ai_skill": "Using AI to trace a loop step by step and explain why it never ends",
+          "prerequisites": ["python-06"],
+          "badge": "Loop Tamer"
+        },
+        {
+          "id": "python-08",
+          "number": 8,
+          "slug": "for-loops",
+          "type": "lesson",
+          "title": "Repeat a Set Number of Times: for Loops and range()",
+          "concept": "for loops, range(), looping over strings, and accumulating totals",
+          "why": "Processing every item in a group, such as every order or every line, is one of the most common tasks in software",
+          "outcome": "Use for loops to process sequences and build totals and tables",
+          "ai_skill": "Comparing your loop with an AI-generated loop and judging which is clearer",
+          "prerequisites": ["python-07"],
+          "badge": "Pattern Runner"
+        },
+        {
+          "id": "python-09",
+          "number": 9,
+          "slug": "debugging-with-ai",
+          "type": "lesson",
+          "title": "Debugging with AI: Reading Errors and Tracebacks",
+          "concept": "Syntax errors versus runtime errors versus logic errors, reading a traceback, print debugging",
+          "why": "Every programmer spends a large share of time finding and fixing bugs; reading errors well saves hours",
+          "outcome": "Find and fix bugs of three kinds using tracebacks, print statements and AI help",
+          "ai_skill": "A structured debugging prompt: code, exact error, expected result, actual result",
+          "prerequisites": ["python-08"],
+          "badge": "Bug Hunter"
+        },
+        {
+          "id": "python-10",
+          "number": 10,
+          "slug": "project-guessing-game",
+          "type": "project",
+          "title": "Boss Level 2: The Number Guessing Game",
+          "concept": "Combining decisions, loops, input validation and the random module",
+          "why": "Games are a clear way to combine logic, repetition and user interaction",
+          "outcome": "Build a guessing game with hints, attempt limits and input validation",
+          "ai_skill": "Asking AI for test scenarios and checking the game against each one",
+          "prerequisites": ["python-06", "python-07", "python-08", "python-09"],
+          "badge": "Game Maker"
+        }
+      ]
+    },
+    {
+      "id": "M3",
+      "title": "Organising Data",
+      "chapters": [
+        {
+          "id": "python-11",
+          "number": 11,
+          "slug": "lists",
+          "type": "lesson",
+          "title": "Lists: Keeping Many Values in Order",
+          "concept": "Lists, indexing, slicing, adding and removing items, len(), sorting and looping over lists",
+          "why": "Real data comes in groups, such as orders, scores or messages",
+          "outcome": "Store, change, sort and summarise a list of values",
+          "ai_skill": "Asking AI to explain a slice or list method with a worked example you then run",
+          "prerequisites": ["python-08"],
+          "badge": "List Builder"
+        },
+        {
+          "id": "python-12",
+          "number": 12,
+          "slug": "dictionaries",
+          "type": "lesson",
+          "title": "Dictionaries: Looking Things Up by Name",
+          "concept": "Dictionaries, keys and values, get(), updating, looping over items, nested data",
+          "why": "Most real data has labels, such as a product with a name, price and stock count",
+          "outcome": "Model a real record as a dictionary and look up, update and report on it",
+          "ai_skill": "Asking AI to design a data structure for a problem, then challenging its choices",
+          "prerequisites": ["python-11"],
+          "badge": "Key Master"
+        },
+        {
+          "id": "python-13",
+          "number": 13,
+          "slug": "tuples-and-sets",
+          "type": "lesson",
+          "title": "Tuples and Sets: Fixed Groups and Unique Items",
+          "concept": "Tuples, unpacking, sets, membership tests and set operations",
+          "why": "Choosing the right collection makes code simpler and faster, such as removing duplicates with a set",
+          "outcome": "Choose between list, tuple, set and dictionary for a given task and justify the choice",
+          "ai_skill": "Asking AI to compare options with trade-offs instead of asking for one answer",
+          "prerequisites": ["python-12"],
+          "badge": "Collector"
+        },
+        {
+          "id": "python-14",
+          "number": 14,
+          "slug": "comprehensions",
+          "type": "lesson",
+          "title": "Comprehensions: Transforming Data in One Line",
+          "concept": "List and dictionary comprehensions, filtering, and when a normal loop is clearer",
+          "why": "Transforming and filtering data is a daily task; comprehensions make it short and readable when used well",
+          "outcome": "Rewrite simple loops as comprehensions and judge when not to",
+          "ai_skill": "Asking AI to refactor code, then checking that behaviour stayed the same",
+          "prerequisites": ["python-13"],
+          "badge": "Transformer"
+        },
+        {
+          "id": "python-15",
+          "number": 15,
+          "slug": "project-expense-tracker",
+          "type": "project",
+          "title": "Boss Level 3: The Expense Tracker",
+          "concept": "Combining lists, dictionaries, loops and decisions into a data tool",
+          "why": "Tracking and summarising data is the core of many business tools",
+          "outcome": "Build a tracker that records expenses by category and prints totals and the largest category",
+          "ai_skill": "Using AI to review your data model and summary logic",
+          "prerequisites": ["python-11", "python-12", "python-13", "python-14"],
+          "badge": "Money Mapper"
+        }
+      ]
+    },
+    {
+      "id": "M4",
+      "title": "Functions and Structure",
+      "chapters": [
+        {
+          "id": "python-16",
+          "number": 16,
+          "slug": "functions",
+          "type": "lesson",
+          "title": "Functions: Reusable Blocks of Logic",
+          "concept": "Defining functions, parameters, arguments, return values and docstrings",
+          "why": "Functions let you write logic once, name it and reuse it; every real codebase is built from them",
+          "outcome": "Turn repeated code into well-named functions with clear inputs and outputs",
+          "ai_skill": "Asking AI to write a function from a specification, then testing it yourself",
+          "prerequisites": ["python-14"],
+          "badge": "Function Forger"
+        },
+        {
+          "id": "python-17",
+          "number": 17,
+          "slug": "scope-and-design",
+          "type": "lesson",
+          "title": "Scope and Good Function Design",
+          "concept": "Local and global scope, default arguments, keyword arguments, pure functions and single responsibility",
+          "why": "Small, predictable functions are easier to test, reuse and hand to an AI for changes",
+          "outcome": "Split a long script into small, predictable functions",
+          "ai_skill": "Asking AI to identify functions that do too much and suggest a split",
+          "prerequisites": ["python-16"],
+          "badge": "Architect"
+        },
+        {
+          "id": "python-18",
+          "number": 18,
+          "slug": "modules-and-standard-library",
+          "type": "lesson",
+          "title": "Modules and the Standard Library",
+          "concept": "import, creating your own module, and useful standard modules such as random, math, datetime and pathlib",
+          "why": "Professional programmers reuse tested code instead of writing everything from scratch",
+          "outcome": "Organise code into modules and use the standard library to solve common tasks",
+          "ai_skill": "Asking AI which standard module fits a task, then confirming in the official documentation",
+          "prerequisites": ["python-17"],
+          "badge": "Librarian"
+        },
+        {
+          "id": "python-19",
+          "number": 19,
+          "slug": "testing",
+          "type": "lesson",
+          "title": "Testing Your Code: assert and pytest",
+          "concept": "Why tests exist, assert, writing tests with pytest, edge cases and test-first thinking",
+          "why": "Tests prove code works and keep it working when you or an AI change it",
+          "outcome": "Write and run tests for your functions, including edge cases",
+          "ai_skill": "Asking AI to write tests, then checking the tests actually test the right behaviour",
+          "prerequisites": ["python-18"],
+          "badge": "Quality Guard"
+        },
+        {
+          "id": "python-20",
+          "number": 20,
+          "slug": "project-quiz-app",
+          "type": "project",
+          "title": "Boss Level 4: The Tested Quiz App",
+          "concept": "Combining functions, modules and tests into a structured program",
+          "why": "Structured, tested code is what separates a script from software",
+          "outcome": "Build a multi-module quiz app with scoring and a passing test suite",
+          "ai_skill": "Test-driven work with AI: write tests first, then let AI help with the code",
+          "prerequisites": ["python-16", "python-17", "python-18", "python-19"],
+          "badge": "Software Builder"
+        }
+      ]
+    },
+    {
+      "id": "M5",
+      "title": "Real-World Python",
+      "chapters": [
+        {
+          "id": "python-21",
+          "number": 21,
+          "slug": "files-and-paths",
+          "type": "lesson",
+          "title": "Files and Paths: Saving and Loading Data",
+          "concept": "Reading and writing text files with pathlib and with open(), encodings, and CSV files",
+          "why": "Data must outlive the program; files are the simplest way to keep it",
+          "outcome": "Save program data to a file and load it again, including CSV data",
+          "ai_skill": "Asking AI to explain file errors and safe file handling",
+          "prerequisites": ["python-18"],
+          "badge": "Archivist"
+        },
+        {
+          "id": "python-22",
+          "number": 22,
+          "slug": "exceptions",
+          "type": "lesson",
+          "title": "Handling Errors: try, except and Clear Messages",
+          "concept": "Exceptions, try, except, else, finally, raising exceptions and writing helpful error messages",
+          "why": "Real programs meet bad input and missing files; good programs fail clearly instead of crashing",
+          "outcome": "Make a program handle bad input and missing files with clear messages",
+          "ai_skill": "Asking AI to list what could go wrong in your code, then handling each case",
+          "prerequisites": ["python-21"],
+          "badge": "Safety Net"
+        },
+        {
+          "id": "python-23",
+          "number": 23,
+          "slug": "json-and-apis",
+          "type": "lesson",
+          "title": "JSON and APIs: Talking to Other Programs",
+          "concept": "JSON, the json module, how web APIs work, and reading API data with saved sample responses",
+          "why": "Modern software exchanges data with other services, almost always as JSON",
+          "outcome": "Read JSON data, extract what you need and save results as JSON",
+          "ai_skill": "Asking AI to explain an API's JSON response and write code to extract fields",
+          "prerequisites": ["python-22"],
+          "badge": "Connector"
+        },
+        {
+          "id": "python-24",
+          "number": 24,
+          "slug": "environments-and-packages",
+          "type": "lesson",
+          "title": "Virtual Environments and Packages",
+          "concept": "Virtual environments with venv, installing packages with pip, requirements files and checking package trust",
+          "why": "Real projects depend on outside packages and must install the same versions on every machine",
+          "outcome": "Create a virtual environment, install a package and record dependencies",
+          "ai_skill": "Checking that a package an AI suggests really exists and is trustworthy before installing it",
+          "prerequisites": ["python-23"],
+          "badge": "Toolsmith"
+        },
+        {
+          "id": "python-25",
+          "number": 25,
+          "slug": "project-data-report",
+          "type": "project",
+          "title": "Boss Level 5: The Data Report Generator",
+          "concept": "Combining files, exceptions and JSON into a reporting tool",
+          "why": "Turning raw data into a clear report is one of the most requested tasks at work",
+          "outcome": "Build a tool that reads a JSON or CSV data file, handles bad data and writes a summary report",
+          "ai_skill": "Using AI to review error handling and to generate realistic test data",
+          "prerequisites": ["python-21", "python-22", "python-23", "python-24"],
+          "badge": "Report Master"
+        }
+      ]
+    },
+    {
+      "id": "M6",
+      "title": "Building Software with AI",
+      "chapters": [
+        {
+          "id": "python-26",
+          "number": 26,
+          "slug": "classes-and-objects",
+          "type": "lesson",
+          "title": "Classes and Objects: Modelling Real Things",
+          "concept": "Classes, objects, __init__, attributes, methods and dataclasses",
+          "why": "Classes group data with the actions that belong to it, which keeps larger programs organised",
+          "outcome": "Model a real-world item as a class and use objects in a program",
+          "ai_skill": "Asking AI to design a class, then reviewing whether it fits the problem",
+          "prerequisites": ["python-20"],
+          "badge": "Modeller"
+        },
+        {
+          "id": "python-27",
+          "number": 27,
+          "slug": "reading-and-refactoring",
+          "type": "lesson",
+          "title": "Reading and Improving Code with AI",
+          "concept": "Reading unfamiliar code, naming, refactoring safely with tests, and reviewing AI changes",
+          "why": "Most professional work is changing existing code, often code written by someone else or by AI",
+          "outcome": "Understand an unfamiliar program and improve it without changing its behaviour",
+          "ai_skill": "A safe refactoring loop: tests first, AI suggestion, review, run tests again",
+          "prerequisites": ["python-26"],
+          "badge": "Code Reviewer"
+        },
+        {
+          "id": "python-28",
+          "number": 28,
+          "slug": "capstone-task-manager",
+          "type": "project",
+          "title": "Final Boss: The Personal Task Manager",
+          "concept": "Combining classes, files, JSON, exceptions, functions and tests into a complete application",
+          "why": "A complete, tested application is proof that you can build software from idea to working tool",
+          "outcome": "Build a command-line task manager that saves tasks, handles errors and has passing tests",
+          "ai_skill": "Running a full AI-assisted workflow: plan, build, test, review and improve",
+          "prerequisites": ["python-26", "python-27"],
+          "badge": "Python Builder"
+        }
+      ]
+    }
+  ]
+}

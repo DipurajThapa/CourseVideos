@@ -1,0 +1,187 @@
+{
+  "language_order": [
+    "python",
+    "javascript",
+    "java",
+    "c",
+    "cpp"
+  ],
+  "languages": {
+    "python": {
+      "curriculum": "curriculum/python.json",
+      "curriculum_status": "in_review",
+      "registered": "2026-11-09T06:45:39+00:00"
+    }
+  },
+  "chapters": {
+    "python-01": {
+      "language": "python",
+      "number": 1,
+      "status": "pending",
+      "runs": []
+    },
+    "python-02": {
+      "language": "python",
+      "number": 2,
+      "status": "pending",
+      "runs": []
+    },
+    "python-03": {
+      "language": "python",
+      "number": 3,
+      "status": "pending",
+      "runs": []
+    },
+    "python-04": {
+      "language": "python",
+      "number": 4,
+      "status": "pending",
+      "runs": []
+    },
+    "python-05": {
+      "language": "python",
+      "number": 5,
+      "status": "pending",
+      "runs": []
+    },
+    "python-06": {
+      "language": "python",
+      "number": 6,
+      "status": "pending",
+      "runs": []
+    },
+    "python-07": {
+      "language": "python",
+      "number": 7,
+      "status": "pending",
+      "runs": []
+    },
+    "python-08": {
+      "language": "python",
+      "number": 8,
+      "status": "pending",
+      "runs": []
+    },
+    "python-09": {
+      "language": "python",
+      "number": 9,
+      "status": "pending",
+      "runs": []
+    },
+    "python-10": {
+      "language": "python",
+      "number": 10,
+      "status": "pending",
+      "runs": []
+    },
+    "python-11": {
+      "language": "python",
+      "number": 11,
+      "status": "pending",
+      "runs": []
+    },
+    "python-12": {
+      "language": "python",
+      "number": 12,
+      "status": "pending",
+      "runs": []
+    },
+    "python-13": {
+      "language": "python",
+      "number": 13,
+      "status": "pending",
+      "runs": []
+    },
+    "python-14": {
+      "language": "python",
+      "number": 14,
+      "status": "pending",
+      "runs": []
+    },
+    "python-15": {
+      "language": "python",
+      "number": 15,
+      "status": "pending",
+      "runs": []
+    },
+    "python-16": {
+      "language": "python",
+      "number": 16,
+      "status": "pending",
+      "runs": []
+    },
+    "python-17": {
+      "language": "python",
+      "number": 17,
+      "status": "pending",
+      "runs": []
+    },
+    "python-18": {
+      "language": "python",
+      "number": 18,
+      "status": "pending",
+      "runs": []
+    },
+    "python-19": {
+      "language": "python",
+      "number": 19,
+      "status": "pending",
+      "runs": []
+    },
+    "python-20": {
+      "language": "python",
+      "number": 20,
+      "status": "pending",
+      "runs": []
+    },
+    "python-21": {
+      "language": "python",
+      "number": 21,
+      "status": "pending",
+      "runs": []
+    },
+    "python-22": {
+      "language": "python",
+      "number": 22,
+      "status": "pending",
+      "runs": []
+    },
+    "python-23": {
+      "language": "python",
+      "number": 23,
+      "status": "pending",
+      "runs": []
+    },
+    "python-24": {
+      "language": "python",
+      "number": 24,
+      "status": "pending",
+      "runs": []
+    },
+    "python-25": {
+      "language": "python",
+      "number": 25,
+      "status": "pending",
+      "runs": []
+    },
+    "python-26": {
+      "language": "python",
+      "number": 26,
+      "status": "pending",
+      "runs": []
+    },
+    "python-27": {
+      "language": "python",
+      "number": 27,
+      "status": "pending",
+      "runs": []
+    },
+    "python-28": {
+      "language": "python",
+      "number": 28,
+      "status": "pending",
+      "runs": []
+    }
+  },
+  "updated": "2026-11-09T06:45:39+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "python": ["docs.python.org", "python.org", "peps.python.org", "packaging.python.org", "docs.pytest.org"],
+  "javascript": ["developer.mozilla.org", "tc39.es", "nodejs.org", "ecma-international.org"],
+  "java": ["docs.oracle.com", "dev.java", "openjdk.org"],
+  "c": ["open-std.org", "gcc.gnu.org", "en.cppreference.com"],
+  "cpp": ["isocpp.org", "open-std.org", "gcc.gnu.org", "en.cppreference.com"]
+}

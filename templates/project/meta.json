@@ -1,0 +1,16 @@
+{
+  "id": "<language>-NN",
+  "title": "",
+  "language": "<language>",
+  "type": "project",
+  "module": "",
+  "badge": "",
+  "xp": {"project": 300, "practice": 160},
+  "concepts": [],
+  "prerequisites": [],
+  "ai_pair_moment": {"flawed_file": "examples/", "fixed_file": "examples/", "flaw": ""},
+  "support_files": [],
+  "research_date": "YYYY-MM-DD",
+  "changes": [],
+  "outstanding_issues": []
+}
