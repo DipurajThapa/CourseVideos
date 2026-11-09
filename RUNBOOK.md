@@ -112,6 +112,7 @@ git checkout main && git pull --ff-only
 git merge --no-ff wip/<chapter-id> -m "Merge chapter <chapter-id> for review"
 python3 tools/state.py complete <chapter-id>
 python3 tools/build_review_queue.py
+python3 tools/build_course_index.py   # refreshes the course table in README.md; commit README.md with the state
 ```
 `complete` refuses unless `verification.json` passed in this run and its fingerprint matches the chapter files now on `main`. Then write the report (step 11), commit everything on `main` and push:
 ```bash
