@@ -2,298 +2,593 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 14:09.
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:26.
 
-## Scene 1: Introduction (0:00 to 0:47)
+## Scene 1: Introduction (0:00 to 0:50)
 
 **Section:** Introduction
 
-**Direction:** Open on the title card, then cut to the AI's flawed average code to set the hook. Keep the output hidden until the pause.
+**Direction:** Open on the problem from Chapter 1, then show the finished self-updating bill as the mission. No question yet.
 
-- **Narration:** Welcome to Code Quest, Chapter 2: Values and Variables. In this chapter, you will learn how a program stores data, gives it a name and calculates with it.
-  **On screen:** Values and Variables: Giving Data a Name Store data, name it, calculate with it, and predict every result.
-- **Narration:** First, a puzzle. A learner asked an AI assistant for the average of three test scores: 80, 90 and 100. The AI wrote this code, and it said the program would print 90.
-  **On screen:** Code `examples/ai_average_flawed.py`, lines 5 highlighted, output hidden (predict first)
-- **Narration:** Look closely at line 5. Do you trust the prediction?
-  **On screen:** Pause card: "Will this code really print an average of 90?" with a 4-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
-- **Narration:** Here is the real output: 203 point 3 3. The AI was sure, and it was wrong. By the end of this chapter, you will see why in two seconds.
-  **On screen:** Code `examples/ai_average_flawed.py`, lines 5 highlighted, output `examples/ai_average_flawed.expected`
+- **Narration:** Welcome back to Code Quest. This is Chapter 2.
+  **On screen:** Values and Variables: Giving Data a Name
+- **Narration:** Today you will give your data names, and make Python do the maths for you.
+  **On screen:** Values and Variables: Giving Data a Name Store it once. Use it everywhere.
+- **Narration:** And an AI assistant will get the maths wrong, while sounding completely sure. Your job is to catch it.
+  **On screen:** Values and Variables: Giving Data a Name Store it once. Use it everywhere.
+- **Narration:** Remember Asha's receipt from the Corner Cafe? It had a problem. Every price was typed twice.
+  **On screen:** Asha has a problem
+    - Her receipt from Chapter 1 typed every price **twice**.
+- **Narration:** Now the price of tea goes up. Asha must hunt down every copy and change it.
+  **On screen:** Asha has a problem
+    - Her receipt from Chapter 1 typed every price **twice**.
+    - The price of tea goes up. She must find and change every copy.
+- **Narration:** And if she misses one? The receipt is wrong, and nobody notices.
+  **On screen:** Asha has a problem
+    - Her receipt from Chapter 1 typed every price **twice**.
+    - The price of tea goes up. She must find and change every copy.
+    - Miss one copy, and the receipt is wrong.
+- **Narration:** So here is today's mission. A cafe bill where every price is stored once, with a name.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 2, 3, 4, 5, 6, 7 highlighted, output `examples/ex06_cafe_bill.expected`
+- **Narration:** Python works out the totals, the discount and the amount to pay.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 9, 10, 11, 12 highlighted, output `examples/ex06_cafe_bill.expected`
+- **Narration:** Change one number at the top, and the whole bill updates by itself.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 3 highlighted, output `examples/ex06_cafe_bill.expected`
+- **Narration:** That is the mission. Let's build it, piece by piece.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, output `examples/ex06_cafe_bill.expected`
 
-## Scene 2: Learning goals (0:47 to 1:16)
+## Scene 2: Learning goals (0:50 to 1:08)
 
 **Section:** Learning goals
 
-**Direction:** Reveal the goals one at a time, in step with the narration.
+**Direction:** Each goal appears as it is spoken.
 
-- **Narration:** Here is what you will be able to do by the end. First, write variables with clear names, and give them values with the equals sign.
-  **On screen:** By the end of this chapter, you will be able to:
+- **Narration:** Here is the plan. Five goals, one mission.
+  **On screen:** By the end, you will be able to:
+- **Narration:** Write variables with clear names.
+  **On screen:** By the end, you will be able to:
     - Write variables with clear names and give them values with `=`.
-- **Narration:** Second, explain the four basic types of data, and check the type of any value. Third, calculate with the seven arithmetic operators.
-  **On screen:** By the end of this chapter, you will be able to:
+- **Narration:** Know the four basic types, and check them with type.
+  **On screen:** By the end, you will be able to:
     - Write variables with clear names and give them values with `=`.
-    - Explain the types `int`, `float`, `str` and `bool`, and check a type with `type()`.
+    - Explain the types `int`, `float`, `str` and `bool`, and check one with `type()`.
+- **Narration:** Calculate with Python's operators.
+  **On screen:** By the end, you will be able to:
+    - Write variables with clear names and give them values with `=`.
+    - Explain the types `int`, `float`, `str` and `bool`, and check one with `type()`.
     - Calculate with `+`, `-`, `*`, `/`, `//`, `%` and `**`.
-- **Narration:** Fourth, predict the output of a program before you run it. And fifth, fix the errors that beginners meet most often with variables.
-  **On screen:** By the end of this chapter, you will be able to:
+- **Narration:** Predict what a program prints, then check it.
+  **On screen:** By the end, you will be able to:
     - Write variables with clear names and give them values with `=`.
-    - Explain the types `int`, `float`, `str` and `bool`, and check a type with `type()`.
+    - Explain the types `int`, `float`, `str` and `bool`, and check one with `type()`.
     - Calculate with `+`, `-`, `*`, `/`, `//`, `%` and `**`.
-    - Predict the output of a short program, then check your prediction.
+    - Predict the output of a short program, then check it.
+- **Narration:** And fix the errors that every beginner meets.
+  **On screen:** By the end, you will be able to:
+    - Write variables with clear names and give them values with `=`.
+    - Explain the types `int`, `float`, `str` and `bool`, and check one with `type()`.
+    - Calculate with `+`, `-`, `*`, `/`, `//`, `%` and `**`.
+    - Predict the output of a short program, then check it.
     - Fix the errors beginners meet most often with variables.
 
-## Scene 3: Why this matters (1:16 to 1:56)
+## Scene 3: Why this matters (1:08 to 1:30)
 
 **Section:** Why this matters
 
-**Direction:** Show the problem with the Chapter 1 receipt, then the fix in one line.
+**Direction:** Define a variable through Asha's problem, then connect it to apps the learner uses.
 
-- **Narration:** In Chapter 1, the cafe receipt typed each price twice: once in the item line, and once in the total. If the price of tea changes, you must find and change every copy. Miss one, and the receipt is wrong.
-  **On screen:** The problem: the same price, typed twice ['In Chapter 1, the receipt typed each price in two places:']
-- **Narration:** A variable solves this. A variable is a name that refers to a value. You store the price once, under a name such as tea price, and use that name everywhere.
-  **On screen:** The fix: give the value a name ['A **variable** is a name that refers to a value.', 'Store the price once, then use the name everywhere:']
-- **Narration:** Every real program works this way. A shopping app keeps the items in your basket. A game keeps your score. A banking app keeps your balance. Each of these values has a name inside the program.
-  **On screen:** Every real program names its data
-    - A shopping app keeps the items in your basket.
-    - A game keeps your score.
-    - A banking app keeps your balance.
+- **Narration:** The fix is a variable. A variable is a name that refers to a value.
+  **On screen:** Why this matters
+    - A **variable** is a name that refers to a value.
+- **Narration:** Asha stores the tea price once, under the name tea price, and uses that name everywhere.
+  **On screen:** Why this matters
+    - A **variable** is a name that refers to a value.
+    - Store the price once, as `tea_price`, and use the name everywhere.
+- **Narration:** Change the value in one place, and every calculation follows.
+  **On screen:** Why this matters
+    - A **variable** is a name that refers to a value.
+    - Store the price once, as `tea_price`, and use the name everywhere.
+    - Change the value in one place, and every calculation follows.
+- **Narration:** Every app you use works like this. Your basket, your game score, your bank balance. Each one is a value with a name.
+  **On screen:** Why this matters
+    - A **variable** is a name that refers to a value.
+    - Store the price once, as `tea_price`, and use the name everywhere.
+    - Change the value in one place, and every calculation follows.
+    - A basket, a game score, a bank balance: each one is a named value.
 
-## Scene 4: The idea: values, types and assignment (1:56 to 2:58)
+## Scene 4: The idea: values, types and names (1:30 to 3:10)
 
 **Section:** The idea
 
-**Direction:** Table first, then the assignment diagram. Finish with the analogy and where it stops working.
+**Direction:** Teach types with the table, then assignment with the diagram, then the label analogy. Then a quiz on types, then a breather.
 
-- **Narration:** A value is a single piece of data, such as 3, 3.5 or the word Tea. Every value has a type. The type tells Python what kind of data it is, and what you can do with it.
-  **On screen:** Table: Every value has a type (4 rows)
-- **Narration:** Python has four basic types. An int is a whole number. A float is a number with a decimal point. A string is text inside quotation marks. And a Boolean is either True or False.
-  **On screen:** Table: Every value has a type (4 rows)
-- **Narration:** Assignment connects a name to a value. You write the name, then the equals sign, then the value. Python works out the right side first. Then it connects the name on the left to the result.
-  **On screen:** Assignment connects a name to a value ['Read `=` as **now refers to**, not as **is equal to**.']
-- **Narration:** So read the equals sign as now refers to, not as is equal to. Think of a variable as a name label that you stick on a value. You can move the label to a new value at any time.
+- **Narration:** First, values. A value is one piece of data, like 3, or 3.5, or the word tea. And every value has a type.
+  **On screen:** Table: Every value has a type
+- **Narration:** An int is a whole number. Use it for counts, like two cups.
+  **On screen:** Table: Every value has a type (row 1 in focus)
+- **Narration:** A float has a decimal point. Use it for prices, like 3.5.
+  **On screen:** Table: Every value has a type (row 2 in focus)
+- **Narration:** A string is text, and it always sits inside quotation marks. Even a digit becomes text when it is in quotation marks.
+  **On screen:** Table: Every value has a type (row 3 in focus)
+- **Narration:** And a bool is a yes or no fact: True or False. Is Asha a member? True.
+  **On screen:** Table: Every value has a type (row 4 in focus)
+- **Narration:** Now, names. Assignment connects a name to a value. The name goes on the left, then the equals sign, then the value.
+  **On screen:** Assignment: name = value
+- **Narration:** Python works out the right side first. Then it connects the name on the left to that value.
+  **On screen:** Assignment: name = value
+- **Narration:** So read the equals sign as: now refers to. Tea price now refers to 3.
+  **On screen:** Assignment: name = value
+- **Narration:** Think of a variable as a name label. You stick it on a value, and you can move it to a new value whenever you like.
   **On screen:** A variable is like a name label
-    - You stick the label `tea_price` on the value `3`.
-    - You can move the label to a new value at any time.
-- **Narration:** The comparison stops working at one point. Two labels can point to the same value, and moving one label does not move the other.
+    - You stick a label on a value. You can move it to a new value at any time.
+- **Narration:** The comparison stops working at one point. Two labels can point to the same value.
   **On screen:** A variable is like a name label
-    - You stick the label `tea_price` on the value `3`.
-    - You can move the label to a new value at any time.
-    - Where the comparison stops: two labels can point to the same value, and moving one label does not move the other.
+    - You stick a label on a value. You can move it to a new value at any time.
+    - Where it stops working: two labels can point to the same value.
+- **Narration:** And moving one label does not move the other.
+  **On screen:** A variable is like a name label
+    - You stick a label on a value. You can move it to a new value at any time.
+    - Where it stops working: two labels can point to the same value.
+    - Moving one label does not move the other.
+- **Narration:** Quick check. Here is the digit 3, inside quotation marks. What is its type?
+  **On screen:** Quick check: "What is the type of the value `"3"`, with quotation marks?" (options shown)
+- **Interaction:** "What is the type of the value `"3"`, with quotation marks?" stays on screen with a 10-second timer.
+- **Narration:** C. A string. The quotation marks make it text. Keep this one in mind. It causes a sneaky bug later.
+  **On screen:** Quick check: "What is the type of the value `"3"`, with quotation marks?" (answer revealed: `str`)
+- **Narration:** Take a breather. Here is what you know so far.
+  **On screen:** Breather card
+    - Every value has a type.
+    - A variable is a name for a value.
+    - Python works out the right side of `=` first.
+- **Narration:** Next, Asha creates her first variables.
+  **On screen:** Breather card
+    - Every value has a type.
+    - A variable is a name for a value.
+    - Python works out the right side of `=` first.
+- **Breather:** 4 quiet seconds.
 
-## Scene 5: Step 1: Your first variables (2:58 to 4:08)
-
-**Section:** Build it step by step
-
-**Direction:** Code first with the output hidden, a pause to predict, then the reveal. Then the naming rules.
-
-- **Narration:** Step 1. Create a file called ex 0 1 first variables. Line 2 stores the text Asha in a variable called customer. Line 3 stores the number 3 in tea price. The next three lines print them.
-  **On screen:** Code `examples/ex01_first_variables.py`, lines 2, 3 highlighted, output hidden (predict first)
-- **Narration:** Before you run it, predict the three lines of output.
-  **On screen:** Pause card: "What are the three lines of output? Write them down." with a 5-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
-- **Narration:** Here is the output. Asha, then Tea costs 3, then Two teas cost 6. In the print on line 4, the name customer has no quotation marks. So Python prints its value, Asha, and not the word customer.
-  **On screen:** Code `examples/ex01_first_variables.py`, lines 4 highlighted, output `examples/ex01_first_variables.expected`
-- **Narration:** Good names make code easy to read. The Python style guide, called PEP 8, says: use lowercase letters, and join words with an underscore. A name can contain letters, digits and underscores, but it cannot start with a digit.
-  **On screen:** Naming rules (PEP 8)
-    - Lowercase words joined by underscores: `tea_price`, not `TeaPrice` or `tp`.
-    - Letters, digits and underscores only, and never a digit first.
-- **Narration:** Capital letters matter, so price with a small p and Price with a capital P are two different names. And do not use the words Python reserves for itself, such as True, None or class.
-  **On screen:** Naming rules (PEP 8)
-    - Lowercase words joined by underscores: `tea_price`, not `TeaPrice` or `tp`.
-    - Letters, digits and underscores only, and never a digit first.
-    - Capital letters matter: `price` and `Price` are different names.
-    - Do not use reserved words such as `True`, `None` or `class`.
-
-## Scene 6: Step 2: Check the type of a value (4:08 to 4:45)
+## Scene 5: Step 1: First variables (3:10 to 4:31)
 
 **Section:** Build it step by step
 
-**Direction:** Show the code with the output hidden, then reveal the output and point at each type.
+**Direction:** The file types itself in. Teach the rule about quotation marks, then ask the prediction, then reveal. Then the naming rules.
 
-- **Narration:** Step 2. The type function tells you the type of any value. This program stores four values: a count of cups, a price, an item name and a yes or no fact. Then it prints each value with its type.
-  **On screen:** Code `examples/ex02_types.py`, lines 2, 3, 4, 5 highlighted, output hidden (predict first)
-- **Narration:** Run it. The 2 is an int. The 3.5 is a float. Tea is a string, shown as s t r. And True is a bool.
-  **On screen:** Code `examples/ex02_types.py`, lines 6, 7, 8, 9 highlighted, output `examples/ex02_types.expected`
-- **Narration:** Python chose each type from the way you wrote the value. A decimal point makes a float, and quotation marks make a string. True and False need a capital first letter.
-  **On screen:** How Python chooses the type
-    - A decimal point makes a `float`: `3.5`.
-    - Quotation marks make a `str`: `"Tea"`.
-    - `True` and `False` need a capital first letter.
+- **Narration:** Step 1. Asha creates two variables. Customer refers to the text Asha. Tea price refers to the number 3.
+  **On screen:** Code `examples/ex01_first_variables.py`, lines 1 to 3 typed in, line 2, 3 highlighted, output hidden
+- **Narration:** Line 4 prints customer. Look closely: there are no quotation marks around it.
+  **On screen:** Code `examples/ex01_first_variables.py`, lines 1 to 4 typed in, line 4 highlighted, output hidden
+- **Narration:** Without quotation marks, Python treats a word as a name, and prints the value it refers to. And in Python, a star means times.
+  **On screen:** Code `examples/ex01_first_variables.py`, lines 1 to 6 typed in, line 5, 6 highlighted, output hidden
+- **Interaction:** "What do lines 4, 5 and 6 print?" stays on screen with a 10-second timer.
+- **Narration:** Line 4 prints Asha, the value, not the word customer.
+  **On screen:** Code `examples/ex01_first_variables.py`, lines 1 to 6 typed in, line 4 highlighted, output `examples/ex01_first_variables.expected`
+- **Narration:** And line 6 multiplies the tea price by 2, so two teas cost 6.
+  **On screen:** Code `examples/ex01_first_variables.py`, lines 1 to 6 typed in, line 6 highlighted, output `examples/ex01_first_variables.expected`
+- **Narration:** Good names make code easy to read. Python has rules for names, and its style guide, called pep eight, adds one more.
+  **On screen:** Good names: four rules
+- **Narration:** One, from the style guide. Lowercase words, joined with underscores. Tea price, not a short code like t p.
+  **On screen:** Good names: four rules
+    - Style (PEP 8): lowercase words joined by underscores, `tea_price`, not `TeaPrice` or `tp`.
+- **Narration:** Two, a rule of Python itself. Letters, digits and underscores are fine, but a name can never start with a digit.
+  **On screen:** Good names: four rules
+    - Style (PEP 8): lowercase words joined by underscores, `tea_price`, not `TeaPrice` or `tp`.
+    - Letters, digits and underscores, but **never a digit first**.
+- **Narration:** Three. Capital letters matter. Price with a small p and Price with a capital P are two different names.
+  **On screen:** Good names: four rules
+    - Style (PEP 8): lowercase words joined by underscores, `tea_price`, not `TeaPrice` or `tp`.
+    - Letters, digits and underscores, but **never a digit first**.
+    - Capitals matter: `price` and `Price` are two different names.
+- **Narration:** Four. Do not use the words Python keeps for itself, like True, None or class.
+  **On screen:** Good names: four rules
+    - Style (PEP 8): lowercase words joined by underscores, `tea_price`, not `TeaPrice` or `tp`.
+    - Letters, digits and underscores, but **never a digit first**.
+    - Capitals matter: `price` and `Price` are two different names.
+    - Do not use Python's own words, such as `True`, `None` or `class`.
 
-## Scene 7: Step 3: Calculate with operators (4:45 to 6:01)
-
-**Section:** Build it step by step
-
-**Direction:** Pause for the learner to predict all seven lines. After the reveal, use the table to explain the three surprising operators.
-
-- **Narration:** Step 3. An operator is a symbol that does a calculation. Seventeen biscuits are shared between five friends. This program uses all seven arithmetic operators.
-  **On screen:** Code `examples/ex03_arithmetic.py`, lines 4, 5, 6, 7, 8, 9, 10 highlighted, output hidden (predict first)
-- **Narration:** Pause the video and predict each line. Pay special attention to divide, floor divide and remainder.
-  **On screen:** Pause card: "17 biscuits, 5 friends. Predict all seven results." with a 8-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
-- **Narration:** Here are the results. Add gives 22, subtract gives 12, and multiply gives 85. Divide gives 3.4. Floor divide gives 3. Remainder gives 2. And power gives 25.
-  **On screen:** Code `examples/ex03_arithmetic.py`, lines 7, 8, 9 highlighted, output `examples/ex03_arithmetic.expected`
-- **Narration:** Three operators often surprise beginners. A single slash is division. It gives the exact answer, 3.4, and the result is always a float. A double slash is floor division. It gives the whole part, so each friend gets 3 whole biscuits.
-  **On screen:** Table: Three operators that surprise beginners (3 rows)
-- **Narration:** The percent sign gives the remainder, so 2 biscuits are left over. Finally, two stars raise a number to a power. So 5 to the power 2 is 5 times 5, which is 25.
-  **On screen:** Table: Three operators that surprise beginners (4 rows)
-
-## Scene 8: Step 4: Change a variable (6:01 to 6:35)
-
-**Section:** Build it step by step
-
-**Direction:** Highlight each assignment line in turn so the learner can follow the value of points.
-
-- **Narration:** Step 4. A variable can get a new value. Here, points starts at 10. Line 4 says: points equals points plus 5.
-  **On screen:** Code `examples/ex04_reassign.py`, lines 2, 4 highlighted, output hidden (predict first)
-- **Narration:** In mathematics, that line would be impossible. In Python, it means: take the current value of points, add 5, and give points the new value. Python works out the right side first.
-  **On screen:** Python works out the right side first ['`points = points + 5` means:', '1. Take the current value of `points`: **10**.', '2. Add 5: **15**.', '3. Give `points` the new value: **15**.']
-- **Narration:** So the output shows Start 10, After a quiz 15, and After the bonus 30. Line 6 doubled the value of 15.
-  **On screen:** Code `examples/ex04_reassign.py`, lines 6 highlighted, output `examples/ex04_reassign.expected`
-
-## Scene 9: Step 5: The order of operations (6:35 to 7:36)
+## Scene 6: Step 2: Check a type (4:31 to 5:10)
 
 **Section:** Build it step by step
 
-**Direction:** Pause on the first two lines. After the reveal, explain line 4, then the inexact float on line 5 and round on line 6.
+**Direction:** Show the four values, teach how Python picks a type, ask, then reveal the type() output.
 
-- **Narration:** Step 5. Python follows the same order as mathematics. It calculates powers first. Then it multiplies and divides. Then it adds and subtracts. Brackets change the order.
-  **On screen:** Code `examples/ex05_order.py`, lines 2, 3 highlighted, output hidden (predict first)
-- **Narration:** Predict lines 2 and 3 before you look.
-  **On screen:** Pause card: "2 + 3 * 4 and (2 + 3) * 4: what does each print?" with a 5-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
-- **Narration:** Line 2 multiplies first, so the result is 14. Line 3 adds first because of the brackets, so it gives 20. Line 4 divides first, and gives 8.0, a float, because division always gives a float.
-  **On screen:** Code `examples/ex05_order.py`, lines 2, 3, 4 highlighted, output `examples/ex05_order.expected`
-- **Narration:** Line 5 is a surprise. Point 1 plus point 1 plus point 1 does not print exactly point 3. Computers store decimal numbers in binary, so some values, such as point 1, carry a tiny error. On line 6, the round function rounds the result to 2 decimal places, and you get point 3.
-  **On screen:** Code `examples/ex05_order.py`, lines 5, 6 highlighted, output `examples/ex05_order.expected`
+- **Narration:** Step 2. The type function tells you the type of any value. Asha stores four values from her cafe.
+  **On screen:** Code `examples/ex02_types.py`, line 2, 3, 4, 5 highlighted, output hidden
+- **Narration:** Python picks each type from the way you wrote the value. A decimal point makes a float. Quotation marks make a string.
+  **On screen:** Code `examples/ex02_types.py`, line 2, 3, 4, 5 highlighted, output hidden
+- **Narration:** Lines 6 to 9 print each value, followed by its type.
+  **On screen:** Code `examples/ex02_types.py`, line 6, 7, 8, 9 highlighted, output hidden
+- **Interaction:** "Which type will Python report for `price` on line 7?" stays on screen with a 10-second timer.
+- **Narration:** Float, because 3.5 has a decimal point.
+  **On screen:** Code `examples/ex02_types.py`, line 3, 7 highlighted, output `examples/ex02_types.expected`
+- **Narration:** And True is a bool. It needs a capital T, or Python will not recognise it.
+  **On screen:** Code `examples/ex02_types.py`, line 5, 9 highlighted, output `examples/ex02_types.expected`
 
-## Scene 10: See the outcome: the cafe bill (7:36 to 8:38)
+## Scene 7: Step 3: Operators (5:10 to 6:12)
+
+**Section:** Build it step by step
+
+**Direction:** Teach what the surprising operators mean first, in general terms. Then the biscuits program, the prediction, and the reveal.
+
+- **Narration:** Step 3. An operator is a symbol that calculates. Plus, minus and times work as you expect. Four others need a closer look.
+  **On screen:** Table: Step 3: Operators that surprise beginners
+- **Narration:** A single slash divides, and gives the full answer, with decimals. The result is always a float.
+  **On screen:** Table: Step 3: Operators that surprise beginners (row 1 in focus)
+- **Narration:** A double slash is floor division. It keeps only the whole part of the answer.
+  **On screen:** Table: Step 3: Operators that surprise beginners (row 2 in focus)
+- **Narration:** The percent sign gives the remainder: what is left over after sharing.
+  **On screen:** Table: Step 3: Operators that surprise beginners (row 3 in focus)
+- **Narration:** And two stars raise a number to a power.
+  **On screen:** Table: Step 3: Operators that surprise beginners (row 4 in focus)
+- **Narration:** Asha shares 17 biscuits between 5 friends. Add, subtract and multiply are straightforward.
+  **On screen:** Code `examples/ex03_arithmetic.py`, line 4, 5, 6 highlighted, output hidden
+- **Narration:** Now use what you learned about the other operators.
+  **On screen:** Code `examples/ex03_arithmetic.py`, line 7, 8, 9 highlighted, output hidden
+- **Interaction:** "Predict lines 7, 8 and 9: divide, floor divide and remainder." stays on screen with a 10-second timer.
+- **Narration:** Divide gives 3.4, the full answer, as a float.
+  **On screen:** Code `examples/ex03_arithmetic.py`, line 7 highlighted, output `examples/ex03_arithmetic.expected`
+- **Narration:** Floor divide gives 3. Each friend gets three whole biscuits.
+  **On screen:** Code `examples/ex03_arithmetic.py`, line 8 highlighted, output `examples/ex03_arithmetic.expected`
+- **Narration:** And the remainder is 2. Two biscuits are left over, probably for Asha.
+  **On screen:** Code `examples/ex03_arithmetic.py`, line 9 highlighted, output `examples/ex03_arithmetic.expected`
+
+## Scene 8: Step 4: Change a variable (6:12 to 6:49)
+
+**Section:** Build it step by step
+
+**Direction:** Teach the right-side-first rule on line 4, then let the learner apply it to line 6.
+
+- **Narration:** Step 4. Asha runs a loyalty game. Points starts at 10.
+  **On screen:** Code `examples/ex04_reassign.py`, lines 1 to 3 typed in, line 2 highlighted, output hidden
+- **Narration:** Line 4 looks impossible in maths: points equals points plus 5. But remember the rule. Python works out the right side first.
+  **On screen:** Code `examples/ex04_reassign.py`, lines 1 to 5 typed in, line 4 highlighted, output hidden
+- **Narration:** So it takes the current value, 10, adds 5, and moves the name to 15.
+  **On screen:** Code `examples/ex04_reassign.py`, lines 1 to 5 typed in, line 4 highlighted, output hidden
+- **Narration:** Now line 6 doubles it, using the same rule.
+  **On screen:** Code `examples/ex04_reassign.py`, lines 1 to 7 typed in, line 6, 7 highlighted, output hidden
+- **Interaction:** "What does line 7 print?" stays on screen with a 10-second timer.
+- **Narration:** After the bonus, 30. Fifteen, times 2.
+  **On screen:** Code `examples/ex04_reassign.py`, lines 1 to 7 typed in, line 6, 7 highlighted, output `examples/ex04_reassign.expected`
+
+## Scene 9: Step 5: Order of operations (6:49 to 8:29)
+
+**Section:** Build it step by step
+
+**Direction:** Teach the order rule, then predict two lines, then the float surprise and round(). Then a quiz and a breather.
+
+- **Narration:** Step 5. When a line has several operators, Python follows the same order as maths.
+  **On screen:** Step 5: Which part goes first?
+- **Narration:** Powers first.
+  **On screen:** Step 5: Which part goes first?
+    - First: `**`
+- **Narration:** Then times, and every kind of division.
+  **On screen:** Step 5: Which part goes first?
+    - First: `**`
+    - Then: `*`, `/`, `//` and `%`
+- **Narration:** Plus and minus come last.
+  **On screen:** Step 5: Which part goes first?
+    - First: `**`
+    - Then: `*`, `/`, `//` and `%`
+    - Last: `+` and `-`
+- **Narration:** And brackets beat everything. Whatever is inside them is calculated first.
+  **On screen:** Step 5: Which part goes first?
+    - First: `**`
+    - Then: `*`, `/`, `//` and `%`
+    - Last: `+` and `-`
+    - Brackets go before everything.
+- **Narration:** Lines 2 and 3 use the same numbers. Only the brackets are different.
+  **On screen:** Code `examples/ex05_order.py`, line 2, 3 highlighted, output hidden
+- **Interaction:** "What do lines 2 and 3 print?" stays on screen with a 10-second timer.
+- **Narration:** Line 2 multiplies first: 3 times 4 is 12, plus 2 is 14.
+  **On screen:** Code `examples/ex05_order.py`, line 2 highlighted, output `examples/ex05_order.expected`
+- **Narration:** Line 3 adds first, because of the brackets. 5 times 4 is 20.
+  **On screen:** Code `examples/ex05_order.py`, line 3 highlighted, output `examples/ex05_order.expected`
+- **Narration:** Line 4 divides first, so you get 8.0. A float, because a single slash always gives one.
+  **On screen:** Code `examples/ex05_order.py`, line 4 highlighted, output `examples/ex05_order.expected`
+- **Narration:** Now line 5. Point 1, three times, should be point 3. But look! Computers store decimals in binary, so some values carry a tiny error.
+  **On screen:** Code `examples/ex05_order.py`, line 5 highlighted, output `examples/ex05_order.expected`
+- **Narration:** The round function gives you a rounded number. Here, to two decimal places.
+  **On screen:** Code `examples/ex05_order.py`, line 6 highlighted, output `examples/ex05_order.expected`
+- **Narration:** Quick check. Two plus four, in brackets, times three. What does it give?
+  **On screen:** Quick check: "What does `(2 + 4) * 3` give?" (options shown)
+- **Interaction:** "What does `(2 + 4) * 3` give?" stays on screen with a 10-second timer.
+- **Narration:** B, 18. The brackets go first: 6, times 3.
+  **On screen:** Quick check: "What does `(2 + 4) * 3` give?" (answer revealed: 18)
+- **Narration:** Breather. Roll your shoulders. You now have every piece of the mission.
+  **On screen:** Breather card
+    - `/` gives a `float`; `//` keeps the whole part; `%` gives the rest.
+    - The right side of `=` runs first.
+    - Brackets control the order.
+- **Narration:** Let's put them together into Asha's cafe bill.
+  **On screen:** Breather card
+    - `/` gives a `float`; `//` keeps the whole part; `%` gives the rest.
+    - The right side of `=` runs first.
+    - Brackets control the order.
+- **Breather:** 4 quiet seconds.
+
+## Scene 10: See the outcome: the self-updating bill (8:29 to 9:30)
 
 **Section:** See the outcome
 
-**Direction:** Walk down the program in three groups: the inputs, the calculations, the prints. Then reveal the output.
+**Direction:** Return to the mission. Walk the three groups of lines, reveal, then ask the change question. Hand over to the AI story.
 
-- **Narration:** Here is the cafe receipt from Chapter 1, rebuilt with variables. Lines 2 to 7 store the inputs: the customer, two prices, the number of teas, a member flag and a 10 percent discount.
-  **On screen:** Code `examples/ex06_cafe_bill.py`, lines 2, 3, 4, 5, 6, 7 highlighted, output hidden (predict first)
-- **Narration:** Lines 9 to 12 calculate the tea total, the bill, the discount and the amount to pay. Each calculation uses names, not numbers, so every price appears only once.
-  **On screen:** Code `examples/ex06_cafe_bill.py`, lines 9, 10, 11, 12 highlighted, output hidden (predict first)
-- **Narration:** Run it. Two teas at 3.5 cost 7.0. The bill is 13.0, the discount is 1.3, and Asha pays 11.7. Notice that 7.0 is a float, because one of its parts was a float.
-  **On screen:** Code `examples/ex06_cafe_bill.py`, lines 14, 15, 16, 17, 18, 19, 20 highlighted, output `examples/ex06_cafe_bill.expected`
-- **Narration:** Now change tea price to 4 and run it again. Every line that depends on the tea price updates by itself. For now, the discount applies every time. In Chapter 6, you will use the member flag to decide.
-  **On screen:** Pause card: "Change tea_price to 4. Which output lines change?" with a 5-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
+- **Narration:** Back to the mission, with the new prices: tea is 3.5, and a sandwich is 6. Lines 2 to 7 store every price and fact once.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 2, 3, 4, 5, 6, 7 highlighted, output hidden
+- **Narration:** Lines 9 to 12 calculate. Each line uses the names above it: the tea total, the bill, a 10 percent member discount, and the amount to pay.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 9, 10, 11, 12 highlighted, output hidden
+- **Narration:** Lines 14 to 20 print the bill. Asha runs it.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 14, 15, 16, 17, 18, 19, 20 highlighted, output `examples/ex06_cafe_bill.expected`
+- **Narration:** Notice the tea total is 7.0, a float, because the tea price was a float.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 9, 15 highlighted, output `examples/ex06_cafe_bill.expected`
+- **Interaction:** "Asha changes `tea_price` to 4.5. Which output lines change?" stays on screen with a 10-second timer.
+- **Narration:** Four lines change: the teas line, the bill, the discount and the amount to pay. Every line that depends on the tea price.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, line 3 highlighted, output `examples/ex06_cafe_bill.expected`
+- **Narration:** And she changed only one number. Mission complete!
+  **On screen:** Code `examples/ex06_cafe_bill.py`, output `examples/ex06_cafe_bill.expected`
+- **Narration:** Then the cafe owner has a new question. What is the average bill of three tables? Asha decides to build it with an AI assistant, one stage at a time.
+  **On screen:** Code `examples/ex06_cafe_bill.py`, output `examples/ex06_cafe_bill.expected`
 
-## Scene 11: Work with AI: predict, then run (8:38 to 10:41)
+## Scene 11: Work with AI: six stages, one average (9:30 to 13:08)
 
 **Section:** Work with AI
 
-**Direction:** Introduce the prediction skill, show the six stages, show two prompt cards, then replay the hook as the AI pair moment and fix it.
+**Direction:** Safety first. Then one conversation per stage, all about the average bill. Stage 3 plants the mistake, stage 4 catches it, stage 6 catches a second one.
 
-- **Narration:** The AI skill for this chapter is prediction. Before you run a program, ask an AI assistant such as ChatGPT or Claude to predict its output. Write down your own prediction too. Then run the code. The real output is the only answer that counts.
-  **On screen:** The AI skill: predict, then run
-    - Ask an AI assistant such as ChatGPT or Claude to predict the output.
-    - Write down your own prediction too.
-    - Run the code. The real output is the only answer that counts.
-- **Narration:** The safety habits from Chapter 1 still apply. Never paste passwords, keys or private data. Run every piece of AI code yourself. You are responsible for the code you use.
-  **On screen:** Safety habits
-    - Never paste passwords, keys or private data into an AI tool.
-    - Run every piece of AI code yourself.
-    - You are responsible for the code you use.
-- **Narration:** AI helps at every stage. Plan the variables you need. Write the code yourself, then compare predictions. Generate examples with fixed names. Debug with the full error. Test with new values. And improve your variable names.
-  **On screen:** Table: AI at every stage (6 rows)
-- **Narration:** Here is the Write card. Paste your code, and ask the AI to predict the exact output line by line, without running or changing it. Then compare three things: your prediction, the AI's prediction and the real output.
-  **On screen:** Prompt card (Write): "Here is my Python code: <paste your code>. Do not change it and do not run it. Predict the exact output, line by line. For each line, explain in one sentence how Python calculated it."
-- **Narration:** And here is the Debug card. Give the AI the exact error message, and ask for the cause before the fix.
-  **On screen:** Prompt card (Debug): "I am a beginner. I ran this Python code: <paste the code>. I got this exact error: <paste the full error message>. First explain what the error means and which line causes it. Then show the smallest fix."
-- **Narration:** Now, the AI pair moment. Remember the puzzle from the start? The AI wrote this average, and predicted 90. It printed 203 point 3 3. Why?
-  **On screen:** Code `examples/ai_average_flawed.py`, lines 5 highlighted, output `examples/ai_average_flawed.expected`
-- **Narration:** Use what you learned in step 5.
-  **On screen:** Pause card: "Which operation does Python do first on line 5? Where do the brackets go?" with a 6-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
-- **Narration:** The AI forgot the order of operations. Python divided only score 3 by 3, and then added the other two scores. Brackets around the sum fix the order, and the program prints 90.0.
-  **On screen:** Code `examples/ai_average_fixed.py`, lines 5 highlighted, output `examples/ai_average_fixed.expected`
-- **Narration:** A quick check would also catch this flaw. An average of three scores must be between the lowest and the highest score. A result of 203 is impossible. Code that runs is not always code that is correct.
-  **On screen:** The two-second check
-    - An average must lie between the lowest and the highest value.
-    - 80, 90 and 100 cannot average 203.
-    - Predict. Run. Compare.
+- **Narration:** This chapter's AI skill is prediction.
+  **On screen:** This chapter's AI skill: prediction
+- **Narration:** Write your own prediction, ask the AI for its prediction, then run the code.
+  **On screen:** This chapter's AI skill: prediction
+    - Write your own prediction. Ask the AI for its prediction. Then run the code.
+- **Narration:** The real output is the only answer that counts.
+  **On screen:** This chapter's AI skill: prediction
+    - Write your own prediction. Ask the AI for its prediction. Then run the code.
+    - The real output is the only answer that counts.
+- **Narration:** And the safety habits from Chapter 1 still apply. No passwords, no private data, and you are responsible for the code.
+  **On screen:** This chapter's AI skill: prediction
+    - Write your own prediction. Ask the AI for its prediction. Then run the code.
+    - The real output is the only answer that counts.
+    - Never paste passwords, keys or private data. You are responsible for the code you use.
+- **Narration:** Stage 1: plan. Asha describes the average in words, and asks for the variables she needs. No code yet.
+  **On screen:** AI chat, stage 1: Plan the variables first
+    - You: I am a beginner learning Python variables. I want the average bill of three cafe tables: 18, 24 and 30. Do not write code yet. List the variables I need, with a snake_case name and a type for each.
+- **Narration:** The AI lists three bills as ints, and an average as a float. That matches the rule you learned: a single slash always gives a float.
+  **On screen:** AI chat, stage 1: Plan the variables first
+    - You: I am a beginner learning Python variables. I want the average bill of three cafe tables: 18, 24 and 30. Do not write code yet. List the variables I need, with a snake_case name and a type for each.
+    - AI (example answer): 1. `bill_1`, `bill_2` and `bill_3`: type `int`, values 18, 24 and 30. 2. `average`: the sum of the three bills divided by 3. Its type is `float`, because `/` always gives a `float`.
+- **Narration:** Stage 2: write. Asha writes the first three lines herself, one bill per table. She asks the AI to check her names and the types, without changing anything.
+  **On screen:** AI chat, stage 2: Write it yourself, then check
+    - You: I wrote the first lines myself. Do not change them. Do my names follow PEP 8, and what type is each value? [code `examples/ai_average_fixed.py`]
+- **Narration:** The AI agrees. The names follow the style rule, and each bill is an int, a whole number. Asha predicted the same.
+  **On screen:** AI chat, stage 2: Write it yourself, then check
+    - You: I wrote the first lines myself. Do not change them. Do my names follow PEP 8, and what type is each value? [code `examples/ai_average_fixed.py`]
+    - AI (example answer): Yes. All three names are lowercase words joined by underscores. Each value is an `int`, because it is a whole number with no decimal point.
+- **Narration:** Stage 3: generate. Asha asks the AI to complete her program with the average, and to say exactly what it prints.
+  **On screen:** AI chat, stage 3: Generate: ask for the exact output
+    - You: Now complete my program. Keep my three bill lines, add a line that finds the average of the bills with the name average, and print it. Tell me exactly what it prints.
+- **Narration:** The AI writes the program, and says it prints 24.0. It sounds sure.
+  **On screen:** AI chat, stage 3: Generate: ask for the exact output
+    - You: Now complete my program. Keep my three bill lines, add a line that finds the average of the bills with the name average, and print it. Tell me exactly what it prints.
+    - AI (example answer): Here is the program. It prints `Average bill: 24.0`. [code `examples/ai_average_flawed.py`]
+- **Narration:** Look at line 5. You learned which part Python calculates first.
+  **On screen:** AI chat, stage 3: Generate: ask for the exact output
+    - You: Now complete my program. Keep my three bill lines, add a line that finds the average of the bills with the name average, and print it. Tell me exactly what it prints.
+    - AI (example answer): Here is the program. It prints `Average bill: 24.0`. [code `examples/ai_average_flawed.py`]
+- **Interaction:** "The AI says this prints `Average bill: 24.0`. Is it right?" stays on screen with a 10-second timer.
+- **Narration:** Asha runs it. 52.0! The AI was wrong, and it sounded completely sure.
+  **On screen:** AI chat, stage 3: Generate: ask for the exact output
+    - You: Now complete my program. Keep my three bill lines, add a line that finds the average of the bills with the name average, and print it. Tell me exactly what it prints.
+    - AI (example answer): Here is the program. It prints `Average bill: 24.0`. [code `examples/ai_average_flawed.py`]
+    - You: I ran it. This is what it printed:
+- **Narration:** Stage 4: test. Here is a quick sense check for any average. It must lie between the smallest and the largest value. The largest bill is 30, so 52 is impossible.
+  **On screen:** AI chat, stage 4: Test: is the result even possible?
+    - You: You predicted 24.0, but it printed 52.0. An average must lie between the smallest and the largest bill, and the largest is 30. What is wrong?
+- **Narration:** She tells the AI what it predicted and what really happened. Now it names the cause: Python divided before it added. Brackets fix the order.
+  **On screen:** AI chat, stage 4: Test: is the result even possible?
+    - You: You predicted 24.0, but it printed 52.0. An average must lie between the smallest and the largest bill, and the largest is 30. What is wrong?
+    - AI (example answer): Python divides before it adds, so only `bill_3` was divided by 3. Put brackets around the sum: [code `examples/ai_average_fixed.py`]
+- **Narration:** Asha runs the fixed version. 24.0. Now the prediction and the real run agree.
+  **On screen:** AI chat, stage 4: Test: is the result even possible?
+    - You: You predicted 24.0, but it printed 52.0. An average must lie between the smallest and the largest bill, and the largest is 30. What is wrong?
+    - AI (example answer): Python divides before it adds, so only `bill_3` was divided by 3. Put brackets around the sum: [code `examples/ai_average_fixed.py`]
+    - You: I ran the fixed program:
+- **Narration:** Stage 5: debug. Asha types the program into her own file, and Python stops with a Name Error. She pastes the code and the full error.
+  **On screen:** AI chat, stage 5: Debug: the cause before the fix
+    - You: I typed the program again in my own file and got this error. First explain what it means and which line causes it. Then show the smallest fix. [code `examples/ai_bills_typo.py`]
+- **Narration:** She asks for the cause first. The AI points to line 6: averge, with a missing letter. Python only knows the names you created.
+  **On screen:** AI chat, stage 5: Debug: the cause before the fix
+    - You: I typed the program again in my own file and got this error. First explain what it means and which line causes it. Then show the smallest fix. [code `examples/ai_bills_typo.py`]
+    - AI (example answer): It is a `NameError` on line 6. You created `average`, but line 6 uses `averge`, with a missing letter. Python only knows the names you created. The fix: change `averge` to `average`.
+- **Narration:** Stage 6: improve. The program works. Asha asks for at most two improvements to her names.
+  **On screen:** AI chat, stage 6: Improve: test every suggestion
+    - You: Review my names. Suggest at most two improvements, each with one reason. Do not change what the program prints. [code `examples/ai_average_fixed.py`]
+- **Narration:** Suggestion 1 is good. Average bill tells a reader what the average is about. Suggestion 2 says: use a double slash, for a cleaner number.
+  **On screen:** AI chat, stage 6: Improve: test every suggestion
+    - You: Review my names. Suggest at most two improvements, each with one reason. Do not change what the program prints. [code `examples/ai_average_fixed.py`]
+    - AI (example answer): 1. Rename `average` to `average_bill`, so a reader knows what it is the average of. 2. Use `//` instead of `/`. Bills are whole numbers, so the average will be cleaner.
+- **Narration:** But a double slash keeps only the whole part. Asha tests it with new bills. The double slash drops the point 3 3 3. The AI was wrong again.
+  **On screen:** AI chat, stage 6: Improve: test every suggestion
+    - You: Review my names. Suggest at most two improvements, each with one reason. Do not change what the program prints. [code `examples/ai_average_fixed.py`]
+    - AI (example answer): 1. Rename `average` to `average_bill`, so a reader knows what it is the average of. 2. Use `//` instead of `/`. Bills are whole numbers, so the average will be cleaner.
+    - You: Suggestion 2 would change the output. I tested it with a bill of 31 instead of 30: [code `examples/ai_floor_check.py`]
+- **Narration:** So Asha keeps suggestion 1 only. Here is the result: a clear name, brackets around the sum, and a single slash.
+  **On screen:** Code `examples/ai_average_final.py`, line 5 highlighted, output `examples/ai_average_final.expected`
+- **Narration:** The AI helped at every stage. And at every stage, Asha checked its answer herself. Two mistakes caught!
+  **On screen:** Code `examples/ai_average_final.py`, line 5 highlighted, output `examples/ai_average_final.expected`
+- **Narration:** Quick check. You and an AI predict different outputs. What decides who is right?
+  **On screen:** Quick check: "You and an AI predict different outputs. What decides who is right?" (options shown)
+- **Interaction:** "You and an AI predict different outputs. What decides who is right?" stays on screen with a 10-second timer.
+- **Narration:** C. The real run. Always.
+  **On screen:** Quick check: "You and an AI predict different outputs. What decides who is right?" (answer revealed: The real output when you run the code)
+- **Narration:** Breather. You watched Asha use AI at all six stages, and catch two mistakes with what you learned today.
+  **On screen:** Breather card
+    - Plan, write, generate, test, debug, improve.
+    - An average must lie between the smallest and largest value.
+    - Test every AI suggestion before you accept it.
+- **Narration:** Next, the four mistakes every beginner makes with variables. You have already met the first one.
+  **On screen:** Breather card
+    - Plan, write, generate, test, debug, improve.
+    - An average must lie between the smallest and largest value.
+    - Test every AI suggestion before you accept it.
+- **Breather:** 4 quiet seconds.
 
-## Scene 12: Common mistakes (10:41 to 12:03)
+## Scene 12: Common mistakes (13:08 to 15:46)
 
 **Section:** Common mistakes
 
-**Direction:** One beat per mistake: the code and the real error side by side, then the fix in the narration.
+**Direction:** Mistake 1 calls back to the debug stage. Mistake 2 pays off the quiz about quotation marks. Mistakes 3 and 4 are spot-it questions on rules taught earlier.
 
-- **Narration:** Now, four common mistakes. Mistake 1 is a typing error in a variable name. Line 4 uses tea prise, spelled with an s. Python only knows the names you created, so it stops with a Name Error. It even suggests the right name.
-  **On screen:** Code `examples/err01_name_typo.py`, lines 4 highlighted, error `examples/err01_name_typo.expected_error`
-- **Narration:** Mistake 2 is a number stored as text. With quotation marks, 3 is a string, not an int. Python will not add text and a number, so you get a Type Error. The fix is to remove the quotation marks.
-  **On screen:** Code `examples/err02_text_number.py`, lines 2, 3 highlighted, error `examples/err02_text_number.expected_error`
-- **Narration:** Sometimes this mistake gives no error at all, which is worse. Multiplying the string 3 by 2 repeats the text, so you get 33 instead of 6. If a result looks strange, check the type.
-  **On screen:** Code `examples/ex07_text_times.py`, lines 2, 3 highlighted, output `examples/ex07_text_times.expected`
-- **Narration:** Mistake 3 is a name that starts with a digit. Python reads the 2 as the start of a number, and does not understand the letters after it. Start the name with a letter, such as second place.
-  **On screen:** Code `examples/err03_digit_first.py`, lines 2 highlighted, error `examples/err03_digit_first.expected_error`
-- **Narration:** Mistake 4 puts the name and the value on the wrong sides. A literal is a value written directly in the code, such as 10, and it cannot get a new value. The name always goes on the left: points equals 10.
-  **On screen:** Code `examples/err04_reversed.py`, lines 2 highlighted, error `examples/err04_reversed.expected_error`
-- **Narration:** The habit from Chapter 1 still works. Read the last line of an error first. It names the kind of error. Then look at the line number.
-  **On screen:** Table: Read the last line first (4 rows)
+- **Narration:** Mistake 1 is the one Asha debugged. A name with a typing error. Line 3 printed fine.
+  **On screen:** Code `examples/err01_name_typo.py`, line 3 highlighted, error `examples/err01_name_typo.expected_error`
+- **Narration:** Line 4 spells it with an s, so Python stops with a Name Error. It even suggests the right name.
+  **On screen:** Code `examples/err01_name_typo.py`, line 4 highlighted, error `examples/err01_name_typo.expected_error`
+- **Narration:** You also get this error if you use a name before the line that creates it.
+  **On screen:** Code `examples/err01_name_typo.py`, line 4 highlighted, error `examples/err01_name_typo.expected_error`
+- **Narration:** Mistake 2. Remember the quick check? A digit in quotation marks is a string, not a number.
+  **On screen:** Code `examples/err02_text_number.py`, line 2 highlighted, error `examples/err02_text_number.expected_error`
+- **Narration:** Concatenate means join. Python can only join text to text, so it stops with a Type Error.
+  **On screen:** Code `examples/err02_text_number.py`, line 3 highlighted, error `examples/err02_text_number.expected_error`
+- **Narration:** The fix: remove the quotation marks.
+  **On screen:** Code `examples/err02_text_number.py`, line 3 highlighted, error `examples/err02_text_number.expected_error`
+- **Narration:** Sometimes this mistake gives no error at all, which is worse. Multiplying a string by 2 repeats the text. So you get 33, not 6.
+  **On screen:** Code `examples/ex07_text_times.py`, line 2, 3 highlighted, output `examples/ex07_text_times.expected`
+- **Narration:** Without quotation marks, you get 6. If a result looks strange, check its type.
+  **On screen:** Code `examples/ex07_text_times.py`, line 4, 5 highlighted, output `examples/ex07_text_times.expected`
+- **Narration:** Now you try. Remember the four naming rules from step 1.
+  **On screen:** Code `examples/err03_digit_first.py`, line 2 highlighted, output hidden
+- **Interaction:** "What is wrong with the name on line 2?" stays on screen with a 10-second timer.
+- **Narration:** It starts with a digit. Python reads the 2 as the start of a number, and gets confused by the letters after it.
+  **On screen:** Code `examples/err03_digit_first.py`, line 2 highlighted, error `examples/err03_digit_first.expected_error`
+- **Narration:** The fix: start with a letter, like second place.
+  **On screen:** Code `examples/err03_digit_first.py`, line 2 highlighted, error `examples/err03_digit_first.expected_error`
+- **Narration:** One more. Think about the assignment diagram from the idea section.
+  **On screen:** Code `examples/err04_reversed.py`, line 2 highlighted, output hidden
+- **Interaction:** "What is wrong with line 2?" stays on screen with a 10-second timer.
+- **Narration:** The name and the value are on the wrong sides. The name always goes on the left.
+  **On screen:** Code `examples/err04_reversed.py`, line 2 highlighted, error `examples/err04_reversed.expected_error`
+- **Narration:** Ten is a literal: a value written straight into the code. A literal cannot be given a new value.
+  **On screen:** Code `examples/err04_reversed.py`, line 2 highlighted, error `examples/err04_reversed.expected_error`
+- **Narration:** Here are all four, by the last line of the error.
+  **On screen:** Table: Read the last line first
+- **Narration:** Not defined: a typing error in a name.
+  **On screen:** Table: Read the last line first (row 1 in focus)
+- **Narration:** Can only concatenate: a number stored as text.
+  **On screen:** Table: Read the last line first (row 2 in focus)
+- **Narration:** Invalid decimal literal: a name that starts with a digit.
+  **On screen:** Table: Read the last line first (row 3 in focus)
+- **Narration:** Cannot assign to literal: the name is on the wrong side.
+  **On screen:** Table: Read the last line first (row 4 in focus)
+- **Narration:** Quick check. Which of these is a valid variable name?
+  **On screen:** Quick check: "Which of these is a valid variable name?" (options shown)
+- **Interaction:** "Which of these is a valid variable name?" stays on screen with a 10-second timer.
+- **Narration:** B. Second place, with an underscore. No digit first, no space, and not one of Python's own words.
+  **On screen:** Quick check: "Which of these is a valid variable name?" (answer revealed: `second_place`)
+- **Narration:** Last breather. These four errors will not scare you any more.
+  **On screen:** Breather card
+    - Spell names exactly as you created them.
+    - Quotation marks make text.
+    - The name goes on the left.
+- **Narration:** Two questions to think about on your own come next.
+  **On screen:** Breather card
+    - Spell names exactly as you created them.
+    - Quotation marks make text.
+    - The name goes on the left.
+- **Breather:** 4 quiet seconds.
 
-## Scene 13: Think beyond (12:03 to 12:45)
+## Scene 13: Think beyond (15:46 to 16:32)
 
 **Section:** Think beyond
 
-**Direction:** Two open questions, each with a pause. Do not give the answers: the learner tests them.
+**Direction:** Two open questions that apply what was taught. No answers are given.
 
-- **Narration:** Two questions to think beyond this chapter. First: four friends share a bill of 50. How could you use floor division and remainder to find how much each person pays in whole units, and how much is left over?
-  **On screen:** Pause card: "4 friends share a bill of 50. Use // and % to find each share and the amount left over." with a 6-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
-- **Narration:** Second: a is 5 and b is 8, and you want to swap them. Why does a equals b, followed by b equals a, not work? Predict the result, test it, then find a fix that uses a third variable.
-  **On screen:** Pause card: "a = 5 and b = 8. Why does a = b, then b = a, fail to swap them?" with a 6-second countdown
-  **Interaction:** the learner pauses and answers before the reveal.
+- **Narration:** First. Four friends share a bill of 50. How could floor division and the remainder tell you what each person pays, and what is left over?
+  **On screen:** Question card: "Four friends share a bill of 50. How do `//` and `%` tell you what each pays, and what is left over?"
+- **Interaction:** "Four friends share a bill of 50. How do `//` and `%` tell you what each pays, and what is left over?" stays on screen with a 10-second timer.
+- **Narration:** Write it and run it after the video.
+  **On screen:** Question card: "Four friends share a bill of 50. How do `//` and `%` tell you what each pays, and what is left over?"
+- **Narration:** Second. A is 5 and b is 8. You write: a equals b, then b equals a. Why are they not swapped?
+  **On screen:** Question card: "`a = 5` and `b = 8`. Why does `a = b`, then `b = a`, fail to swap them?"
+- **Interaction:** "`a = 5` and `b = 8`. Why does `a = b`, then `b = a`, fail to swap them?" stays on screen with a 10-second timer.
+- **Narration:** Predict it, test it, then find a fix that uses a third variable.
+  **On screen:** Question card: "`a = 5` and `b = 8`. Why does `a = b`, then `b = a`, fail to swap them?"
 
-## Scene 14: Recap (12:45 to 13:25)
+## Scene 14: Recap (16:32 to 17:36)
 
 **Section:** Recap
 
-**Direction:** Reveal the six recap lines, then the badge.
+**Direction:** Each recap point appears as it is spoken, then a final quick check, then the badge.
 
-- **Narration:** Let's recap. A value is a piece of data, and every value has a type: int, float, string or bool. A variable is a name that refers to a value. The equals sign connects the name on the left to the value on the right.
+- **Narration:** Let's recap.
   **On screen:** Recap
-    - Every value has a type: `int`, `float`, `str` or `bool`.
+- **Narration:** A value is a piece of data, and every value has a type.
+  **On screen:** Recap
+    - A value is a piece of data, and every value has a type.
+- **Narration:** A variable is a name for a value. The name goes on the left.
+  **On screen:** Recap
+    - A value is a piece of data, and every value has a type.
     - A variable is a name for a value. `=` connects the name on the left to the value on the right.
-- **Narration:** Python works out the right side first. Single slash always gives a float. Double slash gives the whole part, and percent gives the remainder. Brackets control the order of operations.
+- **Narration:** Python works out the right side first, so a variable can use its own old value.
   **On screen:** Recap
-    - Every value has a type: `int`, `float`, `str` or `bool`.
-    - A variable is a name for a value. `=` connects the name on the left to the value on the right.
-    - Python works out the right side first, so `points = points + 5` is valid.
-    - `/` always gives a `float`. `//` gives the whole part, and `%` gives the remainder.
-    - Brackets control the order. A `float` can be slightly inexact, and `round()` helps.
-- **Narration:** And with AI: ask it to predict, make your own prediction, and let the real run decide.
-  **On screen:** Recap
-    - Every value has a type: `int`, `float`, `str` or `bool`.
+    - A value is a piece of data, and every value has a type.
     - A variable is a name for a value. `=` connects the name on the left to the value on the right.
     - Python works out the right side first, so `points = points + 5` is valid.
-    - `/` always gives a `float`. `//` gives the whole part, and `%` gives the remainder.
-    - Brackets control the order. A `float` can be slightly inexact, and `round()` helps.
-    - Ask AI to predict, make your own prediction, and let the real run decide.
-- **Narration:** You earned 100 XP and the Name Keeper badge.
+- **Narration:** A single slash gives a float. A double slash keeps the whole part, and the percent sign gives the remainder.
+  **On screen:** Recap
+    - A value is a piece of data, and every value has a type.
+    - A variable is a name for a value. `=` connects the name on the left to the value on the right.
+    - Python works out the right side first, so `points = points + 5` is valid.
+    - `/` always gives a `float`. `//` keeps the whole part; `%` gives the remainder.
+- **Narration:** Brackets control the order, and round tidies an inexact float.
+  **On screen:** Recap
+    - A value is a piece of data, and every value has a type.
+    - A variable is a name for a value. `=` connects the name on the left to the value on the right.
+    - Python works out the right side first, so `points = points + 5` is valid.
+    - `/` always gives a `float`. `//` keeps the whole part; `%` gives the remainder.
+    - Brackets control the order. `round()` tidies an inexact `float`.
+- **Narration:** And with AI: predict, ask, and let the real run decide.
+  **On screen:** Recap
+    - A value is a piece of data, and every value has a type.
+    - A variable is a name for a value. `=` connects the name on the left to the value on the right.
+    - Python works out the right side first, so `points = points + 5` is valid.
+    - `/` always gives a `float`. `//` keeps the whole part; `%` gives the remainder.
+    - Brackets control the order. `round()` tidies an inexact `float`.
+    - Predict, ask the AI to predict, and let the real run decide.
+- **Narration:** One last check. Tea price is 3.5, and tea count is 2. What type is the tea price times the tea count?
+  **On screen:** Quick check: "`tea_price = 3.5` and `tea_count = 2`. What type is `tea_price * tea_count`?" (options shown)
+- **Interaction:** "`tea_price = 3.5` and `tea_count = 2`. What type is `tea_price * tea_count`?" stays on screen with a 10-second timer.
+- **Narration:** B. A float. One part was a float, so the result is 7.0, exactly like Asha's bill.
+  **On screen:** Quick check: "`tea_price = 3.5` and `tea_count = 2`. What type is `tea_price * tea_count`?" (answer revealed: `float`)
+- **Narration:** Mission complete! You earned 100 XP and the Name Keeper badge.
   **On screen:** Name Keeper You earned 100 XP.
+- **Breather:** 2 quiet seconds.
 
-## Scene 15: Practice (13:25 to 13:52)
+## Scene 15: Practice (17:36 to 18:02)
 
 **Section:** Practice
 
-**Direction:** List the eight tasks by tier so learners know what to expect.
+**Direction:** Each tier is highlighted as it is described.
 
-- **Narration:** Now practise. There are eight tasks in the practice file. The three warm-up tasks are worth 10 XP each: store and print, name the type, and predict the operators.
-  **On screen:** Table: Practice: 8 tasks, 160 XP (3 rows)
-- **Narration:** The apply tasks are worth 20 XP each, and the two stretch tasks are worth 40 each. In the last task, you fix an AI's temperature converter. Try each task before you open the solution.
-  **On screen:** Table: Practice: 8 tasks, 160 XP (3 rows)
+- **Narration:** Now it is your turn. The practice file has eight tasks, worth 170 XP.
+  **On screen:** Table: Practice: 8 tasks, 170 XP
+- **Narration:** Three warm-up tasks, worth 10 XP each.
+  **On screen:** Table: Practice: 8 tasks, 170 XP (row 1 in focus)
+- **Narration:** Three apply tasks, worth 20 each, including a savings tracker.
+  **On screen:** Table: Practice: 8 tasks, 170 XP (row 2 in focus)
+- **Narration:** And two stretch tasks, worth 40 each. In the last one, you fix an AI's temperature converter, like Asha fixed the average.
+  **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
+- **Narration:** Predict first, then run. Try each task before you open the solution.
+  **On screen:** Table: Practice: 8 tasks, 170 XP
 
-## Scene 16: What's next (13:52 to 14:09)
+## Scene 16: What's next (18:02 to 18:26)
 
 **Section:** What's next
 
-**Direction:** End card. Hold for two seconds after the narration.
+**Direction:** End card. Tease f-strings as the fix for the bill's awkward spacing. Hold quietly at the end.
 
-- **Narration:** In Chapter 3, you will work with text. You will join strings and build clear messages from your variables with f-strings. Do the warm-up tasks now. They take about ten minutes. See you in Chapter 3.
+- **Narration:** Look at Asha's bill once more. Teas, 2, x, 3.5, equals 7.0. All those separate pieces and spaces look a little clumsy.
+  **On screen:** Working with Text: Strings and f-strings Build clear messages with f-strings.
+- **Narration:** In Chapter 3, you will join text and build clear messages from your variables, with f-strings.
+  **On screen:** Working with Text: Strings and f-strings Build clear messages with f-strings.
+- **Narration:** Do the warm-up tasks now. They take about ten minutes.
   **On screen:** Working with Text: Strings and f-strings Do the warm-up tasks now. They take about ten minutes.
+- **Narration:** See you in Chapter 3.
+  **On screen:** Working with Text: Strings and f-strings Do the warm-up tasks now. They take about ten minutes.
+- **Breather:** 2 quiet seconds.

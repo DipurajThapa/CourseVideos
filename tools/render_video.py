@@ -43,7 +43,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import storyboard as sb  # noqa: E402
 from common import ROOT, load_json, now_iso, save_json  # noqa: E402
 
-RENDERER_VERSION = "3.0.0"
+RENDERER_VERSION = "3.0.1"
 LUFS = -14                       # web and YouTube loudness target (ai-film-studio B12)
 W, H, FPS = 1920, 1080, 30
 PIPER_VERSION = "1.8.0"
@@ -393,11 +393,11 @@ def _tone(rate: int, seconds: float, freqs: list[float], amp: float, decay: floa
     return (amp * wave_ * env).astype(np.float32)
 
 
-def _ambient_bed(rate: int, seconds: float):
+def _ambient_bed(rate: int, seconds: float, n: int | None = None):
     """A very quiet, slowly moving pad under the whole video, so there is never dead silence
     between lines. Generated in code (no licence needed), about 40 dB below the voice."""
     import numpy as np
-    n = int(rate * seconds)
+    n = n if n is not None else int(round(rate * seconds))
     tt = np.arange(n) / rate
     chords = [[110.0, 164.81, 220.0, 277.18], [98.0, 146.83, 196.0, 246.94],
               [87.31, 130.81, 174.61, 220.0], [98.0, 146.83, 196.0, 293.66]]
@@ -442,7 +442,7 @@ def write_audio(states: list[dict], path: Path) -> None:
             snd = _tone(rate, s["frames"] / FPS, [220.0, 277.18, 329.63], 0.03)
             track[at:at + len(snd)] += snd[: len(track) - at]
     track = track[: int(total / FPS * rate)]
-    track += _ambient_bed(rate, len(track) / rate)[: len(track)]
+    track += _ambient_bed(rate, len(track) / rate, n=len(track))
     pcm16 = (np.clip(track, -1, 1) * 32767).astype(np.int16)
     with wave.open(str(path), "wb") as out:
         out.setnchannels(1)

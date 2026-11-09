@@ -83,7 +83,7 @@ Push a checkpoint after each major file.
 ### 6. Produce the video
 First run `python3 tools/verify_chapter.py <chapter>` once and fix every failure except the `video` check, so the video is built from final, verified files. Then:
 
-1. Load the video skills with the Skill tool: `video-making` (encoding rules, already applied by the renderer) and `ai-film-studio` (intake, critic gate and QC). The route is always B, stills-motion from the course renderer: no generated footage, because code must be exact and verified.
+1. Read and follow `.claude/skills/code-quest-video/SKILL.md` (load it with the Skill tool as `code-quest-video` when it is listed). It is the owner-approved craft guide for every chapter: the Soft Studio look, the Kokoro `bm_lewis` voice, one interlinked story with Asha, teach before test, the six AI stages on one feature with `chat` beats, and evergreen content. Chapters 1 and 2 are the reference storyboards. Then load `video-making` (encoding rules, already applied by the renderer) and `ai-film-studio` (intake, critic gate and QC). The route is always B, stills-motion from the course renderer: no generated footage, because code must be exact and verified.
 2. Preview every beat as a still, without audio:
    ```bash
    python3 tools/render_video.py chapters/<language>/<NN>-<slug> --preview <scratch-dir>/preview
@@ -95,7 +95,7 @@ First run `python3 tools/verify_chapter.py <chapter>` once and fix every failure
    ```bash
    python3 tools/render_video.py chapters/<language>/<NN>-<slug>
    ```
-4. Check the result with the film studio's QC: `python3 afs.py qc video/chapter.mp4 --srt video/chapter.srt --target-s <seconds> --lufs -14` (extract `afs.py` as the ai-film-studio skill describes). Loudness, captions and silences must pass; a held picture is expected during timers and breathers. Then extract three frames from different scenes with `ffmpeg -ss <seconds> -i video/chapter.mp4 -frames:v 1 <scratch-dir>/check_N.png` and look at them, read `video/script.md`, and confirm the length in `render.json` is 10 to 15 minutes.
+4. Check the result with the film studio's QC: `python3 afs.py qc video/chapter.mp4 --srt video/chapter.srt --target-s <seconds> --lufs -14` (extract `afs.py` as the ai-film-studio skill describes). Loudness, captions and silences must pass; a held picture is expected during timers and breathers. Then extract three frames from different scenes with `ffmpeg -ss <seconds> -i video/chapter.mp4 -frames:v 1 <scratch-dir>/check_N.png` and look at them, read `video/script.md`, and confirm the length in `render.json` is 8 to 20 minutes (12 to 19 is typical).
 
 Push a checkpoint. The rendered files (`chapter.mp4`, `chapter.srt`, `description.md`, `render.json`, `script.md`) are committed with the chapter. If rendering fails and cannot be fixed in the run, block the chapter with the renderer's error (step 9).
 

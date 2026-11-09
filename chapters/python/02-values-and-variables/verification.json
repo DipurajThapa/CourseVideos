@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-02",
-  "run_id": "2026-11-09-3f211e",
-  "verified_at": "2026-11-09T10:55:56+00:00",
+  "run_id": "2026-11-09-4f3b81",
+  "verified_at": "2026-11-09T19:02:52+00:00",
   "passed": true,
   "toolchains": [
     "Python 3.15.2",
@@ -19,17 +19,29 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 21,
+        "files_run": 24,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
         ],
         "results": {
+          "examples/ai_average_final.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/ai_average_fixed.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ai_average_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_bills_typo.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_floor_check.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -117,8 +129,8 @@
       "passed": true,
       "problems": [],
       "details": {
-        "code_blocks": 13,
-        "output_blocks": 13
+        "code_blocks": 14,
+        "output_blocks": 14
       }
     },
     {
@@ -155,14 +167,14 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 124,
+          "sentences": 134,
           "average_words": 11.3,
           "longest": 26
         },
         "video/script.md": {
-          "sentences": 396,
-          "average_words": 9.7,
-          "longest": 28
+          "sentences": 772,
+          "average_words": 8.7,
+          "longest": 22
         }
       }
     },
@@ -171,13 +183,13 @@
       "passed": true,
       "problems": [],
       "details": {
-        "estimated_minutes": 14.8,
-        "duration_seconds": 848.6,
-        "size_mb": 20.54,
+        "estimated_minutes": 18.9,
+        "duration_seconds": 1105.6,
+        "size_mb": 45.9,
         "scenes": 16,
-        "voice": "en_US-lessac-medium"
+        "voice": null
       }
     }
   ],
-  "fingerprint": "30d9ffdf6c2209844782e6357dc0c25b84536104815747181993639bed0dea5c"
+  "fingerprint": "39c830649fcbb57ee0a71bc2942bf09368e06a3e78da10b28d8494f296480b50"
 }

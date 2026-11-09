@@ -42,6 +42,12 @@ The owner approved this style on 2026-11-09 (Chapter 1). Keep it for every chapt
 - Include at least one confident AI mistake that a method taught earlier in the video catches. Never present AI answers as guaranteed; every AI bubble carries the "Example answer" label.
 - All code, output and errors in chats are verified files in `examples/` (add small example files when the story needs them, with `.expected` and `.expected_error`). Use `code_lines` to show an excerpt with real line numbers.
 
+## Reference chapters and common critic findings
+- Chapter 1 (receipt, order code) and Chapter 2 (self-updating bill, average bill of three tables) are the reference storyboards. Copy their scene shape: intro hook (problem, mission, AI tease), goals, why, idea + quiz + breather, steps with predict-then-reveal, outcome returning to the mission, six AI chats, mistakes with callbacks and spot-it asks, think beyond, recap + quiz + badge, practice, next teaser.
+- Writing the storyboard as a small Python builder script (helpers `code()` and `chat()`, message lists per stage) in the scratchpad keeps it editable; the committed JSON is the source of truth.
+- Every stage, including Write, works on the same feature: the learner writes part of it and asks the AI to check or predict.
+- Checks critics often catch: a highlight left on the previous line when the narration moves on; an operator or idea used in an ask before it is taught; style-guide rules mixed up with language rules; "exact" for floats; a changed value that makes later output print a float glitch (run the variant before you mention it); error words (such as "concatenate") spoken but never explained.
+
 ## Process
 1. Write the story spine and the teach-then-test table in the run notes.
 2. Write `video/storyboard.json` (format: docstring of `tools/storyboard.py`). Narration in short spoken sentences; segments move highlights in step with each sentence.

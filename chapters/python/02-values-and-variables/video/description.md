@@ -1,25 +1,30 @@
-# Python Chapter 2: Values and Variables, with an AI Study Partner
+# Python Chapter 2: Values and Variables, Giving Data a Name
 
-Learn the four basic Python types, store data in well-named variables, calculate with the seven arithmetic operators and predict every result before you run the code. You will also catch an AI assistant's confident mistake in an average calculation.
+Asha's Chapter 1 receipt typed every price twice. Follow her as she rebuilds it as a cafe bill that updates itself: variables and names, the types int, float, str and bool, operators, changing a value and the order of operations. Then watch her build an average bill with an AI assistant at all six stages, catching two AI mistakes by predicting and testing.
 
 ## Chapters
 
 0:00 Introduction
-0:46 Learning goals
-1:15 Why this matters
-1:56 The idea: values, types and assignment
-2:57 Step 1: Your first variables
-4:07 Step 2: Check the type of a value
-4:44 Step 3: Calculate with operators
-6:01 Step 4: Change a variable
-6:35 Step 5: The order of operations
-7:35 See the outcome: the cafe bill
-8:38 Work with AI: predict, then run
-10:40 Common mistakes
-12:02 Think beyond
-12:44 Recap
-13:24 Practice
-13:51 What's next
+0:50 Learning goals
+1:07 Why this matters
+1:30 The idea: values, types and names
+3:10 Step 1: First variables
+4:30 Step 2: Check a type
+5:09 Step 3: Operators
+6:12 Step 4: Change a variable
+6:49 Step 5: Order of operations
+8:29 See the outcome: the self-updating bill
+9:30 Work with AI: six stages, one average
+13:07 Common mistakes
+15:45 Think beyond
+16:32 Recap
+17:35 Practice
+18:01 What's next
+
+## How to use this video
+
+- When a question appears with a 10-second timer, pause the video if you need more time.
+- Say or write your answer before the reveal. Breather cards are a moment to rest and review.
 
 ## Links
 
@@ -28,4 +33,4 @@ Learn the four basic Python types, store data in well-named variables, calculate
 
 ## Disclosure
 
-The narration is a synthetic voice (Piper text-to-speech, voice en_US-lessac-medium). English captions are included.
+The narration is a synthetic voice (kokoro-onnx 0.6.1, model v1.0 (Apache-2.0), voice bm_lewis). The timer ticks, the breather tone and the quiet background pad are generated in code. English captions are included.

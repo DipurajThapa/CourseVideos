@@ -1,390 +1,1807 @@
 {
-  "chapter_id": "python-02",
-  "number": 2,
-  "title": "Chapter 2: Values and Variables: Giving Data a Name",
-  "video_title": "Python Chapter 2: Values and Variables, with an AI Study Partner",
-  "summary": "Learn the four basic Python types, store data in well-named variables, calculate with the seven arithmetic operators and predict every result before you run the code. You will also catch an AI assistant's confident mistake in an average calculation.",
-  "scenes": [
+ "chapter_id": "python-02",
+ "number": 2,
+ "version": 3,
+ "title": "Chapter 2: Values and Variables: Giving Data a Name",
+ "video_title": "Python Chapter 2: Values and Variables, Giving Data a Name",
+ "summary": "Asha's Chapter 1 receipt typed every price twice. Follow her as she rebuilds it as a cafe bill that updates itself: variables and names, the types int, float, str and bool, operators, changing a value and the order of operations. Then watch her build an average bill with an AI assistant at all six stages, catching two AI mistakes by predicting and testing.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the problem from Chapter 1, then show the finished self-updating bill as the mission. No question yet.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Open on the title card, then cut to the AI's flawed average code to set the hook. Keep the output hidden until the pause.",
-      "beats": [
-        {
-          "narration": "Welcome to Code Quest, Chapter 2: Values and Variables. In this chapter, you will learn how a program stores data, gives it a name and calculates with it.",
-          "visual": {"type": "title", "kicker": "CHAPTER 2", "title": "Values and Variables: Giving Data a Name", "subtitle": "Store data, name it, calculate with it, and predict every result.", "badge": "Reward: 100 XP and the Name Keeper badge"}
-        },
-        {
-          "narration": "First, a puzzle. A learner asked an AI assistant for the average of three test scores: 80, 90 and 100. The AI wrote this code, and it said the program would print 90.",
-          "visual": {"type": "code", "heading": "The AI said this prints `Average: 90.0`", "file": "examples/ai_average_flawed.py", "highlight": [5], "hidden_text": "The AI predicted: Average: 90.0"}
-        },
-        {
-          "narration": "Look closely at line 5. Do you trust the prediction?",
-          "visual": {"type": "pause", "question": "Will this code really print an average of 90?", "seconds": 4}
-        },
-        {
-          "narration": "Here is the real output: 203 point 3 3. The AI was sure, and it was wrong. By the end of this chapter, you will see why in two seconds.",
-          "visual": {"type": "code", "heading": "The real output", "file": "examples/ai_average_flawed.py", "highlight": [5], "output": "examples/ai_average_flawed.expected"}
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 2",
+      "title": "Values and Variables: Giving Data a Name",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Name Keeper badge"
+     },
+     "segments": [
+      {
+       "say": "Welcome back to Code Quest. This is Chapter 2."
+      },
+      {
+       "say": "Today you will give your data names, and make Python do the maths for you.",
+       "subtitle": "Store it once. Use it everywhere."
+      },
+      {
+       "say": "And an AI assistant will get the maths wrong, while sounding completely sure. Your job is to catch it."
+      }
+     ]
     },
     {
-      "id": "goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "Reveal the goals one at a time, in step with the narration.",
-      "beats": [
-        {
-          "narration": "Here is what you will be able to do by the end. First, write variables with clear names, and give them values with the equals sign.",
-          "visual": {"type": "bullets", "heading": "By the end of this chapter, you will be able to:", "reveal": 1, "items": ["Write variables with clear names and give them values with `=`.", "Explain the types `int`, `float`, `str` and `bool`, and check a type with `type()`.", "Calculate with `+`, `-`, `*`, `/`, `//`, `%` and `**`.", "Predict the output of a short program, then check your prediction.", "Fix the errors beginners meet most often with variables."]}
-        },
-        {
-          "narration": "Second, explain the four basic types of data, and check the type of any value. Third, calculate with the seven arithmetic operators.",
-          "visual": {"type": "bullets", "heading": "By the end of this chapter, you will be able to:", "reveal": 3, "items": ["Write variables with clear names and give them values with `=`.", "Explain the types `int`, `float`, `str` and `bool`, and check a type with `type()`.", "Calculate with `+`, `-`, `*`, `/`, `//`, `%` and `**`.", "Predict the output of a short program, then check your prediction.", "Fix the errors beginners meet most often with variables."]}
-        },
-        {
-          "narration": "Fourth, predict the output of a program before you run it. And fifth, fix the errors that beginners meet most often with variables.",
-          "visual": {"type": "bullets", "heading": "By the end of this chapter, you will be able to:", "reveal": 5, "items": ["Write variables with clear names and give them values with `=`.", "Explain the types `int`, `float`, `str` and `bool`, and check a type with `type()`.", "Calculate with `+`, `-`, `*`, `/`, `//`, `%` and `**`.", "Predict the output of a short program, then check your prediction.", "Fix the errors beginners meet most often with variables."]}
-        }
+     "visual": {
+      "type": "bullets",
+      "heading": "Asha has a problem",
+      "label": "Previously",
+      "reveal": 0,
+      "items": [
+       "Her receipt from Chapter 1 typed every price **twice**.",
+       "The price of tea goes up. She must find and change every copy.",
+       "Miss one copy, and the receipt is wrong."
       ]
+     },
+     "segments": [
+      {
+       "say": "Remember Asha's receipt from the Corner Cafe? It had a problem. Every price was typed twice.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Now the price of tea goes up. Asha must hunt down every copy and change it.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And if she misses one? The receipt is wrong, and nobody notices.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
     },
     {
-      "id": "why",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "Show the problem with the Chapter 1 receipt, then the fix in one line.",
-      "beats": [
-        {
-          "narration": "In Chapter 1, the cafe receipt typed each price twice: once in the item line, and once in the total. If the price of tea changes, you must find and change every copy. Miss one, and the receipt is wrong.",
-          "visual": {"type": "text", "heading": "The problem: the same price, typed twice", "body": ["In Chapter 1, the receipt typed each price in two places:"], "pre": "print(\"Tea\", \"USD 3\", sep=\" ............. \")\n...\nprint(\"Total: USD\", 3 + 7)\n\nChange the tea price?  You must change BOTH lines."}
-        },
-        {
-          "narration": "A variable solves this. A variable is a name that refers to a value. You store the price once, under a name such as tea price, and use that name everywhere.",
-          "visual": {"type": "text", "heading": "The fix: give the value a name", "body": ["A **variable** is a name that refers to a value.", "Store the price once, then use the name everywhere:"], "pre": "tea_price = 3\n\nprint(\"Tea\", tea_price)\nprint(\"Total\", tea_price + 7)"}
-        },
-        {
-          "narration": "Every real program works this way. A shopping app keeps the items in your basket. A game keeps your score. A banking app keeps your balance. Each of these values has a name inside the program.",
-          "visual": {"type": "bullets", "heading": "Every real program names its data", "items": ["A shopping app keeps the items in your basket.", "A game keeps your score.", "A banking app keeps your balance."]}
-        }
-      ]
-    },
-    {
-      "id": "idea",
-      "section": "The idea",
-      "title": "The idea: values, types and assignment",
-      "direction": "Table first, then the assignment diagram. Finish with the analogy and where it stops working.",
-      "beats": [
-        {
-          "narration": "A value is a single piece of data, such as 3, 3.5 or the word Tea. Every value has a type. The type tells Python what kind of data it is, and what you can do with it.",
-          "visual": {"type": "table", "heading": "Every value has a type", "columns": ["Type", "Name", "Example values", "Use it for"], "rows": [["`int`", "integer", "`3`, `0`, `-12`", "Whole numbers: counts, ages, scores"], ["`float`", "floating-point number", "`3.5`, `0.1`, `-2.0`", "Numbers with a decimal point: prices"], ["`str`", "string", "`\"Tea\"`, `\"3\"`", "Text, always in quotation marks"], ["`bool`", "Boolean", "`True`, `False`", "Yes or no facts: is a member"]]}
-        },
-        {
-          "narration": "Python has four basic types. An int is a whole number. A float is a number with a decimal point. A string is text inside quotation marks. And a Boolean is either True or False.",
-          "visual": {"type": "table", "heading": "Every value has a type", "columns": ["Type", "Name", "Example values", "Use it for"], "rows": [["`int`", "integer", "`3`, `0`, `-12`", "Whole numbers: counts, ages, scores"], ["`float`", "floating-point number", "`3.5`, `0.1`, `-2.0`", "Numbers with a decimal point: prices"], ["`str`", "string", "`\"Tea\"`, `\"3\"`", "Text, always in quotation marks"], ["`bool`", "Boolean", "`True`, `False`", "Yes or no facts: is a member"]]}
-        },
-        {
-          "narration": "Assignment connects a name to a value. You write the name, then the equals sign, then the value. Python works out the right side first. Then it connects the name on the left to the result.",
-          "visual": {"type": "text", "heading": "Assignment connects a name to a value", "body": ["Read `=` as **now refers to**, not as **is equal to**."], "pre": "   name         value\n tea_price  =    3\n     ^           |\n     +-----------+\n  Python works out the right side first,\n  then connects the name on the left to it."}
-        },
-        {
-          "narration": "So read the equals sign as now refers to, not as is equal to. Think of a variable as a name label that you stick on a value. You can move the label to a new value at any time.",
-          "visual": {"type": "bullets", "heading": "A variable is like a name label", "items": ["You stick the label `tea_price` on the value `3`.", "You can move the label to a new value at any time.", "Where the comparison stops: two labels can point to the same value, and moving one label does not move the other."], "reveal": 2}
-        },
-        {
-          "narration": "The comparison stops working at one point. Two labels can point to the same value, and moving one label does not move the other.",
-          "visual": {"type": "bullets", "heading": "A variable is like a name label", "items": ["You stick the label `tea_price` on the value `3`.", "You can move the label to a new value at any time.", "Where the comparison stops: two labels can point to the same value, and moving one label does not move the other."]}
-        }
-      ]
-    },
-    {
-      "id": "step1",
-      "section": "Build it step by step",
-      "title": "Step 1: Your first variables",
-      "direction": "Code first with the output hidden, a pause to predict, then the reveal. Then the naming rules.",
-      "beats": [
-        {
-          "narration": "Step 1. Create a file called ex 0 1 first variables. Line 2 stores the text Asha in a variable called customer. Line 3 stores the number 3 in tea price. The next three lines print them.",
-          "visual": {"type": "code", "heading": "Step 1: Create your first variables", "file": "examples/ex01_first_variables.py", "highlight": [2, 3]}
-        },
-        {
-          "narration": "Before you run it, predict the three lines of output.",
-          "visual": {"type": "pause", "question": "What are the three lines of output? Write them down.", "seconds": 5}
-        },
-        {
-          "narration": "Here is the output. Asha, then Tea costs 3, then Two teas cost 6. In the print on line 4, the name customer has no quotation marks. So Python prints its value, Asha, and not the word customer.",
-          "visual": {"type": "code", "heading": "Step 1: Create your first variables", "file": "examples/ex01_first_variables.py", "highlight": [4], "output": "examples/ex01_first_variables.expected"}
-        },
-        {
-          "narration": "Good names make code easy to read. The Python style guide, called PEP 8, says: use lowercase letters, and join words with an underscore. A name can contain letters, digits and underscores, but it cannot start with a digit.",
-          "visual": {"type": "bullets", "heading": "Naming rules (PEP 8)", "reveal": 2, "items": ["Lowercase words joined by underscores: `tea_price`, not `TeaPrice` or `tp`.", "Letters, digits and underscores only, and never a digit first.", "Capital letters matter: `price` and `Price` are different names.", "Do not use reserved words such as `True`, `None` or `class`."]}
-        },
-        {
-          "narration": "Capital letters matter, so price with a small p and Price with a capital P are two different names. And do not use the words Python reserves for itself, such as True, None or class.",
-          "visual": {"type": "bullets", "heading": "Naming rules (PEP 8)", "items": ["Lowercase words joined by underscores: `tea_price`, not `TeaPrice` or `tp`.", "Letters, digits and underscores only, and never a digit first.", "Capital letters matter: `price` and `Price` are different names.", "Do not use reserved words such as `True`, `None` or `class`."]}
-        }
-      ]
-    },
-    {
-      "id": "step2",
-      "section": "Build it step by step",
-      "title": "Step 2: Check the type of a value",
-      "direction": "Show the code with the output hidden, then reveal the output and point at each type.",
-      "beats": [
-        {
-          "narration": "Step 2. The type function tells you the type of any value. This program stores four values: a count of cups, a price, an item name and a yes or no fact. Then it prints each value with its type.",
-          "visual": {"type": "code", "heading": "Step 2: Check the type of a value", "file": "examples/ex02_types.py", "highlight": [2, 3, 4, 5]}
-        },
-        {
-          "narration": "Run it. The 2 is an int. The 3.5 is a float. Tea is a string, shown as s t r. And True is a bool.",
-          "visual": {"type": "code", "heading": "Step 2: Check the type of a value", "file": "examples/ex02_types.py", "highlight": [6, 7, 8, 9], "output": "examples/ex02_types.expected"}
-        },
-        {
-          "narration": "Python chose each type from the way you wrote the value. A decimal point makes a float, and quotation marks make a string. True and False need a capital first letter.",
-          "visual": {"type": "bullets", "heading": "How Python chooses the type", "items": ["A decimal point makes a `float`: `3.5`.", "Quotation marks make a `str`: `\"Tea\"`.", "`True` and `False` need a capital first letter."]}
-        }
-      ]
-    },
-    {
-      "id": "step3",
-      "section": "Build it step by step",
-      "title": "Step 3: Calculate with operators",
-      "direction": "Pause for the learner to predict all seven lines. After the reveal, use the table to explain the three surprising operators.",
-      "beats": [
-        {
-          "narration": "Step 3. An operator is a symbol that does a calculation. Seventeen biscuits are shared between five friends. This program uses all seven arithmetic operators.",
-          "visual": {"type": "code", "heading": "Step 3: Calculate with operators", "file": "examples/ex03_arithmetic.py", "highlight": [4, 5, 6, 7, 8, 9, 10]}
-        },
-        {
-          "narration": "Pause the video and predict each line. Pay special attention to divide, floor divide and remainder.",
-          "visual": {"type": "pause", "question": "17 biscuits, 5 friends. Predict all seven results.", "seconds": 8}
-        },
-        {
-          "narration": "Here are the results. Add gives 22, subtract gives 12, and multiply gives 85. Divide gives 3.4. Floor divide gives 3. Remainder gives 2. And power gives 25.",
-          "visual": {"type": "code", "heading": "Step 3: Calculate with operators", "file": "examples/ex03_arithmetic.py", "highlight": [7, 8, 9], "output": "examples/ex03_arithmetic.expected"}
-        },
-        {
-          "narration": "Three operators often surprise beginners. A single slash is division. It gives the exact answer, 3.4, and the result is always a float. A double slash is floor division. It gives the whole part, so each friend gets 3 whole biscuits.",
-          "visual": {"type": "table", "heading": "Three operators that surprise beginners", "columns": ["Operator", "Name", "Result for 17 and 5", "Meaning"], "rows": [["`/`", "division", "`3.4`", "The exact answer. It is always a `float`."], ["`//`", "floor division", "`3`", "Each friend gets 3 whole biscuits."], ["`%`", "remainder", "`2`", "2 biscuits are left over."]]}
-        },
-        {
-          "narration": "The percent sign gives the remainder, so 2 biscuits are left over. Finally, two stars raise a number to a power. So 5 to the power 2 is 5 times 5, which is 25.",
-          "visual": {"type": "table", "heading": "Three operators that surprise beginners", "columns": ["Operator", "Name", "Result for 17 and 5", "Meaning"], "rows": [["`/`", "division", "`3.4`", "The exact answer. It is always a `float`."], ["`//`", "floor division", "`3`", "Each friend gets 3 whole biscuits."], ["`%`", "remainder", "`2`", "2 biscuits are left over."], ["`**`", "power", "`25` for `5 ** 2`", "5 times 5."]]}
-        }
-      ]
-    },
-    {
-      "id": "step4",
-      "section": "Build it step by step",
-      "title": "Step 4: Change a variable",
-      "direction": "Highlight each assignment line in turn so the learner can follow the value of points.",
-      "beats": [
-        {
-          "narration": "Step 4. A variable can get a new value. Here, points starts at 10. Line 4 says: points equals points plus 5.",
-          "visual": {"type": "code", "heading": "Step 4: Change a variable", "file": "examples/ex04_reassign.py", "highlight": [2, 4]}
-        },
-        {
-          "narration": "In mathematics, that line would be impossible. In Python, it means: take the current value of points, add 5, and give points the new value. Python works out the right side first.",
-          "visual": {"type": "text", "heading": "Python works out the right side first", "body": ["`points = points + 5` means:", "1. Take the current value of `points`: **10**.", "2. Add 5: **15**.", "3. Give `points` the new value: **15**."]}
-        },
-        {
-          "narration": "So the output shows Start 10, After a quiz 15, and After the bonus 30. Line 6 doubled the value of 15.",
-          "visual": {"type": "code", "heading": "Step 4: Change a variable", "file": "examples/ex04_reassign.py", "highlight": [6], "output": "examples/ex04_reassign.expected"}
-        }
-      ]
-    },
-    {
-      "id": "step5",
-      "section": "Build it step by step",
-      "title": "Step 5: The order of operations",
-      "direction": "Pause on the first two lines. After the reveal, explain line 4, then the inexact float on line 5 and round on line 6.",
-      "beats": [
-        {
-          "narration": "Step 5. Python follows the same order as mathematics. It calculates powers first. Then it multiplies and divides. Then it adds and subtracts. Brackets change the order.",
-          "visual": {"type": "code", "heading": "Step 5: Know the order of operations", "file": "examples/ex05_order.py", "highlight": [2, 3], "note": "Order: `**` first, then `*` `/` `//` `%`, then `+` `-`. Brackets go first of all."}
-        },
-        {
-          "narration": "Predict lines 2 and 3 before you look.",
-          "visual": {"type": "pause", "question": "2 + 3 * 4 and (2 + 3) * 4: what does each print?", "seconds": 5}
-        },
-        {
-          "narration": "Line 2 multiplies first, so the result is 14. Line 3 adds first because of the brackets, so it gives 20. Line 4 divides first, and gives 8.0, a float, because division always gives a float.",
-          "visual": {"type": "code", "heading": "Step 5: Know the order of operations", "file": "examples/ex05_order.py", "highlight": [2, 3, 4], "output": "examples/ex05_order.expected"}
-        },
-        {
-          "narration": "Line 5 is a surprise. Point 1 plus point 1 plus point 1 does not print exactly point 3. Computers store decimal numbers in binary, so some values, such as point 1, carry a tiny error. On line 6, the round function rounds the result to 2 decimal places, and you get point 3.",
-          "visual": {"type": "code", "heading": "A float is not always exact", "file": "examples/ex05_order.py", "highlight": [5, 6], "output": "examples/ex05_order.expected"}
-        }
-      ]
-    },
-    {
-      "id": "outcome",
-      "section": "See the outcome",
-      "title": "See the outcome: the cafe bill",
-      "direction": "Walk down the program in three groups: the inputs, the calculations, the prints. Then reveal the output.",
-      "beats": [
-        {
-          "narration": "Here is the cafe receipt from Chapter 1, rebuilt with variables. Lines 2 to 7 store the inputs: the customer, two prices, the number of teas, a member flag and a 10 percent discount.",
-          "visual": {"type": "code", "heading": "The cafe bill, rebuilt with variables", "file": "examples/ex06_cafe_bill.py", "highlight": [2, 3, 4, 5, 6, 7]}
-        },
-        {
-          "narration": "Lines 9 to 12 calculate the tea total, the bill, the discount and the amount to pay. Each calculation uses names, not numbers, so every price appears only once.",
-          "visual": {"type": "code", "heading": "The cafe bill, rebuilt with variables", "file": "examples/ex06_cafe_bill.py", "highlight": [9, 10, 11, 12]}
-        },
-        {
-          "narration": "Run it. Two teas at 3.5 cost 7.0. The bill is 13.0, the discount is 1.3, and Asha pays 11.7. Notice that 7.0 is a float, because one of its parts was a float.",
-          "visual": {"type": "code", "heading": "The cafe bill, rebuilt with variables", "file": "examples/ex06_cafe_bill.py", "highlight": [14, 15, 16, 17, 18, 19, 20], "output": "examples/ex06_cafe_bill.expected"}
-        },
-        {
-          "narration": "Now change tea price to 4 and run it again. Every line that depends on the tea price updates by itself. For now, the discount applies every time. In Chapter 6, you will use the member flag to decide.",
-          "visual": {"type": "pause", "question": "Change tea_price to 4. Which output lines change?", "seconds": 5}
-        }
-      ]
-    },
-    {
-      "id": "ai",
-      "section": "Work with AI",
-      "title": "Work with AI: predict, then run",
-      "direction": "Introduce the prediction skill, show the six stages, show two prompt cards, then replay the hook as the AI pair moment and fix it.",
-      "beats": [
-        {
-          "narration": "The AI skill for this chapter is prediction. Before you run a program, ask an AI assistant such as ChatGPT or Claude to predict its output. Write down your own prediction too. Then run the code. The real output is the only answer that counts.",
-          "visual": {"type": "bullets", "heading": "The AI skill: predict, then run", "items": ["Ask an AI assistant such as ChatGPT or Claude to predict the output.", "Write down your own prediction too.", "Run the code. The real output is the only answer that counts."]}
-        },
-        {
-          "narration": "The safety habits from Chapter 1 still apply. Never paste passwords, keys or private data. Run every piece of AI code yourself. You are responsible for the code you use.",
-          "visual": {"type": "bullets", "heading": "Safety habits", "items": ["Never paste passwords, keys or private data into an AI tool.", "Run every piece of AI code yourself.", "You are responsible for the code you use."]}
-        },
-        {
-          "narration": "AI helps at every stage. Plan the variables you need. Write the code yourself, then compare predictions. Generate examples with fixed names. Debug with the full error. Test with new values. And improve your variable names.",
-          "visual": {"type": "table", "heading": "AI at every stage", "columns": ["Stage", "How to use AI in this chapter"], "rows": [["Plan", "List the variables a calculation needs, with a name and type for each."], ["Write", "Write it yourself, then ask AI to predict the output line by line."], ["Generate", "Ask for a short program with fixed names and an exact output."], ["Debug", "Paste the code and the full error. Ask for the cause first."], ["Test", "Ask for three sets of values, including zero and a decimal."], ["Improve", "Ask for clearer variable names, then judge each one."]]}
-        },
-        {
-          "narration": "Here is the Write card. Paste your code, and ask the AI to predict the exact output line by line, without running or changing it. Then compare three things: your prediction, the AI's prediction and the real output.",
-          "visual": {"type": "prompt", "heading": "Prompt card: predict first, then run", "label": "Write", "prompt": "Here is my Python code: <paste your code>. Do not change it and do not run it. Predict the exact output, line by line. For each line, explain in one sentence how Python calculated it.", "check": "Write your own prediction first. Compare yours, the AI's and the real output."}
-        },
-        {
-          "narration": "And here is the Debug card. Give the AI the exact error message, and ask for the cause before the fix.",
-          "visual": {"type": "prompt", "heading": "Prompt card: find the cause before the fix", "label": "Debug", "prompt": "I am a beginner. I ran this Python code: <paste the code>. I got this exact error: <paste the full error message>. First explain what the error means and which line causes it. Then show the smallest fix.", "check": "Apply the fix, run the program, and confirm the explanation matches the error."}
-        },
-        {
-          "narration": "Now, the AI pair moment. Remember the puzzle from the start? The AI wrote this average, and predicted 90. It printed 203 point 3 3. Why?",
-          "visual": {"type": "code", "heading": "AI pair moment: find the flaw", "file": "examples/ai_average_flawed.py", "highlight": [5], "output": "examples/ai_average_flawed.expected"}
-        },
-        {
-          "narration": "Use what you learned in step 5.",
-          "visual": {"type": "pause", "question": "Which operation does Python do first on line 5? Where do the brackets go?", "seconds": 6}
-        },
-        {
-          "narration": "The AI forgot the order of operations. Python divided only score 3 by 3, and then added the other two scores. Brackets around the sum fix the order, and the program prints 90.0.",
-          "visual": {"type": "code", "heading": "The fix: brackets around the sum", "file": "examples/ai_average_fixed.py", "highlight": [5], "output": "examples/ai_average_fixed.expected"}
-        },
-        {
-          "narration": "A quick check would also catch this flaw. An average of three scores must be between the lowest and the highest score. A result of 203 is impossible. Code that runs is not always code that is correct.",
-          "visual": {"type": "bullets", "heading": "The two-second check", "items": ["An average must lie between the lowest and the highest value.", "80, 90 and 100 cannot average 203.", "Predict. Run. Compare."]}
-        }
-      ]
-    },
-    {
-      "id": "mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "One beat per mistake: the code and the real error side by side, then the fix in the narration.",
-      "beats": [
-        {
-          "narration": "Now, four common mistakes. Mistake 1 is a typing error in a variable name. Line 4 uses tea prise, spelled with an s. Python only knows the names you created, so it stops with a Name Error. It even suggests the right name.",
-          "visual": {"type": "code", "heading": "Mistake 1: a typing error in a name", "file": "examples/err01_name_typo.py", "highlight": [4], "error": "examples/err01_name_typo.expected_error"}
-        },
-        {
-          "narration": "Mistake 2 is a number stored as text. With quotation marks, 3 is a string, not an int. Python will not add text and a number, so you get a Type Error. The fix is to remove the quotation marks.",
-          "visual": {"type": "code", "heading": "Mistake 2: a number stored as text", "file": "examples/err02_text_number.py", "highlight": [2, 3], "error": "examples/err02_text_number.expected_error"}
-        },
-        {
-          "narration": "Sometimes this mistake gives no error at all, which is worse. Multiplying the string 3 by 2 repeats the text, so you get 33 instead of 6. If a result looks strange, check the type.",
-          "visual": {"type": "code", "heading": "The silent version of mistake 2", "file": "examples/ex07_text_times.py", "highlight": [2, 3], "output": "examples/ex07_text_times.expected"}
-        },
-        {
-          "narration": "Mistake 3 is a name that starts with a digit. Python reads the 2 as the start of a number, and does not understand the letters after it. Start the name with a letter, such as second place.",
-          "visual": {"type": "code", "heading": "Mistake 3: a name that starts with a digit", "file": "examples/err03_digit_first.py", "highlight": [2], "error": "examples/err03_digit_first.expected_error"}
-        },
-        {
-          "narration": "Mistake 4 puts the name and the value on the wrong sides. A literal is a value written directly in the code, such as 10, and it cannot get a new value. The name always goes on the left: points equals 10.",
-          "visual": {"type": "code", "heading": "Mistake 4: the name and value on the wrong sides", "file": "examples/err04_reversed.py", "highlight": [2], "error": "examples/err04_reversed.expected_error"}
-        },
-        {
-          "narration": "The habit from Chapter 1 still works. Read the last line of an error first. It names the kind of error. Then look at the line number.",
-          "visual": {"type": "table", "heading": "Read the last line first", "columns": ["Error", "Usual cause", "Fix"], "rows": [["`NameError`", "A misspelt name, or a name used before it exists", "Spell it exactly as created"], ["`TypeError`", "Text where a number was needed", "Remove the quotation marks"], ["`SyntaxError: invalid decimal literal`", "A name starting with a digit", "Start with a letter"], ["`SyntaxError: cannot assign to literal`", "Value on the left of `=`", "Put the name on the left"]]}
-        }
-      ]
-    },
-    {
-      "id": "beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "Two open questions, each with a pause. Do not give the answers: the learner tests them.",
-      "beats": [
-        {
-          "narration": "Two questions to think beyond this chapter. First: four friends share a bill of 50. How could you use floor division and remainder to find how much each person pays in whole units, and how much is left over?",
-          "visual": {"type": "pause", "question": "4 friends share a bill of 50. Use // and % to find each share and the amount left over.", "seconds": 6}
-        },
-        {
-          "narration": "Second: a is 5 and b is 8, and you want to swap them. Why does a equals b, followed by b equals a, not work? Predict the result, test it, then find a fix that uses a third variable.",
-          "visual": {"type": "pause", "question": "a = 5 and b = 8. Why does a = b, then b = a, fail to swap them?", "seconds": 6}
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "Reveal the six recap lines, then the badge.",
-      "beats": [
-        {
-          "narration": "Let's recap. A value is a piece of data, and every value has a type: int, float, string or bool. A variable is a name that refers to a value. The equals sign connects the name on the left to the value on the right.",
-          "visual": {"type": "bullets", "heading": "Recap", "reveal": 2, "items": ["Every value has a type: `int`, `float`, `str` or `bool`.", "A variable is a name for a value. `=` connects the name on the left to the value on the right.", "Python works out the right side first, so `points = points + 5` is valid.", "`/` always gives a `float`. `//` gives the whole part, and `%` gives the remainder.", "Brackets control the order. A `float` can be slightly inexact, and `round()` helps.", "Ask AI to predict, make your own prediction, and let the real run decide."]}
-        },
-        {
-          "narration": "Python works out the right side first. Single slash always gives a float. Double slash gives the whole part, and percent gives the remainder. Brackets control the order of operations.",
-          "visual": {"type": "bullets", "heading": "Recap", "reveal": 5, "items": ["Every value has a type: `int`, `float`, `str` or `bool`.", "A variable is a name for a value. `=` connects the name on the left to the value on the right.", "Python works out the right side first, so `points = points + 5` is valid.", "`/` always gives a `float`. `//` gives the whole part, and `%` gives the remainder.", "Brackets control the order. A `float` can be slightly inexact, and `round()` helps.", "Ask AI to predict, make your own prediction, and let the real run decide."]}
-        },
-        {
-          "narration": "And with AI: ask it to predict, make your own prediction, and let the real run decide.",
-          "visual": {"type": "bullets", "heading": "Recap", "items": ["Every value has a type: `int`, `float`, `str` or `bool`.", "A variable is a name for a value. `=` connects the name on the left to the value on the right.", "Python works out the right side first, so `points = points + 5` is valid.", "`/` always gives a `float`. `//` gives the whole part, and `%` gives the remainder.", "Brackets control the order. A `float` can be slightly inexact, and `round()` helps.", "Ask AI to predict, make your own prediction, and let the real run decide."]}
-        },
-        {
-          "narration": "You earned 100 XP and the Name Keeper badge.",
-          "visual": {"type": "title", "kicker": "QUEST COMPLETE", "title": "Name Keeper", "subtitle": "You earned 100 XP.", "badge": "Badge unlocked: Name Keeper"}
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "List the eight tasks by tier so learners know what to expect.",
-      "beats": [
-        {
-          "narration": "Now practise. There are eight tasks in the practice file. The three warm-up tasks are worth 10 XP each: store and print, name the type, and predict the operators.",
-          "visual": {"type": "table", "heading": "Practice: 8 tasks, 160 XP", "columns": ["Tier", "Tasks", "XP"], "rows": [["Warm-up", "Store and print; Name the type; Predict the operators", "10 each"], ["Apply", "Stationery shop total; Minutes to hours; Savings tracker", "20 each"], ["Stretch", "Split the bill with a tip; Fix the AI's temperature converter", "40 each"]]}
-        },
-        {
-          "narration": "The apply tasks are worth 20 XP each, and the two stretch tasks are worth 40 each. In the last task, you fix an AI's temperature converter. Try each task before you open the solution.",
-          "visual": {"type": "table", "heading": "Practice: 8 tasks, 160 XP", "columns": ["Tier", "Tasks", "XP"], "rows": [["Warm-up", "Store and print; Name the type; Predict the operators", "10 each"], ["Apply", "Stationery shop total; Minutes to hours; Savings tracker", "20 each"], ["Stretch", "Split the bill with a tip; Fix the AI's temperature converter", "40 each"]]}
-        }
-      ]
-    },
-    {
-      "id": "next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "End card. Hold for two seconds after the narration.",
-      "beats": [
-        {
-          "narration": "In Chapter 3, you will work with text. You will join strings and build clear messages from your variables with f-strings. Do the warm-up tasks now. They take about ten minutes. See you in Chapter 3.",
-          "hold": 2,
-          "visual": {"type": "end", "kicker": "NEXT: CHAPTER 3", "title": "Working with Text: Strings and f-strings", "subtitle": "Do the warm-up tasks now. They take about ten minutes.", "badge": "practice/practice.md"}
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_cafe_bill.py",
+      "heading": "Today's mission: a bill that updates itself",
+      "output": "examples/ex06_cafe_bill.expected"
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission. A cafe bill where every price is stored once, with a name.",
+       "highlight": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Python works out the totals, the discount and the amount to pay.",
+       "highlight": [
+        9,
+        10,
+        11,
+        12
+       ],
+       "out_highlight": [
+        4,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Change one number at the top, and the whole bill updates by itself.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": []
+      },
+      {
+       "say": "That is the mission. Let's build it, piece by piece.",
+       "highlight": []
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write variables with clear names and give them values with `=`.",
+       "Explain the types `int`, `float`, `str` and `bool`, and check one with `type()`.",
+       "Calculate with `+`, `-`, `*`, `/`, `//`, `%` and `**`.",
+       "Predict the output of a short program, then check it.",
+       "Fix the errors beginners meet most often with variables."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Here is the plan. Five goals, one mission.",
+       "reveal": 0
+      },
+      {
+       "say": "Write variables with clear names.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Know the four basic types, and check them with type.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Calculate with Python's operators.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Predict what a program prints, then check it.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And fix the errors that every beginner meets.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a variable through Asha's problem, then connect it to apps the learner uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **variable** is a name that refers to a value.",
+       "Store the price once, as `tea_price`, and use the name everywhere.",
+       "Change the value in one place, and every calculation follows.",
+       "A basket, a game score, a bank balance: each one is a named value."
+      ]
+     },
+     "segments": [
+      {
+       "say": "The fix is a variable. A variable is a name that refers to a value.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Asha stores the tea price once, under the name tea price, and uses that name everywhere.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Change the value in one place, and every calculation follows.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Every app you use works like this. Your basket, your game score, your bank balance. Each one is a value with a name.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: values, types and names",
+   "direction": "Teach types with the table, then assignment with the diagram, then the label analogy. Then a quiz on types, then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Every value has a type",
+      "label": "The idea",
+      "columns": [
+       "Type",
+       "Name",
+       "Examples",
+       "Use it for"
+      ],
+      "rows": [
+       [
+        "`int`",
+        "integer",
+        "`3`, `0`, `-12`",
+        "Counts, ages, scores"
+       ],
+       [
+        "`float`",
+        "floating-point number",
+        "`3.5`, `0.1`",
+        "Prices, distances"
+       ],
+       [
+        "`str`",
+        "string",
+        "`\"Tea\"`, `\"3\"`",
+        "Text, always in quotation marks"
+       ],
+       [
+        "`bool`",
+        "Boolean",
+        "`True`, `False`",
+        "Yes or no facts"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "First, values. A value is one piece of data, like 3, or 3.5, or the word tea. And every value has a type."
+      },
+      {
+       "say": "An int is a whole number. Use it for counts, like two cups.",
+       "focus_row": 0
+      },
+      {
+       "say": "A float has a decimal point. Use it for prices, like 3.5.",
+       "focus_row": 1
+      },
+      {
+       "say": "A string is text, and it always sits inside quotation marks. Even a digit becomes text when it is in quotation marks.",
+       "focus_row": 2
+      },
+      {
+       "say": "And a bool is a yes or no fact: True or False. Is Asha a member? True.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Assignment: name = value",
+      "label": "The idea",
+      "body": [
+       "Read `=` as **now refers to**, not as \"is equal to\"."
+      ],
+      "pre": "   name         value\n tea_price  =    3\n     ^           |\n     +-----------+\n  Python works out the right side first,\n  then connects the name on the left to it."
+     },
+     "segments": [
+      {
+       "say": "Now, names. Assignment connects a name to a value. The name goes on the left, then the equals sign, then the value.",
+       "focus": "pre"
+      },
+      {
+       "say": "Python works out the right side first. Then it connects the name on the left to that value."
+      },
+      {
+       "say": "So read the equals sign as: now refers to. Tea price now refers to 3."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A variable is like a name label",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "You stick a label on a value. You can move it to a new value at any time.",
+       "Where it stops working: two labels can point to the same value.",
+       "Moving one label does not move the other."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a variable as a name label. You stick it on a value, and you can move it to a new value whenever you like."
+      },
+      {
+       "say": "The comparison stops working at one point. Two labels can point to the same value.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And moving one label does not move the other.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "What is the type of the value `\"3\"`, with quotation marks?",
+      "options": [
+       "`int`",
+       "`float`",
+       "`str`",
+       "`bool`"
+      ],
+      "answer": 2,
+      "explain": "Quotation marks make text. `\"3\"` is a `str`, not a number."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Here is the digit 3, inside quotation marks. What is its type?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. A string. The quotation marks make it text. Keep this one in mind. It causes a sneaky bug later."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Every value has a type.",
+       "A variable is a name for a value.",
+       "Python works out the right side of `=` first."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far."
+      },
+      {
+       "say": "Next, Asha creates her first variables."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: First variables",
+   "direction": "The file types itself in. Teach the rule about quotation marks, then ask the prediction, then reveal. Then the naming rules.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_first_variables.py",
+      "heading": "Step 1: Asha's first variables",
+      "lines": 3,
+      "highlight": [
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. Asha creates two variables. Customer refers to the text Asha. Tea price refers to the number 3."
+      },
+      {
+       "say": "Line 4 prints customer. Look closely: there are no quotation marks around it.",
+       "lines": 4,
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Without quotation marks, Python treats a word as a name, and prints the value it refers to. And in Python, a star means times.",
+       "lines": 6,
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 4, 5 and 6 print?"
+     },
+     "after": [
+      {
+       "say": "Line 4 prints Asha, the value, not the word customer.",
+       "output": "examples/ex01_first_variables.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And line 6 multiplies the tea price by 2, so two teas cost 6.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Good names: four rules",
+      "label": "Naming rules",
+      "reveal": 0,
+      "items": [
+       "Style (PEP 8): lowercase words joined by underscores, `tea_price`, not `TeaPrice` or `tp`.",
+       "Letters, digits and underscores, but **never a digit first**.",
+       "Capitals matter: `price` and `Price` are two different names.",
+       "Do not use Python's own words, such as `True`, `None` or `class`."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Good names make code easy to read. Python has rules for names, and its style guide, called pep eight, adds one more."
+      },
+      {
+       "say": "One, from the style guide. Lowercase words, joined with underscores. Tea price, not a short code like t p.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Two, a rule of Python itself. Letters, digits and underscores are fine, but a name can never start with a digit.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Three. Capital letters matter. Price with a small p and Price with a capital P are two different names.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Four. Do not use the words Python keeps for itself, like True, None or class.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Check a type",
+   "direction": "Show the four values, teach how Python picks a type, ask, then reveal the type() output.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_types.py",
+      "heading": "Step 2: Ask Python for the type",
+      "highlight": [
+       2,
+       3,
+       4,
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 2. The type function tells you the type of any value. Asha stores four values from her cafe."
+      },
+      {
+       "say": "Python picks each type from the way you wrote the value. A decimal point makes a float. Quotation marks make a string."
+      },
+      {
+       "say": "Lines 6 to 9 print each value, followed by its type.",
+       "highlight": [
+        6,
+        7,
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which type will Python report for `price` on line 7?"
+     },
+     "after": [
+      {
+       "say": "Float, because 3.5 has a decimal point.",
+       "output": "examples/ex02_types.expected",
+       "highlight": [
+        3,
+        7
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And True is a bool. It needs a capital T, or Python will not recognise it.",
+       "highlight": [
+        5,
+        9
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Operators",
+   "direction": "Teach what the surprising operators mean first, in general terms. Then the biscuits program, the prediction, and the reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Step 3: Operators that surprise beginners",
+      "label": "Build it",
+      "columns": [
+       "Operator",
+       "Name",
+       "What it gives"
+      ],
+      "rows": [
+       [
+        "`/`",
+        "division",
+        "The full answer, with decimals. Always a `float`."
+       ],
+       [
+        "`//`",
+        "floor division",
+        "Only the whole part of the answer."
+       ],
+       [
+        "`%`",
+        "remainder",
+        "What is left over after sharing."
+       ],
+       [
+        "`**`",
+        "power",
+        "`5 ** 2` is 5 times 5."
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 3. An operator is a symbol that calculates. Plus, minus and times work as you expect. Four others need a closer look."
+      },
+      {
+       "say": "A single slash divides, and gives the full answer, with decimals. The result is always a float.",
+       "focus_row": 0
+      },
+      {
+       "say": "A double slash is floor division. It keeps only the whole part of the answer.",
+       "focus_row": 1
+      },
+      {
+       "say": "The percent sign gives the remainder: what is left over after sharing.",
+       "focus_row": 2
+      },
+      {
+       "say": "And two stars raise a number to a power.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_arithmetic.py",
+      "heading": "Step 3: 17 biscuits, 5 friends",
+      "highlight": [
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha shares 17 biscuits between 5 friends. Add, subtract and multiply are straightforward.",
+       "highlight": [
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Now use what you learned about the other operators.",
+       "highlight": [
+        7,
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Predict lines 7, 8 and 9: divide, floor divide and remainder."
+     },
+     "after": [
+      {
+       "say": "Divide gives 3.4, the full answer, as a float.",
+       "output": "examples/ex03_arithmetic.expected",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Floor divide gives 3. Each friend gets three whole biscuits.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "And the remainder is 2. Two biscuits are left over, probably for Asha.",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        6
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Change a variable",
+   "direction": "Teach the right-side-first rule on line 4, then let the learner apply it to line 6.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_reassign.py",
+      "heading": "Step 4: A variable can change",
+      "lines": 3,
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 4. Asha runs a loyalty game. Points starts at 10."
+      },
+      {
+       "say": "Line 4 looks impossible in maths: points equals points plus 5. But remember the rule. Python works out the right side first.",
+       "lines": 5,
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "So it takes the current value, 10, adds 5, and moves the name to 15.",
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Now line 6 doubles it, using the same rule.",
+       "lines": 7,
+       "highlight": [
+        6,
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 7 print?"
+     },
+     "after": [
+      {
+       "say": "After the bonus, 30. Fifteen, times 2.",
+       "output": "examples/ex04_reassign.expected",
+       "highlight": [
+        6,
+        7
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: Order of operations",
+   "direction": "Teach the order rule, then predict two lines, then the float surprise and round(). Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Step 5: Which part goes first?",
+      "label": "Order of operations",
+      "reveal": 0,
+      "items": [
+       "First: `**`",
+       "Then: `*`, `/`, `//` and `%`",
+       "Last: `+` and `-`",
+       "Brackets go before everything."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 5. When a line has several operators, Python follows the same order as maths."
+      },
+      {
+       "say": "Powers first.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Then times, and every kind of division.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Plus and minus come last.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "And brackets beat everything. Whatever is inside them is calculated first.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_order.py",
+      "heading": "Step 5: Predict the order",
+      "highlight": [
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "Lines 2 and 3 use the same numbers. Only the brackets are different."
+      }
+     ],
+     "ask": {
+      "question": "What do lines 2 and 3 print?"
+     },
+     "after": [
+      {
+       "say": "Line 2 multiplies first: 3 times 4 is 12, plus 2 is 14.",
+       "output": "examples/ex05_order.expected",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 3 adds first, because of the brackets. 5 times 4 is 20.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 4 divides first, so you get 8.0. A float, because a single slash always gives one.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Now line 5. Point 1, three times, should be point 3. But look! Computers store decimals in binary, so some values carry a tiny error.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "The round function gives you a rounded number. Here, to two decimal places.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "What does `(2 + 4) * 3` give?",
+      "options": [
+       "14",
+       "18",
+       "24",
+       "9"
+      ],
+      "answer": 1,
+      "explain": "Brackets first: 2 + 4 is 6, and 6 * 3 is 18."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Two plus four, in brackets, times three. What does it give?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B, 18. The brackets go first: 6, times 3."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`/` gives a `float`; `//` keeps the whole part; `%` gives the rest.",
+       "The right side of `=` runs first.",
+       "Brackets control the order."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Roll your shoulders. You now have every piece of the mission."
+      },
+      {
+       "say": "Let's put them together into Asha's cafe bill."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the self-updating bill",
+   "direction": "Return to the mission. Walk the three groups of lines, reveal, then ask the change question. Hand over to the AI story.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_cafe_bill.py",
+      "heading": "Mission complete: the cafe bill",
+      "highlight": [
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ]
+     },
+     "segments": [
+      {
+       "say": "Back to the mission, with the new prices: tea is 3.5, and a sandwich is 6. Lines 2 to 7 store every price and fact once."
+      },
+      {
+       "say": "Lines 9 to 12 calculate. Each line uses the names above it: the tea total, the bill, a 10 percent member discount, and the amount to pay.",
+       "highlight": [
+        9,
+        10,
+        11,
+        12
+       ]
+      },
+      {
+       "say": "Lines 14 to 20 print the bill. Asha runs it.",
+       "highlight": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+       ],
+       "output": "examples/ex06_cafe_bill.expected"
+      },
+      {
+       "say": "Notice the tea total is 7.0, a float, because the tea price was a float.",
+       "highlight": [
+        9,
+        15
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Asha changes `tea_price` to 4.5. Which output lines change?"
+     },
+     "after": [
+      {
+       "say": "Four lines change: the teas line, the bill, the discount and the amount to pay. Every line that depends on the tea price.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        2,
+        4,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "And she changed only one number. Mission complete!",
+       "highlight": [],
+       "out_highlight": []
+      },
+      {
+       "say": "Then the cafe owner has a new question. What is the average bill of three tables? Asha decides to build it with an AI assistant, one stage at a time."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one average",
+   "direction": "Safety first. Then one conversation per stage, all about the average bill. Stage 3 plants the mistake, stage 4 catches it, stage 6 catches a second one.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: prediction",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Write your own prediction. Ask the AI for its prediction. Then run the code.",
+       "The real output is the only answer that counts.",
+       "Never paste passwords, keys or private data. You are responsible for the code you use."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is prediction."
+      },
+      {
+       "say": "Write your own prediction, ask the AI for its prediction, then run the code.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "The real output is the only answer that counts.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And the safety habits from Chapter 1 still apply. No passwords, no private data, and you are responsible for the code.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan the variables first",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner learning Python variables. I want the average bill of three cafe tables: 18, 24 and 30. Do not write code yet. List the variables I need, with a snake_case name and a type for each."
+       },
+       {
+        "role": "ai",
+        "text": "1. `bill_1`, `bill_2` and `bill_3`: type `int`, values 18, 24 and 30.\n2. `average`: the sum of the three bills divided by 3. Its type is `float`, because `/` always gives a `float`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha describes the average in words, and asks for the variables she needs. No code yet."
+      },
+      {
+       "say": "The AI lists three bills as ints, and an average as a float. That matches the rule you learned: a single slash always gives a float.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then check",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote the first lines myself. Do not change them. Do my names follow PEP 8, and what type is each value?",
+        "code": "examples/ai_average_fixed.py",
+        "code_lines": [
+         2,
+         3,
+         4
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Yes. All three names are lowercase words joined by underscores.\nEach value is an `int`, because it is a whole number with no decimal point."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes the first three lines herself, one bill per table. She asks the AI to check her names and the types, without changing anything."
+      },
+      {
+       "say": "The AI agrees. The names follow the style rule, and each bill is an int, a whole number. Asha predicted the same.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: ask for the exact output",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Now complete my program. Keep my three bill lines, add a line that finds the average of the bills with the name average, and print it. Tell me exactly what it prints."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the program. It prints `Average bill: 24.0`.",
+        "code": "examples/ai_average_flawed.py"
+       },
+       {
+        "role": "you",
+        "text": "I ran it. This is what it printed:",
+        "output": "examples/ai_average_flawed.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks the AI to complete her program with the average, and to say exactly what it prints."
+      },
+      {
+       "say": "The AI writes the program, and says it prints 24.0. It sounds sure.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Look at line 5. You learned which part Python calculates first."
+      }
+     ],
+     "ask": {
+      "question": "The AI says this prints `Average bill: 24.0`. Is it right?"
+     },
+     "after": [
+      {
+       "say": "Asha runs it. 52.0! The AI was wrong, and it sounded completely sure.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: is the result even possible?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "You predicted 24.0, but it printed 52.0. An average must lie between the smallest and the largest bill, and the largest is 30. What is wrong?"
+       },
+       {
+        "role": "ai",
+        "text": "Python divides before it adds, so only `bill_3` was divided by 3. Put brackets around the sum:",
+        "code": "examples/ai_average_fixed.py",
+        "code_lines": [
+         5
+        ]
+       },
+       {
+        "role": "you",
+        "text": "I ran the fixed program:",
+        "output": "examples/ai_average_fixed.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Here is a quick sense check for any average. It must lie between the smallest and the largest value. The largest bill is 30, so 52 is impossible."
+      },
+      {
+       "say": "She tells the AI what it predicted and what really happened. Now it names the cause: Python divided before it added. Brackets fix the order.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Asha runs the fixed version. 24.0. Now the prediction and the real run agree.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I typed the program again in my own file and got this error. First explain what it means and which line causes it. Then show the smallest fix.",
+        "code": "examples/ai_bills_typo.py",
+        "code_lines": [
+         5,
+         6
+        ],
+        "file": "examples/ai_bills_typo.py",
+        "error": "examples/ai_bills_typo.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "It is a `NameError` on line 6. You created `average`, but line 6 uses `averge`, with a missing letter. Python only knows the names you created.\nThe fix: change `averge` to `average`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha types the program into her own file, and Python stops with a Name Error. She pastes the code and the full error."
+      },
+      {
+       "say": "She asks for the cause first. The AI points to line 6: averge, with a missing letter. Python only knows the names you created.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: test every suggestion",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Review my names. Suggest at most two improvements, each with one reason. Do not change what the program prints.",
+        "code": "examples/ai_average_fixed.py"
+       },
+       {
+        "role": "ai",
+        "text": "1. Rename `average` to `average_bill`, so a reader knows what it is the average of.\n2. Use `//` instead of `/`. Bills are whole numbers, so the average will be cleaner."
+       },
+       {
+        "role": "you",
+        "text": "Suggestion 2 would change the output. I tested it with a bill of 31 instead of 30:",
+        "code": "examples/ai_floor_check.py",
+        "code_lines": [
+         5,
+         6
+        ],
+        "output": "examples/ai_floor_check.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. The program works. Asha asks for at most two improvements to her names."
+      },
+      {
+       "say": "Suggestion 1 is good. Average bill tells a reader what the average is about. Suggestion 2 says: use a double slash, for a cleaner number.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "But a double slash keeps only the whole part. Asha tests it with new bills. The double slash drops the point 3 3 3. The AI was wrong again.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_average_final.py",
+      "heading": "The finished average",
+      "highlight": [
+       5
+      ],
+      "output": "examples/ai_average_final.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "So Asha keeps suggestion 1 only. Here is the result: a clear name, brackets around the sum, and a single slash."
+      },
+      {
+       "say": "The AI helped at every stage. And at every stage, Asha checked its answer herself. Two mistakes caught!"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "You and an AI predict different outputs. What decides who is right?",
+      "options": [
+       "The AI, because it knows Python",
+       "Your prediction",
+       "The real output when you run the code",
+       "The longer answer"
+      ],
+      "answer": 2,
+      "explain": "Run the code. The real output is the only answer that counts."
+     },
+     "segments": [
+      {
+       "say": "Quick check. You and an AI predict different outputs. What decides who is right?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. The real run. Always."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "An average must lie between the smallest and largest value.",
+       "Test every AI suggestion before you accept it."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You watched Asha use AI at all six stages, and catch two mistakes with what you learned today."
+      },
+      {
+       "say": "Next, the four mistakes every beginner makes with variables. You have already met the first one."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 calls back to the debug stage. Mistake 2 pays off the quiz about quotation marks. Mistakes 3 and 4 are spot-it questions on rules taught earlier.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_name_typo.py",
+      "heading": "Mistake 1: a typing error in a name",
+      "highlight": [
+       4
+      ],
+      "error": "examples/err01_name_typo.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1 is the one Asha debugged. A name with a typing error. Line 3 printed fine.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 4 spells it with an s, so Python stops with a Name Error. It even suggests the right name.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "You also get this error if you use a name before the line that creates it.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_text_number.py",
+      "heading": "Mistake 2: a number stored as text",
+      "highlight": [
+       2,
+       3
+      ],
+      "error": "examples/err02_text_number.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. Remember the quick check? A digit in quotation marks is a string, not a number.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Concatenate means join. Python can only join text to text, so it stops with a Type Error.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: remove the quotation marks.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_text_times.py",
+      "heading": "Mistake 2, the silent version",
+      "highlight": [
+       2,
+       3
+      ],
+      "output": "examples/ex07_text_times.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "Sometimes this mistake gives no error at all, which is worse. Multiplying a string by 2 repeats the text. So you get 33, not 6."
+      },
+      {
+       "say": "Without quotation marks, you get 6. If a result looks strange, check its type.",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_digit_first.py",
+      "heading": "Mistake 3: your turn to spot it",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Find the mistake before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Remember the four naming rules from step 1."
+      }
+     ],
+     "ask": {
+      "question": "What is wrong with the name on line 2?"
+     },
+     "after": [
+      {
+       "say": "It starts with a digit. Python reads the 2 as the start of a number, and gets confused by the letters after it.",
+       "error": "examples/err03_digit_first.expected_error",
+       "heading": "Mistake 3: a name that starts with a digit",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: start with a letter, like second place.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_reversed.py",
+      "heading": "Mistake 4: spot this one too",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Find the mistake before the error appears."
+     },
+     "segments": [
+      {
+       "say": "One more. Think about the assignment diagram from the idea section."
+      }
+     ],
+     "ask": {
+      "question": "What is wrong with line 2?"
+     },
+     "after": [
+      {
+       "say": "The name and the value are on the wrong sides. The name always goes on the left.",
+       "error": "examples/err04_reversed.expected_error",
+       "heading": "Mistake 4: name and value swapped",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Ten is a literal: a value written straight into the code. A literal cannot be given a new value.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Read the last line first",
+      "label": "Common mistakes",
+      "columns": [
+       "Error",
+       "Usual cause",
+       "Fix"
+      ],
+      "rows": [
+       [
+        "`NameError: name ... is not defined`",
+        "A typing error in a name",
+        "Spell it as you created it"
+       ],
+       [
+        "`TypeError: can only concatenate str ...`",
+        "A number stored as text",
+        "Remove the quotation marks"
+       ],
+       [
+        "`SyntaxError: invalid decimal literal`",
+        "A name starts with a digit",
+        "Start with a letter"
+       ],
+       [
+        "`SyntaxError: cannot assign to literal`",
+        "Value on the left of `=`",
+        "Put the name on the left"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here are all four, by the last line of the error."
+      },
+      {
+       "say": "Not defined: a typing error in a name.",
+       "focus_row": 0
+      },
+      {
+       "say": "Can only concatenate: a number stored as text.",
+       "focus_row": 1
+      },
+      {
+       "say": "Invalid decimal literal: a name that starts with a digit.",
+       "focus_row": 2
+      },
+      {
+       "say": "Cannot assign to literal: the name is on the wrong side.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which of these is a valid variable name?",
+      "options": [
+       "`2nd_place`",
+       "`second_place`",
+       "`second place`",
+       "`class`"
+      ],
+      "answer": 1,
+      "explain": "It starts with a letter, uses an underscore instead of a space, and is not one of Python's own words."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which of these is a valid variable name?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. Second place, with an underscore. No digit first, no space, and not one of Python's own words."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Spell names exactly as you created them.",
+       "Quotation marks make text.",
+       "The name goes on the left."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. These four errors will not scare you any more."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Four friends share a bill of 50. How do `//` and `%` tell you what each pays, and what is left over?",
+      "hint": "floor division shares; the remainder is what is left."
+     },
+     "segments": [
+      {
+       "say": "First. Four friends share a bill of 50. How could floor division and the remainder tell you what each person pays, and what is left over?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Write it and run it after the video."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "`a = 5` and `b = 8`. Why does `a = b`, then `b = a`, fail to swap them?",
+      "hint": "remember the labels: what does `a` refer to after the first line?"
+     },
+     "segments": [
+      {
+       "say": "Second. A is 5 and b is 8. You write: a equals b, then b equals a. Why are they not swapped?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Predict it, test it, then find a fix that uses a third variable."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A value is a piece of data, and every value has a type.",
+       "A variable is a name for a value. `=` connects the name on the left to the value on the right.",
+       "Python works out the right side first, so `points = points + 5` is valid.",
+       "`/` always gives a `float`. `//` keeps the whole part; `%` gives the remainder.",
+       "Brackets control the order. `round()` tidies an inexact `float`.",
+       "Predict, ask the AI to predict, and let the real run decide."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap."
+      },
+      {
+       "say": "A value is a piece of data, and every value has a type.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "A variable is a name for a value. The name goes on the left.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Python works out the right side first, so a variable can use its own old value.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "A single slash gives a float. A double slash keeps the whole part, and the percent sign gives the remainder.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Brackets control the order, and round tidies an inexact float.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And with AI: predict, ask, and let the real run decide.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`tea_price = 3.5` and `tea_count = 2`. What type is `tea_price * tea_count`?",
+      "options": [
+       "`int`",
+       "`float`",
+       "`str`",
+       "`bool`"
+      ],
+      "answer": 1,
+      "explain": "One part is a `float`, so the result is a `float`: `7.0`."
+     },
+     "segments": [
+      {
+       "say": "One last check. Tea price is 3.5, and tea count is 2. What type is the tea price times the tea count?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. A float. One part was a float, so the result is 7.0, exactly like Asha's bill."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Name Keeper",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Name Keeper",
+      "tile": 2
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Name Keeper badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Store and print; Name the type; Predict the operators",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Stationery shop total; Minutes to hours; Savings tracker",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Split the bill with a tip; Fix the AI's temperature converter",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including a savings tracker.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, you fix an AI's temperature converter, like Asha fixed the average.",
+       "focus_row": 2
+      },
+      {
+       "say": "Predict first, then run. Try each task before you open the solution.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease f-strings as the fix for the bill's awkward spacing. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 3",
+      "title": "Working with Text: Strings and f-strings",
+      "subtitle": "Build clear messages with f-strings.",
+      "badge": "",
+      "tile": 3
+     },
+     "segments": [
+      {
+       "say": "Look at Asha's bill once more. Teas, 2, x, 3.5, equals 7.0. All those separate pieces and spaces look a little clumsy."
+      },
+      {
+       "say": "In Chapter 3, you will join text and build clear messages from your variables, with f-strings."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 3."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }
