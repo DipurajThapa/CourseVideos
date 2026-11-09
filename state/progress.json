@@ -17,7 +17,7 @@
     "python-01": {
       "language": "python",
       "number": 1,
-      "status": "in_review",
+      "status": "in_progress",
       "runs": [
         {
           "run_id": "2026-11-09-a25750",
@@ -39,12 +39,17 @@
           "from_status": "changes_requested",
           "ended": "2026-11-09T11:50:44+00:00",
           "result": "in_review"
+        },
+        {
+          "run_id": "2026-11-09-8cd4cb",
+          "started": "2026-11-09T14:40:46+00:00",
+          "from_status": "changes_requested"
         }
       ],
-      "current_run_id": "2026-11-09-f70a58",
+      "current_run_id": "2026-11-09-8cd4cb",
       "path": "chapters/python/01-first-program",
       "completed": "2026-11-09T11:50:44+00:00",
-      "notes": "Owner request (2026-11-09): redesign the video to be interactive: breathers, questions kept on screen with a 10-second digital timer, and highlights that follow the narration."
+      "notes": "Owner request (2026-11-09): redesign the video screens in a professional, calm 'Soft Studio' style (pastel gradient, frosted cards, bold capital headings, varied deck layouts) and re-render Chapter 1."
     },
     "python-02": {
       "language": "python",
@@ -228,5 +233,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T11:50:44+00:00"
+  "updated": "2026-11-09T14:40:46+00:00"
 }
