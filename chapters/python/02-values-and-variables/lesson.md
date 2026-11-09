@@ -176,7 +176,7 @@ print(round(0.1 + 0.1 + 0.1, 2))
 0.3
 ```
 
-Line 2 multiplies first, so the result is 14. Line 3 adds first because of the brackets. Line 5 shows that a `float` is not always exact. Computers store decimal numbers in binary, so some values, such as 0.1, are stored with a tiny error. The `round()` function rounds a number to the number of decimal places you give it.
+Line 2 multiplies first, so the result is 14. Line 3 adds first because of the brackets. Line 4 divides first, and the result is a `float` because `/` always gives one. Line 5 shows that a `float` is not always exact. Computers store decimal numbers in binary, so some values, such as 0.1, are stored with a tiny error. The `round()` function rounds a number to the number of decimal places you give it.
 
 ## See the outcome
 
