@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-05 Boss Level 1 "The Bill Splitter" ready for review: whole-cent splitting with // and %, four hand-checked tests, six AI stages with two AI mistakes caught by tests (15:27). Module 1 complete.
 - python-04 "Talking Back: Input and Type Conversion" ready for review (17:20 video; change calculator with six AI stages). Verifier now echoes typed answers for Python examples with .stdin files.
 - python-03 "Working with Text: Strings and f-strings" ready for review (18:18 video; critic 8.5/10, all fixes applied).
 - python-02 video rebuilt with the code-quest-video skill: cafe-bill story, six AI stages on the average bill, Lewis voice (18:25). Every future episode now follows the skill (RUNBOOK, CLAUDE.md, daily task).
