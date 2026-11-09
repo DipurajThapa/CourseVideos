@@ -1,0 +1,1333 @@
+1
+00:00:00,250 --> 00:00:01,397
+One wrong answer.
+
+2
+00:00:01,417 --> 00:00:04,625
+The program prints a message, and then it
+ends.
+
+3
+00:00:04,645 --> 00:00:06,822
+The customer has to start again.
+
+4
+00:00:07,420 --> 00:00:09,596
+Welcome back to Code Quest.
+
+5
+00:00:09,616 --> 00:00:11,060
+This is Chapter 7.
+
+6
+00:00:11,100 --> 00:00:13,391
+Today your programs learn to repeat.
+
+7
+00:00:13,411 --> 00:00:15,830
+They keep going until the job is done.
+
+8
+00:00:15,867 --> 00:00:19,123
+And an AI assistant will promise three
+tries.
+
+9
+00:00:19,143 --> 00:00:21,453
+Its loop will ask a fourth time.
+
+10
+00:00:22,053 --> 00:00:26,407
+And a real cafe takes items until the
+customer says: that is all.
+
+11
+00:00:26,427 --> 00:00:28,224
+So here is today's mission.
+
+12
+00:00:28,244 --> 00:00:31,723
+Asha's order loop asks for an item, again
+and again.
+
+13
+00:00:31,767 --> 00:00:35,557
+Coffee is not on the menu, so it says
+sorry, and asks again.
+
+14
+00:00:35,600 --> 00:00:40,591
+When the customer types done, the loop
+stops, and the program prints the items
+
+15
+00:00:40,611 --> 00:00:41,490
+and the total.
+
+16
+00:00:41,533 --> 00:00:43,507
+One loop, any number of items.
+
+17
+00:00:43,527 --> 00:00:44,503
+Let's build it.
+
+18
+00:00:45,083 --> 00:00:48,373
+Write a while loop that repeats while a
+condition is True.
+
+19
+00:00:48,400 --> 00:00:51,130
+Use a counter and a running total.
+
+20
+00:00:51,167 --> 00:00:54,397
+Ask a question again until the answer is
+valid.
+
+21
+00:00:54,433 --> 00:00:57,403
+Stop a loop with a stop value, or with
+break.
+
+22
+00:00:57,433 --> 00:01:02,030
+And trace a loop in a table, to see why it
+ends, or why it never does.
+
+23
+00:01:02,617 --> 00:01:04,245
+Real programs repeat.
+
+24
+00:01:04,265 --> 00:01:07,306
+A cash machine asks for your PIN again.
+
+25
+00:01:07,326 --> 00:01:11,858
+A shop's till scans items until the
+cashier presses Total.
+
+26
+00:01:11,878 --> 00:01:13,977
+A game runs until you quit.
+
+27
+00:01:14,000 --> 00:01:19,143
+Each of these is a loop: a block of code
+that runs again and again, until a
+
+28
+00:01:19,163 --> 00:01:20,520
+condition says stop.
+
+29
+00:01:21,117 --> 00:01:24,673
+A while loop checks a condition, the same
+way as if.
+
+30
+00:01:24,693 --> 00:01:27,837
+If it is True, Python runs the indented
+block.
+
+31
+00:01:27,867 --> 00:01:33,060
+But then, unlike if, Python goes back to
+the top and checks the condition again.
+
+32
+00:01:33,080 --> 00:01:35,537
+One run of the block is called a pass.
+
+33
+00:01:35,567 --> 00:01:40,772
+When the condition is False, Python skips
+the block, and continues after the loop.
+
+34
+00:01:41,387 --> 00:01:43,479
+Here is the one rule of every loop.
+
+35
+00:01:43,499 --> 00:01:48,007
+Something inside the block must change the
+value that the condition checks.
+
+36
+00:01:48,033 --> 00:01:53,253
+If nothing changes, the condition stays
+True forever, and the loop never ends.
+
+37
+00:01:53,300 --> 00:01:57,017
+Think of a waiter who asks every table:
+anything else?
+
+38
+00:01:57,037 --> 00:02:02,692
+Unlike a real waiter, Python never gets
+tired, and never notices that something is
+
+39
+00:02:02,712 --> 00:02:03,107
+wrong.
+
+40
+00:02:03,720 --> 00:02:04,425
+Quick check.
+
+41
+00:02:04,445 --> 00:02:08,415
+What must a line inside a while loop do,
+so that the loop can end?
+
+42
+00:02:19,780 --> 00:02:19,897
+C.
+
+43
+00:02:19,917 --> 00:02:22,695
+Change a value that the condition checks.
+
+44
+00:02:22,715 --> 00:02:26,245
+That is the only way the condition can
+become False.
+
+45
+00:02:26,853 --> 00:02:27,950
+Take a breather.
+
+46
+00:02:27,970 --> 00:02:29,973
+Here is what you know so far.
+
+47
+00:02:30,000 --> 00:02:33,965
+Next, Asha serves her first tables, one
+pass at a time.
+
+48
+00:02:38,717 --> 00:02:39,223
+Step 1.
+
+49
+00:02:39,243 --> 00:02:41,179
+Asha serves tables 1 to 3.
+
+50
+00:02:41,199 --> 00:02:44,941
+Line 2 creates a counter, table, and sets
+it to 1.
+
+51
+00:02:44,961 --> 00:02:48,477
+A counter is a variable that counts the
+passes.
+
+52
+00:02:48,500 --> 00:02:52,850
+Line 3 is the loop: while table is less
+than or equal to 3.
+
+53
+00:02:52,900 --> 00:02:55,068
+Line 4 prints the table number.
+
+54
+00:02:55,088 --> 00:02:57,115
+Line 5 adds 1 to the counter.
+
+55
+00:02:57,135 --> 00:03:01,420
+That is the line that changes the value
+the condition checks.
+
+56
+00:03:01,467 --> 00:03:05,142
+Line 6 is not indented, so it is outside
+the loop.
+
+57
+00:03:16,513 --> 00:03:19,353
+Three times: tables 1, 2 and 3.
+
+58
+00:03:19,400 --> 00:03:21,892
+After the third pass, table is 4.
+
+59
+00:03:21,912 --> 00:03:27,600
+4 is not less than or equal to 3, so the
+loop ends, and line 6 prints once.
+
+60
+00:03:28,183 --> 00:03:28,657
+Step 2.
+
+61
+00:03:28,677 --> 00:03:31,335
+This fixes the problem from Chapter 6.
+
+62
+00:03:31,355 --> 00:03:36,903
+Line 2 asks once, before the loop, so
+people has a value when line 3 checks it.
+
+63
+00:03:36,933 --> 00:03:40,177
+Line 3: while people is less than 1.
+
+64
+00:03:40,197 --> 00:03:42,443
+Line 4 explains the rule.
+
+65
+00:03:42,467 --> 00:03:45,044
+And line 5 asks again, inside the loop.
+
+66
+00:03:45,064 --> 00:03:48,508
+That new answer is the change that can end
+the loop.
+
+67
+00:03:59,880 --> 00:04:00,342
+Twice.
+
+68
+00:04:00,362 --> 00:04:02,993
+Once for 0, and once for minus 2.
+
+69
+00:04:03,013 --> 00:04:04,680
+Both are less than 1.
+
+70
+00:04:04,700 --> 00:04:07,112
+Then 4 makes the condition False.
+
+71
+00:04:07,132 --> 00:04:10,207
+The loop ends, and line 6 shows the table.
+
+72
+00:04:10,783 --> 00:04:11,346
+Step 3.
+
+73
+00:04:11,366 --> 00:04:13,011
+Asha adds up prices.
+
+74
+00:04:13,031 --> 00:04:19,005
+Line 2 starts a running total at 0: a
+variable that grows on every pass.
+
+75
+00:04:19,025 --> 00:04:21,003
+Line 3 starts a counter.
+
+76
+00:04:21,033 --> 00:04:24,629
+Line 4 asks for the first price, before
+the loop.
+
+77
+00:04:24,649 --> 00:04:26,621
+The user types 0 to finish.
+
+78
+00:04:26,641 --> 00:04:30,089
+A value that means stop is called a stop
+value.
+
+79
+00:04:30,109 --> 00:04:32,893
+Line 5 loops while the price is not 0.
+
+80
+00:04:32,933 --> 00:04:35,526
+Line 6 says total plus equals price.
+
+81
+00:04:35,546 --> 00:04:39,082
+That is short for: total equals total plus
+price.
+
+82
+00:04:39,102 --> 00:04:42,058
+Line 7 adds 1 to the count, the same way.
+
+83
+00:04:42,078 --> 00:04:45,323
+And minus equals takes away, in the same
+way.
+
+84
+00:04:45,367 --> 00:04:50,768
+And line 8 asks for the next price, as the
+last line of the pass.
+
+85
+00:05:02,147 --> 00:05:05,767
+Three items, and a total of 9.75.
+
+86
+00:05:05,800 --> 00:05:08,123
+The stop value is not added.
+
+87
+00:05:08,143 --> 00:05:12,390
+Line 5 checks the 0 first, so line 6 never
+adds it.
+
+88
+00:05:12,983 --> 00:05:13,458
+Step 4.
+
+89
+00:05:13,478 --> 00:05:15,083
+Line 2 says while True.
+
+90
+00:05:15,103 --> 00:05:18,333
+That condition never becomes False on its
+own.
+
+91
+00:05:18,367 --> 00:05:24,397
+Line 3 asks for an item, and cleans it
+with strip and lower, as in Chapter 6.
+
+92
+00:05:24,433 --> 00:05:27,461
+Lines 4 and 5: if the item is done, break.
+
+93
+00:05:27,481 --> 00:05:32,033
+Break ends the loop immediately, and
+Python continues after it.
+
+94
+00:05:43,413 --> 00:05:43,602
+No.
+
+95
+00:05:43,622 --> 00:05:49,163
+Strip and lower turn Done into done, so
+break runs first, and line 6 is skipped.
+
+96
+00:05:49,200 --> 00:05:52,966
+Then line 7 runs after the loop: order
+closed.
+
+97
+00:05:53,587 --> 00:05:54,463
+Quick check.
+
+98
+00:05:54,483 --> 00:05:55,732
+Cups starts at 1.
+
+99
+00:05:55,752 --> 00:05:59,092
+While cups is less than 5, cups goes up by
+2.
+
+100
+00:05:59,112 --> 00:06:01,183
+What is cups after the loop?
+
+101
+00:06:12,547 --> 00:06:12,720
+A.
+
+102
+00:06:12,740 --> 00:06:12,914
+5.
+
+103
+00:06:12,934 --> 00:06:14,851
+1 becomes 3, then 5.
+
+104
+00:06:14,871 --> 00:06:18,628
+5 is not less than 5, so the loop ends.
+
+105
+00:06:19,220 --> 00:06:19,800
+Breather.
+
+106
+00:06:19,820 --> 00:06:22,000
+Sit back, and take a slow breath.
+
+107
+00:06:22,033 --> 00:06:26,658
+Next, a tool that shows exactly what a
+loop does: the trace table.
+
+108
+00:06:31,383 --> 00:06:31,935
+Step 5.
+
+109
+00:06:31,955 --> 00:06:33,322
+Cups starts at 1.
+
+110
+00:06:33,342 --> 00:06:38,873
+While cups is less than 20, line 4 doubles
+it, and line 5 prints it.
+
+111
+00:06:38,900 --> 00:06:43,941
+A trace table writes down the value of
+each variable on every pass.
+
+112
+00:06:43,961 --> 00:06:45,301
+Let's fill one in.
+
+113
+00:06:45,920 --> 00:06:46,506
+Pass 1.
+
+114
+00:06:46,526 --> 00:06:47,371
+Cups is 1.
+
+115
+00:06:47,391 --> 00:06:50,660
+1 is less than 20, so it doubles to 2.
+
+116
+00:06:50,700 --> 00:06:52,905
+Pass 2: 2 becomes 4.
+
+117
+00:06:52,925 --> 00:06:55,130
+Pass 3: 4 becomes 8.
+
+118
+00:06:55,167 --> 00:06:56,247
+Pass 4: 8 becomes 16.
+
+119
+00:06:56,267 --> 00:06:58,854
+Now cups is 16 at the check.
+
+120
+00:06:58,874 --> 00:07:02,021
+Fill in the next row in your head.
+
+121
+00:07:13,380 --> 00:07:13,608
+32.
+
+122
+00:07:13,628 --> 00:07:19,730
+16 is still less than 20, so pass 5 runs
+completely, and doubles it to 32.
+
+123
+00:07:19,767 --> 00:07:22,590
+Only then does the check find False.
+
+124
+00:07:22,610 --> 00:07:27,091
+Python checks the condition only at the
+top of each pass.
+
+125
+00:07:27,687 --> 00:07:34,792
+And the real run agrees with the table: 2,
+4, 8, 16, 32, then stopped at 32.
+
+126
+00:07:35,383 --> 00:07:36,827
+Back to the mission.
+
+127
+00:07:36,847 --> 00:07:40,853
+Lines 2 and 3 start a running total and a
+counter at 0.
+
+128
+00:07:40,900 --> 00:07:43,936
+Line 4 starts the loop with while True.
+
+129
+00:07:43,956 --> 00:07:48,480
+Lines 5 to 7 ask for an item, clean it,
+and break on done.
+
+130
+00:07:48,500 --> 00:07:51,861
+Lines 8 to 13 are the decisions from
+Chapter 6.
+
+131
+00:07:51,881 --> 00:07:55,890
+Tea adds 3.5, cake adds 4, and each adds 1
+to the count.
+
+132
+00:07:55,933 --> 00:07:58,900
+Lines 14 and 15 catch anything else.
+
+133
+00:07:58,920 --> 00:08:02,634
+And lines 16 and 17 run once, after the
+loop.
+
+134
+00:08:14,013 --> 00:08:18,203
+Coffee gets a sorry, and changes nothing.
+
+135
+00:08:18,233 --> 00:08:24,213
+Two teas and a cake: 3 items, and 3.5 plus
+4 plus 3.5 is 11.00.
+
+136
+00:08:24,233 --> 00:08:25,533
+Mission complete!
+
+137
+00:08:25,553 --> 00:08:29,183
+Next, Asha protects the How many teas
+question.
+
+138
+00:08:29,203 --> 00:08:32,755
+She uses an AI assistant, one stage at a
+time.
+
+139
+00:08:33,350 --> 00:08:35,835
+This chapter's AI skill is tracing.
+
+140
+00:08:35,855 --> 00:08:41,060
+You ask the AI to trace a loop for one set
+of answers, one line per pass.
+
+141
+00:08:41,100 --> 00:08:43,771
+Then you run the same answers yourself.
+
+142
+00:08:43,791 --> 00:08:47,153
+And the safety habits from Chapter 1 still
+apply.
+
+143
+00:08:47,753 --> 00:08:48,749
+Stage 1: plan.
+
+144
+00:08:48,769 --> 00:08:51,651
+The number of teas must be from 1 to 10.
+
+145
+00:08:51,671 --> 00:08:57,383
+Asha asks for the loop condition, the
+value that must change, and test answers.
+
+146
+00:08:57,403 --> 00:08:58,253
+No code yet.
+
+147
+00:08:58,300 --> 00:09:03,455
+The AI names the condition, says the new
+answer is what ends the loop, and lists
+
+148
+00:09:03,475 --> 00:09:07,982
+test answers, including 1 and 10, the
+points where the result changes.
+
+149
+00:09:08,002 --> 00:09:10,117
+These are called boundary values.
+
+150
+00:09:10,720 --> 00:09:11,852
+Stage 2: write.
+
+151
+00:09:11,872 --> 00:09:17,538
+Asha writes the loop herself, and asks the
+AI to trace it for 0, 12 and 3.
+
+152
+00:09:17,558 --> 00:09:21,610
+The AI traces two passes, then a check
+that is False.
+
+153
+00:09:21,633 --> 00:09:24,453
+Asha traced it too, and she runs it.
+
+154
+00:09:24,473 --> 00:09:25,715
+All three agree.
+
+155
+00:09:26,320 --> 00:09:27,569
+Stage 3: generate.
+
+156
+00:09:27,589 --> 00:09:31,515
+Asha wants a limit: at most 3 tries, and
+then use 1 tea.
+
+157
+00:09:31,535 --> 00:09:33,700
+She asks what 0, 0 and 0 print.
+
+158
+00:09:33,733 --> 00:09:37,389
+The AI says: three questions, then too
+many tries.
+
+159
+00:09:37,409 --> 00:09:39,373
+It gives no warning at all.
+
+160
+00:09:39,400 --> 00:09:45,684
+Look at the condition on line 4, and
+remember the one rule of every loop.
+
+161
+00:09:57,047 --> 00:09:58,039
+None of them.
+
+162
+00:09:58,059 --> 00:10:01,701
+Lines 5 and 6 print and ask, but tries
+stays 1.
+
+163
+00:10:01,721 --> 00:10:03,259
+Asha suspects a bug.
+
+164
+00:10:03,279 --> 00:10:05,518
+Now she proves it with tests.
+
+165
+00:10:06,120 --> 00:10:07,092
+Stage 4: test.
+
+166
+00:10:07,112 --> 00:10:11,625
+Asha asks for edge cases: unusual answers
+that can break a rule.
+
+167
+00:10:11,645 --> 00:10:14,600
+And the exact output each one should give.
+
+168
+00:10:14,633 --> 00:10:15,805
+The AI lists five.
+
+169
+00:10:15,825 --> 00:10:20,174
+1 and 10 are boundary values, the points
+where the result changes.
+
+170
+00:10:20,194 --> 00:10:24,543
+The last case is three wrong answers:
+three questions, then 1 tea.
+
+171
+00:10:24,567 --> 00:10:27,569
+She runs every case on the AI's code.
+
+172
+00:10:27,589 --> 00:10:30,836
+Here is case 4: three questions, then 5.
+
+173
+00:10:30,856 --> 00:10:31,653
+It passes.
+
+174
+00:10:32,253 --> 00:10:33,621
+Cases 1 to 4 pass.
+
+175
+00:10:33,641 --> 00:10:38,013
+1 and 10 are accepted, and wrong answers
+are asked again.
+
+176
+00:10:38,033 --> 00:10:39,244
+But case 5 fails.
+
+177
+00:10:39,264 --> 00:10:42,790
+Three wrong answers should end in too many
+tries.
+
+178
+00:10:42,810 --> 00:10:45,033
+The program asks a fourth time.
+
+179
+00:10:45,653 --> 00:10:46,901
+Here is case 5.
+
+180
+00:10:46,921 --> 00:10:48,928
+She types 0 three times.
+
+181
+00:10:48,948 --> 00:10:51,125
+The program does not stop.
+
+182
+00:10:51,145 --> 00:10:52,983
+It asks a fourth time.
+
+183
+00:10:53,033 --> 00:10:54,979
+She types 5, and it takes it.
+
+184
+00:10:54,999 --> 00:10:56,538
+The limit never worked.
+
+185
+00:10:56,558 --> 00:10:59,114
+With more zeros, it would ask forever.
+
+186
+00:10:59,720 --> 00:11:00,727
+Stage 5: debug.
+
+187
+00:11:00,747 --> 00:11:03,466
+Asha pastes the loop and the failed run.
+
+188
+00:11:03,486 --> 00:11:09,080
+She asks for a trace table first, then the
+value that never changes, then the fix.
+
+189
+00:11:09,100 --> 00:11:11,055
+The trace shows it clearly.
+
+190
+00:11:11,075 --> 00:11:12,883
+Tries is 1 on every pass.
+
+191
+00:11:12,903 --> 00:11:18,149
+Nothing inside the loop changes it, so
+tries less than 3 is always True.
+
+192
+00:11:18,169 --> 00:11:21,513
+The fix: tries plus equals 1, inside the
+loop.
+
+193
+00:11:22,120 --> 00:11:25,620
+Asha writes the trace as a table, like
+step 5.
+
+194
+00:11:25,640 --> 00:11:28,680
+Three passes, and tries is 1 every time.
+
+195
+00:11:28,700 --> 00:11:34,249
+That matches her run: one first question,
+plus three passes, is four questions.
+
+196
+00:11:34,269 --> 00:11:36,223
+The trace and the run agree.
+
+197
+00:11:36,820 --> 00:11:38,909
+Here is the fix on line 7.
+
+198
+00:11:38,929 --> 00:11:44,180
+Now tries goes 1, 2, 3, and the third
+wrong answer ends the loop.
+
+199
+00:11:44,200 --> 00:11:46,370
+Too many tries, using 1 tea.
+
+200
+00:11:46,390 --> 00:11:50,123
+Exactly what the AI promised in the first
+place.
+
+201
+00:11:50,720 --> 00:11:52,777
+A fix can break something else.
+
+202
+00:11:52,797 --> 00:11:56,060
+So Asha runs every case again, on the
+fixed code.
+
+203
+00:11:56,100 --> 00:11:57,188
+All five pass.
+
+204
+00:11:57,208 --> 00:11:58,613
+Now she trusts it.
+
+205
+00:11:59,220 --> 00:12:00,404
+Stage 6: improve.
+
+206
+00:12:00,424 --> 00:12:05,928
+Asha asks for at most two readability
+improvements that do not change how many
+
+207
+00:12:05,948 --> 00:12:06,920
+times it asks.
+
+208
+00:12:06,967 --> 00:12:09,997
+Suggestion 1, a comment, helps a reader.
+
+209
+00:12:10,017 --> 00:12:16,099
+Suggestion 2 says: change less than 3 to
+less than or equal to 3, for three full
+
+210
+00:12:16,119 --> 00:12:16,557
+tries.
+
+211
+00:12:16,600 --> 00:12:18,417
+Asha does not accept it yet.
+
+212
+00:12:18,437 --> 00:12:20,320
+She will count the questions.
+
+213
+00:12:20,920 --> 00:12:26,663
+Here is the suggested condition on line 4:
+tries less than or equal to 3.
+
+214
+00:12:26,683 --> 00:12:28,400
+Trace it in your head.
+
+215
+00:12:28,420 --> 00:12:30,532
+Tries is 1, then 2, then 3.
+
+216
+00:12:41,913 --> 00:12:42,671
+Four times.
+
+217
+00:12:42,691 --> 00:12:47,763
+When tries is 3, the condition is still
+True, so there is one more pass.
+
+218
+00:12:47,800 --> 00:12:51,851
+And Asha had said: do not change how many
+times it asks.
+
+219
+00:12:51,871 --> 00:12:53,305
+The AI ignored that.
+
+220
+00:12:53,325 --> 00:12:56,867
+She keeps less than 3, and adds only the
+comment.
+
+221
+00:12:57,487 --> 00:12:58,324
+Quick check.
+
+222
+00:12:58,344 --> 00:12:59,610
+A loop never ends.
+
+223
+00:12:59,630 --> 00:13:01,968
+What do you ask the AI for first?
+
+224
+00:13:13,347 --> 00:13:13,478
+B.
+
+225
+00:13:13,498 --> 00:13:15,515
+A trace table of each pass.
+
+226
+00:13:15,535 --> 00:13:18,156
+It shows which value never changes.
+
+227
+00:13:18,753 --> 00:13:19,391
+Breather.
+
+228
+00:13:19,411 --> 00:13:23,703
+Asha caught two AI mistakes, with a trace,
+and by counting.
+
+229
+00:13:23,733 --> 00:13:27,168
+Next, the four mistakes beginners make
+most with loops.
+
+230
+00:13:27,188 --> 00:13:29,303
+You have already seen one of them.
+
+231
+00:13:34,050 --> 00:13:34,716
+Mistake 1.
+
+232
+00:13:34,736 --> 00:13:38,623
+The condition on line 2 is checked before
+the first pass.
+
+233
+00:13:38,643 --> 00:13:40,680
+But answer does not exist yet.
+
+234
+00:13:40,700 --> 00:13:42,968
+Python stops with a Name Error.
+
+235
+00:13:42,988 --> 00:13:48,945
+The fix: ask once before the loop, as in
+step 2, or use while True with break, as
+
+236
+00:13:48,965 --> 00:13:49,683
+in step 4.
+
+237
+00:13:50,287 --> 00:13:51,287
+Now you try.
+
+238
+00:13:51,307 --> 00:13:54,177
+Asha wants to serve tables 1 to 3.
+
+239
+00:13:54,197 --> 00:13:56,472
+Compare line 3 with step 1.
+
+240
+00:14:07,847 --> 00:14:08,446
+Table 3.
+
+241
+00:14:08,466 --> 00:14:14,257
+Less than 3 is False when table is 3, so
+the loop stops one pass too early.
+
+242
+00:14:14,300 --> 00:14:16,682
+No error, only a missing table.
+
+243
+00:14:16,702 --> 00:14:19,394
+This is called an off-by-one error.
+
+244
+00:14:19,414 --> 00:14:21,951
+The fix: less than or equal to 3.
+
+245
+00:14:22,553 --> 00:14:24,857
+Mistake 3 is the one the AI made.
+
+246
+00:14:24,877 --> 00:14:30,280
+Nothing inside this loop changes table, so
+it prints table 1 again and again,
+
+247
+00:14:30,300 --> 00:14:30,843
+forever.
+
+248
+00:14:30,867 --> 00:14:36,219
+If a program never stops, click in the
+terminal and press Control and C together.
+
+249
+00:14:36,239 --> 00:14:39,337
+Python stops with a Keyboard Interrupt
+message.
+
+250
+00:14:39,367 --> 00:14:44,094
+The fix: add the line that changes the
+counter, inside the loop.
+
+251
+00:14:44,687 --> 00:14:45,306
+One more.
+
+252
+00:14:45,326 --> 00:14:48,217
+The loop stops on done, in small letters.
+
+253
+00:14:48,237 --> 00:14:50,915
+The user types Done, with a capital D.
+
+254
+00:15:02,280 --> 00:15:05,330
+Done is added to the order as if it were
+an item.
+
+255
+00:15:05,350 --> 00:15:08,400
+The loop keeps going until done in small
+letters.
+
+256
+00:15:08,433 --> 00:15:13,682
+The fix is the one from step 4: compare
+the answer after strip and lower.
+
+257
+00:15:14,287 --> 00:15:15,190
+Last breather.
+
+258
+00:15:15,210 --> 00:15:18,357
+Now you know the four most common loop
+mistakes.
+
+259
+00:15:18,400 --> 00:15:21,710
+Two questions to think about on your own
+come next.
+
+260
+00:15:26,450 --> 00:15:26,849
+First.
+
+261
+00:15:26,869 --> 00:15:29,086
+The cafe kettle needs 5 minutes.
+
+262
+00:15:29,106 --> 00:15:33,769
+How would you count down from 5 to 1, and
+then print: tea is ready?
+
+263
+00:15:45,147 --> 00:15:49,772
+Think about the value that changes on each
+pass, and its direction.
+
+264
+00:15:49,792 --> 00:15:51,436
+Minus equals takes away.
+
+265
+00:15:52,053 --> 00:15:52,490
+Second.
+
+266
+00:15:52,510 --> 00:15:57,778
+How could Asha's order loop stop after 10
+items, even if the customer never types
+
+267
+00:15:57,798 --> 00:15:58,104
+done?
+
+268
+00:16:09,480 --> 00:16:12,447
+Trace your loop with 10 items before you
+run it.
+
+269
+00:16:13,050 --> 00:16:14,070
+Let's recap.
+
+270
+00:16:14,100 --> 00:16:17,630
+A while loop repeats its block while the
+condition is True.
+
+271
+00:16:17,667 --> 00:16:23,387
+A line inside the loop must change the
+value that the condition checks.
+
+272
+00:16:23,433 --> 00:16:26,080
+A counter counts passes, and a running
+total grows.
+
+273
+00:16:26,100 --> 00:16:28,447
+Plus equals and minus equals are short
+forms.
+
+274
+00:16:28,467 --> 00:16:30,875
+A stop value or break ends the loop.
+
+275
+00:16:30,895 --> 00:16:34,247
+And a trace table shows every value on
+every pass.
+
+276
+00:16:34,267 --> 00:16:38,889
+And with AI: ask for a trace, then run the
+same answers yourself.
+
+277
+00:16:39,487 --> 00:16:40,639
+One last check.
+
+278
+00:16:40,659 --> 00:16:41,812
+N starts at 10.
+
+279
+00:16:41,832 --> 00:16:46,816
+While n is greater than 0, the loop prints
+n, then takes away 3.
+
+280
+00:16:46,836 --> 00:16:48,615
+How many numbers print?
+
+281
+00:16:59,980 --> 00:17:00,143
+D.
+
+282
+00:17:00,163 --> 00:17:02,060
+Four: 10, 7, 4 and 1.
+
+283
+00:17:02,080 --> 00:17:05,437
+Then n is minus 2, and the loop ends.
+
+284
+00:17:06,053 --> 00:17:07,348
+Mission complete!
+
+285
+00:17:07,368 --> 00:17:10,673
+You earned 100 XP and the Loop Tamer
+badge.
+
+286
+00:17:12,917 --> 00:17:14,467
+Now it is your turn.
+
+287
+00:17:14,487 --> 00:17:18,237
+The practice file has eight tasks, worth
+170 XP.
+
+288
+00:17:18,267 --> 00:17:20,947
+Three warm-up tasks, worth 10 XP each.
+
+289
+00:17:20,967 --> 00:17:25,457
+Three apply tasks, worth 20 each,
+including a savings goal.
+
+290
+00:17:25,500 --> 00:17:28,042
+And two stretch tasks, worth 40 each.
+
+291
+00:17:28,062 --> 00:17:31,436
+In the last one, an AI's kettle timer
+never ends.
+
+292
+00:17:31,456 --> 00:17:32,890
+Trace it, and fix it.
+
+293
+00:17:32,933 --> 00:17:35,006
+Trace each loop before you run it.
+
+294
+00:17:35,026 --> 00:17:37,653
+Try each task before you open the
+solution.
+
+295
+00:17:38,250 --> 00:17:43,349
+To serve tables 1 to 3, Asha needed a
+counter, a condition and a line that
+
+296
+00:17:43,369 --> 00:17:44,110
+changes it.
+
+297
+00:17:44,130 --> 00:17:47,500
+Three places to make a mistake, as you saw
+today.
+
+298
+00:17:47,533 --> 00:17:52,336
+In Chapter 8, for loops and range repeat a
+block a set number of times, with no
+
+299
+00:17:52,356 --> 00:17:53,558
+counter of your own.
+
+300
+00:17:53,578 --> 00:17:56,793
+And a for loop can go through every letter
+of a word.
+
+301
+00:17:56,833 --> 00:17:58,549
+Do the warm-up tasks now.
+
+302
+00:17:58,569 --> 00:18:00,493
+They take about ten minutes.
+
+303
+00:18:00,533 --> 00:18:02,240
+See you in Chapter 8.

@@ -254,7 +254,7 @@ How many teas? (1 to 10) 5
 Teas: 5
 ```
 
-The program asked a fourth time. A trace shows why: `tries` is 1 on every pass, because no line inside the loop changes it. So `tries < 3` is always `True`, and the limit never works. A customer who keeps typing 0 would be asked forever. Adding `tries += 1` inside the loop fixes it:
+The program asked a fourth time. A trace shows why: `tries` is 1 on every pass, because no line inside the loop changes it. So `tries < 3` is always `True`, and the limit never works. A customer who keeps typing 0 would be asked forever. Adding `tries += 1` inside the loop fixes it.
 
 ```python
 # file: examples/ai_tries_fixed.py
