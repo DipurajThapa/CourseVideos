@@ -1,0 +1,215 @@
+{
+  "chapter_id": "python-07",
+  "run_id": "2026-11-09-cc180f",
+  "verified_at": "2026-11-09T22:44:28+00:00",
+  "passed": true,
+  "toolchains": [
+    "Python 3.15.2",
+    "Python 3.13.18"
+  ],
+  "checks": [
+    {
+      "name": "structure",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "code",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "files_run": 29,
+        "toolchains": [
+          "Python 3.15.2",
+          "Python 3.13.18"
+        ],
+        "results": {
+          "examples/ai_case_0_0_5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_case_1.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_case_10.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_case_11_5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_fix_case_0_0_5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_fix_case_1.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_fix_case_10.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_fix_case_11_5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_teas_mine.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tries_fixed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tries_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tries_improve.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err01_not_created.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex01_count.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex02_ask_again.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex03_running_total.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex04_break.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex05_trace.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex06_order_loop.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex07_off_by_one.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex08_done_case.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task1.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task3.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task4.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task6.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task7.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task8.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          }
+        }
+      }
+    },
+    {
+      "name": "lesson_blocks",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "code_blocks": 12,
+        "output_blocks": 11
+      }
+    },
+    {
+      "name": "ai_pair",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "practice",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "tasks": 8
+      }
+    },
+    {
+      "name": "ai_prompts",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "sources",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "sources": 5
+      }
+    },
+    {
+      "name": "language",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "lesson.md": {
+          "sentences": 116,
+          "average_words": 11.8,
+          "longest": 26
+        },
+        "video/script.md": {
+          "sentences": 703,
+          "average_words": 9.2,
+          "longest": 29
+        }
+      }
+    },
+    {
+      "name": "video",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "estimated_minutes": 18.9,
+        "duration_seconds": 1084.8,
+        "size_mb": 46.0,
+        "scenes": 16,
+        "voice": null
+      }
+    }
+  ],
+  "fingerprint": "8060642cc2cc3cb6cd5b1e025e2cc80cb142b060663e264709f0e037bdf7b63c"
+}

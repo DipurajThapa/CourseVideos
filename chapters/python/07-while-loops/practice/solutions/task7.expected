@@ -1,0 +1,9 @@
+Item (tea, cake, juice, help or done): help
+Menu: tea 3.50, cake 4.00, juice 2.75
+Item (tea, cake, juice, help or done): juice
+Item (tea, cake, juice, help or done): Tea
+Item (tea, cake, juice, help or done): soup
+Sorry, that is not on the menu. Type help.
+Item (tea, cake, juice, help or done): done
+Items: 2
+Total: 6.25

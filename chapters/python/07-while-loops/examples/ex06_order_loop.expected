@@ -1,0 +1,8 @@
+Item (tea, cake or done): tea
+Item (tea, cake or done): Cake
+Item (tea, cake or done): coffee
+Sorry, we only have tea and cake.
+Item (tea, cake or done): tea
+Item (tea, cake or done): done
+Items: 3
+Total: 11.00

@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-07",
+  "rendered_at": "2026-11-09T22:41:09+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "4a7f2f4876d370191c39274d39b4881d1744bd9dbaab5402b7a32fd3fc03a40c",
+  "inputs_sha256": "7eaf6210ce8682043c0ec6f902d1fa44cf5d1ccab2ca103eec0bf0cbe5484558",
+  "video_sha256": "91b38f0ffe30d5d4774d9c08d28e54e3632f89e44a03eba64994a4f2b838d2e5",
+  "duration_seconds": 1084.8,
+  "size_mb": 46.0,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.0
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 959,
+  "questions": 16,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 44.833
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 44.833,
+      "end": 62.367
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 62.367,
+      "end": 80.867
+    },
+    {
+      "id": "idea",
+      "title": "The idea: check, run, go back",
+      "section": "The idea",
+      "start": 80.867,
+      "end": 158.467
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: A counter",
+      "section": "Build it step by step",
+      "start": 158.467,
+      "end": 207.933
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Ask again until valid",
+      "section": "Build it step by step",
+      "start": 207.933,
+      "end": 250.533
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: A running total",
+      "section": "Build it step by step",
+      "start": 250.533,
+      "end": 312.733
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: while True and break",
+      "section": "Build it step by step",
+      "start": 312.733,
+      "end": 391.133
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: A trace table",
+      "section": "Build it step by step",
+      "start": 391.133,
+      "end": 455.133
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the order loop",
+      "section": "See the outcome",
+      "start": 455.133,
+      "end": 513.1
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one limit",
+      "section": "Work with AI",
+      "start": 513.1,
+      "end": 813.8
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 813.8,
+      "end": 926.2
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 926.2,
+      "end": 972.8
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 972.8,
+      "end": 1032.667
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1032.667,
+      "end": 1058.0
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1058.0,
+      "end": 1084.733
+    }
+  ]
+}
