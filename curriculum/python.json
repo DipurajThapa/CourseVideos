@@ -38,7 +38,9 @@
           "why": "Programs work with data; naming data lets a program store it, change it and reuse it",
           "outcome": "Store values in well-named variables, calculate with them and predict the result before running",
           "ai_skill": "Asking AI to predict output, then checking the prediction by running the code",
-          "prerequisites": ["python-01"],
+          "prerequisites": [
+            "python-01"
+          ],
           "badge": "Name Keeper"
         },
         {
@@ -51,7 +53,9 @@
           "why": "Most programs show messages, labels and reports to people; text handling is everywhere",
           "outcome": "Build clear, formatted messages from variables using f-strings and string methods",
           "ai_skill": "Writing a precise prompt with an example of the exact output wanted",
-          "prerequisites": ["python-02"],
+          "prerequisites": [
+            "python-02"
+          ],
           "badge": "Wordsmith"
         },
         {
@@ -64,7 +68,9 @@
           "why": "Useful programs react to the person using them; user input always arrives as text",
           "outcome": "Write a program that asks questions, converts answers and calculates a result",
           "ai_skill": "Giving AI the exact error message and code, and asking for the cause before the fix",
-          "prerequisites": ["python-03"],
+          "prerequisites": [
+            "python-03"
+          ],
           "badge": "Listener"
         },
         {
@@ -77,7 +83,12 @@
           "why": "Combining concepts into a working tool is how programming knowledge becomes a skill",
           "outcome": "Build a bill splitter that asks for the total, tip and number of people, then prints each share",
           "ai_skill": "Planning a program with AI before writing it, then reviewing AI suggestions critically",
-          "prerequisites": ["python-01", "python-02", "python-03", "python-04"],
+          "prerequisites": [
+            "python-01",
+            "python-02",
+            "python-03",
+            "python-04"
+          ],
           "badge": "Fair Share"
         }
       ]
@@ -96,7 +107,9 @@
           "why": "Real programs choose what to do based on data, such as approving a payment or showing a warning",
           "outcome": "Write programs that choose between several paths based on input",
           "ai_skill": "Asking AI for edge cases that would break a condition",
-          "prerequisites": ["python-04"],
+          "prerequisites": [
+            "python-04"
+          ],
           "badge": "Decision Maker"
         },
         {
@@ -109,7 +122,9 @@
           "why": "Many tasks repeat until a condition changes, such as asking again until the input is valid",
           "outcome": "Write a loop that validates input and stops at the right moment",
           "ai_skill": "Using AI to trace a loop step by step and explain why it never ends",
-          "prerequisites": ["python-06"],
+          "prerequisites": [
+            "python-06"
+          ],
           "badge": "Loop Tamer"
         },
         {
@@ -122,7 +137,9 @@
           "why": "Processing every item in a group, such as every order or every line, is one of the most common tasks in software",
           "outcome": "Use for loops to process sequences and build totals and tables",
           "ai_skill": "Comparing your loop with an AI-generated loop and judging which is clearer",
-          "prerequisites": ["python-07"],
+          "prerequisites": [
+            "python-07"
+          ],
           "badge": "Pattern Runner"
         },
         {
@@ -135,7 +152,9 @@
           "why": "Every programmer spends a large share of time finding and fixing bugs; reading errors well saves hours",
           "outcome": "Find and fix bugs of three kinds using tracebacks, print statements and AI help",
           "ai_skill": "A structured debugging prompt: code, exact error, expected result, actual result",
-          "prerequisites": ["python-08"],
+          "prerequisites": [
+            "python-08"
+          ],
           "badge": "Bug Hunter"
         },
         {
@@ -144,11 +163,16 @@
           "slug": "project-guessing-game",
           "type": "project",
           "title": "Boss Level 2: The Number Guessing Game",
-          "concept": "Combining decisions, loops, input validation and the random module",
+          "concept": "Combining decisions, loops and input validation, with a first, minimal use of import and the random module (modules are covered fully in Chapter 18)",
           "why": "Games are a clear way to combine logic, repetition and user interaction",
           "outcome": "Build a guessing game with hints, attempt limits and input validation",
           "ai_skill": "Asking AI for test scenarios and checking the game against each one",
-          "prerequisites": ["python-06", "python-07", "python-08", "python-09"],
+          "prerequisites": [
+            "python-06",
+            "python-07",
+            "python-08",
+            "python-09"
+          ],
           "badge": "Game Maker"
         }
       ]
@@ -167,7 +191,9 @@
           "why": "Real data comes in groups, such as orders, scores or messages",
           "outcome": "Store, change, sort and summarise a list of values",
           "ai_skill": "Asking AI to explain a slice or list method with a worked example you then run",
-          "prerequisites": ["python-08"],
+          "prerequisites": [
+            "python-08"
+          ],
           "badge": "List Builder"
         },
         {
@@ -180,7 +206,9 @@
           "why": "Most real data has labels, such as a product with a name, price and stock count",
           "outcome": "Model a real record as a dictionary and look up, update and report on it",
           "ai_skill": "Asking AI to design a data structure for a problem, then challenging its choices",
-          "prerequisites": ["python-11"],
+          "prerequisites": [
+            "python-11"
+          ],
           "badge": "Key Master"
         },
         {
@@ -193,7 +221,9 @@
           "why": "Choosing the right collection makes code simpler and faster, such as removing duplicates with a set",
           "outcome": "Choose between list, tuple, set and dictionary for a given task and justify the choice",
           "ai_skill": "Asking AI to compare options with trade-offs instead of asking for one answer",
-          "prerequisites": ["python-12"],
+          "prerequisites": [
+            "python-12"
+          ],
           "badge": "Collector"
         },
         {
@@ -206,7 +236,9 @@
           "why": "Transforming and filtering data is a daily task; comprehensions make it short and readable when used well",
           "outcome": "Rewrite simple loops as comprehensions and judge when not to",
           "ai_skill": "Asking AI to refactor code, then checking that behaviour stayed the same",
-          "prerequisites": ["python-13"],
+          "prerequisites": [
+            "python-13"
+          ],
           "badge": "Transformer"
         },
         {
@@ -219,7 +251,12 @@
           "why": "Tracking and summarising data is the core of many business tools",
           "outcome": "Build a tracker that records expenses by category and prints totals and the largest category",
           "ai_skill": "Using AI to review your data model and summary logic",
-          "prerequisites": ["python-11", "python-12", "python-13", "python-14"],
+          "prerequisites": [
+            "python-11",
+            "python-12",
+            "python-13",
+            "python-14"
+          ],
           "badge": "Money Mapper"
         }
       ]
@@ -238,7 +275,9 @@
           "why": "Functions let you write logic once, name it and reuse it; every real codebase is built from them",
           "outcome": "Turn repeated code into well-named functions with clear inputs and outputs",
           "ai_skill": "Asking AI to write a function from a specification, then testing it yourself",
-          "prerequisites": ["python-14"],
+          "prerequisites": [
+            "python-14"
+          ],
           "badge": "Function Forger"
         },
         {
@@ -251,7 +290,9 @@
           "why": "Small, predictable functions are easier to test, reuse and hand to an AI for changes",
           "outcome": "Split a long script into small, predictable functions",
           "ai_skill": "Asking AI to identify functions that do too much and suggest a split",
-          "prerequisites": ["python-16"],
+          "prerequisites": [
+            "python-16"
+          ],
           "badge": "Architect"
         },
         {
@@ -264,7 +305,9 @@
           "why": "Professional programmers reuse tested code instead of writing everything from scratch",
           "outcome": "Organise code into modules and use the standard library to solve common tasks",
           "ai_skill": "Asking AI which standard module fits a task, then confirming in the official documentation",
-          "prerequisites": ["python-17"],
+          "prerequisites": [
+            "python-17"
+          ],
           "badge": "Librarian"
         },
         {
@@ -277,7 +320,9 @@
           "why": "Tests prove code works and keep it working when you or an AI change it",
           "outcome": "Write and run tests for your functions, including edge cases",
           "ai_skill": "Asking AI to write tests, then checking the tests actually test the right behaviour",
-          "prerequisites": ["python-18"],
+          "prerequisites": [
+            "python-18"
+          ],
           "badge": "Quality Guard"
         },
         {
@@ -290,7 +335,12 @@
           "why": "Structured, tested code is what separates a script from software",
           "outcome": "Build a multi-module quiz app with scoring and a passing test suite",
           "ai_skill": "Test-driven work with AI: write tests first, then let AI help with the code",
-          "prerequisites": ["python-16", "python-17", "python-18", "python-19"],
+          "prerequisites": [
+            "python-16",
+            "python-17",
+            "python-18",
+            "python-19"
+          ],
           "badge": "Software Builder"
         }
       ]
@@ -309,7 +359,9 @@
           "why": "Data must outlive the program; files are the simplest way to keep it",
           "outcome": "Save program data to a file and load it again, including CSV data",
           "ai_skill": "Asking AI to explain file errors and safe file handling",
-          "prerequisites": ["python-18"],
+          "prerequisites": [
+            "python-18"
+          ],
           "badge": "Archivist"
         },
         {
@@ -322,7 +374,9 @@
           "why": "Real programs meet bad input and missing files; good programs fail clearly instead of crashing",
           "outcome": "Make a program handle bad input and missing files with clear messages",
           "ai_skill": "Asking AI to list what could go wrong in your code, then handling each case",
-          "prerequisites": ["python-21"],
+          "prerequisites": [
+            "python-21"
+          ],
           "badge": "Safety Net"
         },
         {
@@ -335,7 +389,9 @@
           "why": "Modern software exchanges data with other services, almost always as JSON",
           "outcome": "Read JSON data, extract what you need and save results as JSON",
           "ai_skill": "Asking AI to explain an API's JSON response and write code to extract fields",
-          "prerequisites": ["python-22"],
+          "prerequisites": [
+            "python-22"
+          ],
           "badge": "Connector"
         },
         {
@@ -348,7 +404,9 @@
           "why": "Real projects depend on outside packages and must install the same versions on every machine",
           "outcome": "Create a virtual environment, install a package and record dependencies",
           "ai_skill": "Checking that a package an AI suggests really exists and is trustworthy before installing it",
-          "prerequisites": ["python-23"],
+          "prerequisites": [
+            "python-23"
+          ],
           "badge": "Toolsmith"
         },
         {
@@ -361,7 +419,12 @@
           "why": "Turning raw data into a clear report is one of the most requested tasks at work",
           "outcome": "Build a tool that reads a JSON or CSV data file, handles bad data and writes a summary report",
           "ai_skill": "Using AI to review error handling and to generate realistic test data",
-          "prerequisites": ["python-21", "python-22", "python-23", "python-24"],
+          "prerequisites": [
+            "python-21",
+            "python-22",
+            "python-23",
+            "python-24"
+          ],
           "badge": "Report Master"
         }
       ]
@@ -380,7 +443,9 @@
           "why": "Classes group data with the actions that belong to it, which keeps larger programs organised",
           "outcome": "Model a real-world item as a class and use objects in a program",
           "ai_skill": "Asking AI to design a class, then reviewing whether it fits the problem",
-          "prerequisites": ["python-20"],
+          "prerequisites": [
+            "python-20"
+          ],
           "badge": "Modeller"
         },
         {
@@ -393,7 +458,9 @@
           "why": "Most professional work is changing existing code, often code written by someone else or by AI",
           "outcome": "Understand an unfamiliar program and improve it without changing its behaviour",
           "ai_skill": "A safe refactoring loop: tests first, AI suggestion, review, run tests again",
-          "prerequisites": ["python-26"],
+          "prerequisites": [
+            "python-26"
+          ],
           "badge": "Code Reviewer"
         },
         {
@@ -406,10 +473,16 @@
           "why": "A complete, tested application is proof that you can build software from idea to working tool",
           "outcome": "Build a command-line task manager that saves tasks, handles errors and has passing tests",
           "ai_skill": "Running a full AI-assisted workflow: plan, build, test, review and improve",
-          "prerequisites": ["python-26", "python-27"],
+          "prerequisites": [
+            "python-26",
+            "python-27"
+          ],
           "badge": "Python Builder"
         }
       ]
     }
+  ],
+  "changes": [
+    "Coverage audit before chapters 3 to 28 were built: all 28 chapters together cover core Python (values, text, input, decisions, loops, debugging, lists, dictionaries, tuples and sets, comprehensions, functions, scope, modules, testing, files, exceptions, JSON and APIs, virtual environments and packages, classes) and practise every AI stage (plan, write, generate, test, debug, improve) several times, with a full AI-assisted workflow in the capstone. One change: python-10 now states that it introduces import and random minimally, because modules are taught later in python-18. Input validation in python-10 uses string methods from python-03, because try and except arrive in python-22."
   ]
 }
