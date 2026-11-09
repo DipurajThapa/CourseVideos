@@ -1,16 +1,28 @@
 {
-  "id": "<language>-NN",
-  "title": "",
-  "language": "<language>",
+  "id": "python-02",
+  "title": "Values and Variables: Giving Data a Name",
+  "language": "python",
   "type": "lesson",
-  "module": "",
-  "badge": "",
+  "module": "M1",
+  "badge": "Name Keeper",
   "xp": {"lesson": 100, "practice": 160},
-  "concepts": [],
-  "prerequisites": [],
-  "ai_pair_moment": {"flawed_file": "examples/", "fixed_file": "examples/", "flaw": ""},
+  "concepts": ["value", "type", "int", "float", "str", "bool", "type()", "variable", "assignment", "reassignment", "operator", "/", "//", "%", "**", "order of operations", "round()", "NameError", "TypeError", "literal"],
+  "prerequisites": ["python-01"],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_average_flawed.py",
+    "fixed_file": "examples/ai_average_fixed.py",
+    "flaw": "The AI wrote score_1 + score_2 + score_3 / 3 and predicted 90.0. Python divides before it adds, so the program prints 203.33333333333334. Brackets around the sum fix it."
+  },
   "support_files": [],
-  "research_date": "YYYY-MM-DD",
-  "changes": [],
-  "outstanding_issues": []
+  "python_version": {"minimum": "3.12", "current_release_at_research": "3.15.2"},
+  "research_date": "2026-11-09",
+  "changes": [
+    "Added round() as a small extra beyond the curriculum entry, because the chapter shows that float results can be inexact and learners need a way to display them.",
+    "Used 0.1 + 0.1 + 0.1 (the official tutorial's example) instead of the commonly quoted 0.1 + 0.2.",
+    "Changed the cafe bill prices so the final amount is exact and does not need rounding of a half."
+  ],
+  "outstanding_issues": [
+    "Examples were verified on Python 3.14.6 and 3.13. The verification environment could not install a stable 3.15 build through uv, as in Chapter 1. The chapter uses no version-specific features, but error message wording (for example the NameError suggestion) should be re-checked on 3.15 when available.",
+    "The traceback for Mistake 1 shows the short file name; on a learner's computer the full path to the file appears instead."
+  ]
 }
