@@ -1,16 +1,16 @@
 {
  "chapter_id": "python-01",
  "number": 1,
- "version": 2,
+ "version": 3,
  "title": "Chapter 1: Your First Program and Your AI Study Partner",
  "video_title": "Python Chapter 1: Your First Program and Your AI Study Partner",
- "summary": "Install Python, write and run your first program, control output with print, sep and end, and read your first error messages. Along the way you answer on-screen questions, take four quick checks and four breathers, and catch an AI mistake that runs without an error.",
+ "summary": "Follow Asha as she builds a receipt for her family's Corner Cafe: install Python, write and run a first program, control output with print, sep and end, and read error messages. Then watch her add an order code with an AI assistant at all six stages (plan, write, generate, test, debug and improve), catching two AI mistakes by checking.",
  "scenes": [
   {
    "id": "intro",
    "section": "Introduction",
    "title": "Introduction",
-   "direction": "Warm welcome, then the AI date puzzle. The request and the code stay on screen with the question and timer; the real output is revealed after the timer.",
+   "direction": "Open on the mission. Show the finished receipt as the destination, with no question yet. Introduce Asha and the AI assistant that will make one mistake.",
    "beats": [
     {
      "visual": {
@@ -25,53 +25,41 @@
        "say": "Welcome to Code Quest, Chapter 1."
       },
       {
-       "say": "Today you will write and run your first Python program.",
-       "subtitle": "Write it. Run it."
-      },
-      {
-       "say": "You will also learn to use an AI assistant as a tutor, and to check its work.",
-       "subtitle": "Write it. Run it. Read the errors. Check the AI."
+       "say": "Today you will write your first Python program, and you will learn to work with an AI assistant.",
+       "subtitle": "Write it. Run it. Check the AI."
       }
      ]
     },
     {
      "visual": {
       "type": "code",
-      "file": "examples/ai_date_flawed.py",
-      "heading": "Request: print the date as `2026-11-09`",
-      "hidden_text": "The request: 2026-11-09, with hyphens."
+      "file": "examples/ex04_receipt.py",
+      "heading": "Today's mission: the Corner Cafe receipt",
+      "output": "examples/ex04_receipt.expected"
      },
      "segments": [
       {
-       "say": "Let's start with a puzzle."
+       "say": "Meet Asha. She helps at her family's cafe, the Corner Cafe."
       },
       {
-       "say": "A learner asked an AI assistant to print today's date with hyphens between the numbers."
-      },
-      {
-       "say": "The AI wrote this single line of code.",
-       "highlight": [
+       "say": "Her mission today is to make the computer print this receipt.",
+       "out_highlight": [
         2
        ]
-      }
-     ],
-     "ask": {
-      "question": "Will this print `2026-11-09` exactly? Yes or no?"
-     },
-     "after": [
-      {
-       "say": "Here is the real output. There are spaces where the hyphens should be.",
-       "output": "examples/ai_date_flawed.expected"
       },
       {
-       "say": "The code runs without an error, but it does not do what was asked.",
-       "out_highlight": [
-        1
+       "say": "By the end of this video, you will understand every line of this program, and you will be able to build it yourself.",
+       "out_highlight": [],
+       "highlight": [
+        5,
+        6,
+        7,
+        8
        ]
       },
       {
-       "say": "By the end of this video, you will know why, and how to fix it.",
-       "out_highlight": []
+       "say": "Along the way, an AI assistant will be confidently wrong. Your job is to catch it.",
+       "highlight": []
       }
      ]
     }
@@ -81,47 +69,49 @@
    "id": "goals",
    "section": "Learning goals",
    "title": "Learning goals",
-   "direction": "Each goal appears as it is spoken and stays highlighted while it is discussed.",
+   "direction": "Each goal appears as it is spoken.",
    "beats": [
     {
      "visual": {
       "type": "bullets",
-      "heading": "By the end of this chapter, you will be able to:",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
       "items": [
-       "Run a Python file from the terminal and see its output.",
-       "Explain how Python runs a program: one line at a time, from top to bottom.",
-       "Use `print()` to show text and numbers, and control spacing with `sep` and `end`.",
+       "Run a Python file and see its output.",
+       "Explain how Python runs a program: top to bottom, one line at a time.",
+       "Use `print()` with `sep` and `end` to control spacing.",
        "Read an error message and find the line that caused it.",
-       "Ask an AI assistant to explain code in a safe and useful way."
+       "Use an AI assistant at every stage, safely, and check its answers."
       ],
       "reveal": 0
      },
      "segments": [
       {
-       "say": "Here are your five goals for this chapter."
+       "say": "Here is the plan. Each goal is one piece of the mission.",
+       "reveal": 0
       },
       {
-       "say": "One. Run a Python file and see its output.",
+       "say": "Run a Python file and see its output.",
        "reveal": 1,
        "focus": 0
       },
       {
-       "say": "Two. Explain how Python runs a program: one line at a time, from top to bottom.",
+       "say": "Explain how Python runs a program, from top to bottom.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "Three. Use print to show text and numbers, and control the spacing.",
+       "say": "Control spacing with print, sep and end.",
        "reveal": 3,
        "focus": 2
       },
       {
-       "say": "Four. Read an error message and find the line that caused it.",
+       "say": "Read an error message and find the line that caused it.",
        "reveal": 4,
        "focus": 3
       },
       {
-       "say": "And five. Ask an AI assistant to explain code in a safe way.",
+       "say": "And use an AI assistant at every stage, safely, while you check its answers.",
        "reveal": 5,
        "focus": 4
       }
@@ -133,62 +123,41 @@
    "id": "why",
    "section": "Why this matters",
    "title": "Why this matters",
-   "direction": "Three short ideas, each highlighted while spoken.",
+   "direction": "Tie the idea of a program to the cafe, then to AI.",
    "beats": [
     {
      "visual": {
       "type": "bullets",
       "heading": "Why this matters",
+      "label": "The big picture",
       "reveal": 0,
       "items": [
        "A **program** is a list of instructions that a computer follows exactly.",
-       "Output shows what a program is doing. Developers use `print()` to check their code.",
-       "AI can write code.",
-       "It is often right, and sometimes wrong while sounding sure.",
-       "Researchers who built AI tutors for Harvard's CS50 course saw this too.",
+       "The cafe's till, a train timetable and a calculator all run programs.",
+       "AI can write code. It is often right, and sometimes wrong while sounding sure.",
        "**You** run the code. **You** decide if it is correct."
       ]
      },
      "segments": [
       {
-       "say": "Every app you use is a program. A program is a list of instructions that a computer follows exactly.",
+       "say": "A program is a list of instructions that a computer follows exactly.",
        "reveal": 1,
        "focus": 0
       },
       {
-       "say": "When a program shows a message, you can see what it is doing. Professional developers often use print to check their code.",
+       "say": "The till at Asha's cafe runs one. So do train timetables and calculators.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "AI assistants such as ChatGPT and Claude can write code.",
+       "say": "AI assistants such as ChatGPT and Claude can write code. They are often right. Sometimes they are wrong, and still sound sure.",
        "reveal": 3,
        "focus": 2
       },
       {
-       "say": "They are often right. But sometimes they are wrong, and still sound sure.",
+       "say": "So you are the one who runs the code, and decides if it is correct.",
        "reveal": 4,
        "focus": 3
-      },
-      {
-       "say": "Researchers who built AI tutors for Harvard's CS50 course saw exactly this.",
-       "reveal": 5,
-       "focus": 4
-      },
-      {
-       "say": "So who checks the code?",
-       "reveal": 5,
-       "focus": null
-      }
-     ],
-     "ask": {
-      "question": "An AI wrote your code. Who decides if it is correct?"
-     },
-     "after": [
-      {
-       "say": "You do. You are the person who runs the code, and decides if it is correct.",
-       "reveal": 6,
-       "focus": 5
       }
      ]
     }
@@ -198,12 +167,13 @@
    "id": "idea",
    "section": "The idea",
    "title": "The idea: Python reads from top to bottom",
-   "direction": "Diagram, two key words, the recipe analogy, then a quick check.",
+   "direction": "Teach the model with the diagram, the two key words and the recipe, then check it with a quiz, then a breather.",
    "beats": [
     {
      "visual": {
       "type": "text",
       "heading": "How Python runs a program",
+      "label": "The idea",
       "body": [
        "The **interpreter** reads your `.py` file and carries out each line in order."
       ],
@@ -211,13 +181,10 @@
      },
      "segments": [
       {
-       "say": "A Python program is a text file that ends in dot p y. Each line is an instruction."
+       "say": "Here is the big idea. A Python program is a text file that ends in dot p y."
       },
       {
-       "say": "Python, the program called the interpreter, reads your file."
-      },
-      {
-       "say": "It carries out each line in order: top to bottom, one line at a time.",
+       "say": "Python, the program called the interpreter, reads it and carries out each line in order: top to bottom, one line at a time.",
        "focus": "pre"
       }
      ]
@@ -226,6 +193,7 @@
      "visual": {
       "type": "bullets",
       "heading": "Two words you need",
+      "label": "Key words",
       "reveal": 1,
       "focus": 0,
       "items": [
@@ -238,7 +206,7 @@
        "say": "Print is a function: a named action that Python already knows. You call it with its name, then brackets."
       },
       {
-       "say": "Text must be inside quotation marks. Text in quotation marks is called a string.",
+       "say": "And text inside quotation marks is called a string.",
        "reveal": 2,
        "focus": 1
       }
@@ -247,7 +215,8 @@
     {
      "visual": {
       "type": "bullets",
-      "heading": "A program is like a recipe",
+      "heading": "A program is like a cafe recipe",
+      "label": "Analogy",
       "reveal": 1,
       "focus": 0,
       "items": [
@@ -258,15 +227,15 @@
      },
      "segments": [
       {
-       "say": "Think of a program like a recipe. The cook follows each step in order."
+       "say": "Think of a recipe card in Asha's kitchen. The cook follows each step in order."
       },
       {
-       "say": "But the comparison stops at one point. A cook can guess what you meant. Python cannot.",
+       "say": "The comparison stops at one point. A cook can guess what you meant. Python cannot.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "If a step has a typing mistake, Python stops and reports an error.",
+       "say": "One typing mistake, and Python stops with an error.",
        "reveal": 3,
        "focus": 2
       }
@@ -287,12 +256,12 @@
      },
      "segments": [
       {
-       "say": "Quick check. A file has three print lines. In which order does Python run them? Choose A, B, C or D."
+       "say": "Let's check that idea. A file has three print lines. In which order does Python run them?"
       }
      ],
      "after": [
       {
-       "say": "The answer is B. Python runs your file from top to bottom, one line at a time."
+       "say": "B. From top to bottom, one line at a time."
       }
      ]
     },
@@ -301,16 +270,16 @@
       "type": "breather",
       "items": [
        "A program is a list of instructions.",
-       "Python runs them from top to bottom.",
-       "Text inside quotation marks is a string."
+       "Python runs it from top to bottom.",
+       "Text in quotation marks is a string."
       ]
      },
      "segments": [
       {
-       "say": "Time for a short breather. Sit back for a moment. Here is what you know so far."
+       "say": "Take a short breather. Here is what you know so far."
       },
       {
-       "say": "Next, you will install Python and write your first file."
+       "say": "Next, Asha installs Python and writes her very first line."
       }
      ]
     }
@@ -326,6 +295,7 @@
      "visual": {
       "type": "table",
       "heading": "Step 1: Install Python",
+      "label": "Build it",
       "columns": [
        "System",
        "How to install"
@@ -347,18 +317,14 @@
      },
      "segments": [
       {
-       "say": "Step 1: install Python."
-      },
-      {
-       "say": "The current version is Python 3.15, and any version from 3.12 works for this course.",
-       "heading": "Step 1: Install Python (3.12 or newer)"
+       "say": "Step 1: install Python. Get the latest version. Any version from 3.12 works for this course."
       },
       {
        "say": "On Windows, use the Python install manager from python dot org or the Microsoft Store.",
        "focus_row": 0
       },
       {
-       "say": "On macOS, download the installer package from python dot org and open it.",
+       "say": "On macOS, download the installer package from python dot org.",
        "focus_row": 1
       },
       {
@@ -370,7 +336,8 @@
     {
      "visual": {
       "type": "table",
-      "heading": "Check the version in a terminal",
+      "heading": "Check the version",
+      "label": "Build it",
       "columns": [
        "System",
        "Type this",
@@ -398,7 +365,7 @@
        "focus_row": 0
       },
       {
-       "say": "On macOS and Linux, type python3, space, dash dash version. You should see a line that starts with Python 3.",
+       "say": "On macOS and Linux, type python3 instead. You should see a line that starts with Python 3.",
        "focus_row": 1
       }
      ]
@@ -408,29 +375,29 @@
   {
    "id": "step2",
    "section": "Build it step by step",
-   "title": "Steps 2 and 3: Write and run your first file",
-   "direction": "The file types itself in line by line as it is explained. The output appears only after the run command.",
+   "title": "Steps 2 and 3: Asha's first program",
+   "direction": "The file types itself in, line by line. Then the run command, then the output.",
    "beats": [
     {
      "visual": {
       "type": "code",
       "file": "examples/ex01_hello.py",
-      "heading": "Step 2: Create your first file",
+      "heading": "Step 2: Asha's first program",
       "lines": 1,
       "hidden_text": "Run it to see the output."
      },
      "segments": [
       {
-       "say": "Step 2. Open a code editor, such as Visual Studio Code or IDLE, and create a file called ex 0 1 hello."
+       "say": "Step 2. Asha opens a code editor, such as Visual Studio Code or IDLE, and creates a file called ex 0 1 hello."
       },
       {
-       "say": "Line 1 starts with a hash sign, so it is a comment. Python ignores comments. They are notes for people.",
+       "say": "Line 1 starts with a hash sign, so it is a comment. Python ignores it. Comments are notes for people.",
        "highlight": [
         1
        ]
       },
       {
-       "say": "Line 2 prints a greeting.",
+       "say": "Line 2 prints a greeting with her name.",
        "lines": 2,
        "highlight": [
         2
@@ -449,6 +416,7 @@
      "visual": {
       "type": "table",
       "heading": "Step 3: Run the file",
+      "label": "Build it",
       "columns": [
        "System",
        "Type this in the terminal"
@@ -466,7 +434,7 @@
      },
      "segments": [
       {
-       "say": "Step 3: run the file. In the terminal, go to the folder that holds your file."
+       "say": "Step 3: run it. In the terminal, go to the folder that holds the file."
       },
       {
        "say": "On Windows, type python, then the file name.",
@@ -482,7 +450,7 @@
      "visual": {
       "type": "code",
       "file": "examples/ex01_hello.py",
-      "heading": "Your first output",
+      "heading": "Her first output",
       "highlight": [
        2,
        3
@@ -491,14 +459,14 @@
      },
      "segments": [
       {
-       "say": "You will see two lines. Each print produces one line of output.",
+       "say": "And there it is: two lines. Each print makes one line of output.",
        "out_highlight": [
         1,
         2
        ]
       },
       {
-       "say": "The quotation marks do not appear, because they only mark where the text starts and ends."
+       "say": "The quotation marks do not appear. They only mark where the text starts and ends."
       }
      ]
     }
@@ -507,14 +475,14 @@
   {
    "id": "step4",
    "section": "Build it step by step",
-   "title": "Step 4: Check the order",
-   "direction": "Type the three steps in, keep them on screen with the question and timer, then reveal.",
+   "title": "Step 4: Order matters",
+   "direction": "Use the cafe's tea recipe. The steps type in, then the learner predicts the order, then the reveal.",
    "beats": [
     {
      "visual": {
       "type": "code",
       "file": "examples/ex02_order.py",
-      "heading": "Step 4: Check the order",
+      "heading": "Step 4: The cafe's tea recipe",
       "lines": 2,
       "highlight": [
        2
@@ -522,7 +490,7 @@
      },
      "segments": [
       {
-       "say": "Step 4. This program prints three steps for making tea. Step 1, boil the water."
+       "say": "Step 4. Asha writes the cafe's tea recipe as a program. Step 1, boil the water."
       },
       {
        "say": "Step 2, add the tea leaves.",
@@ -539,7 +507,7 @@
        ]
       },
       {
-       "say": "Before you run it, predict the output.",
+       "say": "You know how Python reads a file. Use that now.",
        "highlight": [
         2,
         3,
@@ -552,24 +520,18 @@
      },
      "after": [
       {
-       "say": "The lines appear in the same order as the code.",
-       "output": "examples/ex02_order.expected"
-      },
-      {
-       "say": "Try this: swap two lines in your file and run it again.",
-       "highlight": [
-        2,
-        3
-       ]
-      },
-      {
-       "say": "The output changes, because Python always runs from top to bottom.",
-       "highlight": [],
+       "say": "The same order as the code. Step 1, step 2, step 3.",
+       "output": "examples/ex02_order.expected",
        "out_highlight": [
         1,
         2,
         3
        ]
+      },
+      {
+       "say": "Swap two lines in your file and run it again. The output changes, because Python always runs from top to bottom.",
+       "out_highlight": [],
+       "highlight": []
       }
      ]
     }
@@ -578,13 +540,14 @@
   {
    "id": "step5",
    "section": "Build it step by step",
-   "title": "Step 5: Several values, sep and end",
-   "direction": "Settings table with each row in focus, then the code line by line, the question with the code still visible, and the reveal with the matching output line lit.",
+   "title": "Step 5: Spacing with sep and end",
+   "direction": "Teach the two settings first, then the code, then the prediction, then a quick check, then a breather.",
    "beats": [
     {
      "visual": {
       "type": "table",
       "heading": "Step 5: Two settings of `print()`",
+      "label": "Build it",
       "columns": [
        "Setting",
        "What it controls",
@@ -605,14 +568,14 @@
      },
      "segments": [
       {
-       "say": "Step 5. Print can show several values at once, separated by commas. It also has two settings."
+       "say": "Step 5. The receipt needs neat spacing, so Asha learns two settings. Print can show several values, separated by commas."
       },
       {
-       "say": "Sep sets what goes between the values. Its default is one space.",
+       "say": "Sep sets what goes between the values. By default, it is one space.",
        "focus_row": 0
       },
       {
-       "say": "End sets what goes after the last value. Its default is a new line.",
+       "say": "End sets what goes after the last value. By default, it is a new line.",
        "focus_row": 1
       }
      ]
@@ -621,17 +584,17 @@
      "visual": {
       "type": "code",
       "file": "examples/ex03_many_values.py",
-      "heading": "Step 5: Several values, `sep` and `end`",
+      "heading": "Step 5: `sep` and `end` in action",
       "highlight": [
        2
       ]
      },
      "segments": [
       {
-       "say": "Look at line 2. The calculation 3 plus 4 has no quotation marks."
+       "say": "Line 2 has a calculation, 3 plus 4, with no quotation marks."
       },
       {
-       "say": "Line 3 sets sep to a colon.",
+       "say": "Line 3 prints the cafe's opening time, and sets sep to a colon.",
        "highlight": [
         3
        ]
@@ -649,7 +612,7 @@
      },
      "after": [
       {
-       "say": "Here is the output. Line 2 has no quotation marks, so Python calculates 3 plus 4 and prints 7.",
+       "say": "Line 2 prints 7, because Python calculates anything without quotation marks.",
        "output": "examples/ex03_many_values.expected",
        "highlight": [
         2
@@ -659,7 +622,7 @@
        ]
       },
       {
-       "say": "Line 3 joins the values with colons instead of spaces, so they look like a time.",
+       "say": "Line 3 joins the values with colons, so they look like a time.",
        "highlight": [
         3
        ],
@@ -668,17 +631,9 @@
        ]
       },
       {
-       "say": "Line 4 ends with three dots instead of a new line.",
+       "say": "And line 4 ends with three dots instead of a new line, so line 5 continues on the same line: Loading, dot dot dot, done.",
        "highlight": [
-        4
-       ],
-       "out_highlight": [
-        3
-       ]
-      },
-      {
-       "say": "So line 5 continues on the same line: Loading, dot dot dot, done.",
-       "highlight": [
+        4,
         5
        ],
        "out_highlight": [
@@ -702,12 +657,12 @@
      },
      "segments": [
       {
-       "say": "Quick check. Which setting changes what goes between the values in print?"
+       "say": "Quick check. Which setting changes what goes between the values?"
       }
      ],
      "after": [
       {
-       "say": "The answer is B, sep. Sep goes between values. End goes after the last value."
+       "say": "B, sep. Sep goes between. End goes after."
       }
      ]
     },
@@ -715,17 +670,17 @@
      "visual": {
       "type": "breather",
       "items": [
-       "You can run a Python file from the terminal.",
-       "Each `print()` makes one line of output.",
+       "You can run a Python file.",
+       "Each `print()` makes one line.",
        "`sep` goes between values; `end` goes after them."
       ]
      },
      "segments": [
       {
-       "say": "Another breather. Relax your shoulders, and look at what you can already do."
+       "say": "Breather. Relax your shoulders. Look at how much you can already do."
       },
       {
-       "say": "Next, you will put it all together in one complete program."
+       "say": "Now Asha has every piece she needs for the receipt."
       }
      ]
     }
@@ -734,14 +689,14 @@
   {
    "id": "outcome",
    "section": "See the outcome",
-   "title": "See the outcome: a cafe receipt",
-   "direction": "Walk the receipt code in three groups, reveal the output, then ask which lines Python calculated.",
+   "title": "See the outcome: the cafe receipt",
+   "direction": "Return to the mission from the opening. Walk the code in groups, connect each group to what was taught, reveal, then ask. End by handing over to the AI story.",
    "beats": [
     {
      "visual": {
       "type": "code",
       "file": "examples/ex04_receipt.py",
-      "heading": "A complete program: the cafe receipt",
+      "heading": "Mission complete: the cafe receipt",
       "highlight": [
        2,
        3,
@@ -750,24 +705,24 @@
      },
      "segments": [
       {
-       "say": "Here is a complete program that prints a receipt for the Corner Cafe. Lines 2 to 4 print the header."
+       "say": "Remember the receipt from the start? Now you can read every line. Lines 2 to 4 print the header, top to bottom."
       },
       {
-       "say": "Lines 5 and 6 use sep to draw the dotted lines between each item and its price.",
+       "say": "Lines 5 and 6 use sep to draw the dots between each item and its price.",
        "highlight": [
         5,
         6
        ]
       },
       {
-       "say": "Lines 7 and 8 have calculations without quotation marks.",
+       "say": "Lines 7 and 8 print the item count and the total.",
        "highlight": [
         7,
         8
        ]
       },
       {
-       "say": "Run it, and you get the receipt.",
+       "say": "Asha runs it.",
        "highlight": [],
        "output": "examples/ex04_receipt.expected"
       }
@@ -788,22 +743,13 @@
        ]
       },
       {
-       "say": "Notice one problem: each price is typed twice.",
+       "say": "The receipt works. But it has no order code. Asha wants to add one, and she will use an AI assistant to help, one stage at a time.",
        "highlight": [
-        5,
-        6,
-        8
+        3
        ],
        "out_highlight": [
-        4,
-        5,
-        7
+        2
        ]
-      },
-      {
-       "say": "In Chapter 2, you will store prices in named values instead.",
-       "highlight": [],
-       "out_highlight": []
       }
      ]
     }
@@ -812,31 +758,32 @@
   {
    "id": "ai",
    "section": "Work with AI",
-   "title": "Work with AI: a tutor, not a machine",
-   "direction": "Safety habits one at a time, then the six stages and two prompt cards. The opening puzzle returns: the question stays beside the code, and the fix replaces the flawed line.",
+   "title": "Work with AI: six stages, one receipt",
+   "direction": "Safety habits first. Then one real conversation per stage, all about adding an order code to the same receipt. Stage 3 plants the AI mistake; stage 4 catches it with a test; stage 6 catches a second one by counting.",
    "beats": [
     {
      "visual": {
       "type": "bullets",
       "heading": "Three safety habits",
+      "label": "Before you start",
       "reveal": 0,
       "items": [
        "Never paste passwords, keys or private information into an AI tool.",
-       "Run every piece of AI code yourself and compare the output with what you asked for.",
+       "Run every piece of AI code yourself, and compare it with what you asked for.",
        "You are responsible for the code you use, even if an AI wrote it."
       ]
      },
      "segments": [
       {
-       "say": "Use an AI assistant as a tutor that explains, not as a machine that does your work. Follow three safety habits."
+       "say": "Before Asha opens an AI assistant, she follows three safety habits."
       },
       {
-       "say": "One. Never paste passwords, keys or private information into an AI tool.",
+       "say": "One. Never paste passwords, keys or private information.",
        "reveal": 1,
        "focus": 0
       },
       {
-       "say": "Two. Run every piece of AI code yourself, and compare the output with what you asked for.",
+       "say": "Two. Run every piece of AI code yourself, and compare it with what you asked for.",
        "reveal": 2,
        "focus": 1
       },
@@ -849,161 +796,270 @@
     },
     {
      "visual": {
-      "type": "table",
-      "heading": "AI at every stage",
-      "columns": [
-       "Stage",
-       "How to use AI in this chapter"
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan before you code",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner. My Python receipt prints a cafe name, items and a total. I want to add an order code, CAFE-1024-T4, under the cafe name. List the steps in plain English. No code yet."
+       },
+       {
+        "role": "ai",
+        "text": "1. Find the line that prints the cafe name.\n2. Add one new print line after it.\n3. Print the three parts of the code as three values, with hyphens between them.\n4. Run the receipt and check the code, character by character."
+       }
       ],
-      "rows": [
-       [
-        "Plan",
-        "Ask for the steps of a welcome card in plain English, with no code yet."
-       ],
-       [
-        "Write",
-        "Write it yourself first. Then ask AI to explain each line."
-       ],
-       [
-        "Generate",
-        "Paste the exact output and ask for code that uses only `print()`."
-       ],
-       [
-        "Debug",
-        "Paste the code and the full error. Ask for the cause before the fix."
-       ],
-       [
-        "Test",
-        "Ask AI to compare expected and real output, space by space."
-       ],
-       [
-        "Improve",
-        "Ask for at most two readability suggestions, each with a reason."
-       ]
-      ]
+      "reveal": 1
      },
      "segments": [
       {
-       "say": "AI helps at every stage. Plan the steps in plain English first.",
-       "focus_row": 0
+       "say": "Stage 1: plan. Before any code, Asha asks how to add the order code. She says what she wants, and says: no code yet."
       },
       {
-       "say": "Write the program yourself, then ask for an explanation.",
-       "focus_row": 1
+       "say": "The AI answers with four clear steps. Each one is something she can check. A plan you understand is easier to check than code you do not.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it, then ask for an explanation",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Before I change my receipt, explain it to me. Do not rewrite it. One simple sentence for each group of lines.",
+        "code": "examples/ex04_receipt.py"
+       },
+       {
+        "role": "ai",
+        "text": "Lines 2 to 4 print the header between two borders, so the order code goes after line 3.\nLines 5 and 6 use `sep` to put dots between each item and its price.\nLines 7 and 8 calculate `1 + 1` and `3 + 7`, so Python prints 2 and 10.\nLines 9 and 10 close the receipt."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Before she changes her receipt, Asha makes sure she understands every line. She asks the AI to explain her code, not to rewrite it."
       },
       {
-       "say": "Generate code from an exact output.",
-       "focus_row": 2
+       "say": "The AI explains each group, and shows where the order code belongs: after line 3. Asha checks each sentence against what she learned.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate code with a precise request",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write one line of Python that prints the order code `CAFE-1024-T4`, using three separate values. Show the output too."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the code. It prints `CAFE-1024-T4`.",
+        "code": "examples/ai_code_flawed.py"
+       },
+       {
+        "role": "you",
+        "text": "I ran the AI's line. This is what it printed:",
+        "output": "examples/ai_code_flawed.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Now Asha asks for the code line itself: one line that prints the order code with hyphens."
       },
       {
-       "say": "Debug with the full error message.",
-       "focus_row": 3
+       "say": "The AI gives a line of code, and says it prints the order code with hyphens. It sounds sure.",
+       "reveal": 2,
+       "focus": 1
       },
       {
-       "say": "Test by comparing outputs, space by space.",
-       "focus_row": 4
-      },
-      {
-       "say": "And improve with at most two suggestions.",
-       "focus_row": 5
-      },
-      {
-       "say": "Try this one.",
-       "focus_row": null
+       "say": "Look at its code. You learned exactly what this line does in step 5."
       }
      ],
      "ask": {
-      "question": "Your program stops with an error. Which stage do you use, and what do you paste?"
+      "question": "The AI says this prints `CAFE-1024-T4`. Is it right? Why?"
      },
      "after": [
       {
-       "say": "Debug. Paste the code and the full error message, and ask for the cause before the fix.",
-       "focus_row": 3
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "prompt",
-      "heading": "Prompt card: explain, do not rewrite",
-      "label": "Write",
-      "prompt": "Here is my Python code: <paste your code>. Do not rewrite it. Explain what each line does in one simple sentence, and tell me if it prints exactly this: <paste the output you want>.",
-      "check": "Run your program. If the AI said yes but the output differs, trust the real output."
-     },
-     "segments": [
-      {
-       "say": "Here is the Write card. Paste your code, and ask the AI not to rewrite it.",
-       "focus": 1
-      },
-      {
-       "say": "Ask it to explain each line in one simple sentence, and to say whether it prints exactly the output you want.",
+       "say": "Asha runs it. It prints spaces, not hyphens. The AI was wrong, and it sounded sure. Can she find out why? That is what testing is for.",
+       "reveal": 3,
        "focus": 2
-      },
-      {
-       "say": "Then run your program. If the AI said yes but the output differs, trust the real output.",
-       "focus": "check"
       }
      ]
     },
     {
      "visual": {
-      "type": "prompt",
-      "heading": "Prompt card: code for an exact output",
-      "label": "Generate",
-      "prompt": "Write Python code that uses only the print() function. It must output exactly these lines, with the same spaces and symbols: <paste the exact output>. Show the code, then show the output it produces.",
-      "check": "Run the code and compare every character, including spaces, with your target."
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: compare expected and real output",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I expected `CAFE-1024-T4`. The line printed `CAFE 1024 T4`. List every difference, character by character."
+       },
+       {
+        "role": "ai",
+        "text": "There are two differences. Characters 5 and 10 are spaces, but you expected hyphens.\nThe cause: `sep` is a space by default. Add `sep=\"-\"`.",
+        "code": "examples/ai_code_fixed.py"
+       },
+       {
+        "role": "you",
+        "text": "I ran the fixed line:",
+        "output": "examples/ai_code_fixed.expected"
+       }
+      ],
+      "reveal": 1
      },
      "segments": [
       {
-       "say": "And here is the Generate card. Ask for code that uses only print.",
-       "focus": 0
+       "say": "Stage 4: test. Asha gives the AI what she expected, and what the line really printed."
       },
       {
-       "say": "Paste the exact output you want, with the same spaces and symbols.",
+       "say": "This time the AI finds both differences, and names the cause: sep is a space by default. It adds sep equals hyphen.",
+       "reveal": 2,
        "focus": 1
       },
       {
-       "say": "Then run it and compare every character, including spaces. This is how the date flaw was caught.",
-       "focus": "check"
+       "say": "Asha does not trust it yet. She runs it. Now the order code is correct, so she adds it to her receipt.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I added the order code to my receipt and got this error. Here are the last two lines of my code. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_receipt_typo.py",
+        "code_lines": [
+         10,
+         11
+        ],
+        "file": "examples/ai_receipt_typo.py",
+        "error": "examples/ai_receipt_typo.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "The cause is on line 11: `Print` starts with a capital P. Python names are case-sensitive, so `Print` is not the `print()` function.\nThe fix: change `Print` to `print`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. While adding the order code, Asha types Print with a capital P on the last line. Python stops with an error. She pastes her code and the full error."
+      },
+      {
+       "say": "She asks for the cause first, then the smallest fix. The AI names line 11, explains that names are case-sensitive, and changes one letter.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: a short, reasoned review",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Review my receipt for readability. Here are the order code and price lines. Suggest at most two improvements, each with a one-sentence reason. Do not change what it prints.",
+        "code": "examples/ai_receipt_typo.py",
+        "code_lines": [
+         4,
+         6,
+         7
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "1. Add a comment that says what the program does, such as a cafe receipt with its order code. A reader then knows its purpose at once.\n2. The dots do not line up. Make both `sep` values the same length."
+       },
+       {
+        "role": "you",
+        "text": "I counted: both price rows are already 23 characters, so they do line up. Suggestion 2 is wrong. I added the comment and ran the receipt:",
+        "output": "examples/ai_receipt_final.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. The receipt now works. Asha asks for at most two readability suggestions, each with a reason."
+      },
+      {
+       "say": "Suggestion 1 helps. Suggestion 2 says the dots do not line up.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Asha checks it herself. She counts: both price rows are 23 characters, so they already line up. The AI was wrong again. She keeps suggestion 1 only, and runs the receipt.",
+       "reveal": 3,
+       "focus": 2
       }
      ]
     },
     {
      "visual": {
       "type": "code",
-      "file": "examples/ai_date_flawed.py",
-      "heading": "AI pair moment: find the flaw",
+      "file": "examples/ai_receipt_final.py",
+      "heading": "The finished receipt, with its order code",
       "highlight": [
-       2
+       2,
+       5
       ],
-      "output": "examples/ai_date_flawed.expected"
+      "output": "examples/ai_receipt_final.expected",
+      "out_highlight": [
+       3
+      ]
      },
      "segments": [
       {
-       "say": "Now, back to the opening puzzle. The request asked for hyphens, but the output has spaces."
+       "say": "Here is the result. A comment that says what the program does, on line 2. And the order code, on line 5."
+      },
+      {
+       "say": "Every stage helped, and at every stage Asha checked the answer herself. That is how you work with AI."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Your program stops with an error. Which stage do you use, and what do you paste?",
+      "options": [
+       "Plan: describe the program again",
+       "Generate: ask for new code",
+       "Debug: paste the code and the full error",
+       "Improve: ask for a review"
+      ],
+      "answer": 2,
+      "explain": "Debug. Give the AI the exact code and the full error, and ask for the cause before the fix."
+     },
+     "segments": [
+      {
+       "say": "Quick check on what you watched. Your program stops with an error. Which stage do you use?"
       }
      ],
-     "ask": {
-      "question": "Which `print()` setting puts a space between the values? How would you change it?"
-     },
      "after": [
       {
-       "say": "The AI forgot that sep is a space by default.",
-       "out_highlight": [
-        1
-       ]
-      },
-      {
-       "say": "The fix sets sep to a hyphen, and now the date prints correctly.",
-       "file": "examples/ai_date_fixed.py",
-       "output": "examples/ai_date_fixed.expected",
-       "heading": "The fix: set `sep` to a hyphen",
-       "out_highlight": [
-        1
-       ]
-      },
-      {
-       "say": "Always check AI output against what you asked for, character by character."
+       "say": "C. Debug. Paste the code and the full error, and ask for the cause first."
       }
      ]
     },
@@ -1011,17 +1067,17 @@
      "visual": {
       "type": "breather",
       "items": [
-       "Use AI as a tutor that explains.",
-       "Never paste private information.",
-       "Run AI code and compare it with your request."
+       "Plan, write, generate, test, debug, improve.",
+       "AI can be wrong and sound sure.",
+       "Run it, compare it, then trust it."
       ]
      },
      "segments": [
       {
-       "say": "Take a breath. You have caught a real AI mistake. That is the most important skill in this course."
+       "say": "Breather. You watched Asha use AI at every stage, and she caught two AI mistakes by checking."
       },
       {
-       "say": "Next, the four mistakes that beginners make most often."
+       "say": "Next, the four errors every beginner meets, including the one Asha debugged."
       }
      ]
     }
@@ -1031,40 +1087,30 @@
    "id": "mistakes",
    "section": "Common mistakes",
    "title": "Common mistakes",
-   "direction": "For the first two mistakes, the learner hunts the bug while the code and question stay on screen; then the real error appears.",
+   "direction": "Teach three mistakes with their real error reports, then let the learner spot the fourth, then a summary table and a quick check.",
    "beats": [
     {
      "visual": {
       "type": "code",
       "file": "examples/err01_missing_quote.py",
-      "heading": "Mistake 1: spot the problem",
+      "heading": "Mistake 1: a missing quotation mark",
       "highlight": [
        2
       ],
-      "hidden_text": "Find the mistake before the error appears."
+      "error": "examples/err01_missing_quote.expected_error"
      },
      "segments": [
       {
-       "say": "Mistake 1. This line should print Good morning. Something is missing."
-      }
-     ],
-     "ask": {
-      "question": "What is missing on line 2?"
-     },
-     "after": [
-      {
-       "say": "The closing quotation mark is missing. Python cannot see where the text ends, so it reports a syntax error.",
-       "error": "examples/err01_missing_quote.expected_error",
-       "heading": "Mistake 1: a missing closing quotation mark"
+       "say": "Mistake 1. The closing quotation mark is missing, so Python cannot see where the text ends."
       },
       {
-       "say": "A syntax error means Python could not read the file, so no line runs.",
+       "say": "It reports a syntax error. That means Python could not read the file, so no line runs at all.",
        "out_highlight": [
         -1
        ]
       },
       {
-       "say": "Add the closing quotation mark before the bracket.",
+       "say": "The fix: add the closing quotation mark. Remember this rule: every opening mark needs its closing partner, for quotation marks and for brackets.",
        "out_highlight": []
       }
      ]
@@ -1073,28 +1119,18 @@
      "visual": {
       "type": "code",
       "file": "examples/err02_capital_p.py",
-      "heading": "Mistake 2: spot the problem",
+      "heading": "Mistake 2: a capital letter in `print`",
       "highlight": [
        3
       ],
-      "hidden_text": "Find the mistake before the error appears."
+      "error": "examples/err02_capital_p.expected_error"
      },
      "segments": [
       {
-       "say": "Mistake 2. Line 2 is fine. Look closely at line 3."
-      }
-     ],
-     "ask": {
-      "question": "What is wrong on line 3?"
-     },
-     "after": [
-      {
-       "say": "Print starts with a capital P. Python treats capital P Print and small p print as different names.",
-       "error": "examples/err02_capital_p.expected_error",
-       "heading": "Mistake 2: a capital letter in `print`"
+       "say": "Mistake 2 is the one Asha debugged with the AI. Print with a capital P is a different name. Here it is in a short test file."
       },
       {
-       "say": "Notice that Start was printed first. This error happened while the program was running, so the lines before it had already run.",
+       "say": "Notice that Start printed first. This error happened while the program was running, so the lines above it had already run.",
        "out_highlight": [
         1
        ]
@@ -1121,21 +1157,14 @@
      },
      "segments": [
       {
-       "say": "Mistake 3 is curly quotation marks. Word processors and some chat apps change straight quotation marks into curly ones."
-      },
-      {
-       "say": "Python only accepts straight ones.",
+       "say": "Mistake 3. Word processors and some chat apps turn straight quotation marks into curly ones. Python accepts only straight ones.",
        "out_highlight": [
         -1
        ]
       },
       {
-       "say": "Type the quotation marks again in your code editor.",
+       "say": "So when you copy code from a chat, copy it from the code block, never from formatted text.",
        "out_highlight": []
-      },
-      {
-       "say": "And copy code from a code block, never from a formatted document.",
-       "highlight": []
       }
      ]
     },
@@ -1143,7 +1172,7 @@
      "visual": {
       "type": "code",
       "file": "examples/err04_missing_bracket.py",
-      "heading": "Mistake 4: spot the problem",
+      "heading": "Mistake 4: your turn to spot it",
       "highlight": [
        2
       ],
@@ -1151,7 +1180,7 @@
      },
      "segments": [
       {
-       "say": "Mistake 4. One more line that will not run."
+       "say": "Now you know three errors, and the rule about closing partners. Try the fourth yourself."
       }
      ],
      "ask": {
@@ -1159,7 +1188,7 @@
      },
      "after": [
       {
-       "say": "The closing bracket is missing. Every opening bracket needs a closing bracket.",
+       "say": "The closing bracket. Every opening bracket needs a closing bracket.",
        "error": "examples/err04_missing_bracket.expected_error",
        "heading": "Mistake 4: a missing closing bracket"
       }
@@ -1169,6 +1198,7 @@
      "visual": {
       "type": "table",
       "heading": "Read the last line first",
+      "label": "Common mistakes",
       "columns": [
        "Error",
        "Usual cause",
@@ -1199,7 +1229,7 @@
      },
      "segments": [
       {
-       "say": "Here are all four, side by side. Each one is the last line of its error report."
+       "say": "Here are all four. Each row starts with the last line of its error report."
       },
       {
        "say": "Unterminated string literal: a quotation mark is missing.",
@@ -1218,7 +1248,7 @@
        "focus_row": 3
       },
       {
-       "say": "The habit to build: read the last line first. It names the kind of error. Then look at the line number.",
+       "say": "So the habit is simple. Read the last line first, then find the line number.",
        "focus_row": null
       }
      ]
@@ -1226,7 +1256,7 @@
     {
      "visual": {
       "type": "quiz",
-      "question": "An error message has several lines. Which line do you read first?",
+      "question": "An error report has several lines. Which line do you read first?",
       "options": [
        "The first line",
        "The last line",
@@ -1237,12 +1267,12 @@
      },
      "segments": [
       {
-       "say": "Quick check. An error message has several lines. Which line do you read first?"
+       "say": "Quick check. An error report has several lines. Which one do you read first?"
       }
      ],
      "after": [
       {
-       "say": "The answer is B, the last line. It names the kind of error."
+       "say": "B. The last line. It names the kind of error."
       }
      ]
     },
@@ -1251,16 +1281,16 @@
       "type": "breather",
       "items": [
        "Errors are messages, not failures.",
-       "Read the last line first: it names the error.",
+       "Read the last line first.",
        "Then find the line number."
       ]
      },
      "segments": [
       {
-       "say": "One more breather. Errors are normal, and every developer sees them every day."
+       "say": "One more breather. Every developer sees errors every day. Now you can read them."
       },
       {
-       "say": "Next, two questions to think about on your own."
+       "say": "Two questions to think about on your own come next."
       }
      ]
     }
@@ -1270,22 +1300,22 @@
    "id": "beyond",
    "section": "Think beyond",
    "title": "Think beyond",
-   "direction": "Two open questions. Each question stays on screen above its timer. No answers are given.",
+   "direction": "Two open questions that apply what was taught. The question stays above its timer. No answers are given.",
    "beats": [
     {
      "visual": {
       "type": "pause",
-      "question": "One `print()`, several lines. Which setting could help?",
-      "hint": "think about what goes between the values."
+      "question": "The cafe wants the order code as `T4/1024/CAFE`. What would you change?",
+      "hint": "think about the order of the values, and what goes between them."
      },
      "segments": [
       {
-       "say": "Two questions to think beyond this chapter. First. You want to print a shopping list with each item on its own line, using only one print. Which setting could help?"
+       "say": "First. The cafe wants the order code written backwards, with slashes. What would you change in Asha's code line?"
       }
      ],
      "after": [
       {
-       "say": "Test your idea in your editor after the video."
+       "say": "Try it in your editor after the video, and compare the output with the target, character by character."
       }
      ]
     },
@@ -1296,7 +1326,7 @@
      },
      "segments": [
       {
-       "say": "Second. An AI gives you code that runs with no error. What two things should you check before you trust it?"
+       "say": "Second. An AI gives you code that runs with no error. What two things do you check before you trust it?"
       }
      ],
      "after": [
@@ -1311,47 +1341,48 @@
    "id": "recap",
    "section": "Recap",
    "title": "Recap",
-   "direction": "Each recap point appears and is highlighted as it is spoken, then the badge.",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
    "beats": [
     {
      "visual": {
       "type": "bullets",
       "heading": "Recap",
+      "label": "What you learned",
       "items": [
-       "A program is a list of instructions. Python runs them from top to bottom.",
-       "`print()` shows values. Text goes in quotation marks; calculations are worked out first.",
-       "`sep` controls what goes between values, and `end` what goes after them.",
-       "An error names the kind of error and the line. Read the last line first.",
-       "AI is a tutor. Ask it to explain, then run and check everything yourself."
+       "Python runs a program from top to bottom, one line at a time.",
+       "`print()` shows text and numbers. Calculations without quotation marks are worked out first.",
+       "`sep` goes between values; `end` goes after the last one.",
+       "Read the last line of an error first, then find the line number.",
+       "Use AI at every stage, then run and check everything yourself."
       ],
       "reveal": 0
      },
      "segments": [
       {
-       "say": "Let's recap."
+       "say": "Let's recap the mission."
       },
       {
-       "say": "A program is a list of instructions, and Python runs them from top to bottom.",
+       "say": "Python runs a program from top to bottom, one line at a time.",
        "reveal": 1,
        "focus": 0
       },
       {
-       "say": "Print shows values. Text goes in quotation marks, and calculations are worked out first.",
+       "say": "Print shows text and numbers, and calculations without quotation marks are worked out first.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "Sep controls what goes between values, and end controls what goes after them.",
+       "say": "Sep goes between values, and end goes after them.",
        "reveal": 3,
        "focus": 2
       },
       {
-       "say": "An error names the kind of error and the line, so read the last line first.",
+       "say": "Read the last line of an error first.",
        "reveal": 4,
        "focus": 3
       },
       {
-       "say": "And AI is a tutor. Ask it to explain, then run and check everything yourself.",
+       "say": "And use AI at every stage, then run and check everything yourself.",
        "reveal": 5,
        "focus": 4
       }
@@ -1360,23 +1391,23 @@
     {
      "visual": {
       "type": "quiz",
-      "question": "An AI gives you code that runs with no error. What should you do next?",
+      "question": "Asha wants a new line on the receipt: `Tea - USD 3`. Which code prints it?",
       "options": [
-       "Use it, because it runs",
-       "Run it and compare the output with what you asked for",
-       "Paste your password so the AI can test it"
+       "`print(\"Tea\", \"USD 3\", sep=\" - \")`",
+       "`print(\"Tea\", \"USD 3\", end=\" - \")`",
+       "`print(\"Tea - \", \"USD 3\", sep=\" - \")`"
       ],
-      "answer": 1,
-      "explain": "Code that runs is not always correct. Check the output against your request, and never share private data."
+      "answer": 0,
+      "explain": "`sep` goes between the two values, so `\" - \"` lands between Tea and USD 3."
      },
      "segments": [
       {
-       "say": "One last quick check. An AI gives you code that runs with no error. What should you do next?"
+       "say": "One last check. Asha wants a new line: Tea, dash, U S D 3. Which code prints it?"
       }
      ],
      "after": [
       {
-       "say": "The answer is B. Run it, and compare the output with what you asked for."
+       "say": "A. The separator goes between the two values."
       }
      ]
     },
@@ -1390,7 +1421,7 @@
      },
      "segments": [
       {
-       "say": "You earned 100 XP and the First Run badge. Well done."
+       "say": "Mission complete. You earned 100 XP and the First Run badge."
       }
      ],
      "hold": 1.5
@@ -1407,6 +1438,7 @@
      "visual": {
       "type": "table",
       "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
       "columns": [
        "Tier",
        "Tasks",
@@ -1432,18 +1464,18 @@
      },
      "segments": [
       {
-       "say": "Now practise. The practice file has eight tasks."
+       "say": "Now it is your turn to build. The practice file has eight tasks."
       },
       {
-       "say": "The three warm-up tasks are worth 10 XP each.",
+       "say": "Three warm-up tasks, worth 10 XP each.",
        "focus_row": 0
       },
       {
-       "say": "The three apply tasks are worth 20 XP each.",
+       "say": "Three apply tasks, worth 20 XP each.",
        "focus_row": 1
       },
       {
-       "say": "The two stretch tasks are worth 40 each. In the last one, you check an AI's work and fix every difference yourself.",
+       "say": "And two stretch tasks, worth 40 each. In the last one, you check an AI's work, like Asha did.",
        "focus_row": 2
       },
       {
@@ -1466,11 +1498,12 @@
       "kicker": "NEXT: CHAPTER 2",
       "title": "Values and Variables: Giving Data a Name",
       "subtitle": "Store a value once. Use it many times.",
-      "badge": ""
+      "badge": "",
+      "tile": 2
      },
      "segments": [
       {
-       "say": "In Chapter 2, you will give your data names with variables, so a program can store a value once and use it many times."
+       "say": "Asha typed every price twice on her receipt. In Chapter 2, you will fix that with variables: store a value once, and use it many times."
       },
       {
        "say": "Do the warm-up tasks now. They take about ten minutes.",

@@ -40,9 +40,9 @@ Think of a program like a recipe. The cook follows each step in order and does e
 
 ## Build it step by step
 
-**Step 1: Install Python.** Check the official guide for your system on python.org. The current version is Python 3.15. Any version from 3.12 works for this course.
+**Step 1: Install Python.** Check the official guide for your system on python.org. Install the latest version. Any version from 3.12 works for this course.
 
-- **Windows:** install the Python install manager from python.org/downloads or from the Microsoft Store. Since Python 3.14, this is the recommended way, and the older installer is being phased out.
+- **Windows:** install the Python install manager from python.org/downloads or from the Microsoft Store. This is now the recommended way, and the older installer is being phased out.
 - **macOS:** download the installer package from python.org/downloads/macos and open it.
 - **Linux:** Python is usually installed already. If it is not, install it with your system's package manager.
 
@@ -156,30 +156,30 @@ Here is how AI helps at each stage of this chapter. The full prompts are in [ai-
 | Test | Ask AI to compare your expected output and your real output, space by space. |
 | Improve | Ask for at most two readability suggestions, each with a reason. |
 
-**AI pair moment.** A learner gave an AI assistant this request: "Print today's date as 2026-11-09 using three separate values." The AI answered with this code:
+**AI pair moment.** A learner gave an AI assistant this request: "Print the order code CAFE-1024-T4 using three separate values." The AI answered with this code:
 
 ```python
-# file: examples/ai_date_flawed.py
-print("2026", "11", "09")
+# file: examples/ai_code_flawed.py
+print("CAFE", "1024", "T4")
 ```
 
 The code runs without an error. Now compare its output with the request:
 
-<!-- output: examples/ai_date_flawed.expected -->
+<!-- output: examples/ai_code_flawed.expected -->
 ```output
-2026 11 09
+CAFE 1024 T4
 ```
 
 The request asked for hyphens. The AI forgot that `sep` is a space by default. Code that runs is not always code that is correct. The fix sets `sep` to a hyphen:
 
 ```python
-# file: examples/ai_date_fixed.py
-print("2026", "11", "09", sep="-")
+# file: examples/ai_code_fixed.py
+print("CAFE", "1024", "T4", sep="-")
 ```
 
-<!-- output: examples/ai_date_fixed.expected -->
+<!-- output: examples/ai_code_fixed.expected -->
 ```output
-2026-11-09
+CAFE-1024-T4
 ```
 
 Always check AI output against what you asked for, character by character.
@@ -252,7 +252,7 @@ The habit to build: read the last line of an error first. It names the kind of e
 
 ## Think beyond
 
-1. You want to print a shopping list with each item on its own line, using only one `print()`. Which setting from this chapter could help? Test your idea.
+1. A cafe wants its order code written as `T4/1024/CAFE`. What would you change in `print("CAFE", "1024", "T4", sep="-")`? Test your idea and compare the output character by character.
 2. An AI gives you code that runs with no error. What two things should you check before you trust it?
 
 ## Recap

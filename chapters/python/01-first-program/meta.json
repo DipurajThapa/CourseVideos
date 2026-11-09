@@ -22,9 +22,9 @@
   ],
   "prerequisites": [],
   "ai_pair_moment": {
-    "flawed_file": "examples/ai_date_flawed.py",
-    "fixed_file": "examples/ai_date_fixed.py",
-    "flaw": "The AI forgot that sep defaults to a space, so the date printed with spaces instead of hyphens. The code runs, but the output does not match the request."
+    "flawed_file": "examples/ai_code_flawed.py",
+    "fixed_file": "examples/ai_code_fixed.py",
+    "flaw": "The AI forgot that sep defaults to a space, so the order code printed with spaces instead of hyphens. The code runs, but the output does not match the request."
   },
   "support_files": [],
   "python_version": {
@@ -35,7 +35,8 @@
   "changes": [
     "Windows installation now uses the Python install manager, per the current official documentation.",
     "2026-11-09 revision (owner request): added the narrated full-chapter video (video/storyboard.json rendered to video/chapter.mp4 with captions) and re-verified on Python 3.15.2, the current release, after fixing the setup tool's stale uv.",
-    "2026-11-09 interactive video revision (owner request): Step 5 example line 3 now prints a time (10:30:45) instead of the date, so the AI pair moment's fix is not shown before the puzzle returns; practice XP corrected from 160 to 170 (3 x 10 + 3 x 20 + 2 x 40, STANDARDS section 9)."
+    "2026-11-09 interactive video revision (owner request): Step 5 example line 3 now prints a time (10:30:45) instead of the date, so the AI pair moment's fix is not shown before the puzzle returns; practice XP corrected from 160 to 170 (3 x 10 + 3 x 20 + 2 x 40, STANDARDS section 9).",
+    "Owner request: content made evergreen. The AI pair moment now prints an order code (CAFE-1024-T4) instead of a calendar date, and the lesson no longer names the current Python version; it asks for the latest version, 3.12 or newer."
   ],
   "outstanding_issues": [
     "Installation steps cannot be tested in the verification environment; they are checked against the official documentation only.",

@@ -40,8 +40,8 @@ DESCRIPTION_FILE = "video/description.md"
 SCRIPT_FILE = "video/script.md"
 VIDEO_OUTPUTS = {VIDEO_FILE, CAPTIONS_FILE, RENDER_MANIFEST, DESCRIPTION_FILE, SCRIPT_FILE}
 
-VISUAL_TYPES = {"title", "bullets", "text", "table", "code", "prompt", "pause", "quiz", "breather", "end"}
-WORDS_PER_SECOND = 2.45         # Piper lessac-medium, length scale 1.18 with sentence pauses, measured 2026-11-09
+VISUAL_TYPES = {"title", "bullets", "text", "table", "code", "prompt", "pause", "quiz", "breather", "chat", "end"}
+WORDS_PER_SECOND = 2.5          # Piper john-medium, length scale 1.1 with sentence pauses (re-measure after a voice change)
 BEAT_GAP_SECONDS = 0.6          # silence after each beat
 SEGMENT_GAP_SECONDS = 0.35      # silence between parts of one beat
 ASK_SECONDS = 10                # every on-screen question gets a 10-second digital timer
@@ -103,6 +103,14 @@ def phases(beat: dict) -> list[dict]:
             extra = {"revealed": True} if visual.get("type") == "quiz" else {}
             visual = {**visual, **extra, **{k: v for k, v in part.items() if k != "say"}}
             out.append({"kind": "say", "text": part.get("say", "").strip(), "visual": dict(visual)})
+    if ask:
+        # Reserve the question's space for the whole beat, so nothing on screen moves when the timer appears.
+        at_ask = next(p["visual"] for p in out if p["kind"] == "ask")
+        strip = at_ask.get("type") in ("table", "text") or (
+            at_ask.get("type") == "code" and bool(at_ask.get("output") or at_ask.get("error")))
+        for p in out:
+            p["visual"]["_ask_layout"] = "strip" if strip else "side"
+        visual = {**visual, "_ask_layout": "strip" if strip else "side"}
     hold = float(beat.get("hold", BREATHER_HOLD if visual.get("type") == "breather" else 0))
     if hold:
         out.append({"kind": "hold", "text": "", "seconds": hold, "visual": dict(visual)})
@@ -118,11 +126,12 @@ def referenced_files(board: dict) -> list[str]:
     for _, beat in beats(board):
         for phase in phases(beat):
             visual = phase["visual"]
-            for key in ("file", "output", "error"):
-                if visual.get(key):
-                    files.append(visual[key])
-            if visual.get("error"):
-                files.append(Path(visual["error"]).with_suffix(".expected").as_posix())
+            for item in [visual] + list(visual.get("messages", [])):
+                for key in ("file", "output", "error", "code"):
+                    if item.get(key):
+                        files.append(item[key])
+                if item.get("error"):
+                    files.append(Path(item["error"]).with_suffix(".expected").as_posix())
     return list(dict.fromkeys(files))
 
 
@@ -249,6 +258,18 @@ def validate(chapter_dir: Path, board: dict, kind: str, runnable: set[str]) -> l
                         problems.append(f"{where}: {key} {target} must be an existing {suffix} file")
                     elif src and Path(target).with_suffix("").as_posix() != Path(src).with_suffix("").as_posix():
                         problems.append(f"{where}: {target} does not belong to {src}")
+            if v.get("type") == "chat":
+                if not v.get("messages"):
+                    problems.append(f"{where}: a chat needs messages")
+                for m in v.get("messages", []):
+                    if m.get("role") not in ("you", "ai"):
+                        problems.append(f"{where}: chat message role must be 'you' or 'ai'")
+                    if m.get("code") and m["code"] not in runnable:
+                        problems.append(f"{where}: chat code {m['code']} is not a verified runnable file")
+                    if m.get("output") and not (str(m["output"]).endswith(".expected") and (chapter_dir / m["output"]).exists()):
+                        problems.append(f"{where}: chat output {m['output']} must be an existing .expected file")
+                    if m.get("error") and not (m.get("file") in runnable and (chapter_dir / m["error"]).exists()):
+                        problems.append(f"{where}: a pasted error needs a verified 'file' and its .expected_error")
             if v.get("type") == "table" and not v.get("rows"):
                 problems.append(f"{where}: a table beat needs rows")
             if v.get("type") == "bullets" and not v.get("items"):
@@ -311,6 +332,14 @@ def _describe(visual: dict) -> str:
         return f"{visual.get('heading', '')}" + "".join(f"\n    - {item}" for item in shown)
     if vtype == "prompt":
         return f"Prompt card ({visual.get('label', '')})"
+    if vtype == "chat":
+        shown = visual.get("messages", [])[: visual.get("reveal", len(visual.get("messages", [])))]
+        lines = []
+        for m in shown:
+            who = "You" if m["role"] == "you" else "AI (example answer)"
+            extra = f" [code `{m['code']}`]" if m.get("code") else (f" [pasted error from `{m['file']}`]" if m.get("error") else "")
+            lines.append(f"\n    - {who}: {m.get('text', '').replace(chr(10), ' ')}{extra}")
+        return f"AI chat, stage {visual.get('stage', '-')}: {visual.get('heading', '')}" + "".join(lines)
     return " ".join(str(visual.get(k, "")) for k in ("heading", "title", "subtitle") if visual.get(k)).strip()
 
 

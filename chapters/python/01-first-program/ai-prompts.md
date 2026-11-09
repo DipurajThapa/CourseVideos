@@ -4,7 +4,7 @@ Use these with an AI assistant such as ChatGPT or Claude. Replace the parts in a
 
 ## Plan: Break the task into steps first
 
-**Prompt:** "I am a beginner learning Python. I want a program that prints a four-line welcome card for my study group: a border, a title, a date and a border. List the steps in plain English. Do not write any code yet."
+**Prompt:** "I am a beginner learning Python. I want a program that prints a four-line welcome card for my study group: a border, a title, a greeting and a border. List the steps in plain English. Do not write any code yet."
 
 **Use it when:** you know what you want to see but not how to start.
 
@@ -30,7 +30,7 @@ Use these with an AI assistant such as ChatGPT or Claude. Replace the parts in a
 
 **A good answer:** short code with one `print()` per line of output, and no features you have not learned yet.
 
-**Check it:** run the code and compare every character, including spaces, with your target. This is how the date flaw in this chapter was caught.
+**Check it:** run the code and compare every character, including spaces, with your target. This is how the order-code flaw in this chapter was caught.
 
 ## Debug: Find the cause before the fix
 

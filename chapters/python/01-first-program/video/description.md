@@ -1,24 +1,24 @@
 # Python Chapter 1: Your First Program and Your AI Study Partner
 
-Install Python, write and run your first program, control output with print, sep and end, and read your first error messages. Along the way you answer on-screen questions, take four quick checks and four breathers, and catch an AI mistake that runs without an error.
+Follow Asha as she builds a receipt for her family's Corner Cafe: install Python, write and run a first program, control output with print, sep and end, and read error messages. Then watch her add an order code with an AI assistant at all six stages (plan, write, generate, test, debug and improve), catching two AI mistakes by checking.
 
 ## Chapters
 
 0:00 Introduction
-0:46 Learning goals
-1:15 Why this matters
-2:03 The idea: Python reads from top to bottom
-3:30 Step 1: Install Python
-4:12 Steps 2 and 3: Write and run your first file
-4:57 Step 4: Check the order
-5:36 Step 5: Several values, sep and end
-7:17 See the outcome: a cafe receipt
-8:04 Work with AI: a tutor, not a machine
-10:31 Common mistakes
-13:27 Think beyond
-14:14 Recap
-15:15 Practice
-15:37 What's next
+0:37 Learning goals
+1:04 Why this matters
+1:34 The idea: Python reads from top to bottom
+3:00 Step 1: Install Python
+3:45 Steps 2 and 3: Asha's first program
+4:42 Step 4: Order matters
+5:27 Step 5: Spacing with sep and end
+7:18 See the outcome: the cafe receipt
+8:09 Work with AI: six stages, one receipt
+12:41 Common mistakes
+15:29 Think beyond
+16:21 Recap
+17:21 Practice
+17:47 What's next
 
 ## How to use this video
 
@@ -32,4 +32,4 @@ Install Python, write and run your first program, control output with print, sep
 
 ## Disclosure
 
-The narration is a synthetic voice (Piper text-to-speech, voice en_US-lessac-medium). The timer ticks and the soft tone on breather cards are generated in code. English captions are included.
+The narration is a synthetic voice (Piper text-to-speech, voice en_US-john-medium). The timer ticks and the soft tone on breather cards are generated in code. English captions are included.

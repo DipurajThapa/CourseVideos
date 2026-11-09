@@ -6,6 +6,7 @@ Usage:
   python3 tools/render_video.py <chapter-dir> --preview DIR draw every beat as a PNG plus a contact sheet
   python3 tools/render_video.py <chapter-dir>               render the video (writes the files below)
   python3 tools/render_video.py <chapter-dir> --script      only regenerate video/script.md
+  python3 tools/render_video.py <chapter-dir> --sample F    render only the first 60 s to F (for an early look)
 
 Outputs, all inside <chapter-dir>/video/:
   chapter.mp4      1920x1080, 30 fps, H.264 + AAC, soft English captions and scene chapters
@@ -42,14 +43,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import storyboard as sb  # noqa: E402
 from common import ROOT, load_json, now_iso, save_json  # noqa: E402
 
-RENDERER_VERSION = "2.0.0"
+RENDERER_VERSION = "3.0.0"
 LUFS = -14                       # web and YouTube loudness target (ai-film-studio B12)
 W, H, FPS = 1920, 1080, 30
 PIPER_VERSION = "1.8.0"
-VOICE = "en_US-lessac-medium"
-VOICE_URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/"
-VOICE_SHA256 = "5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f"
-LENGTH_SCALE = "1.18"           # slower than default, for second-language listeners
+VOICE = "en_US-john-medium"     # deep, calm male voice chosen by the owner from three tested voices (2026-11-09)
+VOICE_URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/john/medium/"
+VOICE_SHA256 = "789c6c875726e627ddee93d51d8727859abe9c091c3d141591f4b83c2072e988"
+LENGTH_SCALE = "1.1"            # calm, unhurried pace for second-language listeners
 SENTENCE_PAUSE = 0.35           # seconds of silence between sentences
 CACHE = Path(os.environ.get("COURSE_VIDEO_CACHE", Path.home() / ".cache" / "coursevideos"))
 FONTS = Path(__file__).resolve().parent / "video" / "fonts"
@@ -116,9 +117,10 @@ def setup() -> int:
                 problems.append(f"could not download {path.name}: {exc}")
     if model.exists() and file_sha(model) != VOICE_SHA256:
         problems.append(f"voice model checksum mismatch for {model}; delete it and run --setup again")
-    for font in ("DejaVuSans.ttf", "DejaVuSans-Bold.ttf", "DejaVuSansMono.ttf", "DejaVuSansMono-Bold.ttf"):
-        if not (FONTS / font).exists():
-            problems.append(f"missing font {font}")
+    import video_theme
+    for name in video_theme.REQUIRED_FONTS:
+        if not (FONTS / name).exists():
+            problems.append(f"missing font {name}")
     if not problems:
         test = synthesize("Video setup check.")
         if not test or wav_seconds(test) < 0.3:
@@ -185,593 +187,10 @@ def frames(seconds: float) -> int:
 
 
 # ---------------------------------------------------------------- drawing
+# All screen design lives in tools/video_theme.py.
+import video_theme as theme  # noqa: E402
 
-def font(kind: str, size: int):
-    from PIL import ImageFont
-    name = {"sans": "DejaVuSans.ttf", "bold": "DejaVuSans-Bold.ttf", "mono": "DejaVuSansMono.ttf",
-            "monob": "DejaVuSansMono-Bold.ttf"}[kind]
-    return ImageFont.truetype(str(FONTS / name), size)
-
-
-RICH = re.compile(r"(`[^`]+`|\*\*[^*]+\*\*)")
-
-
-def rich_runs(text: str) -> list[tuple[str, str]]:
-    runs = []
-    for part in RICH.split(text):
-        if not part:
-            continue
-        if part.startswith("`"):
-            runs.append(("code", part[1:-1]))
-        elif part.startswith("**"):
-            runs.append(("bold", part[2:-2]))
-        else:
-            runs.append(("text", part))
-    return runs
-
-
-def layout_rich(text: str, size: int, width: int, bold: bool = False) -> list[list[tuple[str, str, int]]]:
-    """Split rich text into lines of (kind, word, pixel width) that fit `width`."""
-    fonts = {"text": font("bold" if bold else "sans", size), "bold": font("bold", size), "code": font("mono", int(size * 0.92))}
-    space = fonts["text"].getlength(" ")
-    lines, line, used = [], [], 0.0
-    for kind, chunk in rich_runs(text):
-        words = re.findall(r"\S+|\s+", chunk)
-        for word in words:
-            if word.isspace():
-                if line:
-                    gap = fonts["code"].getlength(" ") if kind == "code" else space
-                    line.append(("codespace" if kind == "code" else "space", " ", gap))
-                    used += gap
-                continue
-            pad = 0
-            if kind == "code" and not (line and line[-1][0] == "codespace"):
-                pad = 16
-            wlen = fonts[kind].getlength(word) + pad
-            if line and used + wlen > width:
-                while line and line[-1][0] in ("space", "codespace"):
-                    used -= line.pop()[2]
-                lines.append(line)
-                line, used = [], 0.0
-            line.append((kind, word, wlen))
-            used += wlen
-    if line:
-        lines.append(line)
-    return lines
-
-
-def draw_rich(draw, x: int, y: int, text: str, size: int, width: int, color: str = C["ink"],
-              line_gap: float = 1.45, bold: bool = False) -> int:
-    fonts = {"text": font("bold" if bold else "sans", size), "bold": font("bold", size), "code": font("mono", int(size * 0.92))}
-    for line in layout_rich(text, size, width, bold):
-        # merge neighbouring code pieces into one pill
-        groups: list[list] = []
-        for kind, word, wlen in line:
-            is_code = kind in ("code", "codespace")
-            if groups and groups[-1][0] == is_code and (is_code or kind == groups[-1][1]):
-                groups[-1][2] += word
-                groups[-1][3] += wlen
-            else:
-                groups.append([is_code, kind, word, wlen])
-        cx = x
-        for is_code, kind, word, wlen in groups:
-            if is_code:
-                word = word.strip()
-                wlen = fonts["code"].getlength(word) + 16
-                draw.rounded_rectangle([cx, y + 2, cx + wlen, y + size * 1.25], radius=6, fill=C["inline_bg"])
-                draw.text((cx + 8, y + size * 0.12), word, font=fonts["code"], fill=C["accent"])
-            elif kind != "space":
-                draw.text((cx, y), word, font=fonts[kind], fill=color)
-            cx += wlen
-        y += int(size * line_gap)
-    return y
-
-
-def rich_height(text: str, size: int, width: int, line_gap: float = 1.45) -> int:
-    return len(layout_rich(text, size, width)) * int(size * line_gap)
-
-
-class Frame:
-    def __init__(self, ctx: dict, section: str, bg: str = C["bg"]):
-        from PIL import Image, ImageDraw
-        self.img = Image.new("RGB", (W, H), bg)
-        self.d = ImageDraw.Draw(self.img)
-        self.ctx = ctx
-        self.section = section
-
-    def chrome(self, progress: float, dark: bool = False) -> None:
-        fg = C["white"] if dark else C["muted"]
-        self.d.text((60, 34), self.ctx["brand"], font=font("bold", 24), fill=C["white"] if dark else C["accent"])
-        self.d.text((W - 60, 34), self.section, font=font("sans", 24), fill=fg, anchor="ra")
-        self.d.rectangle([0, H - 10, W, H], fill=C["bar"] if not dark else "#0B5A54")
-        self.d.rectangle([0, H - 10, int(W * progress), H], fill=C["accent"] if not dark else C["white"])
-
-    def heading(self, text: str, y: int = 96, size: int = 54) -> int:
-        return draw_rich(self.d, 60, y, text, size, W - 120, line_gap=1.25) + 18
-
-    def save(self, path: Path) -> None:
-        self.img.save(path, "PNG", optimize=False)
-
-
-def token_colours(path: Path, source: str):
-    from pygments import lex
-    from pygments.lexers import get_lexer_for_filename
-    from pygments.styles import get_style_by_name
-    style = get_style_by_name("one-dark")
-    lines: list[list[tuple[str, str]]] = [[]]
-    for ttype, value in lex(source, get_lexer_for_filename(path.name)):
-        spec = style.style_for_token(ttype)
-        colour = f"#{spec['color']}" if spec.get("color") else C["code_fg"]
-        for i, piece in enumerate(value.split("\n")):
-            if i:
-                lines.append([])
-            if piece:
-                lines[-1].append((piece, colour))
-    while lines and not lines[-1]:
-        lines.pop()
-    return lines
-
-
-def wrap_plain(text: str, chars: int) -> list[str]:
-    out = []
-    for raw in text.split("\n"):
-        while len(raw) > chars:
-            cut = raw.rfind(" ", 0, chars)
-            cut = cut if cut > chars // 2 else chars
-            out.append(raw[:cut])
-            raw = "  " + raw[cut:].lstrip()
-        out.append(raw)
-    return out
-
-
-_TRACES: dict[str, list[str]] = {}
-
-
-def real_traceback(chapter: Path, rel: str, needle: str) -> list[str]:
-    """Standard output before the error plus the full error report, as a learner sees it.
-
-    The run uses the first configured toolchain; the last line must contain the verified
-    `.expected_error` text, otherwise only that verified line is shown.
-    """
-    key = f"{chapter}/{rel}"
-    if key not in _TRACES:
-        import verify_chapter as vc
-        chains = vc.toolchains(chapter.parent.name)
-        lines = [needle]
-        if chains:
-            _, out, err = vc.run_file(chapter / rel, chains[0])
-            errs = [x.rstrip() for x in err.rstrip().splitlines() if x.strip()]
-            if errs and needle in errs[-1]:
-                errs = [re.sub(r'File "[^"]*[/\\]([^/\\"]+)"', r'File "\1"', x) for x in errs]
-                lines = [x for x in out.rstrip().splitlines()] + errs
-        _TRACES[key] = lines
-    return _TRACES[key]
-
-
-def side_panel_lines(chapter: Path, rel: str) -> list[str]:
-    """Every line the side panel can ever show for this file, so its width never changes."""
-    stem = (chapter / rel).with_suffix("")
-    out = []
-    if stem.with_suffix(".expected").exists():
-        out += stem.with_suffix(".expected").read_text(encoding="utf-8").split("\n")
-    if stem.with_suffix(".expected_error").exists():
-        out += real_traceback(chapter, rel, stem.with_suffix(".expected_error").read_text(encoding="utf-8").strip())
-    return out
-
-
-_ERRORS: dict[str, str] = {}
-
-
-def real_error_line(chapter: Path, rel: str, needle: str) -> str:
-    """Run the file on the first configured toolchain and return the real last error line.
-
-    The line is shown only if it contains the verified `.expected_error` text, so the video
-    shows the full message a learner sees without showing anything unverified.
-    """
-    key = f"{chapter}/{rel}"
-    if key not in _ERRORS:
-        import verify_chapter as vc
-        chains = vc.toolchains(chapter.parent.name)
-        line = needle
-        if chains:
-            _, out, err = vc.run_file(chapter / rel, chains[0])
-            lines = [x for x in (err or out).strip().splitlines() if x.strip()]
-            if lines and needle in lines[-1]:
-                line = lines[-1].strip()
-        _ERRORS[key] = line
-    return _ERRORS[key]
-
-
-def panel(d, box, title: str, title_colour: str, bg: str) -> None:
-    x0, y0, x1, y1 = box
-    d.rounded_rectangle(box, radius=18, fill=bg)
-    d.text((x0 + 28, y0 + 18), title, font=font("bold", 24), fill=title_colour)
-
-
-def digital_timer(d, cx: int, cy: int, value: int, total: int, scale: float = 1.0, dark: bool = True,
-                  fraction: float | None = None) -> None:
-    """A digital countdown: 00:10 in a pill, with a bar that empties as time runs out."""
-    w, h = int(300 * scale), int(118 * scale)
-    warn = value <= 3
-    fill = "#111827" if dark else C["white"]
-    edge = "#F59E0B" if warn else (C["white"] if dark else C["accent"])
-    d.rounded_rectangle([cx - w // 2, cy - h // 2, cx + w // 2, cy + h // 2], radius=int(26 * scale), fill=fill,
-                        outline=edge, width=max(3, int(5 * scale)))
-    colour = "#FBBF24" if warn else ("#A7F3D0" if dark else C["accent"])
-    d.text((cx, cy - int(6 * scale)), f"00:{value:02d}", font=font("monob", int(70 * scale)), fill=colour, anchor="mm")
-    bar_w = w - int(60 * scale)
-    bx, by = cx - bar_w // 2, cy + h // 2 - int(20 * scale)
-    d.rounded_rectangle([bx, by, bx + bar_w, by + int(8 * scale)], radius=4, fill="#374151" if dark else C["bar"])
-    share = value / total if fraction is None else fraction
-    if share > 0:
-        d.rounded_rectangle([bx, by, bx + max(8, int(bar_w * share)), by + int(8 * scale)], radius=4, fill=colour)
-
-
-def ask_card(fr: "Frame", box: list[int], question: str, value: int, total: int, fraction: float | None = None) -> None:
-    """The question and its timer, together, inside `box`."""
-    x0, y0, x1, y1 = box
-    fr.d.rounded_rectangle(box, radius=22, fill="#0B3B37", outline="#34D399", width=4)
-    fr.d.text((x0 + 34, y0 + 26), "YOUR TURN" if value else "TIME'S UP", font=font("bold", 28), fill="#A7F3D0")
-    width = x1 - x0 - 68
-    size = 50
-    room = (y1 - y0) - 330
-    while size > 26 and rich_height(question, size, width, 1.3) > room:
-        size -= 2
-    qh = rich_height(question, size, width, 1.3)
-    y = y0 + 90 + max(0, (room - qh) // 2)
-    draw_rich(fr.d, x0 + 34, y, question, size, width, color=C["white"], line_gap=1.3, bold=True)
-    if value:
-        fr.d.text(((x0 + x1) // 2, y1 - 190), "Pause the video if you need more time.", font=font("sans", 24),
-                  fill="#99F6E4", anchor="mm")
-    digital_timer(fr.d, (x0 + x1) // 2, y1 - 95, value, total, 0.95, fraction=fraction)
-
-
-def ask_band(fr: "Frame", question: str, value: int, total: int, fraction: float | None = None) -> None:
-    """For slides without a side panel: a band across the bottom with the question and the timer."""
-    y0 = H - 250
-    fr.d.rectangle([0, y0, W, H - 10], fill="#0B3B37")
-    fr.d.text((60, y0 + 28), "YOUR TURN" if value else "TIME'S UP", font=font("bold", 28), fill="#A7F3D0")
-    y = y0 + 76
-    for line in layout_rich(question, 40, W - 560)[:3]:
-        fr.d.text((60, y), "".join(w for _, w, _ in line), font=font("bold", 40), fill=C["white"])
-        y += 52
-    digital_timer(fr.d, W - 230, y0 + 120, value, total, 1.0, fraction=fraction)
-
-
-def draw_code_beat(fr: "Frame", chapter: Path, v: dict, ask: dict | None = None) -> None:
-    top = fr.heading(v.get("heading", ""), size=46) if v.get("heading") else 96
-    if v.get("note"):
-        top = draw_rich(fr.d, 60, top - 6, v["note"], 30, W - 120, color=C["muted"]) + 8
-    src_path = chapter / v["file"]
-    source = src_path.read_text(encoding="utf-8").rstrip("\n")
-    code_lines = token_colours(src_path, source)
-    visible = int(v.get("lines") or len(code_lines))
-    bottom = H - 60
-    stem = src_path.with_suffix("")
-    side_lines = side_panel_lines(chapter, v["file"])
-    side_chars = max([30] + [len(x) for x in side_lines])
-    side_w = int(min(860, max(600, side_chars * 26 * 0.602 + 80)))
-    band = bool(ask) and bool(v.get("output") or v.get("error"))
-    bottom = H - 300 if band else H - 60
-    split = W - 60 - side_w - 30
-    code_box = [60, top, split, bottom]
-    out_box = [split + 30, top, W - 60, bottom]
-    max_chars = max((sum(len(p) for p, _ in ln) for ln in code_lines), default=1) + 5
-    avail_h = code_box[3] - code_box[1] - 90
-    avail_w = code_box[2] - code_box[0] - 60
-    size = 34
-    while size > 16 and (len(code_lines) * size * 1.45 > avail_h or max_chars * size * 0.602 > avail_w):
-        size -= 1
-    panel(fr.d, code_box, Path(v["file"]).name, "#9CA3AF", C["code_bg"])
-    mono = font("mono", size)
-    y = code_box[1] + 70
-    highlight = set(v.get("highlight", []))
-    for number, line in enumerate(code_lines, start=1):
-        if number > visible:
-            break
-        lit = number in highlight
-        if lit:
-            fr.d.rectangle([code_box[0] + 8, y - 4, code_box[2] - 8, y + size * 1.3], fill=C["hl"])
-            fr.d.rectangle([code_box[0] + 8, y - 4, code_box[0] + 16, y + size * 1.3], fill="#F59E0B")
-            fr.d.text((code_box[2] - 24, y + size * 0.62), "◀", font=font("bold", int(size * 0.8)),
-                      fill="#F59E0B", anchor="rm")
-        dim = bool(highlight) and not lit
-        fr.d.text((code_box[0] + 26, y), f"{number:>2}", font=mono, fill="#F59E0B" if lit else C["gutter"])
-        x = code_box[0] + 26 + size * 0.602 * 4
-        for piece, colour in line:
-            fr.d.text((x, y), piece, font=mono, fill=_mute(colour) if dim else colour)
-            x += mono.getlength(piece)
-        if number == visible and visible < len(code_lines):
-            fr.d.rectangle([x + 4, y, x + 4 + size * 0.55, y + size * 1.2], fill="#E5E7EB")  # typing cursor
-        y += int(size * 1.45)
-    if ask and not band:
-        ask_card(fr, out_box, ask["question"], ask["value"], ask["total"], ask.get("fraction"))
-        return
-    if band:
-        ask_band(fr, ask["question"], ask["value"], ask["total"], ask.get("fraction"))
-    focus_out = set(v.get("out_highlight", []))
-    if v.get("error"):
-        n_lines = len(real_traceback(chapter, v["file"], (chapter / v["error"]).read_text(encoding="utf-8").strip()))
-        focus_out = {k if k > 0 else n_lines + 1 + k for k in focus_out}
-        lines = real_traceback(chapter, v["file"], (chapter / v["error"]).read_text(encoding="utf-8").strip())
-        panel(fr.d, out_box, "Error", C["err"], C["out_bg"])
-        lit_err = {f"line {n}" for n in v.get("err_highlight", [])}
-        body = [(line, C["err"] if i == len(lines) - 1 else "#E5E7EB",
-                 any(f"{key}," in line or line.rstrip().endswith(key) for key in lit_err) or (i + 1) in focus_out)
-                for i, line in enumerate(lines)]
-    elif v.get("output"):
-        text = (chapter / v["output"]).read_text(encoding="utf-8").rstrip("\n").split("\n")
-        panel(fr.d, out_box, "Output", "#A3E635", C["out_bg"])
-        body = [(line, C["out_fg"], i + 1 in focus_out) for i, line in enumerate(text[: int(v.get("out_lines") or len(text))])]
-    else:
-        panel(fr.d, out_box, "Output", "#A3E635", C["out_bg"])
-        draw_rich(fr.d, out_box[0] + 30, (out_box[1] + out_box[3]) // 2 - 60,
-                  v.get("hidden_text", "Predict the output, then run it."), 32,
-                  out_box[2] - out_box[0] - 60, color="#9CA3AF")
-        return
-    width = out_box[2] - out_box[0] - 100          # room on the right for the highlight marker
-    osize = 32
-    is_error = bool(v.get("error"))
-    floor = 26 if is_error else 14
-    while True:
-        chars = max(10, int(width / (osize * 0.602)))
-        # outputs never wrap (a wrapped line looks like two lines); error reports may
-        rows = [(seg, colour, lit) for line, colour, lit in body
-                for seg in (wrap_plain(line, chars) if is_error else [line])]
-        longest = max((len(r[0]) for r in rows), default=1)
-        fits = len(rows) * osize * 1.5 <= out_box[3] - out_box[1] - 90
-        if (fits and (is_error or longest <= chars)) or osize <= floor:
-            break
-        osize -= 1
-    omono = font("mono", osize)
-    any_lit = any(lit for _, _, lit in rows)
-    y = out_box[1] + 70
-    for line, colour, lit in rows:
-        if lit:
-            fr.d.rectangle([out_box[0] + 8, y - 4, out_box[2] - 8, y + osize * 1.3], fill="#3A4255")
-            fr.d.rectangle([out_box[0] + 8, y - 4, out_box[0] + 16, y + osize * 1.3], fill="#F59E0B")
-            fr.d.text((out_box[2] - 22, y + osize * 0.62), "\u25c0", font=font("bold", int(osize * 0.8)),
-                      fill="#F59E0B", anchor="rm")
-        shade = colour if (lit or not any_lit) else _mute(colour, (0x10, 0x14, 0x18))
-        fr.d.text((out_box[0] + 30, y), line, font=omono, fill=shade)
-        y += int(osize * 1.5)
-
-
-def _mute(colour: str, bg: tuple = (0x1E, 0x22, 0x30)) -> str:
-    """Dim a colour towards the panel background so the highlighted line stands out."""
-    colour = colour.lstrip("#")
-    r, g, b = (int(colour[i:i + 2], 16) for i in (0, 2, 4))
-    k = 0.55
-    return "#%02x%02x%02x" % tuple(int(bg[i] + (c - bg[i]) * k) for i, c in enumerate((r, g, b)))
-
-
-def settle(top: int, content_h: int) -> int:
-    """Place a short block in the upper-middle of the free area instead of hugging the heading."""
-    free = H - 70 - top
-    return top + max(0, int((free - content_h) / 3))
-
-
-def draw_table(fr: Frame, v: dict) -> None:
-    top = fr.heading(v.get("heading", ""))
-    cols = v.get("columns", [])
-    rows = v["rows"]
-    table_w = W - 120
-    plain = lambda s: re.sub(r"[`*]", "", str(s))  # noqa: E731
-    weights = [min(40, max(len(plain(c)), *(len(plain(r[i])) for r in rows))) + 6 for i, c in enumerate(cols)]
-    widths = [int(table_w * w / sum(weights)) for w in weights]
-    size = 40
-    while size > 20:
-        heights = [max(rich_height(f"**{cell}**" if r == 0 else str(cell), size, widths[i] - 40)
-                       for i, cell in enumerate(row)) + 32 for r, row in enumerate([cols] + rows)]
-        if top + sum(heights) < H - 80:
-            break
-        size -= 2
-    y = settle(top, sum(heights))
-    for r, row in enumerate([cols] + rows):
-        hgt = heights[r]
-        focus = v.get("focus_row")
-        lit = focus is not None and r == focus + 1
-        fr.d.rectangle([60, y, 60 + table_w, y + hgt], fill=C["table_head"] if r == 0 else
-                       ("#FEF3C7" if lit else (C["white"] if r % 2 else C["bg"])))
-        if lit:
-            fr.d.rectangle([60, y, 70, y + hgt], fill="#F59E0B")
-        x = 60
-        for i, cell in enumerate(row):
-            text = f"**{cell}**" if r == 0 else str(cell)
-            draw_rich(fr.d, x + 20, y + 14, text, size, widths[i] - 40)
-            x += widths[i]
-        fr.d.line([60, y + hgt, 60 + table_w, y + hgt], fill=C["rule"], width=2)
-        y += hgt
-
-
-def draw_bullets(fr: Frame, v: dict) -> None:
-    top = fr.heading(v.get("heading", ""))
-    items = v["items"]
-    reveal = v.get("reveal", len(items))
-    focus = v.get("focus", reveal - 1 if reveal < len(items) else None)
-    size = 46
-    while size > 24 and sum(rich_height(i, size, W - 260) + 34 for i in items) > H - top - 80:
-        size -= 2
-    y = settle(top, sum(rich_height(i, size, W - 260) + 34 for i in items))
-    for index, item in enumerate(items[:reveal]):
-        h = rich_height(item, size, W - 260)
-        lit = focus == index
-        if lit:
-            fr.d.rounded_rectangle([90, y - 12, W - 60, y + h + 2], radius=14, fill="#FEF3C7")
-            fr.d.rectangle([90, y - 12, 100, y + h + 2], fill="#F59E0B")
-        dot = C["accent"] if (lit or focus is None) else C["muted"]
-        fr.d.ellipse([120, y + size * 0.35, 120 + size * 0.45, y + size * 0.8], fill=dot)
-        colour = C["ink"] if (lit or focus is None) else C["muted"]
-        y = draw_rich(fr.d, 180, y, item, size, W - 260, color=colour) + 34
-
-
-def draw_text(fr: Frame, v: dict) -> None:
-    top = fr.heading(v.get("heading", ""))
-    body = v.get("body", [])
-    body = [body] if isinstance(body, str) else body
-    lines = v["pre"].split("\n") if v.get("pre") else []
-    body_h = sum(rich_height(p, 42, W - 120) + 20 for p in body)
-    size = 38
-    while lines and size > 18 and (len(lines) * size * 1.4 + 80 > H - top - body_h - 90 or
-                                   max(len(x) for x in lines) * size * 0.602 > W - 240):
-        size -= 1
-    box_h = len(lines) * size * 1.4 + 60 if lines else 0
-    y = settle(top, body_h + box_h + 20)
-    for para in body:
-        y = draw_rich(fr.d, 60, y, para, 42, W - 120) + 20
-    if lines:
-        box_w = max(900, max(len(x) for x in lines) * size * 0.602 + 100)
-        lit = v.get("focus") == "pre"
-        fr.d.rounded_rectangle([60, y + 10, 60 + box_w, y + 10 + box_h], radius=18,
-                               fill="#FFFBEB" if lit else C["white"], outline="#F59E0B" if lit else C["rule"],
-                               width=5 if lit else 2)
-        yy = y + 40
-        for line in lines:
-            fr.d.text((100, yy), line, font=font("mono", size), fill=C["ink"])
-            yy += int(size * 1.4)
-
-
-def draw_prompt(fr: Frame, v: dict) -> None:
-    top = fr.heading(v.get("heading", "AI prompt"))
-    if v.get("label"):
-        fr.d.rounded_rectangle([60, top, 60 + font("bold", 30).getlength(v["label"]) + 50, top + 56], radius=28,
-                               fill=C["accent"])
-        fr.d.text((85, top + 10), v["label"], font=font("bold", 30), fill=C["white"])
-        top += 86
-    text = v["prompt"]
-    if v.get("focus") is not None and v["focus"] != "check":
-        parts = re.split(r"(?<=[.!?])\s+", text)
-        k = int(v["focus"])
-        text = " ".join(f"**{re.sub('`', '', p)}**" if i == k else p for i, p in enumerate(parts))
-    prompt_h = rich_height(text, 40, W - 260) + 70
-    fr.d.rounded_rectangle([60, top, W - 60, top + prompt_h], radius=20, fill=C["white"], outline=C["accent"],
-                           width=3)
-    fr.d.text((88, top + 6), "“", font=font("bold", 80), fill=C["accent"])
-    if v.get("focus") is not None and v["focus"] != "check":
-        fr.d.rectangle([60, top, 72, top + prompt_h], fill="#F59E0B")
-    y = draw_rich(fr.d, 150, top + 35, text, 40, W - 260)
-    y = max(y, top + prompt_h) + 30
-    if v.get("check"):
-        lit = v.get("focus") == "check"
-        if lit:
-            ch = rich_height("**Check it:** " + v["check"], 36, W - 140)
-            fr.d.rounded_rectangle([50, y - 12, W - 60, y + ch], radius=14, fill="#FEF3C7")
-            fr.d.rectangle([50, y - 12, 60, y + ch], fill="#F59E0B")
-        draw_rich(fr.d, 80 if lit else 60, y, "**Check it:** " + v["check"], 36, W - 140,
-                  color=C["ink"] if lit else C["muted"])
-
-
-def draw_title(fr: Frame, v: dict) -> None:
-    fr.d.text((W // 2, 260), v.get("kicker", ""), font=font("bold", 36), fill=C["accent"], anchor="mm")
-    y = 330
-    for line in layout_rich(v.get("title", ""), 76, W - 300):
-        text = "".join(w for _, w, _ in line)
-        fr.d.text((W // 2, y), text, font=font("bold", 76), fill=C["ink"], anchor="ma")
-        y += 100
-    y += 20
-    for line in layout_rich(v.get("subtitle", ""), 36, W - 400):
-        text = "".join(w for _, w, _ in line)
-        fr.d.text((W // 2, y), text, font=font("sans", 36), fill=C["muted"], anchor="ma")
-        y += 52
-    if v.get("badge"):
-        label = v["badge"]
-        tw = font("bold", 32).getlength(label)
-        fr.d.rounded_rectangle([W // 2 - tw / 2 - 40, y + 40, W // 2 + tw / 2 + 40, y + 110], radius=35,
-                               fill=C["accent_soft"], outline=C["accent"], width=3)
-        fr.d.text((W // 2, y + 75), label, font=font("bold", 32), fill=C["accent"], anchor="mm")
-
-
-def draw_pause(fr: "Frame", v: dict, ask: dict | None) -> None:
-    """A question card. The question stays on screen above its timer the whole time."""
-    question = ask["question"] if ask else v["question"]
-    qlines = layout_rich(question, 60, W - 360)
-    y = 330 - len(qlines) * 42
-    fr.d.text((W // 2, y - 90), "PAUSE AND THINK", font=font("bold", 36), fill="#A7F3D0", anchor="mm")
-    for line in qlines:
-        fr.d.text((W // 2, y), "".join(w for _, w, _ in line), font=font("bold", 60), fill=C["white"], anchor="ma")
-        y += 84
-    if v.get("hint"):
-        draw_rich(fr.d, 260, y + 20, f"Hint: {v['hint']}", 36, W - 520, color="#CCFBF1")
-    if ask:
-        digital_timer(fr.d, W // 2, min(y + 230, H - 150), ask["value"], ask["total"], 1.3, fraction=ask.get("fraction"))
-
-
-def draw_quiz(fr: "Frame", v: dict, ask: dict | None) -> None:
-    fr.d.text((60, 100), "QUICK CHECK", font=font("bold", 30), fill=C["accent"])
-    y = draw_rich(fr.d, 60, 150, v["question"], 50, W - 520, line_gap=1.3) + 30
-    if ask:
-        digital_timer(fr.d, W - 230, 200, ask["value"], ask["total"], 1.0, dark=False, fraction=ask.get("fraction"))
-    revealed = v.get("revealed")
-    letters = "ABCD"
-    for i, option in enumerate(v["options"]):
-        right = revealed and i == v["answer"]
-        wrong = revealed and i != v["answer"]
-        h = rich_height(option, 40, W - 400) + 44
-        fill = "#DCFCE7" if right else ("#EFEEE8" if wrong else C["white"])
-        edge = "#16A34A" if right else (C["rule"] if wrong else C["accent"])
-        fr.d.rounded_rectangle([60, y, W - 60, y + h], radius=20, fill=fill, outline=edge, width=4 if right else 2)
-        fr.d.ellipse([90, y + h // 2 - 32, 154, y + h // 2 + 32], fill=edge)
-        fr.d.text((122, y + h // 2), letters[i], font=font("bold", 36), fill=C["white"], anchor="mm")
-        draw_rich(fr.d, 190, y + 22, option, 40, W - 400, color=C["muted"] if wrong else C["ink"])
-        if right:
-            fr.d.text((W - 110, y + h // 2), "✔", font=font("bold", 56), fill="#16A34A", anchor="mm")
-        y += h + 22
-    if revealed and v.get("explain"):
-        draw_rich(fr.d, 60, y + 10, "**Why:** " + v["explain"], 36, W - 120, color=C["ink"])
-
-
-def draw_breather(fr: "Frame", v: dict, ctx: dict, section: str) -> None:
-    fr.d.text((120, 150), v.get("label", "BREATHER"), font=font("bold", 32), fill=C["accent"])
-    fr.d.text((120, 200), v.get("title", "Take a breath. You have learned:"), font=font("bold", 58), fill=C["ink"])
-    y = 330
-    for item in v["items"]:
-        fr.d.ellipse([120, y + 4, 172, y + 56], fill=C["accent"])
-        fr.d.text((146, y + 30), "✔", font=font("bold", 32), fill=C["white"], anchor="mm")
-        y = draw_rich(fr.d, 200, y + 6, item, 40, 1000) + 34
-    # progress map of the chapter sections
-    x0, top = 1320, 170
-    fr.d.rounded_rectangle([x0 - 40, top - 40, W - 80, H - 120], radius=26, fill=C["white"], outline=C["rule"], width=2)
-    fr.d.text((x0, top), "YOUR PROGRESS", font=font("bold", 26), fill=C["muted"])
-    sections = ctx["sections"]
-    done_until = sections.index(section) if section in sections else -1
-    yy = top + 60
-    step = min(64, (H - 220 - yy) // max(1, len(sections)))
-    for i, name in enumerate(sections):
-        done = i <= done_until
-        fr.d.ellipse([x0, yy + 6, x0 + 30, yy + 36], fill=C["accent"] if done else C["bar"])
-        if done:
-            fr.d.text((x0 + 15, yy + 21), "✔", font=font("bold", 18), fill=C["white"], anchor="mm")
-        fr.d.text((x0 + 50, yy + 4), name, font=font("bold" if i == done_until else "sans", 28),
-                  fill=C["ink"] if done else C["muted"])
-        yy += step
-
-
-def draw_visual(fr: "Frame", chapter: Path, v: dict, ask: dict | None = None, section: str = "") -> None:
-    kind = v["type"]
-    side_ask = None
-    if kind == "code":
-        draw_code_beat(fr, chapter, v, ask)
-        return
-    if kind == "pause":
-        draw_pause(fr, v, ask)
-        return
-    if kind == "quiz":
-        draw_quiz(fr, v, ask)
-        return
-    if kind == "breather":
-        draw_breather(fr, v, fr.ctx, section)
-    elif kind == "table":
-        draw_table(fr, v)
-    elif kind == "bullets":
-        draw_bullets(fr, v)
-    elif kind == "text":
-        draw_text(fr, v)
-    elif kind == "prompt":
-        draw_prompt(fr, v)
-    elif kind in ("title", "end"):
-        draw_title(fr, v)
-    if ask:
-        ask_band(fr, ask["question"], ask["value"], ask["total"], ask.get("fraction"))
+real_traceback = theme.real_traceback
 
 
 # ---------------------------------------------------------------- planning
@@ -837,7 +256,8 @@ def context(chapter: Path, board: dict) -> dict:
     language = chapter.parent.name
     display = load_json(ROOT / "curriculum" / f"{language}.json").get("display_name", language.title())
     wanted = sb.PROJECT_SECTIONS if chapter_kind(chapter) == "project" else sb.LESSON_SECTIONS
-    return {"brand": f"CODE QUEST  ·  {display}  ·  Chapter {board.get('number', '')}", "sections": wanted}
+    return {"brand": f"Code Quest  ·  {display}", "language": display, "number": board.get("number", 0),
+            "sections": wanted}
 
 
 def state_key(s: dict) -> str:
@@ -855,14 +275,9 @@ def draw_states(chapter: Path, board: dict, states: list[dict], out: Path) -> No
         if key in cache:
             s["png"] = cache[key]
             continue
-        v = s["visual"]
-        dark = v["type"] == "pause"
-        bg = C["pause_bg"] if dark else ("#EEF6F2" if v["type"] == "breather" else C["bg"])
-        fr = Frame(ctx, s["scene"]["section"], bg)
-        fr.chrome(progress, dark)
-        draw_visual(fr, chapter, v, s["ask"], s["scene"]["section"])
+        img = theme.render_state(ctx, chapter, s["scene"]["section"], s["visual"], s["ask"], progress)
         path = out / f"s{n:04d}.png"
-        fr.img.save(path, "PNG", compress_level=1)
+        img.save(path, "PNG", compress_level=1)
         cache[key] = path
         s["png"] = path
 
@@ -1040,6 +455,74 @@ def probe(path: Path) -> dict:
     return json.loads(proc.stdout or "{}")
 
 
+def render_sample(chapter: Path, out: Path, seconds: float) -> int:
+    """Render only the opening `seconds` of the video to `out`, for an early look. Writes nothing in the chapter."""
+    board = sb.load(chapter)
+    states = []
+    for s in plan(chapter, board):
+        if s["start_frame"] / FPS >= seconds:
+            break
+        states.append(s)
+    scenes = [sc for sc in board["scenes"] if any(s["scene"] is sc for s in states)]
+    with tempfile.TemporaryDirectory() as tmp:
+        work = Path(tmp)
+        draw_states(chapter, board, states, work)
+        parts = []
+        for i, scene in enumerate(scenes):
+            part = work / f"scene{i:02d}.mp4"
+            encode_scene([s for s in states if s["scene"] is scene], part, work)
+            parts.append(part)
+        (work / "scenes.txt").write_text("".join(f"file '{p.as_posix()}'\n" for p in parts), encoding="utf-8")
+        ffmpeg(["-f", "concat", "-safe", "0", "-i", str(work / "scenes.txt"), "-c", "copy", str(work / "video.mp4")])
+        write_audio(states, work / "audio.wav")
+        (work / "sample.srt").write_text(captions(states), encoding="utf-8")
+        out.parent.mkdir(parents=True, exist_ok=True)
+        ffmpeg(["-i", str(work / "video.mp4"), "-i", str(work / "audio.wav"), "-i", str(work / "sample.srt"),
+                "-map", "0:v", "-map", "1:a", "-map", "2:s", "-c:v", "copy",
+                "-af", f"loudnorm=I={LUFS}:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                "-c:s", "mov_text", "-movflags", "+faststart", str(out)])
+    print(f"Sample written to {out} ({sum(s['frames'] for s in states) / FPS:.1f}s)")
+    return 0
+
+
+def measure_lufs(path: Path) -> tuple[float, float]:
+    """Integrated loudness and true peak of a media file (ebur128)."""
+    err = sh(["ffmpeg", "-hide_banner", "-nostats", "-i", str(path), "-vn", "-af", "ebur128=peak=true", "-f", "null", "-"]).stderr
+    i = re.findall(r"I:\s+(-?[\d.]+) LUFS", err)
+    tp = re.findall(r"Peak:\s+(-?[\d.]+) dBFS", err)
+    return (float(i[-1]) if i else 0.0, float(tp[-1]) if tp else 0.0)
+
+
+def relevel(chapter: Path, quiet: bool = False) -> int:
+    """Bring the finished video to the loudness target with a measured gain (picture, captions and
+    chapters are copied untouched), then update render.json. Single-pass loudnorm can undershoot."""
+    video = chapter / sb.VIDEO_FILE
+    lufs, peak = measure_lufs(video)
+    gain = LUFS - lufs
+    if abs(gain) <= 0.5:
+        if not quiet:
+            print(f"loudness {lufs:.1f} LUFS, peak {peak:.1f} dBTP: no change")
+        return 0
+    tmp = video.with_name("chapter.relevel.mp4")
+    ffmpeg(["-i", str(video), "-map", "0", "-c:v", "copy", "-c:s", "copy", "-map_metadata", "0", "-map_chapters", "0",
+            "-af", f"volume={gain:.2f}dB,alimiter=limit=0.70:attack=5:release=50:level=false",  # ceiling about -3 dBFS; AAC adds intersample peaks
+            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart",
+            str(tmp)])
+    tmp.replace(video)
+    new_lufs, new_peak = measure_lufs(video)
+    manifest_path = chapter / sb.RENDER_MANIFEST
+    if manifest_path.exists():
+        manifest = load_json(manifest_path)
+        manifest["video_sha256"] = file_sha(video)
+        manifest["size_mb"] = round(video.stat().st_size / 1e6, 2)
+        manifest["format"]["measured_lufs"] = round(new_lufs, 1)
+        manifest["format"]["true_peak_dbtp"] = round(new_peak, 1)
+        save_json(manifest_path, manifest)
+        (chapter / sb.SCRIPT_FILE).write_text(sb.script_markdown(sb.load(chapter), manifest), encoding="utf-8")
+    print(f"loudness {lufs:.1f} -> {new_lufs:.1f} LUFS (gain {gain:+.2f} dB), true peak {new_peak:.1f} dBTP")
+    return 0
+
+
 def render(chapter: Path) -> int:
     board = sb.load(chapter)
     problems = sb.validate(chapter, board, chapter_kind(chapter), runnable_set(chapter))
@@ -1105,6 +588,7 @@ def render(chapter: Path) -> int:
     save_json(chapter / sb.RENDER_MANIFEST, manifest)
     (chapter / sb.DESCRIPTION_FILE).write_text(description(board, timings, chapter), encoding="utf-8")
     (chapter / sb.SCRIPT_FILE).write_text(sb.script_markdown(board, manifest), encoding="utf-8")
+    relevel(chapter, quiet=True)
     print(f"Rendered {video.relative_to(ROOT)}: {clock(duration)} ({duration:.1f}s), {size_mb:.1f} MB, "
           f"{len(timings)} scenes, {len(states)} states, {manifest['questions']} questions, "
           f"{manifest['breathers']} breathers")
@@ -1140,6 +624,9 @@ def main() -> int:
     parser.add_argument("--setup", action="store_true")
     parser.add_argument("--preview", metavar="DIR")
     parser.add_argument("--script", action="store_true")
+    parser.add_argument("--sample", metavar="FILE", help="render only the opening to FILE (default 60 s)")
+    parser.add_argument("--seconds", type=float, default=60.0)
+    parser.add_argument("--relevel", action="store_true", help="re-measure and fix the loudness of the rendered video")
     args = parser.parse_args()
     if args.setup:
         return setup()
@@ -1150,6 +637,10 @@ def main() -> int:
     chapter = chapter if chapter.is_absolute() else (ROOT / chapter).resolve()
     if args.preview:
         return preview(chapter, Path(args.preview))
+    if args.relevel:
+        return relevel(chapter)
+    if args.sample:
+        return render_sample(chapter, Path(args.sample), args.seconds)
     if args.script:
         manifest = load_json(chapter / sb.RENDER_MANIFEST) if (chapter / sb.RENDER_MANIFEST).exists() else None
         (chapter / sb.SCRIPT_FILE).write_text(sb.script_markdown(sb.load(chapter), manifest), encoding="utf-8")

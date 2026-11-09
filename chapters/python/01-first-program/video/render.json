@@ -1,12 +1,12 @@
 {
   "chapter_id": "python-01",
-  "rendered_at": "2026-11-09T11:48:47+00:00",
-  "renderer_version": "2.0.0",
-  "storyboard_sha256": "70b6565f3f4ba51cb1d3c2b5b4b3ee9a6be29172c56242d34a1f996d51b91b49",
-  "inputs_sha256": "57c4d4ccc7dbab45a703389c8012727732c7fbf12bb60c7674421ebba2baa5d3",
-  "video_sha256": "1223599532eae6944bc900ebe741e65ec666e69029cb82a9dafebf9aa2766ca6",
-  "duration_seconds": 954.3,
-  "size_mb": 29.57,
+  "rendered_at": "2026-11-09T15:16:56+00:00",
+  "renderer_version": "3.0.0",
+  "storyboard_sha256": "c77dccfbe8d968f42cbb74801fe402da23d05f24bcc07961c7977d60a7009ac1",
+  "inputs_sha256": "724a271dde6951a815824e2116c567b833db880b9ae5bc1bce368fb3c3b27be0",
+  "video_sha256": "4a54c8e20e7af0ea60583ba7a7f6f25b882f955f8ff34e79a56aa39f00104b28",
+  "duration_seconds": 1089.3,
+  "size_mb": 41.04,
   "format": {
     "width": 1920,
     "height": 1080,
@@ -14,17 +14,19 @@
     "video": "h264",
     "audio": "aac",
     "captions": "mov_text",
-    "loudness_lufs": -14
+    "loudness_lufs": -14,
+    "measured_lufs": -15.2,
+    "true_peak_dbtp": -1.8
   },
   "voice": {
     "engine": "piper-tts 1.8.0",
-    "model": "en_US-lessac-medium",
-    "model_sha256": "5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f",
-    "length_scale": "1.18"
+    "model": "en_US-john-medium",
+    "model_sha256": "789c6c875726e627ddee93d51d8727859abe9c091c3d141591f4b83c2072e988",
+    "length_scale": "1.1"
   },
   "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
-  "states": 970,
-  "questions": 16,
+  "states": 753,
+  "questions": 12,
   "breathers": 4,
   "scenes": [
     {
@@ -32,105 +34,105 @@
       "title": "Introduction",
       "section": "Introduction",
       "start": 0.0,
-      "end": 46.3
+      "end": 37.133
     },
     {
       "id": "goals",
       "title": "Learning goals",
       "section": "Learning goals",
-      "start": 46.3,
-      "end": 75.033
+      "start": 37.133,
+      "end": 64.733
     },
     {
       "id": "why",
       "title": "Why this matters",
       "section": "Why this matters",
-      "start": 75.033,
-      "end": 123.867
+      "start": 64.733,
+      "end": 94.667
     },
     {
       "id": "idea",
       "title": "The idea: Python reads from top to bottom",
       "section": "The idea",
-      "start": 123.867,
-      "end": 210.467
+      "start": 94.667,
+      "end": 180.467
     },
     {
       "id": "install",
       "title": "Step 1: Install Python",
       "section": "Build it step by step",
-      "start": 210.467,
-      "end": 252.1
+      "start": 180.467,
+      "end": 225.867
     },
     {
       "id": "step2",
-      "title": "Steps 2 and 3: Write and run your first file",
+      "title": "Steps 2 and 3: Asha's first program",
       "section": "Build it step by step",
-      "start": 252.1,
-      "end": 297.933
+      "start": 225.867,
+      "end": 282.267
     },
     {
       "id": "step4",
-      "title": "Step 4: Check the order",
+      "title": "Step 4: Order matters",
       "section": "Build it step by step",
-      "start": 297.933,
-      "end": 336.033
+      "start": 282.267,
+      "end": 327.0
     },
     {
       "id": "step5",
-      "title": "Step 5: Several values, sep and end",
+      "title": "Step 5: Spacing with sep and end",
       "section": "Build it step by step",
-      "start": 336.033,
-      "end": 437.933
+      "start": 327.0,
+      "end": 438.9
     },
     {
       "id": "outcome",
-      "title": "See the outcome: a cafe receipt",
+      "title": "See the outcome: the cafe receipt",
       "section": "See the outcome",
-      "start": 437.933,
-      "end": 484.233
+      "start": 438.9,
+      "end": 489.9
     },
     {
       "id": "ai",
-      "title": "Work with AI: a tutor, not a machine",
+      "title": "Work with AI: six stages, one receipt",
       "section": "Work with AI",
-      "start": 484.233,
-      "end": 631.867
+      "start": 489.9,
+      "end": 761.0
     },
     {
       "id": "mistakes",
       "title": "Common mistakes",
       "section": "Common mistakes",
-      "start": 631.867,
-      "end": 807.2
+      "start": 761.0,
+      "end": 929.6
     },
     {
       "id": "beyond",
       "title": "Think beyond",
       "section": "Think beyond",
-      "start": 807.2,
-      "end": 854.9
+      "start": 929.6,
+      "end": 981.533
     },
     {
       "id": "recap",
       "title": "Recap",
       "section": "Recap",
-      "start": 854.9,
-      "end": 915.833
+      "start": 981.533,
+      "end": 1041.633
     },
     {
       "id": "practice",
       "title": "Practice",
       "section": "Practice",
-      "start": 915.833,
-      "end": 937.833
+      "start": 1041.633,
+      "end": 1067.8
     },
     {
       "id": "next",
       "title": "What's next",
       "section": "What's next",
-      "start": 937.833,
-      "end": 954.267
+      "start": 1067.8,
+      "end": 1089.233
     }
   ]
 }
