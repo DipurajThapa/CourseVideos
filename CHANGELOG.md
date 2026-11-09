@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-01 video rebuilt: Soft Studio design, connected story with stage-by-stage AI chats, teach-then-test, evergreen content, John voice (18:09). Design and storytelling saved as the code-quest-video skill.
 - 2026-11-09: python-01 video redesigned to be interactive (synced highlights, 16 timed questions, 4 quick checks, 4 breathers; 15:54). Storyboard v2 rules added for all chapters. Practice XP corrected to 170.
 - 2026-11-09: python-02 revised with a 14:09 narrated video, re-verified on Python 3.15.2 and 3.13. Runbook: revisions reuse the existing wip branch (no force push).
 - 2026-11-09: Video pipeline added (storyboard, Piper narration, 1080p render, verification); python-01 revised with an 11:32 narrated video, re-verified on Python 3.15.2 and 3.13.
