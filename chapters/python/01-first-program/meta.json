@@ -5,8 +5,21 @@
   "type": "lesson",
   "module": "M1",
   "badge": "First Run",
-  "xp": {"lesson": 100, "practice": 160},
-  "concepts": ["program", "interpreter", "print()", "string", "comment", "sep", "end", "syntax error", "NameError"],
+  "xp": {
+    "lesson": 100,
+    "practice": 160
+  },
+  "concepts": [
+    "program",
+    "interpreter",
+    "print()",
+    "string",
+    "comment",
+    "sep",
+    "end",
+    "syntax error",
+    "NameError"
+  ],
   "prerequisites": [],
   "ai_pair_moment": {
     "flawed_file": "examples/ai_date_flawed.py",
@@ -14,13 +27,22 @@
     "flaw": "The AI forgot that sep defaults to a space, so the date printed with spaces instead of hyphens. The code runs, but the output does not match the request."
   },
   "support_files": [],
-  "python_version": {"minimum": "3.12", "current_release_at_research": "3.15.2"},
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
   "research_date": "2026-11-09",
   "changes": [
-    "Windows installation now uses the Python install manager, per the current official documentation."
+    "Windows installation now uses the Python install manager, per the current official documentation.",
+    "2026-11-09 revision (owner request): added the narrated full-chapter video (video/storyboard.json rendered to video/chapter.mp4 with captions) and re-verified on Python 3.15.2, the current release, after fixing the setup tool's stale uv."
   ],
   "outstanding_issues": [
-    "Examples were verified on Python 3.14.6 and 3.13. The verification environment could not install a stable 3.15 build through uv on 2026-11-09. Chapter 1 uses no version-specific features, but a later run should re-verify on 3.15 when uv offers it.",
-    "Installation steps cannot be tested in the verification environment; they are checked against the official documentation only."
-  ]
+    "Installation steps cannot be tested in the verification environment; they are checked against the official documentation only.",
+    "The narration uses a synthetic voice (Piper, en_US-lessac-medium). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the renderer's PRONOUNCE list."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "piper en_US-lessac-medium"
+  }
 }

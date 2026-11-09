@@ -29,6 +29,7 @@ WORDS_PER_SECOND = 2.45         # Piper lessac-medium, length scale 1.18 with se
 BEAT_GAP_SECONDS = 0.6          # silence after each beat
 MIN_MINUTES, MAX_MINUTES = 8, 20
 MIN_PAUSES = 3
+MAX_SENTENCE_WORDS = 30
 # Narration is spoken text. These characters are not speakable, so a beat that
 # contains them is rejected: write the spoken form instead ("tea price", "double slash").
 UNSPEAKABLE = re.compile(r"[`*#=/%<>{}\[\]|\\~^_]")
@@ -126,6 +127,9 @@ def validate(chapter_dir: Path, board: dict, kind: str, runnable: set[str]) -> l
                 problems.append(f"{where}: a pause beat needs a question")
         elif not narration.strip():
             problems.append(f"{where}: a {vtype} beat needs narration")
+        for sentence in re.split(r"(?<=[.!?])\s+", narration):
+            if len(sentence.split()) > MAX_SENTENCE_WORDS:
+                problems.append(f"{where}: narration sentence over {MAX_SENTENCE_WORDS} words: {sentence[:70]!r}")
         bad = UNSPEAKABLE.findall(narration)
         if bad:
             problems.append(f"{where}: narration contains unspeakable characters {sorted(set(bad))}: "
@@ -182,7 +186,7 @@ def _describe(visual: dict) -> str:
         return f"Table: {visual.get('heading', '')} ({len(visual.get('rows', []))} rows)"
     if vtype == "bullets":
         shown = visual.get("items", [])[: visual.get("reveal", len(visual.get("items", [])))]
-        return f"{visual.get('heading', '')}: " + "; ".join(shown)
+        return f"{visual.get('heading', '')}" + "".join(f"\n    - {item}" for item in shown)
     if vtype == "prompt":
         return f"Prompt card ({visual.get('label', '')}): \"{visual.get('prompt', '')}\""
     return " ".join(str(visual.get(k, "")) for k in ("heading", "title", "subtitle", "body") if visual.get(k)).strip()

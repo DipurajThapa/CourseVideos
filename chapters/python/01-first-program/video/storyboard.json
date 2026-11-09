@@ -1,0 +1,322 @@
+{
+  "chapter_id": "python-01",
+  "number": 1,
+  "title": "Chapter 1: Your First Program and Your AI Study Partner",
+  "video_title": "Python Chapter 1: Your First Program and Your AI Study Partner",
+  "summary": "Install Python, write and run your first program, control output with print, sep and end, and read your first error messages. You will also set up an AI assistant as a tutor, with three safety habits, and catch an AI mistake that runs without an error.",
+  "scenes": [
+    {
+      "id": "intro",
+      "section": "Introduction",
+      "title": "Introduction",
+      "direction": "Title card, then the AI's date code with its output hidden. Pause, then reveal the spaces.",
+      "beats": [
+        {
+          "narration": "Welcome to Code Quest, Chapter 1: Your First Program and Your AI Study Partner. Today you will write and run your first Python program, and you will learn to use an AI assistant as a tutor.",
+          "visual": {"type": "title", "kicker": "CHAPTER 1", "title": "Your First Program and Your AI Study Partner", "subtitle": "Write it, run it, read the errors, and check the AI.", "badge": "Reward: 100 XP and the First Run badge"}
+        },
+        {
+          "narration": "First, a puzzle. A learner asked an AI assistant to print today's date as 2026, hyphen, 11, hyphen, 09, using three separate values. The AI wrote this line of code.",
+          "visual": {"type": "code", "heading": "Request: print the date as `2026-11-09`", "file": "examples/ai_date_flawed.py", "highlight": [2], "hidden_text": "The request: 2026-11-09"}
+        },
+        {
+          "narration": "The code runs without an error. But does it do what the learner asked?",
+          "visual": {"type": "pause", "question": "Will this print 2026-11-09 exactly?", "seconds": 4}
+        },
+        {
+          "narration": "Here is the real output. There are spaces where the hyphens should be. Code that runs is not always code that is correct. By the end of this chapter, you will know why, and how to fix it.",
+          "visual": {"type": "code", "heading": "The real output", "file": "examples/ai_date_flawed.py", "highlight": [2], "output": "examples/ai_date_flawed.expected"}
+        }
+      ]
+    },
+    {
+      "id": "goals",
+      "section": "Learning goals",
+      "title": "Learning goals",
+      "direction": "Reveal the five goals in three steps.",
+      "beats": [
+        {
+          "narration": "By the end of this chapter, you will be able to run a Python file from the terminal and see its output. You will also be able to explain how Python runs a program: one line at a time, from top to bottom.",
+          "visual": {"type": "bullets", "heading": "By the end of this chapter, you will be able to:", "reveal": 2, "items": ["Run a Python file from the terminal and see its output.", "Explain how Python runs a program: one line at a time, from top to bottom.", "Use `print()` to show text and numbers, and control spacing with `sep` and `end`.", "Read an error message and find the line that caused it.", "Ask an AI assistant to explain code in a safe and useful way."]}
+        },
+        {
+          "narration": "You will use print to show text and numbers, and control the spacing with two settings called sep and end. You will read an error message and find the line that caused it.",
+          "visual": {"type": "bullets", "heading": "By the end of this chapter, you will be able to:", "reveal": 4, "items": ["Run a Python file from the terminal and see its output.", "Explain how Python runs a program: one line at a time, from top to bottom.", "Use `print()` to show text and numbers, and control spacing with `sep` and `end`.", "Read an error message and find the line that caused it.", "Ask an AI assistant to explain code in a safe and useful way."]}
+        },
+        {
+          "narration": "And you will ask an AI assistant to explain code in a safe and useful way.",
+          "visual": {"type": "bullets", "heading": "By the end of this chapter, you will be able to:", "items": ["Run a Python file from the terminal and see its output.", "Explain how Python runs a program: one line at a time, from top to bottom.", "Use `print()` to show text and numbers, and control spacing with `sep` and `end`.", "Read an error message and find the line that caused it.", "Ask an AI assistant to explain code in a safe and useful way."]}
+        }
+      ]
+    },
+    {
+      "id": "why",
+      "section": "Why this matters",
+      "title": "Why this matters",
+      "direction": "Three short ideas: programs are instructions, output shows what a program does, and you remain the checker.",
+      "beats": [
+        {
+          "narration": "Every app you use is a program. A program is a list of instructions that a computer follows exactly. Your phone's calculator, a shop's checkout screen and a train timetable all start as instructions like the ones you will write today.",
+          "visual": {"type": "bullets", "heading": "Every app is a program", "items": ["A **program** is a list of instructions that a computer follows exactly.", "A calculator, a checkout screen and a train timetable all start as instructions."]}
+        },
+        {
+          "narration": "Output is the first skill you need. When a program shows a message, you can see what it is doing. Professional developers often use print to check that their code works.",
+          "visual": {"type": "bullets", "heading": "Output shows what a program is doing", "items": ["When a program shows a message, you can see what it is doing.", "Developers often use `print()` to check that their code works."]}
+        },
+        {
+          "narration": "AI assistants such as ChatGPT and Claude can now write code. You still need to understand that code. AI tools are often right, but they can also be wrong while sounding confident. A study of AI tutors in Harvard's CS50 course found exactly this. You are the person who runs the code and decides if it is correct.",
+          "visual": {"type": "bullets", "heading": "AI writes code. You check it.", "items": ["AI assistants such as ChatGPT and Claude can write code.", "They are often right, and sometimes wrong while sounding confident.", "You run the code, check the result and decide if it is correct."]}
+        }
+      ]
+    },
+    {
+      "id": "idea",
+      "section": "The idea",
+      "title": "The idea: Python reads from top to bottom",
+      "direction": "The diagram, then the definitions of function and string, then the recipe analogy with its limit.",
+      "beats": [
+        {
+          "narration": "A Python program is a text file that ends in dot p y. Each line is an instruction. Python, the program called the interpreter, reads your file and carries out each instruction in order: top to bottom, one line at a time.",
+          "visual": {"type": "text", "heading": "How Python runs a program", "body": ["The **interpreter** reads your `.py` file and carries out each line in order."], "pre": "  You write          Python reads          The computer acts\n +-----------+      +--------------+      +-------------------+\n | hello.py  | ---> |  line 1      | ---> | shows line 1      |\n | (text)    |      |  line 2      |      | shows line 2      |\n +-----------+      +--------------+      +-------------------+\n                     top to bottom,\n                     one line at a time"}
+        },
+        {
+          "narration": "Print is a function: a named action that Python already knows. You call it by writing its name, then brackets. The value inside the brackets is what it shows. Text must be inside quotation marks, and text in quotation marks is called a string.",
+          "visual": {"type": "bullets", "heading": "Two words you need", "items": ["A **function** is a named action Python already knows. Call it with its name and brackets: `print(...)`.", "A **string** is text inside quotation marks: `\"Hello\"`."]}
+        },
+        {
+          "narration": "Think of a program like a recipe. The cook follows each step in order and does exactly what it says. The comparison stops at one point. A cook can guess what you meant, but Python cannot. If a step has a typing mistake, Python stops and reports an error.",
+          "visual": {"type": "bullets", "heading": "A program is like a recipe", "items": ["The cook follows each step in order, exactly as written.", "Where it stops working: a cook can guess what you meant. Python cannot.", "A typing mistake makes Python stop and report an error."]}
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "section": "Build it step by step",
+      "title": "Step 1: Install Python",
+      "direction": "Text slides only: installation cannot be filmed here. Point learners to python.org.",
+      "beats": [
+        {
+          "narration": "Step 1: install Python. Check the official guide for your system on python dot org. The current version is Python 3.15, and any version from 3.12 works for this course. On Windows, install the Python install manager from python dot org or the Microsoft Store.",
+          "visual": {"type": "table", "heading": "Step 1: Install Python (3.12 or newer)", "columns": ["System", "How to install"], "rows": [["Windows", "The Python install manager, from python.org/downloads or the Microsoft Store"], ["macOS", "The installer package from python.org/downloads/macos"], ["Linux", "Usually installed already; otherwise use your package manager"]]}
+        },
+        {
+          "narration": "On macOS, download the installer package from python dot org and open it. On Linux, Python is usually installed already. Then open a terminal and check the version. You should see a line that starts with Python 3.",
+          "visual": {"type": "table", "heading": "Check the version in a terminal", "columns": ["System", "Type this", "You should see"], "rows": [["Windows", "`python --version`", "A line starting with `Python 3`"], ["macOS and Linux", "`python3 --version`", "A line starting with `Python 3`"]]}
+        }
+      ]
+    },
+    {
+      "id": "step2",
+      "section": "Build it step by step",
+      "title": "Steps 2 and 3: Write and run your first file",
+      "direction": "Show the file, explain the comment, then the run command and the output.",
+      "beats": [
+        {
+          "narration": "Step 2: create your first file. Open a code editor, such as Visual Studio Code, or IDLE. Create a file called ex 0 1 hello, and type these lines. Line 1 starts with a hash sign, so it is a comment. Python ignores comments. They are notes for people.",
+          "visual": {"type": "code", "heading": "Step 2: Create your first file", "file": "examples/ex01_hello.py", "highlight": [1], "hidden_text": "Run it to see the output."}
+        },
+        {
+          "narration": "Step 3: run the file. In the terminal, go to the folder that holds your file. Type python, then the file name, on Windows. Type python3, then the file name, on macOS and Linux.",
+          "visual": {"type": "table", "heading": "Step 3: Run the file", "columns": ["System", "Type this in the terminal"], "rows": [["Windows", "`python ex01_hello.py`"], ["macOS and Linux", "`python3 ex01_hello.py`"]]}
+        },
+        {
+          "narration": "You will see two lines. Each print produces one line of output. The quotation marks do not appear, because they only mark where the text starts and ends.",
+          "visual": {"type": "code", "heading": "Your first output", "file": "examples/ex01_hello.py", "highlight": [2, 3], "output": "examples/ex01_hello.expected"}
+        }
+      ]
+    },
+    {
+      "id": "step4",
+      "section": "Build it step by step",
+      "title": "Step 4: Check the order",
+      "direction": "Predict before the reveal. Then challenge the learner to swap two lines.",
+      "beats": [
+        {
+          "narration": "Step 4: check the order. This program prints three steps for making tea. Predict the output before you run it.",
+          "visual": {"type": "code", "heading": "Step 4: Check the order", "file": "examples/ex02_order.py", "highlight": [2, 3, 4]}
+        },
+        {
+          "narration": "In which order will the lines appear?",
+          "visual": {"type": "pause", "question": "In which order will the three steps appear?", "seconds": 4}
+        },
+        {
+          "narration": "The lines appear in the same order as the code. Now swap two lines in your file and run it again. The output changes, because Python always runs from top to bottom.",
+          "visual": {"type": "code", "heading": "Step 4: Check the order", "file": "examples/ex02_order.py", "highlight": [2, 3, 4], "output": "examples/ex02_order.expected"}
+        }
+      ]
+    },
+    {
+      "id": "step5",
+      "section": "Build it step by step",
+      "title": "Step 5: Several values, sep and end",
+      "direction": "Explain the two settings with a table, show the code, pause on lines 4 and 5, then reveal.",
+      "beats": [
+        {
+          "narration": "Step 5: print several values at once. Print can take more than one value, separated by commas. It also has two settings. Sep sets what goes between the values, and its default is one space. End sets what goes after the last value, and its default is a new line.",
+          "visual": {"type": "table", "heading": "Step 5: Two settings of `print()`", "columns": ["Setting", "What it controls", "Default"], "rows": [["`sep`", "What goes between the values", "one space"], ["`end`", "What goes after the last value", "a new line"]]}
+        },
+        {
+          "narration": "Look at this program. Line 2 adds 3 and 4 without quotation marks. Line 3 sets sep to a hyphen. Line 4 sets end to three dots.",
+          "visual": {"type": "code", "heading": "Step 5: Several values, sep and end", "file": "examples/ex03_many_values.py", "highlight": [2, 3, 4]}
+        },
+        {
+          "narration": "Predict the output, especially lines 4 and 5.",
+          "visual": {"type": "pause", "question": "What do lines 4 and 5 print together?", "seconds": 5}
+        },
+        {
+          "narration": "Line 2 has no quotation marks around 3 plus 4, so Python calculates it and prints 7. Line 3 joins the values with a hyphen instead of a space. Line 4 ends with three dots instead of a new line, so line 5 continues on the same line: Loading, dot dot dot, done.",
+          "visual": {"type": "code", "heading": "Step 5: Several values, sep and end", "file": "examples/ex03_many_values.py", "highlight": [4, 5], "output": "examples/ex03_many_values.expected"}
+        }
+      ]
+    },
+    {
+      "id": "outcome",
+      "section": "See the outcome",
+      "title": "See the outcome: a cafe receipt",
+      "direction": "Code first, then the receipt output. Point at the calculated lines.",
+      "beats": [
+        {
+          "narration": "Here is a complete program that prints a receipt for the Corner Cafe. It uses everything from this chapter: print, text, sep for the dotted lines, and calculations.",
+          "visual": {"type": "code", "heading": "A complete program: the cafe receipt", "file": "examples/ex04_receipt.py", "highlight": [5, 6, 7, 8]}
+        },
+        {
+          "narration": "Run it, and you get the receipt. The dots line up because each sep value has a different length. Python calculates the item count, 2, and the total, 10, for you.",
+          "visual": {"type": "code", "heading": "A complete program: the cafe receipt", "file": "examples/ex04_receipt.py", "highlight": [7, 8], "output": "examples/ex04_receipt.expected"}
+        },
+        {
+          "narration": "Notice one problem: each price is typed twice, once in its line and once in the total. In Chapter 2, you will store prices in named values instead.",
+          "visual": {"type": "bullets", "heading": "One problem to solve next", "items": ["Each price is typed twice: in its own line and in the total.", "In Chapter 2, you will store each price once, in a named value."]}
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "section": "Work with AI",
+      "title": "Work with AI: a tutor, not a machine",
+      "direction": "Safety habits, the six stages, two prompt cards, then the AI pair moment from the opening.",
+      "beats": [
+        {
+          "narration": "Use an AI assistant as a tutor that explains, not as a machine that does your work. Follow three safety habits from today. One: never paste passwords, keys or private information into an AI tool. Two: run every piece of AI code yourself, and compare the output with what you asked for. Three: you are responsible for the code you use, even if an AI wrote it.",
+          "visual": {"type": "bullets", "heading": "Three safety habits", "items": ["Never paste passwords, keys or private information into an AI tool.", "Run every piece of AI code yourself and compare the output with what you asked for.", "You are responsible for the code you use, even if an AI wrote it."]}
+        },
+        {
+          "narration": "AI helps at every stage. Plan the steps in plain English. Write the program yourself first, then ask for an explanation. Generate code from an exact output. Debug with the full error message. Test by comparing outputs. And improve with at most two suggestions.",
+          "visual": {"type": "table", "heading": "AI at every stage", "columns": ["Stage", "How to use AI in this chapter"], "rows": [["Plan", "Ask for the steps of a welcome card in plain English, with no code yet."], ["Write", "Write it yourself first. Then ask AI to explain each line."], ["Generate", "Paste the exact output and ask for code that uses only `print()`."], ["Debug", "Paste the code and the full error. Ask for the cause before the fix."], ["Test", "Ask AI to compare expected and real output, space by space."], ["Improve", "Ask for at most two readability suggestions, each with a reason."]]}
+        },
+        {
+          "narration": "Here is the Write card. Paste your code, and ask the AI not to rewrite it. Ask it to explain each line in one simple sentence, and to say whether it prints exactly the output you want. Then run your program. If the AI said yes but the output differs, trust the real output.",
+          "visual": {"type": "prompt", "heading": "Prompt card: explain, do not rewrite", "label": "Write", "prompt": "Here is my Python code: <paste your code>. Do not rewrite it. Explain what each line does in one simple sentence, and tell me if it prints exactly this: <paste the output you want>.", "check": "Run your program. If the AI said yes but the output differs, trust the real output."}
+        },
+        {
+          "narration": "And here is the Generate card. Paste the exact output you want, and ask for code that uses only print. Then compare every character, including spaces. This is how the date flaw was caught.",
+          "visual": {"type": "prompt", "heading": "Prompt card: code for an exact output", "label": "Generate", "prompt": "Write Python code that uses only the print() function. It must output exactly these lines, with the same spaces and symbols: <paste the exact output>. Show the code, then show the output it produces.", "check": "Run the code and compare every character, including spaces, with your target."}
+        },
+        {
+          "narration": "Now the AI pair moment. Back to the opening puzzle. The request asked for hyphens, but the output has spaces. Which setting did the AI forget?",
+          "visual": {"type": "code", "heading": "AI pair moment: find the flaw", "file": "examples/ai_date_flawed.py", "highlight": [2], "output": "examples/ai_date_flawed.expected"}
+        },
+        {
+          "narration": "Think about step 5.",
+          "visual": {"type": "pause", "question": "Which setting puts a space between the values? How do you change it?", "seconds": 6}
+        },
+        {
+          "narration": "The AI forgot that sep is a space by default. The fix sets sep to a hyphen, and the date prints correctly. Always check AI output against what you asked for, character by character.",
+          "visual": {"type": "code", "heading": "The fix: set `sep` to a hyphen", "file": "examples/ai_date_fixed.py", "highlight": [2], "output": "examples/ai_date_fixed.expected"}
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "section": "Common mistakes",
+      "title": "Common mistakes",
+      "direction": "One beat per mistake with the real error, then the reading habit.",
+      "beats": [
+        {
+          "narration": "Now, four common mistakes. Mistake 1 is a missing closing quotation mark. Python cannot see where the text ends, so it reports a Syntax Error. A syntax error means Python could not read the file, so no line runs. The fix is to add the closing quotation mark before the bracket.",
+          "visual": {"type": "code", "heading": "Mistake 1: a missing closing quotation mark", "file": "examples/err01_missing_quote.py", "highlight": [2], "error": "examples/err01_missing_quote.expected_error"}
+        },
+        {
+          "narration": "Mistake 2 is a capital letter in print. Python treats capital P Print and small p print as different names. Notice that Start was printed first. This error happened while the program was running, so the lines before it had already run. The message names line 3, and even suggests the fix.",
+          "visual": {"type": "code", "heading": "Mistake 2: a capital letter in `print`", "file": "examples/err02_capital_p.py", "highlight": [3], "error": "examples/err02_capital_p.expected_error"}
+        },
+        {
+          "narration": "Mistake 3 is curly quotation marks. Word processors and some chat apps change straight quotation marks into curly ones. Python only accepts straight ones. Type the quotation marks again in your code editor, and copy code from a code block, never from a formatted document.",
+          "visual": {"type": "code", "heading": "Mistake 3: curly quotation marks", "file": "examples/err03_curly_quotes.py", "highlight": [2], "error": "examples/err03_curly_quotes.expected_error"}
+        },
+        {
+          "narration": "Mistake 4 is a missing closing bracket. Every opening bracket needs a closing bracket.",
+          "visual": {"type": "code", "heading": "Mistake 4: a missing closing bracket", "file": "examples/err04_missing_bracket.py", "highlight": [2], "error": "examples/err04_missing_bracket.expected_error"}
+        },
+        {
+          "narration": "The habit to build: read the last line of an error first. It names the kind of error. Then look at the line number to find where it happened.",
+          "visual": {"type": "table", "heading": "Read the last line first", "columns": ["Error", "Usual cause", "Fix"], "rows": [["`SyntaxError: unterminated string literal`", "Missing closing quotation mark", "Close the text with `\"`"], ["`NameError: name 'Print' is not defined`", "Capital letter in `print`", "Use a lowercase `p`"], ["`SyntaxError: invalid character`", "Curly quotation marks", "Retype straight quotation marks"], ["`SyntaxError: '(' was never closed`", "Missing closing bracket", "Add `)`"]]}
+        }
+      ]
+    },
+    {
+      "id": "beyond",
+      "section": "Think beyond",
+      "title": "Think beyond",
+      "direction": "Two open questions with pauses. Do not answer them.",
+      "beats": [
+        {
+          "narration": "Two questions to think beyond this chapter. First: you want to print a shopping list with each item on its own line, using only one print. Which setting from this chapter could help? Test your idea.",
+          "visual": {"type": "pause", "question": "One print(), several lines: which setting could help?", "seconds": 6}
+        },
+        {
+          "narration": "Second: an AI gives you code that runs with no error. What two things should you check before you trust it?",
+          "visual": {"type": "pause", "question": "AI code runs with no error. What two things do you check before you trust it?", "seconds": 6}
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "section": "Recap",
+      "title": "Recap",
+      "direction": "Reveal the recap, then the badge.",
+      "beats": [
+        {
+          "narration": "Let's recap. A program is a list of instructions, and Python runs them one at a time, from top to bottom. Print shows values. Text goes inside quotation marks, and calculations without quotation marks are worked out first.",
+          "visual": {"type": "bullets", "heading": "Recap", "reveal": 2, "items": ["A program is a list of instructions. Python runs them from top to bottom.", "`print()` shows values. Text goes in quotation marks; calculations are worked out first.", "`sep` controls what goes between values, and `end` what goes after them.", "An error names the kind of error and the line. Read the last line first.", "AI is a tutor. Ask it to explain, then run and check everything yourself."]}
+        },
+        {
+          "narration": "Sep controls what goes between values, and end controls what goes after them. An error message names the kind of error and the line, so read the last line first. And AI is a tutor: ask it to explain, then run and check everything yourself.",
+          "visual": {"type": "bullets", "heading": "Recap", "items": ["A program is a list of instructions. Python runs them from top to bottom.", "`print()` shows values. Text goes in quotation marks; calculations are worked out first.", "`sep` controls what goes between values, and `end` what goes after them.", "An error names the kind of error and the line. Read the last line first.", "AI is a tutor. Ask it to explain, then run and check everything yourself."]}
+        },
+        {
+          "narration": "You earned 100 XP and the First Run badge.",
+          "visual": {"type": "title", "kicker": "QUEST COMPLETE", "title": "First Run", "subtitle": "You earned 100 XP.", "badge": "Badge unlocked: First Run"}
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "section": "Practice",
+      "title": "Practice",
+      "direction": "The eight tasks by tier.",
+      "beats": [
+        {
+          "narration": "Now practise. The practice file has eight tasks. The warm-up tasks are worth 10 XP each: introduce yourself, fix a broken greeting, and predict, then run.",
+          "visual": {"type": "table", "heading": "Practice: 8 tasks, 160 XP", "columns": ["Tier", "Tasks", "XP"], "rows": [["Warm-up", "Introduce yourself; Fix the broken greeting; Predict, then run", "10 each"], ["Apply", "A text business card; A countdown on one line; Let Python do the maths", "20 each"], ["Stretch", "A study timetable; Check the AI's work", "40 each"]]}
+        },
+        {
+          "narration": "The apply tasks are worth 20 XP each, and the two stretch tasks are worth 40 each. In the last task, you check an AI's work and fix every difference yourself. Try each task before you open the solution.",
+          "visual": {"type": "table", "heading": "Practice: 8 tasks, 160 XP", "columns": ["Tier", "Tasks", "XP"], "rows": [["Warm-up", "Introduce yourself; Fix the broken greeting; Predict, then run", "10 each"], ["Apply", "A text business card; A countdown on one line; Let Python do the maths", "20 each"], ["Stretch", "A study timetable; Check the AI's work", "40 each"]]}
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "section": "What's next",
+      "title": "What's next",
+      "direction": "End card. Hold for two seconds after the narration.",
+      "beats": [
+        {
+          "narration": "In Chapter 2, you will give your data names with variables, so a program can store a value once and use it many times. Do the warm-up tasks now. They take about ten minutes. See you in Chapter 2.",
+          "hold": 2,
+          "visual": {"type": "end", "kicker": "NEXT: CHAPTER 2", "title": "Values and Variables: Giving Data a Name", "subtitle": "Do the warm-up tasks now. They take about ten minutes.", "badge": "practice/practice.md"}
+        }
+      ]
+    }
+  ]
+}
