@@ -4,7 +4,7 @@
   "title": "Chapter NN: <Title>",
   "video_title": "<Language> Chapter NN: <Title>",
   "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11. Visual types: title, bullets (items, reveal), text (body, pre), table (columns, rows), code (file, highlight, output or error, note, hidden_text), prompt (label, prompt, check), pause (question, seconds), end. Delete this key.",
+  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
   "scenes": [
     {
       "id": "intro",
@@ -13,45 +13,49 @@
       "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
       "beats": [
         {
-          "narration": "Welcome to Code Quest, Chapter NN: <title>. <one sentence on what the learner will do>.",
           "visual": {
             "type": "title",
             "kicker": "CHAPTER NN",
             "title": "<Title>",
             "subtitle": "<quest line>",
             "badge": "Reward: 100 XP and the <Badge> badge"
-          }
+          },
+          "segments": [
+            {
+              "say": "Welcome to Code Quest, Chapter NN."
+            },
+            {
+              "say": "<one sentence on what the learner will do>."
+            }
+          ]
         },
         {
-          "narration": "<the hook, spoken>",
           "visual": {
             "type": "code",
-            "heading": "<what the learner should look at>",
-            "file": "examples/<flawed>.py",
-            "highlight": [
-              2
-            ]
-          }
-        },
-        {
-          "narration": "<ask the learner to predict>",
-          "visual": {
-            "type": "pause",
-            "question": "<the question on screen>",
-            "seconds": 5
-          }
-        },
-        {
-          "narration": "<reveal and promise the explanation>",
-          "visual": {
-            "type": "code",
-            "heading": "The real output",
-            "file": "examples/<flawed>.py",
-            "highlight": [
-              2
-            ],
-            "output": "examples/<flawed>.expected"
-          }
+            "heading": "<what to look at>",
+            "file": "examples/<flawed>.py"
+          },
+          "segments": [
+            {
+              "say": "<set up the hook>"
+            },
+            {
+              "say": "<point at the line>",
+              "highlight": [
+                2
+              ]
+            }
+          ],
+          "ask": {
+            "question": "<the question, shown with a 10-second timer>",
+            "seconds": 10
+          },
+          "after": [
+            {
+              "say": "<reveal>",
+              "output": "examples/<flawed>.expected"
+            }
+          ]
         }
       ]
     },
@@ -62,14 +66,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "The mission",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -80,14 +97,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "What you will build",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -98,14 +128,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "Acceptance criteria",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -116,14 +159,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "Plan it with AI",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -134,14 +190,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "Build it step by step",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -152,14 +221,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "Test it",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -170,14 +252,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "Improve it with AI",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -188,14 +283,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "Recap",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     },
@@ -206,14 +314,27 @@
       "direction": "<what the editor should do in this scene>",
       "beats": [
         {
-          "narration": "<spoken narration for this beat>",
           "visual": {
             "type": "bullets",
             "heading": "What's next",
             "items": [
-              "<item>"
-            ]
-          }
+              "<item 1>",
+              "<item 2>"
+            ],
+            "reveal": 0
+          },
+          "segments": [
+            {
+              "say": "<narration for item 1>",
+              "reveal": 1,
+              "focus": 0
+            },
+            {
+              "say": "<narration for item 2>",
+              "reveal": 2,
+              "focus": 1
+            }
+          ]
         }
       ]
     }

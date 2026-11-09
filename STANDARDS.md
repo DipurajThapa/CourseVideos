@@ -98,18 +98,20 @@ Safety habits taught from Chapter 1: never paste passwords, keys or private data
 
 Every chapter ships with a narrated video that walks through the complete chapter. The video is part of the chapter: a chapter without a passing, rendered video cannot be completed.
 
-**Direction: `video/storyboard.json`.** The author writes the storyboard; everything else is generated from it.
-- Scenes follow the chapter: an introduction with a hook, then one or more scenes for every section heading (section 3), in the same order. For a lesson that means learning goals, why, the idea, every build step, the outcome, Work with AI (with the AI pair moment), every common mistake, think beyond, recap, practice and what's next.
-- Each scene has an `id`, a `section` (the exact heading), a `title`, a `direction` note for the editor, and `beats`. A beat is one piece of narration plus the exact picture on screen while it is spoken.
-- Visual types: `title`, `bullets` (with `reveal` for step-by-step reveals), `text` (paragraphs and an optional `pre` diagram), `table`, `code`, `prompt` (an AI prompt card), `pause` (an interaction point with a countdown) and `end`.
-- A `code` beat names a verified file in `examples/` or `practice/solutions/`, the lines to `highlight`, and optionally its `output` (`.expected`) or `error` (`.expected_error`). The video never shows code or output that is not a verified file. Show the code first with the output hidden, pause so the learner can predict, then reveal the output.
+**Direction: `video/storyboard.json`.** The author writes the storyboard; everything else is generated from it. The full format is documented at the top of `tools/storyboard.py`.
+- Scenes follow the chapter: an introduction with a hook, then one or more scenes for every section heading (section 3), in the same order. Each scene has an `id`, a `section` (the exact heading), a `title`, a `direction` note for the editor, and `beats`.
+- **The picture follows the narration.** Split each beat's narration into `segments`. Each segment changes the picture while it is spoken: the code `highlight` (the line being talked about), `lines` (code typed in line by line), `output` (revealed after a prediction), `out_highlight` (the output line being talked about), `reveal` and `focus` (bullets), `focus_row` (tables), `focus` (prompt card sentences). Never highlight a line before the narration reaches it. No picture should stay unchanged for more than about 8 seconds of narration.
+- **Questions stay on screen.** An `ask` shows the question beside or below the content it is about, with a 10-second digital timer on the same screen, then `after` segments reveal and explain the answer. Use them to predict output, spot a bug, or recall a rule. At least 6 questions per chapter.
+- **Quick checks.** At least 2 `quiz` beats: a multiple-choice question, the 10-second timer, then the answer revealed with a one-line reason.
+- **Breathers.** A `breather` card after each major block: three recap points, the chapter progress map, a short calm narration and 3 quiet seconds with a soft tone. At least one breather per 4 minutes, and never more than 3 minutes without a question or a breather.
+- A `code` beat names a verified file in `examples/` or `practice/solutions/`. Outputs and errors come only from verified files; an error panel shows the real error report, checked against `.expected_error`.
 - Narration is spoken English that follows section 4. Write it as you would say it: no symbols such as `_`, `=`, `/`, `%`, `*`, `#` or backticks ("tea price", "double slash", "ex 0 1"). Refer to line numbers as the lesson does.
-- At least three `pause` beats. Target length 10 to 15 minutes; the tool accepts 8 to 20.
+- Target length 12 to 16 minutes; the tool accepts 8 to 20.
 
 **Rendering: `python3 tools/render_video.py <chapter>`.** It produces, in `video/`:
-- `chapter.mp4`: 1920x1080, 30 fps, H.264 video, AAC narration, soft English captions and scene chapter markers.
+- `chapter.mp4`: 1920x1080, 30 fps, H.264 video, AAC narration at -14 LUFS, soft English captions and scene chapter markers. Changes of picture crossfade; the timer ticks once a second and its bar drains smoothly.
 - `chapter.srt`: captions for upload; `description.md`: an upload description with scene timestamps and the synthetic-voice disclosure; `render.json`: the inputs, voice and tool versions; `script.md`: the human-readable script with real timings.
 - Narration uses Piper, a free offline neural text-to-speech engine, with one pinned voice (`en_US-lessac-medium`) so every chapter sounds the same. Disclose the synthetic voice wherever the video is published.
 - The renderer follows the `video-making` skill: one encoded file per scene with identical settings, joined with the concat demuxer and `-c copy`, sound added with `-c:v copy`, temporary names renamed only on success, held stills without zoom.
 
-`tools/verify_chapter.py` checks the storyboard (coverage, verified files, speakable narration, pauses, length) and the rendered video (hashes of the storyboard and every file it shows, 1080p video, audio, captions, duration). Any change to the storyboard or to a file the video shows requires a new render.
+Before rendering, review the preview stills and get an independent critic's score (see `RUNBOOK.md` step 6). `tools/verify_chapter.py` checks the storyboard (coverage, verified files, speakable narration, questions, quizzes, breathers, length) and the rendered video (hashes of the storyboard and every file it shows, 1080p video, audio, captions, duration). Any change to the storyboard or to a file the video shows requires a new render.

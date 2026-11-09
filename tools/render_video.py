@@ -42,7 +42,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import storyboard as sb  # noqa: E402
 from common import ROOT, load_json, now_iso, save_json  # noqa: E402
 
-RENDERER_VERSION = "1.1.0"
+RENDERER_VERSION = "2.0.0"
+LUFS = -14                       # web and YouTube loudness target (ai-film-studio B12)
 W, H, FPS = 1920, 1080, 30
 PIPER_VERSION = "1.8.0"
 VOICE = "en_US-lessac-medium"
@@ -209,9 +210,9 @@ def rich_runs(text: str) -> list[tuple[str, str]]:
     return runs
 
 
-def layout_rich(text: str, size: int, width: int) -> list[list[tuple[str, str, int]]]:
+def layout_rich(text: str, size: int, width: int, bold: bool = False) -> list[list[tuple[str, str, int]]]:
     """Split rich text into lines of (kind, word, pixel width) that fit `width`."""
-    fonts = {"text": font("sans", size), "bold": font("bold", size), "code": font("mono", int(size * 0.92))}
+    fonts = {"text": font("bold" if bold else "sans", size), "bold": font("bold", size), "code": font("mono", int(size * 0.92))}
     space = fonts["text"].getlength(" ")
     lines, line, used = [], [], 0.0
     for kind, chunk in rich_runs(text):
@@ -240,9 +241,9 @@ def layout_rich(text: str, size: int, width: int) -> list[list[tuple[str, str, i
 
 
 def draw_rich(draw, x: int, y: int, text: str, size: int, width: int, color: str = C["ink"],
-              line_gap: float = 1.45) -> int:
-    fonts = {"text": font("sans", size), "bold": font("bold", size), "code": font("mono", int(size * 0.92))}
-    for line in layout_rich(text, size, width):
+              line_gap: float = 1.45, bold: bool = False) -> int:
+    fonts = {"text": font("bold" if bold else "sans", size), "bold": font("bold", size), "code": font("mono", int(size * 0.92))}
+    for line in layout_rich(text, size, width, bold):
         # merge neighbouring code pieces into one pill
         groups: list[list] = []
         for kind, word, wlen in line:
@@ -323,6 +324,41 @@ def wrap_plain(text: str, chars: int) -> list[str]:
     return out
 
 
+_TRACES: dict[str, list[str]] = {}
+
+
+def real_traceback(chapter: Path, rel: str, needle: str) -> list[str]:
+    """Standard output before the error plus the full error report, as a learner sees it.
+
+    The run uses the first configured toolchain; the last line must contain the verified
+    `.expected_error` text, otherwise only that verified line is shown.
+    """
+    key = f"{chapter}/{rel}"
+    if key not in _TRACES:
+        import verify_chapter as vc
+        chains = vc.toolchains(chapter.parent.name)
+        lines = [needle]
+        if chains:
+            _, out, err = vc.run_file(chapter / rel, chains[0])
+            errs = [x.rstrip() for x in err.rstrip().splitlines() if x.strip()]
+            if errs and needle in errs[-1]:
+                errs = [re.sub(r'File "[^"]*[/\\]([^/\\"]+)"', r'File "\1"', x) for x in errs]
+                lines = [x for x in out.rstrip().splitlines()] + errs
+        _TRACES[key] = lines
+    return _TRACES[key]
+
+
+def side_panel_lines(chapter: Path, rel: str) -> list[str]:
+    """Every line the side panel can ever show for this file, so its width never changes."""
+    stem = (chapter / rel).with_suffix("")
+    out = []
+    if stem.with_suffix(".expected").exists():
+        out += stem.with_suffix(".expected").read_text(encoding="utf-8").split("\n")
+    if stem.with_suffix(".expected_error").exists():
+        out += real_traceback(chapter, rel, stem.with_suffix(".expected_error").read_text(encoding="utf-8").strip())
+    return out
+
+
 _ERRORS: dict[str, str] = {}
 
 
@@ -352,27 +388,74 @@ def panel(d, box, title: str, title_colour: str, bg: str) -> None:
     d.text((x0 + 28, y0 + 18), title, font=font("bold", 24), fill=title_colour)
 
 
-def draw_code_beat(fr: Frame, chapter: Path, v: dict) -> None:
+def digital_timer(d, cx: int, cy: int, value: int, total: int, scale: float = 1.0, dark: bool = True,
+                  fraction: float | None = None) -> None:
+    """A digital countdown: 00:10 in a pill, with a bar that empties as time runs out."""
+    w, h = int(300 * scale), int(118 * scale)
+    warn = value <= 3
+    fill = "#111827" if dark else C["white"]
+    edge = "#F59E0B" if warn else (C["white"] if dark else C["accent"])
+    d.rounded_rectangle([cx - w // 2, cy - h // 2, cx + w // 2, cy + h // 2], radius=int(26 * scale), fill=fill,
+                        outline=edge, width=max(3, int(5 * scale)))
+    colour = "#FBBF24" if warn else ("#A7F3D0" if dark else C["accent"])
+    d.text((cx, cy - int(6 * scale)), f"00:{value:02d}", font=font("monob", int(70 * scale)), fill=colour, anchor="mm")
+    bar_w = w - int(60 * scale)
+    bx, by = cx - bar_w // 2, cy + h // 2 - int(20 * scale)
+    d.rounded_rectangle([bx, by, bx + bar_w, by + int(8 * scale)], radius=4, fill="#374151" if dark else C["bar"])
+    share = value / total if fraction is None else fraction
+    if share > 0:
+        d.rounded_rectangle([bx, by, bx + max(8, int(bar_w * share)), by + int(8 * scale)], radius=4, fill=colour)
+
+
+def ask_card(fr: "Frame", box: list[int], question: str, value: int, total: int, fraction: float | None = None) -> None:
+    """The question and its timer, together, inside `box`."""
+    x0, y0, x1, y1 = box
+    fr.d.rounded_rectangle(box, radius=22, fill="#0B3B37", outline="#34D399", width=4)
+    fr.d.text((x0 + 34, y0 + 26), "YOUR TURN" if value else "TIME'S UP", font=font("bold", 28), fill="#A7F3D0")
+    width = x1 - x0 - 68
+    size = 50
+    room = (y1 - y0) - 330
+    while size > 26 and rich_height(question, size, width, 1.3) > room:
+        size -= 2
+    qh = rich_height(question, size, width, 1.3)
+    y = y0 + 90 + max(0, (room - qh) // 2)
+    draw_rich(fr.d, x0 + 34, y, question, size, width, color=C["white"], line_gap=1.3, bold=True)
+    if value:
+        fr.d.text(((x0 + x1) // 2, y1 - 190), "Pause the video if you need more time.", font=font("sans", 24),
+                  fill="#99F6E4", anchor="mm")
+    digital_timer(fr.d, (x0 + x1) // 2, y1 - 95, value, total, 0.95, fraction=fraction)
+
+
+def ask_band(fr: "Frame", question: str, value: int, total: int, fraction: float | None = None) -> None:
+    """For slides without a side panel: a band across the bottom with the question and the timer."""
+    y0 = H - 250
+    fr.d.rectangle([0, y0, W, H - 10], fill="#0B3B37")
+    fr.d.text((60, y0 + 28), "YOUR TURN" if value else "TIME'S UP", font=font("bold", 28), fill="#A7F3D0")
+    y = y0 + 76
+    for line in layout_rich(question, 40, W - 560)[:3]:
+        fr.d.text((60, y), "".join(w for _, w, _ in line), font=font("bold", 40), fill=C["white"])
+        y += 52
+    digital_timer(fr.d, W - 230, y0 + 120, value, total, 1.0, fraction=fraction)
+
+
+def draw_code_beat(fr: "Frame", chapter: Path, v: dict, ask: dict | None = None) -> None:
     top = fr.heading(v.get("heading", ""), size=46) if v.get("heading") else 96
     if v.get("note"):
         top = draw_rich(fr.d, 60, top - 6, v["note"], 30, W - 120, color=C["muted"]) + 8
     src_path = chapter / v["file"]
     source = src_path.read_text(encoding="utf-8").rstrip("\n")
     code_lines = token_colours(src_path, source)
-    has_side = bool(v.get("output") or v.get("error") or v.get("output_hidden", True))
-    has_side = has_side and not v.get("code_only")
+    visible = int(v.get("lines") or len(code_lines))
     bottom = H - 60
-    side_chars = 30
-    if v.get("output"):
-        side_chars = max(side_chars, *(len(x) for x in (chapter / v["output"]).read_text(encoding="utf-8").split("\n")))
-    if v.get("error"):
-        side_chars = max(side_chars, len(real_error_line(chapter, v["file"],
-                                                         (chapter / v["error"]).read_text(encoding="utf-8").strip())))
-    side_w = int(min(820, max(560, side_chars * 30 * 0.602 + 80)))
+    stem = src_path.with_suffix("")
+    side_lines = side_panel_lines(chapter, v["file"])
+    side_chars = max([30] + [len(x) for x in side_lines])
+    side_w = int(min(860, max(600, side_chars * 26 * 0.602 + 80)))
+    band = bool(ask) and bool(v.get("output") or v.get("error"))
+    bottom = H - 300 if band else H - 60
     split = W - 60 - side_w - 30
-    code_box = [60, top, (split if has_side else W - 60), bottom]
+    code_box = [60, top, split, bottom]
     out_box = [split + 30, top, W - 60, bottom]
-    # fit the code
     max_chars = max((sum(len(p) for p, _ in ln) for ln in code_lines), default=1) + 5
     avail_h = code_box[3] - code_box[1] - 90
     avail_w = code_box[2] - code_box[0] - 60
@@ -384,47 +467,82 @@ def draw_code_beat(fr: Frame, chapter: Path, v: dict) -> None:
     y = code_box[1] + 70
     highlight = set(v.get("highlight", []))
     for number, line in enumerate(code_lines, start=1):
-        if number in highlight:
+        if number > visible:
+            break
+        lit = number in highlight
+        if lit:
             fr.d.rectangle([code_box[0] + 8, y - 4, code_box[2] - 8, y + size * 1.3], fill=C["hl"])
-            fr.d.rectangle([code_box[0] + 8, y - 4, code_box[0] + 14, y + size * 1.3], fill="#F59E0B")
-        fr.d.text((code_box[0] + 24, y), f"{number:>2}", font=mono, fill=C["gutter"])
-        x = code_box[0] + 24 + size * 0.602 * 4
+            fr.d.rectangle([code_box[0] + 8, y - 4, code_box[0] + 16, y + size * 1.3], fill="#F59E0B")
+            fr.d.text((code_box[2] - 24, y + size * 0.62), "◀", font=font("bold", int(size * 0.8)),
+                      fill="#F59E0B", anchor="rm")
+        dim = bool(highlight) and not lit
+        fr.d.text((code_box[0] + 26, y), f"{number:>2}", font=mono, fill="#F59E0B" if lit else C["gutter"])
+        x = code_box[0] + 26 + size * 0.602 * 4
         for piece, colour in line:
-            fr.d.text((x, y), piece, font=mono, fill=colour)
+            fr.d.text((x, y), piece, font=mono, fill=_mute(colour) if dim else colour)
             x += mono.getlength(piece)
+        if number == visible and visible < len(code_lines):
+            fr.d.rectangle([x + 4, y, x + 4 + size * 0.55, y + size * 1.2], fill="#E5E7EB")  # typing cursor
         y += int(size * 1.45)
-    if not has_side:
+    if ask and not band:
+        ask_card(fr, out_box, ask["question"], ask["value"], ask["total"], ask.get("fraction"))
         return
+    if band:
+        ask_band(fr, ask["question"], ask["value"], ask["total"], ask.get("fraction"))
+    focus_out = set(v.get("out_highlight", []))
     if v.get("error"):
-        before = (chapter / v["error"]).with_suffix(".expected")
-        shown = before.read_text(encoding="utf-8").rstrip("\n").split("\n") if before.exists() else []
-        err_line = real_error_line(chapter, v["file"], (chapter / v["error"]).read_text(encoding="utf-8").strip())
+        n_lines = len(real_traceback(chapter, v["file"], (chapter / v["error"]).read_text(encoding="utf-8").strip()))
+        focus_out = {k if k > 0 else n_lines + 1 + k for k in focus_out}
+        lines = real_traceback(chapter, v["file"], (chapter / v["error"]).read_text(encoding="utf-8").strip())
         panel(fr.d, out_box, "Error", C["err"], C["out_bg"])
-        body = [(line, C["out_fg"]) for line in shown if line] + ([("...", C["gutter"])] if shown else [])
-        body += [(err_line, C["err"])]
+        lit_err = {f"line {n}" for n in v.get("err_highlight", [])}
+        body = [(line, C["err"] if i == len(lines) - 1 else "#E5E7EB",
+                 any(f"{key}," in line or line.rstrip().endswith(key) for key in lit_err) or (i + 1) in focus_out)
+                for i, line in enumerate(lines)]
     elif v.get("output"):
-        text = (chapter / v["output"]).read_text(encoding="utf-8").rstrip("\n")
+        text = (chapter / v["output"]).read_text(encoding="utf-8").rstrip("\n").split("\n")
         panel(fr.d, out_box, "Output", "#A3E635", C["out_bg"])
-        body = [(line, C["out_fg"]) for line in text.split("\n")]
+        body = [(line, C["out_fg"], i + 1 in focus_out) for i, line in enumerate(text[: int(v.get("out_lines") or len(text))])]
     else:
         panel(fr.d, out_box, "Output", "#A3E635", C["out_bg"])
         draw_rich(fr.d, out_box[0] + 30, (out_box[1] + out_box[3]) // 2 - 60,
                   v.get("hidden_text", "Predict the output, then run it."), 32,
                   out_box[2] - out_box[0] - 60, color="#9CA3AF")
         return
-    width = out_box[2] - out_box[0] - 60
+    width = out_box[2] - out_box[0] - 100          # room on the right for the highlight marker
     osize = 32
+    is_error = bool(v.get("error"))
+    floor = 26 if is_error else 14
     while True:
-        chars = int(width / (osize * 0.602))
-        wrapped = [(seg, colour) for line, colour in body for seg in wrap_plain(line, chars)]
-        if len(wrapped) * osize * 1.5 <= out_box[3] - out_box[1] - 90 or osize <= 16:
+        chars = max(10, int(width / (osize * 0.602)))
+        # outputs never wrap (a wrapped line looks like two lines); error reports may
+        rows = [(seg, colour, lit) for line, colour, lit in body
+                for seg in (wrap_plain(line, chars) if is_error else [line])]
+        longest = max((len(r[0]) for r in rows), default=1)
+        fits = len(rows) * osize * 1.5 <= out_box[3] - out_box[1] - 90
+        if (fits and (is_error or longest <= chars)) or osize <= floor:
             break
         osize -= 1
     omono = font("mono", osize)
+    any_lit = any(lit for _, _, lit in rows)
     y = out_box[1] + 70
-    for seg, colour in wrapped:
-        fr.d.text((out_box[0] + 30, y), seg, font=omono, fill=colour)
+    for line, colour, lit in rows:
+        if lit:
+            fr.d.rectangle([out_box[0] + 8, y - 4, out_box[2] - 8, y + osize * 1.3], fill="#3A4255")
+            fr.d.rectangle([out_box[0] + 8, y - 4, out_box[0] + 16, y + osize * 1.3], fill="#F59E0B")
+            fr.d.text((out_box[2] - 22, y + osize * 0.62), "\u25c0", font=font("bold", int(osize * 0.8)),
+                      fill="#F59E0B", anchor="rm")
+        shade = colour if (lit or not any_lit) else _mute(colour, (0x10, 0x14, 0x18))
+        fr.d.text((out_box[0] + 30, y), line, font=omono, fill=shade)
         y += int(osize * 1.5)
+
+
+def _mute(colour: str, bg: tuple = (0x1E, 0x22, 0x30)) -> str:
+    """Dim a colour towards the panel background so the highlighted line stands out."""
+    colour = colour.lstrip("#")
+    r, g, b = (int(colour[i:i + 2], 16) for i in (0, 2, 4))
+    k = 0.55
+    return "#%02x%02x%02x" % tuple(int(bg[i] + (c - bg[i]) * k) for i, c in enumerate((r, g, b)))
 
 
 def settle(top: int, content_h: int) -> int:
@@ -451,8 +569,12 @@ def draw_table(fr: Frame, v: dict) -> None:
     y = settle(top, sum(heights))
     for r, row in enumerate([cols] + rows):
         hgt = heights[r]
+        focus = v.get("focus_row")
+        lit = focus is not None and r == focus + 1
         fr.d.rectangle([60, y, 60 + table_w, y + hgt], fill=C["table_head"] if r == 0 else
-                       (C["white"] if r % 2 else C["bg"]))
+                       ("#FEF3C7" if lit else (C["white"] if r % 2 else C["bg"])))
+        if lit:
+            fr.d.rectangle([60, y, 70, y + hgt], fill="#F59E0B")
         x = 60
         for i, cell in enumerate(row):
             text = f"**{cell}**" if r == 0 else str(cell)
@@ -466,15 +588,21 @@ def draw_bullets(fr: Frame, v: dict) -> None:
     top = fr.heading(v.get("heading", ""))
     items = v["items"]
     reveal = v.get("reveal", len(items))
+    focus = v.get("focus", reveal - 1 if reveal < len(items) else None)
     size = 46
-    while size > 24 and sum(rich_height(i, size, W - 220) + 30 for i in items) > H - top - 80:
+    while size > 24 and sum(rich_height(i, size, W - 260) + 34 for i in items) > H - top - 80:
         size -= 2
-    y = settle(top, sum(rich_height(i, size, W - 220) + 30 for i in items))
+    y = settle(top, sum(rich_height(i, size, W - 260) + 34 for i in items))
     for index, item in enumerate(items[:reveal]):
-        current = index == reveal - 1 and reveal < len(items) or (v.get("focus") == index)
-        dot = C["accent"] if current or reveal == len(items) else C["muted"]
-        fr.d.ellipse([70, y + size * 0.35, 70 + size * 0.45, y + size * 0.8], fill=dot)
-        y = draw_rich(fr.d, 130, y, item, size, W - 220) + 30
+        h = rich_height(item, size, W - 260)
+        lit = focus == index
+        if lit:
+            fr.d.rounded_rectangle([90, y - 12, W - 60, y + h + 2], radius=14, fill="#FEF3C7")
+            fr.d.rectangle([90, y - 12, 100, y + h + 2], fill="#F59E0B")
+        dot = C["accent"] if (lit or focus is None) else C["muted"]
+        fr.d.ellipse([120, y + size * 0.35, 120 + size * 0.45, y + size * 0.8], fill=dot)
+        colour = C["ink"] if (lit or focus is None) else C["muted"]
+        y = draw_rich(fr.d, 180, y, item, size, W - 260, color=colour) + 34
 
 
 def draw_text(fr: Frame, v: dict) -> None:
@@ -493,8 +621,10 @@ def draw_text(fr: Frame, v: dict) -> None:
         y = draw_rich(fr.d, 60, y, para, 42, W - 120) + 20
     if lines:
         box_w = max(900, max(len(x) for x in lines) * size * 0.602 + 100)
-        fr.d.rounded_rectangle([60, y + 10, 60 + box_w, y + 10 + box_h], radius=18, fill=C["white"],
-                               outline=C["rule"], width=2)
+        lit = v.get("focus") == "pre"
+        fr.d.rounded_rectangle([60, y + 10, 60 + box_w, y + 10 + box_h], radius=18,
+                               fill="#FFFBEB" if lit else C["white"], outline="#F59E0B" if lit else C["rule"],
+                               width=5 if lit else 2)
         yy = y + 40
         for line in lines:
             fr.d.text((100, yy), line, font=font("mono", size), fill=C["ink"])
@@ -508,14 +638,27 @@ def draw_prompt(fr: Frame, v: dict) -> None:
                                fill=C["accent"])
         fr.d.text((85, top + 10), v["label"], font=font("bold", 30), fill=C["white"])
         top += 86
-    prompt_h = rich_height(v["prompt"], 40, W - 260) + 70
+    text = v["prompt"]
+    if v.get("focus") is not None and v["focus"] != "check":
+        parts = re.split(r"(?<=[.!?])\s+", text)
+        k = int(v["focus"])
+        text = " ".join(f"**{re.sub('`', '', p)}**" if i == k else p for i, p in enumerate(parts))
+    prompt_h = rich_height(text, 40, W - 260) + 70
     fr.d.rounded_rectangle([60, top, W - 60, top + prompt_h], radius=20, fill=C["white"], outline=C["accent"],
                            width=3)
     fr.d.text((88, top + 6), "“", font=font("bold", 80), fill=C["accent"])
-    y = draw_rich(fr.d, 150, top + 35, v["prompt"], 40, W - 260)
+    if v.get("focus") is not None and v["focus"] != "check":
+        fr.d.rectangle([60, top, 72, top + prompt_h], fill="#F59E0B")
+    y = draw_rich(fr.d, 150, top + 35, text, 40, W - 260)
     y = max(y, top + prompt_h) + 30
     if v.get("check"):
-        draw_rich(fr.d, 60, y, "**Check it:** " + v["check"], 36, W - 120, color=C["muted"])
+        lit = v.get("focus") == "check"
+        if lit:
+            ch = rich_height("**Check it:** " + v["check"], 36, W - 140)
+            fr.d.rounded_rectangle([50, y - 12, W - 60, y + ch], radius=14, fill="#FEF3C7")
+            fr.d.rectangle([50, y - 12, 60, y + ch], fill="#F59E0B")
+        draw_rich(fr.d, 80 if lit else 60, y, "**Check it:** " + v["check"], 36, W - 140,
+                  color=C["ink"] if lit else C["muted"])
 
 
 def draw_title(fr: Frame, v: dict) -> None:
@@ -538,36 +681,97 @@ def draw_title(fr: Frame, v: dict) -> None:
         fr.d.text((W // 2, y + 75), label, font=font("bold", 32), fill=C["accent"], anchor="mm")
 
 
-def draw_pause(fr: Frame, v: dict, count: int | None) -> None:
-    qlines = layout_rich(v["question"], 56, W - 360)
-    y = 360 - len(qlines) * 39
-    fr.d.text((W // 2, y - 80), "PAUSE AND THINK", font=font("bold", 36), fill="#A7F3D0", anchor="mm")
+def draw_pause(fr: "Frame", v: dict, ask: dict | None) -> None:
+    """A question card. The question stays on screen above its timer the whole time."""
+    question = ask["question"] if ask else v["question"]
+    qlines = layout_rich(question, 60, W - 360)
+    y = 330 - len(qlines) * 42
+    fr.d.text((W // 2, y - 90), "PAUSE AND THINK", font=font("bold", 36), fill="#A7F3D0", anchor="mm")
     for line in qlines:
-        text = "".join(w for _, w, _ in line)
-        fr.d.text((W // 2, y), text, font=font("bold", 56), fill=C["white"], anchor="ma")
-        y += 78
-    if count is not None:
-        cy = min(y + 190, H - 170)
-        fr.d.ellipse([W // 2 - 90, cy - 90, W // 2 + 90, cy + 90], outline=C["white"], width=8)
-        fr.d.text((W // 2, cy), str(count), font=font("bold", 96), fill=C["white"], anchor="mm")
+        fr.d.text((W // 2, y), "".join(w for _, w, _ in line), font=font("bold", 60), fill=C["white"], anchor="ma")
+        y += 84
+    if v.get("hint"):
+        draw_rich(fr.d, 260, y + 20, f"Hint: {v['hint']}", 36, W - 520, color="#CCFBF1")
+    if ask:
+        digital_timer(fr.d, W // 2, min(y + 230, H - 150), ask["value"], ask["total"], 1.3, fraction=ask.get("fraction"))
 
 
-def draw_visual(fr: Frame, chapter: Path, v: dict, count: int | None = None) -> None:
+def draw_quiz(fr: "Frame", v: dict, ask: dict | None) -> None:
+    fr.d.text((60, 100), "QUICK CHECK", font=font("bold", 30), fill=C["accent"])
+    y = draw_rich(fr.d, 60, 150, v["question"], 50, W - 520, line_gap=1.3) + 30
+    if ask:
+        digital_timer(fr.d, W - 230, 200, ask["value"], ask["total"], 1.0, dark=False, fraction=ask.get("fraction"))
+    revealed = v.get("revealed")
+    letters = "ABCD"
+    for i, option in enumerate(v["options"]):
+        right = revealed and i == v["answer"]
+        wrong = revealed and i != v["answer"]
+        h = rich_height(option, 40, W - 400) + 44
+        fill = "#DCFCE7" if right else ("#EFEEE8" if wrong else C["white"])
+        edge = "#16A34A" if right else (C["rule"] if wrong else C["accent"])
+        fr.d.rounded_rectangle([60, y, W - 60, y + h], radius=20, fill=fill, outline=edge, width=4 if right else 2)
+        fr.d.ellipse([90, y + h // 2 - 32, 154, y + h // 2 + 32], fill=edge)
+        fr.d.text((122, y + h // 2), letters[i], font=font("bold", 36), fill=C["white"], anchor="mm")
+        draw_rich(fr.d, 190, y + 22, option, 40, W - 400, color=C["muted"] if wrong else C["ink"])
+        if right:
+            fr.d.text((W - 110, y + h // 2), "✔", font=font("bold", 56), fill="#16A34A", anchor="mm")
+        y += h + 22
+    if revealed and v.get("explain"):
+        draw_rich(fr.d, 60, y + 10, "**Why:** " + v["explain"], 36, W - 120, color=C["ink"])
+
+
+def draw_breather(fr: "Frame", v: dict, ctx: dict, section: str) -> None:
+    fr.d.text((120, 150), v.get("label", "BREATHER"), font=font("bold", 32), fill=C["accent"])
+    fr.d.text((120, 200), v.get("title", "Take a breath. You have learned:"), font=font("bold", 58), fill=C["ink"])
+    y = 330
+    for item in v["items"]:
+        fr.d.ellipse([120, y + 4, 172, y + 56], fill=C["accent"])
+        fr.d.text((146, y + 30), "✔", font=font("bold", 32), fill=C["white"], anchor="mm")
+        y = draw_rich(fr.d, 200, y + 6, item, 40, 1000) + 34
+    # progress map of the chapter sections
+    x0, top = 1320, 170
+    fr.d.rounded_rectangle([x0 - 40, top - 40, W - 80, H - 120], radius=26, fill=C["white"], outline=C["rule"], width=2)
+    fr.d.text((x0, top), "YOUR PROGRESS", font=font("bold", 26), fill=C["muted"])
+    sections = ctx["sections"]
+    done_until = sections.index(section) if section in sections else -1
+    yy = top + 60
+    step = min(64, (H - 220 - yy) // max(1, len(sections)))
+    for i, name in enumerate(sections):
+        done = i <= done_until
+        fr.d.ellipse([x0, yy + 6, x0 + 30, yy + 36], fill=C["accent"] if done else C["bar"])
+        if done:
+            fr.d.text((x0 + 15, yy + 21), "✔", font=font("bold", 18), fill=C["white"], anchor="mm")
+        fr.d.text((x0 + 50, yy + 4), name, font=font("bold" if i == done_until else "sans", 28),
+                  fill=C["ink"] if done else C["muted"])
+        yy += step
+
+
+def draw_visual(fr: "Frame", chapter: Path, v: dict, ask: dict | None = None, section: str = "") -> None:
     kind = v["type"]
+    side_ask = None
     if kind == "code":
-        draw_code_beat(fr, chapter, v)
+        draw_code_beat(fr, chapter, v, ask)
+        return
+    if kind == "pause":
+        draw_pause(fr, v, ask)
+        return
+    if kind == "quiz":
+        draw_quiz(fr, v, ask)
+        return
+    if kind == "breather":
+        draw_breather(fr, v, fr.ctx, section)
     elif kind == "table":
         draw_table(fr, v)
     elif kind == "bullets":
         draw_bullets(fr, v)
-    elif kind in ("text",):
+    elif kind == "text":
         draw_text(fr, v)
     elif kind == "prompt":
         draw_prompt(fr, v)
     elif kind in ("title", "end"):
         draw_title(fr, v)
-    elif kind == "pause":
-        draw_pause(fr, v, count)
+    if ask:
+        ask_band(fr, ask["question"], ask["value"], ask["total"], ask.get("fraction"))
 
 
 # ---------------------------------------------------------------- planning
@@ -589,59 +793,78 @@ def chapter_kind(chapter: Path) -> str:
     return meta.get("type", "lesson")
 
 
-def plan(chapter: Path, board: dict) -> list[dict]:
-    """Synthesize narration and work out the exact frame count of every beat."""
-    beats = []
+def plan(chapter: Path, board: dict, synth: bool = True) -> list[dict]:
+    """Expand every beat into timed states: one picture each, with its audio and caption.
+
+    With synth=False (preview) durations are estimates and no audio is made.
+    """
+    states: list[dict] = []
     for scene in board["scenes"]:
-        for index, beat in enumerate(scene["beats"]):
-            visual = beat["visual"]
-            text = beat.get("narration", "").strip()
-            wav = synthesize(text) if text else None
-            speech = wav_seconds(wav) if wav else 0.0
-            lead = 0.4 if index == 0 else 0.15
-            seconds = lead + speech + sb.BEAT_GAP_SECONDS + float(beat.get("hold", 0))
-            count = int(visual.get("seconds", 5)) if visual["type"] == "pause" else 0
-            beats.append({"scene": scene, "beat": beat, "visual": visual, "wav": wav, "lead": lead,
-                          "speech": speech, "talk_frames": frames(seconds), "count": count,
-                          "frames": frames(seconds) + count * FPS})
+        for b_index, beat in enumerate(scene["beats"]):
+            ph = sb.phases(beat)
+            for p_index, phase in enumerate(ph):
+                last = p_index == len(ph) - 1
+                base = {"scene": scene, "visual": phase["visual"], "ask": None, "wav": None, "lead": 0.0,
+                        "speech": 0.0, "text": "", "sound": None, "blend": True}
+                if phase["kind"] == "say":
+                    lead = (0.2 if b_index == 0 else 0.1) if p_index == 0 else 0.0
+                    wav = synthesize(phase["text"]) if (synth and phase["text"]) else None
+                    speech = wav_seconds(wav) if wav else len(phase["text"].split()) / sb.WORDS_PER_SECOND
+                    scene_end = last and b_index == len(scene["beats"]) - 1
+                    gap = 0.35 if scene_end else (sb.BEAT_GAP_SECONDS if last else sb.SEGMENT_GAP_SECONDS)
+                    states.append({**base, "wav": wav, "lead": lead, "speech": speech, "text": phase["text"],
+                                   "frames": frames(lead + speech + gap)})
+                elif phase["kind"] == "ask":
+                    total = phase["seconds"]
+                    steps = TIMER_STEPS if synth else 1
+                    for k in range(total * steps + 1):
+                        remaining = total - k / steps
+                        value = math.ceil(remaining - 1e-9)
+                        states.append({**base, "ask": {"question": phase["question"], "value": value, "total": total,
+                                                       "fraction": remaining / total},
+                                       "sound": ("tick" if value else "done") if k % steps == 0 else None,
+                                       "blend": k == 0, "frames": frames(1.0 / steps if remaining > 0 else 0.8)})
+                else:
+                    states.append({**base, "sound": "pad", "blend": False, "frames": frames(phase["seconds"])})
     start = 0
-    for b in beats:
-        b["start_frame"] = start
-        start += b["frames"]
-    return beats
+    for s in states:
+        s["start_frame"] = start
+        start += s["frames"]
+    return states
 
 
 def context(chapter: Path, board: dict) -> dict:
     language = chapter.parent.name
     display = load_json(ROOT / "curriculum" / f"{language}.json").get("display_name", language.title())
-    return {"brand": f"CODE QUEST  ·  {display}  ·  Chapter {board.get('number', '')}"}
+    wanted = sb.PROJECT_SECTIONS if chapter_kind(chapter) == "project" else sb.LESSON_SECTIONS
+    return {"brand": f"CODE QUEST  ·  {display}  ·  Chapter {board.get('number', '')}", "sections": wanted}
 
 
-def draw_beats(chapter: Path, board: dict, beats: list[dict], out: Path) -> list[list[tuple[Path, float]]]:
-    """Draw every still. Returns, per scene, a list of (png, seconds)."""
+def state_key(s: dict) -> str:
+    return json.dumps([s["scene"]["section"], s["visual"], s["ask"]], sort_keys=True, default=str)
+
+
+def draw_states(chapter: Path, board: dict, states: list[dict], out: Path) -> None:
+    """Draw one PNG per distinct picture; states that look the same share a file."""
     ctx = context(chapter, board)
-    total = sum(b["frames"] for b in beats)
-    scenes: dict[str, list[tuple[Path, float]]] = {}
-    for n, b in enumerate(beats):
-        scene, v = b["scene"], b["visual"]
+    total = sum(s["frames"] for s in states)
+    cache: dict[str, Path] = {}
+    for n, s in enumerate(states):
+        progress = s["start_frame"] / total
+        key = state_key(s) + f"|{round(progress, 2)}"
+        if key in cache:
+            s["png"] = cache[key]
+            continue
+        v = s["visual"]
         dark = v["type"] == "pause"
-        progress = b["start_frame"] / total
-        stills = []
-        fr = Frame(ctx, scene["section"], C["pause_bg"] if dark else C["bg"])
+        bg = C["pause_bg"] if dark else ("#EEF6F2" if v["type"] == "breather" else C["bg"])
+        fr = Frame(ctx, s["scene"]["section"], bg)
         fr.chrome(progress, dark)
-        draw_visual(fr, chapter, v)
-        path = out / f"b{n:03d}.png"
-        fr.save(path)
-        stills.append((path, b["talk_frames"] / FPS))
-        for k in range(b["count"], 0, -1):
-            fr = Frame(ctx, scene["section"], C["pause_bg"])
-            fr.chrome(progress, True)
-            draw_visual(fr, chapter, v, count=k)
-            path = out / f"b{n:03d}_{k}.png"
-            fr.save(path)
-            stills.append((path, 1.0))
-        scenes.setdefault(scene["id"], []).extend(stills)
-    return [scenes[s["id"]] for s in board["scenes"]]
+        draw_visual(fr, chapter, v, s["ask"], s["scene"]["section"])
+        path = out / f"s{n:04d}.png"
+        fr.img.save(path, "PNG", compress_level=1)
+        cache[key] = path
+        s["png"] = path
 
 
 # ---------------------------------------------------------------- outputs
@@ -651,41 +874,42 @@ def srt_time(seconds: float) -> str:
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
-def captions(beats: list[dict]) -> str:
-    cues = []
-    for b in beats:
-        text = b["beat"].get("narration", "").strip()
-        if not text:
+def caption_cues(text: str, max_line: int = 42) -> list[list[str]]:
+    """Break text into cues of at most two lines of 42 characters, preferring clause ends."""
+    cues: list[list[str]] = []
+    for sentence in re.split(r"(?<=[.!?])\s+", text.strip()):
+        lines, cur = [], ""
+        for word in sentence.split():
+            if cur and len(cur) + 1 + len(word) > max_line:
+                lines.append(cur)
+                cur = word
+            else:
+                cur = f"{cur} {word}".strip()
+        if cur:
+            lines.append(cur)
+        for i in range(0, len(lines), 2):
+            cues.append(lines[i:i + 2])
+    return cues
+
+
+def captions(states: list[dict]) -> str:
+    out, n = [], 0
+    for s in states:
+        if not s["text"]:
             continue
-        chunks = []
-        for sentence in re.split(r"(?<=[.!?])\s+", text):
-            # pack whole clauses (split after commas and colons) into cues of at most 12 words
-            current: list[str] = []
-            for clause in re.split(r"(?<=[,:;])\s+", sentence):
-                words = clause.split()
-                if current and len(current) + len(words) > 12:
-                    chunks.append(" ".join(current))
-                    current = []
-                while len(words) > 12:
-                    chunks.append(" ".join(words[:10]))
-                    words = words[10:]
-                current += words
-            if current:
-                chunks.append(" ".join(current))
-        total_words = sum(len(c.split()) for c in chunks)
-        t = b["start_frame"] / FPS + b["lead"]
-        for chunk in chunks:
-            dur = b["speech"] * len(chunk.split()) / total_words
-            cues.append((t, t + dur, chunk))
-            t += dur
-    lines = []
-    for i, (a, z, text) in enumerate(cues, start=1):
-        words = text.split()
-        if len(text) > 42 and len(words) > 3:
-            mid = len(words) // 2
-            text = " ".join(words[:mid]) + "\n" + " ".join(words[mid:])
-        lines += [str(i), f"{srt_time(a)} --> {srt_time(z)}", text, ""]
-    return "\n".join(lines)
+        cues = caption_cues(s["text"])
+        chars = sum(len(" ".join(c)) for c in cues) or 1
+        t = s["start_frame"] / FPS + s["lead"]
+        state_end = (s["start_frame"] + s["frames"]) / FPS
+        for k, cue in enumerate(cues):
+            d = s["speech"] * len(" ".join(cue)) / chars
+            shown = d
+            if k == len(cues) - 1:
+                shown = min(max(d, len(" ".join(cue)) / 18), state_end - t)
+            n += 1
+            out += [str(n), f"{srt_time(t)} --> {srt_time(t + max(shown, 0.05) - 0.02)}", "\n".join(cue), ""]
+            t += d
+    return "\n".join(out)
 
 
 def clock(seconds: float) -> str:
@@ -693,10 +917,10 @@ def clock(seconds: float) -> str:
     return f"{seconds // 60}:{seconds % 60:02d}"
 
 
-def scene_timings(board: dict, beats: list[dict]) -> list[dict]:
+def scene_timings(board: dict, states: list[dict]) -> list[dict]:
     out = []
     for scene in board["scenes"]:
-        own = [b for b in beats if b["scene"] is scene]
+        own = [s for s in states if s["scene"] is scene]
         start = own[0]["start_frame"] / FPS
         end = (own[-1]["start_frame"] + own[-1]["frames"]) / FPS
         out.append({"id": scene["id"], "title": scene.get("title", scene["section"]), "section": scene["section"],
@@ -710,36 +934,64 @@ def description(board: dict, timings: list[dict], chapter: Path) -> str:
              "## Chapters", ""]
     for t in timings:
         lines.append(f"{clock(t['start'])} {t['title']}")
-    lines += ["", "## Links", "",
+    lines += ["", "## How to use this video", "",
+              "- When a question appears with a 10-second timer, pause the video if you need more time.",
+              "- Say or write your answer before the reveal. Breather cards are a moment to rest and review.",
+              "", "## Links", "",
               f"- Lesson, code and practice: `{rel}` in the DipurajThapa/CourseVideos repository.",
               "- Every code example in this video was run and checked by the course verification tool.",
               "", "## Disclosure", "",
-              f"The narration is a synthetic voice (Piper text-to-speech, voice {VOICE}). "
-              "English captions are included.", ""]
+              f"The narration is a synthetic voice (Piper text-to-speech, voice {VOICE}). The timer ticks and the "
+              "soft tone on breather cards are generated in code. English captions are included.", ""]
     return "\n".join(lines)
 
 
-def write_audio(beats: list[dict], path: Path) -> None:
+def _tone(rate: int, seconds: float, freqs: list[float], amp: float, decay: float | None = None):
+    import numpy as np
+    t = np.arange(int(rate * seconds)) / rate
+    wave_ = sum(np.sin(2 * np.pi * f * t) for f in freqs) / len(freqs)
+    if decay:
+        env = np.exp(-t / decay)
+    else:
+        fade = min(len(t) // 3, int(rate * 0.8))
+        env = np.ones_like(t)
+        env[:fade] = np.linspace(0, 1, fade)
+        env[-fade:] = np.linspace(1, 0, fade)
+    return (amp * wave_ * env).astype(np.float32)
+
+
+def write_audio(states: list[dict], path: Path) -> None:
+    import numpy as np
     rate = 22050
-    for b in beats:
-        if b["wav"]:
-            with wave.open(str(b["wav"])) as wf:
+    for s in states:
+        if s["wav"]:
+            with wave.open(str(s["wav"])) as wf:
                 rate = wf.getframerate()
             break
+    total = sum(s["frames"] for s in states)
+    track = np.zeros(int(total / FPS * rate) + rate, dtype=np.float32)
+    tick = _tone(rate, 0.06, [1320], 0.10, decay=0.012)
+    done = np.concatenate([_tone(rate, 0.12, [880], 0.12, decay=0.05), _tone(rate, 0.25, [1175], 0.12, decay=0.08)])
+    for s in states:
+        at = int(s["start_frame"] / FPS * rate)
+        if s["wav"]:
+            with wave.open(str(s["wav"])) as wf:
+                pcm = np.frombuffer(wf.readframes(wf.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+            st = at + int(s["lead"] * rate)
+            track[st:st + len(pcm)] += pcm[: len(track) - st]
+        elif s["sound"] in ("tick", "done"):
+            snd = tick if s["sound"] == "tick" else done
+            track[at:at + len(snd)] += snd[: len(track) - at]
+        elif s["sound"] == "pad":
+            snd = _tone(rate, s["frames"] / FPS, [220.0, 277.18, 329.63], 0.035)
+            track[at:at + len(snd)] += snd[: len(track) - at]
+    track = track[: int(total / FPS * rate)]
+    pcm16 = (np.clip(track, -1, 1) * 32767).astype(np.int16)
     with wave.open(str(path), "wb") as out:
         out.setnchannels(1)
         out.setsampwidth(2)
         out.setframerate(rate)
-        for b in beats:
-            total = round(b["frames"] / FPS * rate)
-            lead = round(b["lead"] * rate)
-            data = b""
-            if b["wav"]:
-                with wave.open(str(b["wav"])) as wf:
-                    data = wf.readframes(wf.getnframes())
-            pcm = b"\0\0" * lead + data
-            pcm = pcm[: total * 2] + b"\0\0" * max(0, total - len(pcm) // 2)
-            out.writeframes(pcm)
+        out.writeframes(pcm16.tobytes())
 
 
 def ffmpeg(args: list[str]) -> None:
@@ -748,11 +1000,31 @@ def ffmpeg(args: list[str]) -> None:
         raise RuntimeError(f"ffmpeg failed: {proc.stderr[-800:]}")
 
 
-def encode_scene(stills: list[tuple[Path, float]], out: Path, work: Path) -> float:
+BLEND_FRAMES = 7
+TIMER_STEPS = 5                 # the timer bar drains five times a second
+
+
+def encode_scene(states: list[dict], out: Path, work: Path) -> float:
+    """Encode one scene. A short crossfade eases each change of picture (not timer ticks)."""
+    from PIL import Image
+    entries: list[tuple[Path, float]] = []
+    prev = None
+    for s in states:
+        n = s["frames"]
+        if prev is not None and s["blend"] and prev != s["png"] and n > BLEND_FRAMES + 2:
+            a, b = Image.open(prev).convert("RGB"), Image.open(s["png"]).convert("RGB")
+            for k in range(1, BLEND_FRAMES + 1):
+                p = work / f"bl_{s['png'].stem}_{prev.stem}_{k}.png"
+                if not p.exists():
+                    Image.blend(a, b, k / (BLEND_FRAMES + 1)).save(p, "PNG", compress_level=1)
+                entries.append((p, 1 / FPS))
+            n -= BLEND_FRAMES
+        entries.append((s["png"], n / FPS))
+        prev = s["png"]
     listing = work / (out.stem + ".txt")
-    total = sum(d for _, d in stills)
-    body = "".join(f"file '{p.as_posix()}'\nduration {d:.6f}\n" for p, d in stills)
-    listing.write_text(body + f"file '{stills[-1][0].as_posix()}'\n", encoding="utf-8")
+    total = sum(s["frames"] for s in states) / FPS
+    body = "".join(f"file '{p.as_posix()}'\nduration {d:.6f}\n" for p, d in entries)
+    listing.write_text(body + f"file '{entries[-1][0].as_posix()}'\n", encoding="utf-8")
     fade = f"fade=t=in:st=0:d=0.3,fade=t=out:st={max(0, total - 0.3):.3f}:d=0.3"
     tmp = out.with_name(out.stem + ".tmp.mp4")
     ffmpeg(["-f", "concat", "-safe", "0", "-i", str(listing), "-vf", f"fps={FPS},format=yuv420p,{fade}",
@@ -774,21 +1046,20 @@ def render(chapter: Path) -> int:
     if problems:
         print("Storyboard problems:\n- " + "\n- ".join(problems))
         return 1
-    beats = plan(chapter, board)
+    states = plan(chapter, board)
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp)
-        scene_stills = draw_beats(chapter, board, beats, work)
+        draw_states(chapter, board, states, work)
         parts = []
-        for i, stills in enumerate(scene_stills):
+        for i, scene in enumerate(board["scenes"]):
             part = work / f"scene{i:02d}.mp4"
-            encode_scene(stills, part, work)
+            encode_scene([s for s in states if s["scene"] is scene], part, work)
             parts.append(part)
         (work / "scenes.txt").write_text("".join(f"file '{p.as_posix()}'\n" for p in parts), encoding="utf-8")
         ffmpeg(["-f", "concat", "-safe", "0", "-i", str(work / "scenes.txt"), "-c", "copy", str(work / "video.mp4")])
-        write_audio(beats, work / "audio.wav")
-        timings = scene_timings(board, beats)
-        srt = captions(beats)
-        (chapter / sb.CAPTIONS_FILE).write_text(srt, encoding="utf-8")
+        write_audio(states, work / "audio.wav")
+        timings = scene_timings(board, states)
+        (chapter / sb.CAPTIONS_FILE).write_text(captions(states), encoding="utf-8")
         meta = [";FFMETADATA1", f"title={board.get('video_title', board.get('title', ''))}"]
         for t in timings:
             meta += ["[CHAPTER]", "TIMEBASE=1/1000", f"START={int(t['start'] * 1000)}", f"END={int(t['end'] * 1000)}",
@@ -798,15 +1069,15 @@ def render(chapter: Path) -> int:
         ffmpeg(["-i", str(work / "video.mp4"), "-i", str(work / "audio.wav"), "-i", str(chapter / sb.CAPTIONS_FILE),
                 "-f", "ffmetadata", "-i", str(work / "meta.txt"),
                 "-map", "0:v", "-map", "1:a", "-map", "2:s", "-map_metadata", "3", "-map_chapters", "3",
-                "-c:v", "copy", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "128k", "-ar", "48000",
-                "-c:s", "mov_text",
+                "-c:v", "copy", "-af", f"loudnorm=I={LUFS}:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k",
+                "-ar", "48000", "-c:s", "mov_text",
                 "-metadata:s:s:0", "language=eng", "-metadata:s:a:0", "language=eng",
                 "-movflags", "+faststart", str(final_tmp)])
         shutil.move(str(final_tmp), chapter / sb.VIDEO_FILE)
     video = chapter / sb.VIDEO_FILE
     info = probe(video)
     duration = float(info.get("format", {}).get("duration", 0))
-    expected = sum(b["frames"] for b in beats) / FPS
+    expected = sum(s["frames"] for s in states) / FPS
     size_mb = video.stat().st_size / 1e6
     if abs(duration - expected) > 1.0 or size_mb > MAX_MB:
         print(f"render check failed: duration {duration:.2f}s vs planned {expected:.2f}s, size {size_mb:.1f} MB")
@@ -821,36 +1092,37 @@ def render(chapter: Path) -> int:
         "video_sha256": file_sha(video),
         "duration_seconds": round(duration, 3),
         "size_mb": round(size_mb, 2),
-        "format": {"width": W, "height": H, "fps": FPS, "video": "h264", "audio": "aac", "captions": "mov_text"},
+        "format": {"width": W, "height": H, "fps": FPS, "video": "h264", "audio": "aac", "captions": "mov_text",
+                   "loudness_lufs": LUFS},
         "voice": {"engine": f"piper-tts {PIPER_VERSION}", "model": VOICE, "model_sha256": file_sha(model),
                   "length_scale": LENGTH_SCALE},
         "ffmpeg": sh(["ffmpeg", "-version"]).stdout.splitlines()[0],
-        "beats": len(beats),
-        "pauses": sum(1 for b in beats if b["count"]),
+        "states": len(states),
+        "questions": sum(1 for _, b in sb.beats(board) if sb.ask_of(b)),
+        "breathers": sum(1 for _, b in sb.beats(board) if b["visual"]["type"] == "breather"),
         "scenes": timings,
     }
     save_json(chapter / sb.RENDER_MANIFEST, manifest)
     (chapter / sb.DESCRIPTION_FILE).write_text(description(board, timings, chapter), encoding="utf-8")
     (chapter / sb.SCRIPT_FILE).write_text(sb.script_markdown(board, manifest), encoding="utf-8")
     print(f"Rendered {video.relative_to(ROOT)}: {clock(duration)} ({duration:.1f}s), {size_mb:.1f} MB, "
-          f"{len(timings)} scenes, {len(beats)} beats")
+          f"{len(timings)} scenes, {len(states)} states, {manifest['questions']} questions, "
+          f"{manifest['breathers']} breathers")
     return 0
 
 
 def preview(chapter: Path, out: Path) -> int:
+    """Draw every distinct picture (first and last timer frame only) and contact sheets, without audio."""
     from PIL import Image
     board = sb.load(chapter)
     problems = sb.validate(chapter, board, chapter_kind(chapter), runnable_set(chapter))
     for p in problems:
         print("WARN:", p)
     out.mkdir(parents=True, exist_ok=True)
-    fake = []
-    for scene in board["scenes"]:
-        for beat in scene["beats"]:
-            fake.append({"scene": scene, "beat": beat, "visual": beat["visual"], "talk_frames": FPS, "count": 0,
-                         "frames": FPS, "start_frame": len(fake) * FPS})
-    scene_stills = draw_beats(chapter, board, fake, out)
-    paths = [p for stills in scene_stills for p, _ in stills]
+    states = [s for s in plan(chapter, board, synth=False)
+              if not s["ask"] or s["ask"]["value"] in (s["ask"]["total"], 3, 0)]
+    draw_states(chapter, board, states, out)
+    paths = list(dict.fromkeys(s["png"] for s in states))
     cols, tw, th = 4, 480, 270
     for sheet in range(math.ceil(len(paths) / 16)):
         batch = paths[sheet * 16:(sheet + 1) * 16]
@@ -858,7 +1130,7 @@ def preview(chapter: Path, out: Path) -> int:
         for i, p in enumerate(batch):
             img.paste(Image.open(p).resize((tw, th)), ((i % cols) * tw, (i // cols) * th))
         img.save(out / f"contact_{sheet + 1}.png")
-    print(f"Drew {len(paths)} beats into {out}; estimated length {clock(sb.estimate_seconds(board))}")
+    print(f"Drew {len(paths)} pictures into {out}; estimated length {clock(sb.estimate_seconds(board))}")
     return 0
 
 

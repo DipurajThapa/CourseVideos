@@ -1,965 +1,1096 @@
 1
-00:00:00,400 --> 00:00:02,508
-Welcome to Code Quest, Chapter 1:
+00:00:00,200 --> 00:00:02,711
+Welcome to Code Quest, Chapter 1.
 
 2
-00:00:02,508 --> 00:00:05,318
-Your First Program and
-Your AI Study Partner.
+00:00:03,100 --> 00:00:06,273
+Today you will write and run your first
+Python program.
 
 3
-00:00:05,318 --> 00:00:08,831
-Today you will write and
-run your first Python program,
+00:00:06,667 --> 00:00:11,442
+You will also learn to use an AI assistant
+as a tutor, and to check its work.
 
 4
-00:00:08,831 --> 00:00:13,047
-and you will learn to use
-an AI assistant as a tutor.
+00:00:12,167 --> 00:00:13,691
+Let's start with a puzzle.
 
 5
-00:00:13,817 --> 00:00:15,207
-First, a puzzle.
+00:00:14,067 --> 00:00:18,385
+A learner asked an AI assistant to print
+today's date with hyphens between the
 
 6
-00:00:15,207 --> 00:00:20,767
-A learner asked an AI assistant
-to print today's date as 2026,
+00:00:18,405 --> 00:00:18,830
+numbers.
 
 7
-00:00:20,767 --> 00:00:24,474
-hyphen, 11, hyphen, 09,
-using three separate values.
+00:00:19,200 --> 00:00:21,409
+The AI wrote this single line of code.
 
 8
-00:00:24,474 --> 00:00:27,717
-The AI wrote this line of code.
-
-9
-00:00:28,483 --> 00:00:30,360
-The code runs without an error.
-
-10
-00:00:30,360 --> 00:00:32,862
-But does it do what the learner asked?
-
-11
-00:00:37,617 --> 00:00:39,256
+00:00:32,600 --> 00:00:34,277
 Here is the real output.
 
+9
+00:00:34,297 --> 00:00:37,458
+There are spaces where the hyphens should
+be.
+
+10
+00:00:37,833 --> 00:00:41,726
+The code runs without an error, but it
+does not do what was asked.
+
+11
+00:00:42,100 --> 00:00:45,900
+By the end of this video, you will know
+why, and how to fix it.
+
 12
-00:00:39,256 --> 00:00:41,880
-There are spaces where
-the hyphens should be.
+00:00:46,500 --> 00:00:48,930
+Here are your five goals for this chapter.
 
 13
-00:00:41,880 --> 00:00:45,160
-Code that runs is not
-always code that is correct.
+00:00:49,300 --> 00:00:49,630
+One.
 
 14
-00:00:45,160 --> 00:00:48,439
-By the end of this
-chapter, you will know why,
+00:00:49,650 --> 00:00:52,869
+Run a Python file and see its output.
 
 15
-00:00:48,439 --> 00:00:50,079
-and how to fix it.
+00:00:53,267 --> 00:00:53,577
+Two.
 
 16
-00:00:51,100 --> 00:00:52,910
-By the end of this chapter,
+00:00:53,597 --> 00:00:59,682
+Explain how Python runs a program: one
+line at a time, from top to bottom.
 
 17
-00:00:52,910 --> 00:00:55,927
-you will be able to run a Python file from
+00:01:00,067 --> 00:01:00,502
+Three.
 
 18
-00:00:55,927 --> 00:00:57,737
-the terminal and see its output.
+00:01:00,522 --> 00:01:05,052
+Use print to show text and numbers, and
+control the spacing.
 
 19
-00:00:57,737 --> 00:01:01,357
-You will also be able to
-explain how Python runs a program:
+00:01:05,433 --> 00:01:05,747
+Four.
 
 20
-00:01:01,357 --> 00:01:04,072
-one line at a time, from top to bottom.
-
-21
-00:01:04,850 --> 00:01:07,618
-You will use print
-to show text and numbers,
-
-22
-00:01:07,618 --> 00:01:11,001
-and control the spacing with
-two settings called sep and end.
-
-23
-00:01:11,001 --> 00:01:14,076
-You will read an error
-message and find the line
-
-24
-00:01:14,076 --> 00:01:14,999
+00:01:05,767 --> 00:01:09,420
+Read an error message and find the line
 that caused it.
 
-25
-00:01:15,750 --> 00:01:18,529
-And you will ask an
-AI assistant to explain code
+21
+00:01:09,800 --> 00:01:10,524
+And five.
 
-26
-00:01:18,529 --> 00:01:20,197
-in a safe and useful way.
+22
+00:01:10,544 --> 00:01:14,658
+Ask an AI assistant to explain code in a
+safe way.
 
-27
-00:01:21,200 --> 00:01:23,674
+23
+00:01:15,233 --> 00:01:17,381
 Every app you use is a program.
 
+24
+00:01:17,401 --> 00:01:22,135
+A program is a list of instructions that a
+computer follows exactly.
+
+25
+00:01:22,533 --> 00:01:26,295
+When a program shows a message, you can
+see what it is doing.
+
+26
+00:01:26,315 --> 00:01:30,015
+Professional developers often use print to
+check their code.
+
+27
+00:01:30,400 --> 00:01:34,420
+AI assistants such as ChatGPT and Claude
+can write code.
+
 28
-00:01:23,674 --> 00:01:27,916
-A program is a list of
-instructions that a computer follows exactly.
+00:01:34,800 --> 00:01:36,216
+They are often right.
 
 29
-00:01:27,916 --> 00:01:28,977
-Your phone's calculator,
+00:01:36,236 --> 00:01:39,704
+But sometimes they are wrong, and still
+sound sure.
 
 30
-00:01:28,977 --> 00:01:32,511
-a shop's checkout screen and
-a train timetable all start
+00:01:40,100 --> 00:01:45,270
+Researchers who built AI tutors for
+Harvard's CS50 course saw exactly this.
 
 31
-00:01:32,511 --> 00:01:35,693
-as instructions like the
-ones you will write today.
+00:01:45,667 --> 00:01:47,237
+So who checks the code?
 
 32
-00:01:36,450 --> 00:01:38,797
-Output is the first skill you need.
+00:01:58,433 --> 00:01:58,892
+You do.
 
 33
-00:01:38,797 --> 00:01:40,809
-When a program shows a message,
+00:01:58,912 --> 00:02:03,477
+You are the person who runs the code, and
+decides if it is correct.
 
 34
-00:01:40,809 --> 00:01:43,156
-you can see what it is doing.
+00:02:04,067 --> 00:02:07,983
+A Python program is a text file that ends
+in dot p y.
 
 35
-00:01:43,156 --> 00:01:46,844
-Professional developers often use print
-to check that their code works.
-
-36
-00:01:47,617 --> 00:01:51,683
-AI assistants such as ChatGPT
-and Claude can now write code.
-
-37
-00:01:51,683 --> 00:01:54,270
-You still need to understand that code.
-
-38
-00:01:54,270 --> 00:01:56,118
-AI tools are often right,
-
-39
-00:01:56,118 --> 00:01:59,445
-but they can also
-be wrong while sounding confident.
-
-40
-00:01:59,445 --> 00:02:03,881
-A study of AI tutors in
-Harvard's CS50 course found exactly this.
-
-41
-00:02:03,881 --> 00:02:07,577
-You are the person who
-runs the code and decides
-
-42
-00:02:07,577 --> 00:02:09,055
-if it is correct.
-
-43
-00:02:10,067 --> 00:02:13,717
-A Python program is a
-text file that ends in
-
-44
-00:02:13,717 --> 00:02:14,812
-dot p y.
-
-45
-00:02:14,812 --> 00:02:16,637
+00:02:08,003 --> 00:02:10,062
 Each line is an instruction.
 
-46
-00:02:16,637 --> 00:02:18,827
-Python, the program
-called the interpreter,
+36
+00:02:10,433 --> 00:02:14,245
+Python, the program called the
+interpreter, reads your file.
 
-47
-00:02:18,827 --> 00:02:22,477
-reads your file and carries
-out each instruction in order:
+37
+00:02:14,633 --> 00:02:19,422
+It carries out each line in order: top to
+bottom, one line at a time.
 
-48
-00:02:22,477 --> 00:02:25,397
-top to bottom, one line at a time.
+38
+00:02:20,167 --> 00:02:24,419
+Print is a function: a named action that
+Python already knows.
 
-49
-00:02:26,150 --> 00:02:30,415
-Print is a function: a
-named action that Python already knows.
+39
+00:02:24,439 --> 00:02:27,244
+You call it with its name, then brackets.
 
-50
-00:02:30,415 --> 00:02:33,905
-You call it by
-writing its name, then brackets.
+40
+00:02:27,633 --> 00:02:30,143
+Text must be inside quotation marks.
 
-51
-00:02:33,905 --> 00:02:37,395
-The value inside the
-brackets is what it shows.
+41
+00:02:30,163 --> 00:02:33,165
+Text in quotation marks is called a
+string.
 
-52
-00:02:37,395 --> 00:02:39,722
-Text must be inside quotation marks,
-
-53
-00:02:39,722 --> 00:02:43,212
-and text in quotation
-marks is called a string.
-
-54
-00:02:43,983 --> 00:02:46,399
+42
+00:02:33,900 --> 00:02:36,146
 Think of a program like a recipe.
 
+43
+00:02:36,166 --> 00:02:38,619
+The cook follows each step in order.
+
+44
+00:02:39,000 --> 00:02:41,702
+But the comparison stops at one point.
+
+45
+00:02:41,722 --> 00:02:43,994
+A cook can guess what you meant.
+
+46
+00:02:44,014 --> 00:02:44,997
+Python cannot.
+
+47
+00:02:45,400 --> 00:02:49,711
+If a step has a typing mistake, Python
+stops and reports an error.
+
+48
+00:02:50,433 --> 00:02:51,455
+Quick check.
+
+49
+00:02:51,475 --> 00:02:53,973
+A file has three print lines.
+
+50
+00:02:53,993 --> 00:02:57,099
+In which order does Python run them?
+
+51
+00:02:57,119 --> 00:02:58,836
+Choose A, B, C or D.
+
+52
+00:03:10,033 --> 00:03:11,176
+The answer is B.
+
+53
+00:03:11,196 --> 00:03:15,611
+Python runs your file from top to bottom,
+one line at a time.
+
+54
+00:03:16,333 --> 00:03:18,228
+Time for a short breather.
+
 55
-00:02:46,399 --> 00:02:49,850
-The cook follows each step
-in order and does exactly
+00:03:18,248 --> 00:03:19,847
+Sit back for a moment.
 
 56
-00:02:49,850 --> 00:02:50,886
-what it says.
+00:03:19,867 --> 00:03:21,982
+Here is what you know so far.
 
 57
-00:02:50,886 --> 00:02:52,956
-The comparison stops at one point.
+00:03:22,367 --> 00:03:26,085
+Next, you will install Python and write
+your first file.
 
 58
-00:02:52,956 --> 00:02:56,408
-A cook can guess what
-you meant, but Python cannot.
-
-59
-00:02:56,408 --> 00:02:58,823
-If a step has a typing mistake,
-
-60
-00:02:58,823 --> 00:03:00,894
-Python stops and reports an error.
-
-61
-00:03:01,900 --> 00:03:03,550
+00:03:30,667 --> 00:03:33,412
 Step 1: install Python.
 
+59
+00:03:33,800 --> 00:03:39,712
+The current version is Python 3.15, and
+any version from 3.12 works for this
+
+60
+00:03:39,732 --> 00:03:40,258
+course.
+
+61
+00:03:40,633 --> 00:03:45,965
+On Windows, use the Python install manager
+from python dot org or the Microsoft
+
 62
-00:03:03,550 --> 00:03:08,086
-Check the official guide for
-your system on python dot org.
+00:03:45,985 --> 00:03:46,372
+Store.
 
 63
-00:03:08,086 --> 00:03:10,561
-The current version is Python 3.15,
+00:03:46,767 --> 00:03:51,878
+On macOS, download the installer package
+from python dot org and open it.
 
 64
-00:03:10,561 --> 00:03:14,273
-and any version from
-3.12 works for this course.
+00:03:52,267 --> 00:03:55,532
+On Linux, Python is usually installed
+already.
 
 65
-00:03:14,273 --> 00:03:15,098
-On Windows,
+00:03:56,267 --> 00:03:58,636
+Then open a terminal and check the
+version.
 
 66
-00:03:15,098 --> 00:03:19,222
-install the Python install manager
-from python dot org or
+00:03:58,967 --> 00:04:02,975
+On Windows, type python, space, dash dash
+version.
 
 67
-00:03:19,222 --> 00:03:20,459
-the Microsoft Store.
+00:04:03,367 --> 00:04:07,957
+On macOS and Linux, type python3, space,
+dash dash version.
 
 68
-00:03:21,217 --> 00:03:21,992
-On macOS,
+00:04:07,977 --> 00:04:11,708
+You should see a line that starts with
+Python 3.
 
 69
-00:03:21,992 --> 00:03:26,255
-download the installer package from
-python dot org and open it.
+00:04:12,300 --> 00:04:12,802
+Step 2.
 
 70
-00:03:26,255 --> 00:03:28,967
-On Linux, Python
-is usually installed already.
+00:04:12,822 --> 00:04:18,990
+Open a code editor, such as Visual Studio
+Code or IDLE, and create a file called ex
 
 71
-00:03:28,967 --> 00:03:32,068
-Then open a terminal
-and check the version.
+00:04:19,010 --> 00:04:19,735
+0 1 hello.
 
 72
-00:03:32,068 --> 00:03:35,943
-You should see a line
-that starts with Python 3.
+00:04:20,133 --> 00:04:23,826
+Line 1 starts with a hash sign, so it is a
+comment.
 
 73
-00:03:36,967 --> 00:03:39,287
-Step 2: create your first file.
-
-74
-00:03:39,287 --> 00:03:43,540
-Open a code editor, such
-as Visual Studio Code, or IDLE.
-
-75
-00:03:43,540 --> 00:03:48,180
-Create a file called ex 0
-1 hello, and type these lines.
-
-76
-00:03:48,180 --> 00:03:52,819
-Line 1 starts with a hash
-sign, so it is a comment.
-
-77
-00:03:52,819 --> 00:03:53,979
+00:04:23,846 --> 00:04:25,573
 Python ignores comments.
 
-78
-00:03:53,979 --> 00:03:55,913
+74
+00:04:25,593 --> 00:04:27,466
 They are notes for people.
 
-79
-00:03:56,683 --> 00:03:58,728
+75
+00:04:27,867 --> 00:04:29,646
+Line 2 prints a greeting.
+
+76
+00:04:30,033 --> 00:04:31,952
+Line 3 prints a second line.
+
+77
+00:04:32,700 --> 00:04:34,413
 Step 3: run the file.
 
+78
+00:04:34,433 --> 00:04:38,953
+In the terminal, go to the folder that
+holds your file.
+
+79
+00:04:39,333 --> 00:04:42,332
+On Windows, type python, then the file
+name.
+
 80
-00:03:58,728 --> 00:04:03,226
-In the terminal, go to
-the folder that holds your file.
+00:04:42,733 --> 00:04:46,626
+On macOS and Linux, type python3, then the
+file name.
 
 81
-00:04:03,226 --> 00:04:06,498
-Type python, then the
-file name, on Windows.
-
-82
-00:04:06,498 --> 00:04:10,587
-Type python3, then the file
-name, on macOS and Linux.
-
-83
-00:04:11,350 --> 00:04:13,150
+00:04:47,367 --> 00:04:48,993
 You will see two lines.
 
-84
-00:04:13,150 --> 00:04:15,670
+82
+00:04:49,013 --> 00:04:51,783
 Each print produces one line of output.
 
+83
+00:04:52,167 --> 00:04:57,228
+The quotation marks do not appear, because
+they only mark where the text starts and
+
+84
+00:04:57,248 --> 00:04:57,534
+ends.
+
 85
-00:04:15,670 --> 00:04:17,831
-The quotation marks do not appear,
+00:04:58,133 --> 00:04:58,727
+Step 4.
 
 86
-00:04:17,831 --> 00:04:21,431
-because they only mark where
-the text starts and ends.
+00:04:58,747 --> 00:05:02,846
+This program prints three steps for making
+tea.
 
 87
-00:04:22,433 --> 00:04:24,449
-Step 4: check the order.
+00:05:02,866 --> 00:05:04,862
+Step 1, boil the water.
 
 88
-00:04:24,449 --> 00:04:27,674
-This program prints three
-steps for making tea.
+00:05:05,233 --> 00:05:07,210
+Step 2, add the tea leaves.
 
 89
-00:04:27,674 --> 00:04:30,496
-Predict the output before you run it.
+00:05:07,600 --> 00:05:09,960
+Step 3, pour the tea into a cup.
 
 90
-00:04:31,250 --> 00:04:33,351
-In which order will the lines appear?
+00:05:10,333 --> 00:05:12,809
+Before you run it, predict the output.
 
 91
-00:04:38,117 --> 00:04:41,644
-The lines appear in the
-same order as the code.
+00:05:24,000 --> 00:05:26,591
+The lines appear in the same order as the
+code.
 
 92
-00:04:41,644 --> 00:04:45,525
-Now swap two lines in
-your file and run it again.
+00:05:26,900 --> 00:05:31,038
+Try this: swap two lines in your file and
+run it again.
 
 93
-00:04:45,525 --> 00:04:49,405
-The output changes, because Python
-always runs from top to bottom.
+00:05:31,433 --> 00:05:35,639
+The output changes, because Python always
+runs from top to bottom.
 
 94
-00:04:50,433 --> 00:04:53,152
-Step 5: print several values at once.
+00:05:36,233 --> 00:05:36,799
+Step 5.
 
 95
-00:04:53,152 --> 00:04:57,036
-Print can take more than
-one value, separated by commas.
+00:05:36,819 --> 00:05:41,740
+Print can show several values at once,
+separated by commas.
 
 96
-00:04:57,036 --> 00:04:58,978
+00:05:41,760 --> 00:05:43,833
 It also has two settings.
 
 97
-00:04:58,978 --> 00:05:01,697
-Sep sets what goes between the values,
+00:05:44,233 --> 00:05:47,036
+Sep sets what goes between the values.
 
 98
-00:05:01,697 --> 00:05:04,028
-and its default is one space.
+00:05:47,056 --> 00:05:48,894
+Its default is one space.
 
 99
-00:05:04,028 --> 00:05:07,135
-End sets what goes after the last value,
+00:05:49,267 --> 00:05:52,287
+End sets what goes after the last value.
 
 100
-00:05:07,135 --> 00:05:09,854
-and its default is a new line.
+00:05:52,307 --> 00:05:54,264
+Its default is a new line.
 
 101
-00:05:10,617 --> 00:05:12,102
-Look at this program.
+00:05:55,000 --> 00:05:56,211
+Look at line 2.
 
 102
-00:05:12,102 --> 00:05:15,443
-Line 2 adds 3
-and 4 without quotation marks.
+00:05:56,231 --> 00:06:00,148
+The calculation 3 plus 4 has no quotation
+marks.
 
 103
-00:05:15,443 --> 00:05:18,042
-Line 3 sets sep to a hyphen.
+00:06:00,533 --> 00:06:02,789
+Line 3 sets sep to a colon.
 
 104
-00:05:18,042 --> 00:05:20,641
-Line 4 sets end to three dots.
+00:06:03,167 --> 00:06:07,466
+Line 4 sets end to three dots, and line 5
+prints the word done.
 
 105
-00:05:21,417 --> 00:05:24,900
-Predict the output, especially
-lines 4 and 5.
+00:06:18,667 --> 00:06:20,129
+Here is the output.
 
 106
-00:05:30,650 --> 00:05:34,305
-Line 2 has no quotation
-marks around 3 plus 4,
+00:06:20,149 --> 00:06:25,905
+Line 2 has no quotation marks, so Python
+calculates 3 plus 4 and prints 7.
 
 107
-00:05:34,305 --> 00:05:36,863
-so Python calculates it and prints 7.
+00:06:26,300 --> 00:06:31,032
+Line 3 joins the values with colons
+instead of spaces, so they look like a
 
 108
-00:05:36,863 --> 00:05:41,249
-Line 3 joins the values with
-a hyphen instead of a space.
+00:06:31,052 --> 00:06:31,354
+time.
 
 109
-00:05:41,249 --> 00:05:45,269
-Line 4 ends with three
-dots instead of a new line,
+00:06:31,733 --> 00:06:34,999
+Line 4 ends with three dots instead of a
+new line.
 
 110
-00:05:45,269 --> 00:05:49,655
-so line 5 continues on the
-same line: Loading, dot dot dot,
+00:06:35,400 --> 00:06:40,455
+So line 5 continues on the same line:
+Loading, dot dot dot, done.
 
 111
-00:05:49,655 --> 00:05:50,020
-done.
+00:06:41,200 --> 00:06:41,945
+Quick check.
 
 112
-00:05:51,033 --> 00:05:55,218
-Here is a complete program
-that prints a receipt for
+00:06:41,965 --> 00:06:45,768
+Which setting changes what goes between
+the values in print?
 
 113
-00:05:55,218 --> 00:05:56,474
-the Corner Cafe.
+00:06:56,967 --> 00:06:58,849
+The answer is B, sep.
 
 114
-00:05:56,474 --> 00:05:59,822
-It uses everything from
-this chapter: print, text,
+00:06:58,869 --> 00:07:01,024
+Sep goes between values.
 
 115
-00:05:59,822 --> 00:06:02,751
-sep for the
-dotted lines, and calculations.
+00:07:01,044 --> 00:07:03,742
+End goes after the last value.
 
 116
-00:06:03,517 --> 00:06:06,053
-Run it, and you get the receipt.
+00:07:04,467 --> 00:07:05,531
+Another breather.
 
 117
-00:06:06,053 --> 00:06:10,400
-The dots line up because each
-sep value has a different length.
+00:07:05,551 --> 00:07:09,232
+Relax your shoulders, and look at what you
+can already do.
 
 118
-00:06:10,400 --> 00:06:14,747
-Python calculates the item count, 2,
-and the total, 10, for you.
+00:07:09,633 --> 00:07:13,549
+Next, you will put it all together in one
+complete program.
 
 119
-00:06:15,517 --> 00:06:18,603
-Notice one problem: each
-price is typed twice,
+00:07:18,133 --> 00:07:22,452
+Here is a complete program that prints a
+receipt for the Corner Cafe.
 
 120
-00:06:18,603 --> 00:06:22,074
-once in its line and once in the total.
+00:07:22,472 --> 00:07:24,338
+Lines 2 to 4 print the header.
 
 121
-00:06:22,074 --> 00:06:26,317
-In Chapter 2, you will
-store prices in named values instead.
+00:07:24,733 --> 00:07:30,066
+Lines 5 and 6 use sep to draw the dotted
+lines between each item and its price.
 
 122
-00:06:27,333 --> 00:06:30,925
-Use an AI assistant
-as a tutor that explains,
+00:07:30,467 --> 00:07:34,951
+Lines 7 and 8 have calculations without
+quotation marks.
 
 123
-00:06:30,925 --> 00:06:34,118
-not as a machine that does your work.
+00:07:35,333 --> 00:07:37,368
+Run it, and you get the receipt.
 
 124
-00:06:34,118 --> 00:06:36,512
-Follow three safety habits from today.
+00:07:48,567 --> 00:07:51,091
+Items 2, and Total U S D 10.
 
 125
-00:06:36,512 --> 00:06:41,301
-One: never paste passwords, keys or
-private information into an AI tool.
+00:07:51,111 --> 00:07:54,818
+Python worked out 1 plus 1, and 3 plus 7.
 
 126
-00:06:41,301 --> 00:06:44,493
-Two: run every piece of AI code yourself,
+00:07:55,200 --> 00:07:59,187
+Notice one problem: each price is typed
+twice.
 
 127
-00:06:44,493 --> 00:06:48,085
-and compare the output
-with what you asked for.
+00:07:59,567 --> 00:08:03,831
+In Chapter 2, you will store prices in
+named values instead.
 
 128
-00:06:48,085 --> 00:06:51,677
-Three: you are responsible
-for the code you use,
+00:08:04,433 --> 00:08:09,655
+Use an AI assistant as a tutor that
+explains, not as a machine that does your
 
 129
-00:06:51,677 --> 00:06:54,071
-even if an AI wrote it.
+00:08:09,675 --> 00:08:09,996
+work.
 
 130
-00:06:54,850 --> 00:06:56,977
-AI helps at every stage.
+00:08:10,016 --> 00:08:11,834
+Follow three safety habits.
 
 131
-00:06:56,977 --> 00:06:59,528
-Plan the steps in plain English.
+00:08:12,233 --> 00:08:12,550
+One.
 
 132
-00:06:59,528 --> 00:07:03,782
-Write the program yourself first,
-then ask for an explanation.
+00:08:12,570 --> 00:08:18,183
+Never paste passwords, keys or private
+information into an AI tool.
 
 133
-00:07:03,782 --> 00:07:06,333
-Generate code from an exact output.
+00:08:18,567 --> 00:08:18,863
+Two.
 
 134
-00:07:06,333 --> 00:07:08,885
-Debug with the full error message.
+00:08:18,883 --> 00:08:25,116
+Run every piece of AI code yourself, and
+compare the output with what you asked
 
 135
-00:07:08,885 --> 00:07:10,587
-Test by comparing outputs.
+00:08:25,136 --> 00:08:25,433
+for.
 
 136
-00:07:10,587 --> 00:07:13,564
-And improve with at most two suggestions.
+00:08:25,833 --> 00:08:26,238
+Three.
 
 137
-00:07:14,317 --> 00:07:16,023
-Here is the Write card.
+00:08:26,258 --> 00:08:30,842
+You are responsible for the code you use,
+even if an AI wrote it.
 
 138
-00:07:16,023 --> 00:07:19,778
-Paste your code, and ask
-the AI not to rewrite it.
+00:08:31,567 --> 00:08:33,323
+AI helps at every stage.
 
 139
-00:07:19,778 --> 00:07:23,191
-Ask it to explain each
-line in one simple sentence,
+00:08:33,343 --> 00:08:36,134
+Plan the steps in plain English first.
 
 140
-00:07:23,191 --> 00:07:26,946
-and to say whether it
-prints exactly the output you want.
+00:08:36,533 --> 00:08:40,205
+Write the program yourself, then ask for
+an explanation.
 
 141
-00:07:26,946 --> 00:07:28,311
-Then run your program.
+00:08:40,600 --> 00:08:43,111
+Generate code from an exact output.
 
 142
-00:07:28,311 --> 00:07:31,383
-If the AI said yes but the output differs,
+00:08:43,500 --> 00:08:45,523
+Debug with the full error message.
 
 143
-00:07:31,383 --> 00:07:32,748
-trust the real output.
+00:08:45,900 --> 00:08:49,688
+Test by comparing outputs, space by space.
 
 144
-00:07:33,517 --> 00:07:35,808
-And here is the Generate card.
+00:08:50,067 --> 00:08:52,671
+And improve with at most two suggestions.
 
 145
-00:07:35,808 --> 00:07:38,100
-Paste the exact output you want,
+00:08:53,067 --> 00:08:53,952
+Try this one.
 
 146
-00:07:38,100 --> 00:07:41,155
-and ask for code that uses only print.
+00:09:05,133 --> 00:09:05,488
+Debug.
 
 147
-00:07:41,155 --> 00:07:43,446
-Then compare every
-character, including spaces.
+00:09:05,508 --> 00:09:10,490
+Paste the code and the full error message,
+and ask for the cause before the fix.
 
 148
-00:07:43,446 --> 00:07:46,502
-This is how the date flaw was caught.
+00:09:11,233 --> 00:09:12,754
+Here is the Write card.
 
 149
-00:07:47,283 --> 00:07:49,200
-Now the AI pair moment.
+00:09:12,774 --> 00:09:16,103
+Paste your code, and ask the AI not to
+rewrite it.
 
 150
-00:07:49,200 --> 00:07:51,117
-Back to the opening puzzle.
+00:09:16,500 --> 00:09:21,141
+Ask it to explain each line in one simple
+sentence, and to say whether it prints
 
 151
-00:07:51,117 --> 00:07:54,950
-The request asked for hyphens,
-but the output has spaces.
+00:09:21,161 --> 00:09:22,773
+exactly the output you want.
 
 152
-00:07:54,950 --> 00:07:57,250
-Which setting did the AI forget?
+00:09:23,167 --> 00:09:24,688
+Then run your program.
 
 153
-00:07:58,017 --> 00:07:59,921
-Think about step 5.
+00:09:24,708 --> 00:09:29,244
+If the AI said yes but the output differs,
+trust the real output.
 
 154
-00:08:06,683 --> 00:08:10,345
-The AI forgot that sep
-is a space by default.
+00:09:29,967 --> 00:09:32,173
+And here is the Generate card.
 
 155
-00:08:10,345 --> 00:08:14,739
-The fix sets sep to a
-hyphen, and the date prints correctly.
+00:09:32,193 --> 00:09:34,697
+Ask for code that uses only print.
 
 156
-00:08:14,739 --> 00:08:19,133
-Always check AI output against what
-you asked for, character by character.
+00:09:35,100 --> 00:09:39,271
+Paste the exact output you want, with the
+same spaces and symbols.
 
 157
-00:08:20,133 --> 00:08:21,614
-Now, four common mistakes.
+00:09:39,667 --> 00:09:43,433
+Then run it and compare every character,
+including spaces.
 
 158
-00:08:21,614 --> 00:08:24,577
-Mistake 1 is a
-missing closing quotation mark.
+00:09:43,453 --> 00:09:45,848
+This is how the date flaw was caught.
 
 159
-00:08:24,577 --> 00:08:27,169
-Python cannot see where the text ends,
+00:09:46,600 --> 00:09:48,922
+Now, back to the opening puzzle.
 
 160
-00:08:27,169 --> 00:08:29,390
-so it reports a Syntax Error.
+00:09:48,942 --> 00:09:53,095
+The request asked for hyphens, but the
+output has spaces.
 
 161
-00:08:29,390 --> 00:08:33,093
-A syntax error means Python
-could not read the file,
+00:10:04,267 --> 00:10:07,184
+The AI forgot that sep is a space by
+default.
 
 162
-00:08:33,093 --> 00:08:34,574
-so no line runs.
+00:10:07,567 --> 00:10:11,355
+The fix sets sep to a hyphen, and now the
+date prints correctly.
 
 163
-00:08:34,574 --> 00:08:39,018
-The fix is to add the
-closing quotation mark before the bracket.
+00:10:11,733 --> 00:10:16,473
+Always check AI output against what you
+asked for, character by character.
 
 164
-00:08:39,783 --> 00:08:42,801
-Mistake 2 is a capital letter in print.
+00:10:17,200 --> 00:10:18,098
+Take a breath.
 
 165
-00:08:42,801 --> 00:08:47,328
-Python treats capital P Print and
-small p print as different names.
+00:10:18,118 --> 00:10:20,328
+You have caught a real AI mistake.
 
 166
-00:08:47,328 --> 00:08:49,591
-Notice that Start was printed first.
+00:10:20,348 --> 00:10:23,476
+That is the most important skill in this
+course.
 
 167
-00:08:49,591 --> 00:08:52,609
-This error happened while
-the program was running,
+00:10:23,867 --> 00:10:27,492
+Next, the four mistakes that beginners
+make most often.
 
 168
-00:08:52,609 --> 00:08:55,627
-so the lines before it had already run.
+00:10:32,067 --> 00:10:32,820
+Mistake 1.
 
 169
-00:08:55,627 --> 00:08:59,399
-The message names line 3,
-and even suggests the fix.
+00:10:32,840 --> 00:10:35,604
+This line should print Good morning.
 
 170
-00:09:00,150 --> 00:09:02,559
-Mistake 3 is curly quotation marks.
+00:10:35,624 --> 00:10:37,228
+Something is missing.
 
 171
-00:09:02,559 --> 00:09:06,575
-Word processors and some chat
-apps change straight quotation marks
+00:10:48,400 --> 00:10:50,986
+The closing quotation mark is missing.
 
 172
-00:09:06,575 --> 00:09:07,780
-into curly ones.
+00:10:51,006 --> 00:10:55,650
+Python cannot see where the text ends, so
+it reports a syntax error.
 
 173
-00:09:07,780 --> 00:09:09,787
-Python only accepts straight ones.
+00:10:56,033 --> 00:11:00,611
+A syntax error means Python could not read
+the file, so no line runs.
 
 174
-00:09:09,787 --> 00:09:13,401
-Type the quotation marks
-again in your code editor,
+00:11:01,000 --> 00:11:04,045
+Add the closing quotation mark before the
+bracket.
 
 175
-00:09:13,401 --> 00:09:18,220
-and copy code from a code
-block, never from a formatted document.
+00:11:04,767 --> 00:11:05,853
+Mistake 2.
 
 176
-00:09:18,983 --> 00:09:21,840
-Mistake 4 is a missing closing bracket.
+00:11:05,873 --> 00:11:07,512
+Line 2 is fine.
 
 177
-00:09:21,840 --> 00:09:24,697
-Every opening bracket
-needs a closing bracket.
+00:11:07,532 --> 00:11:10,056
+Look closely at line 3.
 
 178
-00:09:25,450 --> 00:09:29,228
-The habit to build: read the
-last line of an error first.
+00:11:21,233 --> 00:11:23,214
+Print starts with a capital P.
 
 179
-00:09:29,228 --> 00:09:31,117
-It names the kind of error.
+00:11:23,234 --> 00:11:27,682
+Python treats capital P Print and small p
+print as different names.
 
 180
-00:09:31,117 --> 00:09:34,580
-Then look at the line
-number to find where it happened.
+00:11:28,067 --> 00:11:30,251
+Notice that Start was printed first.
 
 181
-00:09:35,600 --> 00:09:38,170
-Two questions to
-think beyond this chapter.
+00:11:30,271 --> 00:11:34,965
+This error happened while the program was
+running, so the lines before it had
 
 182
-00:09:38,170 --> 00:09:38,538
-First:
+00:11:34,985 --> 00:11:35,699
+already run.
 
 183
-00:09:38,538 --> 00:09:42,209
-you want to print a
-shopping list with each item
+00:11:36,100 --> 00:11:40,828
+The report names line 3, and the last line
+even suggests the fix.
 
 184
-00:09:42,209 --> 00:09:45,147
-on its own line, using only one print.
+00:11:41,567 --> 00:11:44,061
+Mistake 3 is curly quotation marks.
 
 185
-00:09:45,147 --> 00:09:47,717
-Which setting from
-this chapter could help?
+00:11:44,081 --> 00:11:50,024
+Word processors and some chat apps change
+straight quotation marks into curly ones.
 
 186
-00:09:47,717 --> 00:09:48,819
-Test your idea.
+00:11:50,400 --> 00:11:52,656
+Python only accepts straight ones.
 
 187
-00:09:55,583 --> 00:09:59,283
-Second: an AI gives you
-code that runs with no error.
+00:11:53,033 --> 00:11:56,078
+Type the quotation marks again in your
+code editor.
 
 188
-00:09:59,283 --> 00:10:02,646
-What two things should you
-check before you trust it?
+00:11:56,467 --> 00:12:00,522
+And copy code from a code block, never
+from a formatted document.
 
 189
-00:10:09,667 --> 00:10:10,520
-Let's recap.
+00:12:01,267 --> 00:12:02,110
+Mistake 4.
 
 190
-00:10:10,520 --> 00:10:13,506
-A program is a list of instructions,
+00:12:02,130 --> 00:12:04,871
+One more line that will not run.
 
 191
-00:10:13,506 --> 00:10:18,626
-and Python runs them one at
-a time, from top to bottom.
+00:12:16,067 --> 00:12:18,048
+The closing bracket is missing.
 
 192
-00:10:18,626 --> 00:10:19,906
-Print shows values.
+00:12:18,068 --> 00:12:21,017
+Every opening bracket needs a closing
+bracket.
 
 193
-00:10:19,906 --> 00:10:22,039
-Text goes inside quotation marks,
+00:12:21,767 --> 00:12:23,953
+Here are all four, side by side.
 
 194
-00:10:22,039 --> 00:10:25,879
-and calculations without quotation
-marks are worked out first.
+00:12:23,973 --> 00:12:27,124
+Each one is the last line of its error
+report.
 
 195
-00:10:26,650 --> 00:10:28,843
-Sep controls what goes between values,
+00:12:27,500 --> 00:12:31,696
+Unterminated string literal: a quotation
+mark is missing.
 
 196
-00:10:28,843 --> 00:10:31,401
-and end controls what goes after them.
+00:12:32,067 --> 00:12:36,588
+Name is not defined: check the spelling,
+such as a capital P.
 
 197
-00:10:31,401 --> 00:10:35,421
-An error message names the
-kind of error and the line,
+00:12:36,967 --> 00:12:40,756
+Invalid character: retype the quotation
+marks.
 
 198
-00:10:35,421 --> 00:10:37,613
-so read the last line first.
+00:12:41,133 --> 00:12:44,157
+Was never closed: add the closing bracket.
 
 199
-00:10:37,613 --> 00:10:40,902
-And AI is a tutor: ask it to explain,
+00:12:44,533 --> 00:12:47,681
+The habit to build: read the last line
+first.
 
 200
-00:10:40,902 --> 00:10:43,095
-then run and check everything yourself.
+00:12:47,701 --> 00:12:49,582
+It names the kind of error.
 
 201
-00:10:43,850 --> 00:10:46,776
-You earned 100 XP and the First Run badge.
+00:12:49,602 --> 00:12:51,624
+Then look at the line number.
 
 202
-00:10:47,800 --> 00:10:48,698
-Now practise.
+00:12:52,367 --> 00:12:53,220
+Quick check.
 
 203
-00:10:48,698 --> 00:10:51,392
-The practice file has eight tasks.
+00:12:53,240 --> 00:12:55,766
+An error message has several lines.
 
 204
-00:10:51,392 --> 00:10:55,881
-The warm-up tasks are worth
-10 XP each: introduce yourself,
+00:12:55,786 --> 00:12:57,876
+Which line do you read first?
 
 205
-00:10:55,881 --> 00:10:59,473
-fix a broken greeting,
-and predict, then run.
+00:13:09,067 --> 00:13:11,313
+The answer is B, the last line.
 
 206
-00:11:00,250 --> 00:11:03,211
-The apply tasks are worth 20 XP each,
+00:13:11,333 --> 00:13:13,286
+It names the kind of error.
 
 207
-00:11:03,211 --> 00:11:06,542
-and the two stretch
-tasks are worth 40 each.
+00:13:14,033 --> 00:13:15,230
+One more breather.
 
 208
-00:11:06,542 --> 00:11:08,022
-In the last task,
+00:13:15,250 --> 00:13:19,216
+Errors are normal, and every developer
+sees them every day.
 
 209
-00:11:08,022 --> 00:11:11,724
-you check an AI's work
-and fix every difference yourself.
+00:13:19,600 --> 00:13:22,819
+Next, two questions to think about on your
+own.
 
 210
-00:11:11,724 --> 00:11:14,685
-Try each task before
-you open the solution.
+00:13:27,400 --> 00:13:30,171
+Two questions to think beyond this
+chapter.
 
 211
-00:11:15,700 --> 00:11:19,562
-In Chapter 2, you will
-give your data names with variables,
+00:13:30,191 --> 00:13:30,560
+First.
 
 212
-00:11:19,562 --> 00:11:23,073
-so a program can store
-a value once and use
+00:13:30,580 --> 00:13:35,752
+You want to print a shopping list with
+each item on its own line, using only one
 
 213
-00:11:23,073 --> 00:11:24,127
-it many times.
+00:13:35,772 --> 00:13:36,142
+print.
 
 214
-00:11:24,127 --> 00:11:25,882
-Do the warm-up tasks now.
+00:13:36,162 --> 00:13:37,764
+Which setting could help?
 
 215
-00:11:25,882 --> 00:11:27,638
-They take about ten minutes.
+00:13:48,967 --> 00:13:51,756
+Test your idea in your editor after the
+video.
 
 216
-00:11:27,638 --> 00:11:29,393
+00:13:52,500 --> 00:13:52,955
+Second.
+
+217
+00:13:52,975 --> 00:13:56,006
+An AI gives you code that runs with no
+error.
+
+218
+00:13:56,026 --> 00:13:59,600
+What two things should you check before
+you trust it?
+
+219
+00:14:10,800 --> 00:14:12,052
+Keep your answer.
+
+220
+00:14:12,072 --> 00:14:14,520
+You will use it in every chapter.
+
+221
+00:14:15,100 --> 00:14:16,067
+Let's recap.
+
+222
+00:14:16,467 --> 00:14:21,195
+A program is a list of instructions, and
+Python runs them from top to bottom.
+
+223
+00:14:21,567 --> 00:14:23,056
+Print shows values.
+
+224
+00:14:23,076 --> 00:14:28,456
+Text goes in quotation marks, and
+calculations are worked out first.
+
+225
+00:14:28,833 --> 00:14:34,061
+Sep controls what goes between values, and
+end controls what goes after them.
+
+226
+00:14:34,433 --> 00:14:38,930
+An error names the kind of error and the
+line, so read the last line first.
+
+227
+00:14:39,300 --> 00:14:40,600
+And AI is a tutor.
+
+228
+00:14:40,620 --> 00:14:44,854
+Ask it to explain, then run and check
+everything yourself.
+
+229
+00:14:45,600 --> 00:14:47,209
+One last quick check.
+
+230
+00:14:47,229 --> 00:14:50,699
+An AI gives you code that runs with no
+error.
+
+231
+00:14:50,719 --> 00:14:52,561
+What should you do next?
+
+232
+00:15:03,733 --> 00:15:04,870
+The answer is B.
+
+233
+00:15:04,890 --> 00:15:08,847
+Run it, and compare the output with what
+you asked for.
+
+234
+00:15:09,567 --> 00:15:13,093
+You earned 100 XP and the First Run badge.
+
+235
+00:15:13,113 --> 00:15:13,937
+Well done.
+
+236
+00:15:16,033 --> 00:15:17,016
+Now practise.
+
+237
+00:15:17,036 --> 00:15:19,637
+The practice file has eight tasks.
+
+238
+00:15:20,033 --> 00:15:23,009
+The three warm-up tasks are worth 10 XP
+each.
+
+239
+00:15:23,400 --> 00:15:26,515
+The three apply tasks are worth 20 XP
+each.
+
+240
+00:15:26,900 --> 00:15:29,439
+The two stretch tasks are worth 40 each.
+
+241
+00:15:29,459 --> 00:15:34,173
+In the last one, you check an AI's work
+and fix every difference yourself.
+
+242
+00:15:34,567 --> 00:15:37,449
+Try each task before you open the
+solution.
+
+243
+00:15:38,033 --> 00:15:43,081
+In Chapter 2, you will give your data
+names with variables, so a program can
+
+244
+00:15:43,101 --> 00:15:45,815
+store a value once and use it many times.
+
+245
+00:15:46,200 --> 00:15:47,999
+Do the warm-up tasks now.
+
+246
+00:15:48,019 --> 00:15:50,036
+They take about ten minutes.
+
+247
+00:15:50,433 --> 00:15:51,876
 See you in Chapter 2.

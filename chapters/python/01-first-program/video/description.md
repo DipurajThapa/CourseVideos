@@ -1,24 +1,29 @@
 # Python Chapter 1: Your First Program and Your AI Study Partner
 
-Install Python, write and run your first program, control output with print, sep and end, and read your first error messages. You will also set up an AI assistant as a tutor, with three safety habits, and catch an AI mistake that runs without an error.
+Install Python, write and run your first program, control output with print, sep and end, and read your first error messages. Along the way you answer on-screen questions, take four quick checks and four breathers, and catch an AI mistake that runs without an error.
 
 ## Chapters
 
 0:00 Introduction
-0:50 Learning goals
-1:20 Why this matters
-2:09 The idea: Python reads from top to bottom
-3:01 Step 1: Install Python
-3:36 Steps 2 and 3: Write and run your first file
-4:22 Step 4: Check the order
-4:50 Step 5: Several values, sep and end
-5:50 See the outcome: a cafe receipt
-6:26 Work with AI: a tutor, not a machine
-8:19 Common mistakes
-9:35 Think beyond
-10:09 Recap
-10:47 Practice
-11:15 What's next
+0:46 Learning goals
+1:15 Why this matters
+2:03 The idea: Python reads from top to bottom
+3:30 Step 1: Install Python
+4:12 Steps 2 and 3: Write and run your first file
+4:57 Step 4: Check the order
+5:36 Step 5: Several values, sep and end
+7:17 See the outcome: a cafe receipt
+8:04 Work with AI: a tutor, not a machine
+10:31 Common mistakes
+13:27 Think beyond
+14:14 Recap
+15:15 Practice
+15:37 What's next
+
+## How to use this video
+
+- When a question appears with a 10-second timer, pause the video if you need more time.
+- Say or write your answer before the reveal. Breather cards are a moment to rest and review.
 
 ## Links
 
@@ -27,4 +32,4 @@ Install Python, write and run your first program, control output with print, sep
 
 ## Disclosure
 
-The narration is a synthetic voice (Piper text-to-speech, voice en_US-lessac-medium). English captions are included.
+The narration is a synthetic voice (Piper text-to-speech, voice en_US-lessac-medium). The timer ticks and the soft tone on breather cards are generated in code. English captions are included.

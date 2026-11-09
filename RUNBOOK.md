@@ -83,17 +83,18 @@ Push a checkpoint after each major file.
 ### 6. Produce the video
 First run `python3 tools/verify_chapter.py <chapter>` once and fix every failure except the `video` check, so the video is built from final, verified files. Then:
 
-1. Load the video skill with the Skill tool: `video-making` (listed as `anthropic-skills:video-making`). Follow it; the renderer already applies its encoding rules.
+1. Load the video skills with the Skill tool: `video-making` (encoding rules, already applied by the renderer) and `ai-film-studio` (intake, critic gate and QC). The route is always B, stills-motion from the course renderer: no generated footage, because code must be exact and verified.
 2. Preview every beat as a still, without audio:
    ```bash
    python3 tools/render_video.py chapters/<language>/<NN>-<slug> --preview <scratch-dir>/preview
    ```
    Open each `contact_N.png` with the Read tool, and open full-size frames for every code, table and pause beat. Fix the storyboard until no text overflows, is cut off, overlaps or is too small to read, every highlight points at the line the narration names, and every output appears only after its pause.
-3. Render the video (about 3 to 6 minutes for a 15-minute video; use a long timeout or run it in the background):
+   Then spawn an independent critic (Agent tool) with the storyboard, the lesson and the contact sheet paths. Ask it to score the animatic 0 to 10 against: covers every section in order; every question visible with its timer; highlights match the narration; real breathers; nothing cut off or too small; interactivity; pacing for second-language beginners; clarity; hook and payoff; ending. Fix every MUST failure and anything below 8, then preview again.
+3. Render the video (about 8 to 12 minutes for a 15-minute video; run it in the background and check back):
    ```bash
    python3 tools/render_video.py chapters/<language>/<NN>-<slug>
    ```
-4. Check the result: extract three frames from different scenes with `ffmpeg -ss <seconds> -i video/chapter.mp4 -frames:v 1 <scratch-dir>/check_N.png` and look at them, read `video/script.md`, and confirm the length in `render.json` is 10 to 15 minutes.
+4. Check the result with the film studio's QC: `python3 afs.py qc video/chapter.mp4 --srt video/chapter.srt --target-s <seconds> --lufs -14` (extract `afs.py` as the ai-film-studio skill describes). Loudness, captions and silences must pass; a held picture is expected during timers and breathers. Then extract three frames from different scenes with `ffmpeg -ss <seconds> -i video/chapter.mp4 -frames:v 1 <scratch-dir>/check_N.png` and look at them, read `video/script.md`, and confirm the length in `render.json` is 10 to 15 minutes.
 
 Push a checkpoint. The rendered files (`chapter.mp4`, `chapter.srt`, `description.md`, `render.json`, `script.md`) are committed with the chapter. If rendering fails and cannot be fixed in the run, block the chapter with the renderer's error (step 9).
 
@@ -154,4 +155,4 @@ When `next` returns `curriculum`:
 
 ## Time budget
 
-Rendering a video takes about 3 to 6 minutes. If the run is close to its limit before the video is rendered or verification passes, push the checkpoint, block the chapter with "run ended before verification; resume" (or "before the video was rendered") and report. The next run resumes it.
+Rendering a video takes about 8 to 12 minutes. If the run is close to its limit before the video is rendered or verification passes, push the checkpoint, block the chapter with "run ended before verification; resume" (or "before the video was rendered") and report. The next run resumes it.
