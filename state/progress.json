@@ -95,15 +95,19 @@
     "python-03": {
       "language": "python",
       "number": 3,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-09-153b51",
           "started": "2026-11-09T19:52:35+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-09T20:23:11+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-09-153b51"
+      "current_run_id": "2026-11-09-153b51",
+      "path": "chapters/python/03-working-with-text",
+      "completed": "2026-11-09T20:23:11+00:00"
     },
     "python-04": {
       "language": "python",
@@ -256,5 +260,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-09T19:52:35+00:00"
+  "updated": "2026-11-09T20:23:11+00:00"
 }
