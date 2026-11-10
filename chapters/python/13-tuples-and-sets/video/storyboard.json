@@ -77,7 +77,7 @@
        ]
       },
       {
-       "say": "And lines 9 to 11 compare today with yesterday: who came both days, who is new, and who did not come back. Let's build it.",
+       "say": "And lines 9 to 11 compare today with yesterday. Let's build it.",
        "highlight": [
         9,
         10,
@@ -138,12 +138,7 @@
      },
      "segments": [
       {
-       "say": "A set keeps each item only once, so it counts people, not visits. A tuple keeps a fixed group together, such as the opening hours.",
-       "reveal": 2,
-       "focus": 1
-      },
-      {
-       "say": "A booking site keeps each seat once. A map stores each place as a fixed pair of numbers. The right collection makes code shorter and safer.",
+       "say": "A set keeps each item once, so it counts people. A tuple keeps a fixed group, such as the opening hours. Booking sites and maps use both, and the right choice makes code shorter and safer.",
        "reveal": 3,
        "focus": 2
       }
@@ -325,8 +320,17 @@
      },
      "after": [
       {
-       "say": "8 and 18, then Scone. Index 0 of hours is 8, index 1 is 18, and index 0 of special is the name.",
+       "say": "Line 4 prints the whole tuple, 8 and 18, in round brackets.",
        "output": "examples/ex01_tuples.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Then lines 5 and 6 print 8 and 18, and Scone. Index 0 of hours is 8, index 1 is 18, and index 0 of special is the name.",
        "highlight": [
         5,
         6
@@ -422,7 +426,7 @@
    "id": "step3",
    "section": "Build it step by step",
    "title": "Step 3: A list of tuples",
-   "direction": "Teach unpacking in a loop, like items() in Chapter 12, and reading in two steps. Ask what line 8 prints. Then a breather.",
+   "direction": "Teach unpacking in a loop, like items() in Chapter 12, and reading in two steps. Ask what line 10 prints. Then a breather.",
    "beats": [
     {
      "visual": {
@@ -534,7 +538,7 @@
        ]
       },
       {
-       "say": "And in checks a set quickly, even when it holds thousands of names.",
+       "say": "A set compares the exact text, so Omar and omar would be two different items. And in checks a set quickly, even when it holds thousands of names.",
        "highlight": [
         7,
         8
@@ -592,11 +596,9 @@
      },
      "segments": [
       {
-       "say": "Step 5. Line 2 makes an empty set, with set and round brackets."
-      },
-      {
-       "say": "Add puts an item into the set. Lines 3 to 5 add Omar, Lina, and Omar again. Remember the bag of name cards.",
+       "say": "Step 5. Line 2 makes an empty set. Add puts an item into it. Lines 3 to 5 add Omar, Lina, and Omar again. Remember the bag of name cards.",
        "highlight": [
+        2,
         3,
         4,
         5
@@ -718,7 +720,7 @@
      },
      "segments": [
       {
-       "say": "Step 6. Four operators compare two sets. The bar is union: items in either set.",
+       "say": "Step 6. Four operators compare two sets. The vertical bar is union: items in either set.",
        "focus_row": 0
       },
       {
@@ -730,7 +732,7 @@
        "focus_row": 2
       },
       {
-       "say": "And the hat sign is symmetric difference: items in one set, but not both.",
+       "say": "And the hat sign, called a caret, is symmetric difference: items in one set, but not both.",
        "focus_row": 3
       }
      ]
@@ -783,7 +785,7 @@
        ]
       },
       {
-       "say": "Symmetric difference gives Omar and Ravi: each came on one day only. And for minus, the order matters. Yesterday minus today would give Ravi.",
+       "say": "The caret gives Omar and Ravi: each came on one day only. And for minus, order matters: yesterday minus today gives Ravi.",
        "highlight": [
         7
        ],
@@ -814,10 +816,10 @@
      },
      "segments": [
       {
-       "say": "Back to the mission. Line 2 lists today's seven visits, with Omar four times. Line 3 is yesterday's set of customers."
+       "say": "Back to the mission. Line 2 lists today's visits, with every repeat. Line 3 is yesterday's set of customers."
       },
       {
-       "say": "Line 4 unpacks the opening hours, and line 5 makes the set of today's customers.",
+       "say": "Line 4 unpacks the opening hours, line 5 makes the set of today's customers, and line 6 prints the hours.",
        "highlight": [
         4,
         5,
@@ -868,6 +870,15 @@
         4,
         5,
         6
+       ]
+      },
+      {
+       "say": "And line 12 checks the set with in: Omar came today, True.",
+       "highlight": [
+        12
+       ],
+       "out_highlight": [
+        7
        ]
       },
       {
@@ -1053,7 +1064,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "I fixed line 3 with set(). My rule: one welcome per person. Give me three test cases with the exact expected output: a normal day, an empty day, and a day where Omar is also typed as \"omar \", with a small letter and a space."
+        "text": "I fixed line 3 with set(). My rule: one welcome per person. Give me three test cases with the exact expected output. Use a normal day and an empty day. In the third, Omar is also typed as \"omar \", with a small letter and a space."
        },
        {
         "role": "ai",
@@ -1073,52 +1084,11 @@
       }
      ],
      "ask": {
-      "question": "The AI predicts one welcome for Omar in case 3. Is it right?"
+      "question": "Will the code really print one welcome for Omar in case 3?"
      },
      "after": [
       {
        "say": "No. A set compares the exact text. Omar with a capital O, and omar with a space, are two different names."
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
-      "file": "examples/ai_welcome_fixed.py",
-      "heading": "Case 1: a normal day",
-      "highlight": [
-       3
-      ],
-      "output": "examples/ai_welcome_fixed.expected",
-      "out_highlight": [
-       1,
-       2,
-       3,
-       4
-      ]
-     },
-     "segments": [
-      {
-       "say": "Asha runs every case. The normal day: Omar, Lina and Sam are welcomed once each. New today, 3. Pass."
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
-      "file": "examples/ai_case_empty.py",
-      "heading": "Case 2: an empty day",
-      "highlight": [
-       2
-      ],
-      "output": "examples/ai_case_empty.expected",
-      "out_highlight": [
-       1
-      ]
-     },
-     "segments": [
-      {
-       "say": "The empty day: no welcomes, and New today, 0. Pass."
       }
      ]
     },
@@ -1138,7 +1108,7 @@
      },
      "segments": [
       {
-       "say": "And case 3: Omar is welcomed twice, once as Omar, and once as omar with a space. Fail."
+       "say": "Asha runs every case. The normal day and the empty day print what the AI predicted. But case 3 welcomes Omar twice: once as Omar, and once as omar with a space."
       }
      ]
     },
@@ -1176,7 +1146,7 @@
      },
      "segments": [
       {
-       "say": "Two cases pass, and one fails. The AI's prediction for case 3 was wrong, and only the run showed it.",
+       "say": "Case 3 fails her rule: one welcome per person. And the AI's prediction did not match the run. Only running it showed both.",
        "focus_row": 2
       }
      ]
@@ -1686,11 +1656,7 @@
      },
      "segments": [
       {
-       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP.",
-       "focus_row": 0
-      },
-      {
-       "say": "Three warm-up tasks, worth 10 XP each, and three apply tasks, worth 20 each, including an allergy check.",
+       "say": "Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20, including an allergy check.",
        "focus_row": 1
       },
       {
@@ -1718,7 +1684,7 @@
      },
      "segments": [
       {
-       "say": "To make a list of every price with tax added, Asha writes four lines: an empty list, a loop, a sum, and append."
+       "say": "To make a list of every price with tax added, Asha writes four lines: an empty list, a loop, the new price, and append."
       },
       {
        "say": "In Chapter 14, you will write that in one line, with a comprehension, and learn when a normal loop is clearer."
