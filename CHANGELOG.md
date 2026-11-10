@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-26 "Classes and Objects: Modelling Real Things" ready for review (18:09 video; critic 7.8, 12 fixes applied; loyalty card with two AI design mistakes caught by tests).
 - python-25 "Boss Level 5: The Data Report Generator" ready for review (17:59): a weekly report from messy till files, clear messages instead of crashes, AI test data checked against real files; critic 8/10, 12 fixes. Module 5 complete.
 - python-24 "Virtual Environments and Packages" ready for review (19:06): venv, pip, pinned requirements and name checks; critic 8/10, 12 fixes.
 - python-23 JSON and APIs ready for review: a daily board read from a saved weather response, six AI stages on a supplier price list with an invented field caught against the sample (18:32).

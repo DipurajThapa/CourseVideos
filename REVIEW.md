@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-10T10:38:04+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-10T11:26:55+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -37,6 +37,7 @@ You can also ask Claude to do either.
 - **python-23**: JSON and APIs: Talking to Other Programs ([chapters/python/23-json-and-apis](chapters/python/23-json-and-apis)), video: [chapters/python/23-json-and-apis/video/chapter.mp4](chapters/python/23-json-and-apis/video/chapter.mp4)
 - **python-24**: Virtual Environments and Packages ([chapters/python/24-environments-and-packages](chapters/python/24-environments-and-packages)), video: [chapters/python/24-environments-and-packages/video/chapter.mp4](chapters/python/24-environments-and-packages/video/chapter.mp4)
 - **python-25**: Boss Level 5: The Data Report Generator ([chapters/python/25-project-data-report](chapters/python/25-project-data-report)), video: [chapters/python/25-project-data-report/video/chapter.mp4](chapters/python/25-project-data-report/video/chapter.mp4)
+- **python-26**: Classes and Objects: Modelling Real Things ([chapters/python/26-classes-and-objects](chapters/python/26-classes-and-objects)), video: [chapters/python/26-classes-and-objects/video/chapter.mp4](chapters/python/26-classes-and-objects/video/chapter.mp4)
 
 ## Changes requested
 
