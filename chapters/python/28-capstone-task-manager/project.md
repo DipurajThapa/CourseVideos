@@ -107,14 +107,6 @@ Then she ran them against empty rules: classes and functions that exist but do n
 <!-- output: examples/step1/test_tasks_core.expected -->
 ```output
 FFFFFF...F                                       [100%]
-=============== short test summary info ================
-FAILED test_tasks_core.py::test_add_keeps_order - Ind...
-FAILED test_tasks_core.py::test_add_refuses_empty_title
-FAILED test_tasks_core.py::test_add_refuses_bad_priority
-FAILED test_tasks_core.py::test_complete_counts_from_one
-FAILED test_tasks_core.py::test_complete_refuses_missing_number
-FAILED test_tasks_core.py::test_open_tasks - assert 0...
-FAILED test_tasks_core.py::test_bad_json_gives_clear_message
 7 failed, 3 passed in 0.01s
 ```
 
@@ -457,7 +449,7 @@ These are the six ways AI helped with this project. The full prompts are in [ai-
 | Debug | Explained the cause first: JSON cannot save a `Task`. `to_dict()` fixed it, and all ten tests passed. |
 | Improve | Suggested removing the priority check. One test failed, so Asha kept her version. |
 
-The Write stage compared the two versions of `complete()` on a list of two tasks. Both were asked to complete task 1:
+In the Write stage, Asha asked for the same rule as a small function, and named it `ai_complete()`, so both versions fit in one file. Both were asked to complete task 1 on a list of two tasks.
 
 ```python
 # file: examples/ai/write/write_compare.py
@@ -474,17 +466,18 @@ def ai_complete(tasks, number):
     tasks[number].done = True
 
 
-for complete in [asha_complete, ai_complete]:
+pairs = [("Asha", asha_complete), ("AI", ai_complete)]
+for who, complete in pairs:
     tasks = [Task("Open the cafe"), Task("Restock milk")]
     complete(tasks, 1)
     done = [task.title for task in tasks if task.done]
-    print(complete.__name__, "marked", done)
+    print(who, "marked", done)
 ```
 
 <!-- output: examples/ai/write/write_compare.expected -->
 ```output
-asha_complete marked ['Open the cafe']
-ai_complete marked ['Restock milk']
+Asha marked ['Open the cafe']
+AI marked ['Restock milk']
 ```
 
 The AI's version uses the number as a list position, so task 1 marks the second task. Asha's version subtracts 1.

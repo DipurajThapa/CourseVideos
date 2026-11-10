@@ -1,10 +1,2 @@
 FFFFFF...F                                       [100%]
-=============== short test summary info ================
-FAILED test_tasks_core.py::test_add_keeps_order - Ind...
-FAILED test_tasks_core.py::test_add_refuses_empty_title
-FAILED test_tasks_core.py::test_add_refuses_bad_priority
-FAILED test_tasks_core.py::test_complete_counts_from_one
-FAILED test_tasks_core.py::test_complete_refuses_missing_number
-FAILED test_tasks_core.py::test_open_tasks - assert 0...
-FAILED test_tasks_core.py::test_bad_json_gives_clear_message
 7 failed, 3 passed in 0.01s

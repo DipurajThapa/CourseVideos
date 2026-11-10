@@ -14,11 +14,11 @@ Use these with an AI assistant such as ChatGPT or Claude. Replace the parts in a
 
 ## Write: Compare your method with the AI's
 
-**Prompt:** "Write a Python method complete(self, number) for a TaskList class that keeps tasks in self.tasks. The user counts tasks from 1. Raise ValueError when there is no task with that number. Show only the method."
+**Prompt:** "Write a Python function complete(tasks, number) that marks a task in a list as done. People count tasks from 1. Raise ValueError when there is no task with that number. Show only the function."
 
-**Use it when:** you have written a method yourself and want a second version to compare with.
+**Use it when:** you have written a rule yourself and want a second version to compare with.
 
-**A good answer:** a short method that checks the number and marks the task at position `number - 1`.
+**A good answer:** a short function that checks the number and marks the task at position `number - 1`.
 
 **Check it:** run both versions on the same small list, and complete task 1. The first task must be the one marked.
 

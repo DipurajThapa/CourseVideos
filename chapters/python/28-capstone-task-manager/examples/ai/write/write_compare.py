@@ -12,8 +12,9 @@ def ai_complete(tasks, number):
     tasks[number].done = True
 
 
-for complete in [asha_complete, ai_complete]:
+pairs = [("Asha", asha_complete), ("AI", ai_complete)]
+for who, complete in pairs:
     tasks = [Task("Open the cafe"), Task("Restock milk")]
     complete(tasks, 1)
     done = [task.title for task in tasks if task.done]
-    print(complete.__name__, "marked", done)
+    print(who, "marked", done)

@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-28",
   "run_id": "2026-11-10-eb1386",
-  "verified_at": "2026-11-10T12:22:59+00:00",
+  "verified_at": "2026-11-10T12:29:21+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -10,10 +10,8 @@
   "checks": [
     {
       "name": "structure",
-      "passed": false,
-      "problems": [
-        "missing video/storyboard.json"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {}
     },
     {
@@ -213,9 +211,14 @@
       "problems": [],
       "details": {
         "project.md": {
-          "sentences": 115,
+          "sentences": 116,
           "average_words": 11.9,
           "longest": 30
+        },
+        "video/script.md": {
+          "sentences": 669,
+          "average_words": 8.4,
+          "longest": 28
         }
       }
     },
@@ -223,10 +226,15 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "missing video/storyboard.json"
+        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/28-capstone-task-manager",
+        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/28-capstone-task-manager",
+        "missing video/render.json: run python3 tools/render_video.py chapters/python/28-capstone-task-manager",
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/28-capstone-task-manager"
       ],
-      "details": {}
+      "details": {
+        "estimated_minutes": 15.9
+      }
     }
   ],
-  "fingerprint": "c444d1156062d80602ba39e0f1f2de8f9160803fd4266d82604edde55f542da6"
+  "fingerprint": "984ebdcadc8b8519d441b3284df6ee7e12ce97a13bd9a48a8dd43824d46e6fa7"
 }
