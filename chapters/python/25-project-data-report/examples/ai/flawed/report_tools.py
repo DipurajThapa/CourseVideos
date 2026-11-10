@@ -31,7 +31,7 @@ def read_sales(path):
         for row in csv.DictReader(file):
             try:
                 amount = float(row["Amount"])
-                sales.append((row["item"], amount))
+                sales.append((row["Item"], amount))
             except Exception:
                 bad += 1
     return sales, bad

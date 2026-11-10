@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:08 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:59.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:38)
 
 **Section:** Introduction
 
@@ -21,7 +21,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** An AI assistant will write part of it, and make it look perfect. It will report nothing at all, and say nothing. Her tests will catch it.
   **On screen:** The Data Report Generator Messy files in. A clean report out.
 
-## Scene 2: The mission
+## Scene 2: The mission (0:38 to 1:27)
 
 **Section:** The mission
 
@@ -56,7 +56,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Plus one new tool. Glob finds every file in a folder whose name matches a pattern, such as star dot c s v.
   **On screen:** Table: Everything from Module 5 (row 5 in focus)
 
-## Scene 3: What you will build
+## Scene 3: What you will build (1:27 to 2:02)
 
 **Section:** What you will build
 
@@ -81,31 +81,31 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The program itself is about twenty lines. The rules live in the other file.
   **On screen:** Code `project/report.py`, output `project/report.expected`
 
-## Scene 4: Acceptance criteria
+## Scene 4: Acceptance criteria (2:02 to 3:06)
 
 **Section:** Acceptance criteria
 
 **Direction:** Seven criteria in groups, a quiz on the clear-message criterion, then a breather.
 
 - **Narration:** Asha writes down what done means.
-  **On screen:** Done means all seven are true
+  **On screen:** Done means all eight are true
 - **Narration:** One. Read every file, in day order, even an empty one.
-  **On screen:** Done means all seven are true
+  **On screen:** Done means all eight are true
     - Read every CSV file in `data`, in day order, even an empty one.
 - **Narration:** Two and three. Skip and count a row with a bad price or no price, and refuse a negative price.
-  **On screen:** Done means all seven are true
+  **On screen:** Done means all eight are true
     - Read every CSV file in `data`, in day order, even an empty one.
     - Skip and count a row with a bad price or no price.
     - Refuse a negative price.
 - **Narration:** Four and five. The settings come from a file, and a problem with them gives one clear line.
-  **On screen:** Done means all seven are true
+  **On screen:** Done means all eight are true
     - Read every CSV file in `data`, in day order, even an empty one.
     - Skip and count a row with a bad price or no price.
     - Refuse a negative price.
     - Currency and tax rate come from `config.json`.
     - Missing or broken settings: one clear line, no traceback.
 - **Narration:** Six and seven. The report, saved twice, and seven tests that pass.
-  **On screen:** Done means all seven are true
+  **On screen:** Done means all eight are true
     - Read every CSV file in `data`, in day order, even an empty one.
     - Skip and count a row with a bad price or no price.
     - Refuse a negative price.
@@ -113,6 +113,16 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Missing or broken settings: one clear line, no traceback.
     - Report each day, the total, the tax and the skipped rows.
     - Save `report.txt` and `report.json`. Seven tests pass.
+- **Narration:** And eight. Nothing is rounded before it is added up.
+  **On screen:** Done means all eight are true
+    - Read every CSV file in `data`, in day order, even an empty one.
+    - Skip and count a row with a bad price or no price.
+    - Refuse a negative price.
+    - Currency and tax rate come from `config.json`.
+    - Missing or broken settings: one clear line, no traceback.
+    - Report each day, the total, the tax and the skipped rows.
+    - Save `report.txt` and `report.json`. Seven tests pass.
+    - Nothing is rounded before it is added up.
 - **Narration:** Quick check, from Chapter 22. The settings file is missing. What should a person see?
   **On screen:** Quick check: "The settings file is missing. What should a person see?" (options shown)
 - **Interaction:** "The settings file is missing. What should a person see?" stays on screen with a 10-second timer.
@@ -130,7 +140,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A problem gives one clear line.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Plan it with AI
+## Scene 5: Plan it with AI (3:06 to 3:45)
 
 **Section:** Plan it with AI
 
@@ -152,7 +162,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: I am a beginner. I know files, CSV, JSON, try and except, functions and pytest. I want a weekly report from a folder of till CSV files with the columns item and amount. Some rows are damaged. Do not write code. Plan the functions, and say how to handle errors.
     - AI (example answer): Write one function, `make_report()`, that reads every file, adds up the amounts and writes the report. Put the whole body inside `try`, with `except Exception: print("Something went wrong")`, so it never crashes.
 
-## Scene 6: Step 1: Look at the real files
+## Scene 6: Step 1: Look at the real files (3:45 to 4:41)
 
 **Section:** Build it step by step
 
@@ -160,17 +170,19 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Time to build. Step 1: before any rule, Asha looks at the real data. She prints two of the files, row by row.
   **On screen:** Code `examples/step1/read_days.py`, line 5 highlighted, output hidden
-- **Narration:** Line 6 joins the folder and the file name with a slash, as in Chapter 21. Line 8 reads each row as a dictionary.
+- **Narration:** Every till file starts with the same line: item comma amount. Those are the column names, in small letters.
+  **On screen:** Code `examples/step1/read_days.py`, line 5 highlighted, output hidden
+- **Narration:** Line 6 joins the folder and the file name with a slash, as in Chapter 21. Line 8 reads each row as a dictionary, with the column names as keys.
   **On screen:** Code `examples/step1/read_days.py`, line 6, 8 highlighted, output hidden
-- **Narration:** Wednesday has a row that says only cake, with no comma and no price. When a row is short, Dict reader fills each missing value with None.
+- **Narration:** One rule to know first. When a row is shorter than the first line, Dict reader fills each missing value with None.
   **On screen:** Code `examples/step1/read_days.py`, line 9 highlighted, output hidden
-- **Interaction:** "What does line 9 print for Wednesday's short row?" stays on screen with a 10-second timer.
+- **Interaction:** "Wednesday has a row with only `cake`. What does line 9 print for it?" stays on screen with a 10-second timer.
 - **Narration:** 3 wednesday dot c s v, cake, None.
   **On screen:** Code `examples/step1/read_days.py`, line 9 highlighted, output `examples/step1/read_days.expected`
 - **Narration:** And on Tuesday, the amount is the word four. Two damaged rows. Every good amount is still text.
   **On screen:** Code `examples/step1/read_days.py`, line 9 highlighted, output `examples/step1/read_days.expected`
 
-## Scene 7: Step 2: Settings with a clear message
+## Scene 7: Step 2: Settings with a clear message (4:41 to 5:28)
 
 **Section:** Build it step by step
 
@@ -189,7 +201,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The currency is U S D, and the tax rate is 0.08, which is 8 percent.
   **On screen:** Code `examples/step2/config_check.py`, line 7, 8 highlighted, output `examples/step2/config_check.expected`
 
-## Scene 8: Step 3: One amount at a time
+## Scene 8: Step 3: One amount at a time (5:28 to 7:08)
 
 **Section:** Build it step by step
 
@@ -231,7 +243,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A negative price is refused.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: Step 4: Let the tests judge the AI
+## Scene 9: Step 4: Let the tests judge the AI (7:08 to 9:39)
 
 **Section:** Build it step by step
 
@@ -250,7 +262,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 3: Generate: code that must pass my tests
     - You: Here are my six tests. Write read_sales(path), which returns the good sales in one CSV file and the number of bad rows, and build_week(folder). Do not change my tests. [code `examples/ai/flawed/test_report_tools.py`]
     - AI (example answer): Here is `read_sales()`. It skips only the two damaged rows, so your tests pass. [code `examples/ai/flawed/report_tools.py`]
-- **Narration:** Look at line 33. Then remember the first line of every till file, from step 1.
+- **Narration:** Look at line 33. Then remember the first line of every till file, from step 1: item comma amount, in small letters.
   **On screen:** Code `examples/ai/flawed/report_tools.py`, line 33 highlighted, output hidden
 - **Narration:** And line 35 catches every kind of exception.
   **On screen:** Code `examples/ai/flawed/report_tools.py`, line 35 highlighted, output hidden
@@ -261,11 +273,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ai/flawed/rows_check.py`, line 6 highlighted, output `examples/ai/flawed/rows_check.expected`
 - **Narration:** Zero good. Every row is bad. The program ran with no error, and it would report nothing.
   **On screen:** Code `examples/ai/flawed/rows_check.py`, line 6 highlighted, output `examples/ai/flawed/rows_check.expected`
-- **Narration:** Her six tests agree. The amount tests pass, and both week tests fail.
+- **Narration:** Her six tests agree. The first four pass, and both week tests fail.
   **On screen:** Code `examples/ai/flawed/test_report_tools.py`, output `examples/ai/flawed/test_report_tools.expected`
-- **Narration:** Asha fixes it with the rule from Chapter 22. Line 33: the right key, and her own parse amount.
+- **Narration:** Asha fixes it with the rule from Chapter 22: catch only the exceptions you expect. Line 33: the right key, and her own parse amount.
   **On screen:** Code `examples/ai/fixed/report_tools.py`, line 33 highlighted, output hidden
-- **Narration:** Line 34 catches only the two exceptions she expects. Value error for the word four. And type error for the missing price, because float of None raises a type error.
+- **Narration:** Line 34 catches only the two exceptions she expects. Value error for the word four. And type error for the missing price, because float of None raises a type error, the same as the short row in Chapter 22.
   **On screen:** Code `examples/ai/fixed/report_tools.py`, line 34, 35 highlighted, output hidden
 - **Narration:** Line 37 adds the sale only when nothing went wrong, in else.
   **On screen:** Code `examples/ai/fixed/report_tools.py`, line 36, 37 highlighted, output hidden
@@ -273,26 +285,31 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ai/fixed/rows_check.py`, line 6 highlighted, output `examples/ai/fixed/rows_check.expected`
 - **Narration:** And she runs all six tests again. Six passed.
   **On screen:** Code `examples/ai/fixed/test_report_tools.py`, output `examples/ai/fixed/test_report_tools.expected`
-- **Narration:** Quick check. Why did the AI's code report no error at all?
-  **On screen:** Quick check: "Why did the AI's code report no error at all?" (options shown)
-- **Interaction:** "Why did the AI's code report no error at all?" stays on screen with a 10-second timer.
-- **Narration:** B. Every row raised a key error, and except Exception caught each one as if the row were damaged.
-  **On screen:** Quick check: "Why did the AI's code report no error at all?" (answer revealed: `except Exception` hid the KeyError)
+- **Narration:** Quick check. A row has no price, so its amount is None. Which exception does float of None raise?
+  **On screen:** Quick check: "A row has no price, so the amount is `None`. Which exception does `float(None)` raise?" (options shown)
+- **Interaction:** "A row has no price, so the amount is `None`. Which exception does `float(None)` raise?" stays on screen with a 10-second timer.
+- **Narration:** C. Type error. None is the wrong type of value. A word such as four is a string, so it gives a value error instead.
+  **On screen:** Quick check: "A row has no price, so the amount is `None`. Which exception does `float(None)` raise?" (answer revealed: `TypeError`)
 
-## Scene 10: Step 5: The week and the report
+## Scene 10: Step 5: The week and the report (9:39 to 11:50)
 
 **Section:** Build it step by step
 
 **Direction:** build_week with glob, the day name from the file name, the week check run, then the main program in groups.
 
-- **Narration:** Step 5. Build week puts it all together. Line 48: glob finds every file ending in dot c s v. Glob gives no fixed order, so sorted puts them in name order.
-  **On screen:** Code `project/report_tools.py`, line 48 highlighted, output hidden
-- **Narration:** Line 49 reads each file. Line 50 adds its bad rows to the count.
-  **On screen:** Code `project/report_tools.py`, line 49, 50 highlighted, output hidden
-- **Narration:** Lines 52 to 55 add each amount to its item and to the day, with get, as in Chapter 12.
-  **On screen:** Code `project/report_tools.py`, line 52, 53, 54, 55 highlighted, output hidden
-- **Narration:** Line 56 makes the day name from the file name. Stem drops dot c s v, split takes the part after the dash, and title gives a capital letter.
-  **On screen:** Code `project/report_tools.py`, line 56 highlighted, output hidden
+- **Narration:** Step 5. Build week puts it all together. Line 44: glob finds every file ending in dot c s v. Glob gives no fixed order, so sorted puts them in name order.
+  **On screen:** Code `examples/step5/report_tools.py`, line 44 highlighted, output hidden
+- **Narration:** Line 45 reads each file. Line 46 adds its bad rows to the count.
+  **On screen:** Code `examples/step5/report_tools.py`, line 45, 46 highlighted, output hidden
+- **Narration:** Lines 48 to 51 add each amount to its item and to the day, with get, as in Chapter 12.
+  **On screen:** Code `examples/step5/report_tools.py`, line 48, 49, 50, 51 highlighted, output hidden
+- **Narration:** Line 52 makes the day name from the file name. Stem drops dot c s v, split takes the part after the dash, and title gives a capital letter.
+  **On screen:** Code `examples/step5/report_tools.py`, line 52 highlighted, output hidden
+- **Narration:** Quick check. Why does build week sort the paths from glob?
+  **On screen:** Quick check: "Why does `build_week()` sort the paths from `glob()`?" (options shown)
+- **Interaction:** "Why does `build_week()` sort the paths from `glob()`?" stays on screen with a 10-second timer.
+- **Narration:** A. Glob gives no fixed order. Sorted puts the names in order, and the number at the start keeps the days in order.
+  **On screen:** Quick check: "Why does `build_week()` sort the paths from `glob()`?" (answer revealed: `glob()` gives no fixed order)
 - **Narration:** Asha prints the days as JSON, with an indent of two, as in Chapter 23.
   **On screen:** Code `examples/step5/week_check.py`, line 7 highlighted, output hidden
 - **Narration:** Thursday's file is empty, so build week adds nothing for it.
@@ -303,13 +320,13 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two rows skipped.
   **On screen:** Code `examples/step5/week_check.py`, line 9 highlighted, output `examples/step5/week_check.expected`
 - **Narration:** The main program is short. The try block holds two lines, and both raise only value error, with a clear message.
-  **On screen:** Code `project/report.py`, line 7, 8, 9 highlighted, output hidden
+  **On screen:** Code `project/report.py`, line 7, 8, 9 highlighted, output `project/report.expected`
 - **Narration:** Lines 10 and 11 catch it once, and print Report stopped, and the message.
-  **On screen:** Code `project/report.py`, line 10, 11 highlighted, output hidden
+  **On screen:** Code `project/report.py`, line 10, 11 highlighted, output `project/report.expected`
 - **Narration:** The else block runs only when both worked. Lines 13 to 15 write the report, one line at a time.
-  **On screen:** Code `project/report.py`, line 12, 13, 14, 15 highlighted, output hidden
+  **On screen:** Code `project/report.py`, line 12, 13, 14, 15 highlighted, output `project/report.expected`
 - **Narration:** Lines 16 and 17 save the week as JSON. And line 18 reads the text report back, so the screen shows exactly what was saved.
-  **On screen:** Code `project/report.py`, line 16, 17, 18 highlighted, output hidden
+  **On screen:** Code `project/report.py`, line 16, 17, 18 highlighted, output `project/report.expected`
 - **Narration:** Breather. The report works on the real week.
   **On screen:** Breather card
     - The tests caught the AI's hidden KeyError.
@@ -322,7 +339,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - The week is built from every file.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: Test it
+## Scene 11: Test it (11:50 to 14:25)
 
 **Section:** Test it
 
@@ -340,7 +357,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The real file starts item comma amount, in small letters. Now look at the AI's first line.
   **On screen:** Compare the first lines
 - **Interaction:** "What will Asha's report do with the AI's file?" stays on screen with a 10-second timer.
-- **Narration:** The AI's columns start with capital letters. Asha saves the file as a fifth day, and runs the report.
+- **Narration:** It crashes with a key error. The AI's columns start with capital letters, so there is no key amount. And her except catches only value error and type error, not key error. Asha saves the file as a fifth day, and runs the report to see.
   **On screen:** Compare the first lines
 - **Narration:** It crashes. A key error. Read the last line first: the key amount is missing.
   **On screen:** Code `examples/ai/testdata/report.py`, line 9 highlighted, error `examples/ai/testdata/report.expected_error`
@@ -380,7 +397,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And the closed week. Only Thursday, and every amount is 0.00. Pass. All three match.
   **On screen:** Code `examples/cases/closed_week/report.py`, line 9 highlighted, output `examples/cases/closed_week/report.expected`
 
-## Scene 12: Improve it with AI
+## Scene 12: Improve it with AI (14:25 to 16:07)
 
 **Section:** Improve it with AI
 
@@ -393,7 +410,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 6: Improve: a clearer report
     - You: All seven tests pass. Suggest one improvement that makes the report clearer. Do not change what the totals are.
     - AI (example answer): Round each day's total to a whole number before you store it: `day_total = round(day_total)`. The report will show tidy amounts.
-- **Narration:** Here is the AI's change, on line 56. Tuesday's real total is 11.25. Round with no second value gives the nearest whole number, as in Chapter 2.
+- **Narration:** Here is the AI's change, on line 56. Tuesday's real total is 11.25. Round with no second value gives the nearest whole number, as in Chapter 18.
   **On screen:** Code `examples/ai/improve/report_tools.py`, line 56 highlighted, output hidden
 - **Interaction:** "With the AI's line 56, what is Tuesday's total?" stays on screen with a 10-second timer.
 - **Narration:** 11. And the week becomes 37 instead of 37.25. Asha runs her tests to be sure.
@@ -422,7 +439,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Round only for display.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Recap
+## Scene 13: Recap (16:07 to 17:34)
 
 **Section:** Recap
 
@@ -482,7 +499,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Look at your data first, then write the rule.
   **On screen:** Table: Practice: 8 tasks, 170 XP
 
-## Scene 14: What's next
+## Scene 14: What's next (17:34 to 17:59)
 
 **Section:** What's next
 

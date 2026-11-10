@@ -226,7 +226,7 @@ def read_sales(path):
         for row in csv.DictReader(file):
             try:
                 amount = float(row["Amount"])
-                sales.append((row["item"], amount))
+                sales.append((row["Item"], amount))
             except Exception:
                 bad += 1
     return sales, bad
@@ -251,7 +251,7 @@ Both week tests fail. To see why, she counted good and bad rows in each file:
 4-thursday.csv: 0 good, 0 bad
 ```
 
-Every row is bad. The column is called `amount`, but the AI wrote `row["Amount"]`, with a capital A. That raises a `KeyError` on every row, and `except Exception` hides it, so the program runs with no error and reports nothing. Asha fixed it with the rule from Chapter 22: the right key, her own `parse_amount()`, and only the two exceptions she expects.
+Every row is bad. The columns are called `item` and `amount`, but the AI wrote `row["Amount"]` and `row["Item"]`, with capital letters. That raises a `KeyError` on every row, and `except Exception` hides it, so the program runs with no error and reports nothing. Asha fixed it with the rule from Chapter 22: the right key, her own `parse_amount()`, and only the two exceptions she expects.
 
 ```python
 # illustrative: lines 27 to 38 of examples/ai/fixed/report_tools.py

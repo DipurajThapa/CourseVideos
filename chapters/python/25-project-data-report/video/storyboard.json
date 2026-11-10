@@ -263,7 +263,7 @@
     {
      "visual": {
       "type": "bullets",
-      "heading": "Done means all seven are true",
+      "heading": "Done means all eight are true",
       "label": "Acceptance criteria",
       "items": [
        "Read every CSV file in `data`, in day order, even an empty one.",
@@ -272,7 +272,8 @@
        "Currency and tax rate come from `config.json`.",
        "Missing or broken settings: one clear line, no traceback.",
        "Report each day, the total, the tax and the skipped rows.",
-       "Save `report.txt` and `report.json`. Seven tests pass."
+       "Save `report.txt` and `report.json`. Seven tests pass.",
+       "Nothing is rounded before it is added up."
       ],
       "reveal": 0
      },
@@ -300,6 +301,11 @@
        "say": "Six and seven. The report, saved twice, and seven tests that pass.",
        "reveal": 7,
        "focus": 6
+      },
+      {
+       "say": "And eight. Nothing is rounded before it is added up.",
+       "reveal": 8,
+       "focus": 7
       }
      ]
     },
@@ -403,14 +409,21 @@
       "highlight": [
        5
       ],
-      "hidden_text": "Predict the output before it appears."
+      "hidden_text": "Predict the output before it appears.",
+      "note": "Every till file starts with the line `item,amount`: the column names."
      },
      "segments": [
       {
        "say": "Time to build. Step 1: before any rule, Asha looks at the real data. She prints two of the files, row by row."
       },
       {
-       "say": "Line 6 joins the folder and the file name with a slash, as in Chapter 21. Line 8 reads each row as a dictionary.",
+       "say": "Every till file starts with the same line: item comma amount. Those are the column names, in small letters.",
+       "highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Line 6 joins the folder and the file name with a slash, as in Chapter 21. Line 8 reads each row as a dictionary, with the column names as keys.",
        "highlight": [
         6,
         8
@@ -819,7 +832,7 @@
      },
      "segments": [
       {
-       "say": "Look at line 33. Then remember the first line of every till file, from step 1."
+       "say": "Look at line 33. Then remember the first line of every till file, from step 1: item comma amount, in small letters."
       },
       {
        "say": "And line 35 catches every kind of exception.",
@@ -888,7 +901,7 @@
      },
      "segments": [
       {
-       "say": "Her six tests agree. The amount tests pass, and both week tests fail.",
+       "say": "Her six tests agree. The first four pass, and both week tests fail.",
        "out_highlight": [
         1,
         3,
@@ -924,10 +937,10 @@
      },
      "segments": [
       {
-       "say": "Asha fixes it with the rule from Chapter 22. Line 33: the right key, and her own parse amount."
+       "say": "Asha fixes it with the rule from Chapter 22: catch only the exceptions you expect. Line 33: the right key, and her own parse amount."
       },
       {
-       "say": "Line 34 catches only the two exceptions she expects. Value error for the word four. And type error for the missing price, because float of None raises a type error.",
+       "say": "Line 34 catches only the two exceptions she expects. Value error for the word four. And type error for the missing price, because float of None raises a type error, the same as the short row in Chapter 22.",
        "highlight": [
         34,
         35
@@ -996,24 +1009,24 @@
     {
      "visual": {
       "type": "quiz",
-      "question": "Why did the AI's code report no error at all?",
+      "question": "A row has no price, so the amount is `None`. Which exception does `float(None)` raise?",
       "options": [
-       "The files were empty",
-       "`except Exception` hid the KeyError",
-       "pytest was not installed",
-       "Python skips wrong keys"
+       "`ValueError`",
+       "`KeyError`",
+       "`TypeError`",
+       "None, it returns 0"
       ],
-      "answer": 1,
-      "explain": "Every row raised a KeyError, and except Exception caught it as if the row were damaged."
+      "answer": 2,
+      "explain": "None is the wrong type for float(), so Python raises a TypeError. A word such as four raises a ValueError."
      },
      "segments": [
       {
-       "say": "Quick check. Why did the AI's code report no error at all?"
+       "say": "Quick check. A row has no price, so its amount is None. Which exception does float of None raise?"
       }
      ],
      "after": [
       {
-       "say": "B. Every row raised a key error, and except Exception caught each one as if the row were damaged."
+       "say": "C. Type error. None is the wrong type of value. A word such as four is a string, so it gives a value error instead."
       }
      ]
     }
@@ -1028,9 +1041,13 @@
     {
      "visual": {
       "type": "code",
-      "file": "project/report_tools.py",
+      "file": "examples/step5/report_tools.py",
       "heading": "Step 5: Build the week",
       "code_lines": [
+       41,
+       42,
+       43,
+       44,
        45,
        46,
        47,
@@ -1041,42 +1058,62 @@
        52,
        53,
        54,
-       55,
-       56,
-       57,
-       58,
-       59
+       55
       ],
       "highlight": [
-       48
+       44
       ],
       "hidden_text": "The next screen prints the week."
      },
      "segments": [
       {
-       "say": "Step 5. Build week puts it all together. Line 48: glob finds every file ending in dot c s v. Glob gives no fixed order, so sorted puts them in name order."
+       "say": "Step 5. Build week puts it all together. Line 44: glob finds every file ending in dot c s v. Glob gives no fixed order, so sorted puts them in name order."
       },
       {
-       "say": "Line 49 reads each file. Line 50 adds its bad rows to the count.",
+       "say": "Line 45 reads each file. Line 46 adds its bad rows to the count.",
        "highlight": [
+        45,
+        46
+       ]
+      },
+      {
+       "say": "Lines 48 to 51 add each amount to its item and to the day, with get, as in Chapter 12.",
+       "highlight": [
+        48,
         49,
-        50
+        50,
+        51
        ]
       },
       {
-       "say": "Lines 52 to 55 add each amount to its item and to the day, with get, as in Chapter 12.",
+       "say": "Line 52 makes the day name from the file name. Stem drops dot c s v, split takes the part after the dash, and title gives a capital letter.",
        "highlight": [
-        52,
-        53,
-        54,
-        55
+        52
        ]
-      },
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Why does `build_week()` sort the paths from `glob()`?",
+      "options": [
+       "`glob()` gives no fixed order",
+       "Sorting removes empty files",
+       "`sorted()` reads the files faster",
+       "CSV files must be sorted first"
+      ],
+      "answer": 0,
+      "explain": "glob() can return the files in any order. sorted() puts them in name order, and the numbers keep the days in order."
+     },
+     "segments": [
       {
-       "say": "Line 56 makes the day name from the file name. Stem drops dot c s v, split takes the part after the dash, and title gives a capital letter.",
-       "highlight": [
-        56
-       ]
+       "say": "Quick check. Why does build week sort the paths from glob?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Glob gives no fixed order. Sorted puts the names in order, and the number at the start keeps the days in order."
       }
      ]
     },
@@ -1255,7 +1292,7 @@
      },
      "after": [
       {
-       "say": "The AI's columns start with capital letters. Asha saves the file as a fifth day, and runs the report."
+       "say": "It crashes with a key error. The AI's columns start with capital letters, so there is no key amount. And her except catches only value error and type error, not key error. Asha saves the file as a fifth day, and runs the report to see."
       }
      ]
     },
@@ -1279,7 +1316,8 @@
       {
        "say": "Then the last file line shows where: line 33 of report tools, inside read sales. On your computer, these lines show the full path of each file.",
        "out_highlight": [
-        -1
+        7,
+        8
        ]
       },
       {
@@ -1382,24 +1420,20 @@
       "label": "Test it",
       "columns": [
        "Case",
-       "Expected",
-       "Result"
+       "Expected"
       ],
       "rows": [
        [
         "No settings file",
-        "Report stopped: missing settings file config.json",
-        "?"
+        "Report stopped: missing settings file config.json"
        ],
        [
         "Broken settings",
-        "Report stopped: config.json is not valid JSON ...",
-        "?"
+        "Report stopped: config.json is not valid JSON ..."
        ],
        [
         "Closed all week",
-        "Only Thursday, every amount USD 0.00",
-        "?"
+        "Only Thursday, every amount USD 0.00"
        ]
       ]
      },
@@ -1542,7 +1576,7 @@
      },
      "segments": [
       {
-       "say": "Here is the AI's change, on line 56. Tuesday's real total is 11.25. Round with no second value gives the nearest whole number, as in Chapter 2."
+       "say": "Here is the AI's change, on line 56. Tuesday's real total is 11.25. Round with no second value gives the nearest whole number, as in Chapter 18."
       }
      ],
      "ask": {
