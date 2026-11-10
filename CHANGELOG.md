@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-28 Final Boss: The Personal Task Manager ready for review (17:03; critic 7.5, 12 fixes). The Python course is complete: all 28 chapters are in review.
 - python-27 "Reading and Improving Code with AI" ready for review (18:24 video; critic 8.2, 12 fixes applied; Sam's till refactored with characterization tests, and three AI mistakes in a stock checker caught by runs and tests).
 - python-26 "Classes and Objects: Modelling Real Things" ready for review (18:09 video; critic 7.8, 12 fixes applied; loyalty card with two AI design mistakes caught by tests).
 - python-25 "Boss Level 5: The Data Report Generator" ready for review (17:59): a weekly report from messy till files, clear messages instead of crashes, AI test data checked against real files; critic 8/10, 12 fixes. Module 5 complete.

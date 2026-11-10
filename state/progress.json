@@ -520,16 +520,20 @@
     "python-28": {
       "language": "python",
       "number": 28,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-10-eb1386",
           "started": "2026-11-10T12:16:25+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-10T12:56:58+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-10-eb1386"
+      "current_run_id": "2026-11-10-eb1386",
+      "path": "chapters/python/28-capstone-task-manager",
+      "completed": "2026-11-10T12:56:58+00:00"
     }
   },
-  "updated": "2026-11-10T12:16:25+00:00"
+  "updated": "2026-11-10T12:56:58+00:00"
 }

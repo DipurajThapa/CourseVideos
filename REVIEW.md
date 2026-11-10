@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-10T12:15:00+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-10T12:56:58+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -39,6 +39,7 @@ You can also ask Claude to do either.
 - **python-25**: Boss Level 5: The Data Report Generator ([chapters/python/25-project-data-report](chapters/python/25-project-data-report)), video: [chapters/python/25-project-data-report/video/chapter.mp4](chapters/python/25-project-data-report/video/chapter.mp4)
 - **python-26**: Classes and Objects: Modelling Real Things ([chapters/python/26-classes-and-objects](chapters/python/26-classes-and-objects)), video: [chapters/python/26-classes-and-objects/video/chapter.mp4](chapters/python/26-classes-and-objects/video/chapter.mp4)
 - **python-27**: Reading and Improving Code with AI ([chapters/python/27-reading-and-refactoring](chapters/python/27-reading-and-refactoring)), video: [chapters/python/27-reading-and-refactoring/video/chapter.mp4](chapters/python/27-reading-and-refactoring/video/chapter.mp4)
+- **python-28**: Final Boss: The Personal Task Manager ([chapters/python/28-capstone-task-manager](chapters/python/28-capstone-task-manager)), video: [chapters/python/28-capstone-task-manager/video/chapter.mp4](chapters/python/28-capstone-task-manager/video/chapter.mp4)
 
 ## Changes requested
 
