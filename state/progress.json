@@ -452,8 +452,15 @@
     "python-24": {
       "language": "python",
       "number": 24,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-10-b80a06",
+          "started": "2026-11-10T09:10:01+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-10-b80a06"
     },
     "python-25": {
       "language": "python",
@@ -480,5 +487,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T09:08:51+00:00"
+  "updated": "2026-11-10T09:10:01+00:00"
 }
