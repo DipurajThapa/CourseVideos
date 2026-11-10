@@ -1,0 +1,3 @@
+Task(title='Open the cafe', priority=1, done=False)
+Task(title='Wipe the tables', priority=2, done=False)
+True

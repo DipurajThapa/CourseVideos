@@ -1,0 +1,16 @@
+2 open tasks
+Command: add
+Title: Sweep the floor
+Priority 1-3: high
+Not done: invalid literal for int() with base 10: 'high'
+Command: add
+Title:
+Priority 1-3: 2
+Not done: a task needs a title
+Command: done
+Number: 9
+Not done: there is no task 9
+Command: dance
+Commands: add, done, list, quit
+Command: quit
+Saved tasks.json

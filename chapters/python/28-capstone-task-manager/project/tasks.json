@@ -1,0 +1,5 @@
+[
+  {"title": "Open the cafe", "priority": 1, "done": true},
+  {"title": "Restock milk", "priority": 2, "done": false},
+  {"title": "Call the supplier", "priority": 3, "done": false}
+]

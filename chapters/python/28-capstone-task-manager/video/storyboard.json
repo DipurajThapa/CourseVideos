@@ -1,0 +1,2017 @@
+{
+ "chapter_id": "python-28",
+ "number": 28,
+ "version": 3,
+ "title": "Chapter 28: Final Boss: The Personal Task Manager",
+ "video_title": "Python Chapter 28: Final Boss, The Personal Task Manager",
+ "summary": "Asha's morning list on paper keeps getting lost. Follow her as she builds a terminal task manager with a data class, a task list class, JSON saving, clear error messages and ten tests written first. An AI assistant helps at all six stages, and her tests catch its confident mistakes. The course ends with a look back at all 28 chapters.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the lost paper list. Then the final boss title and the stake.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The list on the paper",
+      "label": "The Corner Cafe",
+      "body": [
+       "Every morning, Asha writes her jobs on a scrap of paper."
+      ],
+      "pre": "  - Open the cafe\n  - Restock milk\n  - Call the supplier\n\n  By lunch: the paper is lost.\n  What is done? Nobody knows."
+     },
+     "segments": [
+      {
+       "say": "Every morning at the Corner Cafe, Asha writes her jobs on a scrap of paper. Open the cafe. Restock milk. Call the supplier.",
+       "focus": "pre"
+      },
+      {
+       "say": "By lunch, the paper is lost, and nobody knows what is done."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 28 · FINAL BOSS",
+      "title": "The Personal Task Manager",
+      "subtitle": "",
+      "badge": "Reward: 300 XP and the Python Builder badge"
+     },
+     "segments": [
+      {
+       "say": "Welcome to Chapter 28. The final boss! In Chapter 1, Asha printed one receipt. Today she builds real software."
+      },
+      {
+       "say": "Asha will build a task manager that keeps her jobs in a file, with tests written first, and an AI assistant at every stage.",
+       "subtitle": "Plan it. Test it. Build it. Judge every answer."
+      },
+      {
+       "say": "The AI will promise that its code passes all of her tests. Her tests will decide."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mission",
+   "section": "The mission",
+   "title": "The mission",
+   "direction": "The four commands and the file, then the whole course in one table.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Four commands, one file",
+      "label": "The mission",
+      "reveal": 0,
+      "items": [
+       "`add` a task, with a title and a priority.",
+       "`done` marks a task as finished.",
+       "`list` shows every task. `quit` saves them.",
+       "A broken file gives a clear message, never a crash."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here is the mission. Add a task, with a title and a priority.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Done marks a task as finished.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "List shows every task, and quit saves them in a file, so they are still there tomorrow.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "And a broken file gives a clear message, never a crash.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "This boss uses the whole course",
+      "label": "The mission",
+      "columns": [
+       "Chapters",
+       "What you use"
+      ],
+      "rows": [
+       [
+        "1 to 4",
+        "`print()`, f-strings, `input()` and `int()`"
+       ],
+       [
+        "6 to 8",
+        "`if`, `while True` and `for` loops"
+       ],
+       [
+        "11 to 14",
+        "Lists, dictionaries and comprehensions"
+       ],
+       [
+        "16 to 20",
+        "Functions, modules, and tests written first"
+       ],
+       [
+        "21 to 23",
+        "Files, `try` and `except`, and JSON"
+       ],
+       [
+        "26 and 27",
+        "Classes, and changing code safely with tests"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "This is the final boss, so it uses the whole course. Printing, text and input, from the first chapters.",
+       "focus_row": 0
+      },
+      {
+       "say": "Decisions and loops.",
+       "focus_row": 1
+      },
+      {
+       "say": "Lists, dictionaries and comprehensions.",
+       "focus_row": 2
+      },
+      {
+       "say": "Functions, modules, and tests written first.",
+       "focus_row": 3
+      },
+      {
+       "say": "Files, error handling and JSON.",
+       "focus_row": 4
+      },
+      {
+       "say": "And classes, from Chapter 26, with the safe changes from Chapter 27.",
+       "focus_row": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "build-preview",
+   "section": "What you will build",
+   "title": "What you will build",
+   "direction": "The files and their jobs, then a real session as the destination.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Three code files, one job each",
+      "label": "What you will build",
+      "columns": [
+       "File",
+       "Its job"
+      ],
+      "rows": [
+       [
+        "`tasks_core.py`",
+        "The rules: `Task`, `TaskList`, save and load"
+       ],
+       [
+        "`test_tasks_core.py`",
+        "Ten tests, written before the rules"
+       ],
+       [
+        "`task_app.py`",
+        "The commands: `input()`, then the rules"
+       ],
+       [
+        "`tasks.json`",
+        "The saved tasks"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Tasks core holds the rules: a task, a task list, and saving and loading.",
+       "focus_row": 0
+      },
+      {
+       "say": "The test file checks the rules. It comes first.",
+       "focus_row": 1
+      },
+      {
+       "say": "Task app holds the conversation with the user.",
+       "focus_row": 2
+      },
+      {
+       "say": "And tasks dot JSON keeps the tasks between runs.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/task_app.py",
+      "heading": "The destination: a real session",
+      "code_lines": [
+       31,
+       32,
+       33,
+       34,
+       35,
+       36,
+       37,
+       38,
+       39
+      ],
+      "highlight": [],
+      "output": "project/task_app.expected"
+     },
+     "segments": [
+      {
+       "say": "Here is a real session. Asha lists her tasks. Each line shows a number, an x for a done task, the title and the priority.",
+       "out_highlight": [
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "She marks task 2 as done, and adds a new task.",
+       "out_highlight": [
+        6,
+        7,
+        8,
+        9,
+        10
+       ]
+      },
+      {
+       "say": "The second list shows both changes. Quit saves them in the file.",
+       "out_highlight": [
+        12,
+        13,
+        15,
+        17
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "criteria",
+   "section": "Acceptance criteria",
+   "title": "Acceptance criteria",
+   "direction": "Seven criteria in groups, a quiz on why the rules have no input(), then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Done means all seven are true",
+      "label": "Acceptance criteria",
+      "items": [
+       "`add` refuses an empty title, or a priority other than 1, 2 or 3.",
+       "`done` takes a task number, counting from 1.",
+       "`list` shows each task's number, mark and priority.",
+       "`quit` saves every task to `tasks.json`.",
+       "A missing or empty file means no tasks yet. A broken one gives one clear line.",
+       "The rules contain no `input()` and no `print()`.",
+       "All ten tests pass."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Asha writes down what done means.",
+       "reveal": 0
+      },
+      {
+       "say": "One. Add refuses an empty title, or a priority that is not 1, 2 or 3.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Two and three. Done takes a number, counting from 1. List shows every task.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Four and five. Quit saves every task. A missing or empty file means no tasks yet. A broken file gives one clear line.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "Six. The rules contain no input and no print.",
+       "reveal": 6,
+       "focus": 5
+      },
+      {
+       "say": "And seven. All ten tests pass.",
+       "reveal": 7,
+       "focus": 6
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Why must the rules contain no `input()`?",
+      "options": [
+       "`input()` makes programs slow",
+       "A test cannot type, so it could not run them",
+       "JSON cannot save input",
+       "`input()` only works in loops"
+      ],
+      "answer": 1,
+      "explain": "A rule that waits for a person stops a test. Keep the conversation in a separate file."
+     },
+     "segments": [
+      {
+       "say": "Quick check, from Chapter 20. Why must the rules contain no input?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. A test cannot type. A rule that waits for a person would stop the test. So the conversation lives in its own file."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Rules in one file, the conversation in another.",
+       "Tasks count from 1 for people.",
+       "Done means seven checks."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. You know the files, and what done means."
+      },
+      {
+       "say": "Next, Asha plans with an AI assistant."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plan",
+   "section": "Plan it with AI",
+   "title": "Plan it with AI",
+   "direction": "Stage 1: the AI's plan, one class that asks, prints and saves. Asha checks it against Chapter 20.",
+   "beats": [
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: classes and functions",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner. I know classes, data classes, files, JSON, try and except, and pytest. I want a command-line task manager with add, done, list and quit, saved as JSON. Do not write code. Plan the classes and functions."
+       },
+       {
+        "role": "ai",
+        "text": "Make one class, `TaskManager`.\nIts `run()` method asks for commands with `input()`, prints the tasks, and saves the file after each command."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "In this project, the six AI stages help build one module: the rules. Stage 1: plan. Asha says what she wants, and says: no code yet."
+      },
+      {
+       "say": "The AI suggests one class whose run method asks with input, prints the tasks, and saves the file.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "It would work. But nothing in it could be tested, because every method waits for a person. Asha remembers her criterion six."
+      },
+      {
+       "say": "So she asks for the rules in one module, with no input and no print, and the conversation in a separate file."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Tests first",
+   "direction": "Three of the ten tests, then a run against empty rules. Ask whether all ten fail, then reveal 7 failed, 3 passed.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/test_tasks_core.py",
+      "heading": "Step 1: Write the tests first",
+      "code_lines": [
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21
+      ],
+      "highlight": [
+       7
+      ],
+      "hidden_text": "The tests run on the next screen."
+     },
+     "segments": [
+      {
+       "say": "Time to build. Step 1: as in Chapter 20, Asha writes ten tests before any rule exists. Sample makes a list of three tasks for the tests to use."
+      },
+      {
+       "say": "The first test checks that tasks keep their order.",
+       "highlight": [
+        15,
+        16
+       ]
+      },
+      {
+       "say": "The second checks that an empty title is refused, with pytest raises, from Chapter 22.",
+       "highlight": [
+        19,
+        20,
+        21
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/step1/tasks_core.py",
+      "heading": "Step 1: Empty rules",
+      "code_lines": [
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29,
+       30,
+       31,
+       32,
+       33,
+       34,
+       35
+      ],
+      "highlight": [
+       23,
+       24
+      ],
+      "hidden_text": "Predict the result before the tests run."
+     },
+     "segments": [
+      {
+       "say": "Then she writes empty rules. The classes and functions exist, but they do nothing."
+      },
+      {
+       "say": "Open tasks and lines give back an empty list, and load tasks gives back an empty task list.",
+       "highlight": [
+        23,
+        24,
+        26,
+        27,
+        34,
+        35
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Empty rules do nothing. Will all ten tests fail?"
+     },
+     "after": [
+      {
+       "say": "No. Asha runs them to see."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/step1/test_tasks_core.py",
+      "heading": "Step 1: Seven fail, three pass",
+      "code_lines": [
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60
+      ],
+      "highlight": [
+       55,
+       60
+      ],
+      "output": "examples/step1/test_tasks_core.expected"
+     },
+     "segments": [
+      {
+       "say": "Seven fail, as they should. But three pass already.",
+       "highlight": [],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "An empty list looks like no tasks. So the tests for a missing file and an empty file pass on rules that do nothing. So does the save test.",
+       "highlight": [
+        55,
+        60
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "A passing test proves something only when it can fail.",
+       "highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Tasks and a task list",
+   "direction": "The Task data class and TaskList.add, then a check run with a predict question about the stripped title.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/tasks_core.py",
+      "heading": "Step 2: A task is a data class",
+      "code_lines": [
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "highlight": [
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "hidden_text": "The next screen shows the task list."
+     },
+     "segments": [
+      {
+       "say": "Step 2. A task is a data class, as in Chapter 26: a title, a priority that starts at 2, and done, which starts as False."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/tasks_core.py",
+      "heading": "Step 2: The task list checks every task",
+      "code_lines": [
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29,
+       30,
+       31,
+       32
+      ],
+      "highlight": [
+       23,
+       24
+      ],
+      "hidden_text": "The next screen adds three tasks."
+     },
+     "segments": [
+      {
+       "say": "The task list keeps the tasks in a list. Tasks or empty list gives the list that was passed in, or a new empty one. List makes a copy, so nothing is shared."
+      },
+      {
+       "say": "Add strips the spaces around the title first.",
+       "highlight": [
+        27
+       ]
+      },
+      {
+       "say": "Then it refuses an empty title, and a priority that is not 1, 2 or 3, each with its own value error.",
+       "highlight": [
+        28,
+        29,
+        30,
+        31
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/step2/list_check.py",
+      "heading": "Step 2: Three tasks",
+      "highlight": [
+       6
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Asha adds three tasks. Line 6 adds Restock milk with spaces around it, and no priority.",
+       "highlight": [
+        6
+       ]
+      },
+      {
+       "say": "Line 9 prints one line per task: its number, a box that is empty until the task is done, the title, and P with the priority.",
+       "highlight": [
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does the second line of the output show for line 6's task?"
+     },
+     "after": [
+      {
+       "say": "2, the title without spaces, and P2, the default priority.",
+       "output": "examples/step2/list_check.expected",
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And the empty title on line 11 is refused, with the message from add.",
+       "highlight": [
+        11
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Numbers that start at 1",
+   "direction": "complete() and lines(), a check run, then stage 2: the AI's complete() and an ask, then the comparison run. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/tasks_core.py",
+      "heading": "Step 3: People count from 1",
+      "code_lines": [
+       34,
+       35,
+       36,
+       37,
+       38,
+       39,
+       40,
+       41,
+       42,
+       43,
+       44,
+       45,
+       46,
+       47,
+       48,
+       49
+      ],
+      "highlight": [
+       34,
+       35,
+       36,
+       37
+      ],
+      "hidden_text": "The next screen marks a task as done."
+     },
+     "segments": [
+      {
+       "say": "Step 3. People count tasks from 1, but a list counts from 0, as in Chapter 11. Complete checks the number first, then marks the task at number minus 1."
+      },
+      {
+       "say": "Open tasks keeps the tasks that are not done, with a comprehension.",
+       "highlight": [
+        39,
+        40
+       ]
+      },
+      {
+       "say": "Lines makes one line per task: its number, an x when it is done, the title and the priority.",
+       "highlight": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/step3/done_check.py",
+      "heading": "Step 3: Task 1 is done",
+      "highlight": [
+       8
+      ],
+      "output": "examples/step3/done_check.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha completes task 1. The first task gets its x.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Two open tasks are left. And task 4 does not exist, so it is refused.",
+       "highlight": [
+        11,
+        13
+       ],
+       "out_highlight": [
+        4,
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then compare",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write a function complete(tasks, number) that marks a task in a list as done. People count tasks from 1. Show only the function."
+       },
+       {
+        "role": "ai",
+        "text": "Here it is. It marks the task as done:",
+        "code": "examples/ai/write/write_compare.py",
+        "code_lines": [
+         11,
+         12
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha wrote complete herself first. Now she asks the AI for the same rule, as a small function she can test alone, and says: people count from 1."
+      },
+      {
+       "say": "The AI's version is one line, and it sounds sure. Asha names it ai complete, so both versions fit in one file.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai/write/write_compare.py",
+      "heading": "Her version and the AI's, side by side",
+      "highlight": [
+       11,
+       12
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "She puts both versions in one file. Each one completes task 1 on a list of two tasks.",
+       "highlight": [
+        17,
+        18
+       ]
+      },
+      {
+       "say": "Look at line 12 of the AI's version.",
+       "highlight": [
+        12
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The AI's line 12 uses `tasks[number]`. Which task does it mark for number 1?"
+     },
+     "after": [
+      {
+       "say": "Restock milk, the second task. Position 1 in a list is the second item.",
+       "output": "examples/ai/write/write_compare.expected",
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Asha's version subtracts 1, so it marks the first task. She keeps her own.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Tests first, even for empty rules.",
+       "Every new task is checked.",
+       "Number minus 1 is the list position."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Relax your shoulders. The task list works."
+      },
+      {
+       "say": "Next, saving and loading, written by the AI against her tests."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Save and load",
+   "direction": "Stage 3: the AI's save and load and its promise, the ask, then the run with two failures.",
+   "beats": [
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: code that must pass my tests",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here are my ten tests. Write save_tasks(path, task_list) and load_tasks(path) for my Task and TaskList classes. Do not change my tests.",
+        "code": "project/test_tasks_core.py",
+        "code_lines": [
+         46,
+         47,
+         48,
+         49,
+         50,
+         51
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Here are both functions. They pass all ten of your tests.",
+        "code": "examples/ai/flawed/tasks_core.py",
+        "code_lines": [
+         46,
+         47,
+         48
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Step 4: save and load. Stage 3: generate. Asha pastes her ten tests, and asks the AI for the two functions. Do not change my tests."
+      },
+      {
+       "say": "The AI writes both, and says: they pass all ten of your tests.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai/flawed/tasks_core.py",
+      "heading": "Generate: the AI's save and load",
+      "code_lines": [
+       46,
+       47,
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60,
+       61
+      ],
+      "highlight": [
+       47
+      ],
+      "hidden_text": "Her tests run on the next screen."
+     },
+     "segments": [
+      {
+       "say": "Line 47 gives the list of tasks straight to JSON dumps."
+      },
+      {
+       "say": "And load tasks reads the text and gives it to JSON loads, with no other check.",
+       "highlight": [
+        53,
+        54,
+        57,
+        58
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The AI says these pass all ten tests. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Asha does not argue. She runs her tests."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai/flawed/test_tasks_core.py",
+      "heading": "Her tests run the AI's code",
+      "code_lines": [
+       46,
+       47,
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60
+      ],
+      "highlight": [],
+      "output": "examples/ai/flawed/test_tasks_core.expected"
+     },
+     "segments": [
+      {
+       "say": "Two fail. Save then load, and the empty file.",
+       "out_highlight": [
+        1,
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Eight pass, but a promise of ten is not ten. Her tests caught a confident claim.",
+       "highlight": [
+        46,
+        58
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: The command loop",
+   "direction": "Walk run() and the main block, with the finished save and load in place.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/task_app.py",
+      "heading": "Step 5: The command loop",
+      "code_lines": [
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28
+      ],
+      "highlight": [
+       11,
+       12,
+       13,
+       14
+      ],
+      "hidden_text": "The main program follows."
+     },
+     "segments": [
+      {
+       "say": "Step 5: the command loop. Task app holds the conversation. Run asks for a command until the user types quit, then returns, which ends the loop."
+      },
+      {
+       "say": "Add asks for a title and a priority, and calls the rule.",
+       "highlight": [
+        16,
+        17,
+        18,
+        19
+       ]
+      },
+      {
+       "say": "Done asks for a number. List prints each line. Anything else shows the commands.",
+       "highlight": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+       ]
+      },
+      {
+       "say": "Every rule raises only value error, with a clear message. So one except catches a bad title, a bad priority and a bad number.",
+       "highlight": [
+        27,
+        28
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/task_app.py",
+      "heading": "Step 5: Load, run, save",
+      "code_lines": [
+       31,
+       32,
+       33,
+       34,
+       35,
+       36,
+       37,
+       38,
+       39
+      ],
+      "highlight": [
+       31,
+       32,
+       33,
+       34
+      ],
+      "hidden_text": "Its runs come in Test it."
+     },
+     "segments": [
+      {
+       "say": "The main program loads the tasks. A broken file gives one line that starts with tasks not loaded."
+      },
+      {
+       "say": "The else block runs only when the tasks loaded. It shows how many are open, runs the loop, and saves.",
+       "highlight": [
+        35,
+        36,
+        37,
+        38,
+        39
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "section": "Test it",
+   "title": "Test it",
+   "direction": "Stage 4: the AI's case list misses the empty file. Stage 5: the last line of the error, cause first, the fix, ten passed. Quiz, then three known-result runs, one with an ask.",
+   "beats": [
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: cases for loading",
+      "messages": [
+       {
+        "role": "you",
+        "text": "List test cases for load_tasks(path), with the expected result for each. Include unusual files."
+       },
+       {
+        "role": "ai",
+        "text": "1. A normal file: the saved tasks.\n2. A missing file: no tasks.\n3. A broken file: a ValueError.\n4. An empty file is broken JSON, so it should raise a ValueError too."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks the AI for test cases for loading, with an expected result for each."
+      },
+      {
+       "say": "It lists a normal file, a missing file and a broken file. And it says: an empty file is broken JSON, so it should raise an error.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Asha's criterion five says the opposite: an empty file means no tasks yet. Her test already checks it, and it is one of the two that failed. Where the AI and her criteria disagree, her criteria win."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai/debug/save_crash.py",
+      "heading": "Debug: read the last line first",
+      "highlight": [
+       7
+      ],
+      "error": "examples/ai/debug/save_crash.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. For the other failure, Asha saves one task with the AI's code. It stops with a long error report, through the lines of the JSON module."
+      },
+      {
+       "say": "As she learned in Chapter 1, she finds the error line at the bottom. Type error: object of type Task is not JSON serializable. Serializable means it can be saved as text.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Here you see only that error line. On your computer, the report above it shows full file paths, and Python 3.14 and newer add a short note under it.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "save_tasks() stops with TypeError: Object of type Task is not JSON serializable. First explain the cause. Then show the smallest fix."
+       },
+       {
+        "role": "ai",
+        "text": "`json.dumps()` can save numbers, text, True, False, None, lists and dictionaries. A `Task` is none of these.\nThe fix: turn each task into a dictionary first, with a `to_dict()` method.",
+        "code": "project/tasks_core.py",
+        "code_lines": [
+         52,
+         53,
+         54,
+         55
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "She pastes the code and the error, and asks for the cause first."
+      },
+      {
+       "say": "The AI explains: JSON can save numbers, text, true and false, None, lists and dictionaries. A task is none of these. So each task becomes a dictionary first, with a new method, to dict.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai/fixed/tasks_core.py",
+      "heading": "Two fixes",
+      "code_lines": [
+       13,
+       14,
+       15,
+       16,
+       17,
+       52,
+       53,
+       54,
+       55,
+       64,
+       65
+      ],
+      "highlight": [
+       13,
+       14,
+       15,
+       16,
+       17
+      ],
+      "hidden_text": "Every test runs again on the next screen."
+     },
+     "segments": [
+      {
+       "say": "The new to dict method returns a task as a dictionary."
+      },
+      {
+       "say": "Line 53 turns each task into a dictionary before dumps.",
+       "highlight": [
+        53
+       ]
+      },
+      {
+       "say": "And lines 64 and 65 treat an empty file as no tasks, before JSON loads can complain.",
+       "highlight": [
+        64,
+        65
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai/fixed/test_tasks_core.py",
+      "heading": "Every test again",
+      "code_lines": [
+       46,
+       47,
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60
+      ],
+      "highlight": [],
+      "output": "examples/ai/fixed/test_tasks_core.expected"
+     },
+     "segments": [
+      {
+       "say": "Then she runs every test again, not only the two that failed. Ten passed.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/step4/save_check.py",
+      "heading": "Save, then load again",
+      "highlight": [
+       10,
+       11
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "One more check, by hand. Asha saves two tasks, the first one done. Line 10 prints the saved file, and line 11 loads it again.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11
+       ]
+      }
+     ],
+     "ask": {
+      "question": "After loading the file again, what does line 12 print?"
+     },
+     "after": [
+      {
+       "say": "The same two lines as before saving: task 1 with its x, and task 2 still open.",
+       "output": "examples/step4/save_check.expected",
+       "highlight": [
+        12
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "And the file shows each task as a dictionary. JSON writes True as true, in small letters.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which of these can `json.dumps()` save as it is?",
+      "options": [
+       "A `Task` object",
+       "A `TaskList` object",
+       "A dictionary of text, numbers and `True`",
+       "An open file"
+      ],
+      "answer": 2,
+      "explain": "JSON knows dictionaries, lists, text, numbers, True, False and None. Turn other objects into a dictionary first."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which of these can JSON dumps save, as it is?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. A dictionary of text, numbers and true. Any other object must become a dictionary first."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Three runs, with known results",
+      "label": "Test it",
+      "columns": [
+       "Case",
+       "Expected"
+      ],
+      "rows": [
+       [
+        "First run, no file",
+        "0 open tasks, then one task is added and saved"
+       ],
+       [
+        "Bad answers",
+        "Each one gives a line that starts with Not done"
+       ],
+       [
+        "Broken file",
+        "Tasks not loaded: tasks.json is not valid JSON ..."
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last, Asha runs the whole program on three cases. She writes the expected result first.",
+       "focus_row": null
+      },
+      {
+       "say": "A first run, with no file yet.",
+       "focus_row": 0
+      },
+      {
+       "say": "Bad answers.",
+       "focus_row": 1
+      },
+      {
+       "say": "And a broken file.",
+       "focus_row": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/cases/first_run/task_app.py",
+      "heading": "Case: first run",
+      "code_lines": [
+       31,
+       32,
+       33,
+       34,
+       35,
+       36,
+       37,
+       38,
+       39
+      ],
+      "highlight": [
+       32
+      ],
+      "output": "examples/cases/first_run/task_app.expected"
+     },
+     "segments": [
+      {
+       "say": "No file yet, so zero open tasks. She adds one, lists it, and quits. Pass.",
+       "out_highlight": [
+        1,
+        6,
+        8
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/cases/bad_input/task_app.py",
+      "heading": "Case: bad answers",
+      "code_lines": [
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28
+      ],
+      "highlight": [
+       18
+      ],
+      "note": "The user will type: add, Sweep the floor, high."
+     },
+     "segments": [
+      {
+       "say": "Now bad answers. First, a priority of high. Line 18 turns the answer into a whole number with int, as in Chapter 4."
+      }
+     ],
+     "ask": {
+      "question": "The user types `high` as the priority. What happens?"
+     },
+     "after": [
+      {
+       "say": "Int raises a value error, and line 28 prints not done, with Python's own message. No crash.",
+       "output": "examples/cases/bad_input/task_app.expected",
+       "highlight": [
+        18,
+        28
+       ],
+       "out_highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "An empty title and task 9 are refused too. And an unknown command shows the list of commands. Pass.",
+       "highlight": [],
+       "out_highlight": [
+        9,
+        12,
+        14
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/cases/bad_json/task_app.py",
+      "heading": "Case: a broken file",
+      "code_lines": [
+       31,
+       32,
+       33,
+       34,
+       35,
+       36,
+       37,
+       38,
+       39
+      ],
+      "highlight": [
+       32
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "And the broken file, which is missing a comma between two tasks. Load tasks raises a value error for a broken file."
+      }
+     ],
+     "ask": {
+      "question": "The file is broken. Will the app crash?"
+     },
+     "after": [
+      {
+       "say": "No. Line 34 prints one clear line: expecting a comma. Pass. All three match.",
+       "output": "examples/cases/bad_json/task_app.expected",
+       "highlight": [
+        33,
+        34
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Read the error line first.",
+       "JSON saves dictionaries, not objects.",
+       "Run every test after every fix."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Every test passes, and every known case matches."
+      },
+      {
+       "say": "Next, the last stage: a review from the AI."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "improve",
+   "section": "Improve it with AI",
+   "title": "Improve it with AI",
+   "direction": "Stage 6: remove the priority check. Ask whether the tests still pass, then the run. Six stages table, breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: a shorter module",
+      "messages": [
+       {
+        "role": "you",
+        "text": "All ten tests pass. Review my module and suggest one change that makes it shorter. Do not change what it does."
+       },
+       {
+        "role": "ai",
+        "text": "Remove the priority check from `add()`. The app already asks for a priority from 1 to 3, so the check is never needed."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. All ten tests pass. Asha asks for one change that makes the module shorter, and says: do not change what it does."
+      },
+      {
+       "say": "The AI says: remove the priority check from add. The app already asks for 1 to 3.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai/improve/test_tasks_core.py",
+      "heading": "The test for a bad priority",
+      "code_lines": [
+       24,
+       25,
+       26
+      ],
+      "highlight": [
+       26
+      ],
+      "hidden_text": "Predict the result before the tests run."
+     },
+     "segments": [
+      {
+       "say": "Remember her third test. It adds a task with priority 5, and expects a value error."
+      }
+     ],
+     "ask": {
+      "question": "Without the priority check, will all ten tests still pass?"
+     },
+     "after": [
+      {
+       "say": "No. One fails: the test for a bad priority.",
+       "output": "examples/ai/improve/test_tasks_core.expected",
+       "out_highlight": [
+        1,
+        3,
+        4
+       ]
+      },
+      {
+       "say": "The app's question only asks for 1 to 3. It cannot stop a person who types 5, or another program that uses the task list. The suggestion changed what the code does. Asha keeps her version."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Six stages, one module of rules",
+      "label": "Work with AI",
+      "columns": [
+       "Stage",
+       "How AI helped",
+       "Asha's check"
+      ],
+      "rows": [
+       [
+        "Plan",
+        "One class that asks, prints and saves",
+        "Criterion six: testable rules"
+       ],
+       [
+        "Write",
+        "Its own `complete()`",
+        "It marked the wrong task"
+       ],
+       [
+        "Generate",
+        "Save and load: \"all ten pass\"",
+        "Two tests failed"
+       ],
+       [
+        "Test",
+        "A list of cases",
+        "It missed the empty file"
+       ],
+       [
+        "Debug",
+        "JSON cannot save a `Task`",
+        "`to_dict()`; ten tests again"
+       ],
+       [
+        "Improve",
+        "Remove the priority check",
+        "One test failed"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here are all six stages, on one module of rules."
+      },
+      {
+       "say": "The AI helped at every stage, from the plan to the improvement.",
+       "focus_row": 0
+      },
+      {
+       "say": "It was confidently wrong five times. A plan that could not be tested.",
+       "focus_row": 0
+      },
+      {
+       "say": "The wrong task.",
+       "focus_row": 1
+      },
+      {
+       "say": "A promise of ten passes.",
+       "focus_row": 2
+      },
+      {
+       "say": "A case list with no empty file.",
+       "focus_row": 3
+      },
+      {
+       "say": "And a check it wanted to remove.",
+       "focus_row": 5
+      },
+      {
+       "say": "At debug, the AI was right. Asha could tell, because the fix made every test pass.",
+       "focus_row": 4
+      },
+      {
+       "say": "Every time, something Asha wrote first decided: her criteria, a side by side run, and her tests.",
+       "focus_row": null
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A promise is not a result. Run the tests.",
+       "Your criteria beat the AI's guess.",
+       "Keep a check your tests need."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Before she pasted any code into the chat, Asha checked it for private data, the habit from Chapter 1. Her tasks hold only cafe jobs."
+      },
+      {
+       "say": "Let's recap."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Recap points one by one, a final quiz, the badge, a look back at the whole course, and the practice table.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you used",
+      "items": [
+       "Keep the rules free of `input()` and `print()`, so tests can check them.",
+       "Write the tests first. A test that passes on empty rules proves nothing.",
+       "Number tasks from 1 for people, and subtract 1 for the list.",
+       "JSON saves dictionaries, not objects. `to_dict()` turns one into the other.",
+       "A missing or empty file can mean nothing yet. A broken one gets a clear message.",
+       "Every AI suggestion was judged by your criteria, a run, or your tests."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Here is what you used in the final boss."
+      },
+      {
+       "say": "Keep the rules free of input and print, so tests can check them.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Write the tests first. A test that passes on empty rules proves nothing.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Number tasks from 1 for people, and subtract 1 for the list.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "JSON saves dictionaries, not objects. To dict turns one into the other.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "A missing or empty file can mean nothing yet. A broken one gets a clear message.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And every AI suggestion was judged by your criteria, a run, or your tests.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI says its new code passes all your tests. What do you do?",
+      "options": [
+       "Run the tests yourself",
+       "Trust it, because it sounds sure",
+       "Delete the tests that fail",
+       "Ask it to say it again"
+      ],
+      "answer": 0,
+      "explain": "A promise is not a result. Your tests decide."
+     },
+     "segments": [
+      {
+       "say": "One last check. An AI says its new code passes all your tests. What do you do?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Run the tests yourself. A promise is not a result. Your tests decide."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "FINAL BOSS COMPLETE",
+      "title": "Python Builder",
+      "subtitle": "You earned 300 XP. The course is complete.",
+      "badge": "Badge unlocked: Python Builder",
+      "tile": 28
+     },
+     "segments": [
+      {
+       "say": "Final boss complete! You earned 300 XP and the Python Builder badge. Module 6 is done, and so is the course."
+      }
+     ],
+     "hold": 1.5
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Look back: 28 chapters",
+      "label": "Course complete",
+      "items": [
+       "Module 1: print, variables, text and input. The Bill Splitter.",
+       "Module 2: decisions, loops and debugging. The Guessing Game.",
+       "Module 3: lists, dictionaries, tuples, sets. The Expense Tracker.",
+       "Module 4: functions, modules and tests. The Quiz App.",
+       "Module 5: files, errors, JSON and packages. The Report Generator.",
+       "Module 6: classes, safe changes, and this task manager."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Look how far you came. In Chapter 1, Asha printed one cafe receipt."
+      },
+      {
+       "say": "Then variables, text and input, and the Bill Splitter.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Decisions, loops and debugging, and the Guessing Game.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Lists, dictionaries, tuples and sets, and the Expense Tracker.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Functions, modules and tests, and the Quiz App.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Files, errors, JSON and packages, and the Report Generator.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And classes, safe changes, and today's task manager.",
+       "reveal": 6,
+       "focus": 5
+      },
+      {
+       "say": "28 chapters, 6 boss levels, and one AI habit: check every answer."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Make a task; JSON there and back; One task line",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Remove a task; Open and done; Most important first",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Load without crashing; Clear the done tasks",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "The practice file has eight more tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-ups, worth 10 XP each, such as JSON there and back.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including removing a task.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each, including a load that never crashes.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card for the whole course. Next steps: keep building small tools, review chapters, practise. Hold quietly.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "COURSE COMPLETE",
+      "title": "Keep building",
+      "subtitle": "Small tools, one test at a time, with AI at your side.",
+      "badge": "",
+      "tile": 28
+     },
+     "segments": [
+      {
+       "say": "So, what's next? Keep building. Pick a small problem from your own life, plan it, write the tests first, and let an AI help."
+      },
+      {
+       "say": "When a topic feels unclear, go back to its chapter. And try the practice tasks you skipped."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "Thank you for learning with Asha at the Corner Cafe. Happy coding!"
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}
