@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-27",
   "run_id": "2026-11-10-f86318",
-  "verified_at": "2026-11-10T11:53:07+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T12:14:30+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -240,17 +240,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.4
+        "estimated_minutes": 18.4,
+        "duration_seconds": 1104.8,
+        "size_mb": 46.42,
+        "scenes": 15,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "203a542f1ff333031d6b0bf7229d801a58a46c80b77bbdd894b09eddd885de37"
+  "fingerprint": "f7b28b57baa9898ff9a764205dadfc16069443a7bf4f391190841a821045a6b6"
 }

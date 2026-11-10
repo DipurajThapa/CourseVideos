@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:27 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:25.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:48)
 
 **Section:** Introduction
 
@@ -25,7 +25,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** It must give exactly the same results as Sam's code. Let's get there, one small step at a time.
   **On screen:** Code `examples/till_final.py`, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:48 to 1:00)
 
 **Section:** Learning goals
 
@@ -44,7 +44,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Read a unified diff.
     - Review an AI's refactoring with your tests.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (1:00 to 1:16)
 
 **Section:** Why this matters
 
@@ -59,7 +59,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - **Refactoring** means changing the structure of code without changing what it does.
     - Tests, written before any change, prove the behaviour stayed the same.
 
-## Scene 4: The idea: a safe refactoring loop
+## Scene 4: The idea: a safe refactoring loop (1:16 to 2:10)
 
 **Section:** The idea
 
@@ -87,7 +87,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - In a diff, minus was removed and plus was added.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Step 1: Read from the top
+## Scene 5: Step 1: Read from the top (2:10 to 3:52)
 
 **Section:** Build it step by step
 
@@ -116,7 +116,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And with tax, 12.38. Asha's reading of the code was right.
   **On screen:** Code `examples/ex02_trace.py`, line 9 highlighted, output `examples/ex02_trace.expected`
 
-## Scene 6: Step 2: Characterization tests
+## Scene 6: Step 2: Characterization tests (3:52 to 4:42)
 
 **Section:** Build it step by step
 
@@ -134,7 +134,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** C. A characterization test records what the code does now. It is not a judgement of right or wrong.
   **On screen:** Quick check: "Why does Asha's test expect `0.0` for an empty order, even though it looks odd?" (answer revealed: Because the test records what the code does now)
 
-## Scene 7: Step 3: Rename for the reader
+## Scene 7: Step 3: Rename for the reader (4:42 to 5:27)
 
 **Section:** Build it step by step
 
@@ -152,7 +152,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Three passed. The names changed, and the behaviour did not.
   **On screen:** Code `examples/test_till_v2.py`, line 2 highlighted, output `examples/test_till_v2.expected`
 
-## Scene 8: Step 4: Name the magic numbers
+## Scene 8: Step 4: Name the magic numbers (5:27 to 7:06)
 
 **Section:** Build it step by step
 
@@ -191,7 +191,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - One small change, then run the tests.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: See the outcome: the readable till
+## Scene 9: See the outcome: the readable till (7:06 to 8:29)
 
 **Section:** See the outcome
 
@@ -219,7 +219,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** But Sam left one more function, a stock checker. Asha decides to tidy it with an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex07_same.py`, line 6, 7, 8, 9, 10 highlighted, output `examples/ex07_same.expected`
 
-## Scene 10: Work with AI: Sam's stock checker
+## Scene 10: Work with AI: Sam's stock checker (8:29 to 14:10)
 
 **Section:** Work with AI
 
@@ -344,7 +344,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Run every test after every change.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: Common mistakes
+## Scene 11: Common mistakes (14:10 to 16:04)
 
 **Section:** Common mistakes
 
@@ -386,7 +386,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Never change a test to match new output.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Think beyond
+## Scene 12: Think beyond (16:04 to 16:50)
 
 **Section:** Think beyond
 
@@ -403,7 +403,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Think about it after the video.
   **On screen:** Question card: "When is refactoring someone else's code not worth it? What would you ask first?"
 
-## Scene 13: Recap
+## Scene 13: Recap (16:50 to 17:44)
 
 **Section:** Recap
 
@@ -446,7 +446,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code Reviewer You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 14: Practice
+## Scene 14: Practice (17:44 to 17:59)
 
 **Section:** Practice
 
@@ -459,7 +459,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks, worth 40 each. In the last one, you fix an AI's refactor that changed a boundary.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 15: What's next
+## Scene 15: What's next (17:59 to 18:25)
 
 **Section:** What's next
 

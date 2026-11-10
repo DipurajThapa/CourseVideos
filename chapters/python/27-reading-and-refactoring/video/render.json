@@ -1,0 +1,138 @@
+{
+  "chapter_id": "python-27",
+  "rendered_at": "2026-11-10T12:11:42+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "e2347e1fd74eb84c2a2fb784606d14d2d53d6204558b29e87a913df130dcd87a",
+  "inputs_sha256": "48acefb54cf2492923e0cd1493774ca190a0a4d9f21fe239667fc84e723e4a42",
+  "video_sha256": "8b099a734f98ca9c13405aee684eaabd8cd5d1da8f8b9b552867726fc7e5f758",
+  "duration_seconds": 1104.8,
+  "size_mb": 46.42,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 854,
+  "questions": 14,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 48.167
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 48.167,
+      "end": 59.633
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 59.633,
+      "end": 75.9
+    },
+    {
+      "id": "idea",
+      "title": "The idea: a safe refactoring loop",
+      "section": "The idea",
+      "start": 75.9,
+      "end": 129.5
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Read from the top",
+      "section": "Build it step by step",
+      "start": 129.5,
+      "end": 232.133
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Characterization tests",
+      "section": "Build it step by step",
+      "start": 232.133,
+      "end": 282.233
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Rename for the reader",
+      "section": "Build it step by step",
+      "start": 282.233,
+      "end": 327.067
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Name the magic numbers",
+      "section": "Build it step by step",
+      "start": 327.067,
+      "end": 426.033
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the readable till",
+      "section": "See the outcome",
+      "start": 426.033,
+      "end": 509.033
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: Sam's stock checker",
+      "section": "Work with AI",
+      "start": 509.033,
+      "end": 849.567
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 849.567,
+      "end": 963.9
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 963.9,
+      "end": 1009.567
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 1009.567,
+      "end": 1063.5
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1063.5,
+      "end": 1079.333
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1079.333,
+      "end": 1104.767
+    }
+  ]
+}
