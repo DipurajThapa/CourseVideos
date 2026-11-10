@@ -196,9 +196,13 @@ The `difflib` module in the standard library shows the difference between two ve
 import difflib
 from pathlib import Path
 
-old = Path("till_v2.py").read_text(encoding="utf-8").splitlines()[1:]
-new = Path("till_v3.py").read_text(encoding="utf-8").splitlines()[1:]
-for line in difflib.unified_diff(old, new, "v2", "v3", lineterm="", n=1):
+old = Path("till_v2.py").read_text(encoding="utf-8")
+new = Path("till_v3.py").read_text(encoding="utf-8")
+old_lines = old.splitlines()[1:]
+new_lines = new.splitlines()[1:]
+diff = difflib.unified_diff(old_lines, new_lines, "v2", "v3",
+                            lineterm="", n=1)
+for line in diff:
     print(line)
 ```
 
@@ -393,9 +397,13 @@ Because the name changed, the diff shows every line as changed. Asha read it car
 import difflib
 from pathlib import Path
 
-old = Path("stock_old.py").read_text(encoding="utf-8").splitlines()[1:]
-new = Path("stock_ai.py").read_text(encoding="utf-8").splitlines()[1:]
-for line in difflib.unified_diff(old, new, "old", "ai", lineterm="", n=0):
+old = Path("stock_old.py").read_text(encoding="utf-8")
+new = Path("stock_ai.py").read_text(encoding="utf-8")
+old_lines = old.splitlines()[1:]
+new_lines = new.splitlines()[1:]
+diff = difflib.unified_diff(old_lines, new_lines, "old", "ai",
+                            lineterm="", n=0)
+for line in diff:
     print(line)
 ```
 
@@ -537,7 +545,8 @@ LOW_LIMIT = 3
 
 def low_stock(stock, order):
     """Return the ordered items that will have fewer than 3 left."""
-    low = [item for item in order if stock[item] - order[item] < LOW_LIMIT]
+    low = [item for item in order
+           if stock[item] - order[item] < LOW_LIMIT]
     return sorted(low)
 
 

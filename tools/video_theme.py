@@ -319,6 +319,8 @@ def real_traceback(chapter: Path, rel: str, needle: str) -> list[str]:
                 # A quoted path inside a message (such as Python 3.13's "consider renaming" hint) would show
                 # the temporary run folder; keep only the file name, as the File lines do.
                 errs = [re.sub(r"'(?:[^'\s]*[/\\])([^/\\']+\.py)'", r"'\1'", x) for x in errs]
+                # An ImportError names the module's file in brackets, with the same temporary folder.
+                errs = [re.sub(r"\((?:[^()\s]*[/\\])([^/\\()]+\.py)\)", r"(\1)", x) for x in errs]
                 lines = [x for x in out.rstrip().splitlines()] + errs
         _TRACES[key] = lines
     return _TRACES[key]

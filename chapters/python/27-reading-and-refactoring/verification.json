@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-27",
   "run_id": "2026-11-10-f86318",
-  "verified_at": "2026-11-10T11:34:14+00:00",
+  "verified_at": "2026-11-10T11:41:08+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -19,7 +19,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 29,
+        "files_run": 37,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
@@ -69,6 +69,26 @@
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
+          "examples/stock_ai.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/stock_final.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/stock_old.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/stock_sorted.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/stock_v2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/test_stock.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
@@ -105,7 +125,19 @@
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
+          "examples/till_final.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/till_old.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/till_v2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/till_v3.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -190,6 +222,11 @@
           "sentences": 128,
           "average_words": 13.4,
           "longest": 30
+        },
+        "video/script.md": {
+          "sentences": 594,
+          "average_words": 9.0,
+          "longest": 30
         }
       }
     },
@@ -197,38 +234,15 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "scene intro: narration contains unspeakable characters ['<', '>']: 'Welcome to Code Quest, Chapter NN. <one sentence on what the learner w'",
-        "scene intro: narration contains unspeakable characters ['<', '>']: '<set up the hook> <point at the line> <reveal>'",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: output examples/<flawed>.expected must be an existing .expected file",
-        "scene learning-goals: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene why-this-matters: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene the-idea: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene build-it-step-by-step: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene see-the-outcome: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene work-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene common-mistakes: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene think-beyond: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene recap: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene practice: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene whats-next: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "need at least 6 on-screen questions with a timer, found 1",
-        "need at least 2 quick-check quizzes, found 0",
-        "need at least 2 breathers for 1 minutes, found 0",
-        "estimated length 1.1 min is outside 8 to 20 min",
         "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring",
         "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring",
         "missing video/render.json: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring"
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring"
       ],
       "details": {
-        "estimated_minutes": 1.1
+        "estimated_minutes": 17.6
       }
     }
   ],
-  "fingerprint": "3dec7d1e140bed9fd69754314e4701b8a68127d9f1f751ea009162048bae503f"
+  "fingerprint": "c0d4d91e62cda823d4b8dca728c4eee67ce93999fda691dd10149bf4bdee10cc"
 }

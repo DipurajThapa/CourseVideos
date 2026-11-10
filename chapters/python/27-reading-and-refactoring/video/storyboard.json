@@ -1,404 +1,1770 @@
 {
-  "chapter_id": "<language>-NN",
-  "number": 0,
-  "title": "Chapter NN: <Title>",
-  "video_title": "<Language> Chapter NN: <Title>",
-  "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
-  "scenes": [
+ "chapter_id": "python-27",
+ "number": 27,
+ "version": 3,
+ "title": "Chapter 27: Reading and Improving Code with AI",
+ "video_title": "Python Chapter 27: Reading and Improving Code with AI",
+ "summary": "Asha finds Sam's old till code at the Corner Cafe: short names, magic numbers and no tests. Follow her as she reads it, records what it does with tests and refactors it in small steps. Then watch her tidy a stock checker with an AI assistant at all six stages, where runs and tests catch three AI mistakes.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on Sam's unreadable till code at the Corner Cafe. Then the title, the AI tease and the mission, with no output.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
-      "beats": [
-        {
-          "visual": {
-            "type": "title",
-            "kicker": "CHAPTER NN",
-            "title": "<Title>",
-            "subtitle": "<quest line>",
-            "badge": "Reward: 100 XP and the <Badge> badge"
-          },
-          "segments": [
-            {
-              "say": "Welcome to Code Quest, Chapter NN."
-            },
-            {
-              "say": "<one sentence on what the learner will do>."
-            }
-          ]
-        },
-        {
-          "visual": {
-            "type": "code",
-            "heading": "<what to look at>",
-            "file": "examples/<flawed>.py"
-          },
-          "segments": [
-            {
-              "say": "<set up the hook>"
-            },
-            {
-              "say": "<point at the line>",
-              "highlight": [
-                2
-              ]
-            }
-          ],
-          "ask": {
-            "question": "<the question, shown with a 10-second timer>",
-            "seconds": 10
-          },
-          "after": [
-            {
-              "say": "<reveal>",
-              "output": "examples/<flawed>.expected"
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/till_old.py",
+      "heading": "Who wrote this?",
+      "code_lines": [
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Sam's code. No tests."
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha finds the old till code. Sam, who helped before her, wrote it in a hurry."
+      },
+      {
+       "say": "A function called f. Values called a, b and t 2. Numbers with no names. And no tests.",
+       "highlight": [
+        2,
+        7,
+        8
+       ]
+      },
+      {
+       "say": "It works. But nobody can read it, and nobody dares to change it.",
+       "highlight": []
+      }
+     ]
     },
     {
-      "id": "learning-goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Learning goals",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 27",
+      "title": "Reading and Improving Code with AI",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Code Reviewer badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 27. Today, you read code someone else wrote, and you improve it safely."
+      },
+      {
+       "say": "And an AI assistant will tidy some code for Asha. It will say the behaviour is exactly the same. Her tests will decide.",
+       "subtitle": "Change the structure. Keep the behaviour."
+      }
+     ]
     },
     {
-      "id": "why-this-matters",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Why this matters",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "the-idea",
-      "section": "The idea",
-      "title": "The idea",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "The idea",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "build-it-step-by-step",
-      "section": "Build it step by step",
-      "title": "Build it step by step",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Build it step by step",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "see-the-outcome",
-      "section": "See the outcome",
-      "title": "See the outcome",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "See the outcome",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work-with-ai",
-      "section": "Work with AI",
-      "title": "Work with AI",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Work with AI",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "common-mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Common mistakes",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "think-beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Think beyond",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Recap",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Practice",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "whats-next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "What's next",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/till_final.py",
+      "heading": "Today's mission: the same till, made readable",
+      "code_lines": [
+       3,
+       4,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "hidden_text": "By the end, you will know every line."
+     },
+     "segments": [
+      {
+       "say": "Here is today's mission: Sam's till, with clear names, named numbers and small functions.",
+       "highlight": [
+        3,
+        4,
+        7,
+        15
+       ]
+      },
+      {
+       "say": "It must give exactly the same results as Sam's code. Let's get there, one small step at a time.",
+       "highlight": []
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Read unfamiliar code from the top, and trace one input.",
+       "Write characterization tests that record what code does now.",
+       "Refactor in small steps, and run the tests after each one.",
+       "Read a unified diff.",
+       "Review an AI's refactoring with your tests."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Read unfamiliar code, write tests that record what it does now, and refactor in small steps.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Read a diff, and review an AI's changes with your tests.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define refactoring, and why tests come first.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "Most programming work is changing code that already exists.",
+       "**Refactoring** means changing the structure of code without changing what it does.",
+       "Tests, written before any change, prove the behaviour stayed the same."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Most programming work is changing code that already exists, often written by someone else.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Refactoring means changing the structure of code, without changing what it does. And the proof is a set of tests, written before you change anything.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: a safe refactoring loop",
+   "direction": "Teach the loop, characterization tests and the diff format. Then the kitchen analogy, a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "A safe refactoring loop",
+      "label": "The idea",
+      "body": [
+       "Go round the loop once for **every** small change."
+      ],
+      "pre": "  1. Tests first        record what the code does now\n          |\n  2. One small change   rename, a constant, a new function\n          |\n  3. Run the tests      same results?  yes: keep it\n          |                            no:  undo it\n  4. Review             read the change, then repeat"
+     },
+     "segments": [
+      {
+       "say": "Here is the big idea: a safe refactoring loop. First, tests that record what the code does now.",
+       "focus": "pre"
+      },
+      {
+       "say": "Then one small change. Then run the tests. Same results? Keep it. Different? Undo it. Then review, and go round again."
+      },
+      {
+       "say": "A test that records what the code does now, even the odd parts, is called a characterization test. It does not ask whether the result is right. It asks whether it is the same as before."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "How to read a diff",
+      "label": "The idea",
+      "body": [
+       "A **diff** shows two versions of a file, line by line."
+      ],
+      "pre": "  --- old version\n  +++ new version\n  @@ where a group of changes starts @@\n   a line that did not change\n  -a line that was removed\n  +a line that was added"
+     },
+     "segments": [
+      {
+       "say": "To review a change, you read a diff. A diff shows two versions of a file, line by line.",
+       "focus": "pre"
+      },
+      {
+       "say": "A line that starts with minus was removed. A line that starts with plus was added. A line that starts with a space did not change."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Like rearranging a kitchen",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "The shelves move, but every recipe must taste the same.",
+       "Unlike a kitchen, you can check every recipe automatically, every time."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of rearranging the cafe kitchen. The shelves move, but every recipe must taste exactly the same afterwards."
+      },
+      {
+       "say": "The comparison stops at one point. In code, your tests check every recipe automatically, every time you move a shelf.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Refactoring keeps the behaviour.",
+       "Tests first, then one small change.",
+       "In a diff, minus was removed and plus was added."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Tests first, then one small change at a time."
+      },
+      {
+       "say": "Next, Asha reads Sam's code."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Read from the top",
+   "direction": "Read till_old part by part, then ask about the empty order. Then trace one input with prints, and ask about the second pass.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/till_old.py",
+      "heading": "Step 1: Read from the top",
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. Before you change anything, read the code from the first line, and say in words what each part does. Line 2 defines f, with two values, a and b."
+      },
+      {
+       "say": "Lines 4 and 5 go through a. Each x is a tuple, so x 1 and x 2 are its second and third values. So a is an order of name, price and count.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 6 checks b, and line 7 takes 10 percent off. So b says whether the customer is a member.",
+       "highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Line 8 adds tax, and line 9 rounds. Lines 14 to 16 call f three times.",
+       "highlight": [
+        8,
+        9,
+        14,
+        15,
+        16
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 16 print, for an empty order?"
+     },
+     "after": [
+      {
+       "say": "Zero point zero. The loop never runs, so t stays 0. But 0 times 1.1 is a float, so round gives 0.0, not 0.",
+       "output": "examples/till_old.expected",
+       "highlight": [
+        16
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Lines 14 and 15 print 12.38, and 11.14 for a member. Remember these three results.",
+       "highlight": [
+        14,
+        15
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_trace.py",
+      "heading": "Step 1: Trace one input",
+      "highlight": [
+       6,
+       7,
+       8
+      ]
+     },
+     "segments": [
+      {
+       "say": "To check her reading, Asha traces one input. Line 8 prints the running total inside the loop, as in Chapter 9."
+      },
+      {
+       "say": "On the first pass, two teas at 3.5 make 7.0.",
+       "output": "examples/ex02_trace.expected",
+       "out_highlight": [
+        1
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 8 print on the second pass?"
+     },
+     "after": [
+      {
+       "say": "Cake, 4.25, 1, t equals 11.25. 7.0, plus one cake.",
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And with tax, 12.38. Asha's reading of the code was right.",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Characterization tests",
+   "direction": "Asha records the three results from Step 1 as pytest tests, run them, then a quiz on the idea.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_till_old.py",
+      "heading": "Step 2: Record what it does now",
+      "highlight": [
+       2,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 2. Now Asha records what f does today, before any change. Line 2 imports f, and line 4 is the order from step 1."
+      },
+      {
+       "say": "Each test uses one result from step 1. The normal order, the member order, and the odd one: an empty order gives 0.0.",
+       "highlight": [
+        7,
+        8,
+        11,
+        12,
+        15,
+        16
+       ]
+      },
+      {
+       "say": "She runs pytest. Three dots, three passed. From now on, any change that breaks one of them has changed the behaviour.",
+       "output": "examples/test_till_old.expected",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Why does Asha's test expect `0.0` for an empty order, even though it looks odd?",
+      "options": [
+       "Because 0.0 is the correct answer",
+       "Because pytest needs a float",
+       "Because the test records what the code does now",
+       "Because the AI suggested it"
+      ],
+      "answer": 2,
+      "explain": "A characterization test records the current behaviour, odd parts included."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Why does Asha's test expect 0.0 for an empty order?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. A characterization test records what the code does now. It is not a judgement of right or wrong."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Rename for the reader",
+   "direction": "Rename f, a, b and t. Tests call the new name, with the same expected values. Ask what pytest reports.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/till_v2.py",
+      "heading": "Step 3: Clear names",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "The tests run on the next screen."
+     },
+     "segments": [
+      {
+       "say": "Step 3: the first small change, the names. F becomes order total, a becomes items, and b becomes is member."
+      },
+      {
+       "say": "Line 4 unpacks each tuple into name, price and count, as in Chapter 13. So x 1 and x 2 disappear.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "And t 2 becomes with tax, a name that says what it holds.",
+       "highlight": [
+        8
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_till_v2.py",
+      "heading": "Step 3: The tests, on the new name",
+      "code_lines": [
+       2,
+       4,
+       7,
+       8,
+       11,
+       12,
+       15,
+       16
+      ],
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "The tests change in one way only: line 2 imports the new name. Every expected value stays exactly as it was."
+      }
+     ],
+     "ask": {
+      "question": "Asha changed only names. What will pytest report?"
+     },
+     "after": [
+      {
+       "say": "Three passed. The names changed, and the behaviour did not.",
+       "output": "examples/test_till_v2.expected",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Name the magic numbers",
+   "direction": "Teach magic numbers and constants, run the tests, then read the diff between Step 3 and Step 4. Quiz, breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/till_v3.py",
+      "heading": "Step 4: Constants for magic numbers",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "The tests run on the next screen."
+     },
+     "segments": [
+      {
+       "say": "Step 4. A magic number is a number in the code with no name, like 0.1 or 1.1. A reader cannot tell what it means."
+      },
+      {
+       "say": "A constant gives it a name. In Python, constants are written in capital letters, at the top of the file. Lines 11 and 12 now use the names.",
+       "highlight": [
+        11,
+        12
+       ]
+      },
+      {
+       "say": "Then she runs the tests.",
+       "highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_till_v3.py",
+      "heading": "Step 4: The tests, again",
+      "code_lines": [
+       2,
+       7,
+       8,
+       11,
+       12,
+       15,
+       16
+      ],
+      "highlight": [
+       2
+      ],
+      "output": "examples/test_till_v3.expected"
+     },
+     "segments": [
+      {
+       "say": "Line 2 imports the version with constants. Three passed, again.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_diff.py",
+      "heading": "Step 4: Read the change as a diff",
+      "highlight": [
+       5,
+       6,
+       7,
+       8
+      ],
+      "output": "examples/ex05_diff.expected"
+     },
+     "segments": [
+      {
+       "say": "Now Asha reviews the change. The diff lib module compares Step 3 with Step 4. Lines 7 and 8 skip the file comment on line 1 of each file."
+      },
+      {
+       "say": "The plus lines at the top add the two constants.",
+       "out_highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "And these minus and plus pairs swap 0.1 and 1.1 for their names. Every other line is unchanged.",
+       "out_highlight": [
+        11,
+        12,
+        13,
+        14
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "In a unified diff, what does a line that starts with `-` mean?",
+      "options": [
+       "The line was added",
+       "The line was removed",
+       "The line did not change",
+       "The line has an error"
+      ],
+      "answer": 1,
+      "explain": "Minus lines were removed, plus lines were added, and a space means no change."
+     },
+     "segments": [
+      {
+       "say": "Quick check. In a diff, what does a line that starts with minus mean?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. It was removed. Plus means added."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Read first, then trace one input.",
+       "Characterization tests before any change.",
+       "One small change, then run the tests."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Two small changes done, and the tests passed after each one."
+      },
+      {
+       "say": "Next, the last step, and Sam's code side by side with Asha's."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the readable till",
+   "direction": "Step 5 extracts subtotal. Walk the final module, show the tests, then run old and new side by side with an ask.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/till_final.py",
+      "heading": "Step 5: Extract a function",
+      "highlight": [
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "hidden_text": "The tests run on the next screen."
+     },
+     "segments": [
+      {
+       "say": "Step 5 extracts a function. The loop that adds up the order becomes its own function, subtotal, on lines 7 to 12, with a docstring."
+      },
+      {
+       "say": "Line 12 returns the total. Without that return, the result would never come back out.",
+       "highlight": [
+        12
+       ]
+      },
+      {
+       "say": "Order total now calls subtotal on line 17, takes off the discount, and adds tax with the two constants.",
+       "highlight": [
+        15,
+        17,
+        18,
+        19,
+        20
+       ]
+      },
+      {
+       "say": "And line 2 is a docstring for the whole module.",
+       "highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_till_final.py",
+      "heading": "Step 5: The tests, on the final version",
+      "code_lines": [
+       2,
+       7,
+       8,
+       11,
+       12,
+       15,
+       16
+      ],
+      "highlight": [
+       2
+      ],
+      "output": "examples/test_till_final.expected"
+     },
+     "segments": [
+      {
+       "say": "The tests pass on the final version too: three passed.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_same.py",
+      "heading": "Mission check: old and new, side by side",
+      "highlight": [
+       2,
+       3,
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "To be sure, Asha runs Sam's f, and her order total, side by side. Line 5 has three orders: the one from step 1, three juices, and an empty one."
+      },
+      {
+       "say": "Lines 6 and 7 try each order with and without the member discount. Line 10 prints the old result, the new result, and whether they are equal.",
+       "highlight": [
+        6,
+        7,
+        8,
+        9,
+        10
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What is the last word on every line that line 10 prints?"
+     },
+     "after": [
+      {
+       "say": "True, six times. Every pair is equal.",
+       "output": "examples/ex07_same.expected",
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Mission complete! The code is easy to read, and it does exactly what Sam's code did.",
+       "out_highlight": []
+      },
+      {
+       "say": "But Sam left one more function, a stock checker. Asha decides to tidy it with an AI assistant, one stage at a time."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: Sam's stock checker",
+   "direction": "Safety first. Then the six stages on the stock checker. The explanation, the comparison, the rename and the sorted feature are each caught by a run or a test.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: a safe refactoring loop",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Tests first, then the AI's suggestion, then your review, then the tests again.",
+       "Check every claim the AI makes with a real run.",
+       "Never paste private data. Use made-up stock numbers."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill: a safe refactoring loop. Tests first, then the AI's suggestion, then your review, then the tests again.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Check every claim with a real run. And never paste private data. Use made-up stock numbers.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: ask for an explanation, not a change",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Someone else wrote this function. Do not change it. Explain what it does, in plain words.",
+        "code": "examples/stock_old.py"
+       },
+       {
+        "role": "ai",
+        "text": "chk takes the stock s and an order o. It returns the items that will run out after the order."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Sam's stock checker has the shortest names yet. Asha asks the AI to explain it, without changing it."
+      },
+      {
+       "say": "The AI says c h k returns the items that will run out after the order. It sounds sure.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_explain_check.py",
+      "heading": "Plan: check the claim with a run",
+      "highlight": [
+       4,
+       5,
+       6
+      ],
+      "output": "examples/ai_explain_check.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha checks the claim with a run. Line 6 calls c h k, and lines 7 and 8 print what is left of each item.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Cake has 2 left. It has not run out, but it is in the list. And Scone, with exactly 3 left, is not.",
+       "out_highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "So c h k returns the items that will have fewer than 3 left. The AI's explanation was close, but wrong.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Write: Asha's own tests, from real runs",
+      "label": "Stage 2",
+      "columns": [
+       "Case",
+       "Input",
+       "chk gives"
+      ],
+      "rows": [
+       [
+        "Plenty left",
+        "Tea: 10, order 2",
+        "[]"
+       ],
+       [
+        "Exactly 3 left",
+        "Scone: 5, order 2",
+        "[]"
+       ],
+       [
+        "2 left",
+        "Cake: 4, order 2",
+        "['Cake']"
+       ],
+       [
+        "Order of the order",
+        "Scone 3, Cake 3",
+        "['Scone', 'Cake']"
+       ],
+       [
+        "Empty order",
+        "{}",
+        "[]"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes her own characterization tests first, with the results of real runs."
+      },
+      {
+       "say": "Exactly 3 left is the boundary, so it gets its own test.",
+       "focus_row": 1
+      },
+      {
+       "say": "And one test checks that the results keep the order of the order: Scone, then Cake.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_stock.py",
+      "heading": "Write: her five tests, on Sam's code",
+      "code_lines": [
+       2,
+       4,
+       10,
+       11,
+       12,
+       18,
+       19,
+       20,
+       21
+      ],
+      "highlight": [
+       10,
+       11,
+       12
+      ],
+      "output": "examples/test_stock.expected"
+     },
+     "segments": [
+      {
+       "say": "Here are two of them. Line 12 expects an empty list for exactly 3 left. Line 21 expects Scone before Cake.",
+       "highlight": [
+        12,
+        21
+       ]
+      },
+      {
+       "say": "On Sam's code, all five pass.",
+       "out_highlight": [
+        2
+       ],
+       "highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: her tests first, then ask what is missing",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote my own tests first, from real runs. Which inputs do they not cover yet?",
+        "code": "examples/test_stock.py",
+        "code_lines": [
+         10,
+         11,
+         12,
+         14,
+         15,
+         16
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "You cover plenty left, exactly 3 left, 2 left, the order of the results and an empty order. You could add an item that is not in the stock."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Then she asks the AI which inputs her tests do not cover yet."
+      },
+      {
+       "say": "It suggests an item that is not in the stock. A fair idea, for later.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: one refactoring, same behaviour",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Refactor chk with clear names. Keep the behaviour exactly the same. Do not add features."
+       },
+       {
+        "role": "ai",
+        "text": "Here it is. The behaviour is exactly the same.",
+        "code": "examples/stock_ai.py",
+        "code_lines": [
+         2,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks for clear names, exactly the same behaviour, and no new features."
+      },
+      {
+       "say": "The AI gives her low stock, with a constant, and says the behaviour is exactly the same.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_diff.py",
+      "heading": "Generate: review the change as a diff",
+      "code_lines": [
+       5,
+       6,
+       9,
+       10,
+       11,
+       12
+      ],
+      "highlight": [
+       9,
+       10
+      ],
+      "output": "examples/ai_diff.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha reads the change as a diff. Because the name changed, every line shows as changed: six minus lines, and nine plus lines.",
+       "out_highlight": [
+        4,
+        10
+       ]
+      },
+      {
+       "say": "So she reads them in pairs. Look at the old if line, and the new one.",
+       "out_highlight": []
+      }
+     ],
+     "ask": {
+      "question": "Every line changed. Which change can change the result?"
+     },
+     "after": [
+      {
+       "say": "The comparison. The old line says less than 3. The new line says less than or equal to LOW LIMIT. With less than or equal, exactly 3 left now counts as low.",
+       "out_highlight": [
+        7,
+        16
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_stock_ai.py",
+      "heading": "Test: her tests on the AI's version",
+      "code_lines": [
+       2,
+       10,
+       11,
+       12
+      ],
+      "highlight": [
+       2
+      ],
+      "output": "examples/test_stock_ai.expected"
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Line 2 imports the AI's function under the old name, so the same five tests run on the new code."
+      },
+      {
+       "say": "One failed: the test for exactly 3 left. The AI changed the behaviour, and it said it had not.",
+       "highlight": [
+        10,
+        11,
+        12
+       ],
+       "out_highlight": [
+        3,
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: which line changed the behaviour?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I ran my five tests on your version. One failed, and the old version passed it. Which line changed the behaviour?"
+       },
+       {
+        "role": "ai",
+        "text": "Line 8. I changed < 3 to <= LOW_LIMIT, so an item with exactly 3 left now counts as low.\nFix: change <= back to <."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "She shows the AI the failing test, and asks which line changed the behaviour."
+      },
+      {
+       "say": "Now the AI names line 8, and the comparison. Change it back to less than.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_stock_v2.py",
+      "heading": "Test: less than, put back",
+      "code_lines": [
+       2
+      ],
+      "highlight": [
+       2
+      ],
+      "output": "examples/test_stock_v2.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha changes less than or equal back to less than, and keeps the clear names. She runs every test again. Five passed.",
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "After the rename, my report stopped working. First explain the cause. Then show the smallest fix.",
+        "code": "examples/ai_report_crash.py",
+        "code_lines": [
+         2
+        ],
+        "file": "examples/ai_report_crash.py",
+        "error": "examples/ai_report_crash.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "Line 2 imports chk, but stock_v2 now only has low_stock.\nSmallest fix: keep the old name as a second name, chk = low_stock, at the end of the module."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Then Asha's daily report stops working. She pastes the code and the full error, and asks for the cause first."
+      },
+      {
+       "say": "Cannot import name c h k. Her report still uses the old name. The AI suggests keeping the old name as a second name for the same function.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/stock_final.py",
+      "heading": "Debug: the old name, kept",
+      "highlight": [
+       14
+      ],
+      "hidden_text": "The report runs on the next screen."
+     },
+     "segments": [
+      {
+       "say": "Line 14 says c h k equals low stock. Now both names lead to the same function. And line 6 is a docstring with the true behaviour: fewer than 3 left."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_report.py",
+      "heading": "Debug: the report, and every test again",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_report.expected"
+     },
+     "segments": [
+      {
+       "say": "Her report imports c h k again, and it runs.",
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_stock_final.py",
+      "heading": "Debug: all five tests, on the final version",
+      "code_lines": [
+       2
+      ],
+      "highlight": [
+       2
+      ],
+      "output": "examples/test_stock_final.expected"
+     },
+     "segments": [
+      {
+       "say": "And all five tests still pass on the final version. That rerun is her regression check.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: one change, then every test",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My function passes all my tests. Suggest one improvement for readability only. It must not change any result."
+       },
+       {
+        "role": "ai",
+        "text": "Use a comprehension, and return sorted(low), so the list is tidier.",
+        "code": "examples/stock_sorted.py",
+        "code_lines": [
+         7,
+         8,
+         9
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one readability change that keeps every result."
+      },
+      {
+       "say": "The AI suggests a comprehension, and sorted, so the list is tidier.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ],
+     "ask": {
+      "question": "Will all five of Asha's tests pass on this version?"
+     },
+     "after": [
+      {
+       "say": "No. Sorted puts Cake before Scone, so the test for the order fails. Sorting is a new feature that nobody asked for."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_stock_sorted.py",
+      "heading": "Improve: the order test catches it",
+      "code_lines": [
+       2,
+       18,
+       19,
+       20,
+       21
+      ],
+      "highlight": [
+       21
+      ],
+      "output": "examples/test_stock_sorted.expected"
+     },
+     "segments": [
+      {
+       "say": "One failed: keeps order of the order.",
+       "out_highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "So she keeps her final version. A refactoring that changes the output is not a refactoring.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI says its refactoring keeps the behaviour exactly the same. What decides?",
+      "options": [
+       "Your tests and a real run",
+       "The AI's explanation",
+       "How short the new code is",
+       "Whether the names are clearer"
+      ],
+      "answer": 0,
+      "explain": "Only your tests and a real run show whether the behaviour stayed the same."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI says its refactoring keeps the behaviour. What decides?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Your tests, and a real run. Today they caught a wrong explanation, a changed comparison and a feature nobody asked for."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Check every AI claim with a run.",
+       "Read every AI change as a diff.",
+       "Run every test after every change."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You watched Asha catch three AI mistakes, each with a run or a test."
+      },
+      {
+       "say": "Next, four mistakes people make when they refactor."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 shows too few test cases. Mistakes 2 and 3 are spot-it asks. Mistake 4 is changing a test to match.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_tidy_rounding.py",
+      "heading": "Mistake 1: tests that cover too few cases",
+      "highlight": [
+       8
+      ],
+      "output": "examples/err01_tidy_rounding.expected"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. This tidy version rounds each line inside the loop, on line 8. It passes all three tests from step 2."
+      },
+      {
+       "say": "With two teas, both results are 11.14.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "But with one tea, they are 7.67 and 7.68. Test several different inputs. And never move rounding into a loop during a refactoring.",
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_old_name.py",
+      "heading": "Mistake 2: spot it",
+      "highlight": [
+       2,
+       9
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. The function has a new name on line 2. Look at line 9."
+      }
+     ],
+     "ask": {
+      "question": "What will line 9 do?"
+     },
+     "after": [
+      {
+       "say": "It stops with a name error. F is not defined, because Python only knows the new name.",
+       "error": "examples/err02_old_name.expected_error",
+       "heading": "Mistake 2: renaming, but not every call",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: change every call, or keep the old name as a second name, as Asha did with c h k.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_no_return.py",
+      "heading": "Mistake 3: spot it",
+      "highlight": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 3. Lines 2 to 5 are an extracted function, subtotal. Line 9 uses its result."
+      }
+     ],
+     "ask": {
+      "question": "What is missing in subtotal?"
+     },
+     "after": [
+      {
+       "say": "A return. Without it, subtotal gives back None, and line 9 cannot multiply None by 1.1.",
+       "error": "examples/err03_no_return.expected_error",
+       "heading": "Mistake 3: an extracted function with no return",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: return total, as on line 12 of the finished till.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_changed_test.py",
+      "heading": "Mistake 4: changing a test to match",
+      "highlight": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "output": "examples/err04_changed_test.expected"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. This version forgot the member discount. Old says 11.14, new says 12.38.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Changing the test to expect 12.38 would hide the bug. Never change expected values during a refactoring. Undo the change instead.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Test several different inputs.",
+       "Rename every call, or keep the old name.",
+       "Never change a test to match new output."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Now you know the four most common refactoring mistakes."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Sam's sales function adds up the day and prints a report in the same loop. How would you split it, and which tests come first?"
+     },
+     "segments": [
+      {
+       "say": "First. Sam's sales function adds up the day and prints a report, in the same loop. How would you split it, and which tests would you write first?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Keep your answer for the practice tasks."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "When is refactoring someone else's code not worth it? What would you ask first?"
+     },
+     "segments": [
+      {
+       "say": "Second. Sometimes refactoring is not worth it, for example code that will be deleted next week. What would you ask before you decide?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Think about it after the video."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a quiz, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "Read from the top, say what each part does, and trace one input.",
+       "A characterization test records what the code does now.",
+       "Refactor in small steps: rename, constants, extract a function.",
+       "Run the tests after every step.",
+       "In a diff, `-` was removed and `+` was added.",
+       "Check every AI claim with a run, and every AI change with your tests."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. Read from the top, say what each part does, and trace one input.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "A characterization test records what the code does now. Write these tests before any change.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Refactor in small steps, and run the tests after every step.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "In a diff, minus was removed and plus was added.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And check every AI claim with a run, and every AI change with your tests.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "During a refactoring, one of your tests fails. What do you do?",
+      "options": [
+       "Change the expected value in the test",
+       "Delete the test",
+       "Ask the AI to fix the test",
+       "Undo the change and try a smaller step"
+      ],
+      "answer": 3,
+      "explain": "A failing test means the change broke the behaviour. Undo it, and make a smaller change."
+     },
+     "segments": [
+      {
+       "say": "One last check. During a refactoring, a test fails. What do you do?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Undo the change, and try a smaller step. The test is telling you the truth."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Code Reviewer",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Code Reviewer",
+      "tile": 27
+     },
+     "segments": [
+      {
+       "say": "Quest complete! You earned 100 XP and the Code Reviewer badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Read before you run; Rename for the reader; Record what a function does now",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Name the magic numbers; Extract a function; Read a diff",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Refactor safely, with proof; Fix the AI's refactor",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. Three warm-up tasks at 10 XP, and three apply tasks at 20.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, you fix an AI's refactor that changed a boundary.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease the Final Boss: the complete AI-assisted workflow. Hold quietly.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 28",
+      "title": "Final Boss: The Personal Task Manager",
+      "subtitle": "Plan, build, test, review and improve, with AI.",
+      "badge": "",
+      "tile": 28
+     },
+     "segments": [
+      {
+       "say": "Today, Asha improved code that someone else wrote. Next, she builds a complete program of her own, from the first plan."
+      },
+      {
+       "say": "In Chapter 28, the Final Boss, you will build a personal task manager with an AI assistant: plan, build, test, review and improve."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 28."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }

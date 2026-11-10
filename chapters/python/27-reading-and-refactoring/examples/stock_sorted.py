@@ -4,7 +4,8 @@ LOW_LIMIT = 3
 
 def low_stock(stock, order):
     """Return the ordered items that will have fewer than 3 left."""
-    low = [item for item in order if stock[item] - order[item] < LOW_LIMIT]
+    low = [item for item in order
+           if stock[item] - order[item] < LOW_LIMIT]
     return sorted(low)
 
 
