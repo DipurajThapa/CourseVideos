@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-21 Files and Paths ready for review: score board saved as CSV, six AI stages on a save function, mode w data loss caught by tests (17:41).
 - python-20 Boss Level 4: The Tested Quiz App ready for review (15:45): three modules, eight tests written first, AI code judged by the tests. Module 4 complete.
 - python-19 "Testing Your Code: assert and pytest" ready for review (18:16). The verifier now runs pytest examples (`.pytest` files) and setup installs pytest.
 - python-18 "Modules and the Standard Library" ready for review: a day report importing Asha's own module plus math, datetime and pathlib, six AI stages on boxes_needed() checked against the official documentation (round, a missing import, an invented math.ceildiv), 18:45 video, critic 8.5/10 with 12 fixes.
