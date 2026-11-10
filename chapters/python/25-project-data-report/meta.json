@@ -1,0 +1,57 @@
+{
+  "id": "python-25",
+  "title": "Boss Level 5: The Data Report Generator",
+  "language": "python",
+  "type": "project",
+  "module": "M5",
+  "badge": "Report Master",
+  "xp": {
+    "project": 300,
+    "practice": 170
+  },
+  "concepts": [
+    "reading every CSV file in a folder with Path.glob() and sorted()",
+    "csv.DictReader keys come from the first line, exactly as written",
+    "skipping and counting damaged rows with a small try block",
+    "catching ValueError and TypeError together",
+    "turning FileNotFoundError and JSONDecodeError into one clear ValueError message",
+    "settings in a JSON file",
+    "writing a text report and a JSON report",
+    "checking AI test data against a real file",
+    "rounding only for display",
+    "re-running every test after a fix"
+  ],
+  "prerequisites": [
+    "python-21",
+    "python-22",
+    "python-23",
+    "python-24"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai/flawed/test_report_tools.py",
+    "fixed_file": "examples/ai/fixed/test_report_tools.py",
+    "flaw": "The AI wrote read_sales() with row[\"Amount\"] (the column is amount) inside except Exception, and said it skips only the two damaged rows. Every row raised a KeyError that except Exception hid, so every row was counted as bad and both week tests failed (examples/ai/flawed). The right key, parse_amount() and except (ValueError, TypeError) make all six tests pass (examples/ai/fixed)."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The curriculum asks for a reporting tool that combines files, exceptions and JSON. The project reads a folder of till CSV files, loads settings from JSON and writes a text and a JSON report, with seven pytest tests.",
+    "The project introduces one new tool, Path.glob(), to find every CSV file in a folder; file names start with a number so sorted() keeps the days in order.",
+    "Each stage of the AI story, each build step and each test case lives in its own folder with copies of the files it needs, so every output in the project is a verified run.",
+    "The AI's test data, with capital-letter columns, is kept as test data (project/ai_sample.csv) and checked by the seventh test."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the File lines of a traceback show the full path of each file; the project shows only the file names.",
+    "pytest's separator lines stretch to the width of the terminal; the outputs in this chapter use a fixed width of 56 columns, and the run time in the last line changes on every run.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
