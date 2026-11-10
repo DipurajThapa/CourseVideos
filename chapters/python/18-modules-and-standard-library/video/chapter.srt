@@ -1,0 +1,1249 @@
+1
+00:00:00,250 --> 00:00:03,659
+At the Corner Cafe, Asha now has three
+programs.
+
+2
+00:00:03,679 --> 00:00:06,660
+And each one has its own copy of with tax.
+
+3
+00:00:06,700 --> 00:00:09,869
+Chapter 17 ended with exactly this
+problem.
+
+4
+00:00:09,889 --> 00:00:14,318
+If she finds a bug in with tax, she must
+fix it three times.
+
+5
+00:00:14,338 --> 00:00:17,358
+Miss one copy, and two programs disagree.
+
+6
+00:00:17,953 --> 00:00:23,563
+This is Code Quest, Chapter 18: write your
+tools once, and import them everywhere.
+
+7
+00:00:23,600 --> 00:00:28,545
+And an AI assistant will recommend a
+ready-made function, and even name the
+
+8
+00:00:28,565 --> 00:00:29,870
+page where it lives.
+
+9
+00:00:29,890 --> 00:00:30,995
+Will it be right?
+
+10
+00:00:31,015 --> 00:00:33,246
+You will check that page yourself.
+
+11
+00:00:33,853 --> 00:00:37,033
+Here is today's mission: Asha's day
+report.
+
+12
+00:00:37,053 --> 00:00:39,043
+It has no copy of with tax.
+
+13
+00:00:39,063 --> 00:00:44,103
+Lines 2 to 5 import it, together with
+three of Python's own modules.
+
+14
+00:00:44,133 --> 00:00:50,395
+Lines 13 to 16 print a total, a biscuit
+order, a closing time and a file name.
+
+15
+00:00:50,415 --> 00:00:51,603
+Let's build it.
+
+16
+00:00:52,183 --> 00:00:57,981
+Your goals: import modules in three ways,
+write your own module, use three standard
+
+17
+00:00:58,001 --> 00:01:03,448
+modules, check an AI's suggestion in the
+documentation, and fix import errors.
+
+18
+00:01:04,050 --> 00:01:08,490
+A module is a Python file whose functions
+other programs can use.
+
+19
+00:01:08,510 --> 00:01:12,950
+Write with tax once, fix it once, and
+every program gets the fix.
+
+20
+00:01:13,000 --> 00:01:18,326
+Python also comes with a large set of
+modules, already written and tested.
+
+21
+00:01:18,346 --> 00:01:20,783
+It is called the standard library.
+
+22
+00:01:20,803 --> 00:01:23,239
+You met one in Chapter 10: random.
+
+23
+00:01:23,817 --> 00:01:27,857
+Importing makes a module's functions
+available in your program.
+
+24
+00:01:27,877 --> 00:01:32,497
+Python finds the module file, runs it
+once, and gives you a name for it.
+
+25
+00:01:33,087 --> 00:01:35,707
+There are three common ways to import.
+
+26
+00:01:35,727 --> 00:01:39,737
+Import math keeps the module name in
+front: math dot ceil.
+
+27
+00:01:39,767 --> 00:01:44,817
+From math import ceil brings only that one
+function in, so you call it on its own.
+
+28
+00:01:44,867 --> 00:01:48,751
+And import math as m gives the module a
+short name.
+
+29
+00:01:48,771 --> 00:01:51,966
+A short name like this is called an alias.
+
+30
+00:01:52,587 --> 00:01:55,319
+Think of a module as a toolbox on a shelf.
+
+31
+00:01:55,339 --> 00:01:58,007
+Import takes the whole box to your table.
+
+32
+00:01:58,033 --> 00:02:01,883
+You still say which tool you want, as in
+math dot ceil.
+
+33
+00:02:01,933 --> 00:02:07,513
+Where the comparison stops working: Python
+runs the whole module file when it imports
+
+34
+00:02:07,533 --> 00:02:07,711
+it.
+
+35
+00:02:07,731 --> 00:02:10,807
+So a print at the bottom of that file runs
+too.
+
+36
+00:02:11,420 --> 00:02:12,172
+Quick check.
+
+37
+00:02:12,192 --> 00:02:15,133
+After from math import ceil, which call
+works?
+
+38
+00:02:26,513 --> 00:02:26,634
+C.
+
+39
+00:02:26,654 --> 00:02:27,762
+Ceil on its own.
+
+40
+00:02:27,782 --> 00:02:32,274
+From import brings in only that one
+function, not the name math.
+
+41
+00:02:32,887 --> 00:02:33,975
+Take a breather.
+
+42
+00:02:33,995 --> 00:02:37,091
+Next, Asha imports her first standard
+module.
+
+43
+00:02:41,817 --> 00:02:42,378
+Step 1.
+
+44
+00:02:42,398 --> 00:02:44,955
+Line 2 imports the math module.
+
+45
+00:02:44,975 --> 00:02:50,607
+Lines 4 and 5: Asha needs 40 biscuits, and
+they come in boxes of 12.
+
+46
+00:02:50,633 --> 00:02:51,816
+Line 6 divides.
+
+47
+00:02:51,836 --> 00:02:57,271
+Line 7 uses math dot ceil, which rounds up
+to the next whole number.
+
+48
+00:02:57,291 --> 00:03:00,960
+Line 8 uses math dot floor, which rounds
+down.
+
+49
+00:03:12,313 --> 00:03:13,072
+4 and 3.
+
+50
+00:03:13,092 --> 00:03:21,153
+40 divided by 12 is 3.33, so ceil rounds
+up to 4 boxes, and floor rounds down to 3.
+
+51
+00:03:21,200 --> 00:03:24,765
+Line 9 prints the square root of 49: 7.0.
+
+52
+00:03:24,785 --> 00:03:29,837
+The dot means: the function that lives in
+the math module.
+
+53
+00:03:30,453 --> 00:03:30,929
+Step 2.
+
+54
+00:03:30,949 --> 00:03:34,685
+Lines 2 to 4 import in the three ways from
+the table.
+
+55
+00:03:34,705 --> 00:03:38,653
+Lines 6 to 8 call the same function in
+those three ways.
+
+56
+00:03:38,700 --> 00:03:40,063
+All three print 3.
+
+57
+00:03:40,083 --> 00:03:45,133
+In your own programs, pick one style, so
+readers are not confused.
+
+58
+00:03:45,717 --> 00:03:46,206
+Step 3.
+
+59
+00:03:46,226 --> 00:03:50,648
+Asha moves her tools into their own file,
+cafe tools dot p y.
+
+60
+00:03:50,668 --> 00:03:54,581
+The name of a module is its file name
+without dot p y.
+
+61
+00:03:54,601 --> 00:03:59,897
+Line 2 is a docstring for the whole
+module: it says what the file is for.
+
+62
+00:03:59,933 --> 00:04:03,793
+It holds with tax and money, each with a
+docstring.
+
+63
+00:04:03,833 --> 00:04:07,244
+Lines 12 to 15 are test lines, under a
+special if.
+
+64
+00:04:07,264 --> 00:04:12,940
+Python gives every file a hidden variable
+called name, with two underscores on each
+
+65
+00:04:12,960 --> 00:04:13,283
+side.
+
+66
+00:04:13,333 --> 00:04:17,728
+When you run the file itself, that
+variable holds the text main.
+
+67
+00:04:17,748 --> 00:04:22,833
+When another program imports the file, it
+holds the module's name instead.
+
+68
+00:04:22,867 --> 00:04:27,919
+Asha runs the module itself, so the test
+lines run: two times True.
+
+69
+00:04:28,520 --> 00:04:34,520
+Now a second program, in the same folder,
+imports the module on line 2.
+
+70
+00:04:34,567 --> 00:04:38,421
+Line 4 calls cafe tools dot with tax, with
+4.0.
+
+71
+00:04:38,441 --> 00:04:41,306
+Line 6 shows the result with money.
+
+72
+00:04:52,680 --> 00:04:53,947
+4.4, then 4.40.
+
+73
+00:04:53,967 --> 00:04:55,492
+And no test lines.
+
+74
+00:04:55,512 --> 00:05:01,929
+The module was imported, so its name was
+not main, and the if skipped them.
+
+75
+00:05:02,520 --> 00:05:08,220
+A third program uses from import, so it
+calls with tax and money on their own.
+
+76
+00:05:08,267 --> 00:05:13,383
+The loop prints three prices with tax:
+3.85, 4.40 and 3.03.
+
+77
+00:05:13,403 --> 00:05:17,127
+One copy of with tax, used by two
+programs.
+
+78
+00:05:17,167 --> 00:05:21,953
+Python looks for cafe tools in the folder
+of the program you run.
+
+79
+00:05:21,973 --> 00:05:26,094
+So keep your module next to the programs
+that import it.
+
+80
+00:05:26,687 --> 00:05:27,378
+Quick check.
+
+81
+00:05:27,398 --> 00:05:29,929
+When do the lines under the main guard
+run?
+
+82
+00:05:41,280 --> 00:05:41,403
+B.
+
+83
+00:05:41,423 --> 00:05:43,904
+Only when you run that file itself.
+
+84
+00:05:43,924 --> 00:05:46,906
+When it is imported, the guard skips them.
+
+85
+00:05:47,520 --> 00:05:48,139
+Breather.
+
+86
+00:05:48,159 --> 00:05:49,631
+Relax your shoulders.
+
+87
+00:05:49,651 --> 00:05:54,604
+Next, two more standard modules: one for
+time, and one for file names.
+
+88
+00:05:59,350 --> 00:05:59,889
+Step 4.
+
+89
+00:05:59,909 --> 00:06:02,765
+The datetime module works with time.
+
+90
+00:06:02,785 --> 00:06:05,402
+A time delta is a length of time.
+
+91
+00:06:05,422 --> 00:06:06,840
+Line 2 imports it.
+
+92
+00:06:06,867 --> 00:06:10,872
+Line 4: the cafe opens 8 hours after
+midnight.
+
+93
+00:06:10,892 --> 00:06:15,160
+Line 5: it stays open for 9 hours and 30
+minutes.
+
+94
+00:06:15,180 --> 00:06:17,611
+Line 6 adds the two lengths.
+
+95
+00:06:28,980 --> 00:06:31,962
+At half past five in the afternoon.
+
+96
+00:06:31,982 --> 00:06:37,708
+Python prints a time delta as hours,
+minutes and seconds: 17:30:00.
+
+97
+00:06:37,728 --> 00:06:41,310
+It carries the minutes into hours for you.
+
+98
+00:06:41,333 --> 00:06:45,530
+Line 8: total seconds gives the length in
+seconds.
+
+99
+00:06:45,550 --> 00:06:48,650
+Divided by 60, that is 570.0 minutes.
+
+100
+00:06:49,253 --> 00:06:49,722
+Step 5.
+
+101
+00:06:49,742 --> 00:06:53,423
+Pathlib builds file names, without
+touching any file.
+
+102
+00:06:53,443 --> 00:06:57,473
+A path is the address of a file: its
+folders and its name.
+
+103
+00:06:57,500 --> 00:07:00,340
+Line 4 joins a folder and a file name.
+
+104
+00:07:00,360 --> 00:07:03,350
+Here, the forward slash joins the parts.
+
+105
+00:07:03,370 --> 00:07:04,780
+It does not divide.
+
+106
+00:07:04,800 --> 00:07:06,791
+Name is the whole file name.
+
+107
+00:07:06,811 --> 00:07:09,377
+Stem is the name without its ending.
+
+108
+00:07:09,397 --> 00:07:10,885
+Suffix is the ending.
+
+109
+00:07:22,247 --> 00:07:24,347
+Monday, then dot t x t.
+
+110
+00:07:24,367 --> 00:07:28,607
+Line 5 printed the whole name, monday dot
+t x t.
+
+111
+00:07:28,633 --> 00:07:31,431
+Windows writes paths with backslashes.
+
+112
+00:07:31,451 --> 00:07:36,843
+So line 8, as posix, shows the path with
+forward slashes on every system.
+
+113
+00:07:37,453 --> 00:07:38,385
+Quick check.
+
+114
+00:07:38,405 --> 00:07:41,558
+A path joins menus and winter dot t x t.
+
+115
+00:07:41,578 --> 00:07:43,065
+What is its suffix?
+
+116
+00:07:54,447 --> 00:07:54,594
+D.
+
+117
+00:07:54,614 --> 00:07:55,432
+Dot t x t.
+
+118
+00:07:55,452 --> 00:07:57,526
+The suffix is the ending.
+
+119
+00:07:57,546 --> 00:07:59,621
+Winter would be the stem.
+
+120
+00:08:00,217 --> 00:08:01,573
+Back to the mission.
+
+121
+00:08:01,593 --> 00:08:07,146
+Lines 2 to 5 put every import at the top,
+as the style guide asks: three standard
+
+122
+00:08:07,166 --> 00:08:08,867
+modules, then Asha's own.
+
+123
+00:08:08,900 --> 00:08:14,349
+Line 8 adds tax to each sale with with
+tax, in a comprehension from Chapter 14,
+
+124
+00:08:14,369 --> 00:08:16,080
+and sum adds the results.
+
+125
+00:08:16,100 --> 00:08:21,850
+Line 9 rounds up the biscuit boxes, line
+10 adds the opening hours, and line 11
+
+126
+00:08:21,870 --> 00:08:24,042
+builds the report's file name.
+
+127
+00:08:24,062 --> 00:08:26,087
+It does not save a file yet.
+
+128
+00:08:37,447 --> 00:08:38,610
+Total: 11.28.
+
+129
+00:08:38,630 --> 00:08:44,527
+That is 3.85, plus 4.40, plus 3.03: the
+three prices from step 3.
+
+130
+00:08:44,567 --> 00:08:48,802
+Then 4 boxes, closing at 17:30, and the
+file name.
+
+131
+00:08:48,822 --> 00:08:51,270
+No copy of with tax anywhere.
+
+132
+00:08:51,290 --> 00:08:52,717
+Mission complete!
+
+133
+00:08:52,767 --> 00:08:58,065
+Now Asha wants one more tool for her
+module: how many boxes to order.
+
+134
+00:08:58,085 --> 00:09:02,381
+She builds it with an AI assistant, one
+stage at a time.
+
+135
+00:09:02,983 --> 00:09:08,823
+This chapter's AI skill: ask an AI which
+standard module fits a task.
+
+136
+00:09:08,867 --> 00:09:14,400
+Then find that function in the official
+documentation, at docs dot python dot org,
+
+137
+00:09:14,420 --> 00:09:16,703
+and run it on your own test cases.
+
+138
+00:09:16,723 --> 00:09:18,667
+And never paste private data.
+
+139
+00:09:19,287 --> 00:09:20,286
+Stage 1: plan.
+
+140
+00:09:20,306 --> 00:09:24,220
+Asha describes the task: boxes of 12,
+always round up.
+
+141
+00:09:24,240 --> 00:09:29,537
+She asks for the exact module and
+function, and says she will check them.
+
+142
+00:09:29,567 --> 00:09:34,487
+The AI names the math module and math dot
+ceil, with an example.
+
+143
+00:09:34,533 --> 00:09:39,729
+Asha opens the math page of the official
+documentation and finds ceil, with the
+
+144
+00:09:39,749 --> 00:09:40,587
+same meaning.
+
+145
+00:09:41,187 --> 00:09:42,298
+Stage 2: write.
+
+146
+00:09:42,318 --> 00:09:48,334
+Before using the module, Asha writes her
+own version: double slash, then plus 1.
+
+147
+00:09:48,354 --> 00:09:50,447
+For 40 biscuits, it gives 4.
+
+148
+00:09:50,467 --> 00:09:55,338
+She asks the AI whether her version always
+matches a ceil version.
+
+149
+00:09:55,358 --> 00:09:57,117
+The AI says yes, always.
+
+150
+00:09:57,720 --> 00:10:03,007
+Asha tests two numbers: 40, and 24, which
+divides exactly.
+
+151
+00:10:03,027 --> 00:10:05,020
+Line 5 is her version.
+
+152
+00:10:05,040 --> 00:10:06,575
+Line 6 uses ceil.
+
+153
+00:10:17,947 --> 00:10:18,158
+No.
+
+154
+00:10:18,178 --> 00:10:23,020
+For 24 biscuits, her version orders 3
+boxes, and ceil orders 2.
+
+155
+00:10:23,040 --> 00:10:27,187
+Her version adds a box even when nothing
+is left over.
+
+156
+00:10:27,233 --> 00:10:28,729
+The AI missed her bug.
+
+157
+00:10:28,749 --> 00:10:31,415
+A number that divides exactly found it.
+
+158
+00:10:31,435 --> 00:10:36,857
+So she asks the AI to write the module's
+version, and she will test it the same
+
+159
+00:10:36,877 --> 00:10:37,132
+way.
+
+160
+00:10:37,753 --> 00:10:39,114
+Stage 3: generate.
+
+161
+00:10:39,134 --> 00:10:44,483
+Asha asks for boxes needed, with a
+docstring, and asks exactly what it
+
+162
+00:10:44,503 --> 00:10:46,323
+returns for 40 biscuits.
+
+163
+00:10:46,367 --> 00:10:50,343
+The AI writes the function, and says it
+returns 4.
+
+164
+00:10:50,953 --> 00:10:53,069
+Here is the AI's function.
+
+165
+00:10:53,089 --> 00:10:57,093
+Line 4 divides, then calls round, from
+Chapter 2.
+
+166
+00:10:57,113 --> 00:10:59,392
+Line 6 asks for 40 biscuits.
+
+167
+00:11:10,747 --> 00:11:10,983
+No.
+
+168
+00:11:11,003 --> 00:11:12,007
+It prints 3.
+
+169
+00:11:12,027 --> 00:11:16,956
+Round goes to the nearest whole number, so
+3.33 becomes 3.
+
+170
+00:11:16,976 --> 00:11:19,602
+Asha would be 4 biscuits short.
+
+171
+00:11:20,220 --> 00:11:21,266
+Stage 4: test.
+
+172
+00:11:21,286 --> 00:11:27,586
+Asha writes four cases with the result she
+expects: a remainder, an exact division,
+
+173
+00:11:27,606 --> 00:11:29,261
+one biscuit, and zero.
+
+174
+00:11:29,281 --> 00:11:32,230
+She asks the AI if any case is missing.
+
+175
+00:11:32,267 --> 00:11:36,942
+The AI says the set is good, and tells her
+to run it on every version.
+
+176
+00:11:37,553 --> 00:11:42,771
+Line 5 holds the cases, in a dictionary:
+biscuits, and the expected boxes.
+
+177
+00:11:42,791 --> 00:11:45,743
+The loop prints pass or FAIL for each one.
+
+178
+00:11:45,767 --> 00:11:48,653
+On the AI's version, 40 and 1 fail.
+
+179
+00:11:48,673 --> 00:11:52,556
+Round never rounds 1 twelfth up to a whole
+box.
+
+180
+00:11:53,153 --> 00:11:54,259
+Stage 5: debug.
+
+181
+00:11:54,279 --> 00:11:58,985
+Asha changes round to math dot ceil, runs
+it, and Python stops.
+
+182
+00:11:59,005 --> 00:12:04,162
+She pastes the code and the full error,
+and asks for the cause first.
+
+183
+00:12:04,753 --> 00:12:09,550
+The AI names line 4: the file uses math,
+but never imports it.
+
+184
+00:12:09,570 --> 00:12:13,512
+The error even asks: did you forget to
+import math?
+
+185
+00:12:13,532 --> 00:12:16,309
+The fix: add import math at the top.
+
+186
+00:12:16,920 --> 00:12:20,680
+Line 2 imports math, and line 5 uses ceil.
+
+187
+00:12:20,700 --> 00:12:23,110
+Asha runs every case again.
+
+188
+00:12:23,133 --> 00:12:26,802
+All four pass, including the exact
+division and zero.
+
+189
+00:12:27,420 --> 00:12:28,695
+Stage 6: improve.
+
+190
+00:12:28,715 --> 00:12:34,789
+Asha asks for one improvement, and for the
+documentation page of any function it
+
+191
+00:12:34,809 --> 00:12:35,170
+uses.
+
+192
+00:12:35,200 --> 00:12:37,812
+The AI suggests math dot ceil div.
+
+193
+00:12:37,832 --> 00:12:43,772
+It divides and rounds up in one step, and
+the AI says it is on the math page.
+
+194
+00:12:44,387 --> 00:12:47,262
+Before she changes anything, Asha checks.
+
+195
+00:12:47,282 --> 00:12:51,428
+She searches the math page for ceil div,
+and runs one line.
+
+196
+00:13:02,780 --> 00:13:02,978
+No.
+
+197
+00:13:02,998 --> 00:13:06,966
+Attribute Error: module math has no
+attribute ceil div.
+
+198
+00:13:06,986 --> 00:13:10,374
+Here, attribute means a name inside the
+module.
+
+199
+00:13:10,394 --> 00:13:13,347
+Ceil div was not on the math page either.
+
+200
+00:13:13,367 --> 00:13:15,450
+That function does not exist.
+
+201
+00:13:15,500 --> 00:13:18,982
+The AI made it up, and named a real page
+for it.
+
+202
+00:13:19,587 --> 00:13:23,902
+Asha keeps math dot ceil, and runs her
+four cases once more.
+
+203
+00:13:23,922 --> 00:13:25,348
+All four still pass.
+
+204
+00:13:25,953 --> 00:13:26,752
+Quick check.
+
+205
+00:13:26,772 --> 00:13:29,685
+An AI names a function you have never
+seen.
+
+206
+00:13:29,705 --> 00:13:31,117
+What do you do first?
+
+207
+00:13:42,480 --> 00:13:42,602
+A.
+
+208
+00:13:42,622 --> 00:13:46,215
+Find it in the official documentation,
+then run it.
+
+209
+00:13:46,820 --> 00:13:47,440
+Breather.
+
+210
+00:13:47,460 --> 00:13:53,124
+Asha caught three AI problems: a false
+promise about her own code, round instead
+
+211
+00:13:53,144 --> 00:13:56,251
+of ceil, and a function that does not
+exist.
+
+212
+00:14:00,983 --> 00:14:01,943
+Now you try.
+
+213
+00:14:01,963 --> 00:14:04,312
+Line 2 imports Asha's module.
+
+214
+00:14:04,332 --> 00:14:06,190
+Compare it with step 3.
+
+215
+00:14:17,547 --> 00:14:20,114
+The name is cafe tool, without the s.
+
+216
+00:14:20,134 --> 00:14:25,918
+Python looks for a file with exactly that
+name, finds none, and stops with a Module
+
+217
+00:14:25,938 --> 00:14:27,037
+Not Found Error.
+
+218
+00:14:27,067 --> 00:14:30,611
+Some Python versions also suggest the
+right name.
+
+219
+00:14:30,631 --> 00:14:32,939
+The fix: spell it like the file.
+
+220
+00:14:33,553 --> 00:14:38,088
+Mistake 2 is the quick check from the idea
+section, in reverse.
+
+221
+00:14:38,108 --> 00:14:41,702
+After import math, the full name is math
+dot ceil.
+
+222
+00:14:41,722 --> 00:14:43,943
+Ceil on its own is not defined.
+
+223
+00:14:43,967 --> 00:14:49,068
+The fix: write math dot ceil, or import it
+with from math import ceil.
+
+224
+00:14:49,687 --> 00:14:50,448
+Mistake 3.
+
+225
+00:14:50,468 --> 00:14:55,686
+Asha saved a test file called random dot p
+y, next to this program.
+
+226
+00:14:55,706 --> 00:15:00,377
+Now import random finds her file first,
+not Python's module.
+
+227
+00:15:00,400 --> 00:15:03,925
+The first output line comes from her test
+file.
+
+228
+00:15:03,945 --> 00:15:09,280
+Then her file has no rand int, so Python
+stops with an Attribute Error.
+
+229
+00:15:09,300 --> 00:15:13,965
+Python 3.13 and newer add advice: consider
+renaming the file.
+
+230
+00:15:13,985 --> 00:15:19,188
+On your own computer, that message shows
+the full path of your file.
+
+231
+00:15:19,208 --> 00:15:23,413
+The fix: rename it, for example to random
+test dot p y.
+
+232
+00:15:24,020 --> 00:15:24,734
+Mistake 4.
+
+233
+00:15:24,754 --> 00:15:29,868
+This module has a test line at the bottom,
+line 5, with no main guard.
+
+234
+00:15:29,888 --> 00:15:32,802
+Run on its own, it prints its test line.
+
+235
+00:15:33,420 --> 00:15:37,837
+Another program imports money from that
+module, and prints the tea price.
+
+236
+00:15:49,213 --> 00:15:52,430
+Two lines: the module's test line, then
+the tea.
+
+237
+00:15:52,450 --> 00:15:58,161
+Importing runs the whole file, so the test
+line appears in every program that imports
+
+238
+00:15:58,181 --> 00:15:58,363
+it.
+
+239
+00:15:58,400 --> 00:16:01,826
+There is no error, which makes it easy to
+miss.
+
+240
+00:16:01,846 --> 00:16:05,125
+The fix: put test lines under the main
+guard.
+
+241
+00:16:05,720 --> 00:16:06,266
+Breather.
+
+242
+00:16:06,286 --> 00:16:08,716
+Two questions to think about come next.
+
+243
+00:16:13,450 --> 00:16:13,812
+First.
+
+244
+00:16:13,832 --> 00:16:17,947
+Asha wants to pick a random winner from a
+list of customer names.
+
+245
+00:16:17,967 --> 00:16:20,555
+Which function of the random module fits?
+
+246
+00:16:31,913 --> 00:16:37,120
+Ask an AI, then find the function in the
+official documentation, and run it.
+
+247
+00:16:37,720 --> 00:16:38,233
+Second.
+
+248
+00:16:38,253 --> 00:16:41,661
+Two folders of programs both need cafe
+tools.
+
+249
+00:16:41,681 --> 00:16:46,459
+Asha copies it into both folders, then
+fixes a bug in one copy.
+
+250
+00:16:46,479 --> 00:16:47,449
+What happens?
+
+251
+00:16:58,813 --> 00:17:02,131
+Think back to the three copies at the
+start of this chapter.
+
+252
+00:17:02,717 --> 00:17:03,432
+Let's recap.
+
+253
+00:17:03,452 --> 00:17:08,088
+A module is a Python file whose functions
+other programs can import, and the
+
+254
+00:17:08,108 --> 00:17:11,887
+standard library is the set of modules
+that comes with Python.
+
+255
+00:17:11,933 --> 00:17:14,311
+There are three ways to import.
+
+256
+00:17:14,331 --> 00:17:20,343
+Importing runs the whole file once, and
+the main guard keeps test lines quiet.
+
+257
+00:17:20,367 --> 00:17:24,458
+Ceil rounds up, time delta adds times, and
+Path reads file names.
+
+258
+00:17:24,478 --> 00:17:29,202
+And when an AI names a function, find it
+in the documentation, then run it.
+
+259
+00:17:29,820 --> 00:17:30,951
+One last check.
+
+260
+00:17:30,971 --> 00:17:34,098
+After import math as m, which call works?
+
+261
+00:17:45,480 --> 00:17:45,620
+C.
+
+262
+00:17:45,640 --> 00:17:47,055
+M dot square root.
+
+263
+00:17:47,075 --> 00:17:50,964
+The alias m is the only name that import
+creates.
+
+264
+00:17:51,587 --> 00:17:52,981
+Mission complete!
+
+265
+00:17:53,001 --> 00:17:56,474
+You earned 100 XP and the Librarian badge.
+
+266
+00:17:58,717 --> 00:18:02,090
+Now it is your turn: eight tasks, worth
+170 XP.
+
+267
+00:18:02,110 --> 00:18:07,648
+Three warm-up tasks at 10 XP, and three
+apply tasks at 20, including your own
+
+268
+00:18:07,668 --> 00:18:08,587
+price module.
+
+269
+00:18:08,633 --> 00:18:14,975
+And two stretch tasks at 40, including an
+AI's cake planner that calls a function
+
+270
+00:18:14,995 --> 00:18:17,331
+the math module does not have.
+
+271
+00:18:17,351 --> 00:18:20,629
+Try each one before you open the solution.
+
+272
+00:18:21,217 --> 00:18:24,542
+Asha's module checks itself with lines
+that print True.
+
+273
+00:18:24,562 --> 00:18:28,009
+But if a change makes one print False,
+nothing stops her.
+
+274
+00:18:28,029 --> 00:18:31,477
+And every program that imports the module
+breaks with it.
+
+275
+00:18:31,500 --> 00:18:37,280
+In Chapter 19, you will turn these checks
+into real tests, with assert and pytest.
+
+276
+00:18:37,300 --> 00:18:39,082
+Do the warm-up tasks now.
+
+277
+00:18:39,102 --> 00:18:41,100
+They take about ten minutes.
+
+278
+00:18:41,133 --> 00:18:43,016
+See you in Chapter 19.

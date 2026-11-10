@@ -1,0 +1,60 @@
+{
+  "id": "python-18",
+  "title": "Modules and the Standard Library",
+  "language": "python",
+  "type": "lesson",
+  "module": "M4",
+  "badge": "Librarian",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "module",
+    "standard library",
+    "import",
+    "from ... import",
+    "import ... as (alias)",
+    "your own module",
+    "__name__ and the __main__ guard",
+    "math.ceil, math.floor, math.sqrt",
+    "datetime.timedelta",
+    "pathlib.Path: name, stem, suffix, as_posix",
+    "ModuleNotFoundError",
+    "AttributeError on a module",
+    "shadowing a standard module"
+  ],
+  "prerequisites": [
+    "python-17"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_boxes_flawed.py",
+    "fixed_file": "examples/ai_boxes_tests_fixed.py",
+    "flaw": "Asked for a boxes_needed() function that rounds up, the AI used round() and said it rounds up. For 40 biscuits in boxes of 12 it returns 3, not 4, and Asha's test cases fail for 40 and 1. math.ceil(), with its import, passes every case. Earlier, the AI said Asha's own // + 1 version always matches math.ceil(), but 24 biscuits gives 3 instead of 2. Later it suggested math.ceildiv(), a function the math module does not have."
+  },
+  "support_files": [
+    "examples/shadow/random.py"
+  ],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "datetime is taught through timedelta (lengths of time) only, so no example prints a calendar date and the content stays evergreen.",
+    "pathlib is used only to build and read path names; reading and writing files waits for Chapter 21.",
+    "Packages (folders of modules), sys.path and installing third-party packages are left out; packages and pip come in Chapter 24.",
+    "Mistake 3 lives in its own examples/shadow folder, so its random.py never hides the real random module from the other examples. Mistake 4 lives in examples/noguard for the same reason.",
+    "The AI section adds verified files for each stage: Asha's own // + 1 version, the comparison with math.ceil, the AI's round() version, the test cases before and after the fix, the missing import and the invented math.ceildiv."
+  ],
+  "outstanding_issues": [
+    "The error reports show the short file name; on a learner's computer the full path appears instead.",
+    "The ModuleNotFoundError suggestion (Did you mean) appears only on newer Python versions; the lesson says so.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "chapter_id": "python-18",
+  "rendered_at": "2026-11-10T05:38:01+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "44f551188a651325342c6706ac45f3a34f1f5efe4618f15a193ee0341159106e",
+  "inputs_sha256": "bdcec46548cc5497767902d4ba1d4db7a59bfbdeac7070ee452d8cf2456e296a",
+  "video_sha256": "857ffc9279977ee23b8f1982c705a41c8c5d5d027ff6a70d16ae34c3a5ef2de9",
+  "duration_seconds": 1125.5,
+  "size_mb": 46.44,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 990,
+  "questions": 17,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 51.933
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 51.933,
+      "end": 63.8
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 63.8,
+      "end": 83.567
+    },
+    {
+      "id": "idea",
+      "title": "The idea: importing",
+      "section": "The idea",
+      "start": 83.567,
+      "end": 161.567
+    },
+    {
+      "id": "step1",
+      "title": "Steps 1 and 2: Import a standard module",
+      "section": "Build it step by step",
+      "start": 161.567,
+      "end": 225.467
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Your own module",
+      "section": "Build it step by step",
+      "start": 225.467,
+      "end": 359.1
+    },
+    {
+      "id": "step4",
+      "title": "Steps 4 and 5: Times and file names",
+      "section": "Build it step by step",
+      "start": 359.1,
+      "end": 479.967
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the day report",
+      "section": "See the outcome",
+      "start": 479.967,
+      "end": 542.733
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one function",
+      "section": "Work with AI",
+      "start": 542.733,
+      "end": 840.733
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 840.733,
+      "end": 973.2
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 973.2,
+      "end": 1022.467
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 1022.467,
+      "end": 1078.467
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1078.467,
+      "end": 1100.967
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1100.967,
+      "end": 1125.5
+    }
+  ]
+}
