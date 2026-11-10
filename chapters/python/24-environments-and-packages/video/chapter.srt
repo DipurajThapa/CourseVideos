@@ -1,0 +1,1321 @@
+1
+00:00:00,250 --> 00:00:05,230
+At the Corner Cafe, Asha's new weather
+script says a package is missing.
+
+2
+00:00:05,250 --> 00:00:07,730
+She asks an AI assistant what to do.
+
+3
+00:00:07,767 --> 00:00:09,848
+Read the package name slowly.
+
+4
+00:00:09,868 --> 00:00:11,080
+Would you run it?
+
+5
+00:00:11,687 --> 00:00:13,335
+Welcome to Chapter 24.
+
+6
+00:00:13,355 --> 00:00:18,947
+Today Asha gives her project its own
+Python, installs packages safely, and
+
+7
+00:00:18,967 --> 00:00:20,767
+checks every name first.
+
+8
+00:00:21,387 --> 00:00:25,358
+Here is Asha's draft list of packages for
+the weather board.
+
+9
+00:00:25,378 --> 00:00:30,082
+By the end, her own program will check it
+before anything is installed.
+
+10
+00:00:30,683 --> 00:00:35,433
+Create and activate a virtual environment,
+and install a package into it.
+
+11
+00:00:35,467 --> 00:00:40,569
+Record exact versions, and check a package
+name before you install it.
+
+12
+00:00:41,150 --> 00:00:46,275
+Asha needs requests for live weather, and
+tabulate for a neat table.
+
+13
+00:00:46,295 --> 00:00:49,982
+They are packages: code that other people
+shared.
+
+14
+00:00:50,002 --> 00:00:52,630
+Most live on PyPI, at pypi dot org.
+
+15
+00:00:52,667 --> 00:00:57,233
+Anyone can publish there, so a look-alike
+name can hide harmful code.
+
+16
+00:00:57,253 --> 00:01:00,624
+And her board must run the same way on two
+laptops.
+
+17
+00:01:01,217 --> 00:01:02,741
+Here is the big idea.
+
+18
+00:01:02,761 --> 00:01:08,700
+A virtual environment is a folder that
+holds its own Python and its own packages,
+
+19
+00:01:08,720 --> 00:01:09,877
+for one project.
+
+20
+00:01:09,900 --> 00:01:14,981
+Without one, every project's packages get
+mixed together in the computer's Python.
+
+21
+00:01:15,587 --> 00:01:18,243
+Think of a separate toolbox for each
+project.
+
+22
+00:01:18,263 --> 00:01:22,467
+The weather board's tools never get mixed
+up with the quiz app's tools.
+
+23
+00:01:22,500 --> 00:01:25,279
+The comparison stops working at one point.
+
+24
+00:01:25,299 --> 00:01:28,478
+A virtual environment is built for one
+computer.
+
+25
+00:01:28,498 --> 00:01:30,810
+You cannot carry it to another one.
+
+26
+00:01:30,833 --> 00:01:35,798
+On a new computer, you build a new one,
+from a list of what the project needs.
+
+27
+00:01:36,420 --> 00:01:39,950
+Pip is the tool that installs packages
+from PyPI.
+
+28
+00:01:40,000 --> 00:01:45,360
+The virtual environment is usually a
+folder called dot v e n v.
+
+29
+00:01:45,400 --> 00:01:50,512
+And a pinned version names one exact
+version, with two equals signs.
+
+30
+00:01:50,532 --> 00:01:54,135
+A list of them is called requirements dot
+t x t.
+
+31
+00:01:54,753 --> 00:01:55,435
+Quick check.
+
+32
+00:01:55,455 --> 00:01:58,765
+Where should Asha install tabulate for the
+weather board?
+
+33
+00:02:10,147 --> 00:02:10,273
+C.
+
+34
+00:02:10,293 --> 00:02:13,857
+Into the weather board's own virtual
+environment.
+
+35
+00:02:13,877 --> 00:02:16,271
+Each project has its own toolbox.
+
+36
+00:02:16,887 --> 00:02:17,463
+Breather.
+
+37
+00:02:17,483 --> 00:02:20,909
+Next, Asha builds the toolbox for her
+weather board.
+
+38
+00:02:25,650 --> 00:02:26,155
+Step 1.
+
+39
+00:02:26,175 --> 00:02:29,458
+Asha opens a terminal in her project
+folder.
+
+40
+00:02:29,478 --> 00:02:35,764
+She runs v e n v, the standard module that
+makes virtual environments, and names the
+
+41
+00:02:35,784 --> 00:02:37,190
+folder dot v e n v.
+
+42
+00:02:37,233 --> 00:02:42,323
+On Windows, she types p y, dash m, v e n
+v, dot v e n v.
+
+43
+00:02:42,367 --> 00:02:46,963
+On macOS and Linux, python3, dash m, v e n
+v, dot v e n v.
+
+44
+00:02:46,983 --> 00:02:52,535
+Nothing prints, but a new folder appears,
+with its own python and pip.
+
+45
+00:02:53,153 --> 00:02:53,661
+Step 2.
+
+46
+00:02:53,681 --> 00:02:58,783
+Activating tells this terminal to use the
+Python inside dot v e n v.
+
+47
+00:02:58,833 --> 00:03:03,473
+On Windows, dot v e n v, backslash,
+Scripts, backslash, activate.
+
+48
+00:03:03,500 --> 00:03:06,383
+In PowerShell, the script ends in dot p s
+1.
+
+49
+00:03:06,403 --> 00:03:09,880
+The lesson shows what to do if PowerShell
+refuses it.
+
+50
+00:03:09,900 --> 00:03:15,730
+On macOS and Linux, source, dot v e n v,
+slash, bin, slash, activate.
+
+51
+00:03:15,767 --> 00:03:17,728
+To leave it, type deactivate.
+
+52
+00:03:17,748 --> 00:03:22,305
+And one rule: activate it again every time
+you open a new terminal.
+
+53
+00:03:22,920 --> 00:03:26,583
+Now the prompt starts with dot v e n v in
+brackets.
+
+54
+00:03:26,603 --> 00:03:29,400
+Asha checks it with one line of Python.
+
+55
+00:03:29,433 --> 00:03:33,344
+Sys dot prefix is the folder of the Python
+that is running.
+
+56
+00:03:33,364 --> 00:03:36,609
+Sys dot base prefix is the computer's own
+Python.
+
+57
+00:03:36,629 --> 00:03:41,073
+They differ only inside a virtual
+environment, so this prints True.
+
+58
+00:03:41,100 --> 00:03:46,728
+The next morning, Asha opens a new
+terminal, and types python straight away.
+
+59
+00:03:58,080 --> 00:04:00,137
+The computer's own Python.
+
+60
+00:04:00,157 --> 00:04:05,730
+A new terminal starts outside, so she must
+activate dot v e n v again.
+
+61
+00:04:05,750 --> 00:04:10,603
+The prompt tells her: no dot v e n v in
+brackets, not inside.
+
+62
+00:04:11,183 --> 00:04:11,735
+Step 3.
+
+63
+00:04:11,755 --> 00:04:15,654
+With dot v e n v active, Asha installs
+tabulate.
+
+64
+00:04:15,674 --> 00:04:19,573
+She types python, dash m, pip install,
+tabulate.
+
+65
+00:04:19,600 --> 00:04:24,008
+Python dash m makes sure pip installs into
+the Python she is running.
+
+66
+00:04:24,028 --> 00:04:26,767
+Pip list then shows what is installed
+here.
+
+67
+00:04:26,787 --> 00:04:28,820
+Your version numbers may differ.
+
+68
+00:04:28,867 --> 00:04:34,160
+In Chapter 19, you installed pytest once,
+with no virtual environment.
+
+69
+00:04:34,180 --> 00:04:39,246
+From now on, each project's packages go
+inside its own dot v e n v.
+
+70
+00:04:39,853 --> 00:04:40,375
+Step 4.
+
+71
+00:04:40,395 --> 00:04:44,944
+Pip freeze prints every installed package
+as a pinned line.
+
+72
+00:04:44,964 --> 00:04:49,513
+The greater than sign saves it into
+requirements dot t x t.
+
+73
+00:04:49,533 --> 00:04:53,875
+At home, Asha creates and activates a new
+dot v e n v.
+
+74
+00:04:53,895 --> 00:05:00,740
+Then pip install, dash r, requirements dot
+t x t, installs exactly the same versions.
+
+75
+00:05:01,353 --> 00:05:03,109
+Here is the board's file.
+
+76
+00:05:03,129 --> 00:05:05,383
+The hash sign line is a comment.
+
+77
+00:05:05,403 --> 00:05:07,727
+Each other line pins one package.
+
+78
+00:05:08,320 --> 00:05:10,527
+Asha's program reads that file.
+
+79
+00:05:10,547 --> 00:05:14,550
+Lines 4 and 5 read the text, and line 6
+goes through it.
+
+80
+00:05:14,600 --> 00:05:18,160
+Lines 8 and 9 skip empty lines and
+comments.
+
+81
+00:05:18,200 --> 00:05:23,725
+Line 10 splits each line at the two equals
+signs, so name gets the package, and
+
+82
+00:05:23,745 --> 00:05:25,410
+version gets the number.
+
+83
+00:05:25,433 --> 00:05:29,493
+Line 11 prints the name in ten spaces,
+then the version.
+
+84
+00:05:40,847 --> 00:05:45,931
+Requests and 2.32.3, then tabulate and
+0.9.0.
+
+85
+00:05:45,951 --> 00:05:50,356
+The comment line never reaches line 11.
+
+86
+00:05:50,950 --> 00:05:51,455
+Step 5.
+
+87
+00:05:51,475 --> 00:05:55,955
+A line without two equals signs lets pip
+choose the version.
+
+88
+00:05:55,975 --> 00:05:58,580
+That version can change next month.
+
+89
+00:05:58,600 --> 00:06:01,903
+Greater than, equals, 8 means 8 or newer.
+
+90
+00:06:01,923 --> 00:06:03,930
+That is not exact either.
+
+91
+00:06:03,967 --> 00:06:08,782
+Line 4 calls a line pinned only if it
+contains two equals signs together.
+
+92
+00:06:20,147 --> 00:06:23,760
+Only the first: requests, pinned at
+2.32.3.
+
+93
+00:06:23,780 --> 00:06:28,577
+Tabulate has no version, and pytest only
+says 8 or newer.
+
+94
+00:06:28,600 --> 00:06:33,698
+Those two lines could install different
+code on Asha's two laptops.
+
+95
+00:06:34,320 --> 00:06:35,102
+Quick check.
+
+96
+00:06:35,122 --> 00:06:39,313
+Which line installs exactly the same
+version on every computer?
+
+97
+00:06:50,680 --> 00:06:50,822
+D.
+
+98
+00:06:50,842 --> 00:06:53,976
+Two equals signs pin one exact version.
+
+99
+00:06:53,996 --> 00:06:55,432
+Look closely at C.
+
+100
+00:06:55,452 --> 00:06:56,726
+It has only one.
+
+101
+00:06:57,320 --> 00:06:57,944
+Breather.
+
+102
+00:06:57,964 --> 00:07:02,738
+Asha's board now has its own toolbox, and
+a list of exact versions.
+
+103
+00:07:02,758 --> 00:07:06,601
+Next, the most important habit: checking a
+name first.
+
+104
+00:07:11,350 --> 00:07:11,822
+Step 6.
+
+105
+00:07:11,842 --> 00:07:17,588
+Before Asha installs a package, she opens
+its page on pypi dot org, and makes four
+
+106
+00:07:17,608 --> 00:07:18,080
+checks.
+
+107
+00:07:18,100 --> 00:07:18,381
+One.
+
+108
+00:07:18,401 --> 00:07:21,389
+The exact name: every letter must match.
+
+109
+00:07:21,409 --> 00:07:27,330
+PyPI ignores capital letters, so Requests
+with a capital R is the same package.
+
+110
+00:07:27,367 --> 00:07:30,627
+Two, links to its code and documentation.
+
+111
+00:07:30,667 --> 00:07:32,877
+Three, its release history.
+
+112
+00:07:32,900 --> 00:07:34,556
+Four, who publishes it.
+
+113
+00:07:35,153 --> 00:07:39,961
+A name one or two letters away from a
+famous one is a warning sign.
+
+114
+00:07:39,981 --> 00:07:45,293
+People publish look-alike names on
+purpose, hoping for a spelling mistake.
+
+115
+00:07:45,333 --> 00:07:49,847
+The standard module diff lib measures how
+alike two names are.
+
+116
+00:07:49,867 --> 00:07:53,723
+Its score goes from 0, nothing alike, to
+1, the same.
+
+117
+00:07:53,767 --> 00:07:56,719
+Line 5 compares reqeusts with requests.
+
+118
+00:07:56,739 --> 00:08:01,141
+Its first argument, None, means no
+characters are ignored.
+
+119
+00:08:01,161 --> 00:08:05,867
+Even with two letters swapped, line 6
+prints a score of 0.875.
+
+120
+00:08:05,900 --> 00:08:08,271
+Line 7 uses get close matches.
+
+121
+00:08:08,291 --> 00:08:14,566
+It returns a list of the trusted names
+whose score is at least the cutoff, here
+
+122
+00:08:14,586 --> 00:08:14,885
+0.8.
+
+123
+00:08:26,247 --> 00:08:33,007
+Line 7 prints a list with requests,
+because 0.875 is at least 0.8.
+
+124
+00:08:33,033 --> 00:08:35,348
+Line 8 prints an empty list.
+
+125
+00:08:35,368 --> 00:08:38,349
+Num py is not like any trusted name.
+
+126
+00:08:38,950 --> 00:08:40,449
+Back to the mission.
+
+127
+00:08:40,469 --> 00:08:46,146
+Line 5 is the trusted list, lines 6 and 7
+read the draft, and line 8 counts
+
+128
+00:08:46,166 --> 00:08:46,830
+problems.
+
+129
+00:08:46,867 --> 00:08:51,967
+Line 13 takes the name before the two
+equals signs, in small letters.
+
+130
+00:08:52,000 --> 00:08:56,453
+Lines 14 to 16 report a line with no pin,
+and count it.
+
+131
+00:08:57,053 --> 00:09:01,453
+Line 17 catches a pinned name that is not
+on the trusted list.
+
+132
+00:09:01,500 --> 00:09:04,554
+Line 18 finds the closest trusted names.
+
+133
+00:09:04,574 --> 00:09:10,779
+Line 19 takes the first one, with the if
+else from Chapter 14, in case nothing is
+
+134
+00:09:10,799 --> 00:09:11,240
+close.
+
+135
+00:09:11,267 --> 00:09:14,642
+Lines 20 and 21 report it and count it.
+
+136
+00:09:14,662 --> 00:09:19,083
+Any other line is OK, and line 24 prints
+the total.
+
+137
+00:09:19,687 --> 00:09:21,342
+Here is the draft again.
+
+138
+00:09:21,362 --> 00:09:27,135
+Use the program's two rules: a line needs
+a pin, and a pinned name must be trusted.
+
+139
+00:09:38,513 --> 00:09:39,756
+Three of the four.
+
+140
+00:09:39,776 --> 00:09:44,738
+Tabulate and pytest are not pinned, and
+reqeusts is not a trusted name.
+
+141
+00:09:45,353 --> 00:09:46,267
+Asha runs it.
+
+142
+00:09:46,287 --> 00:09:51,293
+Line 3 of the output shows the look-alike:
+unknown, close to requests.
+
+143
+00:09:51,333 --> 00:09:52,624
+Problems found: 3.
+
+144
+00:09:52,644 --> 00:09:55,318
+Mission solved: three problems found.
+
+145
+00:09:55,338 --> 00:10:00,853
+She pins tabulate and pytest, and fixes
+the spelling of requests, before she
+
+146
+00:10:00,873 --> 00:10:02,163
+installs anything.
+
+147
+00:10:02,200 --> 00:10:07,521
+Then she builds her name check into a
+function, with an AI assistant, one stage
+
+148
+00:10:07,541 --> 00:10:08,197
+at a time.
+
+149
+00:10:08,783 --> 00:10:13,121
+This chapter's AI skill: check every
+package an AI suggests.
+
+150
+00:10:13,141 --> 00:10:19,078
+It can name a package that does not exist,
+and attackers can publish exactly those
+
+151
+00:10:19,098 --> 00:10:19,513
+names.
+
+152
+00:10:19,533 --> 00:10:23,328
+So never install a name from a chat before
+you check it.
+
+153
+00:10:23,348 --> 00:10:26,598
+And never paste keys, passwords or private
+data.
+
+154
+00:10:27,220 --> 00:10:28,292
+Stage 1: plan.
+
+155
+00:10:28,312 --> 00:10:33,204
+Asha asks for the steps to add a package
+to her project safely.
+
+156
+00:10:33,224 --> 00:10:34,140
+No code yet.
+
+157
+00:10:34,167 --> 00:10:35,331
+Four good steps.
+
+158
+00:10:35,351 --> 00:10:41,476
+But one is missing: check the name and its
+page on pypi dot org, before installing.
+
+159
+00:10:41,496 --> 00:10:43,179
+Asha adds it as step 2.
+
+160
+00:10:43,787 --> 00:10:44,876
+Stage 2: write.
+
+161
+00:10:44,896 --> 00:10:47,613
+Asha writes her own name check first.
+
+162
+00:10:47,633 --> 00:10:49,537
+It only knows exact names.
+
+163
+00:10:49,567 --> 00:10:52,149
+The AI says reqeusts gives unknown.
+
+164
+00:10:52,169 --> 00:10:53,562
+She runs it: right.
+
+165
+00:10:53,582 --> 00:10:56,982
+But her version cannot warn about
+look-alikes.
+
+166
+00:10:57,587 --> 00:10:58,932
+Stage 3: generate.
+
+167
+00:10:58,952 --> 00:11:04,547
+Asha asks for a version that warns about
+look-alike names, using diff lib.
+
+168
+00:11:04,567 --> 00:11:09,151
+The AI says reqeusts will return:
+look-alike of requests.
+
+169
+00:11:09,753 --> 00:11:11,094
+Look at line 10.
+
+170
+00:11:11,114 --> 00:11:12,625
+The cutoff is 0.9.
+
+171
+00:11:12,645 --> 00:11:16,282
+Remember the score of reqeusts from step
+6.
+
+172
+00:11:27,647 --> 00:11:27,962
+No.
+
+173
+00:11:27,982 --> 00:11:33,774
+Reqeusts scores only 0.875, below the
+cutoff of 0.9.
+
+174
+00:11:33,794 --> 00:11:36,457
+So line 13 says unknown.
+
+175
+00:11:37,053 --> 00:11:38,096
+Stage 4: test.
+
+176
+00:11:38,116 --> 00:11:43,863
+Asha writes four cases with the exact
+result she expects, including Requests
+
+177
+00:11:43,883 --> 00:11:45,153
+with a capital R.
+
+178
+00:11:45,200 --> 00:11:47,769
+The AI says all four will pass.
+
+179
+00:11:48,387 --> 00:11:51,385
+Lines 16 to 19 hold the four cases.
+
+180
+00:11:51,405 --> 00:11:54,577
+Line 23 prints pass or fail for each.
+
+181
+00:11:54,600 --> 00:11:58,230
+Remember: PyPI ignores capital letters.
+
+182
+00:11:58,250 --> 00:11:59,634
+Look at line 8.
+
+183
+00:12:11,013 --> 00:12:11,650
+Two fail.
+
+184
+00:12:11,670 --> 00:12:13,986
+Reqeusts, because of the cutoff.
+
+185
+00:12:14,006 --> 00:12:19,313
+And Requests, because line 8 compares the
+exact text, with its capital R.
+
+186
+00:12:19,920 --> 00:12:24,920
+Asha shows the AI the two failures, and
+asks for the cause of each first.
+
+187
+00:12:24,967 --> 00:12:31,247
+The AI lowers the cutoff to 0.8, and
+changes the name to small letters before
+
+188
+00:12:31,267 --> 00:12:32,066
+comparing.
+
+189
+00:12:32,687 --> 00:12:36,798
+Line 8 lowers the name, and line 11 uses
+0.8.
+
+190
+00:12:36,818 --> 00:12:39,552
+She runs all four cases again.
+
+191
+00:12:39,572 --> 00:12:40,838
+All four pass.
+
+192
+00:12:41,453 --> 00:12:42,542
+Stage 5: debug.
+
+193
+00:12:42,562 --> 00:12:47,198
+Asha copies an import line from a chat
+into her weather script.
+
+194
+00:12:47,218 --> 00:12:50,080
+It stops with a module not found error.
+
+195
+00:12:50,100 --> 00:12:52,223
+She asks for the cause first.
+
+196
+00:12:52,267 --> 00:12:57,613
+The AI says the package is not installed,
+and gives her the install command for
+
+197
+00:12:57,633 --> 00:12:58,225
+reqeusts.
+
+198
+00:13:09,580 --> 00:13:09,749
+No.
+
+199
+00:13:09,769 --> 00:13:11,707
+Not before she checks the name.
+
+200
+00:13:11,727 --> 00:13:14,296
+It is the same look-alike from her draft.
+
+201
+00:13:14,887 --> 00:13:16,673
+She runs her name check.
+
+202
+00:13:16,693 --> 00:13:19,157
+Reqeusts: look-alike of requests.
+
+203
+00:13:19,200 --> 00:13:24,777
+So the real problem is a spelling mistake
+in her import line, not a missing package.
+
+204
+00:13:24,797 --> 00:13:30,040
+She fixes it to requests, and installs
+requests inside her virtual environment.
+
+205
+00:13:30,067 --> 00:13:34,124
+The look-alike could have run someone
+else's code on the cafe laptop.
+
+206
+00:13:34,720 --> 00:13:37,983
+She runs her four cases again on the name
+check.
+
+207
+00:13:38,003 --> 00:13:39,351
+All four still pass.
+
+208
+00:13:39,953 --> 00:13:41,253
+Stage 6: improve.
+
+209
+00:13:41,273 --> 00:13:42,495
+Her setup works.
+
+210
+00:13:42,515 --> 00:13:45,523
+Asha asks for at most two improvements.
+
+211
+00:13:45,567 --> 00:13:45,825
+One.
+
+212
+00:13:45,845 --> 00:13:51,183
+Remove spaces with strip, because a name
+copied from a chat can carry spaces.
+
+213
+00:13:51,203 --> 00:13:52,227
+That is useful.
+
+214
+00:13:52,267 --> 00:13:52,505
+Two.
+
+215
+00:13:52,525 --> 00:13:57,598
+Skip the virtual environment, and force
+the install with break system packages.
+
+216
+00:13:57,618 --> 00:14:02,692
+That forces pip to change the computer's
+own Python, which other programs need.
+
+217
+00:14:02,712 --> 00:14:06,109
+It breaks this chapter's first rule, so
+Asha says no.
+
+218
+00:14:06,720 --> 00:14:08,683
+She keeps suggestion one.
+
+219
+00:14:08,703 --> 00:14:15,427
+Line 8 now strips spaces, and line 21 adds
+a fifth case: requests, with spaces around
+
+220
+00:14:15,447 --> 00:14:15,665
+it.
+
+221
+00:14:15,685 --> 00:14:17,728
+She runs every case again.
+
+222
+00:14:17,748 --> 00:14:18,839
+All five pass.
+
+223
+00:14:19,453 --> 00:14:20,328
+Quick check.
+
+224
+00:14:20,348 --> 00:14:24,055
+An AI says: install this package to fix
+the error.
+
+225
+00:14:24,075 --> 00:14:25,620
+What do you do first?
+
+226
+00:14:36,980 --> 00:14:37,122
+B.
+
+227
+00:14:37,142 --> 00:14:41,172
+Check the exact name and its page on pypi
+dot org.
+
+228
+00:14:41,192 --> 00:14:42,144
+Then decide.
+
+229
+00:14:42,753 --> 00:14:43,401
+Breather.
+
+230
+00:14:43,421 --> 00:14:46,072
+The AI made four confident mistakes.
+
+231
+00:14:46,092 --> 00:14:50,893
+A score, test cases, her name check and
+one rule caught them all.
+
+232
+00:14:50,933 --> 00:14:55,404
+Next, four mistakes beginners make with
+environments and packages.
+
+233
+00:15:00,150 --> 00:15:00,811
+Mistake 1.
+
+234
+00:15:00,831 --> 00:15:06,052
+Asha installs a package in her virtual
+environment, opens a new terminal, and
+
+235
+00:15:06,072 --> 00:15:07,073
+runs her board.
+
+236
+00:15:07,093 --> 00:15:10,135
+Here, weather tables stands for that
+package.
+
+237
+00:15:10,155 --> 00:15:12,790
+It stops with a module not found error.
+
+238
+00:15:12,833 --> 00:15:14,447
+Check the prompt first.
+
+239
+00:15:14,467 --> 00:15:20,058
+With no dot v e n v in brackets, the
+terminal uses the computer's Python, where
+
+240
+00:15:20,078 --> 00:15:22,118
+the package is not installed.
+
+241
+00:15:22,138 --> 00:15:23,893
+Activate, then run again.
+
+242
+00:15:24,487 --> 00:15:25,246
+Mistake 2.
+
+243
+00:15:25,266 --> 00:15:28,210
+Remember the pinned lines from step 5.
+
+244
+00:15:39,580 --> 00:15:41,593
+It has only one equals sign.
+
+245
+00:15:41,613 --> 00:15:46,820
+So line 3 finds no two equals signs to
+split at, and gets only one part.
+
+246
+00:15:46,867 --> 00:15:52,553
+Not enough values to unpack means: two
+names are waiting, but only one value
+
+247
+00:15:52,573 --> 00:15:53,153
+arrived.
+
+248
+00:15:53,173 --> 00:15:54,880
+Write two equals signs.
+
+249
+00:15:54,900 --> 00:15:57,208
+Pip refuses the single one too.
+
+250
+00:15:57,820 --> 00:15:58,598
+Mistake 3.
+
+251
+00:15:58,618 --> 00:16:04,187
+Some systems refuse a plain pip install
+outside a virtual environment.
+
+252
+00:16:04,207 --> 00:16:07,141
+Do not force it, as the AI suggested.
+
+253
+00:16:07,161 --> 00:16:11,133
+Activate a virtual environment, and
+install there.
+
+254
+00:16:11,753 --> 00:16:12,444
+Mistake 4.
+
+255
+00:16:12,464 --> 00:16:16,070
+A virtual environment holds paths for one
+computer.
+
+256
+00:16:16,090 --> 00:16:20,193
+Copied to another computer or folder, it
+may stop working.
+
+257
+00:16:20,233 --> 00:16:22,463
+So never share dot v e n v.
+
+258
+00:16:22,483 --> 00:16:28,713
+Share requirements dot t x t, and build a
+new environment on each computer.
+
+259
+00:16:29,320 --> 00:16:30,240
+Last breather.
+
+260
+00:16:30,260 --> 00:16:33,662
+Two questions to think about on your own
+come next.
+
+261
+00:16:38,383 --> 00:16:38,784
+First.
+
+262
+00:16:38,804 --> 00:16:41,310
+A new version of tabulate comes out.
+
+263
+00:16:41,330 --> 00:16:45,238
+How could Asha try it, without breaking
+the cafe laptop?
+
+264
+00:16:56,613 --> 00:16:59,046
+Keep your answer for the practice tasks.
+
+265
+00:16:59,653 --> 00:17:00,100
+Second.
+
+266
+00:17:00,120 --> 00:17:03,435
+An AI suggests a package called cafe
+weather easy.
+
+267
+00:17:03,455 --> 00:17:08,636
+Which checks would you make on its page,
+and which result would make you stop?
+
+268
+00:17:20,013 --> 00:17:21,224
+Write your list down.
+
+269
+00:17:21,244 --> 00:17:23,862
+You will use it every time you add a
+package.
+
+270
+00:17:24,450 --> 00:17:29,800
+A virtual environment is a project folder
+with its own Python and packages.
+
+271
+00:17:29,833 --> 00:17:35,073
+Look for dot v e n v in the prompt, then
+install with python dash m pip.
+
+272
+00:17:35,100 --> 00:17:40,260
+Requirements dot t x t pins exact versions
+for every computer.
+
+273
+00:17:40,300 --> 00:17:45,185
+And check every name before you install
+it, especially a name from an AI.
+
+274
+00:17:45,787 --> 00:17:46,822
+One last check.
+
+275
+00:17:46,842 --> 00:17:52,311
+Which command records the exact versions
+in the active environment, in a file?
+
+276
+00:18:03,680 --> 00:18:03,810
+A.
+
+277
+00:18:03,830 --> 00:18:09,143
+Pip freeze prints pinned lines, and the
+greater than sign saves them in
+
+278
+00:18:09,163 --> 00:18:10,870
+requirements dot t x t.
+
+279
+00:18:10,890 --> 00:18:12,748
+Pip list only shows them.
+
+280
+00:18:13,353 --> 00:18:14,650
+Mission complete!
+
+281
+00:18:14,670 --> 00:18:17,903
+You earned 100 XP and the Toolsmith badge.
+
+282
+00:18:20,150 --> 00:18:21,826
+Now it is your turn.
+
+283
+00:18:21,846 --> 00:18:24,031
+Eight tasks, worth 170 XP.
+
+284
+00:18:24,051 --> 00:18:26,660
+None of them installs anything.
+
+285
+00:18:26,700 --> 00:18:29,880
+Three warm-up tasks, worth 10 XP each.
+
+286
+00:18:29,900 --> 00:18:32,270
+Three apply tasks, worth 20 each.
+
+287
+00:18:32,300 --> 00:18:34,964
+And two stretch tasks, worth 40 each.
+
+288
+00:18:34,984 --> 00:18:38,229
+In the last one, you fix an AI's pin
+checker.
+
+289
+00:18:38,817 --> 00:18:44,359
+Asha's quiz scores sit in a CSV file, her
+weather board saves JSON, and her loaders
+
+290
+00:18:44,379 --> 00:18:45,431
+handle bad rows.
+
+291
+00:18:45,451 --> 00:18:49,117
+But her day's numbers are still scattered
+across files.
+
+292
+00:18:49,167 --> 00:18:54,636
+In Chapter 25, Boss Level 5, you will
+build the Data Report Generator: a tool
+
+293
+00:18:54,656 --> 00:18:59,627
+that reads a data file, handles bad rows,
+and writes one clear report.
+
+294
+00:18:59,667 --> 00:19:02,157
+Do the warm-up tasks now.
+
+295
+00:19:02,200 --> 00:19:03,851
+See you at the boss level.

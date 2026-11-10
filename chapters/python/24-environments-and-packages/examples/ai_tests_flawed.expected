@@ -1,0 +1,4 @@
+requests  pass: trusted
+reqeusts  FAIL: unknown: check pypi.org
+Requests  FAIL: unknown: check pypi.org
+numpy     pass: unknown: check pypi.org

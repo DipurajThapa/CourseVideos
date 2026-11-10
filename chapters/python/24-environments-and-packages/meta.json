@@ -1,0 +1,62 @@
+{
+  "id": "python-24",
+  "title": "Virtual Environments and Packages",
+  "language": "python",
+  "type": "lesson",
+  "module": "M5",
+  "badge": "Toolsmith",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "package",
+    "PyPI",
+    "pip",
+    "virtual environment",
+    "venv",
+    "activate and deactivate",
+    "sys.prefix and sys.base_prefix",
+    "python -m pip install",
+    "pip list and pip show",
+    "pip freeze",
+    "requirements.txt",
+    "pinned version (==)",
+    "pip install -r",
+    "checking a package name and page",
+    "look-alike package names",
+    "difflib.SequenceMatcher and get_close_matches",
+    "externally-managed-environment"
+  ],
+  "prerequisites": [
+    "python-23"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_check_flawed.py",
+    "fixed_file": "examples/ai_tests_fixed.py",
+    "flaw": "Asked for a name_check() that warns about look-alike package names, the AI used difflib.get_close_matches with cutoff=0.9 and said that 'reqeusts' returns 'look-alike of requests'. The real score of 'reqeusts' against 'requests' is 0.875, below the cutoff, so it returned 'unknown: check pypi.org'. Asha's four cases also showed that 'Requests' with a capital R failed. Using lower() and a cutoff of 0.8 made every case pass. Later the AI told her to install 'reqeusts' to fix a ModuleNotFoundError; her name check showed it was a look-alike of requests and the real problem was a spelling mistake. In the Improve stage she kept the AI's strip() suggestion, added a fifth case with spaces and reran every case, and rejected its advice to install with sudo or --break-system-packages."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "Terminal commands (venv, activate, pip install, pip list, pip freeze, pip install -r) are shown as tables and console transcripts, not runnable example files, so the checker never needs the network or installs anything. The console outputs were captured from real runs in a fresh virtual environment during the chapter run (Python 3.13.18, tabulate 0.9.0, requests 2.32.3).",
+    "The runnable examples work on requirements files and package names (reading pins, checking for ==, look-alike names with difflib), which give the same output on every computer.",
+    "difflib is introduced as a small standard module for measuring how similar two names are; it supports the chapter's AI skill (catching look-alike package names).",
+    "Package versions in the chapter (requests 2.32.3, tabulate 0.9.0, pytest 8.3.4, rich 13.9.4, requests 2.31.0) are presented as examples, not as current versions.",
+    "The full pip freeze output for requests is not shown, because one of its helper packages uses calendar dates as version numbers; the lesson names the four helper packages instead.",
+    "Critic review (8/10) applied: a real Improve-stage change with a fifth test case and a full rerun (ai_tests_final.py), the PowerShell activation script and execution policy note, a true callback to installing pytest in Chapter 19, an explanation of SequenceMatcher's None argument, and weather_tables labelled as a stand-in name in Mistake 1."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the error reports show the full path to the file instead of the short file name.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

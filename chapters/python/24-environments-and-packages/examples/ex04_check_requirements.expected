@@ -1,0 +1,5 @@
+requests==2.32.3: OK
+tabulate: not pinned
+reqeusts==2.32.3: unknown, close to requests
+pytest>=8: not pinned
+Problems found: 3
