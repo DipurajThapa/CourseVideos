@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-11",
+  "rendered_at": "2026-11-10T01:16:04+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "43a901168f18713b4cdc23a78b6aae2bd5c32d2830953cc60b85a2f95071f69c",
+  "inputs_sha256": "9319e6b226ac011e7d1ad6c7015564b8f21f51b169558051958288c5dc0a251e",
+  "video_sha256": "58542e96f78a88679d7722a4027d5af846f57d78a87157ff3d0ed32f56193510",
+  "duration_seconds": 1073.9,
+  "size_mb": 45.51,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -1.4
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 968,
+  "questions": 16,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 55.233
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 55.233,
+      "end": 64.967
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 64.967,
+      "end": 80.367
+    },
+    {
+      "id": "idea",
+      "title": "The idea: items with an index",
+      "section": "The idea",
+      "start": 80.367,
+      "end": 149.7
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Make a list and read its items",
+      "section": "Build it step by step",
+      "start": 149.7,
+      "end": 193.3
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Change a list",
+      "section": "Build it step by step",
+      "start": 193.3,
+      "end": 262.967
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Slices",
+      "section": "Build it step by step",
+      "start": 262.967,
+      "end": 330.2
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Build a list in a loop",
+      "section": "Build it step by step",
+      "start": 330.2,
+      "end": 379.1
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: Sort and add up",
+      "section": "Build it step by step",
+      "start": 379.1,
+      "end": 444.7
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the day report",
+      "section": "See the outcome",
+      "start": 444.7,
+      "end": 505.667
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one top three line",
+      "section": "Work with AI",
+      "start": 505.667,
+      "end": 811.4
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 811.4,
+      "end": 923.933
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 923.933,
+      "end": 970.1
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 970.1,
+      "end": 1028.733
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1028.733,
+      "end": 1053.133
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1053.133,
+      "end": 1073.867
+    }
+  ]
+}

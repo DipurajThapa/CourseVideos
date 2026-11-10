@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-11",
   "run_id": "2026-11-10-1ed31e",
-  "verified_at": "2026-11-10T00:41:32+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T01:18:03+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -19,12 +19,16 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 25,
+        "files_run": 27,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
         ],
         "results": {
+          "examples/ai_fix_order.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/ai_slice_check.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
@@ -38,6 +42,10 @@
             "Python 3.13.18": "pass"
           },
           "examples/ai_top_none.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_top_regression.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -171,48 +179,29 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 112,
+          "sentences": 114,
           "average_words": 11.9,
           "longest": 29
+        },
+        "video/script.md": {
+          "sentences": 710,
+          "average_words": 9.0,
+          "longest": 28
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "scene intro: narration contains unspeakable characters ['<', '>']: 'Welcome to Code Quest, Chapter NN. <one sentence on what the learner w'",
-        "scene intro: narration contains unspeakable characters ['<', '>']: '<set up the hook> <point at the line> <reveal>'",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: output examples/<flawed>.expected must be an existing .expected file",
-        "scene learning-goals: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene why-this-matters: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene the-idea: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene build-it-step-by-step: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene see-the-outcome: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene work-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene common-mistakes: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene think-beyond: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene recap: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene practice: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene whats-next: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "need at least 6 on-screen questions with a timer, found 1",
-        "need at least 2 quick-check quizzes, found 0",
-        "need at least 2 breathers for 1 minutes, found 0",
-        "estimated length 1.1 min is outside 8 to 20 min",
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/11-lists",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/11-lists",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/11-lists",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/11-lists",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/11-lists"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 1.1
+        "estimated_minutes": 18.6,
+        "duration_seconds": 1073.9,
+        "size_mb": 45.51,
+        "scenes": 16,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "c3869020ce4b85f410f6729b83d303b705b376f6338d81cda373e789d262b977"
+  "fingerprint": "c5f622d1f83c32c142e774aa7345706fe5bf99ec2e365e65820b50036abd8083"
 }

@@ -1038,7 +1038,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "It printed `[6.5, 8.0, 9.25]`. My check: the first item must equal `max(sales)`, 21.0, so it fails. Fix it, then give me three test lists with the expected output: a normal day, a day where the top three sales are equal, and a day with only two sales."
+        "text": "It printed `[6.5, 8.0, 9.25]`. My check: the first item must equal `max(sales)`, 21.0, so it fails. Fix it. Then give me three test lists with the expected output: a normal day, a day where the top three sales are equal, and a day with two sales."
        },
        {
         "role": "ai",
