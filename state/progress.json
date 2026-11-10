@@ -350,8 +350,15 @@
     "python-18": {
       "language": "python",
       "number": 18,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-10-70e61a",
+          "started": "2026-11-10T05:05:54+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-10-70e61a"
     },
     "python-19": {
       "language": "python",
@@ -414,5 +421,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T05:04:23+00:00"
+  "updated": "2026-11-10T05:05:54+00:00"
 }
