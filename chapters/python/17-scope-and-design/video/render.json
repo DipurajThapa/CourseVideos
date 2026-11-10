@@ -1,0 +1,138 @@
+{
+  "chapter_id": "python-17",
+  "rendered_at": "2026-11-10T05:00:54+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "a950affff1f17916b25643a08dae1ab6e43941d3d79996638f8ff7511705a9e2",
+  "inputs_sha256": "3ea04a10dfbea089193a54201a8ffcf7570f777899d7e9f4d26a3d71174090fc",
+  "video_sha256": "340adb7932a626dc7548dfd0fbf898d03d5d4cdd3f201cb0f54b40946f8e71c6",
+  "duration_seconds": 1056.3,
+  "size_mb": 44.7,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 930,
+  "questions": 16,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 50.133
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 50.133,
+      "end": 61.267
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 61.267,
+      "end": 73.9
+    },
+    {
+      "id": "idea",
+      "title": "The idea: where a variable lives",
+      "section": "The idea",
+      "start": 73.9,
+      "end": 163.567
+    },
+    {
+      "id": "step1",
+      "title": "Steps 1 and 2: Local and global",
+      "section": "Build it step by step",
+      "start": 163.567,
+      "end": 246.5
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Changing a global inside a function",
+      "section": "Build it step by step",
+      "start": 246.5,
+      "end": 307.833
+    },
+    {
+      "id": "step4",
+      "title": "Steps 4 and 5: Default and keyword arguments",
+      "section": "Build it step by step",
+      "start": 307.833,
+      "end": 440.267
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: One job per function",
+      "section": "Build it step by step",
+      "start": 440.267,
+      "end": 460.9
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the day report, redesigned",
+      "section": "See the outcome",
+      "start": 460.9,
+      "end": 522.367
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one split",
+      "section": "Work with AI",
+      "start": 522.367,
+      "end": 822.5
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 822.5,
+      "end": 905.767
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 905.767,
+      "end": 954.267
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 954.267,
+      "end": 1012.933
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1012.933,
+      "end": 1031.5
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1031.5,
+      "end": 1056.267
+    }
+  ]
+}

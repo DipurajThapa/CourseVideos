@@ -1,0 +1,1673 @@
+{
+ "chapter_id": "python-17",
+ "number": 17,
+ "version": 3,
+ "title": "Chapter 17: Scope and Good Function Design",
+ "video_title": "Python Chapter 17: Scope and Good Function Design",
+ "summary": "Asha's oldest function adds tax, prints a line and changes a global week total, all at once. Follow her as she learns local and global scope, fixes a NameError and an UnboundLocalError, and uses default and keyword arguments. Then watch her split the function with an AI assistant at all six stages, checking every change against her saved output.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on Asha's oldest function doing three jobs, in her words. Then the title with the AI tease, then the redesigned day report as the mission, with no output yet.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "One function, three jobs",
+      "label": "The problem",
+      "body": [
+       "Asha's oldest function at the Corner Cafe closes the day."
+      ],
+      "pre": "  def close_day(day, prices):\n      global week_total             <- changes something outside\n      total = 0\n      for price in prices:\n          total += round(price * 1.1, 2)    <- calculates\n      total = round(total, 2)\n      print(...)                    <- prints\n      week_total = ...              <- and updates the week"
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha's oldest function closes the day. It adds the tax, prints a line, and changes a week total, all at once.",
+       "focus": "pre"
+      },
+      {
+       "say": "When one part goes wrong, she has to read all of it. And Chapter 16 ended with a question: day total has a variable called total inside it. Can the rest of the program see it?"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 17",
+      "title": "Scope and Good Function Design",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Architect badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 17: where variables live, and how to design small functions."
+      },
+      {
+       "say": "And an AI assistant will split Asha's function, and promise the output stays the same. Her saved output will decide.",
+       "subtitle": "Pass values in. Return results out."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_day_report.py",
+      "heading": "Today's mission: the day report, redesigned",
+      "hidden_text": "By the end, you will know every line of this program."
+     },
+     "segments": [
+      {
+       "say": "Here is today's mission: Asha's day report from Chapter 16, redesigned. Three functions, and each one returns its result.",
+       "highlight": [
+        2,
+        6,
+        13
+       ]
+      },
+      {
+       "say": "Only the last three lines print. Let's build it.",
+       "highlight": [
+        18,
+        19,
+        20
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Explain local and global variables, and predict which one a line uses.",
+       "Fix a `NameError` and an `UnboundLocalError` caused by scope.",
+       "Write default arguments and call functions with keyword arguments.",
+       "Split a function that does several jobs into small functions.",
+       "Ask AI to split a function, and check the split against saved output."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Your goals: know where a variable lives, fix two scope errors, use default and keyword arguments, and split a function that does too much, with an AI's help.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Connect small, self-contained functions to testing and to safe AI changes.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "Real programs have hundreds of functions.",
+       "A small function that gets its values as parameters and returns its result can be tested on its own.",
+       "An AI can change one small function without breaking the rest."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Real programs have hundreds of functions. A small function that gets its values as parameters and returns its result can be tested on its own, and an AI can change it safely.",
+       "reveal": 3,
+       "focus": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: where a variable lives",
+   "direction": "Teach scope with the table and the diagram, then the kitchen analogy and where it stops working, then the rule. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Two scopes",
+      "label": "The idea",
+      "columns": [
+       "Scope",
+       "Created",
+       "Can be used"
+      ],
+      "rows": [
+       [
+        "Local",
+        "Inside a function: an assignment or a parameter",
+        "Only inside that function, while it runs"
+       ],
+       [
+        "Global",
+        "At the top level of the file",
+        "Everywhere in the file; functions can read it"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "The scope of a variable is the part of the program where its name can be used. A local variable is created inside a function. It exists only while that function runs.",
+       "focus_row": 0
+      },
+      {
+       "say": "A global variable is created at the top level of the file. Every function can read it.",
+       "focus_row": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The menu board and the whiteboard",
+      "label": "The idea",
+      "body": [
+       "Inside a function, Python looks for a local name first, then a global one."
+      ],
+      "pre": "  tax_rate = 1.1                 <- global: the menu board\n\n  def day_total(prices):\n      total = 0                  <- local: the kitchen whiteboard\n      ...                        <- can read tax_rate\n\n  print(total)                   <- NameError: total is gone"
+     },
+     "segments": [
+      {
+       "say": "Think of the cafe. The menu board on the wall is global: everyone can read it, even the cook. The kitchen whiteboard is local: its notes are wiped when the job is done.",
+       "focus": "pre"
+      },
+      {
+       "say": "Where it stops working: suppose the cook writes a note with the same name as something on the menu board. Python treats that name as a kitchen note for the whole function, even on the lines before the note."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "The design rule",
+      "label": "The idea",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "Pass values in as parameters. Return results out.",
+       "A **pure function** uses only its parameters and returns its result. It prints nothing and changes nothing outside.",
+       "A pure function gives the same result for the same arguments, so one line can test it."
+      ]
+     },
+     "segments": [
+      {
+       "say": "So good functions follow one rule: pass values in as parameters, and return results out."
+      },
+      {
+       "say": "A function that uses only its parameters and returns its result, without printing or changing anything outside, is called a pure function. One line can test it.",
+       "reveal": 3,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A variable is created inside a function. Where can you use it?",
+      "options": [
+       "Everywhere in the file",
+       "Only after the function",
+       "Only inside that function, while it runs",
+       "Only inside `print()`"
+      ],
+      "answer": 2,
+      "explain": "It is local: it exists only while the function runs."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A variable is created inside a function. Where can you use it?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Only inside that function, while it runs. It is local."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Local: inside a function, while it runs.",
+       "Global: the top level of the file.",
+       "Pass values in, return results out."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Next, Asha tests these rules with real code."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Steps 1 and 2: Local and global",
+   "direction": "Ask what lines 8 and 9 of ex01 print, then what lines 7 and 9 of ex02 print.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_local.py",
+      "heading": "Step 1: A local variable",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 1. Inside day total, line 3 creates a variable called total. That makes it local.",
+       "highlight": [
+        3,
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Line 8 calls the function and prints what it returns. Line 9 tries to print total itself.",
+       "highlight": [
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 8 and 9 print?"
+     },
+     "after": [
+      {
+       "say": "Line 8 prints 7.5, the returned value.",
+       "error": "examples/ex01_local.expected_error",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 9 stops with a Name Error. Total existed only while the function ran. To use a result outside, return it and store it.",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_global_read.py",
+      "heading": "Step 2: A function reads a global",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 2. Line 2 creates tax rate at the top level, so it is global. With tax reads it on line 5.",
+       "highlight": [
+        2,
+        5
+       ]
+      },
+      {
+       "say": "Line 7 calls with tax. Line 8 changes tax rate to 1.2. And line 9 makes exactly the same call again.",
+       "highlight": [
+        7,
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 7 and 9 print?"
+     },
+     "after": [
+      {
+       "say": "3.85, then 4.2. The same call gives two results, because the function reads tax rate at the moment it runs.",
+       "output": "examples/ex02_global_read.expected",
+       "highlight": [
+        7,
+        9
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Nothing in the call shows that hidden link to line 8. That is why good functions take what they need as parameters.",
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Changing a global inside a function",
+   "direction": "Teach the assignment rule, ask where Python stops, reveal the UnboundLocalError, then the pass-in, return-out fix.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_unbound.py",
+      "heading": "Step 3: Counting sales with a global",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict where Python stops."
+     },
+     "segments": [
+      {
+       "say": "Step 3. Asha counts sales with a global variable, sales count, on line 2.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 5 assigns to sales count inside the function. Remember the rule: an assignment makes the name local for the whole function.",
+       "highlight": [
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Where does Python stop, and why?"
+     },
+     "after": [
+      {
+       "say": "On line 5. The right side reads the local sales count before it has a value. Python calls this an Unbound Local Error.",
+       "error": "examples/ex03_unbound.expected_error",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The traceback shows the call on line 7, then the failing line 5 inside the function.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        2,
+        3,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Python has a keyword, global, that allows the change. But it brings back the hidden link from step 2. There is a better fix.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_pass_in.py",
+      "heading": "The fix: pass it in, return it out",
+      "highlight": [
+       2,
+       3
+      ],
+      "output": "examples/ex04_pass_in.expected"
+     },
+     "segments": [
+      {
+       "say": "Add sale now takes the count as a parameter, and returns the count plus 1.",
+       "highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Lines 6 and 7 store each returned value. Two sales, so line 8 prints 2.",
+       "highlight": [
+        6,
+        7,
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Steps 4 and 5: Default and keyword arguments",
+   "direction": "Teach defaults and ask about lines 5 and 7. Teach keyword arguments and their order rule, ask about line 7. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_defaults.py",
+      "heading": "Step 4: A default argument",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 4. A default argument is a value a parameter gets when the call leaves it out. Here, rate equals 1.1 in the def line.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Parameters with a default must come after the parameters without one. Line 6 passes a rate of 1.2. Lines 5 and 7 leave the rate out.",
+       "highlight": [
+        5,
+        6,
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 5 and 7 print?"
+     },
+     "after": [
+      {
+       "say": "3.85 and 4.4. Both calls leave out the rate, so it is 1.1.",
+       "output": "examples/ex05_defaults.expected",
+       "highlight": [
+        5,
+        7
+       ],
+       "out_highlight": [
+        1,
+        3
+       ]
+      },
+      {
+       "say": "Line 6 prints 4.2 with its own rate. Now nothing is hidden: the rate is a parameter.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "One more fact about defaults: Python creates a default value once, when the def line runs, not at each call. For a number, that makes no difference. Remember it for later.",
+       "highlight": [
+        2
+       ],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_keywords.py",
+      "heading": "Step 5: Keyword arguments",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 5. A keyword argument names the parameter in the call. On line 7, q t y equals 2 says at once what the 2 means.",
+       "highlight": [
+        7
+       ]
+      },
+      {
+       "say": "A positional argument is matched by its position: first to first. Keyword arguments can come in any order, but after any positional ones. Line 8 names both, in a new order.",
+       "highlight": [
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 8 print?"
+     },
+     "after": [
+      {
+       "say": "1 x Scone, 2.75. Q t y keeps its default, 1, and the names put each value in the right place.",
+       "output": "examples/ex06_keywords.expected",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 6 uses the default too, and line 7 gives 2 cakes for 8.00.",
+       "highlight": [
+        6,
+        7
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`def order_line(item, price, qty=1):` Which call is NOT allowed?",
+      "options": [
+       "`order_line(item=\"Tea\", 3.5)`",
+       "`order_line(\"Tea\", 3.5)`",
+       "`order_line(\"Tea\", price=3.5)`",
+       "`order_line(price=3.5, item=\"Tea\")`"
+      ],
+      "answer": 0,
+      "explain": "After a keyword argument, every argument needs a name."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which of these calls is not allowed?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. A positional argument cannot come after a keyword argument."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Change a value by returning it.",
+       "Defaults go last in the `def` line.",
+       "Keywords go last in the call."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Relax for a moment. Next, the most important design rule: one job per function."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: One job per function",
+   "direction": "Show a calculation function and a text function, and why line 13 can test the first one.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_one_job.py",
+      "heading": "Step 6: One job each",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ex07_one_job.expected"
+     },
+     "segments": [
+      {
+       "say": "Step 6. Day total has one job: it calculates and returns.",
+       "highlight": [
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Total line has one job: it builds the text. Neither function prints.",
+       "highlight": [
+        8,
+        9
+       ]
+      },
+      {
+       "say": "Only the main code prints. And line 13 tests day total with one comparison: True. A function that only prints could never be tested like that.",
+       "highlight": [
+        12,
+        13
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the day report, redesigned",
+   "direction": "Return to the mission. Walk the three functions, the default rate and the two local totals, ask what line 19 prints, reveal, then hand over to the AI feature.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_day_report.py",
+      "heading": "Mission complete: the redesigned day report",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. With tax takes the rate as a default argument, instead of a fixed number.",
+       "highlight": [
+        2,
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Day total and report line take the rate too, and pass it on to the next function.",
+       "highlight": [
+        6,
+        10,
+        13,
+        15
+       ]
+      },
+      {
+       "say": "Report line has its own local variable called total, on line 15. Day total has one too. The two never meet: each lives only inside its own function.",
+       "highlight": [
+        8,
+        15
+       ]
+      },
+      {
+       "say": "Line 19 reports Friday, a day with a higher tax, using a keyword argument for the rate.",
+       "highlight": [
+        19
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 19 print?"
+     },
+     "after": [
+      {
+       "say": "Friday, 2 sales, 9.30. The rate of 1.2 travels from the call into every function.",
+       "output": "examples/ex08_day_report.expected",
+       "highlight": [
+        19
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 18 uses the default rate, and line 20 tests a total in one line: True. Mission complete!",
+       "highlight": [
+        18,
+        20
+       ],
+       "out_highlight": [
+        1,
+        3
+       ]
+      },
+      {
+       "say": "Now Asha wants to split her oldest function, close day. She asks an AI assistant to help, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one split",
+   "direction": "Teach the skill. One conversation per stage, all about splitting close_day. Generate: None lines. Test: cases, then the split matches the target. Debug: the AI's first fix uses global. Improve: a list default shares one list.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: a safe split",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Ask AI which functions do too much, and how to split them.",
+       "A split must not change what the program prints.",
+       "Save the output first. Compare after every change. Never paste private data."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill: ask an AI which functions do too much, and how to split them.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "A split must not change what the program prints. So save the output first, and compare it after every change.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: list the jobs",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here is my oldest function. Do not write code yet. List every separate job it does, with the line numbers for each job.",
+        "code": "examples/ai_close_day_original.py",
+        "code_lines": [
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10,
+         11
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "1. It adds tax and totals the prices (lines 6 to 9).\n2. It prints a report line (line 10).\n3. It changes the global `week_total` (lines 5 and 11)."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha pastes her old close day function and asks the AI to list each job, with line numbers. No code yet."
+      },
+      {
+       "say": "The AI finds three jobs: the tax and the total, a printed line, and the global week total. Asha ticks every line against the list.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: your own function first",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Before any split, I wrote the calculation myself as a pure function. Do not change it. Predict exactly what the last two lines print.",
+        "code": "examples/ai_own_total.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "`11.28`, then `8.53`."
+       },
+       {
+        "role": "you",
+        "text": "Correct. I also ran the original program and saved its output. This is my target:",
+        "output": "examples/ai_close_day_original.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Before asking for a split, Asha writes the calculation herself, as a pure day total. The AI predicts 11.28 and 8.53, and her run agrees.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Then she runs the original program and saves its real output. That is her target for every change.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: a split with rules",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Split close_day into small functions with one job each. Use no global variables. Return results instead of printing them. The output must stay exactly the same."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the split: `day_total()` and `report_line()`, and no globals. The output stays exactly the same.",
+        "code": "examples/ai_split_flawed.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks for a split with clear rules: no global variables, return instead of print, and exactly the same output."
+      },
+      {
+       "say": "The AI writes day total and report line, and promises the same output. Its day total matches the one Asha wrote herself.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_split_flawed.py",
+      "heading": "The AI's split, before Asha runs it",
+      "highlight": [
+       10
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Here is the whole split. Look at line 10, inside report line. Then look at lines 14 and 15.",
+       "highlight": [
+        10,
+        14,
+        15
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The AI says the output is exactly the same. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Two extra lines say None. Report line prints instead of returning, so it returns None.",
+       "output": "examples/ai_split_flawed.expected",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        2,
+        4
+       ]
+      },
+      {
+       "say": "Lines 14 and 15 print that None too. Asha's saved target caught it at once. The AI broke its own rule, and it sounded sure.",
+       "highlight": [
+        14,
+        15
+       ],
+       "out_highlight": [
+        2,
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: cases with expected lines",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Your report_line prints instead of returning, so my program printed None twice. Fix it. Then give me three test cases with the exact expected line: a normal day, an empty day and a day with one sale."
+       },
+       {
+        "role": "ai",
+        "text": "Change `print(` to `return` on line 10.\nTest cases: Monday `[3.5, 4.0, 2.75]` gives `Monday   3 sales  11.28`. Sunday `[]` gives `Sunday   0 sales   0.00`. Friday `[2.0]` gives `Friday   1 sales   2.20`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha tells the AI what happened. She asks for the fix, and for three test cases with the exact expected line: a normal day, an empty day, and one sale."
+      },
+      {
+       "say": "The AI changes print to return on line 10, and lists the three cases. Asha checks Monday against her target, and counts the spaces in the other two.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_split_tests_flawed.py",
+      "heading": "The three cases, on the AI's first version",
+      "highlight": [
+       12,
+       13,
+       14
+      ],
+      "code_lines": [
+       12,
+       13,
+       14,
+       15,
+       16,
+       17
+      ],
+      "output": "examples/ai_split_tests_flawed.expected"
+     },
+     "segments": [
+      {
+       "say": "First, she runs the three cases on the AI's first version. Every case fails, because report line still prints and returns None.",
+       "highlight": [
+        16,
+        17
+       ],
+       "out_highlight": [
+        2,
+        4,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_split_tests_fixed.py",
+      "heading": "The three cases, on the fixed split",
+      "highlight": [
+       12,
+       13,
+       14
+      ],
+      "code_lines": [
+       12,
+       13,
+       14,
+       15,
+       16,
+       17
+      ],
+      "output": "examples/ai_split_tests_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "Lines 12 to 14 hold the three cases: a day, its prices, and the expected line. The loop on line 15 runs each one through report line.",
+       "highlight": [
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      },
+      {
+       "say": "Line 17 prints pass or FAIL, with the if else from Chapter 14. All three pass, including the empty day.",
+       "highlight": [
+        17
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I added a function for the week total, and got this error. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_week_unbound.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7
+        ],
+        "file": "examples/ai_week_unbound.py",
+        "error": "examples/ai_week_unbound.expected_error"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha moves the week total into its own function, and Python stops. She pastes the code and the full error, and asks for the cause first."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: a fix that keeps the rules",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I added a function for the week total, and got this error. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_week_unbound.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7
+        ],
+        "file": "examples/ai_week_unbound.py",
+        "error": "examples/ai_week_unbound.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "Line 5 assigns to `week_total`, so Python treats it as local in `add_to_week()`. Then it reads that local name before it has a value.\nThe fix: add `global week_total` as the first line of the function."
+       },
+       {
+        "role": "you",
+        "text": "My plan says no global variables. Show a fix that passes the week total in and returns the new total."
+       }
+      ],
+      "reveal": 3
+     },
+     "segments": [
+      {
+       "say": "The AI explains the cause well: line 5 assigns to week total, so it is local, and it is read before it has a value. But its fix is to add the global keyword.",
+       "focus": 1
+      },
+      {
+       "say": "That breaks Asha's own plan: no global variables. So she asks for a fix that passes the week total in, and returns the new one.",
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_split_final.py",
+      "heading": "The final split, checked again",
+      "highlight": [
+       12,
+       13
+      ],
+      "code_lines": [
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26
+      ],
+      "output": "examples/ai_split_final.expected"
+     },
+     "segments": [
+      {
+       "say": "Add to week now takes the week total in, and returns the new one. Lines 19 and 20 add Monday and Tuesday.",
+       "highlight": [
+        12,
+        13,
+        19,
+        20
+       ]
+      },
+      {
+       "say": "Asha runs everything again. The output matches her target exactly, week total 19.81, and all three cases pass.",
+       "highlight": [
+        17,
+        18,
+        21,
+        25,
+        26
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: one suggestion",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My split passes every test. Suggest one improvement, with one reason. Keep the output the same."
+       },
+       {
+        "role": "ai",
+        "text": "Add `record_sale(price, sales=[])`. With a default empty list, you can record a day's sales one by one without making a list first. Everything else stays the same."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one improvement that keeps the output the same."
+      },
+      {
+       "say": "The AI suggests a record sale function with a default empty list, so she can record sales one by one.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_record_flawed.py",
+      "heading": "Testing the suggestion with two days",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Asha tests it with two separate days. Lines 6 and 7 record two Monday sales. Line 8 records one Tuesday sale, and leaves out the list.",
+       "highlight": [
+        6,
+        7,
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Will Tuesday's list hold only `4.25`?"
+     },
+     "after": [
+      {
+       "say": "No. Both lists hold all three sales. Python creates a default value once, when the def line runs, not at each call.",
+       "output": "examples/ai_record_flawed.expected",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Remember step 4: the default is created once, so every call that leaves out the list shares it. Asha rejects the suggestion, and her final program still matches the target.",
+       "highlight": [
+        6,
+        8
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI split your function and says the output is the same. What do you do?",
+      "options": [
+       "Trust it, because the code is shorter",
+       "Read the code once",
+       "Ask the AI to check its own work",
+       "Run it and compare with the output you saved"
+      ],
+      "answer": 3,
+      "explain": "Only a real run, compared line by line with the saved output, proves it."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI split your function, and says the output is the same. What do you do?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Run it, and compare with the output you saved."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Save the output before any change.",
+       "No globals: pass in, return out.",
+       "Test a default with two separate calls."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha caught three AI problems: a print instead of a return, a fix that used global, and a list as a default."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 is a spot-it question on a local name. Mistake 2 calls back to the quiz. Mistake 3 is a spot-it question on parameter order. Mistake 4 calls back to the Improve stage.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_local_outside.py",
+      "heading": "Mistake 1: your turn to spot it",
+      "highlight": [
+       6
+      ],
+      "hidden_text": "Find the problem before the answer appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Line 3 creates message inside the function. Line 6 prints it.",
+       "highlight": [
+        3,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What happens on line 6, and why?"
+     },
+     "after": [
+      {
+       "say": "A Name Error. Message is local, so it disappeared when the function ended.",
+       "error": "examples/err01_local_outside.expected_error",
+       "heading": "Mistake 1: a local name used outside",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: return message, and store the returned value.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_keyword_order.py",
+      "heading": "Mistake 2: a keyword, then a position",
+      "highlight": [
+       6
+      ],
+      "error": "examples/err02_keyword_order.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 2 is the quick check from step 5. After a keyword argument, every argument needs a name, so Python cannot even read the file.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_default_order.py",
+      "heading": "Mistake 3: spot this one too",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Find the problem before the answer appears."
+     },
+     "segments": [
+      {
+       "say": "One more. Look at the def line, and remember the rule from step 4.",
+       "highlight": [
+        2
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What is wrong with line 2?"
+     },
+     "after": [
+      {
+       "say": "The parameter with a default, rate, comes before price, which has none. Parameters with a default go last.",
+       "error": "examples/err03_default_order.expected_error",
+       "heading": "Mistake 3: a default too early",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: price first, then rate equals 1.1.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_shared_list.py",
+      "heading": "Mistake 4: a list as a default",
+      "highlight": [
+       2
+      ],
+      "output": "examples/err04_shared_list.expected"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4 is the AI's suggestion again, with no error. Lina and Omar share one order. The fix: no default list; pass a new empty list in each call.",
+       "highlight": [
+        2,
+        6,
+        7
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Return what you need outside.",
+       "Defaults last, keywords last.",
+       "Never a list as a default."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Two questions to think about come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "`report_line()` returns its text instead of printing it. How does that help if Asha later wants to send the line to a file or a chat message?",
+      "hint": "who decides where the text goes?"
+     },
+     "segments": [
+      {
+       "say": "First. Report line returns its text instead of printing it. How does that help if Asha later wants to send the line somewhere else?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Think about who decides where the text goes."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "A 30-line `close_day()` reads input, calculates, prints and saves. Which smaller functions would you split it into? Which could be pure?",
+      "hint": "one job each; pure means parameters in, result out."
+     },
+     "segments": [
+      {
+       "say": "Second. A thirty line function reads input, calculates, prints and saves. Which smaller functions would you split it into, and which could be pure?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Write the list of jobs first, as Asha did in stage 1."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A local variable lives inside its function, only while it runs.",
+       "A function can read a global, but then its result depends on a hidden line.",
+       "Assigning to a name inside a function makes it local for the whole function.",
+       "Pass values in, return results out. A pure function does only that.",
+       "Defaults make a parameter optional. Keywords name it in the call. Never a list as a default.",
+       "Save the output before an AI change, and compare after every change."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. A local variable lives inside its function. A function can read a global, but its result then depends on a hidden line.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Assigning to a name inside a function makes it local for the whole function. So pass values in, and return results out.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Defaults make a parameter optional, keywords name it, and a list is never a default. And with AI: save the output, and compare after every change.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`with_tax(price, rate=1.1)` multiplies the price by the rate. What does `with_tax(10.0, rate=1.2)` return?",
+      "options": [
+       "`11.0`",
+       "`12.0`",
+       "`10.0`",
+       "an error"
+      ],
+      "answer": 1,
+      "explain": "The keyword argument replaces the default: 10.0 times 1.2 is 12.0."
+     },
+     "segments": [
+      {
+       "say": "One last check. With tax is called with 10.0, and rate equals 1.2. What does it return?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. 12.0. The keyword argument replaces the default rate."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Architect",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Architect",
+      "tile": 17
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Architect badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "A local message; A default size; Predict the hidden link",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Count visits without a global; A receipt line with keywords; One job each",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "The week report; Fix the AI's loyalty card",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks at 40, including an AI's loyalty card to fix. Try each one before you open the solution.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease Chapter 18: functions in their own file, and ready-made modules. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 18",
+      "title": "Modules and the Standard Library",
+      "subtitle": "Put your functions in a file, and import them.",
+      "badge": "",
+      "tile": 18
+     },
+     "segments": [
+      {
+       "say": "Asha's functions are small and clean now. But they live in one file, and she copies with tax into every new program."
+      },
+      {
+       "say": "In Chapter 18, you will put your functions in their own file, import them, and use ready-made modules from Python's standard library."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 18."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}
