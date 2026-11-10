@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-13 "Tuples and Sets: Fixed Groups and Unique Items" ready for review: the loyalty report, six AI stages on welcoming each customer once (18:18).
 - python-12 "Dictionaries: Looking Things Up by Name" ready for review: order taker by name, six AI stages on a stock tracker (two-list design challenged, keys printed instead of counts, KeyError on a muffin, get() suggestion that adds a line), 18:10 video.
 - python-11 "Lists: Keeping Many Values in Order" ready for review (17:53 video; critic 7.5, 12 fixes; resumed after a container restart).
 - python-10 "Boss Level 2: The Number Guessing Game" ready for review (17:47 video, critic 8/10 with fixes applied): biscuit jar game with a random secret, input checked before int(), six fixed-secret tests; the AI's randrange(1, 20) caught by a 10,000-draw test. Module 2 complete.
