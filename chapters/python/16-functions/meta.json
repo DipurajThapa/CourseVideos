@@ -1,0 +1,57 @@
+{
+  "id": "python-16",
+  "title": "Functions: Reusable Blocks of Logic",
+  "language": "python",
+  "type": "lesson",
+  "module": "M4",
+  "badge": "Function Forger",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "function",
+    "def",
+    "call",
+    "body",
+    "parameter",
+    "argument",
+    "return",
+    "None",
+    "print versus return",
+    "docstring",
+    "__doc__",
+    "several parameters in order",
+    "functions that call functions",
+    "traceback with several frames",
+    "specification"
+  ],
+  "prerequisites": [
+    "python-14"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_share_print.py",
+    "fixed_file": "examples/ai_share_fixed.py",
+    "flaw": "Asked to write share(total, people, tip_percent) from a specification that says it returns each share rounded to cents, the AI's function printed the value instead of returning it and said Asha's line prints Each pays 11.00. The call returned None, so the f-string stopped with TypeError: unsupported format string passed to NoneType.__format__. Its next version returned the value but without round(), so two of Asha's three checks printed False. Returning round(..., 2) fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "Default arguments, keyword arguments and scope are left to Chapter 17, as the curriculum plans.",
+    "Mistake 2 shows the TypeError from adding a number to a function instead of printing the function, because a printed function shows a memory address that changes on every run.",
+    "The AI section adds verified files for each stage: the AI's function that prints instead of returning, its version without rounding run on Asha's checks, the fixed function, a call with a missing argument, a suggestion that swaps the parameters and fails every check, and the final function with a docstring."
+  ],
+  "outstanding_issues": [
+    "The error reports show the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
