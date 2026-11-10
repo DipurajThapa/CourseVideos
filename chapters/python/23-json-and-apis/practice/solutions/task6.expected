@@ -1,0 +1,5 @@
+good.json -> {'special': 'Carrot cake', 'price': 3.2}
+No file called missing.json
+missing.json -> None
+broken.json is not valid JSON: Expecting property name enclosed in double quotes
+broken.json -> None

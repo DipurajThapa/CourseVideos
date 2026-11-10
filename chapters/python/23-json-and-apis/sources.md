@@ -1,0 +1,14 @@
+# Sources: Chapter 23
+
+All sources were read during the run on the date shown. Content is paraphrased, not copied. Code behaviour was confirmed by running every example (see `verification.json`), not by sources alone.
+
+| Source | URL | Accessed | What it confirmed |
+|---|---|---|---|
+| Python library: json, JSON encoder and decoder | https://docs.python.org/3/library/json.html | 2026-11-10 | `json.dumps()` and `json.loads()` work with strings, and `json.dump()` and `json.load()` with file objects; the conversion table (object to dict, array to list, true and false to True and False, null to None); `indent` for readable output; `ensure_ascii`, which is true by default and writes non-ASCII characters as escape codes; that keys in JSON objects are always strings, so number keys come back as strings; and `json.JSONDecodeError` with its `msg` attribute. |
+| Introducing JSON | https://www.json.org/json-en.html | 2026-11-10 | JSON is a text format built from objects, arrays, strings, numbers, true, false and null, and strings use double quotation marks only. |
+| RFC 8259: The JavaScript Object Notation (JSON) Data Interchange Format | https://datatracker.ietf.org/doc/html/rfc8259 | 2026-11-10 | The JSON grammar: strings start and end with a double quotation mark, and object member names are strings. |
+| MDN Web Docs: HTTP response status codes | https://developer.mozilla.org/en-US/docs/Web/HTTP/Status | 2026-11-10 | A response carries a status code; `200 OK` means the request succeeded and `404 Not Found` means the server cannot find the requested resource. |
+| Python HOWTO: Fetch Internet Resources Using The urllib Package | https://docs.python.org/3/howto/urllib2.html | 2026-11-10 | `urllib.request.urlopen()` sends a request for a URL and returns a response object that can be read, with its status code; it is part of the standard library. |
+| PEP 8: Style Guide for Python Code, Programming Recommendations | https://peps.python.org/pep-0008/#programming-recommendations | 2026-11-10 | Comparisons to `None` should use `is` or `is not`, not the equality operators. |
+| Real Python: Working With JSON Data in Python | https://realpython.com/python-json/ | 2026-11-10 | A teaching explanation of serialising and deserialising with the `json` module, `indent`, and reading JSON from files. |
+| Python, real runs during this chapter | Python 3.15.2 and Python 3.13.18 | 2026-11-10 | Every output and error in the lesson, including the `JSONDecodeError` messages "Expecting property name enclosed in double quotes" and "Expecting value", `TypeError: dump() missing 1 required positional argument: 'fp'`, the string keys after a JSON round trip, and the `TypeError` from `float(None)`. |

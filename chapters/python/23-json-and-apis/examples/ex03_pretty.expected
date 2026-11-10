@@ -1,0 +1,9 @@
+{"drink": "Caf\u00e9 au lait", "sizes": ["small", "large"]}
+{"drink": "Café au lait", "sizes": ["small", "large"]}
+{
+  "drink": "Café au lait",
+  "sizes": [
+    "small",
+    "large"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "item": "Scone",
+  "price": 2.75,
+  "sizes": ["small", "large"],
+  "vegan": false,
+  "offer": null
+}

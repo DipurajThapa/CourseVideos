@@ -1,0 +1,9 @@
+{
+  "location": {"name": "Riverside"},
+  "current": {"temp_c": 31.5, "condition": "Sunny"},
+  "forecast": [
+    {"hour": "12:00", "temp_c": 33.0, "rain_chance": 0},
+    {"hour": "15:00", "temp_c": 34.5, "rain_chance": 10},
+    {"hour": "18:00", "temp_c": 29.0, "rain_chance": 40}
+  ]
+}

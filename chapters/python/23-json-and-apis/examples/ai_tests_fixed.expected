@@ -1,0 +1,3 @@
+milk: expected 1.2, got 1.2: pass
+oat milk: expected 1.85, got 1.85: pass
+flour: expected None, got None: pass

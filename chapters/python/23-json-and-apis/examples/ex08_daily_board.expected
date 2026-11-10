@@ -1,0 +1,8 @@
+{
+  "drink": "Iced tea",
+  "temp_c": 31.5,
+  "rain_hours": [
+    "18:00"
+  ],
+  "tip": "Café au lait"
+}
