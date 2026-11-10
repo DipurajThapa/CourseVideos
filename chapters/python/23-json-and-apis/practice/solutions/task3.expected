@@ -1,0 +1,5 @@
+1 <class 'int'>
+2.5 <class 'float'>
+3 <class 'str'>
+True <class 'bool'>
+None <class 'NoneType'>

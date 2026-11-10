@@ -1,0 +1,59 @@
+{
+  "id": "python-23",
+  "title": "JSON and APIs: Talking to Other Programs",
+  "language": "python",
+  "type": "lesson",
+  "module": "M5",
+  "badge": "Connector",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "JSON",
+    "json.dumps and json.loads",
+    "json.dump and json.load with files",
+    "JSON and Python types: object, array, string, number, true, false, null",
+    "is None",
+    "indent",
+    "ensure_ascii=False",
+    "web API",
+    "request, response, status code and body",
+    "API key",
+    "sample response",
+    "nested paths",
+    "get() for missing fields",
+    "json.JSONDecodeError",
+    "JSON object keys are strings"
+  ],
+  "prerequisites": [
+    "python-22"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_price_flawed.py",
+    "fixed_file": "examples/ai_tests_fixed.py",
+    "flaw": "Asked for price_of(data, name) from a saved supplier response, the AI wrote data[\"items\"][name][\"price\"] and said it returns 1.2 for milk. In the sample, items is a list, so the code stops with TypeError: list indices must be integers or slices, not str. The AI's next version looped over the list but returned the price as text, '1.20', and Asha's exact-value tests failed. Adding float() made every case pass."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The curriculum's 'how web APIs work' is taught with a diagram and an illustrative urllib.request fragment against a placeholder address. Every runnable example reads a saved sample response instead of the network, so outputs are the same on every run and the checker needs no internet access.",
+    "The requests package is named only as the next chapter's topic, because installing packages is taught in Chapter 24.",
+    "is None is introduced in Step 2 as the PEP 8 way to check for None, because JSON null becomes None and the AI section needs the check.",
+    "The trailing comma case for JSONDecodeError was left out, because its message changed in recent Python versions; the lesson uses single quotation marks and an empty body, whose messages are the same on every supported version.",
+    "Sample data files (scone.json, weather_sample.json, prices.json, prices_today.json) sit beside the examples; the checker runs every example on a fresh copy of its folder."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the error reports show the full path to the file instead of the short file name, and the JSONDecodeError report lists the json module's own files.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

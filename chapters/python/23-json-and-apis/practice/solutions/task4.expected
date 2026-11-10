@@ -1,0 +1,8 @@
+{
+  "table": 4,
+  "items": [
+    "tea",
+    "scone"
+  ],
+  "paid": false
+}

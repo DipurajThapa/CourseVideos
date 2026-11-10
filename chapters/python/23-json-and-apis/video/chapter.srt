@@ -1,0 +1,1279 @@
+1
+00:00:00,250 --> 00:00:05,478
+At the Corner Cafe, the iced tea sold out
+early on the last hot afternoon.
+
+2
+00:00:05,498 --> 00:00:10,088
+A weather service could have warned Asha,
+but it answers in JSON.
+
+3
+00:00:10,108 --> 00:00:12,428
+And her quiz is data inside data.
+
+4
+00:00:13,020 --> 00:00:15,344
+This is Code Quest, Chapter 23.
+
+5
+00:00:15,364 --> 00:00:18,670
+Today, your programs talk to other
+programs.
+
+6
+00:00:18,700 --> 00:00:23,986
+And an AI assistant will read a supplier's
+price list, and promise you a number.
+
+7
+00:00:24,006 --> 00:00:25,511
+Your tests will decide.
+
+8
+00:00:26,120 --> 00:00:31,450
+Today's mission: a daily board that reads
+a weather response, and picks the drink of
+
+9
+00:00:31,470 --> 00:00:31,960
+the day.
+
+10
+00:00:32,000 --> 00:00:36,900
+Then it saves the board as JSON, for the
+screen behind the counter.
+
+11
+00:00:36,920 --> 00:00:39,176
+Let's build it, piece by piece.
+
+12
+00:00:39,750 --> 00:00:44,090
+Turn data into JSON text and back, and
+save it in files.
+
+13
+00:00:44,133 --> 00:00:48,463
+Explain how a web service answers, and
+read the values you need.
+
+14
+00:00:48,500 --> 00:00:52,591
+And ask an AI to explain a response, then
+check its code.
+
+15
+00:00:53,183 --> 00:00:58,821
+JSON, short for JavaScript Object
+Notation, is a text format for structured
+
+16
+00:00:58,841 --> 00:01:03,573
+data: dictionaries, lists, text and
+numbers, inside each other.
+
+17
+00:01:03,600 --> 00:01:05,907
+Almost every language can read it.
+
+18
+00:01:05,927 --> 00:01:10,151
+So many weather, payment and delivery
+services answer in JSON.
+
+19
+00:01:10,750 --> 00:01:14,873
+JSON looks almost like a Python
+dictionary, but it is text.
+
+20
+00:01:14,893 --> 00:01:17,330
+A JSON object becomes a dictionary.
+
+21
+00:01:17,367 --> 00:01:19,107
+An array becomes a list.
+
+22
+00:01:19,133 --> 00:01:21,268
+A string becomes a string.
+
+23
+00:01:21,288 --> 00:01:24,583
+JSON allows only double quotation marks.
+
+24
+00:01:24,633 --> 00:01:27,623
+True and false are written in small
+letters.
+
+25
+00:01:27,643 --> 00:01:30,086
+And null is JSON's word for nothing.
+
+26
+00:01:30,687 --> 00:01:34,418
+The json module translates in both
+directions.
+
+27
+00:01:34,438 --> 00:01:37,680
+Dump s turns Python data into JSON text.
+
+28
+00:01:37,700 --> 00:01:40,697
+Load s turns the text back into data.
+
+29
+00:01:40,733 --> 00:01:42,325
+Read the S as string.
+
+30
+00:01:42,345 --> 00:01:46,470
+Without the S, dump and load work with a
+file instead.
+
+31
+00:01:47,087 --> 00:01:51,957
+A web API is a service that other programs
+can ask for data.
+
+32
+00:01:51,977 --> 00:01:55,707
+Your program sends a request to a web
+address.
+
+33
+00:01:55,733 --> 00:01:57,901
+The service sends back a response.
+
+34
+00:01:57,921 --> 00:02:02,533
+The status code says how it went: 200
+means OK, and 404 means not found.
+
+35
+00:02:02,567 --> 00:02:05,655
+The body holds the data, usually as JSON.
+
+36
+00:02:05,675 --> 00:02:10,735
+Many services also want an API key: a
+secret password for programs.
+
+37
+00:02:10,755 --> 00:02:14,223
+Keep it out of your code, and out of AI
+chats.
+
+38
+00:02:14,820 --> 00:02:15,636
+Quick check.
+
+39
+00:02:15,656 --> 00:02:18,213
+What does JSON null become in Python?
+
+40
+00:02:29,580 --> 00:02:29,708
+D.
+
+41
+00:02:29,728 --> 00:02:30,077
+None.
+
+42
+00:02:30,097 --> 00:02:32,883
+Null and None both mean: nothing here.
+
+43
+00:02:33,487 --> 00:02:34,084
+Breather.
+
+44
+00:02:34,104 --> 00:02:37,447
+You know what JSON is, and how a service
+answers.
+
+45
+00:02:37,467 --> 00:02:41,126
+Next, Asha turns her first dictionary into
+JSON.
+
+46
+00:02:45,850 --> 00:02:46,382
+Step 1.
+
+47
+00:02:46,402 --> 00:02:50,878
+Lines 4 and 5 hold a Python dictionary for
+one menu item.
+
+48
+00:02:50,898 --> 00:02:54,270
+It holds a string, a float, True, and
+None.
+
+49
+00:02:54,300 --> 00:02:58,047
+Line 6 turns it into JSON text with dump
+s.
+
+50
+00:02:58,067 --> 00:03:01,989
+Line 7 prints it, and line 8 prints its
+type.
+
+51
+00:03:13,347 --> 00:03:16,052
+True becomes true, in small letters.
+
+52
+00:03:16,072 --> 00:03:17,718
+And None becomes null.
+
+53
+00:03:17,738 --> 00:03:19,687
+Exactly as the table said.
+
+54
+00:03:19,733 --> 00:03:21,622
+And the result is a string.
+
+55
+00:03:21,642 --> 00:03:26,004
+Now Asha can save it in a file, or send it
+to another program.
+
+56
+00:03:26,583 --> 00:03:27,147
+Step 2.
+
+57
+00:03:27,167 --> 00:03:30,232
+Here is a saved file, scone dot json.
+
+58
+00:03:30,252 --> 00:03:33,816
+Look at the sizes: an array of two
+strings.
+
+59
+00:03:34,420 --> 00:03:36,687
+Lines 5 and 6 read the file.
+
+60
+00:03:36,707 --> 00:03:38,729
+Read text gives a string.
+
+61
+00:03:38,749 --> 00:03:42,650
+Line 7 turns that string into data, with
+load s.
+
+62
+00:03:42,700 --> 00:03:44,632
+Line 8 prints both types.
+
+63
+00:03:44,652 --> 00:03:47,443
+Line 9 picks one size from the list.
+
+64
+00:03:58,813 --> 00:03:59,246
+Large.
+
+65
+00:03:59,266 --> 00:04:05,353
+The text became a dictionary, so sizes is
+a list, and index 1 is its second item.
+
+66
+00:04:05,400 --> 00:04:09,200
+Line 10 shows false and null as Python's
+False and None.
+
+67
+00:04:09,233 --> 00:04:13,032
+To check for None, write is None, as line
+11 does.
+
+68
+00:04:13,052 --> 00:04:17,308
+Python's style guide, pep eight,
+recommends is for None.
+
+69
+00:04:17,883 --> 00:04:18,439
+Step 3.
+
+70
+00:04:18,459 --> 00:04:22,553
+Line 4 holds a drink with an accent: Café
+au lait.
+
+71
+00:04:22,600 --> 00:04:24,920
+Lines 6 and 7 add two settings.
+
+72
+00:04:24,940 --> 00:04:28,997
+Ensure ascii equals False keeps every
+letter as it is.
+
+73
+00:04:29,017 --> 00:04:32,620
+Indent equals 2 puts each value on its own
+line.
+
+74
+00:04:32,667 --> 00:04:34,428
+Line 5 has no settings.
+
+75
+00:04:34,448 --> 00:04:37,138
+Look closely at the accent in Café.
+
+76
+00:04:48,513 --> 00:04:51,928
+As a code: C a f, then backslash u 0 0 e
+9.
+
+77
+00:04:51,948 --> 00:04:57,839
+By default, dump s writes every character
+outside basic English as a code.
+
+78
+00:04:57,859 --> 00:05:01,353
+The data is still correct, but hard to
+read.
+
+79
+00:05:01,400 --> 00:05:03,775
+Line 6 keeps the real letter.
+
+80
+00:05:03,795 --> 00:05:07,656
+Line 7 also indents, two spaces for each
+level.
+
+81
+00:05:08,250 --> 00:05:08,753
+Step 4.
+
+82
+00:05:08,773 --> 00:05:14,287
+Here is Asha's quiz: a title, a pass mark,
+and a list of questions, each a
+
+83
+00:05:14,307 --> 00:05:15,110
+dictionary.
+
+84
+00:05:15,133 --> 00:05:17,581
+Line 12 uses dump, without the S.
+
+85
+00:05:17,601 --> 00:05:20,423
+It writes straight into the open file.
+
+86
+00:05:20,467 --> 00:05:23,035
+Line 15 uses load, without the S.
+
+87
+00:05:23,055 --> 00:05:25,937
+It reads the data back from the file.
+
+88
+00:05:25,967 --> 00:05:29,216
+Line 20 compares the loaded data with the
+original.
+
+89
+00:05:40,580 --> 00:05:40,894
+True.
+
+90
+00:05:40,914 --> 00:05:45,040
+The loaded quiz is equal to the original,
+so nothing was lost.
+
+91
+00:05:45,067 --> 00:05:49,868
+Line 19 reaches inside: the second
+question, then its ask.
+
+92
+00:05:50,487 --> 00:05:51,143
+Breather.
+
+93
+00:05:51,163 --> 00:05:54,902
+Asha's quiz now lives in a file, data
+inside data.
+
+94
+00:05:54,922 --> 00:05:56,857
+Next, the weather service.
+
+95
+00:06:01,583 --> 00:06:02,036
+Step 5.
+
+96
+00:06:02,056 --> 00:06:06,356
+On your own computer, a program can ask a
+real service for data.
+
+97
+00:06:06,376 --> 00:06:10,743
+The url lib module, from the standard
+library, sends the request.
+
+98
+00:06:10,767 --> 00:06:17,623
+An error status, such as 404, makes url
+open raise an H T T P error, which try can
+
+99
+00:06:17,643 --> 00:06:18,127
+catch.
+
+100
+00:06:18,167 --> 00:06:20,161
+This address is a placeholder.
+
+101
+00:06:20,181 --> 00:06:25,264
+Live answers change every minute, so
+programmers save one real response as a
+
+102
+00:06:25,284 --> 00:06:28,420
+file, called a sample response, and test
+on it.
+
+103
+00:06:29,020 --> 00:06:30,638
+Here is Asha's sample.
+
+104
+00:06:30,658 --> 00:06:33,094
+Location and current are objects.
+
+105
+00:06:33,114 --> 00:06:35,774
+Forecast is a list of three objects.
+
+106
+00:06:36,387 --> 00:06:40,147
+Lines 5 and 6 read the file, and turn it
+into data.
+
+107
+00:06:40,167 --> 00:06:43,095
+Follow the path from the outside in.
+
+108
+00:06:43,115 --> 00:06:45,797
+Line 7 opens location, then name.
+
+109
+00:06:45,817 --> 00:06:50,383
+Line 8 opens current, then temp C, the
+number inside it.
+
+110
+00:07:01,747 --> 00:07:02,952
+Riverside 31.5.
+
+111
+00:07:02,972 --> 00:07:07,607
+The name from location, and the
+temperature from current.
+
+112
+00:07:07,633 --> 00:07:11,800
+Forecast is a list, so lines 10 and 11
+loop over it.
+
+113
+00:07:11,820 --> 00:07:13,893
+Each slot is a dictionary.
+
+114
+00:07:14,483 --> 00:07:14,971
+Step 6.
+
+115
+00:07:14,991 --> 00:07:17,292
+A service can leave a field out.
+
+116
+00:07:17,312 --> 00:07:21,643
+Get, from Chapter 12, returns a default
+instead of crashing.
+
+117
+00:07:21,667 --> 00:07:23,948
+The sample has no wind field.
+
+118
+00:07:23,968 --> 00:07:26,169
+Line 9 asks for it with get.
+
+119
+00:07:26,189 --> 00:07:28,867
+Line 10 asks with square brackets.
+
+120
+00:07:40,247 --> 00:07:43,717
+Line 10 stops with a key error: wind k p
+h.
+
+121
+00:07:43,737 --> 00:07:47,207
+Square brackets need the field to be
+there.
+
+122
+00:07:47,233 --> 00:07:49,621
+Line 9 printed the default instead.
+
+123
+00:07:49,641 --> 00:07:52,303
+Use get for fields that may be missing.
+
+124
+00:07:52,920 --> 00:07:57,397
+Text that is not valid JSON raises a JSON
+decode error.
+
+125
+00:07:57,417 --> 00:07:59,441
+Line 4 holds three texts.
+
+126
+00:07:59,461 --> 00:08:01,730
+Look at the quotation marks.
+
+127
+00:08:01,767 --> 00:08:06,719
+Lines 6 to 9 catch the error with try, as
+in Chapter 22.
+
+128
+00:08:06,739 --> 00:08:10,005
+Error dot msg holds the short reason.
+
+129
+00:08:21,380 --> 00:08:22,521
+Only the first.
+
+130
+00:08:22,541 --> 00:08:27,240
+JSON allows only double quotation marks,
+so the second fails.
+
+131
+00:08:27,267 --> 00:08:28,704
+The third is empty.
+
+132
+00:08:28,724 --> 00:08:33,228
+That happens when a service sends no body:
+expecting value.
+
+133
+00:08:33,820 --> 00:08:34,603
+Quick check.
+
+134
+00:08:34,623 --> 00:08:38,216
+Which function writes JSON straight into
+an open file?
+
+135
+00:08:49,580 --> 00:08:49,717
+A.
+
+136
+00:08:49,737 --> 00:08:51,289
+Dump, without the S.
+
+137
+00:08:51,309 --> 00:08:53,803
+Dump s returns a string instead.
+
+138
+00:08:54,420 --> 00:08:55,003
+Breather.
+
+139
+00:08:55,023 --> 00:08:56,679
+Now, back to the mission.
+
+140
+00:09:01,417 --> 00:09:02,839
+Back to the mission.
+
+141
+00:09:02,859 --> 00:09:07,597
+Lines 6 to 8 are a small function: open a
+file, and load its JSON.
+
+142
+00:09:07,633 --> 00:09:10,921
+Line 12 follows the path to the
+temperature.
+
+143
+00:09:10,941 --> 00:09:14,303
+Line 13 picks iced tea at 30 degrees or
+more.
+
+144
+00:09:14,333 --> 00:09:21,283
+Lines 14 and 15 keep the hour of every
+slot with a rain chance of 30 or more.
+
+145
+00:09:21,333 --> 00:09:23,514
+Lines 16 and 17 build the board.
+
+146
+00:09:23,534 --> 00:09:28,120
+Lines 19 to 21 save it as JSON, with an
+accent, and print the file.
+
+147
+00:09:28,720 --> 00:09:33,756
+Remember the sample's forecast: three
+slots, each with its own rain chance.
+
+148
+00:09:45,113 --> 00:09:45,960
+Only 18:00.
+
+149
+00:09:45,980 --> 00:09:47,694
+Its rain chance is 40.
+
+150
+00:09:47,714 --> 00:09:50,373
+The other two slots have 0 and 10.
+
+151
+00:09:50,400 --> 00:09:57,650
+It reads JSON, picks what it needs, and
+writes new JSON for the cafe's screen.
+
+152
+00:09:57,700 --> 00:10:03,593
+Next, Asha reads her milk supplier's
+prices, with an AI assistant, one stage at
+
+153
+00:10:03,613 --> 00:10:04,117
+a time.
+
+154
+00:10:04,717 --> 00:10:10,687
+This chapter's AI skill: paste a sample
+response, ask the AI to explain it, then
+
+155
+00:10:10,707 --> 00:10:14,207
+check every field name against the real
+sample.
+
+156
+00:10:14,233 --> 00:10:18,292
+And never paste an API key, or private
+customer data.
+
+157
+00:10:18,887 --> 00:10:22,913
+Here is the supplier's saved response,
+prices dot json.
+
+158
+00:10:22,933 --> 00:10:24,899
+Look closely at each price.
+
+159
+00:10:25,520 --> 00:10:26,554
+Stage 1: plan.
+
+160
+00:10:26,574 --> 00:10:31,597
+Asha pastes the sample, and asks for its
+structure, level by level.
+
+161
+00:10:31,617 --> 00:10:32,500
+No code yet.
+
+162
+00:10:32,533 --> 00:10:38,095
+The AI says items is a list, and every
+price is text in quotation marks.
+
+163
+00:10:38,115 --> 00:10:41,040
+Asha checks the sample: both are true.
+
+164
+00:10:41,653 --> 00:10:42,650
+Stage 2: write.
+
+165
+00:10:42,670 --> 00:10:45,021
+Asha writes her own price of first.
+
+166
+00:10:45,041 --> 00:10:48,883
+It loops over the list, and converts the
+text with float.
+
+167
+00:10:48,933 --> 00:10:54,333
+The AI says milk gives 1.2, and line 10
+handles a missing item.
+
+168
+00:10:54,367 --> 00:10:55,301
+She runs it.
+
+169
+00:10:55,321 --> 00:10:58,243
+Milk gives 1.2, and flour gives None.
+
+170
+00:10:58,263 --> 00:10:59,675
+Her version works.
+
+171
+00:11:00,287 --> 00:11:01,668
+Stage 3: generate.
+
+172
+00:11:01,688 --> 00:11:07,977
+To compare, Asha asks the AI for the same
+function, and what it returns for milk.
+
+173
+00:11:08,000 --> 00:11:12,217
+The AI writes one line, and says: milk
+gives 1.2.
+
+174
+00:11:12,820 --> 00:11:13,938
+Look at line 7.
+
+175
+00:11:13,958 --> 00:11:16,366
+It asks items for milk, by name.
+
+176
+00:11:16,386 --> 00:11:19,173
+Remember what items is in the sample.
+
+177
+00:11:30,547 --> 00:11:30,763
+No.
+
+178
+00:11:30,783 --> 00:11:31,786
+A type error.
+
+179
+00:11:31,806 --> 00:11:37,687
+Items is a list, and a list needs a number
+as its index, not the name milk.
+
+180
+00:11:37,733 --> 00:11:40,969
+That is what list indices must be integers
+means.
+
+181
+00:11:40,989 --> 00:11:44,225
+The AI treated the list as a dictionary of
+names.
+
+182
+00:11:44,820 --> 00:11:45,894
+Stage 4: test.
+
+183
+00:11:45,914 --> 00:11:51,050
+Asha reports the error, and asks for test
+cases with exact values.
+
+184
+00:11:51,100 --> 00:11:54,207
+The AI's next version loops over the list.
+
+185
+00:11:54,227 --> 00:11:58,078
+And it lists three cases: milk, oat milk,
+and flour.
+
+186
+00:11:58,687 --> 00:12:00,713
+Line 9 returns the price.
+
+187
+00:12:00,733 --> 00:12:06,769
+Line 20 prints each result with
+exclamation r, so text shows its quotation
+
+188
+00:12:06,789 --> 00:12:07,260
+marks.
+
+189
+00:12:18,613 --> 00:12:18,878
+No.
+
+190
+00:12:18,898 --> 00:12:23,720
+It got 1.20 in quotation marks: text, not
+a number.
+
+191
+00:12:23,740 --> 00:12:27,233
+Text is never equal to the float 1.2.
+
+192
+00:12:27,267 --> 00:12:28,678
+Only flour passes.
+
+193
+00:12:28,698 --> 00:12:33,690
+Plan said every price is text, and the AI
+forgot its own words.
+
+194
+00:12:34,287 --> 00:12:38,447
+Asha shows the AI the failing cases, and
+asks why.
+
+195
+00:12:38,467 --> 00:12:43,801
+The supplier sends prices as strings, so
+the return line must convert them with
+
+196
+00:12:43,821 --> 00:12:44,208
+float.
+
+197
+00:12:44,820 --> 00:12:47,242
+She runs all three cases again.
+
+198
+00:12:47,262 --> 00:12:47,951
+All pass.
+
+199
+00:12:48,553 --> 00:12:49,707
+Stage 5: debug.
+
+200
+00:12:49,727 --> 00:12:56,047
+The next day, oat milk is out of stock,
+and the supplier sends null as its price.
+
+201
+00:12:56,067 --> 00:12:57,378
+Milk still works.
+
+202
+00:12:57,398 --> 00:12:59,491
+Oat milk crashes on line 9.
+
+203
+00:13:00,087 --> 00:13:03,457
+Asha pastes the error, and asks for the
+cause first.
+
+204
+00:13:03,500 --> 00:13:07,708
+JSON null became None, and float of None
+is a type error.
+
+205
+00:13:07,728 --> 00:13:11,269
+The fix checks for it with is None, from
+step 2.
+
+206
+00:13:11,887 --> 00:13:13,997
+Lines 9 and 10 are the fix.
+
+207
+00:13:14,017 --> 00:13:19,914
+She adds the new response as case 4, on
+line 19, and runs every case again.
+
+208
+00:13:19,934 --> 00:13:21,019
+All four pass.
+
+209
+00:13:21,620 --> 00:13:22,974
+Stage 6: improve.
+
+210
+00:13:22,994 --> 00:13:28,630
+Asha asks for one improvement, using only
+field names from her sample.
+
+211
+00:13:28,667 --> 00:13:33,052
+The AI suggests unit price, and calls it
+the standard field.
+
+212
+00:13:33,653 --> 00:13:38,124
+Asha's rule: every field name must appear
+in the sample.
+
+213
+00:13:38,144 --> 00:13:40,609
+Lines 9 and 11 read unit price.
+
+214
+00:13:51,980 --> 00:13:52,202
+No.
+
+215
+00:13:52,222 --> 00:13:53,168
+A key error.
+
+216
+00:13:53,188 --> 00:13:57,116
+The sample has price and unit, but no unit
+price.
+
+217
+00:13:57,136 --> 00:13:59,210
+The AI invented the field.
+
+218
+00:13:59,233 --> 00:14:01,371
+So Asha keeps her final function.
+
+219
+00:14:01,987 --> 00:14:06,088
+She runs her four cases one more time, on
+her own function.
+
+220
+00:14:06,108 --> 00:14:07,066
+All four pass.
+
+221
+00:14:07,687 --> 00:14:08,520
+Quick check.
+
+222
+00:14:08,540 --> 00:14:10,724
+An AI's code uses a field name.
+
+223
+00:14:10,744 --> 00:14:12,147
+How do you check it?
+
+224
+00:14:23,513 --> 00:14:23,628
+B.
+
+225
+00:14:23,648 --> 00:14:25,642
+Search the real sample for it.
+
+226
+00:14:25,662 --> 00:14:28,664
+Only the sample shows what the service
+sends.
+
+227
+00:14:29,287 --> 00:14:29,853
+Breather.
+
+228
+00:14:29,873 --> 00:14:35,327
+The AI made three confident mistakes, and
+the sample and the tests caught every one.
+
+229
+00:14:35,367 --> 00:14:39,036
+Next, four mistakes beginners make with
+JSON.
+
+230
+00:14:43,783 --> 00:14:44,726
+Mistake 1.
+
+231
+00:14:44,746 --> 00:14:45,497
+You try.
+
+232
+00:14:45,517 --> 00:14:48,193
+Line 4 holds some JSON text.
+
+233
+00:14:48,213 --> 00:14:49,733
+Line 5 loads it.
+
+234
+00:15:01,113 --> 00:15:03,876
+The text uses single quotation marks.
+
+235
+00:15:03,896 --> 00:15:08,463
+Python accepts both kinds, but JSON
+accepts only double ones.
+
+236
+00:15:08,500 --> 00:15:12,449
+The report runs through the json module's
+own files.
+
+237
+00:15:12,469 --> 00:15:16,343
+On your computer, these lines show full
+file paths.
+
+238
+00:15:16,363 --> 00:15:21,457
+Skip to the last line: column 2 is the
+first single quotation mark.
+
+239
+00:15:22,053 --> 00:15:22,810
+Mistake 2.
+
+240
+00:15:22,830 --> 00:15:28,088
+Dump writes into a file, so it needs one:
+F P is the file parameter.
+
+241
+00:15:28,108 --> 00:15:30,261
+To get a string, use dump s.
+
+242
+00:15:30,853 --> 00:15:31,779
+Mistake 3.
+
+243
+00:15:31,799 --> 00:15:34,995
+Lines 4 and 5 read scone dot json.
+
+244
+00:15:35,015 --> 00:15:37,359
+Line 6 asks for the item.
+
+245
+00:15:48,713 --> 00:15:48,908
+No.
+
+246
+00:15:48,928 --> 00:15:51,980
+Read text gives a string, not a
+dictionary.
+
+247
+00:15:52,000 --> 00:15:54,623
+A string accepts only number indexes.
+
+248
+00:15:54,667 --> 00:15:58,765
+The fix: turn the text into data first,
+with load s.
+
+249
+00:15:59,387 --> 00:16:00,154
+Mistake 4.
+
+250
+00:16:00,174 --> 00:16:02,988
+JSON object keys are always strings.
+
+251
+00:16:03,008 --> 00:16:07,397
+The table numbers 1 and 2 came back as the
+text 1 and 2.
+
+252
+00:16:07,433 --> 00:16:10,113
+Asking back for key 1 is a key error.
+
+253
+00:16:10,133 --> 00:16:12,375
+Use string keys from the start.
+
+254
+00:16:12,950 --> 00:16:13,312
+First.
+
+255
+00:16:13,332 --> 00:16:17,964
+Some weather services send the temperature
+in Fahrenheit for some cities.
+
+256
+00:16:17,984 --> 00:16:21,278
+How could your code know which unit a
+response uses?
+
+257
+00:16:32,647 --> 00:16:35,123
+Try it with the sample after the video.
+
+258
+00:16:35,720 --> 00:16:36,139
+Second.
+
+259
+00:16:36,159 --> 00:16:40,274
+Why test your code on a saved sample,
+instead of the live service?
+
+260
+00:16:51,647 --> 00:16:52,663
+Keep your answer.
+
+261
+00:16:52,683 --> 00:16:55,040
+You will use it in the next boss level.
+
+262
+00:16:55,617 --> 00:16:56,506
+Let's recap.
+
+263
+00:16:56,526 --> 00:17:00,977
+Dump s makes JSON text, and load s turns
+it back into data.
+
+264
+00:17:01,000 --> 00:17:03,430
+Dump and load work with an open file.
+
+265
+00:17:03,467 --> 00:17:07,387
+True, false and null become True, False
+and None.
+
+266
+00:17:07,433 --> 00:17:11,833
+An API answers with a status code, and a
+JSON body.
+
+267
+00:17:11,867 --> 00:17:16,307
+Follow the path from the outside in, and
+use get for missing fields.
+
+268
+00:17:16,333 --> 00:17:20,452
+And check every field name an AI uses
+against the real sample.
+
+269
+00:17:21,053 --> 00:17:22,338
+One last check.
+
+270
+00:17:22,358 --> 00:17:26,512
+A response says price, 1.20, in quotation
+marks.
+
+271
+00:17:26,532 --> 00:17:29,033
+What type is it after load s?
+
+272
+00:17:40,413 --> 00:17:40,545
+C.
+
+273
+00:17:40,565 --> 00:17:41,227
+A string.
+
+274
+00:17:41,247 --> 00:17:43,274
+The quotation marks decide.
+
+275
+00:17:43,294 --> 00:17:46,533
+Convert it with float before you
+calculate.
+
+276
+00:17:47,153 --> 00:17:48,446
+Mission complete!
+
+277
+00:17:48,466 --> 00:17:51,688
+You earned 100 XP and the Connector badge.
+
+278
+00:17:53,917 --> 00:17:55,463
+Now it is your turn.
+
+279
+00:17:55,483 --> 00:18:00,867
+Three warm-up tasks worth 10 XP each, and
+three apply tasks worth 20.
+
+280
+00:18:00,900 --> 00:18:06,397
+And two stretch tasks, worth 40 each,
+including an AI's temperature reader to
+
+281
+00:18:06,417 --> 00:18:06,684
+fix.
+
+282
+00:18:07,283 --> 00:18:11,485
+Many programmers call web services with a
+package called requests.
+
+283
+00:18:11,505 --> 00:18:14,683
+It is not part of Python, so it must be
+installed.
+
+284
+00:18:14,733 --> 00:18:20,338
+In Chapter 24, you will create a virtual
+environment, and install packages safely,
+
+285
+00:18:20,358 --> 00:18:23,973
+after checking that each one is real and
+trustworthy.
+
+286
+00:18:24,000 --> 00:18:25,763
+Do the warm-up tasks now.
+
+287
+00:18:25,783 --> 00:18:27,760
+They take about ten minutes.
+
+288
+00:18:27,800 --> 00:18:29,929
+See you in Chapter 24.

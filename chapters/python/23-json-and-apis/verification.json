@@ -1,0 +1,207 @@
+{
+  "chapter_id": "python-23",
+  "run_id": "2026-11-10-521d54",
+  "verified_at": "2026-11-10T09:08:27+00:00",
+  "passed": true,
+  "toolchains": [
+    "Python 3.15.2",
+    "Python 3.13.18"
+  ],
+  "checks": [
+    {
+      "name": "structure",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "code",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "files_run": 27,
+        "toolchains": [
+          "Python 3.15.2",
+          "Python 3.13.18"
+        ],
+        "results": {
+          "examples/ai_mine.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_price_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tests_final.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tests_fixed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tests_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_today_crash.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_unit_price.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err01_single_quotes.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err02_dump_no_file.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err03_text_not_dict.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err04_keys_strings.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex01_dumps.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex02_loads.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex03_pretty.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex04_save_load.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex05_weather.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex06_safe_get.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex07_bad_json.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex08_daily_board.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task1.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task3.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task4.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task6.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task7.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task8.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          }
+        }
+      }
+    },
+    {
+      "name": "lesson_blocks",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "code_blocks": 16,
+        "output_blocks": 15
+      }
+    },
+    {
+      "name": "ai_pair",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "practice",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "tasks": 8
+      }
+    },
+    {
+      "name": "ai_prompts",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "sources",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "sources": 8
+      }
+    },
+    {
+      "name": "language",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "lesson.md": {
+          "sentences": 123,
+          "average_words": 12.1,
+          "longest": 29
+        },
+        "video/script.md": {
+          "sentences": 651,
+          "average_words": 8.3,
+          "longest": 24
+        }
+      }
+    },
+    {
+      "name": "video",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "estimated_minutes": 18.3,
+        "duration_seconds": 1112.4,
+        "size_mb": 47.63,
+        "scenes": 17,
+        "voice": null
+      }
+    }
+  ],
+  "fingerprint": "216d810bf5481f0b6cf2bc5450acc0b411a645808b05a5a432175fcdf98134b4"
+}

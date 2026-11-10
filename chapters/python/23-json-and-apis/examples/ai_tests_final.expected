@@ -1,0 +1,4 @@
+prices.json milk: got 1.2, pass
+prices.json oat milk: got 1.85, pass
+prices.json flour: got None, pass
+prices_today.json oat milk: got None, pass
