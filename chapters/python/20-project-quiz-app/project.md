@@ -110,7 +110,7 @@ Price of a tea?
 
 ```python
 # file: project/test_quiz_logic.py
-"""Tests for the staff quiz rules, written before the code."""
+"""Tests for the quiz rules, written first."""
 from quiz_logic import check_answer, percentage, grade, result_line
 
 
@@ -155,11 +155,11 @@ To run the tests, the rules need names. Asha writes each function with only its 
 
 ```python
 # file: examples/testfirst/quiz_logic.py
-"""Scoring rules for the staff quiz: names only, no code yet."""
+"""Quiz rules: names only, no code yet."""
 
 
 def check_answer(given, correct):
-    """Return True if the answer matches, ignoring spaces and capitals."""
+    """Compare, ignoring spaces and capitals."""
 
 
 def percentage(points, total):
@@ -195,11 +195,11 @@ Six tests fail, as expected: there is no code yet. Two tests pass. `not None` is
 
 ```python
 # file: examples/step3/quiz_logic.py
-"""Scoring rules for the staff quiz: check_answer() is done."""
+"""Quiz rules: check_answer() is done."""
 
 
 def check_answer(given, correct):
-    """Return True if the answer matches, ignoring spaces and capitals."""
+    """Compare, ignoring spaces and capitals."""
     return given.strip().lower() == correct.lower()
 
 
@@ -285,11 +285,11 @@ Line 3 imports the data, and line 4 imports two rules. The loop on lines 7 to 13
 
 ```python
 # file: examples/ai/flawed/quiz_logic.py
-"""Scoring rules for the staff quiz."""
+"""Rules for the staff quiz."""
 
 
 def check_answer(given, correct):
-    """Return True if the answer matches, ignoring spaces and capitals."""
+    """Compare, ignoring spaces and capitals."""
     return given.strip().lower() == correct.lower()
 
 
@@ -404,11 +404,11 @@ With every test passing, Asha asked an AI assistant: "Make `grade()` shorter. Do
 
 ```python
 # file: examples/ai/improve/quiz_logic.py
-"""Scoring rules for the staff quiz."""
+"""Rules for the staff quiz."""
 
 
 def check_answer(given, correct):
-    """Return True if the answer matches, ignoring spaces and capitals."""
+    """Compare, ignoring spaces and capitals."""
     return given.strip().lower() == correct.lower()
 
 

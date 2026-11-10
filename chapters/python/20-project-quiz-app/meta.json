@@ -28,9 +28,9 @@
     "python-19"
   ],
   "ai_pair_moment": {
-    "flawed_file": "examples/ai/flawed/quiz_logic.py",
-    "fixed_file": "examples/ai/fixed/quiz_logic.py",
-    "flaw": "Given Asha's eight tests, the AI wrote percentage() as points // total * 100 and said the module passes all eight tests. Floor division gives 0 for 3 out of 4, so three tests fail: both percentage tests and the result line, which printed 0% Practise again. Dividing with / and rounding at the end, round(points / total * 100), makes all eight pass."
+    "flawed_file": "examples/ai/flawed/test_quiz_logic.py",
+    "fixed_file": "examples/ai/fixed/test_quiz_logic.py",
+    "flaw": "Given Asha's eight tests, the AI's module (examples/ai/flawed/quiz_logic.py) is judged by those tests: the AI wrote percentage() as points // total * 100 and said the module passes all eight tests. Floor division gives 0 for 3 out of 4, so three tests fail: both percentage tests and the result line, which printed 0% Practise again. Dividing with / and rounding at the end, round(points / total * 100), makes all eight pass."
   },
   "support_files": [],
   "python_version": {

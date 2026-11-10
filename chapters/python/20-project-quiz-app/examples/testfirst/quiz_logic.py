@@ -1,9 +1,9 @@
 # file: examples/testfirst/quiz_logic.py
-"""Scoring rules for the staff quiz: names only, no code yet."""
+"""Quiz rules: names only, no code yet."""
 
 
 def check_answer(given, correct):
-    """Return True if the answer matches, ignoring spaces and capitals."""
+    """Compare, ignoring spaces and capitals."""
 
 
 def percentage(points, total):

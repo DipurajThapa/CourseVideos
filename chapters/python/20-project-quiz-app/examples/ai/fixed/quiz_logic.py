@@ -1,9 +1,9 @@
 # file: examples/ai/fixed/quiz_logic.py
-"""Scoring rules for the staff quiz."""
+"""Rules for the staff quiz."""
 
 
 def check_answer(given, correct):
-    """Return True if the answer matches, ignoring spaces and capitals."""
+    """Compare, ignoring spaces and capitals."""
     return given.strip().lower() == correct.lower()
 
 

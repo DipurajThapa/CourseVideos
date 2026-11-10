@@ -1,5 +1,5 @@
 # file: examples/ai/improve/test_quiz_logic.py
-"""Tests for the staff quiz rules, written before the code."""
+"""Tests for the quiz rules, written first."""
 from quiz_logic import check_answer, percentage, grade, result_line
 
 

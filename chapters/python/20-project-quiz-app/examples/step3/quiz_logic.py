@@ -1,9 +1,9 @@
 # file: examples/step3/quiz_logic.py
-"""Scoring rules for the staff quiz: check_answer() is done."""
+"""Quiz rules: check_answer() is done."""
 
 
 def check_answer(given, correct):
-    """Return True if the answer matches, ignoring spaces and capitals."""
+    """Compare, ignoring spaces and capitals."""
     return given.strip().lower() == correct.lower()
 
 
