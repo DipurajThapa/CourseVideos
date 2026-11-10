@@ -1,404 +1,1821 @@
 {
-  "chapter_id": "<language>-NN",
-  "number": 0,
-  "title": "Chapter NN: <Title>",
-  "video_title": "<Language> Chapter NN: <Title>",
-  "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
-  "scenes": [
+ "chapter_id": "python-21",
+ "number": 21,
+ "version": 3,
+ "title": "Chapter 21: Files and Paths: Saving and Loading Data",
+ "video_title": "Python Chapter 21: Files and Paths, Saving and Loading Data",
+ "summary": "The Corner Cafe quiz forgot every score when it closed. Follow Asha as she writes and reads files with pathlib and open(), chooses the right mode, reads line by line, and saves tables as CSV files. Then watch her build a save function with an AI assistant at all six stages. Her tests catch two confident AI mistakes that lose data with no error.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the Chapter 20 problem: the quiz forgets every score. Then the title and the AI tease, then the mission code with no output.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
-      "beats": [
-        {
-          "visual": {
-            "type": "title",
-            "kicker": "CHAPTER NN",
-            "title": "<Title>",
-            "subtitle": "<quest line>",
-            "badge": "Reward: 100 XP and the <Badge> badge"
-          },
-          "segments": [
-            {
-              "say": "Welcome to Code Quest, Chapter NN."
-            },
-            {
-              "say": "<one sentence on what the learner will do>."
-            }
-          ]
-        },
-        {
-          "visual": {
-            "type": "code",
-            "heading": "<what to look at>",
-            "file": "examples/<flawed>.py"
-          },
-          "segments": [
-            {
-              "say": "<set up the hook>"
-            },
-            {
-              "say": "<point at the line>",
-              "highlight": [
-                2
-              ]
-            }
-          ],
-          "ask": {
-            "question": "<the question, shown with a 10-second timer>",
-            "seconds": 10
-          },
-          "after": [
-            {
-              "say": "<reveal>",
-              "output": "examples/<flawed>.expected"
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "text",
+      "heading": "Every score disappears",
+      "label": "The problem",
+      "body": [
+       "At the Corner Cafe, the staff quiz from Chapter 20 works well."
+      ],
+      "pre": "  > python quiz_app.py\n  Score: 4/4 (100%) Ready\n\n  ... the app closes ...\n\n  > python quiz_app.py\n  No scores. Every round starts from nothing."
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha's staff quiz from Chapter 20 works well. Lina scores 4 out of 4.",
+       "focus": "pre"
+      },
+      {
+       "say": "Then the app closes. The next morning, Asha runs it again, and every score is gone."
+      }
+     ]
     },
     {
-      "id": "learning-goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Learning goals",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 21",
+      "title": "Files and Paths: Saving and Loading Data",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Archivist badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 21. Today, data learns to survive."
+      },
+      {
+       "say": "And an AI assistant will promise a function that keeps every score. It will sound completely sure. You will check the file yourself.",
+       "subtitle": "Save it. Load it. Check the file."
+      }
+     ]
     },
     {
-      "id": "why-this-matters",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Why this matters",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "the-idea",
-      "section": "The idea",
-      "title": "The idea",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "The idea",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "build-it-step-by-step",
-      "section": "Build it step by step",
-      "title": "Build it step by step",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Build it step by step",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "see-the-outcome",
-      "section": "See the outcome",
-      "title": "See the outcome",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "See the outcome",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work-with-ai",
-      "section": "Work with AI",
-      "title": "Work with AI",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Work with AI",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "common-mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Common mistakes",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "think-beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Think beyond",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Recap",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Practice",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "whats-next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "What's next",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_score_board.py",
+      "heading": "Today's mission: a score board that remembers",
+      "hidden_text": "By the end, you will know every line."
+     },
+     "segments": [
+      {
+       "say": "Here is today's mission: Asha's score board. Lines 7 and 8 save the new score to a file.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Lines 11 to 16 load every score from earlier rounds. Let's build it, piece by piece.",
+       "highlight": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write and read a text file with `pathlib` and `open()`.",
+       "Choose the mode: `\"w\"` writes new, `\"a\"` adds, `\"r\"` reads.",
+       "Read a file line by line and remove each newline.",
+       "Save and load table data as a CSV file.",
+       "Explain common file errors and fix them, with an AI assistant."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write a text file, and read it back.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Choose the right mode: write, add or read.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Read a file line by line.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Save and load tables as CSV files.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And fix the common file errors, with an AI assistant.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Memory versus disk, then real uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "Variables live in memory. Memory is cleared when the program stops.",
+       "A **file** is data saved on the disk, with a name. It stays.",
+       "Saved games, settings, sales and spreadsheets are all files."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Why did the scores vanish? Variables live in the computer's memory, and memory is cleared when the program stops.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "A file is data saved on the disk, with a name. It stays there, so the next run can load it.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Saved games, app settings, a shop's sales: they are all files.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: open, read or write, close",
+   "direction": "Teach the three steps, the three modes, the order-book analogy and encoding. Quiz on modes. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Open, read or write, close",
+      "label": "The idea",
+      "body": [
+       "A program talks to a file in three steps."
+      ],
+      "pre": "   program                        disk\n  +---------+   open(\"scores.csv\")  +-------------+\n  | memory  | ------ read -------> | name,score  |\n  | (lost   | <----- write ------- | Asha,4      |\n  |  at end)|       close          | (stays)     |\n  +---------+                      +-------------+"
+     },
+     "segments": [
+      {
+       "say": "A program talks to a file in three steps. Open the file. Read from it, or write to it. Then close it.",
+       "focus": "pre"
+      },
+      {
+       "say": "The memory side is lost at the end. The disk side stays."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "The mode says what you want",
+      "label": "The idea",
+      "columns": [
+       "Mode",
+       "Name",
+       "What it does"
+      ],
+      "rows": [
+       [
+        "`\"r\"`",
+        "read",
+        "Reads the file. The default. The file must exist."
+       ],
+       [
+        "`\"w\"`",
+        "write",
+        "Creates the file, or empties it first."
+       ],
+       [
+        "`\"a\"`",
+        "append",
+        "Adds to the end. Creates the file if needed."
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "When you open a file, the mode says what you want to do."
+      },
+      {
+       "say": "R reads. It is the default, and the file must already exist.",
+       "focus_row": 0
+      },
+      {
+       "say": "W writes. It creates the file, or empties it first if it already exists.",
+       "focus_row": 1
+      },
+      {
+       "say": "A appends. It adds to the end, and creates the file if it is missing.",
+       "focus_row": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A file is like the cafe's order book",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "You can read it, start a new book, or add a line at the end.",
+       "Unlike a person, mode `\"w\"` empties the book with no warning."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of the cafe's order book. You can read it, start a new empty book, or add a line at the end."
+      },
+      {
+       "say": "But a person would never tear out every page by accident. Mode W empties the file with no warning.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Text and encoding",
+      "label": "The idea",
+      "body": [
+       "A file stores bytes. An **encoding** turns letters into bytes and back.",
+       "UTF-8 stores every language, including the é in Café.",
+       "Always write `encoding=\"utf-8\"`, so your program works the same on every computer."
+      ]
+     },
+     "segments": [
+      {
+       "say": "One more idea. A file stores bytes, not letters. An encoding is the rule that turns letters into bytes, and back."
+      },
+      {
+       "say": "UTF-8 is the standard. It stores every language, including the e with an accent in Café. So always write encoding equals utf 8."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Asha wants to add a line to the end of a file and keep the old lines. Which mode?",
+      "options": [
+       "`\"r\"`",
+       "`\"a\"`",
+       "`\"w\"`",
+       "No mode can do that"
+      ],
+      "answer": 1,
+      "explain": "`\"a\"` appends: it adds to the end and keeps what is there."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Asha wants to add a line and keep the old ones. Which mode?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. Append. W would empty the file first."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Memory is lost; files stay.",
+       "Open, read or write, close.",
+       "`\"w\"` empties, `\"a\"` adds, `\"r\"` reads."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Three steps, three modes. That is the whole idea."
+      },
+      {
+       "say": "Next, Asha writes her first file."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Write and read with pathlib",
+   "direction": "The code types in. Teach exists() before the ask. Reveal, then explain the empty line.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_write_read.py",
+      "heading": "Step 1: Write a file, read it back",
+      "lines": 4,
+      "highlight": [
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. You met Path in Chapter 18. Line 4 makes a path for a file called note dot t x t."
+      },
+      {
+       "say": "Line 5 writes the whole text into the file. The text ends with backslash n, a new line.",
+       "lines": 5,
+       "highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Line 6 reads the whole file back as one string, and prints it.",
+       "lines": 6,
+       "highlight": [
+        6
+       ]
+      },
+      {
+       "say": "Line 7 asks: does this file exist now?",
+       "lines": 7,
+       "highlight": [
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 7 print?"
+     },
+     "after": [
+      {
+       "say": "True. Line 5 created the file.",
+       "output": "examples/ex01_write_read.expected",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "And see the empty line? The text already ends with a new line, and print adds another one.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Modes and the with statement",
+   "direction": "Teach with and the three blocks, then predict the read.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_modes.py",
+      "heading": "Step 2: Open a file with a mode",
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 2. The with statement opens a file, and closes it again when the indented block ends, even if an error happens."
+      },
+      {
+       "say": "Lines 2 to 4 use mode W, and write two lines. Write does not add a new line by itself, so each text ends with backslash n.",
+       "highlight": [
+        2,
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Lines 6 and 7 use mode A, and write Lina.",
+       "highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Line 9 has no mode, so it reads.",
+       "highlight": [
+        9,
+        10
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 10 print?"
+     },
+     "after": [
+      {
+       "say": "All three names. Mode A added Lina, and kept Asha and Omar.",
+       "output": "examples/ex02_modes.expected",
+       "highlight": [
+        6,
+        7
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And end equals empty, from Chapter 1, stops print from adding that extra empty line.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Read line by line",
+   "direction": "Show the menu file, then the loop. Teach that each line ends with a newline before the ask.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The menu file",
+      "label": "Build it",
+      "body": [
+       "A plain text file, one item per line."
+      ],
+      "pre": "  menu.txt\n  ---------\n  Tea\n  Café latte\n  Scone"
+     },
+     "segments": [
+      {
+       "say": "Step 3. The cafe menu is a small text file, one item per line.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_lines.py",
+      "heading": "Step 3: A for loop over the lines",
+      "highlight": [
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "A file opened for reading works in a for loop. Line 3 gives one line at a time."
+      },
+      {
+       "say": "Each line ends with its new line. Strip, from Chapter 3, removes it.",
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Line 5 prints the name and its number of letters.",
+       "highlight": [
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many letters does line 5 report for Tea?"
+     },
+     "after": [
+      {
+       "say": "3. Without strip, the hidden new line would make it 4.",
+       "output": "examples/ex03_lines.expected",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And Café keeps its accent, because the file was read as UTF-8.",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Steps 4 and 5: Check first, and build paths",
+   "direction": "exists() with if and else, then relative paths. One ask, then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_exists.py",
+      "heading": "Step 4: Check that a file exists",
+      "highlight": [
+       5
+      ],
+      "note": "This folder has no scores.txt yet."
+     },
+     "segments": [
+      {
+       "say": "Step 4. Reading a missing file stops the program. So line 5 checks first, with exists and an if."
+      },
+      {
+       "say": "There is no scores dot t x t in this folder yet.",
+       "highlight": [
+        5,
+        6,
+        7,
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which line prints: line 6 or line 8?"
+     },
+     "after": [
+      {
+       "say": "Line 8. The file does not exist, so the else block runs.",
+       "output": "examples/ex04_exists.expected",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_paths.py",
+      "heading": "Step 5: Build paths",
+      "highlight": [
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 5. A relative path, like scores dot csv, is looked up in the working directory: the folder you run the program from."
+      },
+      {
+       "say": "Line 4 joins a folder and a file name with a slash. It works on every computer."
+      },
+      {
+       "say": "Lines 5 to 8 print the path, its name and suffix, its parent folder, and whether it exists.",
+       "output": "examples/ex05_paths.expected",
+       "highlight": [
+        5,
+        6,
+        7,
+        8
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4
+       ]
+      },
+      {
+       "say": "There is no reports folder yet, so exists is False.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`with open()` closes the file for you.",
+       "`strip()` removes each line's newline.",
+       "Check with `exists()` before you read."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You can write, add, read, and check a file."
+      },
+      {
+       "say": "Now, tables. The cafe's sales live in a CSV file."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Steps 6 and 7: CSV files",
+   "direction": "Write a CSV file, then read one with DictReader. Teach strings before the ask and the quiz.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_csv_write.py",
+      "heading": "Step 6: Write a CSV file",
+      "highlight": [
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 6. A CSV file stores a table as text: one row per line, with commas between the values."
+      },
+      {
+       "say": "Line 4 opens it with newline equals empty. The Python documentation asks for this, so the C S V module controls the line endings.",
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Line 5 makes a writer. Each writerow takes a list, and writes one row. The first row is the header: the column names.",
+       "highlight": [
+        5,
+        6,
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Asha reads the file back.",
+       "output": "examples/ex06_csv_write.expected",
+       "highlight": [
+        10,
+        11
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The day's sales",
+      "label": "Build it",
+      "body": [
+       "A CSV file with a header row."
+      ],
+      "pre": "  sales.csv\n  --------------\n  item,qty,price\n  Tea,12,3.50\n  Café latte,5,4.20\n  Scone,8,2.75"
+     },
+     "segments": [
+      {
+       "say": "Step 7. Here are the day's sales: item, quantity and price.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_csv_read.py",
+      "heading": "Step 7: Read a CSV file",
+      "highlight": [
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "Line 6 uses DictReader. It reads the header, then gives each row as a dictionary, with the column names as keys."
+      },
+      {
+       "say": "Every value comes back as text, even twelve. So line 7 converts with int and float, from Chapter 4.",
+       "highlight": [
+        7
+       ]
+      },
+      {
+       "say": "Line 9 prints each item and its amount.",
+       "highlight": [
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What amount does output line 1 show for Tea?"
+     },
+     "after": [
+      {
+       "say": "42.00. Twelve teas at 3.50.",
+       "output": "examples/ex07_csv_read.expected",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And line 10 prints the total, 85.00.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`DictReader` reads the row `Tea,12,3.50`. What type is `row[\"qty\"]`?",
+      "options": [
+       "`int`",
+       "`float`",
+       "`str`",
+       "`bool`"
+      ],
+      "answer": 2,
+      "explain": "Every value from a CSV file is text. Convert it with `int()` or `float()`."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Dict reader reads the row: tea, twelve, three fifty. What type is the quantity?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. A string. Every value from a C S V file is text."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the score board",
+   "direction": "Return to the mission. Show the starting file, walk the code, ask about the tie, reveal, then hand over to the AI.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The score file before the run",
+      "label": "The mission",
+      "body": [
+       "Two rows from earlier rounds."
+      ],
+      "pre": "  scores.csv\n  ----------\n  name,score\n  Asha,4\n  Omar,3"
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. The score file already holds two rounds: Asha with 4, and Omar with 3.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_score_board.py",
+      "heading": "Mission complete: the score board",
+      "highlight": [
+       4,
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "Lines 4 and 5 hold today's new score: Lina, with 4."
+      },
+      {
+       "say": "Lines 7 and 8 append it, in mode A, so the old rows stay.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Lines 11 to 14 read every row, convert the score, and print it.",
+       "highlight": [
+        11,
+        12,
+        13,
+        14
+       ]
+      },
+      {
+       "say": "Line 15 replaces the best score only when a score is bigger.",
+       "highlight": [
+        15,
+        16
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Asha and Lina both have 4. Who does line 18 name as best?"
+     },
+     "after": [
+      {
+       "say": "Asha. Lina's 4 is not bigger than 4, so the first one stays.",
+       "output": "examples/ex08_score_board.expected",
+       "highlight": [
+        18
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "And Lina is saved. Run it again, and she appears twice. The file remembers every run!",
+       "highlight": [
+        7,
+        8
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Now Asha wants the quiz app itself to save each score. She builds a save function with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: a save function that keeps every score",
+   "direction": "Safety first. Six stages on save_score. Stage 3 plants mode w; tests catch it; debug a missing folder; improve breaks the header rule.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: safe file handling",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Some file mistakes destroy data with no error.",
+       "Test file code on a copy, then read the file afterwards.",
+       "Customer names and scores are private: paste a made-up sample."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is safe file handling. Some file mistakes destroy data with no error at all.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "So test file code on a copy, and read the file afterwards.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And never paste private data. A file of real names and scores is private, so paste a made-up sample.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: file, format and mode",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner. My quiz app must save a name and a score after every round, so the next run can load them. Do not write code yet. Which file, format and mode should I use?"
+       },
+       {
+        "role": "ai",
+        "text": "1. A CSV file, scores.csv, with the header name,score.\n2. Mode \"a\", so the old rows stay.\n3. Write the header only when the file is new.\n4. Open it with newline=\"\" and encoding=\"utf-8\"."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha describes the data to save, and asks for no code yet."
+      },
+      {
+       "say": "The AI suggests a C S V file, mode A, and a header only when the file is new. That matches what you learned.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then check",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote this function myself. Do not rewrite it. What happens to the file on the first call, and on the second?",
+        "code": "examples/ai_mine.py",
+        "code_lines": [
+         6,
+         7,
+         8,
+         9,
+         10,
+         11,
+         12
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "First call: the file is new, so it writes the header, then Asha's row.\nSecond call: the file exists, so it adds only Omar's row."
+       },
+       {
+        "role": "you",
+        "text": "I called it twice and read the file. It matches:",
+        "output": "examples/ai_mine.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes her own save function first. Line 7 asks if the file is new. Lines 10 and 11 write the header only then."
+      },
+      {
+       "say": "She asks the AI to explain what each call does to the file, without rewriting it.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "She calls it twice, and reads the file. It matches the explanation.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: a function from a request",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write save_score(path, name, score). It saves a quiz score to a CSV file with a header. It must keep every score."
+       },
+       {
+        "role": "ai",
+        "text": "Here it is. It keeps every score you save.",
+        "code": "examples/ai_save_flawed.py",
+        "code_lines": [
+         5,
+         6,
+         7,
+         8
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha wants to compare. She asks the AI for the same function, from a short request."
+      },
+      {
+       "say": "The AI answers with confidence: it keeps every score you save.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_save_flawed.py",
+      "heading": "The AI's function, called twice",
+      "code_lines": [
+       5,
+       6,
+       7,
+       8,
+       11,
+       12,
+       13
+      ],
+      "highlight": [
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "Look at line 6, and remember the three modes. Lines 11 and 12 save Asha, then Omar.",
+       "highlight": [
+        6,
+        11,
+        12
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The AI says it keeps every score. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Asha's score is gone. Mode W empties the file on every call, so only Omar survives.",
+       "output": "examples/ai_save_flawed.expected",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: the exact file after each case",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Give me test cases for save_score. For each one, write the exact text the file should hold afterwards."
+       },
+       {
+        "role": "ai",
+        "text": "1. New file, save Asha: the header, then Asha,4.\n2. Two saves, Asha then Omar: the header and both rows.\n3. An old file with Asha, save Lina: Lina after Asha."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks for test cases, each with the exact text the file should hold."
+      },
+      {
+       "say": "The AI lists three: a new file, two saves, and an old file with data in it.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_flawed.py",
+      "heading": "The three cases, on the AI's function",
+      "code_lines": [
+       5,
+       6,
+       7,
+       8
+      ],
+      "highlight": [
+       6
+      ],
+      "output": "examples/ai_tests_flawed.expected",
+      "out_highlight": [
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "She runs all three cases on the AI's function. Case 1 passes. Cases 2 and 3 fail: both lost a row, with no error."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_save_fixed.py",
+      "heading": "The fixed function: append, header only when new",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       15,
+       16,
+       17
+      ],
+      "highlight": [
+       7,
+       8,
+       10,
+       11
+      ],
+      "output": "examples/ai_save_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "The AI fixes it: mode A, and the header only when the file is new. The same idea as Asha's own version.",
+       "highlight": [
+        7,
+        8,
+        10,
+        11
+       ],
+       "out_highlight": []
+      },
+      {
+       "say": "Two saves now keep both rows.",
+       "highlight": [
+        15,
+        16
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_folder_crash.py",
+      "heading": "Stage 5: a save into a folder",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       15
+      ],
+      "highlight": [
+       15
+      ],
+      "error": "examples/ai_folder_crash.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha moves the scores into a data folder. Line 15 saves to data, slash, week dot c s v.",
+       "highlight": [
+        15
+       ]
+      },
+      {
+       "say": "File not found! The report points at line 8, inside the function.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I moved the scores into a data folder. Line 15 now saves to data/week.csv, and I got FileNotFoundError: No such file or directory: 'data/week.csv'. First explain the cause. Then show the smallest fix."
+       },
+       {
+        "role": "ai",
+        "text": "Line 8 opens data/week.csv, but there is no data folder. Mode \"a\" creates a missing file, not a missing folder.\nFix: start the function with Path(path).parent.mkdir(exist_ok=True). It makes the folder only if it is missing."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "She pastes the error into the chat, and asks for the cause first."
+      },
+      {
+       "say": "The AI explains. Mode A creates a missing file, but not a missing folder. The fix makes the folder, only if it is missing.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_fixed.py",
+      "heading": "Every case again, plus the folder",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13
+      ],
+      "highlight": [
+       7
+      ],
+      "output": "examples/ai_tests_fixed.expected",
+      "out_highlight": [
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Line 7 is the fix. Then Asha runs every case again, plus a fourth: a file in a folder. All four pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: one suggestion, then every test",
+      "messages": [
+       {
+        "role": "you",
+        "text": "All four cases pass. Suggest at most one improvement, with one reason. Do not change what the file contains."
+       },
+       {
+        "role": "ai",
+        "text": "Remove the exists check and write the header on every save. It is simpler, and CSV readers skip repeated headers."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one improvement that does not change the file."
+      },
+      {
+       "say": "The AI says: write the header on every save, because C S V readers skip repeated headers.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_improve.py",
+      "heading": "The AI's shorter version, on every case",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "highlight": [
+       10
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here is the shorter version. Line 10 writes the header every time. Remember how Dict reader finds its column names."
+      }
+     ],
+     "ask": {
+      "question": "Will case 2, two saves, still pass?"
+     },
+     "after": [
+      {
+       "say": "No. Cases 2 and 3 fail: the header is written twice.",
+       "output": "examples/ai_tests_improve.expected",
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And Dict reader uses only the first row as the header, so the second header becomes a data row. The AI was wrong again. Asha keeps her check."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI's file function runs with no error. What shows that it keeps every row?",
+      "options": [
+       "The AI says it does",
+       "There is no error message",
+       "The function is short",
+       "Reading the file after two saves"
+      ],
+      "answer": 3,
+      "explain": "Some file mistakes give no error. Read the file and compare it with the text you expect."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI's file function runs with no error. What shows that it keeps every row?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Read the file after two saves. No error does not mean no data lost."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Mode `\"w\"` can lose data with no error.",
+       "Read the file after every test."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. The AI made two confident mistakes, and Asha's tests caught both."
+      },
+      {
+       "say": "Next, the four file mistakes every beginner meets."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 is a typo in a file name. Mistakes 2 and 4 are spot-it asks. Then a table and a quiz.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_missing_file.py",
+      "heading": "Mistake 1: a file name that does not match",
+      "highlight": [
+       3
+      ],
+      "error": "examples/err01_missing_file.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. The file is called scores, with an s. Line 3 asks for score, without one.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 2 printed, then Python stopped: file not found, with the exact name it looked for.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Check the spelling, and run the program from the folder that holds the file. A relative path is looked up in the working directory.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_w_erases.py",
+      "heading": "Mistake 2: your turn to spot it",
+      "highlight": [
+       2
+      ],
+      "note": "log.txt has three lines before this program runs.",
+      "hidden_text": "Find the problem before the file appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. The cafe log has three lines. This program meant to add one more."
+      }
+     ],
+     "ask": {
+      "question": "How many lines does the log have after this program runs?"
+     },
+     "after": [
+      {
+       "say": "One. Mode W emptied the file first. There was no error, and the three old lines are gone.",
+       "output": "examples/err02_w_erases.expected",
+       "heading": "Mistake 2: mode w when you meant a",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The fix: use A to add. Use W only when you want to start again.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_encoding.py",
+      "heading": "Mistake 3: the wrong encoding",
+      "highlight": [
+       2
+      ],
+      "error": "examples/err03_encoding.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 3. An old cash register saved its menu with a different encoding. Reading it as UTF-8 fails at the e with an accent.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Find out which encoding saved the file, read it once with that encoding, and save it again as UTF-8.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_text_numbers.py",
+      "heading": "Mistake 4: spot it",
+      "highlight": [
+       7
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "One more. Remember what Dict reader gives back."
+      }
+     ],
+     "ask": {
+      "question": "What is wrong with line 7?"
+     },
+     "after": [
+      {
+       "say": "The price is text, and Python cannot add text to a float.",
+       "error": "examples/err04_text_numbers.expected_error",
+       "heading": "Mistake 4: using CSV values as numbers",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: convert first, with float.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Four file mistakes",
+      "label": "Common mistakes",
+      "columns": [
+       "What you see",
+       "Usual cause",
+       "Fix"
+      ],
+      "rows": [
+       [
+        "`FileNotFoundError`",
+        "A wrong name, folder or working directory",
+        "Check the name and where you run it"
+       ],
+       [
+        "No error, data gone",
+        "Mode `\"w\"` instead of `\"a\"`",
+        "Use `\"a\"` to add"
+       ],
+       [
+        "`UnicodeDecodeError`",
+        "The file used another encoding",
+        "Read it with its encoding, save as UTF-8"
+       ],
+       [
+        "`TypeError` with `str`",
+        "A CSV value is text",
+        "Convert with `int()` or `float()`"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here are all four."
+      },
+      {
+       "say": "File not found: a wrong name, folder or working directory.",
+       "focus_row": 0
+      },
+      {
+       "say": "No error, but data gone: W instead of A.",
+       "focus_row": 1
+      },
+      {
+       "say": "Unicode decode error: the file used another encoding.",
+       "focus_row": 2
+      },
+      {
+       "say": "And a type error with a string: a C S V value is text.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A program asks for `menu.text` instead of `menu.txt`. What do you see?",
+      "options": [
+       "`FileNotFoundError`",
+       "`UnicodeDecodeError`",
+       "`TypeError`",
+       "No error, an empty file"
+      ],
+      "answer": 0,
+      "explain": "Reading a file that does not exist gives `FileNotFoundError`, with the name Python looked for."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A program asks for menu dot text, instead of menu dot t x t. What do you see?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. File not found. Python names the file it looked for."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Check the file name and the working directory.",
+       "Use `\"a\"` to add.",
+       "CSV values are text."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. You can now read file errors, and the silent mistake too."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Asha runs the score board three times. How many rows does `scores.csv` have now? How could she stop the same score being saved twice?",
+      "hint": "count the rows from the start, then think about checking before saving."
+     },
+     "segments": [
+      {
+       "say": "First. Asha runs the score board three times. How many rows does the file have now, and how could she stop the same score being saved twice?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Try it on a copy of the file."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "A program crashes halfway through a `with` block that writes a file. What does `with` still do, and what could be missing?"
+     },
+     "segments": [
+      {
+       "say": "Second. A program crashes halfway through a with block that writes a file. What does with still do, and what could be missing from the file?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Keep your answer. Chapter 22 builds on it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A file keeps data after the program stops.",
+       "`write_text()` and `read_text()` write and read a whole file.",
+       "`with open(...)` closes the file for you. `\"w\"` empties, `\"a\"` adds, `\"r\"` reads.",
+       "Always write `encoding=\"utf-8\"`. `strip()` removes each line's newline.",
+       "`csv.writer` writes rows. `csv.DictReader` reads them as dictionaries of text.",
+       "Test file code on a copy, and read the file afterwards."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. A file keeps data after the program stops.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Write text and read text work on a whole file.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "With open closes the file for you. W empties, A adds, R reads.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Always write encoding equals utf 8, and strip each line.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "The C S V module writes rows, and reads them as dictionaries of text.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And test file code on a copy, then read the file.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Archivist",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Archivist",
+      "tile": 21
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Archivist badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Save a note; Add to the log; Number the menu",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Count the visits; Save the order as CSV; Items sold today",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "A daily report file; Fix the AI's log saver",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including a visit counter that survives every run.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, you fix an AI's log saver that loses data.",
+       "focus_row": 2
+      },
+      {
+       "say": "Work on copies of the data files, so a mistake never damages the originals.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease try and except as the fix for crashes on missing files. Hold quietly.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 22",
+      "title": "Handling Errors: try, except and Clear Messages",
+      "subtitle": "A missing file should give a clear message, not a crash.",
+      "badge": "",
+      "tile": 22
+     },
+     "segments": [
+      {
+       "say": "One problem is left. If the score file is missing or damaged, the program still crashes with a long error report."
+      },
+      {
+       "say": "In Chapter 22, you will catch errors with try and except, and show a clear message instead."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 22."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }
