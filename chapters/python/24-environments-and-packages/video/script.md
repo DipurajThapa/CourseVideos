@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:34 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 19:06.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:30)
 
 **Section:** Introduction
 
@@ -19,7 +19,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Here is Asha's draft list of packages for the weather board. By the end, her own program will check it before anything is installed.
   **On screen:** Today's mission: check the list first
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:30 to 0:41)
 
 **Section:** Learning goals
 
@@ -36,7 +36,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Record pinned versions in `requirements.txt`, and install from it.
     - Check a package name before you install it.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (0:41 to 1:01)
 
 **Section:** Why this matters
 
@@ -53,7 +53,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A name one letter away from a famous package can hide harmful code.
     - The cafe laptop and the home laptop must run the board the same way.
 
-## Scene 4: The idea: one toolbox per project
+## Scene 4: The idea: one toolbox per project (1:01 to 2:25)
 
 **Section:** The idea
 
@@ -93,7 +93,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A pinned version names one exact version.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Steps 1 and 2: Create and activate
+## Scene 5: Steps 1 and 2: Create and activate (2:25 to 4:11)
 
 **Section:** Build it step by step
 
@@ -125,7 +125,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The computer's own Python. A new terminal starts outside, so she must activate dot v e n v again. The prompt tells her: no dot v e n v in brackets, not inside.
   **On screen:** Am I inside?
 
-## Scene 6: Steps 3 and 4: Install, record, reinstall
+## Scene 6: Steps 3 and 4: Install, record, reinstall (4:11 to 5:51)
 
 **Section:** Build it step by step
 
@@ -155,7 +155,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Requests and 2.32.3, then tabulate and 0.9.0. The comment line never reaches line 11.
   **On screen:** Code `examples/ex01_read_requirements.py`, line 11 highlighted, output `examples/ex01_read_requirements.expected`
 
-## Scene 7: Step 5: Pinned or not?
+## Scene 7: Step 5: Pinned or not? (5:51 to 7:11)
 
 **Section:** Build it step by step
 
@@ -184,7 +184,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Pin exact versions with `==`.
 - **Breather:** 4 quiet seconds.
 
-## Scene 8: Step 6: Check a name first
+## Scene 8: Step 6: Check a name first (7:11 to 8:39)
 
 **Section:** Build it step by step
 
@@ -214,7 +214,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Line 8 prints an empty list. Num py is not like any trusted name.
   **On screen:** Code `examples/ex03_lookalike.py`, line 8 highlighted, output `examples/ex03_lookalike.expected`
 
-## Scene 9: See the outcome: Asha's list check
+## Scene 9: See the outcome: Asha's list check (8:39 to 10:09)
 
 **Section:** See the outcome
 
@@ -244,7 +244,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Then she builds her name check into a function, with an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex04_check_requirements.py`, output `examples/ex04_check_requirements.expected`
 
-## Scene 10: Work with AI: adding a package safely
+## Scene 10: Work with AI: adding a package safely (10:09 to 15:00)
 
 **Section:** Work with AI
 
@@ -359,7 +359,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Install only inside `.venv`.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: Common mistakes
+## Scene 11: Common mistakes (15:00 to 16:38)
 
 **Section:** Common mistakes
 
@@ -394,7 +394,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Share `requirements.txt`, never `.venv`.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Think beyond
+## Scene 12: Think beyond (16:38 to 17:24)
 
 **Section:** Think beyond
 
@@ -411,7 +411,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Write your list down. You will use it every time you add a package.
   **On screen:** Question card: "An AI suggests `cafe-weather-easy`. Which checks would you make, and which result would make you stop?"
 
-## Scene 13: Recap
+## Scene 13: Recap (17:24 to 18:20)
 
 **Section:** Recap
 
@@ -448,7 +448,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Toolsmith You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 14: Practice
+## Scene 14: Practice (18:20 to 18:39)
 
 **Section:** Practice
 
@@ -463,7 +463,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks, worth 40 each. In the last one, you fix an AI's pin checker.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 15: What's next
+## Scene 15: What's next (18:39 to 19:06)
 
 **Section:** What's next
 
