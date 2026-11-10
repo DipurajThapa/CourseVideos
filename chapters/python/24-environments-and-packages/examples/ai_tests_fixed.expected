@@ -1,0 +1,4 @@
+requests  pass: trusted
+reqeusts  pass: look-alike of requests
+Requests  pass: trusted
+numpy     pass: unknown: check pypi.org

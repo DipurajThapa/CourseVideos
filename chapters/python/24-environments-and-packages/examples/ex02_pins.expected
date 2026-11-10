@@ -1,0 +1,3 @@
+requests==2.32.3   pinned
+tabulate           not pinned
+pytest>=8          not pinned
