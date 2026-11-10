@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:19 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:06.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:40)
 
 **Section:** Introduction
 
@@ -23,7 +23,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And a missing file gets a message too. Let's build it, piece by piece.
   **On screen:** Code `examples/ex07_score_board.py`, line 15, 16 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:40 to 0:54)
 
 **Section:** Learning goals
 
@@ -55,7 +55,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Raise your own error, and test it with `pytest.raises`.
     - Ask an AI what could go wrong, then handle and test each case.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (0:54 to 1:16)
 
 **Section:** Why this matters
 
@@ -74,7 +74,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You have read exception reports since Chapter 9. Now you catch them.
     - Good programs expect bad data, say what happened, and carry on.
 
-## Scene 4: The idea: try, except, else, finally
+## Scene 4: The idea: try, except, else, finally (1:16 to 2:36)
 
 **Section:** The idea
 
@@ -116,7 +116,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `else` if nothing failed, `finally` always.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Step 1: Catch a bad number
+## Scene 5: Step 1: Catch a bad number (2:36 to 3:26)
 
 **Section:** Build it step by step
 
@@ -134,7 +134,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Int ignores the spaces around 3, as you saw in Chapter 4. And exclamation r, from Chapter 20, shows the quotation marks.
   **On screen:** Code `examples/ex01_try_except.py`, line 5, 8 highlighted, output `examples/ex01_try_except.expected`
 
-## Scene 6: Step 2: else and finally
+## Scene 6: Step 2: else and finally (3:26 to 4:13)
 
 **Section:** Build it step by step
 
@@ -156,7 +156,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Keep the try block small. Only the line that can fail belongs inside it.
   **On screen:** Code `examples/ex02_else_finally.py`, line 7 highlighted, output `examples/ex02_else_finally.expected`
 
-## Scene 7: Step 3: Ask again until it is valid
+## Scene 7: Step 3: Ask again until it is valid (4:13 to 5:12)
 
 **Section:** Build it step by step
 
@@ -185,7 +185,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Try inside a loop, and ask again.
 - **Breather:** 4 quiet seconds.
 
-## Scene 8: Steps 4 and 5: Raise, and catch what you expect
+## Scene 8: Steps 4 and 5: Raise, and catch what you expect (5:12 to 7:04)
 
 **Section:** Build it step by step
 
@@ -219,7 +219,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** B. The bare except. It catches everything, including your bugs. It even catches Control C, the keys you press to stop a program.
   **On screen:** Quick check: "Which `except` line can hide a spelling mistake in your own code?" (answer revealed: `except:`)
 
-## Scene 9: Step 6: Test that an error is raised
+## Scene 9: Step 6: Test that an error is raised (7:04 to 8:02)
 
 **Section:** Build it step by step
 
@@ -250,7 +250,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `pytest.raises` checks that the error happens.
 - **Breather:** 4 quiet seconds.
 
-## Scene 10: See the outcome: the score board
+## Scene 10: See the outcome: the score board (8:02 to 8:59)
 
 **Section:** See the outcome
 
@@ -274,7 +274,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Now Asha wants this as a function, load scores, for the quiz app. She builds it with an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex07_score_board.py`, output `examples/ex07_score_board.expected`
 
-## Scene 11: Work with AI: a loader that handles every problem
+## Scene 11: Work with AI: a loader that handles every problem (8:59 to 13:36)
 
 **Section:** Work with AI
 
@@ -390,7 +390,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Test that a change does not hide your bugs.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Common mistakes
+## Scene 12: Common mistakes (13:36 to 15:05)
 
 **Section:** Common mistakes
 
@@ -428,7 +428,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `raise` needs an exception, with a message.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Think beyond
+## Scene 13: Think beyond (15:05 to 15:52)
 
 **Section:** Think beyond
 
@@ -445,7 +445,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Keep your answer. It is a design choice, not a rule.
   **On screen:** Question card: "When is it better to stop the whole program than to skip a damaged row?"
 
-## Scene 14: Recap
+## Scene 14: Recap (15:52 to 16:21)
 
 **Section:** Recap
 
@@ -488,7 +488,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Safety Net You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 15: Practice
+## Scene 15: Practice (16:21 to 16:40)
 
 **Section:** Practice
 
@@ -501,7 +501,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks, worth 40 each. In the last one, you fix an AI's menu loader that loses items.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 16: What's next
+## Scene 16: What's next (16:40 to 17:06)
 
 **Section:** What's next
 

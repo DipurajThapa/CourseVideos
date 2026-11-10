@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-22",
+  "rendered_at": "2026-11-10T08:14:43+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "32fde79990c4a4e309634a5c775697ea1034d3405f856f88f5b9cac0ac4fa832",
+  "inputs_sha256": "8ebc2168ab3b1832f37be6607a6caa6a68f744a46a93894df77ae2e83b5b89bf",
+  "video_sha256": "ad886bda082be5d6e3f5c13cc50d43ed40d43542ec9f2ec72261ae75019bb8eb",
+  "duration_seconds": 1025.9,
+  "size_mb": 43.6,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -1.8
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 960,
+  "questions": 16,
+  "breathers": 5,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 40.133
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 40.133,
+      "end": 54.167
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 54.167,
+      "end": 75.9
+    },
+    {
+      "id": "idea",
+      "title": "The idea: try, except, else, finally",
+      "section": "The idea",
+      "start": 75.9,
+      "end": 155.933
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Catch a bad number",
+      "section": "Build it step by step",
+      "start": 155.933,
+      "end": 205.933
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: else and finally",
+      "section": "Build it step by step",
+      "start": 205.933,
+      "end": 252.567
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Ask again until it is valid",
+      "section": "Build it step by step",
+      "start": 252.567,
+      "end": 312.5
+    },
+    {
+      "id": "step4",
+      "title": "Steps 4 and 5: Raise, and catch what you expect",
+      "section": "Build it step by step",
+      "start": 312.5,
+      "end": 423.633
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: Test that an error is raised",
+      "section": "Build it step by step",
+      "start": 423.633,
+      "end": 481.867
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the score board",
+      "section": "See the outcome",
+      "start": 481.867,
+      "end": 539.033
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: a loader that handles every problem",
+      "section": "Work with AI",
+      "start": 539.033,
+      "end": 815.867
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 815.867,
+      "end": 904.8
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 904.8,
+      "end": 952.167
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 952.167,
+      "end": 981.2
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 981.2,
+      "end": 999.667
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 999.667,
+      "end": 1025.833
+    }
+  ]
+}

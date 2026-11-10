@@ -1,0 +1,1227 @@
+1
+00:00:00,250 --> 00:00:05,763
+At the Corner Cafe, someone typed the word
+three into Asha's score file, instead of
+
+2
+00:00:05,783 --> 00:00:06,630
+the number 3.
+
+3
+00:00:06,667 --> 00:00:08,965
+The score board prints one line.
+
+4
+00:00:08,985 --> 00:00:12,008
+Then a wall of red text, and nothing else.
+
+5
+00:00:12,028 --> 00:00:14,472
+The staff have no idea what to do.
+
+6
+00:00:15,087 --> 00:00:17,329
+This is Code Quest, Chapter 22.
+
+7
+00:00:17,349 --> 00:00:20,687
+Today, your programs learn to handle
+problems.
+
+8
+00:00:20,733 --> 00:00:24,958
+And an AI assistant will promise code that
+never crashes.
+
+9
+00:00:24,978 --> 00:00:26,373
+It will sound sure.
+
+10
+00:00:26,393 --> 00:00:28,085
+Your tests will decide.
+
+11
+00:00:28,687 --> 00:00:34,175
+Here is today's mission: the same score
+board, now ready for bad data, with clear
+
+12
+00:00:34,195 --> 00:00:34,787
+messages.
+
+13
+00:00:34,833 --> 00:00:37,549
+And a missing file gets a message too.
+
+14
+00:00:37,569 --> 00:00:39,781
+Let's build it, piece by piece.
+
+15
+00:00:40,383 --> 00:00:43,463
+Catch an error, and show a clear message
+instead.
+
+16
+00:00:43,500 --> 00:00:45,310
+Use else and finally.
+
+17
+00:00:45,333 --> 00:00:47,523
+Catch the specific error you expect.
+
+18
+00:00:47,567 --> 00:00:50,037
+Raise your own error, and test it.
+
+19
+00:00:50,067 --> 00:00:53,836
+And ask an AI what could go wrong, then
+test each case.
+
+20
+00:00:54,417 --> 00:00:59,454
+An exception is an error that happens
+while a program runs, like a value error,
+
+21
+00:00:59,474 --> 00:01:00,607
+or file not found.
+
+22
+00:01:00,633 --> 00:01:03,851
+You have read exception reports since
+Chapter 9.
+
+23
+00:01:03,871 --> 00:01:07,493
+Now your program catches them, and decides
+what to do.
+
+24
+00:01:07,533 --> 00:01:10,389
+Customers type words instead of numbers.
+
+25
+00:01:10,409 --> 00:01:11,683
+Files get deleted.
+
+26
+00:01:11,703 --> 00:01:15,564
+Good programs expect this, and carry on
+when they can.
+
+27
+00:01:16,150 --> 00:01:18,861
+A try block runs code that might fail.
+
+28
+00:01:18,881 --> 00:01:24,826
+If an exception happens inside it, Python
+stops that block, and jumps to a matching
+
+29
+00:01:24,846 --> 00:01:25,760
+except block.
+
+30
+00:01:25,800 --> 00:01:28,840
+The except line names the exception it
+catches.
+
+31
+00:01:28,860 --> 00:01:33,852
+An exception of another type is not
+caught, and the program stops, as before.
+
+32
+00:01:34,453 --> 00:01:35,933
+Try always runs first.
+
+33
+00:01:35,953 --> 00:01:38,113
+It stops at the first exception.
+
+34
+00:01:38,133 --> 00:01:43,013
+Except value error runs only when a value
+error happened in try.
+
+35
+00:01:43,033 --> 00:01:47,193
+Else runs only when try finished with no
+exception at all.
+
+36
+00:01:47,233 --> 00:01:50,709
+And finally runs always, last, whatever
+happened.
+
+37
+00:01:51,320 --> 00:01:53,932
+Think of the safety net under a trapeze.
+
+38
+00:01:53,952 --> 00:01:59,000
+The act goes on as planned, and the net
+catches the artist only after a fall.
+
+39
+00:01:59,033 --> 00:02:01,189
+But a real net catches anyone.
+
+40
+00:02:01,209 --> 00:02:04,597
+Except catches only the type of error it
+names.
+
+41
+00:02:05,220 --> 00:02:05,930
+Quick check.
+
+42
+00:02:05,950 --> 00:02:07,693
+When does the else block run?
+
+43
+00:02:19,047 --> 00:02:19,188
+C.
+
+44
+00:02:19,208 --> 00:02:21,928
+Only when try raised no exception.
+
+45
+00:02:21,948 --> 00:02:24,830
+Finally is the one that always runs.
+
+46
+00:02:25,420 --> 00:02:25,957
+Breather.
+
+47
+00:02:25,977 --> 00:02:28,680
+Four parts, and you know when each one
+runs.
+
+48
+00:02:28,700 --> 00:02:31,459
+Next, Asha catches her first error.
+
+49
+00:02:36,183 --> 00:02:36,640
+Step 1.
+
+50
+00:02:36,660 --> 00:02:41,616
+In Chapter 4, int of the word two stopped
+the program with a value error.
+
+51
+00:02:41,636 --> 00:02:45,433
+Line 2 holds three answers, and the loop
+tries each one.
+
+52
+00:02:45,467 --> 00:02:49,373
+Line 5 tries to turn the answer into a
+whole number.
+
+53
+00:02:49,393 --> 00:02:50,657
+Line 6 prints it.
+
+54
+00:02:50,700 --> 00:02:56,622
+If line 5 fails, Python skips the rest of
+the try block, and jumps to the except
+
+55
+00:02:56,642 --> 00:02:57,811
+block on line 7.
+
+56
+00:03:09,180 --> 00:03:10,144
+Only line 8.
+
+57
+00:03:10,164 --> 00:03:13,015
+Line 5 failed, so line 6 never ran.
+
+58
+00:03:13,035 --> 00:03:16,460
+And the loop went on with the next answer.
+
+59
+00:03:16,500 --> 00:03:20,852
+Int ignores the spaces around 3, as you
+saw in Chapter 4.
+
+60
+00:03:20,872 --> 00:03:25,607
+And exclamation r, from Chapter 20, shows
+the quotation marks.
+
+61
+00:03:26,183 --> 00:03:26,741
+Step 2.
+
+62
+00:03:26,761 --> 00:03:28,390
+Line 7 reads a file.
+
+63
+00:03:28,410 --> 00:03:31,193
+That can fail with file not found.
+
+64
+00:03:31,233 --> 00:03:33,813
+Lines 8 and 9 catch it, with a message.
+
+65
+00:03:33,833 --> 00:03:38,044
+Else, on line 10, runs only when the file
+was read.
+
+66
+00:03:38,064 --> 00:03:41,113
+Finally, on line 12, runs every time.
+
+67
+00:03:41,133 --> 00:03:45,682
+Lines 16 and 17 call it twice: with week,
+and with month.
+
+68
+00:03:57,047 --> 00:03:58,791
+No scores yet, then done.
+
+69
+00:03:58,811 --> 00:04:03,237
+The except block ran, else was skipped,
+and finally ran anyway.
+
+70
+00:04:03,267 --> 00:04:07,027
+For week, else printed the file, and
+finally printed done.
+
+71
+00:04:07,067 --> 00:04:08,877
+Keep the try block small.
+
+72
+00:04:08,897 --> 00:04:12,246
+Only the line that can fail belongs inside
+it.
+
+73
+00:04:12,817 --> 00:04:13,342
+Step 3.
+
+74
+00:04:13,362 --> 00:04:18,407
+In Chapter 7, a while true loop asked
+until the answer was valid.
+
+75
+00:04:18,427 --> 00:04:20,667
+Now try sits inside the loop.
+
+76
+00:04:20,700 --> 00:04:25,080
+A word gives a value error, and line 7
+asks for a whole number.
+
+77
+00:04:25,100 --> 00:04:28,960
+If the number is from 0 to 4, break ends
+the loop.
+
+78
+00:04:28,980 --> 00:04:31,832
+Otherwise line 11 explains the range.
+
+79
+00:04:43,213 --> 00:04:45,642
+Please type a number from 0 to 4.
+
+80
+00:04:45,662 --> 00:04:48,684
+Seven is a whole number, so no exception.
+
+81
+00:04:48,704 --> 00:04:52,023
+But the if on line 9 catches the wrong
+value.
+
+82
+00:04:52,067 --> 00:04:54,792
+Try catches an answer that is not a
+number.
+
+83
+00:04:54,812 --> 00:04:57,217
+If catches a number outside the range.
+
+84
+00:04:57,237 --> 00:04:59,771
+And each message says what to type next.
+
+85
+00:05:00,387 --> 00:05:00,965
+Breather.
+
+86
+00:05:00,985 --> 00:05:03,627
+A word no longer crashes Asha's program.
+
+87
+00:05:03,667 --> 00:05:08,003
+Next, Asha's own functions learn to refuse
+bad input.
+
+88
+00:05:12,750 --> 00:05:13,237
+Step 4.
+
+89
+00:05:13,257 --> 00:05:16,351
+A function can refuse bad input with
+raise.
+
+90
+00:05:16,371 --> 00:05:21,130
+Line 4 creates a value error, with a
+message that names the price.
+
+91
+00:05:21,167 --> 00:05:22,603
+Line 11 catches it.
+
+92
+00:05:22,623 --> 00:05:26,897
+As error keeps the exception in a variable
+called error.
+
+93
+00:05:26,933 --> 00:05:29,190
+Line 12 prints that message.
+
+94
+00:05:40,547 --> 00:05:44,203
+Not saved: price cannot be negative: minus
+1.
+
+95
+00:05:44,223 --> 00:05:47,717
+The message from line 4 arrives at line
+12.
+
+96
+00:05:47,767 --> 00:05:50,993
+A clear message names the problem and the
+value.
+
+97
+00:05:51,013 --> 00:05:53,631
+Error, with nothing else, helps nobody.
+
+98
+00:05:54,253 --> 00:05:54,789
+Step 5.
+
+99
+00:05:54,809 --> 00:05:58,441
+Line 7 is a bare except: no error type at
+all.
+
+100
+00:05:58,461 --> 00:06:03,363
+It catches every exception, even the ones
+your own bugs cause.
+
+101
+00:06:03,400 --> 00:06:05,248
+Look closely at line 5.
+
+102
+00:06:16,613 --> 00:06:17,859
+It is refused too!
+
+103
+00:06:17,879 --> 00:06:19,969
+Line 5 says anser, not answer.
+
+104
+00:06:19,989 --> 00:06:22,711
+That name error was caught, and hidden.
+
+105
+00:06:23,320 --> 00:06:25,993
+Now line 7 catches value error only.
+
+106
+00:06:26,013 --> 00:06:29,060
+The spelling mistake is no longer hidden.
+
+107
+00:06:29,100 --> 00:06:33,265
+The report names line 5, and even suggests
+the right name.
+
+108
+00:06:33,285 --> 00:06:36,295
+Catch the errors you expect from the data.
+
+109
+00:06:36,315 --> 00:06:37,955
+Let your own bugs show.
+
+110
+00:06:38,553 --> 00:06:39,271
+Quick check.
+
+111
+00:06:39,291 --> 00:06:43,141
+Which except line can hide a spelling
+mistake in your own code?
+
+112
+00:06:54,513 --> 00:06:54,634
+B.
+
+113
+00:06:54,654 --> 00:06:55,759
+The bare except.
+
+114
+00:06:55,779 --> 00:06:58,782
+It catches everything, including your
+bugs.
+
+115
+00:06:58,802 --> 00:07:03,282
+It even catches Control C, the keys you
+press to stop a program.
+
+116
+00:07:03,883 --> 00:07:04,411
+Step 6.
+
+117
+00:07:04,431 --> 00:07:10,598
+Asha keeps with tax in her cafe tools
+module, with the new check on lines 4 and
+
+118
+00:07:10,618 --> 00:07:10,754
+5.
+
+119
+00:07:11,353 --> 00:07:14,784
+In Chapter 19, tests checked return
+values.
+
+120
+00:07:14,804 --> 00:07:16,710
+Line 11 checks an error.
+
+121
+00:07:16,730 --> 00:07:20,963
+The test passes only if line 12 raises a
+value error.
+
+122
+00:07:21,000 --> 00:07:23,361
+Both tests pass: two dots.
+
+123
+00:07:23,953 --> 00:07:25,968
+Here is an older with tax.
+
+124
+00:07:25,988 --> 00:07:29,803
+Lines 5 and 6 have no check for a negative
+price.
+
+125
+00:07:29,833 --> 00:07:33,853
+The test on lines 9 to 11 is the same as
+before.
+
+126
+00:07:45,213 --> 00:07:45,413
+No.
+
+127
+00:07:45,433 --> 00:07:49,073
+The function returned a value instead of
+refusing.
+
+128
+00:07:49,093 --> 00:07:52,147
+Pytest reports: did not raise value error.
+
+129
+00:07:52,753 --> 00:07:53,296
+Breather.
+
+130
+00:07:53,316 --> 00:07:55,673
+You can catch, raise, and test errors.
+
+131
+00:07:55,700 --> 00:07:57,380
+Now, back to the mission.
+
+132
+00:08:02,117 --> 00:08:03,477
+Back to the mission.
+
+133
+00:08:03,497 --> 00:08:06,790
+Here is the score file, with Omar's
+damaged row.
+
+134
+00:08:07,387 --> 00:08:09,300
+Line 4 starts a counter.
+
+135
+00:08:09,320 --> 00:08:13,167
+The outer try, on lines 5 and 6, opens the
+file.
+
+136
+00:08:13,200 --> 00:08:18,660
+Inside the loop, a small try on lines 8
+and 9 protects one row at a time.
+
+137
+00:08:18,700 --> 00:08:22,380
+A bad score prints a message that names
+the row and the value.
+
+138
+00:08:22,400 --> 00:08:25,700
+A good score is printed and counted, in
+else.
+
+139
+00:08:25,733 --> 00:08:29,031
+Lines 15 and 16 handle a missing file.
+
+140
+00:08:29,051 --> 00:08:31,214
+Line 17 prints the count.
+
+141
+00:08:42,580 --> 00:08:42,698
+2.
+
+142
+00:08:42,718 --> 00:08:48,489
+Omar's row is skipped with a message, and
+Lina still loads, because the try protects
+
+143
+00:08:48,509 --> 00:08:49,730
+one row at a time.
+
+144
+00:08:49,767 --> 00:08:54,559
+Now Asha wants this as a function, load
+scores, for the quiz app.
+
+145
+00:08:54,579 --> 00:08:58,705
+She builds it with an AI assistant, one
+stage at a time.
+
+146
+00:08:59,283 --> 00:09:03,663
+This chapter's AI skill: ask what could go
+wrong in your code.
+
+147
+00:09:03,700 --> 00:09:06,990
+Then make one test case for each problem,
+and run it.
+
+148
+00:09:07,033 --> 00:09:09,150
+And never paste private data.
+
+149
+00:09:09,170 --> 00:09:13,938
+A real file of staff names is private, so
+paste a made-up sample.
+
+150
+00:09:14,553 --> 00:09:15,603
+Stage 1: plan.
+
+151
+00:09:15,623 --> 00:09:21,106
+Asha asks what could go wrong, and what
+the program should do each time.
+
+152
+00:09:21,126 --> 00:09:22,023
+No code yet.
+
+153
+00:09:22,067 --> 00:09:27,213
+The AI lists three problems: a missing
+file, a score that is not a number, and a
+
+154
+00:09:27,233 --> 00:09:28,893
+file with only the header.
+
+155
+00:09:29,487 --> 00:09:30,570
+Stage 2: write.
+
+156
+00:09:30,590 --> 00:09:36,457
+Asha writes her own load scores first, and
+asks which lines handle each problem.
+
+157
+00:09:36,500 --> 00:09:38,884
+The AI names lines 12 to 15.
+
+158
+00:09:38,904 --> 00:09:41,287
+That matches what she meant.
+
+159
+00:09:41,887 --> 00:09:43,261
+Stage 3: generate.
+
+160
+00:09:43,281 --> 00:09:48,917
+To compare, Asha asks the AI for the same
+function, from a short request.
+
+161
+00:09:48,967 --> 00:09:53,438
+The AI is sure: it handles every problem,
+and never crashes.
+
+162
+00:09:54,053 --> 00:09:58,007
+Look where the try starts, on line 7, and
+where it ends.
+
+163
+00:09:58,027 --> 00:10:01,483
+Lines 11 and 12 catch everything, and do
+nothing.
+
+164
+00:10:01,533 --> 00:10:06,988
+Line 17 loads the damaged file: Asha, Omar
+with three, and Lina.
+
+165
+00:10:18,347 --> 00:10:18,549
+No.
+
+166
+00:10:18,569 --> 00:10:19,738
+Only Asha loads.
+
+167
+00:10:19,758 --> 00:10:25,678
+The try block holds the whole loop, so
+Omar's row stopped it, and Lina was lost,
+
+168
+00:10:25,698 --> 00:10:26,867
+with no message.
+
+169
+00:10:26,900 --> 00:10:32,348
+A better request names the exceptions to
+catch, and asks for a small try block.
+
+170
+00:10:32,953 --> 00:10:33,974
+Stage 4: test.
+
+171
+00:10:33,994 --> 00:10:39,843
+Asha asks for test cases, each with the
+file and the number of scores it should
+
+172
+00:10:39,863 --> 00:10:40,363
+return.
+
+173
+00:10:40,400 --> 00:10:41,691
+The AI lists three.
+
+174
+00:10:41,711 --> 00:10:44,726
+They match the three problems from the
+plan.
+
+175
+00:10:45,320 --> 00:10:48,720
+She runs all three cases on the AI's
+loader.
+
+176
+00:10:48,740 --> 00:10:52,761
+The damaged row case fails: it found 1
+score, not 2.
+
+177
+00:10:53,353 --> 00:10:58,433
+Asha shows the AI the failing case, and
+asks for the cause, then a fix.
+
+178
+00:10:58,467 --> 00:11:04,618
+The AI explains: the whole loop was inside
+try, and the bare except hid the error.
+
+179
+00:11:04,638 --> 00:11:10,413
+The fix puts a small try around one row,
+the same idea as Asha's own version.
+
+180
+00:11:11,020 --> 00:11:14,566
+She runs all three cases again, on the
+fixed loader.
+
+181
+00:11:14,586 --> 00:11:17,720
+All three pass, and Omar's row gets a
+message.
+
+182
+00:11:18,320 --> 00:11:19,414
+Stage 5: debug.
+
+183
+00:11:19,434 --> 00:11:24,610
+In a new test file, one row says only Ben,
+with no comma and no score.
+
+184
+00:11:24,630 --> 00:11:27,060
+Her own version has the same gap.
+
+185
+00:11:27,100 --> 00:11:27,905
+Type error!
+
+186
+00:11:27,925 --> 00:11:32,478
+The report points at line 11 of the
+loader: int of row score.
+
+187
+00:11:33,087 --> 00:11:36,647
+Asha pastes the error, and asks for the
+cause first.
+
+188
+00:11:36,667 --> 00:11:42,670
+Ben's row has no score, so the value is
+None, and int of None raises a type error.
+
+189
+00:11:42,690 --> 00:11:48,619
+The fix catches both errors as a tuple:
+the two names inside round brackets, like
+
+190
+00:11:48,639 --> 00:11:50,603
+the tuples from Chapter 13.
+
+191
+00:11:51,220 --> 00:11:55,698
+She adds the short row as case 4, and runs
+every case again.
+
+192
+00:11:55,718 --> 00:11:56,747
+All four pass.
+
+193
+00:11:57,353 --> 00:11:58,816
+Stage 6: improve.
+
+194
+00:11:58,836 --> 00:12:01,433
+Asha asks for one improvement.
+
+195
+00:12:01,467 --> 00:12:06,997
+The AI suggests: except Exception, so no
+future error can ever crash it.
+
+196
+00:12:07,033 --> 00:12:11,695
+Exception, with a capital E, is the parent
+of almost every error type.
+
+197
+00:12:11,715 --> 00:12:16,175
+So except Exception catches nearly every
+error, your bugs included.
+
+198
+00:12:16,787 --> 00:12:18,337
+Asha tests the idea.
+
+199
+00:12:18,357 --> 00:12:23,755
+She adds a spelling mistake on purpose:
+line 10 says scor, not score.
+
+200
+00:12:23,775 --> 00:12:25,797
+Line 11 catches Exception.
+
+201
+00:12:25,833 --> 00:12:30,052
+Line 16 loads the normal file, with two
+good rows.
+
+202
+00:12:41,413 --> 00:12:41,594
+No.
+
+203
+00:12:41,614 --> 00:12:45,931
+Every row is skipped with a wrong message,
+and the list is empty.
+
+204
+00:12:45,951 --> 00:12:47,132
+The bug is hidden.
+
+205
+00:12:47,753 --> 00:12:53,140
+With her specific except, the key error
+stops the program, and points at line 10.
+
+206
+00:12:53,160 --> 00:12:55,743
+She finds the spelling mistake at once.
+
+207
+00:12:55,763 --> 00:12:57,945
+So she keeps the specific except.
+
+208
+00:12:58,553 --> 00:12:59,323
+Quick check.
+
+209
+00:12:59,343 --> 00:13:01,166
+A score loader reads a file.
+
+210
+00:13:01,186 --> 00:13:03,930
+Which except should catch a damaged score?
+
+211
+00:13:15,313 --> 00:13:15,439
+D.
+
+212
+00:13:15,459 --> 00:13:16,316
+Value error.
+
+213
+00:13:16,336 --> 00:13:19,310
+That is the error a damaged score raises.
+
+214
+00:13:19,330 --> 00:13:21,282
+Let every other error show.
+
+215
+00:13:21,887 --> 00:13:22,550
+Breather.
+
+216
+00:13:22,570 --> 00:13:27,487
+The AI made two confident mistakes, and
+Asha's tests caught both.
+
+217
+00:13:27,533 --> 00:13:31,386
+Next, four mistakes beginners make with
+try and except.
+
+218
+00:13:36,117 --> 00:13:36,906
+Mistake 1.
+
+219
+00:13:36,926 --> 00:13:37,554
+You try.
+
+220
+00:13:37,574 --> 00:13:41,359
+Line 4 turns the word four into a whole
+number.
+
+221
+00:13:41,379 --> 00:13:43,302
+Line 5 catches an error.
+
+222
+00:13:54,680 --> 00:13:54,880
+No.
+
+223
+00:13:54,900 --> 00:13:58,613
+Int of four raises a value error, not a
+type error.
+
+224
+00:13:58,633 --> 00:14:00,590
+So the program still stops.
+
+225
+00:14:00,633 --> 00:14:03,621
+The fix: catch the type the report names.
+
+226
+00:14:03,641 --> 00:14:06,629
+Run the code once without try, to see it.
+
+227
+00:14:07,220 --> 00:14:07,941
+Mistake 2.
+
+228
+00:14:07,961 --> 00:14:11,054
+Line 4 failed, so score was never created.
+
+229
+00:14:11,074 --> 00:14:13,500
+Line 7 still uses it: name error.
+
+230
+00:14:13,533 --> 00:14:17,812
+The fix: put the code that needs score in
+else.
+
+231
+00:14:18,420 --> 00:14:19,130
+Mistake 3.
+
+232
+00:14:19,150 --> 00:14:20,881
+Remember the four parts.
+
+233
+00:14:20,901 --> 00:14:23,435
+Look at what follows the try block.
+
+234
+00:14:34,813 --> 00:14:36,869
+An except or a finally block.
+
+235
+00:14:36,889 --> 00:14:39,660
+Every try needs one, straight after it.
+
+236
+00:14:39,680 --> 00:14:42,022
+Python cannot even read the file.
+
+237
+00:14:42,620 --> 00:14:43,389
+Mistake 4.
+
+238
+00:14:43,409 --> 00:14:46,153
+Raise needs an exception, not text.
+
+239
+00:14:46,173 --> 00:14:48,600
+Python stops with a type error.
+
+240
+00:14:48,633 --> 00:14:51,872
+The fix: put the message inside a value
+error.
+
+241
+00:14:52,487 --> 00:14:53,493
+Last breather.
+
+242
+00:14:53,513 --> 00:14:57,087
+Errors are now part of your plan, not a
+surprise.
+
+243
+00:14:57,133 --> 00:15:00,322
+Two questions to think about on your own
+come next.
+
+244
+00:15:05,050 --> 00:15:05,469
+First.
+
+245
+00:15:05,489 --> 00:15:09,716
+In the ask again program, a player types
+3.5 as the score.
+
+246
+00:15:09,736 --> 00:15:14,182
+Which message do they see, and how would
+you make it clearer?
+
+247
+00:15:25,547 --> 00:15:28,791
+Try it after the video, and write your new
+message.
+
+248
+00:15:29,387 --> 00:15:29,808
+Second.
+
+249
+00:15:29,828 --> 00:15:34,474
+When is it better to stop the whole
+program, instead of skipping a damaged
+
+250
+00:15:34,494 --> 00:15:34,727
+row?
+
+251
+00:15:34,747 --> 00:15:36,997
+Think about a file of bank payments.
+
+252
+00:15:48,347 --> 00:15:49,500
+Keep your answer.
+
+253
+00:15:49,520 --> 00:15:51,847
+It is a design choice, not a rule.
+
+254
+00:15:52,417 --> 00:15:53,162
+Let's recap.
+
+255
+00:15:53,182 --> 00:15:56,987
+Try and except catch an exception, and
+show a clear message.
+
+256
+00:15:57,033 --> 00:15:59,455
+Else runs when nothing failed.
+
+257
+00:15:59,475 --> 00:16:01,083
+Finally runs always.
+
+258
+00:16:01,133 --> 00:16:03,314
+Catch the exception you expect.
+
+259
+00:16:03,334 --> 00:16:05,443
+A bare except hides your bugs.
+
+260
+00:16:05,467 --> 00:16:07,517
+Keep each try block small.
+
+261
+00:16:07,567 --> 00:16:10,517
+Raise refuses bad input, with a message.
+
+262
+00:16:10,567 --> 00:16:13,850
+And pytest raises tests that the error
+happens.
+
+263
+00:16:14,453 --> 00:16:15,784
+Mission complete!
+
+264
+00:16:15,804 --> 00:16:19,201
+You earned 100 XP and the Safety Net
+badge.
+
+265
+00:16:21,450 --> 00:16:22,982
+Now it is your turn.
+
+266
+00:16:23,002 --> 00:16:25,930
+Three warm-up tasks, worth 10 XP each.
+
+267
+00:16:25,967 --> 00:16:31,075
+Three apply tasks, worth 20 each,
+including an order that asks again until
+
+268
+00:16:31,095 --> 00:16:31,907
+it is valid.
+
+269
+00:16:31,933 --> 00:16:34,685
+And two stretch tasks, worth 40 each.
+
+270
+00:16:34,705 --> 00:16:39,330
+In the last one, you fix an AI's menu
+loader that loses items.
+
+271
+00:16:39,917 --> 00:16:41,832
+Asha's scores are safe now.
+
+272
+00:16:41,852 --> 00:16:44,627
+But a C S V row holds only flat values.
+
+273
+00:16:44,647 --> 00:16:49,357
+Her quiz needs questions, answers and
+settings, inside each other.
+
+274
+00:16:49,400 --> 00:16:55,084
+In Chapter 23, you will save structured
+data as JSON, and read data that other
+
+275
+00:16:55,104 --> 00:16:57,570
+programs send, through web A P Is.
+
+276
+00:16:57,600 --> 00:16:59,372
+Do the warm-up tasks now.
+
+277
+00:16:59,392 --> 00:17:01,380
+They take about ten minutes.
+
+278
+00:17:01,400 --> 00:17:03,333
+See you in Chapter 23.

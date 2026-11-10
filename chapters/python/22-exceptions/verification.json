@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-22",
   "run_id": "2026-11-10-1bb1b5",
-  "verified_at": "2026-11-10T08:00:26+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T08:17:21+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -212,17 +212,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/22-exceptions",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/22-exceptions",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/22-exceptions",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/22-exceptions"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 17.3
+        "estimated_minutes": 17.3,
+        "duration_seconds": 1025.9,
+        "size_mb": 43.6,
+        "scenes": 16,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "454ded7a595d9fe346250b9b0c0409f067ea5b730dfc6419685c9b9972281dd9"
+  "fingerprint": "c6d2a9a0e84b1731825c0158f85469e5ba3031c8989ffde87dbd80942cf5ca8c"
 }
