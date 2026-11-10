@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-19",
+  "rendered_at": "2026-11-10T06:24:00+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "cee21d599406a9e7430987a088c9dc1141d3fa16b478da0ba092e22fb830769e",
+  "inputs_sha256": "55c12c29d4c85a052cb9bd1c3b674c47b7f960d1362d2416cdfeb53a0805e6ba",
+  "video_sha256": "676089a0a98898fb116861266ca835283f1dbc612adffec2c412492ed362eec8",
+  "duration_seconds": 1096.7,
+  "size_mb": 45.74,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.2
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 994,
+  "questions": 17,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 43.6
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 43.6,
+      "end": 53.5
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 53.5,
+      "end": 70.8
+    },
+    {
+      "id": "idea",
+      "title": "The idea: input, run, compare",
+      "section": "The idea",
+      "start": 70.8,
+      "end": 145.333
+    },
+    {
+      "id": "step1",
+      "title": "Steps 1 and 2: From print to assert",
+      "section": "Build it step by step",
+      "start": 145.333,
+      "end": 229.567
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Your first pytest file",
+      "section": "Build it step by step",
+      "start": 229.567,
+      "end": 348.867
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Read a failure",
+      "section": "Build it step by step",
+      "start": 348.867,
+      "end": 404.833
+    },
+    {
+      "id": "step5",
+      "title": "Steps 5 and 6: Edge cases and decimals",
+      "section": "Build it step by step",
+      "start": 404.833,
+      "end": 499.767
+    },
+    {
+      "id": "step7",
+      "title": "Step 7: Write the test first",
+      "section": "Build it step by step",
+      "start": 499.767,
+      "end": 603.9
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the test file",
+      "section": "See the outcome",
+      "start": 603.9,
+      "end": 653.467
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one test file",
+      "section": "Work with AI",
+      "start": 653.467,
+      "end": 902.833
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 902.833,
+      "end": 978.867
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 978.867,
+      "end": 1025.467
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 1025.467,
+      "end": 1055.667
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1055.667,
+      "end": 1072.133
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1072.133,
+      "end": 1096.633
+    }
+  ]
+}

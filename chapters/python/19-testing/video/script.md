@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:17 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:17.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:44)
 
 **Section:** Introduction
 
@@ -23,7 +23,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Each block below is one test. One command runs them all, and names any tool that breaks. Let's build it.
   **On screen:** Code `examples/final/test_cafe_tools.py`, line 5, 6, 9, 10, 11, 14, 15, 18, 19, 20, 23, 24, 25, 26 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:44 to 0:54)
 
 **Section:** Learning goals
 
@@ -37,7 +37,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Test edge cases and decimal results.
     - Check that an AI's tests can really fail.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (0:54 to 1:11)
 
 **Section:** Why this matters
 
@@ -53,7 +53,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - If the result is wrong, the test fails loudly.
     - Run the tests after every change, by you, a colleague or an AI.
 
-## Scene 4: The idea: input, run, compare
+## Scene 4: The idea: input, run, compare (1:11 to 2:25)
 
 **Section:** The idea
 
@@ -91,7 +91,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A test checks only the inputs you wrote.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Steps 1 and 2: From print to assert
+## Scene 5: Steps 1 and 2: From print to assert (2:25 to 3:50)
 
 **Section:** Build it step by step
 
@@ -120,7 +120,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And the message says exactly what was wrong: tea with tax should be 3.85.
   **On screen:** Code `examples/ex03_assert_fail.py`, line 5 highlighted, error `examples/ex03_assert_fail.expected_error`
 
-## Scene 6: Step 3: Your first pytest file
+## Scene 6: Step 3: Your first pytest file (3:50 to 5:49)
 
 **Section:** Build it step by step
 
@@ -159,7 +159,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Each dot is one passing test.
 - **Breather:** 4 quiet seconds.
 
-## Scene 7: Step 4: Read a failure
+## Scene 7: Step 4: Read a failure (5:49 to 6:45)
 
 **Section:** Build it step by step
 
@@ -177,7 +177,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The line that starts with E shows the values. Boxes needed returned 3, but the test expected 4. The last line counts one failed and two passed.
   **On screen:** Code `examples/broken/test_cafe_tools.py`, line 14 highlighted, output `examples/broken/test_cafe_tools.expected`
 
-## Scene 8: Steps 5 and 6: Edge cases and decimals
+## Scene 8: Steps 5 and 6: Edge cases and decimals (6:45 to 8:20)
 
 **Section:** Build it step by step
 
@@ -204,7 +204,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The other two pass. For decimals, round the result to two places, or use approx.
   **On screen:** Code `examples/test_floats.py`, line 12, 17 highlighted, output `examples/test_floats.expected`
 
-## Scene 9: Step 7: Write the test first
+## Scene 9: Step 7: Write the test first (8:20 to 10:04)
 
 **Section:** Build it step by step
 
@@ -237,7 +237,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Test first: fail, change, pass.
 - **Breather:** 4 quiet seconds.
 
-## Scene 10: See the outcome: the test file
+## Scene 10: See the outcome: the test file (10:04 to 10:53)
 
 **Section:** See the outcome
 
@@ -255,7 +255,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Next, Asha asks an AI assistant to write tests too, one stage at a time.
   **On screen:** Code `examples/final/test_cafe_tools.py`, output `examples/final/test_cafe_tools.expected`
 
-## Scene 11: Work with AI: six stages, one test file
+## Scene 11: Work with AI: six stages, one test file (10:53 to 15:03)
 
 **Section:** Work with AI
 
@@ -359,7 +359,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Before you delete a test, check what it catches.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Common mistakes
+## Scene 12: Common mistakes (15:03 to 16:19)
 
 **Section:** Common mistakes
 
@@ -382,7 +382,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The report points at line 6 of the test file, not at the module. A Name Error inside a test means the test itself is wrong.
   **On screen:** Code `examples/err02_missing_import.py`, line 2 highlighted, output `examples/err02_missing_import.expected`
 
-## Scene 13: Think beyond
+## Scene 13: Think beyond (16:19 to 17:05)
 
 **Section:** Think beyond
 
@@ -399,7 +399,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Try it with a broken copy after the video.
   **On screen:** Question card: "Ten tests all pass. How do you find out if they would catch a mistake in `with_tax()`?"
 
-## Scene 14: Recap
+## Scene 14: Recap (17:05 to 17:36)
 
 **Section:** Recap
 
@@ -428,7 +428,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Quality Guard You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 15: Practice
+## Scene 15: Practice (17:36 to 17:52)
 
 **Section:** Practice
 
@@ -439,7 +439,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** In the last one, you fix an AI's tests, like Asha did. Try each task before you open the solution.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 16: What's next
+## Scene 16: What's next (17:52 to 18:17)
 
 **Section:** What's next
 

@@ -1,0 +1,1257 @@
+1
+00:00:00,250 --> 00:00:04,776
+At the Corner Cafe, Asha's module from
+Chapter 18 checks itself.
+
+2
+00:00:04,796 --> 00:00:06,410
+Each check prints True.
+
+3
+00:00:06,433 --> 00:00:11,068
+But one day, a change breaks a tool, and a
+check prints False.
+
+4
+00:00:11,088 --> 00:00:12,795
+The program carries on.
+
+5
+00:00:12,815 --> 00:00:14,522
+Nobody reads that line.
+
+6
+00:00:15,120 --> 00:00:20,440
+This is Code Quest, Chapter 19: tests that
+stop loudly when something breaks.
+
+7
+00:00:20,467 --> 00:00:25,923
+And an AI assistant will write tests for
+Asha, and promise they catch any mistake.
+
+8
+00:00:25,943 --> 00:00:26,591
+Will they?
+
+9
+00:00:26,611 --> 00:00:29,930
+You will find out by breaking the code on
+purpose.
+
+10
+00:00:30,520 --> 00:00:33,687
+Here is today's mission: Asha's test file.
+
+11
+00:00:33,707 --> 00:00:36,040
+Line 2 imports her three tools.
+
+12
+00:00:36,067 --> 00:00:38,097
+Each block below is one test.
+
+13
+00:00:38,117 --> 00:00:42,197
+One command runs them all, and names any
+tool that breaks.
+
+14
+00:00:42,217 --> 00:00:43,258
+Let's build it.
+
+15
+00:00:43,850 --> 00:00:49,947
+Your goals: write an assert, write and run
+a pytest file, read its report, test edge
+
+16
+00:00:49,967 --> 00:00:53,151
+cases and decimals, and check an AI's
+tests.
+
+17
+00:00:53,750 --> 00:00:59,264
+A test runs your code with a known input,
+and checks the result against the answer
+
+18
+00:00:59,284 --> 00:01:00,006
+you expect.
+
+19
+00:01:00,026 --> 00:01:03,110
+If the result is wrong, the test fails
+loudly.
+
+20
+00:01:03,133 --> 00:01:04,930
+Tests keep code working.
+
+21
+00:01:04,950 --> 00:01:10,454
+Every time you, a colleague or an AI
+changes it, you run the tests again.
+
+22
+00:01:11,050 --> 00:01:13,129
+Every test has three parts.
+
+23
+00:01:13,149 --> 00:01:15,228
+A known input: 40 biscuits.
+
+24
+00:01:15,248 --> 00:01:17,715
+A run of the code: boxes needed.
+
+25
+00:01:17,735 --> 00:01:19,737
+And a comparison: is it 4?
+
+26
+00:01:19,757 --> 00:01:20,903
+Yes means pass.
+
+27
+00:01:20,923 --> 00:01:21,991
+No means fail.
+
+28
+00:01:22,587 --> 00:01:25,032
+There are three ways to check a result.
+
+29
+00:01:25,052 --> 00:01:27,877
+A printed check prints False, and carries
+on.
+
+30
+00:01:27,900 --> 00:01:30,760
+An assert stops the program with an error.
+
+31
+00:01:30,800 --> 00:01:35,646
+And a pytest test runs every test, then
+names each one that failed.
+
+32
+00:01:36,253 --> 00:01:39,812
+Think of a test as a smoke alarm in the
+cafe kitchen.
+
+33
+00:01:39,832 --> 00:01:42,513
+It stays quiet while everything is fine.
+
+34
+00:01:42,533 --> 00:01:46,083
+And it makes a loud noise the moment
+something goes wrong.
+
+35
+00:01:46,133 --> 00:01:49,140
+The comparison stops working at one point.
+
+36
+00:01:49,160 --> 00:01:51,447
+An alarm watches the whole room.
+
+37
+00:01:51,467 --> 00:01:54,329
+A test checks only the inputs you wrote.
+
+38
+00:01:54,920 --> 00:01:55,610
+Quick check.
+
+39
+00:01:55,630 --> 00:01:59,039
+Which of these stops the program when the
+result is wrong?
+
+40
+00:02:10,413 --> 00:02:10,532
+C.
+
+41
+00:02:10,552 --> 00:02:11,019
+Assert.
+
+42
+00:02:11,039 --> 00:02:15,812
+A printed check only prints False, and a
+comment does nothing at all.
+
+43
+00:02:16,420 --> 00:02:17,476
+Take a breather.
+
+44
+00:02:17,496 --> 00:02:20,837
+Next, Asha sees why a printed check is not
+enough.
+
+45
+00:02:25,583 --> 00:02:26,155
+Step 1.
+
+46
+00:02:26,175 --> 00:02:30,466
+Someone typed 1.01 as the tax rate,
+instead of 1.1.
+
+47
+00:02:30,486 --> 00:02:31,733
+Look at line 2.
+
+48
+00:02:31,767 --> 00:02:35,819
+Line 5 checks the tea price with print.
+
+49
+00:02:35,839 --> 00:02:38,326
+Line 6 saves the report.
+
+50
+00:02:49,680 --> 00:02:51,357
+False, then Report saved.
+
+51
+00:02:51,377 --> 00:02:56,039
+The check found the problem, but the
+program saved the report anyway.
+
+52
+00:02:56,653 --> 00:02:57,060
+Step 2.
+
+53
+00:02:57,080 --> 00:03:00,597
+An assertion is a statement that a
+condition must be true.
+
+54
+00:03:00,617 --> 00:03:02,853
+You write assert, then the condition.
+
+55
+00:03:02,900 --> 00:03:04,870
+Here the tax rate is right.
+
+56
+00:03:04,890 --> 00:03:10,620
+Both conditions are true, so assert does
+nothing, and line 7 saves the report.
+
+57
+00:03:10,667 --> 00:03:15,698
+But when a condition is false, assert
+stops the program with an Assertion Error.
+
+58
+00:03:15,718 --> 00:03:18,034
+After a comma, you can add a message.
+
+59
+00:03:18,653 --> 00:03:21,293
+Now the wrong rate again, on line 2.
+
+60
+00:03:21,333 --> 00:03:25,905
+Line 5 checks the tea price with assert,
+and adds a message.
+
+61
+00:03:25,925 --> 00:03:27,741
+Line 6 saves the report.
+
+62
+00:03:39,113 --> 00:03:39,327
+No.
+
+63
+00:03:39,347 --> 00:03:43,603
+Line 5 stops the program, so the report is
+never saved.
+
+64
+00:03:43,633 --> 00:03:49,215
+And the message says exactly what was
+wrong: tea with tax should be 3.85.
+
+65
+00:03:49,817 --> 00:03:50,293
+Step 3.
+
+66
+00:03:50,313 --> 00:03:52,634
+pytest is a popular testing tool.
+
+67
+00:03:52,654 --> 00:03:58,237
+It does not come with Python, so you
+install it once with pip, Python's package
+
+68
+00:03:58,257 --> 00:03:58,947
+installer.
+
+69
+00:03:58,967 --> 00:04:03,052
+On macOS and Linux, type python3 instead
+of python.
+
+70
+00:04:03,072 --> 00:04:06,997
+You will learn more about packages in
+Chapter 24.
+
+71
+00:04:07,033 --> 00:04:09,447
+Then you run a test file like this.
+
+72
+00:04:09,467 --> 00:04:12,853
+The dash q option asks for a short, quiet
+report.
+
+73
+00:04:13,453 --> 00:04:17,693
+Here is Asha's module from Chapter 18:
+with tax, and money.
+
+74
+00:04:17,733 --> 00:04:21,794
+She adds boxes needed, from the AI section
+of Chapter 18.
+
+75
+00:04:21,814 --> 00:04:24,443
+Line 18 rounds up with math dot ceil.
+
+76
+00:04:24,467 --> 00:04:29,013
+And she removes the old printed checks
+from the bottom of the file.
+
+77
+00:04:29,033 --> 00:04:32,966
+Tests will replace them, so the module now
+prints nothing.
+
+78
+00:04:33,587 --> 00:04:35,718
+Here is the safe rule for names.
+
+79
+00:04:35,738 --> 00:04:40,490
+Every test is a function whose name starts
+with test and an underscore.
+
+80
+00:04:40,510 --> 00:04:46,137
+And the file name starts the same way, so
+pytest finds it when it searches a folder.
+
+81
+00:04:46,167 --> 00:04:48,548
+Line 2 imports the three tools.
+
+82
+00:04:48,568 --> 00:04:52,809
+Each test has one assert, with an exact
+expected value.
+
+83
+00:05:04,180 --> 00:05:06,584
+Three tests, and all three pass.
+
+84
+00:05:06,604 --> 00:05:08,780
+Each dot is one passing test.
+
+85
+00:05:08,800 --> 00:05:13,006
+The last line counts them, and shows how
+long the run took.
+
+86
+00:05:13,026 --> 00:05:15,226
+That time changes on every run.
+
+87
+00:05:15,820 --> 00:05:16,616
+Quick check.
+
+88
+00:05:16,636 --> 00:05:19,405
+Which of these functions will pytest run?
+
+89
+00:05:30,780 --> 00:05:30,917
+D.
+
+90
+00:05:30,937 --> 00:05:31,626
+Test tea.
+
+91
+00:05:31,646 --> 00:05:35,090
+Its name starts with test and an
+underscore.
+
+92
+00:05:35,110 --> 00:05:38,396
+Tea test ends with it, so pytest skips it.
+
+93
+00:05:38,987 --> 00:05:39,552
+Breather.
+
+94
+00:05:39,572 --> 00:05:44,364
+Next, Asha breaks her module on purpose,
+to see what a failure looks like.
+
+95
+00:05:49,117 --> 00:05:49,677
+Step 4.
+
+96
+00:05:49,697 --> 00:05:53,826
+Asha copies her files into a folder called
+broken.
+
+97
+00:05:53,846 --> 00:05:58,555
+In the copy, line 18 uses round instead of
+math dot ceil.
+
+98
+00:05:58,575 --> 00:06:01,957
+That is the AI's mistake from Chapter 18.
+
+99
+00:06:02,553 --> 00:06:07,989
+She runs the same three tests on the
+broken copy, and adds dash dash t b equals
+
+100
+00:06:08,009 --> 00:06:09,923
+short, for a shorter report.
+
+101
+00:06:09,943 --> 00:06:13,306
+Remember: round goes to the nearest whole
+number.
+
+102
+00:06:24,680 --> 00:06:25,669
+The third one.
+
+103
+00:06:25,689 --> 00:06:28,480
+The first line shows two dots and an F.
+
+104
+00:06:28,500 --> 00:06:30,210
+F means one test failed.
+
+105
+00:06:30,233 --> 00:06:33,993
+The report names the test, and its line:
+14.
+
+106
+00:06:34,033 --> 00:06:37,360
+The line that starts with E shows the
+values.
+
+107
+00:06:37,380 --> 00:06:41,004
+Boxes needed returned 3, but the test
+expected 4.
+
+108
+00:06:41,024 --> 00:06:44,499
+The last line counts one failed and two
+passed.
+
+109
+00:06:45,083 --> 00:06:45,562
+Step 5.
+
+110
+00:06:45,582 --> 00:06:51,043
+An edge case is an unusual input at the
+limit of what a function must handle.
+
+111
+00:06:51,067 --> 00:06:57,022
+For boxes, the edges are no biscuits,
+exactly one full box, and one biscuit more
+
+112
+00:06:57,042 --> 00:06:57,844
+than a box.
+
+113
+00:06:57,864 --> 00:07:00,683
+On the working module, all three pass.
+
+114
+00:07:01,287 --> 00:07:04,686
+Now Asha runs the edge cases on the broken
+copy.
+
+115
+00:07:04,706 --> 00:07:08,176
+Remember: round goes to the nearest whole
+number.
+
+116
+00:07:19,547 --> 00:07:19,775
+13.
+
+117
+00:07:19,795 --> 00:07:25,066
+13 divided by 12 is about 1.08, and round
+turns that into 1 box.
+
+118
+00:07:25,086 --> 00:07:26,720
+The test expected 2.
+
+119
+00:07:26,740 --> 00:07:28,787
+The other two still pass.
+
+120
+00:07:28,833 --> 00:07:33,140
+So good tests check normal values and edge
+values.
+
+121
+00:07:33,160 --> 00:07:36,948
+Each catches mistakes from a different
+side.
+
+122
+00:07:37,553 --> 00:07:38,088
+Step 6.
+
+123
+00:07:38,108 --> 00:07:43,711
+In Chapter 2 you saw that point 1, three
+times, is not exactly point 3.
+
+124
+00:07:43,731 --> 00:07:46,483
+Here are three tests of that total.
+
+125
+00:07:46,533 --> 00:07:50,478
+Line 12 rounds the total to two decimal
+places.
+
+126
+00:07:50,498 --> 00:07:56,635
+Line 17 uses pytest dot approx, which
+accepts a value that is very close.
+
+127
+00:08:08,013 --> 00:08:10,321
+The first one, test exact.
+
+128
+00:08:10,341 --> 00:08:13,723
+The total is a tiny bit more than 0.3.
+
+129
+00:08:13,767 --> 00:08:15,113
+The other two pass.
+
+130
+00:08:15,133 --> 00:08:19,430
+For decimals, round the result to two
+places, or use approx.
+
+131
+00:08:20,017 --> 00:08:20,516
+Step 7.
+
+132
+00:08:20,536 --> 00:08:24,892
+The cafe owner wants every price label to
+start with U S D.
+
+133
+00:08:24,912 --> 00:08:29,640
+Before Asha changes money, she writes the
+test for the new rule.
+
+134
+00:08:41,013 --> 00:08:43,880
+No, and that is what she expects.
+
+135
+00:08:43,900 --> 00:08:47,203
+The money function still returns 4.00.
+
+136
+00:08:47,233 --> 00:08:50,307
+The minus line shows what the test
+expected.
+
+137
+00:08:50,327 --> 00:08:53,611
+The plus line shows what the function
+returned.
+
+138
+00:08:54,220 --> 00:08:58,595
+Now she changes line 13, to add U S D
+before the amount.
+
+139
+00:08:59,187 --> 00:09:02,059
+She runs the new test again, and it
+passes.
+
+140
+00:09:02,079 --> 00:09:07,507
+This is test first thinking: a test that
+fails before the change and passes after
+
+141
+00:09:07,527 --> 00:09:09,727
+it proves the change did its job.
+
+142
+00:09:10,320 --> 00:09:11,334
+One more run.
+
+143
+00:09:11,354 --> 00:09:17,700
+Her test file from step 3 still expects
+4.00, so it now fails on the new module.
+
+144
+00:09:17,733 --> 00:09:22,863
+The rule changed on purpose, so this old
+test is out of date.
+
+145
+00:09:22,883 --> 00:09:25,987
+Asha updates it to expect U S D 4.00.
+
+146
+00:09:26,007 --> 00:09:29,870
+When a rule changes, its tests change with
+it.
+
+147
+00:09:30,487 --> 00:09:31,176
+Quick check.
+
+148
+00:09:31,196 --> 00:09:34,720
+You write a test for a new rule, before
+you change the code.
+
+149
+00:09:34,740 --> 00:09:37,379
+What should happen the first time you run
+it?
+
+150
+00:09:48,747 --> 00:09:48,876
+B.
+
+151
+00:09:48,896 --> 00:09:49,549
+It fails.
+
+152
+00:09:49,569 --> 00:09:52,691
+The code does not follow the new rule yet.
+
+153
+00:09:52,711 --> 00:09:54,786
+After the change, it passes.
+
+154
+00:09:55,387 --> 00:09:55,964
+Breather.
+
+155
+00:09:55,984 --> 00:09:59,413
+Now Asha puts everything together, in one
+test file.
+
+156
+00:10:04,150 --> 00:10:05,672
+Back to the mission.
+
+157
+00:10:05,692 --> 00:10:07,753
+Lines 5 and 9 test the tax.
+
+158
+00:10:07,773 --> 00:10:10,760
+Line 11 rounds the decimal total first.
+
+159
+00:10:10,800 --> 00:10:15,845
+Line 15 is the updated money test, with
+the new U S D label.
+
+160
+00:10:15,865 --> 00:10:21,332
+Lines 18 to 26 test the boxes: normal
+values, and then the edges.
+
+161
+00:10:21,352 --> 00:10:24,033
+A test can hold several asserts.
+
+162
+00:10:35,413 --> 00:10:39,031
+Five dots, one for each test function, and
+five passed.
+
+163
+00:10:39,051 --> 00:10:42,403
+A test with three asserts still counts as
+one test.
+
+164
+00:10:42,433 --> 00:10:46,100
+Now, after every change, Asha runs one
+command.
+
+165
+00:10:46,120 --> 00:10:47,433
+Mission complete!
+
+166
+00:10:47,467 --> 00:10:53,145
+Next, Asha asks an AI assistant to write
+tests too, one stage at a time.
+
+167
+00:10:53,717 --> 00:10:58,706
+This chapter's AI skill: check that the
+AI's tests really test something.
+
+168
+00:10:58,726 --> 00:11:03,167
+A test that can never fail looks exactly
+like a test that passes.
+
+169
+00:11:03,200 --> 00:11:05,985
+So break a copy of the code on purpose.
+
+170
+00:11:06,005 --> 00:11:07,568
+Good tests fail on it.
+
+171
+00:11:07,588 --> 00:11:09,654
+And never paste private data.
+
+172
+00:11:10,253 --> 00:11:11,415
+Stage 1: plan.
+
+173
+00:11:11,435 --> 00:11:17,321
+Asha asks for the inputs to test, each
+with its exact expected result.
+
+174
+00:11:17,341 --> 00:11:18,333
+No code yet.
+
+175
+00:11:18,367 --> 00:11:24,157
+The AI lists a part box, an exact
+division, zero, and the edge of one box.
+
+176
+00:11:24,200 --> 00:11:27,973
+Asha works out every expected result
+herself, by hand.
+
+177
+00:11:28,587 --> 00:11:29,736
+Stage 2: write.
+
+178
+00:11:29,756 --> 00:11:34,413
+Asha writes two tests herself: 24
+biscuits, and 40 biscuits.
+
+179
+00:11:34,433 --> 00:11:37,687
+She asks the AI what they do not test yet.
+
+180
+00:11:37,733 --> 00:11:41,604
+The AI names zero, and the edge between 12
+and 13.
+
+181
+00:11:41,624 --> 00:11:44,949
+She will check the AI's file for those
+too.
+
+182
+00:11:45,553 --> 00:11:46,962
+Stage 3: generate.
+
+183
+00:11:46,982 --> 00:11:52,833
+Asha asks the AI for a test file that
+catches any mistake in boxes needed.
+
+184
+00:11:52,867 --> 00:11:56,512
+The AI writes three tests, and makes a big
+promise.
+
+185
+00:11:57,120 --> 00:12:00,543
+On Asha's working module, all three pass.
+
+186
+00:12:00,563 --> 00:12:02,727
+Look at the two box tests.
+
+187
+00:12:02,747 --> 00:12:04,826
+Line 10 uses 24 biscuits.
+
+188
+00:12:04,846 --> 00:12:09,277
+And the test on line 14 calls boxes needed
+with zero.
+
+189
+00:12:20,647 --> 00:12:20,878
+No.
+
+190
+00:12:20,898 --> 00:12:24,399
+24 divides exactly, so even round gives 2.
+
+191
+00:12:24,419 --> 00:12:29,011
+And line 15 has no assert, so that test
+can never fail.
+
+192
+00:12:29,620 --> 00:12:30,727
+Stage 4: test.
+
+193
+00:12:30,747 --> 00:12:35,960
+Asha asks which of the AI's tests should
+fail on her broken copy.
+
+194
+00:12:36,000 --> 00:12:39,170
+This time the AI admits it: none of them.
+
+195
+00:12:39,200 --> 00:12:44,596
+So she asks for a better file: exact
+values, normal cases and edge cases, one
+
+196
+00:12:44,616 --> 00:12:45,932
+behaviour per test.
+
+197
+00:12:46,553 --> 00:12:52,037
+She makes a broken copy of her finished
+module, with round on line 18, and runs
+
+198
+00:12:52,057 --> 00:12:52,873
+them anyway.
+
+199
+00:12:52,893 --> 00:12:53,778
+Three passed.
+
+200
+00:12:53,798 --> 00:12:56,425
+The tests did not see the broken code.
+
+201
+00:12:57,020 --> 00:13:00,395
+Then she runs her own two tests on the
+same copy.
+
+202
+00:13:00,415 --> 00:13:04,136
+The test for 40 biscuits fails, as a good
+test should.
+
+203
+00:13:04,753 --> 00:13:05,913
+Stage 5: debug.
+
+204
+00:13:05,933 --> 00:13:09,690
+The AI writes the better file, with seven
+tests.
+
+205
+00:13:09,710 --> 00:13:15,433
+But on Asha's working module, one test
+fails: test two items, on line 11.
+
+206
+00:13:16,053 --> 00:13:19,703
+She pastes the failing test and the values
+from the report.
+
+207
+00:13:19,733 --> 00:13:23,183
+She asks whether the code or the test is
+wrong.
+
+208
+00:13:23,203 --> 00:13:27,613
+The AI reads the values: the test compares
+decimals exactly.
+
+209
+00:13:27,633 --> 00:13:29,237
+Round the total first.
+
+210
+00:13:29,853 --> 00:13:35,208
+With the total rounded on line 11, all
+seven tests pass on the working module.
+
+211
+00:13:35,820 --> 00:13:40,862
+And on the broken copy, two tests fail: 40
+biscuits and 13 biscuits.
+
+212
+00:13:40,882 --> 00:13:43,690
+Now the tests can see the broken code.
+
+213
+00:13:44,287 --> 00:13:45,833
+Stage 6: improve.
+
+214
+00:13:45,853 --> 00:13:48,597
+Asha asks for one improvement.
+
+215
+00:13:48,633 --> 00:13:54,923
+The AI says: delete the tests for 24 and
+for zero, because 40 and 13 already check
+
+216
+00:13:54,943 --> 00:13:55,846
+rounding up.
+
+217
+00:13:56,453 --> 00:14:01,642
+Asha remembers her own bug from Chapter
+18: double slash, then plus 1.
+
+218
+00:14:01,662 --> 00:14:03,800
+It was wrong for 24 biscuits.
+
+219
+00:14:03,820 --> 00:14:07,148
+She makes a second broken copy with that
+bug.
+
+220
+00:14:07,753 --> 00:14:10,456
+Asha tries the AI's shorter file on it.
+
+221
+00:14:10,476 --> 00:14:11,294
+Five passed.
+
+222
+00:14:11,314 --> 00:14:15,204
+Without those two tests, her old bug would
+slip through.
+
+223
+00:14:15,820 --> 00:14:21,656
+The full file catches it: 24 biscuits
+gives 3, and zero biscuits gives 1.
+
+224
+00:14:21,676 --> 00:14:23,661
+So Asha keeps every test.
+
+225
+00:14:23,681 --> 00:14:25,506
+The AI was wrong again.
+
+226
+00:14:26,120 --> 00:14:26,953
+Quick check.
+
+227
+00:14:26,973 --> 00:14:28,802
+All of an AI's tests pass.
+
+228
+00:14:28,822 --> 00:14:30,793
+What is the best next check?
+
+229
+00:14:42,147 --> 00:14:42,263
+A.
+
+230
+00:14:42,283 --> 00:14:44,996
+Run them on a copy you broke on purpose.
+
+231
+00:14:45,016 --> 00:14:47,115
+Good tests fail on broken code.
+
+232
+00:14:47,720 --> 00:14:48,303
+Breather.
+
+233
+00:14:48,323 --> 00:14:53,928
+You watched Asha check every AI test, and
+catch two weak suggestions by breaking the
+
+234
+00:14:53,948 --> 00:14:55,000
+code on purpose.
+
+235
+00:14:55,033 --> 00:14:58,358
+Next, the mistakes beginners make with
+tests.
+
+236
+00:15:03,083 --> 00:15:03,857
+Mistake 1.
+
+237
+00:15:03,877 --> 00:15:06,396
+Asha runs this file with pytest.
+
+238
+00:15:06,416 --> 00:15:09,332
+Remember the naming rule from step 3.
+
+239
+00:15:20,713 --> 00:15:23,523
+The function name, tea tax, on line 5.
+
+240
+00:15:23,543 --> 00:15:29,183
+It does not start with test and an
+underscore, so pytest skips it, even when
+
+241
+00:15:29,203 --> 00:15:31,417
+you give it this file by name.
+
+242
+00:15:31,437 --> 00:15:33,130
+Rename it test tea tax.
+
+243
+00:15:33,753 --> 00:15:37,363
+You have seen mistakes 2 and 3 in the AI's
+files.
+
+244
+00:15:37,383 --> 00:15:40,029
+A test with no assert always passes.
+
+245
+00:15:40,049 --> 00:15:46,103
+And an exact comparison of decimals can
+fail on correct code: round the result, or
+
+246
+00:15:46,123 --> 00:15:46,917
+use approx.
+
+247
+00:15:47,520 --> 00:15:48,309
+Mistake 4.
+
+248
+00:15:48,329 --> 00:15:52,599
+Look at the import on line 2, and the test
+on line 6.
+
+249
+00:16:03,980 --> 00:16:09,032
+Boxes needed is never imported, so the
+test stops with a Name Error.
+
+250
+00:16:09,052 --> 00:16:10,300
+Add it to line 2.
+
+251
+00:16:10,333 --> 00:16:14,632
+The report points at line 6 of the test
+file, not at the module.
+
+252
+00:16:14,652 --> 00:16:18,546
+A Name Error inside a test means the test
+itself is wrong.
+
+253
+00:16:19,117 --> 00:16:19,592
+First.
+
+254
+00:16:19,612 --> 00:16:23,061
+Money of minus 2 returns U S D minus 2.00.
+
+255
+00:16:23,081 --> 00:16:25,125
+How should a refund look?
+
+256
+00:16:25,145 --> 00:16:28,594
+Write a test for the label you would want.
+
+257
+00:16:39,947 --> 00:16:44,215
+Decide the rule first, then write the
+test, then change the code.
+
+258
+00:16:44,820 --> 00:16:45,244
+Second.
+
+259
+00:16:45,264 --> 00:16:46,450
+Ten tests all pass.
+
+260
+00:16:46,470 --> 00:16:50,893
+How could you find out whether they would
+catch a mistake in with tax?
+
+261
+00:17:02,247 --> 00:17:05,128
+Try it with a broken copy after the video.
+
+262
+00:17:05,717 --> 00:17:06,545
+Let's recap.
+
+263
+00:17:06,565 --> 00:17:10,221
+A test compares a result with the answer
+you expect.
+
+264
+00:17:10,241 --> 00:17:15,806
+Assert stops the program when it fails,
+and pytest names each failure, its line
+
+265
+00:17:15,826 --> 00:17:16,867
+and its values.
+
+266
+00:17:16,900 --> 00:17:22,370
+Test normal values and edge cases, and
+compare decimals with round or approx.
+
+267
+00:17:22,400 --> 00:17:23,802
+Write the test first.
+
+268
+00:17:23,822 --> 00:17:28,070
+And break a copy of the code on purpose:
+good tests fail on it.
+
+269
+00:17:28,687 --> 00:17:30,016
+Mission complete!
+
+270
+00:17:30,036 --> 00:17:33,669
+You earned 100 XP and the Quality Guard
+badge.
+
+271
+00:17:35,917 --> 00:17:39,795
+Now it is your turn: eight tasks, worth
+170 XP.
+
+272
+00:17:39,815 --> 00:17:44,937
+Three warm-up tasks, three apply tasks,
+and two stretch tasks.
+
+273
+00:17:44,967 --> 00:17:48,762
+In the last one, you fix an AI's tests,
+like Asha did.
+
+274
+00:17:48,782 --> 00:17:51,800
+Try each task before you open the
+solution.
+
+275
+00:17:52,383 --> 00:17:54,740
+Asha's tests guard three small tools.
+
+276
+00:17:54,760 --> 00:17:58,143
+But what about a whole program, with
+several modules?
+
+277
+00:17:58,167 --> 00:18:02,783
+In Chapter 20, the Boss Level, you will
+build a quiz app for the cafe.
+
+278
+00:18:02,803 --> 00:18:08,214
+You will write its tests first, let an AI
+help with the code, and let the tests be
+
+279
+00:18:08,234 --> 00:18:08,877
+the judge.
+
+280
+00:18:08,900 --> 00:18:10,559
+Do the warm-up tasks now.
+
+281
+00:18:10,579 --> 00:18:12,440
+They take about ten minutes.
+
+282
+00:18:12,467 --> 00:18:14,158
+See you in Chapter 20.

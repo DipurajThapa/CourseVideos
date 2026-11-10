@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-19",
   "run_id": "2026-11-10-c9e4db",
-  "verified_at": "2026-11-10T05:51:36+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T06:27:39+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -10,10 +10,8 @@
   "checks": [
     {
       "name": "structure",
-      "passed": false,
-      "problems": [
-        "missing video/storyboard.json"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {}
     },
     {
@@ -21,21 +19,61 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 35,
+        "files_run": 39,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
         ],
         "results": {
+          "examples/ai/broken/cafe_tools.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/broken/test_ai_tools.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/broken/test_ai_v2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/broken/test_mine.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/broken2/cafe_tools.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/broken2/test_ai_short.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/broken2/test_ai_v2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/cafe_tools.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/test_ai_float.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/test_ai_tools.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/test_ai_v2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai/test_mine.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/broken/cafe_tools.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/broken/test_ai_tools.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/broken/test_ai_v2.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -44,22 +82,6 @@
             "Python 3.13.18": "pass"
           },
           "examples/broken/test_edges.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/broken/test_mine.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/broken2/cafe_tools.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/broken2/test_ai_short.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/broken2/test_ai_v2.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -95,19 +117,7 @@
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
-          "examples/test_ai_float.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/test_ai_short.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/test_ai_tools.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
-          "examples/test_ai_v2.py": {
+          "examples/final/test_money_usd.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -123,15 +133,19 @@
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
-          "examples/test_mine.py": {
-            "Python 3.15.2": "pass",
-            "Python 3.13.18": "pass"
-          },
           "examples/testfirst/cafe_tools.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/testfirst/test_money_usd.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/usd/cafe_tools.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/usd/test_cafe_tools.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -175,8 +189,8 @@
       "passed": true,
       "problems": [],
       "details": {
-        "code_blocks": 15,
-        "output_blocks": 16
+        "code_blocks": 16,
+        "output_blocks": 18
       }
     },
     {
@@ -213,20 +227,29 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 139,
-          "average_words": 11.2,
+          "sentences": 150,
+          "average_words": 11.3,
           "longest": 26
+        },
+        "video/script.md": {
+          "sentences": 608,
+          "average_words": 9.2,
+          "longest": 27
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/storyboard.json"
-      ],
-      "details": {}
+      "passed": true,
+      "problems": [],
+      "details": {
+        "estimated_minutes": 18.3,
+        "duration_seconds": 1096.7,
+        "size_mb": 45.74,
+        "scenes": 16,
+        "voice": null
+      }
     }
   ],
-  "fingerprint": "0123da0339da2e82de74623e075b7751d1515c983f074a0463cd10e11f16a4e3"
+  "fingerprint": "c11f6b3b87d18ebf60d4254eb0af3da6f4c73fa3307a9336801eb41edea20797"
 }
