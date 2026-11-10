@@ -1,0 +1,10 @@
+F                                                [100%]
+======================= FAILURES =======================
+____________ test_negative_price_is_refused ____________
+test_errors_missing.py:10: in test_negative_price_is_refused
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+=============== short test summary info ================
+FAILED test_errors_missing.py::test_negative_price_is_refused
+1 failed in 0.01s

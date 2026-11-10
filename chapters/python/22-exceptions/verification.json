@@ -1,0 +1,246 @@
+{
+  "chapter_id": "python-22",
+  "run_id": "2026-11-10-1bb1b5",
+  "verified_at": "2026-11-10T07:51:15+00:00",
+  "passed": false,
+  "toolchains": [
+    "Python 3.15.2",
+    "Python 3.13.18"
+  ],
+  "checks": [
+    {
+      "name": "structure",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "code",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "files_run": 32,
+        "toolchains": [
+          "Python 3.15.2",
+          "Python 3.13.18"
+        ],
+        "results": {
+          "examples/ai_load_final.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_load_fixed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_load_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_mine.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_short_crash.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tests_final.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tests_fixed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tests_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_typo_broad.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_typo_specific.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/cafe_tools.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err01_wrong_type.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err02_unset.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err03_no_except.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err04_raise_text.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex01_try_except.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex02_else_finally.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex03_ask_again.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex04_raise.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex05_bare_except.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex06_specific.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex07_score_board.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/test_errors.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/test_errors_missing.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task1.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task3.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task4.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task6.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task7.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task8.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          }
+        }
+      }
+    },
+    {
+      "name": "lesson_blocks",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "code_blocks": 16,
+        "output_blocks": 16
+      }
+    },
+    {
+      "name": "ai_pair",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "practice",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "tasks": 8
+      }
+    },
+    {
+      "name": "ai_prompts",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "sources",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "sources": 5
+      }
+    },
+    {
+      "name": "language",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "lesson.md": {
+          "sentences": 115,
+          "average_words": 11.9,
+          "longest": 27
+        }
+      }
+    },
+    {
+      "name": "video",
+      "passed": false,
+      "problems": [
+        "scene intro: narration contains unspeakable characters ['<', '>']: 'Welcome to Code Quest, Chapter NN. <one sentence on what the learner w'",
+        "scene intro: narration contains unspeakable characters ['<', '>']: '<set up the hook> <point at the line> <reveal>'",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: output examples/<flawed>.expected must be an existing .expected file",
+        "scene learning-goals: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene why-this-matters: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene the-idea: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene build-it-step-by-step: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene see-the-outcome: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene work-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene common-mistakes: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene think-beyond: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene recap: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene practice: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene whats-next: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "need at least 6 on-screen questions with a timer, found 1",
+        "need at least 2 quick-check quizzes, found 0",
+        "need at least 2 breathers for 1 minutes, found 0",
+        "estimated length 1.1 min is outside 8 to 20 min",
+        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/22-exceptions",
+        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/22-exceptions",
+        "missing video/render.json: run python3 tools/render_video.py chapters/python/22-exceptions",
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/22-exceptions",
+        "missing video/script.md: run python3 tools/render_video.py chapters/python/22-exceptions"
+      ],
+      "details": {
+        "estimated_minutes": 1.1
+      }
+    }
+  ],
+  "fingerprint": "07d7eebc3a516891a5aa0cfec09664c0b93e095dceafe69040d0720ac50409d5"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "python-22",
+  "title": "Handling Errors: try, except and Clear Messages",
+  "language": "python",
+  "type": "lesson",
+  "module": "M5",
+  "badge": "Safety Net",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "exception",
+    "try and except",
+    "catching a named exception",
+    "else",
+    "finally",
+    "keeping try blocks small",
+    "ask-again loop with try",
+    "raise",
+    "except ... as error",
+    "clear error messages",
+    "why a bare except hides bugs",
+    "pytest.raises",
+    "catching several exceptions with a tuple",
+    "SyntaxError: expected 'except' or 'finally' block"
+  ],
+  "prerequisites": [
+    "python-21"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_load_flawed.py",
+    "fixed_file": "examples/ai_load_fixed.py",
+    "flaw": "Asked for a load_scores() that never crashes and skips a damaged row, the AI put the whole loop inside one try block with a bare except: pass. The damaged row stopped the loop, so every row after it was lost with no message: the damaged test file gives one score instead of two. The fixed function puts a small try around each row, catches ValueError only, and gives a message for a missing file."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The curriculum's 'writing helpful error messages' is taught as a rule (name the problem and the value) in Step 4 and practised in every example, rather than as a separate step.",
+    "pytest.raises is used without its match argument, to keep the chapter short; the lesson tests only the exception type.",
+    "Catching several exceptions with a tuple, except (ValueError, TypeError), appears only in the AI section, where a short row makes int() receive None.",
+    "The ask-again loop uses else and break instead of continue, because continue has not been taught.",
+    "Data files for the examples (week.csv, scores.csv and the case_*.csv test files) sit beside the examples; the checker runs every example on a fresh copy of its folder."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the error reports show the full path to the file instead of the short file name.",
+    "pytest's separator lines are wider on a learner's terminal than the 56-column reports in the lesson.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
