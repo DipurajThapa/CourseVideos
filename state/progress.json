@@ -452,15 +452,19 @@
     "python-24": {
       "language": "python",
       "number": 24,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-10-b80a06",
           "started": "2026-11-10T09:10:01+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-10T09:52:21+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-10-b80a06"
+      "current_run_id": "2026-11-10-b80a06",
+      "path": "chapters/python/24-environments-and-packages",
+      "completed": "2026-11-10T09:52:21+00:00"
     },
     "python-25": {
       "language": "python",
@@ -487,5 +491,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T09:10:01+00:00"
+  "updated": "2026-11-10T09:52:21+00:00"
 }

@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-24 "Virtual Environments and Packages" ready for review (19:06): venv, pip, pinned requirements and name checks; critic 8/10, 12 fixes.
 - python-23 JSON and APIs ready for review: a daily board read from a saved weather response, six AI stages on a supplier price list with an invented field caught against the sample (18:32).
 - python-22 Handling Errors ready for review: a score board that skips a damaged row and handles a missing file, six AI stages on load_scores with a bare except caught by tests (17:05).
 - python-21 Files and Paths ready for review: score board saved as CSV, six AI stages on a save function, mode w data loss caught by tests (17:41).
