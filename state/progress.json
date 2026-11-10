@@ -248,8 +248,15 @@
     "python-12": {
       "language": "python",
       "number": 12,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-10-bbf260",
+          "started": "2026-11-10T01:19:34+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-10-bbf260"
     },
     "python-13": {
       "language": "python",
@@ -348,5 +355,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T01:18:21+00:00"
+  "updated": "2026-11-10T01:19:34+00:00"
 }
