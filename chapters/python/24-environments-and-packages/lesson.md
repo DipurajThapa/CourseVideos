@@ -111,7 +111,8 @@ The versions in this chapter are examples. Check pypi.org for the version you wa
 # file: examples/ex01_read_requirements.py
 from pathlib import Path
 
-text = Path("requirements.txt").read_text(encoding="utf-8")
+path = Path("requirements.txt")
+text = path.read_text(encoding="utf-8")
 for line in text.splitlines():
     line = line.strip()
     if line == "" or line.startswith("#"):
@@ -126,7 +127,7 @@ requests   2.32.3
 tabulate   0.9.0
 ```
 
-Line 9 splits each pinned line at `==`, so `name` gets the package and `version` gets the number.
+Line 10 splits each pinned line at `==`, so `name` gets the package and `version` gets the number.
 
 **Step 5: Pinned or not?** A line without `==` lets pip choose a version, and that version can change next month. `pytest>=8` means "8 or newer", which is not exact either.
 
@@ -160,13 +161,13 @@ A name one or two letters away from a famous package, such as `reqeusts`, is a w
 
 ```python
 # file: examples/ex03_lookalike.py
-import difflib
+from difflib import SequenceMatcher, get_close_matches
 
 trusted = ["requests", "tabulate", "pytest"]
-score = difflib.SequenceMatcher(None, "reqeusts", "requests").ratio()
-print(round(score, 3))
-print(difflib.get_close_matches("reqeusts", trusted, n=1, cutoff=0.8))
-print(difflib.get_close_matches("numpy", trusted, n=1, cutoff=0.8))
+pair = SequenceMatcher(None, "reqeusts", "requests")
+print(round(pair.ratio(), 3))
+print(get_close_matches("reqeusts", trusted, cutoff=0.8))
+print(get_close_matches("numpy", trusted, cutoff=0.8))
 ```
 
 <!-- output: examples/ex03_lookalike.expected -->
@@ -192,11 +193,12 @@ pytest>=8
 
 ```python
 # file: examples/ex04_check_requirements.py
-import difflib
+from difflib import get_close_matches
 from pathlib import Path
 
 TRUSTED = ["requests", "tabulate", "pytest"]
-text = Path("board_requirements.txt").read_text(encoding="utf-8")
+path = Path("board_requirements.txt")
+text = path.read_text(encoding="utf-8")
 problems = 0
 for line in text.splitlines():
     line = line.strip()
@@ -207,7 +209,7 @@ for line in text.splitlines():
         print(f"{line}: not pinned")
         problems += 1
     elif name not in TRUSTED:
-        close = difflib.get_close_matches(name, TRUSTED, n=1, cutoff=0.8)
+        close = get_close_matches(name, TRUSTED, cutoff=0.8)
         hint = close[0] if close else "no trusted name"
         print(f"{line}: unknown, close to {hint}")
         problems += 1
@@ -271,7 +273,7 @@ She asked an AI assistant for a version that also warns about look-alike names. 
 
 ```python
 # file: examples/ai_check_flawed.py
-import difflib
+from difflib import get_close_matches
 
 TRUSTED = ["requests", "tabulate", "pytest"]
 
@@ -279,7 +281,7 @@ TRUSTED = ["requests", "tabulate", "pytest"]
 def name_check(name):
     if name in TRUSTED:
         return "trusted"
-    close = difflib.get_close_matches(name, TRUSTED, n=1, cutoff=0.9)
+    close = get_close_matches(name, TRUSTED, cutoff=0.9)
     if close:
         return f"look-alike of {close[0]}"
     return "unknown: check pypi.org"
@@ -297,7 +299,7 @@ The AI was wrong. Its `cutoff` is 0.9, and `reqeusts` scores only 0.875, as Step
 
 ```python
 # file: examples/ai_tests_flawed.py
-import difflib
+from difflib import get_close_matches
 
 TRUSTED = ["requests", "tabulate", "pytest"]
 
@@ -305,17 +307,20 @@ TRUSTED = ["requests", "tabulate", "pytest"]
 def name_check(name):
     if name in TRUSTED:
         return "trusted"
-    close = difflib.get_close_matches(name, TRUSTED, n=1, cutoff=0.9)
+    close = get_close_matches(name, TRUSTED, cutoff=0.9)
     if close:
         return f"look-alike of {close[0]}"
     return "unknown: check pypi.org"
 
 
-cases = [("requests", "trusted"), ("reqeusts", "look-alike of requests"),
-         ("Requests", "trusted"), ("numpy", "unknown: check pypi.org")]
+cases = [("requests", "trusted"),
+         ("reqeusts", "look-alike of requests"),
+         ("Requests", "trusted"),
+         ("numpy", "unknown: check pypi.org")]
 for name, expected in cases:
     result = name_check(name)
-    print(f"{name:<9} {'pass' if result == expected else 'FAIL'}: {result}")
+    status = "pass" if result == expected else "FAIL"
+    print(f"{name:<9} {status}: {result}")
 ```
 
 <!-- output: examples/ai_tests_flawed.expected -->
@@ -330,7 +335,7 @@ She pasted the two failures and asked for the cause first. The AI changed the na
 
 ```python
 # file: examples/ai_tests_fixed.py
-import difflib
+from difflib import get_close_matches
 
 TRUSTED = ["requests", "tabulate", "pytest"]
 
@@ -339,17 +344,20 @@ def name_check(name):
     name = name.lower()
     if name in TRUSTED:
         return "trusted"
-    close = difflib.get_close_matches(name, TRUSTED, n=1, cutoff=0.8)
+    close = get_close_matches(name, TRUSTED, cutoff=0.8)
     if close:
         return f"look-alike of {close[0]}"
     return "unknown: check pypi.org"
 
 
-cases = [("requests", "trusted"), ("reqeusts", "look-alike of requests"),
-         ("Requests", "trusted"), ("numpy", "unknown: check pypi.org")]
+cases = [("requests", "trusted"),
+         ("reqeusts", "look-alike of requests"),
+         ("Requests", "trusted"),
+         ("numpy", "unknown: check pypi.org")]
 for name, expected in cases:
     result = name_check(name)
-    print(f"{name:<9} {'pass' if result == expected else 'FAIL'}: {result}")
+    status = "pass" if result == expected else "FAIL"
+    print(f"{name:<9} {status}: {result}")
 ```
 
 <!-- output: examples/ai_tests_fixed.expected -->
@@ -381,7 +389,7 @@ The AI said: "The package is not installed. Run `python -m pip install reqeusts`
 
 ```python
 # file: examples/ai_debug_check.py
-import difflib
+from difflib import get_close_matches
 
 TRUSTED = ["requests", "tabulate", "pytest"]
 
@@ -390,7 +398,7 @@ def name_check(name):
     name = name.lower()
     if name in TRUSTED:
         return "trusted"
-    close = difflib.get_close_matches(name, TRUSTED, n=1, cutoff=0.8)
+    close = get_close_matches(name, TRUSTED, cutoff=0.8)
     if close:
         return f"look-alike of {close[0]}"
     return "unknown: check pypi.org"

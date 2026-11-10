@@ -1,9 +1,10 @@
 # file: examples/ex04_check_requirements.py
-import difflib
+from difflib import get_close_matches
 from pathlib import Path
 
 TRUSTED = ["requests", "tabulate", "pytest"]
-text = Path("board_requirements.txt").read_text(encoding="utf-8")
+path = Path("board_requirements.txt")
+text = path.read_text(encoding="utf-8")
 problems = 0
 for line in text.splitlines():
     line = line.strip()
@@ -14,7 +15,7 @@ for line in text.splitlines():
         print(f"{line}: not pinned")
         problems += 1
     elif name not in TRUSTED:
-        close = difflib.get_close_matches(name, TRUSTED, n=1, cutoff=0.8)
+        close = get_close_matches(name, TRUSTED, cutoff=0.8)
         hint = close[0] if close else "no trusted name"
         print(f"{line}: unknown, close to {hint}")
         problems += 1

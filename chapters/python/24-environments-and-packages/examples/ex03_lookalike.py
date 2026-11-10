@@ -1,8 +1,8 @@
 # file: examples/ex03_lookalike.py
-import difflib
+from difflib import SequenceMatcher, get_close_matches
 
 trusted = ["requests", "tabulate", "pytest"]
-score = difflib.SequenceMatcher(None, "reqeusts", "requests").ratio()
-print(round(score, 3))
-print(difflib.get_close_matches("reqeusts", trusted, n=1, cutoff=0.8))
-print(difflib.get_close_matches("numpy", trusted, n=1, cutoff=0.8))
+pair = SequenceMatcher(None, "reqeusts", "requests")
+print(round(pair.ratio(), 3))
+print(get_close_matches("reqeusts", trusted, cutoff=0.8))
+print(get_close_matches("numpy", trusted, cutoff=0.8))

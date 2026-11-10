@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-24",
   "run_id": "2026-11-10-b80a06",
-  "verified_at": "2026-11-10T09:15:58+00:00",
+  "verified_at": "2026-11-10T09:22:36+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -10,10 +10,8 @@
   "checks": [
     {
       "name": "structure",
-      "passed": false,
-      "problems": [
-        "missing video/storyboard.json"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {}
     },
     {
@@ -156,6 +154,11 @@
           "sentences": 128,
           "average_words": 11.7,
           "longest": 30
+        },
+        "video/script.md": {
+          "sentences": 626,
+          "average_words": 8.8,
+          "longest": 29
         }
       }
     },
@@ -163,10 +166,15 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "missing video/storyboard.json"
+        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/24-environments-and-packages",
+        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/24-environments-and-packages",
+        "missing video/render.json: run python3 tools/render_video.py chapters/python/24-environments-and-packages",
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/24-environments-and-packages"
       ],
-      "details": {}
+      "details": {
+        "estimated_minutes": 18.2
+      }
     }
   ],
-  "fingerprint": "1036ee0e1e9d612ebf0d1b4b7369b564a4a4309b594ed34291892492225fc4db"
+  "fingerprint": "e73bbd591ff92b75fc2e3b43076851ac339d090e06a5060bc61f593fb75ac45d"
 }
