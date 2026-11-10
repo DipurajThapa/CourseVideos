@@ -1,0 +1,138 @@
+{
+  "chapter_id": "python-16",
+  "rendered_at": "2026-11-10T04:23:35+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "7bdfa25ee158b8e65f73a11b59bd51b06fa800ee9b57f457aba707a17242cf1c",
+  "inputs_sha256": "c147a41ec3624cebe84f9af38b991dd7ced3c2d5c13d9e6247fae565b80477fc",
+  "video_sha256": "52c0195c252e58553c9dcf51229ac4cd2b21724de53210e763720450c10d7267",
+  "duration_seconds": 1142.1,
+  "size_mb": 46.88,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 1049,
+  "questions": 18,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 45.4
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 45.4,
+      "end": 56.6
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 56.6,
+      "end": 73.2
+    },
+    {
+      "id": "idea",
+      "title": "The idea: define once, call many times",
+      "section": "The idea",
+      "start": 73.2,
+      "end": 160.267
+    },
+    {
+      "id": "step1",
+      "title": "Steps 1 and 2: Define, call, and pass a value",
+      "section": "Build it step by step",
+      "start": 160.267,
+      "end": 225.267
+    },
+    {
+      "id": "step3",
+      "title": "Steps 3 and 4: Return, or print?",
+      "section": "Build it step by step",
+      "start": 225.267,
+      "end": 313.567
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: Several parameters and a docstring",
+      "section": "Build it step by step",
+      "start": 313.567,
+      "end": 396.933
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: Functions that call functions",
+      "section": "Build it step by step",
+      "start": 396.933,
+      "end": 483.067
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the day report",
+      "section": "See the outcome",
+      "start": 483.067,
+      "end": 547.133
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one function",
+      "section": "Work with AI",
+      "start": 547.133,
+      "end": 888.567
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 888.567,
+      "end": 998.367
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 998.367,
+      "end": 1046.133
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 1046.133,
+      "end": 1098.233
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1098.233,
+      "end": 1116.6
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1116.6,
+      "end": 1142.067
+    }
+  ]
+}

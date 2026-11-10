@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:40 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 19:02.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:45)
 
 **Section:** Introduction
 
@@ -25,7 +25,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** If the tax changes, Asha edits one line. Let's build it.
   **On screen:** Code `examples/ex08_day_report.py`, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:45 to 0:57)
 
 **Section:** Learning goals
 
@@ -45,7 +45,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Read a traceback through several functions, from the bottom up.
     - Write a specification, ask AI for the code, and test it with your own checks.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (0:57 to 1:13)
 
 **Section:** Why this matters
 
@@ -62,7 +62,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You already use functions: `print()`, `len()`, `round()`, `input()`.
     - Every real program is built from many small functions.
 
-## Scene 4: The idea: define once, call many times
+## Scene 4: The idea: define once, call many times (1:13 to 2:40)
 
 **Section:** The idea
 
@@ -99,7 +99,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `return` hands a value back.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Steps 1 and 2: Define, call, and pass a value
+## Scene 5: Steps 1 and 2: Define, call, and pass a value (2:40 to 3:45)
 
 **Section:** Build it step by step
 
@@ -122,7 +122,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Hello, Lina! Your tea is ready. In the second call, name refers to Lina.
   **On screen:** Code `examples/ex02_greet.py`, line 6 highlighted, output `examples/ex02_greet.expected`
 
-## Scene 6: Steps 3 and 4: Return, or print?
+## Scene 6: Steps 3 and 4: Return, or print? (3:45 to 5:14)
 
 **Section:** Build it step by step
 
@@ -151,7 +151,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** So if the caller needs the value, the function must return it.
   **On screen:** Code `examples/ex04_print_not_return.py`, line 3 highlighted, output `examples/ex04_print_not_return.expected`
 
-## Scene 7: Step 5: Several parameters and a docstring
+## Scene 7: Step 5: Several parameters and a docstring (5:14 to 6:37)
 
 **Section:** Build it step by step
 
@@ -180,7 +180,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Arguments fill parameters in order.
 - **Breather:** 4 quiet seconds.
 
-## Scene 8: Step 6: Functions that call functions
+## Scene 8: Step 6: Functions that call functions (6:37 to 8:03)
 
 **Section:** Build it step by step
 
@@ -208,7 +208,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The cause is on line 11: the price in quotation marks.
   **On screen:** Code `examples/ex07_traceback.py`, line 11 highlighted, error `examples/ex07_traceback.expected_error`
 
-## Scene 9: See the outcome: the day report
+## Scene 9: See the outcome: the day report (8:03 to 9:07)
 
 **Section:** See the outcome
 
@@ -230,7 +230,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Next, Asha wants a function for her bill splitter from Chapter 5. This time, an AI assistant writes the code, one stage at a time.
   **On screen:** Code `examples/ex08_day_report.py`, output `examples/ex08_day_report.expected`
 
-## Scene 10: Work with AI: six stages, one function
+## Scene 10: Work with AI: six stages, one function (9:07 to 14:49)
 
 **Section:** Work with AI
 
@@ -337,7 +337,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Never change the parameters without changing every call.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: Common mistakes
+## Scene 11: Common mistakes (14:49 to 16:38)
 
 **Section:** Common mistakes
 
@@ -374,7 +374,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Return after the loop, not inside it.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Think beyond
+## Scene 12: Think beyond (16:38 to 17:26)
 
 **Section:** Think beyond
 
@@ -391,7 +391,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Write a day summary function that returns both, and test it.
   **On screen:** Question card: "A function can `return total, count`. How do you unpack the two values in the caller?"
 
-## Scene 13: Recap
+## Scene 13: Recap (17:26 to 18:18)
 
 **Section:** Recap
 
@@ -426,7 +426,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Function Forger You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 14: Practice
+## Scene 14: Practice (18:18 to 18:37)
 
 **Section:** Practice
 
@@ -437,7 +437,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks at 40, including an AI's member price to fix. Try each one before you open the solution.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 15: What's next
+## Scene 15: What's next (18:37 to 19:02)
 
 **Section:** What's next
 

@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-16",
   "run_id": "2026-11-10-a6cbc3",
-  "verified_at": "2026-11-10T04:06:44+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T04:26:35+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -192,17 +192,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/16-functions",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/16-functions",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/16-functions",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/16-functions"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.7
+        "estimated_minutes": 18.7,
+        "duration_seconds": 1142.1,
+        "size_mb": 46.88,
+        "scenes": 15,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "2a5b51a01566aa675bd9caa1c02fb390eaf86a526864053f82d731f2c4daf209"
+  "fingerprint": "5c1bc007aa820c0c77fa9f0ba18078168f2866b28c60e4aecc61b4527ff77473"
 }
