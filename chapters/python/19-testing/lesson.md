@@ -551,7 +551,7 @@ Fix: add `boxes_needed` to the import on line 2. A `NameError` inside a test mea
 
 ## Think beyond
 
-1. `money(-2)` returns `"-2.00"`. Should a refund be shown like that? Write a test for the label you would want, run it, and decide whether the test or the code should change.
+1. With the finished module, `money(-2)` returns `"USD -2.00"`. Should a refund be shown like that? Write a test for the label you would want, run it, and decide whether the test or the code should change.
 2. You have ten tests and they all pass. How could you find out whether they would catch a mistake in `with_tax()`? Try it with a broken copy.
 
 ## Recap

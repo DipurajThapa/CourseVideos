@@ -1,0 +1,1830 @@
+{
+ "chapter_id": "python-19",
+ "number": 19,
+ "version": 3,
+ "title": "Chapter 19: Testing Your Code: assert and pytest",
+ "video_title": "Python Chapter 19: Testing Your Code, assert and pytest",
+ "summary": "Asha's module checked itself with printed lines that nobody read. Follow her as she turns them into real tests: assert, a pytest file, reading a failure, edge cases, decimals and test-first thinking. Then watch her check an AI's tests by breaking her code on purpose, and catch tests that could never fail.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the Chapter 18 problem: a False that nobody reads. Then the title and the AI tease, then the mission file with no output.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "One False, and nobody notices",
+      "label": "The problem",
+      "body": [
+       "At the Corner Cafe, Asha's module checks itself by printing `True`."
+      ],
+      "pre": "  > python cafe_tools.py\n  Checking cafe_tools\n  True\n  False        <- a tool is broken\n\n  The program carries on. Nobody reads the False."
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha's module from Chapter 18 checks itself. Each check prints True.",
+       "focus": "pre"
+      },
+      {
+       "say": "But one day, a change breaks a tool, and a check prints False. The program carries on. Nobody reads that line."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 19",
+      "title": "Testing Your Code: assert and pytest",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Quality Guard badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 19: tests that stop loudly when something breaks."
+      },
+      {
+       "say": "And an AI assistant will write tests for Asha, and promise they catch any mistake. Will they? You will find out by breaking the code on purpose.",
+       "subtitle": "If it breaks, a test should fail."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/final/test_cafe_tools.py",
+      "heading": "Today's mission: a test file for the cafe tools",
+      "hidden_text": "By the end, you will know every line of this file."
+     },
+     "segments": [
+      {
+       "say": "Here is today's mission: Asha's test file. Line 2 imports her three tools.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Each block below is one test. One command runs them all, and names any tool that breaks. Let's build it.",
+       "highlight": [
+        5,
+        6,
+        9,
+        10,
+        11,
+        14,
+        15,
+        18,
+        19,
+        20,
+        23,
+        24,
+        25,
+        26
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write an `assert` with a message.",
+       "Write and run a `pytest` test file.",
+       "Read a `pytest` report: the test, the line and the values.",
+       "Test edge cases and decimal results.",
+       "Check that an AI's tests can really fail."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Your goals: write an assert, write and run a pytest file, read its report, test edge cases and decimals, and check an AI's tests.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a test, then why tests matter when people and AI change code.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **test** runs your code with a known input and checks the result against the answer you expect.",
+       "If the result is wrong, the test fails loudly.",
+       "Run the tests after every change, by you, a colleague or an AI."
+      ]
+     },
+     "segments": [
+      {
+       "say": "A test runs your code with a known input, and checks the result against the answer you expect. If the result is wrong, the test fails loudly.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Tests keep code working. Every time you, a colleague or an AI changes it, you run the tests again.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: input, run, compare",
+   "direction": "Teach the three parts with the diagram, then the three kinds of check, then the smoke alarm and where it stops working. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Every test has three parts",
+      "label": "The idea",
+      "body": [
+       "A known input, a run of the code, and a comparison with the expected result."
+      ],
+      "pre": "  known input        run the code          compare\n  boxes for 40  -->  boxes_needed(40)  -->  is it 4?\n                                            yes: pass\n                                            no:  FAIL"
+     },
+     "segments": [
+      {
+       "say": "Every test has three parts. A known input: 40 biscuits. A run of the code: boxes needed. And a comparison: is it 4? Yes means pass. No means fail.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Three ways to check a result",
+      "label": "The idea",
+      "columns": [
+       "Check",
+       "When the result is wrong"
+      ],
+      "rows": [
+       [
+        "`print(result == 4)`",
+        "Prints `False` and carries on."
+       ],
+       [
+        "`assert result == 4`",
+        "Stops the program with an `AssertionError`."
+       ],
+       [
+        "A `pytest` test",
+        "Runs every test, then names each failure."
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "There are three ways to check a result. A printed check prints False, and carries on.",
+       "focus_row": 0
+      },
+      {
+       "say": "An assert stops the program with an error.",
+       "focus_row": 1
+      },
+      {
+       "say": "And a pytest test runs every test, then names each one that failed.",
+       "focus_row": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A test is like a smoke alarm",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "It stays quiet while everything is fine.",
+       "It makes a loud noise the moment something goes wrong.",
+       "Where it stops working: a test checks only the inputs you wrote."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a test as a smoke alarm in the cafe kitchen. It stays quiet while everything is fine."
+      },
+      {
+       "say": "And it makes a loud noise the moment something goes wrong.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "The comparison stops working at one point. An alarm watches the whole room. A test checks only the inputs you wrote.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which check stops the program when the result is wrong?",
+      "options": [
+       "`print(result == 4)`",
+       "`round(result) == 4`",
+       "`assert result == 4`",
+       "`# result should be 4`"
+      ],
+      "answer": 2,
+      "explain": "`assert` raises an `AssertionError` and stops the program."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which of these stops the program when the result is wrong?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Assert. A printed check only prints False, and a comment does nothing at all."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A test: known input, run, compare.",
+       "A printed check is easy to miss.",
+       "A test checks only the inputs you wrote."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Next, Asha sees why a printed check is not enough."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Steps 1 and 2: From print to assert",
+   "direction": "Show the quiet False, ask what lines 5 and 6 print. Teach assert, show it passing, then failing with a message, and ask whether the report is saved.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_print_checks.py",
+      "heading": "Step 1: A printed check",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 1. Someone typed 1.01 as the tax rate, instead of 1.1. Look at line 2.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 5 checks the tea price with print. Line 6 saves the report.",
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 5 and 6 print?"
+     },
+     "after": [
+      {
+       "say": "False, then Report saved. The check found the problem, but the program saved the report anyway.",
+       "output": "examples/ex01_print_checks.expected",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_assert_pass.py",
+      "heading": "Step 2: assert, when the check is true",
+      "highlight": [
+       5,
+       6
+      ],
+      "output": "examples/ex02_assert_pass.expected"
+     },
+     "segments": [
+      {
+       "say": "Step 2. An assertion is a statement that a condition must be true. You write assert, then the condition.",
+       "highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Here the tax rate is right. Both conditions are true, so assert does nothing, and line 7 saves the report.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_assert_fail.py",
+      "heading": "Step 2: assert, when the check is false",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict what happens before it appears."
+     },
+     "segments": [
+      {
+       "say": "Now the wrong rate again, on line 2.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "When an assert condition is false, Python stops with an Assertion Error. After a comma, you can add a message. Line 6 would save the report.",
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Does line 6 save the report?"
+     },
+     "after": [
+      {
+       "say": "No. Line 5 stops the program, so the report is never saved.",
+       "error": "examples/ex03_assert_fail.expected_error",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "And the message says exactly what was wrong: tea with tax should be 3.85.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Your first pytest file",
+   "direction": "Install and run commands in a table, then the module, then the test file with its naming rules, ask how many tests and whether they pass. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Step 3: Install and run pytest",
+      "label": "Build it",
+      "columns": [
+       "To do this",
+       "Type this in the terminal"
+      ],
+      "rows": [
+       [
+        "Install pytest once",
+        "`python -m pip install -U pytest`"
+       ],
+       [
+        "Run a test file",
+        "`python -m pytest -q test_cafe_tools.py`"
+       ],
+       [
+        "Shorter failure reports",
+        "add `--tb=short`"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 3. pytest is a popular testing tool. It does not come with Python, so you install it once with pip, Python's package installer.",
+       "focus_row": 0
+      },
+      {
+       "say": "On macOS and Linux, type python3 instead of python. You will learn more about packages in Chapter 24."
+      },
+      {
+       "say": "Then you run a test file like this. The dash q option asks for a short, quiet report.",
+       "focus_row": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/cafe_tools.py",
+      "heading": "Asha's module, with one new tool",
+      "highlight": [
+       16,
+       17,
+       18
+      ],
+      "output": "examples/cafe_tools.expected"
+     },
+     "segments": [
+      {
+       "say": "Here is Asha's module from Chapter 18: with tax, and money.",
+       "highlight": [
+        6,
+        7,
+        8,
+        11,
+        12,
+        13
+       ]
+      },
+      {
+       "say": "She adds boxes needed, from the AI section of Chapter 18. Line 18 rounds up with math dot ceil. Run on its own, the module prints nothing.",
+       "highlight": [
+        16,
+        17,
+        18
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_cafe_tools.py",
+      "heading": "A test file for pytest",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "A test file has two naming rules. The file name starts with test and an underscore. And every test is a function whose name starts the same way.",
+       "highlight": [
+        5,
+        9,
+        13
+       ]
+      },
+      {
+       "say": "Line 2 imports the three tools. Each test has one assert, with an exact expected value.",
+       "highlight": [
+        2,
+        6,
+        10,
+        14
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many tests will pytest run, and will they pass?"
+     },
+     "after": [
+      {
+       "say": "Three tests, and all three pass. Each dot is one passing test.",
+       "output": "examples/test_cafe_tools.expected",
+       "highlight": [
+        6,
+        10,
+        14
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The last line counts them, and shows how long the run took. That time changes on every run.",
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which function will `pytest` run as a test?",
+      "options": [
+       "`tea_test()`",
+       "`check_tea()`",
+       "`run_tea()`",
+       "`test_tea()`"
+      ],
+      "answer": 3,
+      "explain": "pytest runs functions whose names start with `test_`."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which of these functions will pytest run?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Test tea. Its name starts with test and an underscore. Tea test ends with it, so pytest skips it."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`assert` stops the program when a check is false.",
+       "Test files and test functions start with `test_`.",
+       "Each dot is one passing test."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Next, Asha breaks her module on purpose, to see what a failure looks like."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Read a failure",
+   "direction": "Show the broken copy's line 18, ask which test fails, then read the report from the top.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken/cafe_tools.py",
+      "heading": "Step 4: A broken copy, on purpose",
+      "code_lines": [
+       16,
+       17,
+       18
+      ],
+      "highlight": [
+       18
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 4. Asha copies her files into a folder called broken. In the copy, line 18 uses round instead of math dot ceil. That is the AI's mistake from Chapter 18.",
+       "highlight": [
+        18
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken/test_cafe_tools.py",
+      "heading": "The same three tests, on the broken copy",
+      "highlight": [
+       6,
+       10,
+       14
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "She runs the same three tests on the broken copy. Remember: round goes to the nearest whole number.",
+       "highlight": [
+        6,
+        10,
+        14
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which of the three tests will fail?"
+     },
+     "after": [
+      {
+       "say": "The third one. The first line shows two dots and an F. F means one test failed.",
+       "output": "examples/broken/test_cafe_tools.expected",
+       "highlight": [
+        14
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The report names the test, and its line: 14.",
+       "out_highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "The line that starts with E shows the values. Boxes needed returned 3, but the test expected 4. The last line counts one failed and two passed.",
+       "out_highlight": [
+        6,
+        7,
+        10
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Steps 5 and 6: Edge cases and decimals",
+   "direction": "Teach edge cases, ask which one catches round, then decimals: ask which test fails, then round and approx.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_edges.py",
+      "heading": "Step 5: Test the edge cases",
+      "highlight": [
+       5,
+       9,
+       13
+      ],
+      "output": "examples/test_edges.expected"
+     },
+     "segments": [
+      {
+       "say": "Step 5. An edge case is an unusual input at the limit of what a function must handle.",
+       "highlight": [
+        5,
+        9,
+        13
+       ]
+      },
+      {
+       "say": "For boxes, the edges are no biscuits, exactly one full box, and one biscuit more than a box. On the working module, all three pass.",
+       "highlight": [
+        6,
+        10,
+        14
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken/test_edges.py",
+      "heading": "The edge cases, on the broken copy",
+      "highlight": [
+       6,
+       10,
+       14
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "Now Asha runs the edge cases on the broken copy. Remember: round goes to the nearest whole number.",
+       "highlight": [
+        6,
+        10,
+        14
+       ]
+      }
+     ],
+     "ask": {
+      "question": "On the broken copy, which edge case fails: 0, 12 or 13?"
+     },
+     "after": [
+      {
+       "say": "13. 13 divided by 12 is about 1.08, and round turns that into 1 box. The test expected 2. The other two still pass.",
+       "output": "examples/broken/test_edges.expected",
+       "highlight": [
+        14
+       ],
+       "out_highlight": [
+        1,
+        6
+       ]
+      },
+      {
+       "say": "So good tests check normal values and edge values. Each catches mistakes from a different side.",
+       "out_highlight": [
+        10
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_floats.py",
+      "heading": "Step 6: Test decimal results safely",
+      "highlight": [
+       5,
+       6,
+       7
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 6. In Chapter 2 you saw that point 1, three times, is not exactly point 3. Here are three tests of that total.",
+       "highlight": [
+        5,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Line 12 rounds the total to two decimal places. Line 17 uses pytest dot approx, which accepts a value that is very close.",
+       "highlight": [
+        12,
+        17
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which of the three tests fails?"
+     },
+     "after": [
+      {
+       "say": "The first one, test exact. The total is 0.30000000000000004, not 0.3.",
+       "output": "examples/test_floats.expected",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        1,
+        6
+       ]
+      },
+      {
+       "say": "The other two pass. For decimals, round both sides, or use approx.",
+       "highlight": [
+        12,
+        17
+       ],
+       "out_highlight": [
+        9
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step7",
+   "section": "Build it step by step",
+   "title": "Step 7: Write the test first",
+   "direction": "The USD rule. Ask whether the new test passes on the current module, read the diff, then the change. Quiz and breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/testfirst/test_money_usd.py",
+      "heading": "Step 7: The test comes first",
+      "highlight": [
+       5,
+       6
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 7. The cafe owner wants every price label to start with U S D. Before Asha changes money, she writes the test for the new rule.",
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Will this test pass on Asha's current module?"
+     },
+     "after": [
+      {
+       "say": "No, and that is what she expects. The money function still returns 4.00.",
+       "output": "examples/testfirst/test_money_usd.expected",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        1,
+        6
+       ]
+      },
+      {
+       "say": "The minus line shows what the test expected. The plus line shows what the function returned.",
+       "out_highlight": [
+        8,
+        9
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/final/cafe_tools.py",
+      "heading": "Then she changes the code",
+      "code_lines": [
+       11,
+       12,
+       13
+      ],
+      "highlight": [
+       13
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now she changes line 13, and runs the test again. It passes. This is test first thinking: a test that fails before the change and passes after it proves the change did its job.",
+       "highlight": [
+        13
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "You write a test for a new rule before you change the code. What should happen when you first run it?",
+      "options": [
+       "It passes",
+       "It fails",
+       "pytest stops working",
+       "Nothing is printed"
+      ],
+      "answer": 1,
+      "explain": "The code does not follow the new rule yet, so the test fails. After the change, it passes."
+     },
+     "segments": [
+      {
+       "say": "Quick check. You write a test for a new rule, before you change the code. What should happen the first time you run it?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. It fails. The code does not follow the new rule yet. After the change, it passes."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Edge cases: zero, an exact limit, one more.",
+       "Compare decimals with `round()` or `approx`.",
+       "Test first: fail, change, pass."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Now Asha puts everything together, in one test file."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the test file",
+   "direction": "Return to the mission file, walk the tests, ask how many dots, reveal, then hand over to the AI feature.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/final/test_cafe_tools.py",
+      "heading": "Mission complete: Asha's test file",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Lines 5 and 9 test the tax. Line 11 rounds the decimal total first.",
+       "highlight": [
+        5,
+        6,
+        9,
+        10,
+        11
+       ]
+      },
+      {
+       "say": "Line 15 tests the new U S D label. Lines 18 to 26 test the boxes: normal values, and then the edges. A test can hold several asserts.",
+       "highlight": [
+        15,
+        18,
+        19,
+        20,
+        23,
+        24,
+        25,
+        26
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many dots will pytest print?"
+     },
+     "after": [
+      {
+       "say": "Five dots, one for each test function, and five passed. A test with three asserts still counts as one test.",
+       "output": "examples/final/test_cafe_tools.expected",
+       "highlight": [
+        23
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Now, after every change, Asha runs one command. Mission complete!",
+       "highlight": [],
+       "out_highlight": []
+      },
+      {
+       "say": "Next, Asha asks an AI assistant to write tests too, one stage at a time."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one test file",
+   "direction": "Teach the skill. One conversation per stage, all about a test file for cafe_tools. Generate: tests that cannot fail. Test: the broken copy. Debug: an exact decimal. Improve: the AI deletes two useful tests.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: check the tests",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "A test that can never fail looks exactly like a test that passes.",
+       "Break a copy of the code on purpose. Good tests fail on it.",
+       "Never paste private data. You are responsible for the tests you keep."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill: check that the AI's tests really test something. A test that can never fail looks exactly like a test that passes.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "So break a copy of the code on purpose. Good tests fail on it. And never paste private data.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: inputs and expected results",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am learning pytest. My function boxes_needed rounds up to boxes of 12. Do not write code yet. List the inputs I should test, with the exact expected result for each."
+       },
+       {
+        "role": "ai",
+        "text": "1. 40 biscuits: 4 boxes, a part box.\n2. 24 biscuits: 2 boxes, an exact division.\n3. 0 biscuits: 0 boxes.\n4. 12 and 13 biscuits: 1 and 2 boxes, the edge of one box."
+       },
+       {
+        "role": "you",
+        "text": "I checked each one by hand: 40 divided by 12 is 3.33, so 4 boxes. They are all right."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha asks for the inputs to test, each with its exact expected result. No code yet."
+      },
+      {
+       "say": "The AI lists a part box, an exact division, zero, and the edge of one box.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Asha works out every expected result herself, by hand.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: her own tests first",
+      "messages": [
+       {
+        "role": "you",
+        "text": "First I wrote two tests myself. Do not change them. Which behaviour do they not test yet?",
+        "code": "examples/test_mine.py",
+        "code_lines": [
+         5,
+         6,
+         9,
+         10
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "They test an exact division and a part box. They do not test 0 biscuits, or the edge between 12 and 13."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes two tests herself: 24 biscuits, and 40 biscuits. She asks the AI what they do not test yet."
+      },
+      {
+       "say": "The AI names zero, and the edge between 12 and 13. She will check the AI's file for those too.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: a test file from the AI",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write pytest tests for my cafe_tools module. They must catch any mistake in boxes_needed."
+       },
+       {
+        "role": "ai",
+        "text": "Here are three tests. They will catch any mistake in `boxes_needed`.",
+        "code": "examples/test_ai_tools.py"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks the AI for a test file that catches any mistake in boxes needed."
+      },
+      {
+       "say": "The AI writes three tests, and makes a big promise.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_ai_tools.py",
+      "heading": "The AI's tests: all three pass",
+      "highlight": [
+       9,
+       10,
+       11,
+       14,
+       15
+      ],
+      "output": "examples/test_ai_tools.expected"
+     },
+     "segments": [
+      {
+       "say": "On Asha's working module, all three pass. Look at the two box tests. Line 10 uses 24 biscuits. And the test on line 14 calls boxes needed with zero.",
+       "highlight": [
+        10,
+        14,
+        15
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The AI says these tests catch any mistake in `boxes_needed`. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. 24 divides exactly, so even round gives 2. And line 15 has no assert, so that test can never fail.",
+       "highlight": [
+        10,
+        15
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: run them on the broken copy",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My broken copy uses round instead of math.ceil. Which of your three tests should fail on it, and why?"
+       },
+       {
+        "role": "ai",
+        "text": "None of them. 24 divided by 12 is exactly 2, so round gives the right answer. And test_zero has no assert, so it can never fail."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks which of the AI's tests should fail on her broken copy."
+      },
+      {
+       "say": "This time the AI admits it: none of them.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken/test_ai_tools.py",
+      "heading": "On the broken copy: the AI's tests",
+      "highlight": [
+       10,
+       15
+      ],
+      "output": "examples/broken/test_ai_tools.expected"
+     },
+     "segments": [
+      {
+       "say": "She runs them on the broken copy anyway. Three passed. The tests did not see the broken code.",
+       "highlight": [
+        10,
+        15
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken/test_mine.py",
+      "heading": "On the broken copy: Asha's own tests",
+      "highlight": [
+       10
+      ],
+      "output": "examples/broken/test_mine.expected"
+     },
+     "segments": [
+      {
+       "say": "Then she runs her own two tests on the same copy. The test for 40 biscuits fails, as a good test should.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        1,
+        6,
+        10
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_ai_float.py",
+      "heading": "The AI's seven tests, on the working module",
+      "code_lines": [
+       9,
+       10,
+       11
+      ],
+      "highlight": [
+       11
+      ],
+      "output": "examples/test_ai_float.expected"
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. The AI writes a better file, with seven tests. But on Asha's working module, one test fails: test two items, on line 11.",
+       "highlight": [
+        11
+       ],
+       "out_highlight": [
+        1,
+        4,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: is the code or the test wrong?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Your new test file fails on my working module. Here is the failing test, and the report says: assert 3.3000000000000003 == 3.3. Is the code or the test wrong? Explain why first.",
+        "code": "examples/test_ai_float.py",
+        "code_lines": [
+         9,
+         10,
+         11
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "The test is wrong, not the code. 1.1 plus 2.2 is stored as 3.3000000000000003. Round the total to 2 decimal places before you compare."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "She pastes the failing test and the values from the report."
+      },
+      {
+       "say": "She asks whether the code or the test is wrong. The AI reads the values: the test compares decimals exactly. Round the total first.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_ai_v2.py",
+      "heading": "The fixed file, on the working module",
+      "code_lines": [
+       9,
+       10,
+       11
+      ],
+      "highlight": [
+       10,
+       11
+      ],
+      "output": "examples/test_ai_v2.expected"
+     },
+     "segments": [
+      {
+       "say": "With the total rounded on line 11, all seven tests pass on the working module.",
+       "highlight": [
+        11
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken/test_ai_v2.py",
+      "heading": "The fixed file, on the broken copy",
+      "code_lines": [
+       22,
+       23,
+       30,
+       31
+      ],
+      "highlight": [
+       23,
+       31
+      ],
+      "output": "examples/broken/test_ai_v2.expected"
+     },
+     "segments": [
+      {
+       "say": "And on the broken copy, two tests fail: 40 biscuits and 13 biscuits. Now the tests can see the broken code.",
+       "highlight": [
+        23,
+        31
+       ],
+       "out_highlight": [
+        1,
+        3,
+        4,
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: before you delete a test",
+      "messages": [
+       {
+        "role": "you",
+        "text": "All seven tests pass. Suggest at most one improvement, with one reason."
+       },
+       {
+        "role": "ai",
+        "text": "Delete test_full_boxes and test_zero. The tests for 40 and 13 already check rounding up, so those two repeat them."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one improvement."
+      },
+      {
+       "say": "The AI says: delete the tests for 24 and for zero, because 40 and 13 already check rounding up.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken2/cafe_tools.py",
+      "heading": "Another broken copy: Asha's old bug",
+      "code_lines": [
+       16,
+       17,
+       18
+      ],
+      "highlight": [
+       18
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha remembers her own bug from Chapter 18: double slash, then plus 1. It was wrong for 24 biscuits. She makes a second broken copy with that bug.",
+       "highlight": [
+        18
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken2/test_ai_short.py",
+      "heading": "The shorter file, on Asha's old bug",
+      "code_lines": [
+       18,
+       19,
+       22,
+       23
+      ],
+      "highlight": [
+       18,
+       19,
+       22,
+       23
+      ],
+      "output": "examples/broken2/test_ai_short.expected"
+     },
+     "segments": [
+      {
+       "say": "The shorter file passes on it. Five passed. Without those two tests, her old bug would slip through.",
+       "highlight": [
+        19,
+        23
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/broken2/test_ai_v2.py",
+      "heading": "The full file, on Asha's old bug",
+      "code_lines": [
+       18,
+       19,
+       26,
+       27
+      ],
+      "highlight": [
+       19,
+       27
+      ],
+      "output": "examples/broken2/test_ai_v2.expected"
+     },
+     "segments": [
+      {
+       "say": "The full file catches it: 24 biscuits gives 3, and zero biscuits gives 1. So Asha keeps every test. The AI was wrong again.",
+       "highlight": [
+        19,
+        27
+       ],
+       "out_highlight": [
+        3,
+        4,
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "All of an AI's tests pass. What is the best next check?",
+      "options": [
+       "Run them on a copy you broke on purpose",
+       "Ask the AI if the tests are good",
+       "Delete the tests that look alike",
+       "Add print lines to the tests"
+      ],
+      "answer": 0,
+      "explain": "Good tests fail on broken code. If nothing fails, the tests are too weak."
+     },
+     "segments": [
+      {
+       "say": "Quick check. All of an AI's tests pass. What is the best next check?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Run them on a copy you broke on purpose. Good tests fail on broken code."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "A test with no assert can never fail.",
+       "Before you delete a test, check what it catches."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You watched Asha check every AI test, and catch two weak suggestions by breaking the code on purpose."
+      },
+      {
+       "say": "Next, the mistakes beginners make with tests."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 is a spot-it on the naming rule. Mistakes 2 and 3 call back. Mistake 4 is a spot-it on the import.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_no_prefix.py",
+      "heading": "Mistake 1: your turn to spot it",
+      "highlight": [
+       5
+      ],
+      "hidden_text": "Find the mistake before the report appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. Asha runs this file with pytest. Remember the naming rule from step 3.",
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "pytest says that no tests ran. Why?"
+     },
+     "after": [
+      {
+       "say": "The function name does not start with test and an underscore, so pytest skips it. Rename it test tea tax.",
+       "output": "examples/err01_no_prefix.expected",
+       "heading": "Mistake 1: a test without the test_ prefix",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Mistakes 2 and 3: you have seen them",
+      "label": "Common mistakes",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "A test with no `assert` always passes. Every test needs an `assert` with an exact expected value.",
+       "Comparing decimals exactly can fail on correct code. Use `round()` or `pytest.approx()`."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Mistake 2 was in the AI's first file: a test with no assert. It always passes."
+      },
+      {
+       "say": "Mistake 3 was in its second file: an exact comparison of decimals. Round both sides, or use approx.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_missing_import.py",
+      "heading": "Mistake 4: spot this one too",
+      "highlight": [
+       2,
+       6
+      ],
+      "hidden_text": "Find the mistake before the report appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. Look at the import on line 2, and the test on line 6.",
+       "highlight": [
+        2,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What is missing?"
+     },
+     "after": [
+      {
+       "say": "Boxes needed is never imported, so the test stops with a Name Error. Add it to line 2.",
+       "output": "examples/err02_missing_import.expected",
+       "heading": "Mistake 4: a missing import",
+       "highlight": [
+        2
+       ],
+       "out_highlight": [
+        7
+       ]
+      },
+      {
+       "say": "A Name Error inside a test means the test itself is wrong, not the code it tests.",
+       "out_highlight": [
+        10
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "`money(-2)` returns `\"USD -2.00\"`. How should a refund look? Write a test for the label you want.",
+      "hint": "decide the rule first, then write the test, then change the code."
+     },
+     "segments": [
+      {
+       "say": "First. Money of minus 2 returns U S D minus 2.00. How should a refund look? Write a test for the label you would want."
+      }
+     ],
+     "after": [
+      {
+       "say": "Decide the rule first, then write the test, then change the code."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Ten tests all pass. How do you find out if they would catch a mistake in `with_tax()`?",
+      "hint": "think about the broken copies in this chapter."
+     },
+     "segments": [
+      {
+       "say": "Second. Ten tests all pass. How could you find out whether they would catch a mistake in with tax?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Try it with a broken copy after the video."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A test runs code with a known input and compares the result with the expected answer.",
+       "`assert condition, \"message\"` stops the program when the condition is false.",
+       "`pytest` runs every `test_` function and reports each failure by name, line and value.",
+       "Test normal values and edge cases. Compare decimals with `round()` or `pytest.approx()`.",
+       "Write the test first: it fails before the change and passes after it.",
+       "Break a copy of the code on purpose: good tests fail on broken code."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. A test runs code with a known input, and compares the result with the answer you expect.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Assert stops the program when its condition is false.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "pytest runs every test function, and names each failure, its line and its values.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Test normal values and edge cases, and compare decimals with round or approx.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Write the test first. And break a copy of the code on purpose: good tests fail on it.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Quality Guard",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Quality Guard",
+      "tile": 19
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Quality Guard badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Assert it; A message that helps; Your first pytest file",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Edge cases for free teas; Decimals that pass; Test first",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Break it on purpose; Fix the AI's tests",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks, three apply tasks, and two stretch tasks.",
+       "focus_row": 1
+      },
+      {
+       "say": "In the last one, you fix an AI's tests, like Asha did. Try each task before you open the solution.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease the Boss Level as tests written first for a bigger program. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 20",
+      "title": "Boss Level 4: The Tested Quiz App",
+      "subtitle": "Write the tests first. Then build the app.",
+      "badge": "",
+      "tile": 20
+     },
+     "segments": [
+      {
+       "say": "Asha's tests guard three small tools. But what about a whole program, with several modules?"
+      },
+      {
+       "say": "In Chapter 20, the Boss Level, you will build a quiz app for the cafe, and write its tests first."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 20."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}

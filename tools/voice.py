@@ -42,7 +42,7 @@ CLONE_CFG = 0.5
 PRONOUNCE = {
     r"\bXP\b": "X P", r"\bPEP 8\b": "pep eight", r"\bChatGPT\b": "Chat G P T", r"\bstr\b": "string",
     r"\bNameError\b": "Name Error", r"\bTypeError\b": "Type Error", r"\bSyntaxError\b": "Syntax Error",
-    r"\bIDLE\b": "idle", r"\bUSD\b": "U S D",
+    r"\bIDLE\b": "idle", r"\bUSD\b": "U S D", r"\bpytest\b": "pie test", r"\bAssertionError\b": "Assertion Error",
 }
 
 
