@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-21",
+  "rendered_at": "2026-11-10T07:40:49+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "2d03880d00452de3721e2e18095367d9e838a02e0a761c591c4a02dd9f95ec7f",
+  "inputs_sha256": "69ec1a5df4124d20c75fe6166d3c188f01c6f320a63039e94984249d4be7234e",
+  "video_sha256": "68fae146d63c71b9496252c31f8283f1e6b70fba9f62b2367c2cf622c2a70bc1",
+  "duration_seconds": 1061.2,
+  "size_mb": 45.49,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.0
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 970,
+  "questions": 16,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 41.467
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 41.467,
+      "end": 56.2
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 56.2,
+      "end": 74.633
+    },
+    {
+      "id": "idea",
+      "title": "The idea: open, read or write, close",
+      "section": "The idea",
+      "start": 74.633,
+      "end": 173.8
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Write and read with pathlib",
+      "section": "Build it step by step",
+      "start": 173.8,
+      "end": 215.533
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Modes and the with statement",
+      "section": "Build it step by step",
+      "start": 215.533,
+      "end": 260.333
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Read line by line",
+      "section": "Build it step by step",
+      "start": 260.333,
+      "end": 303.7
+    },
+    {
+      "id": "step4",
+      "title": "Steps 4 and 5: Check first, and build paths",
+      "section": "Build it step by step",
+      "start": 303.7,
+      "end": 368.267
+    },
+    {
+      "id": "step6",
+      "title": "Steps 6 and 7: CSV files",
+      "section": "Build it step by step",
+      "start": 368.267,
+      "end": 471.133
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the score board",
+      "section": "See the outcome",
+      "start": 471.133,
+      "end": 527.467
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: a save function that keeps every score",
+      "section": "Work with AI",
+      "start": 527.467,
+      "end": 788.733
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 788.733,
+      "end": 932.5
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 932.5,
+      "end": 983.567
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 983.567,
+      "end": 1015.733
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1015.733,
+      "end": 1038.767
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1038.767,
+      "end": 1061.133
+    }
+  ]
+}

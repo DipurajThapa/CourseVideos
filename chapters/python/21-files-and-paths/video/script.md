@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:08 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:41.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:41)
 
 **Section:** Introduction
 
@@ -23,7 +23,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Lines 11 to 16 load every score from earlier rounds. Let's build it, piece by piece.
   **On screen:** Code `examples/ex08_score_board.py`, line 11, 12, 13, 14, 15, 16 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:41 to 0:56)
 
 **Section:** Learning goals
 
@@ -55,7 +55,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Save and load table data as a CSV file.
     - Explain common file errors and fix them, with an AI assistant.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (0:56 to 1:15)
 
 **Section:** Why this matters
 
@@ -74,7 +74,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A **file** is data saved on the disk, with a name. It stays.
     - Saved games, settings, sales and spreadsheets are all files.
 
-## Scene 4: The idea: open, read or write, close
+## Scene 4: The idea: open, read or write, close (1:15 to 2:54)
 
 **Section:** The idea
 
@@ -120,7 +120,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `"w"` empties, `"a"` adds, `"r"` reads.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Step 1: Write and read with pathlib
+## Scene 5: Step 1: Write and read with pathlib (2:54 to 3:36)
 
 **Section:** Build it step by step
 
@@ -140,7 +140,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And see the empty line? The text already ends with a new line, and print adds another one.
   **On screen:** Code `examples/ex01_write_read.py`, lines 1 to 7 typed in, line 6 highlighted, output `examples/ex01_write_read.expected`
 
-## Scene 6: Step 2: Modes and the with statement
+## Scene 6: Step 2: Modes and the with statement (3:36 to 4:20)
 
 **Section:** Build it step by step
 
@@ -160,7 +160,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And end equals empty, from Chapter 1, stops print from adding that extra empty line.
   **On screen:** Code `examples/ex02_modes.py`, line 10 highlighted, output `examples/ex02_modes.expected`
 
-## Scene 7: Step 3: Read line by line
+## Scene 7: Step 3: Read line by line (4:20 to 5:04)
 
 **Section:** Build it step by step
 
@@ -180,7 +180,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And Café keeps its accent, because the file was read as UTF-8.
   **On screen:** Code `examples/ex03_lines.py`, line 2 highlighted, output `examples/ex03_lines.expected`
 
-## Scene 8: Steps 4 and 5: Check first, and build paths
+## Scene 8: Steps 4 and 5: Check first, and build paths (5:04 to 6:08)
 
 **Section:** Build it step by step
 
@@ -213,7 +213,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Check with `exists()` before you read.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: Steps 6 and 7: CSV files
+## Scene 9: Steps 6 and 7: CSV files (6:08 to 7:51)
 
 **Section:** Build it step by step
 
@@ -246,7 +246,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** C. A string. Every value from a C S V file is text.
   **On screen:** Quick check: "`DictReader` reads the row `Tea,12,3.50`. What type is `row["qty"]`?" (answer revealed: `str`)
 
-## Scene 10: See the outcome: the score board
+## Scene 10: See the outcome: the score board (7:51 to 8:47)
 
 **Section:** See the outcome
 
@@ -270,7 +270,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Now Asha wants the quiz app itself to save each score. She builds a save function with an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex08_score_board.py`, output `examples/ex08_score_board.expected`
 
-## Scene 11: Work with AI: a save function that keeps every score
+## Scene 11: Work with AI: a save function that keeps every score (8:47 to 13:09)
 
 **Section:** Work with AI
 
@@ -385,7 +385,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Read the file after every test.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Common mistakes
+## Scene 12: Common mistakes (13:09 to 15:32)
 
 **Section:** Common mistakes
 
@@ -442,7 +442,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - CSV values are text.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Think beyond
+## Scene 13: Think beyond (15:32 to 16:24)
 
 **Section:** Think beyond
 
@@ -459,7 +459,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Keep your answer. Chapter 22 builds on it.
   **On screen:** Question card: "A program crashes halfway through a `with` block that writes a file. What does `with` still do, and what could be missing?"
 
-## Scene 14: Recap
+## Scene 14: Recap (16:24 to 16:56)
 
 **Section:** Recap
 
@@ -502,7 +502,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Archivist You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 15: Practice
+## Scene 15: Practice (16:56 to 17:19)
 
 **Section:** Practice
 
@@ -517,7 +517,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Work on copies of the data files, so a mistake never damages the originals.
   **On screen:** Table: Practice: 8 tasks, 170 XP
 
-## Scene 16: What's next
+## Scene 16: What's next (17:19 to 17:41)
 
 **Section:** What's next
 

@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-21",
   "run_id": "2026-11-10-ca18fb",
-  "verified_at": "2026-11-10T07:24:13+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T07:44:09+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -196,17 +196,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/21-files-and-paths",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/21-files-and-paths",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/21-files-and-paths",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/21-files-and-paths"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.1
+        "estimated_minutes": 18.1,
+        "duration_seconds": 1061.2,
+        "size_mb": 45.49,
+        "scenes": 16,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "233905b697c5eb0b5db161a5b8235babf5743205f1c3bf276a5117d9c4147cae"
+  "fingerprint": "7e0c99f914c3b4b3bd0e743ebd78aef5cf8fc9ba735dd9e3af1c8c26bd2da7fc"
 }
