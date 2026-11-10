@@ -299,15 +299,19 @@
     "python-15": {
       "language": "python",
       "number": 15,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-10-024700",
           "started": "2026-11-10T03:12:46+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-10T03:50:19+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-10-024700"
+      "current_run_id": "2026-11-10-024700",
+      "path": "chapters/python/15-project-expense-tracker",
+      "completed": "2026-11-10T03:50:19+00:00"
     },
     "python-16": {
       "language": "python",
@@ -388,5 +392,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T03:12:46+00:00"
+  "updated": "2026-11-10T03:50:19+00:00"
 }

@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-15 Boss Level 3: The Expense Tracker ready for review (18:13). Module 3 complete. Code screens can now show an excerpt with `code_lines`.
 - python-14 "Comprehensions: Transforming Data in One Line" ready for review: the menu board with three comprehensions, six AI stages on rewriting a loop (dropped filter, curly brackets that made a set), 17:39 video, critic 8/10 with 12 fixes.
 - python-13 "Tuples and Sets: Fixed Groups and Unique Items" ready for review: the loyalty report, six AI stages on welcoming each customer once (18:18).
 - python-12 "Dictionaries: Looking Things Up by Name" ready for review: order taker by name, six AI stages on a stock tracker (two-list design challenged, keys printed instead of counts, KeyError on a muffin, get() suggestion that adds a line), 18:10 video.
