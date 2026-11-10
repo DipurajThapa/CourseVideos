@@ -190,7 +190,7 @@ tea is vegan, 3.50
 scone is vegan, 2.75
 ```
 
-`menu["cake"]` gives the inner dictionary, and `["price"]` reads one value from it. Inside the f-string on line 9, the key uses single quotation marks, because the f-string itself uses double ones.
+`menu["cake"]` gives the inner dictionary, and `["price"]` reads one value from it. Inside the f-string on line 10, the key uses single quotation marks, because the f-string itself uses double ones.
 
 ## See the outcome
 

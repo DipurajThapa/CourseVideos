@@ -1,5 +1,9 @@
 # file: examples/ai_stock_regression.py
-cases = {"none sold": [], "last cake": ["cake", "cake"], "muffin": ["cake", "muffin"]}
+cases = {
+    "none sold": [],
+    "last cake": ["cake", "cake"],
+    "muffin": ["cake", "muffin"],
+}
 for name, sold in cases.items():
     print(f"Case: {name}")
     stock = {"cake": 2, "scone": 4, "sandwich": 5}
