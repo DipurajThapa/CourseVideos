@@ -1,0 +1,53 @@
+{
+  "id": "python-14",
+  "title": "Comprehensions: Transforming Data in One Line",
+  "language": "python",
+  "type": "lesson",
+  "module": "M3",
+  "badge": "Transformer",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "list comprehension",
+    "new value, for, optional if",
+    "filter with if at the end",
+    "conditional expression (if ... else) at the start",
+    "comprehension over tuples with unpacking",
+    "dictionary comprehension",
+    "set comprehension (as a mistake)",
+    "comprehension makes a new collection",
+    "when a normal loop is clearer",
+    "refactoring",
+    "rounding inside a comprehension"
+  ],
+  "prerequisites": [
+    "python-13"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_vegan_flawed.py",
+    "fixed_file": "examples/ai_vegan_fixed.py",
+    "flaw": "Asked to rewrite Asha's loop as a comprehension and keep the output the same, the AI wrote [round(price * 1.1, 2) for name, price, vegan in menu] and promised [3.85, 4.4]. It dropped the filter, so the program prints [3.85, 4.4, 4.68, 3.03]. Adding if vegan at the end fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "List and dictionary comprehensions are taught; set comprehensions appear only as Mistake 1, because curly brackets without a colon are a common slip.",
+    "Nested comprehensions and generator expressions are left out of the steps to keep one new idea per step; two for parts appear only in Think beyond.",
+    "The AI section adds verified files for each stage: Asha's loop, the AI's refactor without the filter, a run of three test cases, a misplaced if that raises a SyntaxError, the fixed line run on every case again, and a suggestion with curly brackets that fails every case."
+  ],
+  "outstanding_issues": [
+    "The error reports show the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

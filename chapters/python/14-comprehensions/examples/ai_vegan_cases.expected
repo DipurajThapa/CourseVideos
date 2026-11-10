@@ -1,0 +1,3 @@
+Normal -> [3.85, 3.03] FAIL
+No vegan -> [3.03] FAIL
+Same price -> [3.85, 3.85] pass

@@ -1,0 +1,3 @@
+Normal -> {3.85} FAIL
+No vegan -> set() FAIL
+Same price -> {3.85} FAIL
