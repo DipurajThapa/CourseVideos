@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-10T00:36:39+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-10T01:18:21+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -22,6 +22,7 @@ You can also ask Claude to do either.
 - **python-08**: Repeat a Set Number of Times: for Loops and range() ([chapters/python/08-for-loops](chapters/python/08-for-loops)), video: [chapters/python/08-for-loops/video/chapter.mp4](chapters/python/08-for-loops/video/chapter.mp4)
 - **python-09**: Debugging with AI: Reading Errors and Tracebacks ([chapters/python/09-debugging-with-ai](chapters/python/09-debugging-with-ai)), video: [chapters/python/09-debugging-with-ai/video/chapter.mp4](chapters/python/09-debugging-with-ai/video/chapter.mp4)
 - **python-10**: Boss Level 2: The Number Guessing Game ([chapters/python/10-project-guessing-game](chapters/python/10-project-guessing-game)), video: [chapters/python/10-project-guessing-game/video/chapter.mp4](chapters/python/10-project-guessing-game/video/chapter.mp4)
+- **python-11**: Lists: Keeping Many Values in Order ([chapters/python/11-lists](chapters/python/11-lists)), video: [chapters/python/11-lists/video/chapter.mp4](chapters/python/11-lists/video/chapter.mp4)
 
 ## Changes requested
 
