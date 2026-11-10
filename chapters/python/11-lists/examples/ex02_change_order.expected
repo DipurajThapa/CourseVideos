@@ -1,0 +1,5 @@
+['tea', 'cake', 'sandwich']
+['juice', 'tea', 'cake', 'sandwich']
+['juice', 'green tea', 'cake', 'sandwich']
+['juice', 'green tea', 'sandwich']
+sandwich ['juice', 'green tea']
