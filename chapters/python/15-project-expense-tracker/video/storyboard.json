@@ -1,0 +1,1990 @@
+{
+ "chapter_id": "python-15",
+ "number": 15,
+ "version": 3,
+ "title": "Chapter 15: Boss Level 3: The Expense Tracker",
+ "video_title": "Python Chapter 15: Boss Level 3, The Expense Tracker",
+ "summary": "At closing time, nobody at the Corner Cafe knows where the money went. Follow Asha as she plans, builds and tests an expense tracker with a list of tuples, a set of categories, checked amounts and a dictionary of totals. She uses an AI assistant at all six stages. Tests catch three confident AI mistakes: a model that loses data, max() on a dictionary, and a shorter line that crashes.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on Asha's scraps of paper and one question a learner can work out. Then the boss level title and the AI tease.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Where did the money go?",
+      "label": "The Corner Cafe",
+      "body": [
+       "Asha writes every expense on a scrap of paper."
+      ],
+      "pre": "  milk     12.50\n  beans    30.00\n  milk      8.00\n  cups      6.25"
+     },
+     "segments": [
+      {
+       "say": "It is closing time at the Corner Cafe. Today, Asha wrote every expense on a scrap of paper. Milk, coffee beans, paper cups.",
+       "focus": "pre"
+      },
+      {
+       "say": "Look closely. Milk appears twice."
+      }
+     ],
+     "ask": {
+      "question": "Which category cost the most today?"
+     },
+     "after": [
+      {
+       "say": "Beans, 30. Milk was bought twice, 12.50 and 8, so 20.50. Easy on four scraps of paper. Not on forty!"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 15 · BOSS LEVEL 3",
+      "title": "The Expense Tracker",
+      "subtitle": "",
+      "badge": "Reward: 300 XP and the Money Mapper badge"
+     },
+     "segments": [
+      {
+       "say": "Welcome to Chapter 15, the third boss level!"
+      },
+      {
+       "say": "You will combine lists, dictionaries, sets and tuples into one tool that answers that question for any day.",
+       "subtitle": "Record. Total. Find the biggest."
+      },
+      {
+       "say": "And an AI assistant will sound completely sure at every stage. Your tests will decide who is right."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mission",
+   "section": "The mission",
+   "title": "The mission",
+   "direction": "The tracker's job, then the table of what each chapter contributes, row by row.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "The expense tracker",
+      "label": "The mission",
+      "reveal": 0,
+      "items": [
+       "Asha types each expense: a category and an amount.",
+       "She types `done` when the cafe closes.",
+       "The tracker prints a total for each category, the day's total and the biggest category.",
+       "No answer may crash it."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here is the mission. Asha types each expense: a category, then an amount.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "When the cafe closes, she types done.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "The tracker then prints a total for each category, the total for the day, and the biggest category.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "And, like the biscuit jar game, no answer may crash it.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Everything you need",
+      "label": "The mission",
+      "columns": [
+       "Chapter",
+       "What you use from it"
+      ],
+      "rows": [
+       [
+        "7",
+        "A `while True` loop that stops with `break`"
+       ],
+       [
+        "11",
+        "A list that grows with `append()`, and `sorted()`"
+       ],
+       [
+        "12",
+        "A dictionary of totals, `get()`, `values()` and `sum()`"
+       ],
+       [
+        "13",
+        "A set of allowed categories, and tuples you unpack"
+       ],
+       [
+        "14",
+        "Running the old and the new version on the same test cases"
+       ],
+       [
+        "New",
+        "`replace()` with a third value, to check an amount"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "You know almost every piece. A while loop from Chapter 7.",
+       "focus_row": 0
+      },
+      {
+       "say": "A list from Chapter 11.",
+       "focus_row": 1
+      },
+      {
+       "say": "A dictionary from Chapter 12.",
+       "focus_row": 2
+      },
+      {
+       "say": "Sets and tuples from Chapter 13.",
+       "focus_row": 3
+      },
+      {
+       "say": "And a habit from Chapter 14: run the old and the new version on the same test cases.",
+       "focus_row": 4
+      },
+      {
+       "say": "Plus one small new tool: the replace method with a third value, to check an amount such as 12.50.",
+       "focus_row": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "build-preview",
+   "section": "What you will build",
+   "title": "What you will build",
+   "direction": "Show one finished day as the destination, line by line in the output.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/expense_tracker.py",
+      "heading": "The destination: one day",
+      "output": "project/expense_tracker.expected"
+     },
+     "segments": [
+      {
+       "say": "Here is where we are going. On the right, Asha types four expenses, the same four as on her scraps of paper.",
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+       ]
+      },
+      {
+       "say": "She types done. The tracker prints one row for each category, in alphabetical order.",
+       "out_highlight": [
+        10,
+        11,
+        12
+       ]
+      },
+      {
+       "say": "Then the number of expenses, the total for the day, and the biggest category: beans.",
+       "out_highlight": [
+        13,
+        14
+       ]
+      },
+      {
+       "say": "About twenty-five lines of code. By the end of this video, you will understand every one.",
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "criteria",
+   "section": "Acceptance criteria",
+   "title": "Acceptance criteria",
+   "direction": "Six criteria, revealed in groups. A quiz on criterion five, then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Done means all six are true",
+      "label": "Acceptance criteria",
+      "items": [
+       "Asks for a category and an amount until `done`.",
+       "Accepts only milk, beans, cups and repairs.",
+       "Accepts `30` or `12.50`, and gives a message for `12,50`, a word or a minus sign.",
+       "Prints a total for each category, in alphabetical order.",
+       "Prints the count, the day's total and the biggest category. An empty day prints `Biggest: none`.",
+       "Passes at least five test days with known results."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Asha writes down what done means first.",
+       "reveal": 0
+      },
+      {
+       "say": "One and two. It asks until done, and it accepts only four categories: milk, beans, cups and repairs.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Three. It accepts amounts such as 30 or 12.50. A comma, a word or a minus sign gets a message, not a crash.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Four and five. A total for each category, the day's total, and the biggest category. An empty day prints: Biggest, none.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And six. It passes at least five test days with known results.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which test day must print `Biggest: none`?",
+      "options": [
+       "A day with no expenses",
+       "A day with one expense",
+       "A day where milk costs the most",
+       "A day with a bad amount"
+      ],
+      "answer": 0,
+      "explain": "Criterion five: a day with no expenses has no biggest category, and it must not crash."
+     },
+     "segments": [
+      {
+       "say": "Quick check, using criterion five. Which test day must print: Biggest, none?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. A day with no expenses. There is no biggest category, and the tracker must not crash. Remember this day. It will matter."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "One tool: record, total, find the biggest.",
+       "Four categories, checked amounts.",
+       "Six criteria say when it is done."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. You know the tool, and what done means."
+      },
+      {
+       "say": "Next, Asha asks an AI assistant how to store the data."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plan",
+   "section": "Plan it with AI",
+   "title": "Plan it with AI",
+   "direction": "Stage 1: the AI suggests a dictionary model. Ask whether it keeps both milks, then the test, then Asha's model.",
+   "beats": [
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: review the data model",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner. I know lists, dictionaries, tuples and sets. I want to record the cafe's expenses: a category and an amount for each one. Do not write the program. Suggest how to store the expenses, and give one reason."
+       },
+       {
+        "role": "ai",
+        "text": "Store them in a dictionary. The category is the key and the amount is the value, for example `expenses[\"milk\"] = 12.50`.\nThen the totals are already there."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "In this project, all six AI stages help build one tracker, piece by piece. Stage 1: plan. Asha asks the AI how to store the expenses. No code yet."
+      },
+      {
+       "say": "The AI suggests a dictionary: the category is the key, and the amount is the value. It sounds tidy.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Now remember Asha's scraps of paper. Milk appears twice. And remember a rule from Chapter 12 about keys."
+      }
+     ],
+     "ask": {
+      "question": "Will this model keep both milk expenses, 12.50 and 8?"
+     },
+     "after": [
+      {
+       "say": "No. Keys in a dictionary are unique. Asha tests it anyway."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_plan_overwrite.py",
+      "heading": "Testing the AI's model",
+      "highlight": [
+       3,
+       4,
+       5
+      ],
+      "output": "examples/ai_plan_overwrite.expected"
+     },
+     "segments": [
+      {
+       "say": "Lines 3 to 5 store milk, then beans, then milk again."
+      },
+      {
+       "say": "The second milk replaced the first one. 12.50 has disappeared!",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "This is the AI skill of this chapter: let AI suggest a data model, then test it against your real data.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Asha's data model",
+      "label": "Plan it with AI",
+      "reveal": 0,
+      "items": [
+       "A **list of tuples**: one tuple for each expense, such as `(\"milk\", 12.5)`.",
+       "Nothing is ever lost: two milks are two tuples.",
+       "A **dictionary of totals** is built from the list at the end."
+      ]
+     },
+     "segments": [
+      {
+       "say": "So Asha chooses a different model. A list of tuples: one tuple for each expense.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Nothing is ever lost. Two milks are two tuples.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And at the end, the program builds a dictionary of totals from the list.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: A list of tuples",
+   "direction": "Teach append with a tuple and unpacking, then ask about line 8.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_record.py",
+      "heading": "Step 1: Each expense is a tuple",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Time to build. Step 1. Line 2 starts an empty list."
+      },
+      {
+       "say": "Lines 3 and 4 append one tuple each. Append takes one value, so each tuple has its own brackets.",
+       "highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Line 5 prints the list, and line 6 counts the expenses.",
+       "highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Line 7 unpacks the first tuple into two variables, as in Chapter 13. Index 0 is the first expense.",
+       "highlight": [
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 8 print?"
+     },
+     "after": [
+      {
+       "say": "Milk, 12.5. The first tuple gives category milk and amount 12.5.",
+       "output": "examples/ex01_record.expected",
+       "highlight": [
+        7,
+        8
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "And line 6 says 2 expenses.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Ask until done",
+   "direction": "Teach the loop and the set check, then stage 2: the AI predicts the messages, and the run confirms.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_categories.py",
+      "heading": "Step 2: Ask until done",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Run it to see the output.",
+      "note": "The user will type: Milk with a space before it, tea, done"
+     },
+     "segments": [
+      {
+       "say": "Step 2. Line 2 keeps the four allowed categories in a set."
+      },
+      {
+       "say": "Line 4 starts a loop that runs until break. Line 5 asks for a category, and calls two methods in a row. Strip removes the spaces, and lower makes small letters.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Lines 6 and 7: done stops the loop.",
+       "highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Lines 8 and 9: any answer that is not in the set gets a message.",
+       "highlight": [
+        8,
+        9
+       ]
+      },
+      {
+       "say": "Otherwise, lines 11 and 12 count it and confirm it.",
+       "highlight": [
+        10,
+        11,
+        12
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then check the messages",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote this loop myself. Do not change it. What does it print for these answers: Milk with a space before it, then tea, then done?",
+        "code": "examples/ex02_categories.py",
+        "code_lines": [
+         5,
+         6,
+         7,
+         8,
+         9,
+         10,
+         11,
+         12
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "`strip()` and `lower()` turn it into milk, which is in the set, so it prints `OK: milk`.\nTea is not in the set, so it prints the message.\nDone stops the loop, and the count is 1."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha wrote this loop herself. Before she runs it, she asks the AI what it prints for three answers. Make your own prediction too."
+      }
+     ],
+     "ask": {
+      "question": "Asha types Milk with a space before it. Does the set accept it?"
+     },
+     "after": [
+      {
+       "say": "Yes. The AI agrees: strip and lower turn it into milk, which is in the set. Tea gets the message, and done stops the loop.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2run",
+   "section": "Build it step by step",
+   "title": "Step 2: The real run",
+   "direction": "The real run confirms the AI's prediction, line by line.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_categories.py",
+      "heading": "Step 2: The real run",
+      "highlight": [
+       12
+      ],
+      "output": "examples/ex02_categories.expected",
+      "note": "The user typed: Milk with a space before it, tea, done"
+     },
+     "segments": [
+      {
+       "say": "Asha runs it. Milk with a space is accepted: OK, milk.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Tea gets the message.",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "And done stops the loop, with one category entered. The AI's prediction matches the real run.",
+       "highlight": [
+        13
+       ],
+       "out_highlight": [
+        5,
+        6
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Check an amount",
+   "direction": "Teach why isdigit fails for 12.50, the third value of replace, then ask which texts pass. A quiz, then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_amount_check.py",
+      "heading": "Step 3: Check an amount first",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Which texts give True?"
+     },
+     "segments": [
+      {
+       "say": "Step 3: the amount. In Chapter 10, is digit checked a whole number. But 12.50 has a decimal point, and is digit says False for it."
+      },
+      {
+       "say": "The fix: remove one decimal point first, then check. Replace takes an optional third value: how many changes to make. Line 2 removes one point, so 12.50 becomes 1250.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 3 removes only the first point of 1.2.3, so it becomes 12.3. That still has a point.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 4 loops over six texts, and line 5 prints each one with the result of the check.",
+       "highlight": [
+        4,
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which of the six texts on line 4 print `True`?"
+     },
+     "after": [
+      {
+       "say": "Only two: 12.50 and 30. A comma, a word, a second point and a minus sign all fail.",
+       "output": "examples/ex03_amount_check.expected",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Only text with at most one point and nothing but digits passes. Then float is safe.",
+       "out_highlight": [
+        5,
+        6,
+        7,
+        8
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which answer passes the amount check?",
+      "options": [
+       "`7,5`",
+       "`1..5`",
+       "`0.75`",
+       "`seven`"
+      ],
+      "answer": 2,
+      "explain": "`0.75` loses its one point and becomes `075`: all digits. `1..5` keeps a second point."
+     },
+     "segments": [
+      {
+       "say": "Quick check, with four new answers. Which one passes the amount check?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C, 0.75. Without its one point, it is 0 7 5: all digits. And 1, dot, dot, 5 keeps a second point, so it fails."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Each expense is a tuple in a list.",
+       "A set rejects unknown categories.",
+       "Check an amount, then convert it."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Relax your hands. The tracker can now collect clean expenses."
+      },
+      {
+       "say": "Next, the totals."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Add up each category",
+   "direction": "Teach get with a default, walk the milk twice, ask the milk total, reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_totals.py",
+      "heading": "Step 4: A total for each category",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the milk total."
+     },
+     "segments": [
+      {
+       "say": "Step 4. Line 2 is the list of tuples, with milk twice. Line 3 starts an empty dictionary of totals."
+      },
+      {
+       "say": "Line 4 unpacks each tuple into category and amount.",
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "Line 5 is the key line. Get gives the total so far, or 0 for a category with no total yet. Then it adds the amount.",
+       "highlight": [
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What total does line 6 show for milk?"
+     },
+     "after": [
+      {
+       "say": "20.5. The first milk found no total, so get gave 0, and the total became 12.5. The second milk added 8.",
+       "output": "examples/ex04_totals.expected",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: Print the table",
+   "direction": "Teach sorted keys and the format codes, then show the table.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_table.py",
+      "heading": "Step 5: The table",
+      "highlight": [
+       4
+      ],
+      "output": "examples/ex05_table.expected"
+     },
+     "segments": [
+      {
+       "say": "Step 5 prints the table. Line 4 loops over sorted totals: the keys in alphabetical order.",
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 5 is Chapter 3 formatting. Less than 8 fills the name to 8 characters. Greater than 7 point 2 f puts the amount on the right, with two decimal places.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 6 prints the count of expenses, and the sum of the values: 56.75.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: The biggest category",
+   "direction": "Stage 3 plants the AI mistake. The learner judges it, the test reveals milk. Stage 4: the AI lists test days but forgets the empty day. The runs, the empty-day error, the table, stage 5 debug, a re-run of every day. Quiz, breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: one line for the biggest",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My dictionary totals holds a total for each category. Write one line that finds the category with the biggest total. Tell me what it gives."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the line: `biggest = max(totals)`\nIt gives the category that cost the most."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Step 6: the biggest category. Stage 3: generate. Asha asks the AI for one line, and asks what it gives."
+      },
+      {
+       "say": "The AI writes biggest equals max of totals. It says this gives the category that cost the most. In Chapter 11, max found the largest number in a list, so it looks right.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "But remember what a loop over a dictionary gives you, from Chapter 12."
+      }
+     ],
+     "ask": {
+      "question": "The AI says `max(totals)` gives the category that cost the most. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Max goes through a dictionary like a loop does, so it compares the keys, not the totals. Asha tests it."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_biggest_flawed.py",
+      "heading": "Testing the AI's line",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_biggest_flawed.expected"
+     },
+     "segments": [
+      {
+       "say": "Beans cost 30, the most. But the line prints milk!",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Max compared the names. In alphabetical order, milk comes last.",
+       "highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: days with known results",
+      "messages": [
+       {
+        "role": "you",
+        "text": "List test days for my biggest-category line. For each day, give the totals and the category you expect."
+       },
+       {
+        "role": "ai",
+        "text": "Day 1: milk 20.5, beans 30, cups 6.25. Expect beans.\nDay 2: cups 9. Expect cups.\nDay 3: beans 5, repairs 45. Expect repairs."
+       },
+       {
+        "role": "you",
+        "text": "You forgot one day. My criteria say a day with no expenses prints Biggest: none. I am adding Day 4 with no expenses."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks the AI for test days, each with the answer it expects."
+      },
+      {
+       "say": "The AI lists three days: three categories, one category, and a day where repairs cost the most.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "But it forgot a day. Asha remembers criterion five, and adds a day with no expenses.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_max_tests.py",
+      "heading": "Stage 4, Test: three test days",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "hidden_text": "Which days give the right answer?"
+     },
+     "segments": [
+      {
+       "say": "Lines 2 to 4 hold the AI's three test days. Lines 5 to 7 run the AI's line on each one.",
+       "highlight": [
+        5,
+        6,
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which of the three days give the right answer?"
+     },
+     "after": [
+      {
+       "say": "Days 2 and 3. Day 1 fails with milk.",
+       "output": "examples/ai_max_tests.expected",
+       "highlight": [
+        5,
+        6,
+        7
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "But Day 3 passed only by luck: repairs is also last in alphabetical order. One passing test proves little.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_max_empty.py",
+      "heading": "Day 4: no expenses",
+      "highlight": [
+       2,
+       4
+      ],
+      "error": "examples/ai_max_empty.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Now Asha's own day 4: no expenses. Line 2 is an empty dictionary, and line 4 calls max.",
+       "out_highlight": []
+      },
+      {
+       "say": "The program prints Summary, then stops with a Value Error on line 4.",
+       "out_highlight": [
+        1,
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Test days for the AI's line",
+      "label": "Stage 4: Test",
+      "columns": [
+       "Test day",
+       "Expected",
+       "Real",
+       "Result"
+      ],
+      "rows": [
+       [
+        "Day 1: three categories",
+        "beans",
+        "milk",
+        "Fail"
+       ],
+       [
+        "Day 2: one category",
+        "cups",
+        "cups",
+        "Pass"
+       ],
+       [
+        "Day 3: repairs cost most",
+        "repairs",
+        "repairs",
+        "Pass, by luck"
+       ],
+       [
+        "Day 4: no expenses",
+        "none",
+        "error",
+        "Fail"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here are Asha's results. Day 1 fails.",
+       "focus_row": 0
+      },
+      {
+       "say": "Day 2 passes.",
+       "focus_row": 1
+      },
+      {
+       "say": "Day 3 passes, but only by luck.",
+       "focus_row": 2
+      },
+      {
+       "say": "And Day 4, the day the AI forgot, stops the program with an error.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "On a day with no expenses, my program stopped. Here are my lines and the full error. Explain the cause first. Then show a fix that works for every day.",
+        "code": "examples/ai_max_empty.py",
+        "code_lines": [
+         2,
+         3,
+         4
+        ],
+        "file": "examples/ai_max_empty.py",
+        "error": "examples/ai_max_empty.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "An empty dictionary has no keys, so `max()` has nothing to choose from. And `max()` compares the keys, not the totals.\nThe fix: start `biggest` at \"none\" and keep the biggest category so far in a loop."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha pastes her lines and the full error report. She asks for the cause first."
+      },
+      {
+       "say": "The AI explains: an empty dictionary has no keys, so max has nothing to choose from. And it agrees that max compares the keys.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Its fix: start biggest at the text none, and keep the biggest category so far in a loop."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_biggest_regression.py",
+      "heading": "Every test day again, with the loop",
+      "highlight": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "hidden_text": "Run it to see every day."
+     },
+     "segments": [
+      {
+       "say": "Asha does not trust the fix yet. She runs all four test days again. Lines 2 to 5 hold the four days, and the last one is empty.",
+       "highlight": [
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 7 starts biggest at none. Lines 8 to 10 check every category. A category wins if nothing is chosen yet, or if its total is bigger than the best so far.",
+       "highlight": [
+        7,
+        8,
+        9,
+        10
+       ]
+      },
+      {
+       "say": "Here are the results: beans, cups, repairs, and none for the empty day. All four days pass!",
+       "output": "examples/ai_biggest_regression.expected",
+       "highlight": [
+        11
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "What does `max()` compare when you give it a dictionary?",
+      "options": [
+       "The values",
+       "The keys",
+       "The newest entries",
+       "The amounts, rounded"
+      ],
+      "answer": 1,
+      "explain": "A dictionary gives its keys, like a loop over it, so `max()` compares the names."
+     },
+     "segments": [
+      {
+       "say": "Quick check. What does max compare when you give it a dictionary?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. The keys. A dictionary gives its keys, like a loop over it does."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`max()` on a dictionary compares names.",
+       "One test passed by luck, and the AI forgot a day.",
+       "After the fix, every day ran again."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. The AI was wrong, and sounded sure. Different test days caught it."
+      },
+      {
+       "say": "Now, the complete tracker."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step7",
+   "section": "Build it step by step",
+   "title": "Step 7: Put it together",
+   "direction": "Walk the complete tracker in two halves, each beside the real output, then a new prediction with a test copy.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/expense_tracker.py",
+      "heading": "Step 7: Collect the expenses",
+      "code_lines": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "highlight": [
+       2,
+       3
+      ],
+      "output": "project/expense_tracker.expected"
+     },
+     "segments": [
+      {
+       "say": "Step 7: the complete tracker, in two halves. Lines 2 and 3: the set of categories, and an empty list."
+      },
+      {
+       "say": "Lines 4 to 9 are the loop from step 2. On the right, Asha's four categories.",
+       "highlight": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+       ],
+       "out_highlight": [
+        1,
+        3,
+        5,
+        7,
+        9
+       ]
+      },
+      {
+       "say": "Lines 11 to 15 ask for the amount and check it, as in step 3. A good amount becomes a tuple in the list.",
+       "highlight": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+       ],
+       "out_highlight": [
+        2,
+        4,
+        6,
+        8
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/expense_tracker.py",
+      "heading": "Step 7: The summary",
+      "code_lines": [
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25
+      ],
+      "highlight": [
+       16,
+       17,
+       18
+      ],
+      "output": "project/expense_tracker.expected"
+     },
+     "segments": [
+      {
+       "say": "The second half. Lines 16 to 18 build the totals, as in step 4."
+      },
+      {
+       "say": "The loop on lines 20 to 23 does two jobs. It prints each row, and it keeps the biggest category so far.",
+       "highlight": [
+        19,
+        20,
+        21,
+        22,
+        23
+       ],
+       "out_highlight": [
+        10,
+        11,
+        12
+       ]
+      },
+      {
+       "say": "And lines 24 and 25 print the summary.",
+       "highlight": [
+        24,
+        25
+       ],
+       "out_highlight": [
+        13,
+        14
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_two_cups.py",
+      "heading": "Predict: two cups",
+      "code_lines": [
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25
+      ],
+      "highlight": [
+       24
+      ],
+      "hidden_text": "Predict line 24.",
+      "note": "Asha types: cups, 2, cups, 3.5, done"
+     },
+     "segments": [
+      {
+       "say": "Your turn. Asha buys paper cups twice: 2, then 3.5. Then she types done."
+      }
+     ],
+     "ask": {
+      "question": "What does line 24 print?"
+     },
+     "after": [
+      {
+       "say": "Expenses, 2. Total, 5.50. Both cups went into the list, and the totals added them into one row.",
+       "output": "examples/test_two_cups.expected",
+       "highlight": [
+        24
+       ],
+       "out_highlight": [
+        6,
+        7
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "section": "Test it",
+   "title": "Test it",
+   "direction": "The five whole-day tests with expected results, a prediction on bad amounts, the other runs as proof, then the results table.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Five test days",
+      "label": "Test it",
+      "columns": [
+       "Test",
+       "Answers typed",
+       "Expected last lines"
+      ],
+      "rows": [
+       [
+        "A normal day",
+        "milk 12.50, beans 30, Milk 8, cups 6.25",
+        "Total: 56.75, Biggest: beans"
+       ],
+       [
+        "An empty day",
+        "done",
+        "Total: 0.00, Biggest: none"
+       ],
+       [
+        "Bad amounts",
+        "milk 12,50, milk twelve, milk 12.50",
+        "two messages, then Total: 12.50"
+       ],
+       [
+        "Unknown categories",
+        "tea, cake, then repairs 45",
+        "two messages, then Biggest: repairs"
+       ],
+       [
+        "One expense",
+        "cups 9",
+        "Total: 9.00, Biggest: cups"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Criterion six says: test it. Each test is a copy of the tracker, with its own typed answers and an expected result."
+      },
+      {
+       "say": "A normal day, the day you saw at the start.",
+       "focus_row": 0
+      },
+      {
+       "say": "An empty day.",
+       "focus_row": 1
+      },
+      {
+       "say": "Bad amounts, with a comma and a word.",
+       "focus_row": 2
+      },
+      {
+       "say": "Unknown categories.",
+       "focus_row": 3
+      },
+      {
+       "say": "And one expense.",
+       "focus_row": 4
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_bad_amount.py",
+      "heading": "Test: bad amounts",
+      "code_lines": [
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "highlight": [
+       12
+      ],
+      "hidden_text": "Predict the count of expenses.",
+      "note": "Asha types: milk, 12,50, milk, twelve, milk, 12.50, done"
+     },
+     "segments": [
+      {
+       "say": "The bad amounts test. Asha types milk with 12 comma 50, then milk with the word twelve, then milk with 12.50. Line 12 checks each amount."
+      }
+     ],
+     "ask": {
+      "question": "How many expenses does the summary count?"
+     },
+     "after": [
+      {
+       "say": "One. Each bad amount got a message and was never added. Only 12.50 counted. Pass!",
+       "output": "examples/test_bad_amount.expected",
+       "out_highlight": [
+        3,
+        6,
+        11
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_empty.py",
+      "heading": "Test: an empty day",
+      "code_lines": [
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25
+      ],
+      "highlight": [
+       19,
+       25
+      ],
+      "output": "examples/test_empty.expected",
+      "note": "Asha types: done"
+     },
+     "segments": [
+      {
+       "say": "The empty day: Total, 0.00, and Biggest, none. No crash. Pass!",
+       "out_highlight": [
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_unknown.py",
+      "heading": "Test: unknown categories",
+      "code_lines": [
+       4,
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "highlight": [
+       5,
+       8,
+       9
+      ],
+      "output": "examples/test_unknown.expected",
+      "note": "Asha types: tea, cake, repairs with spaces, 45, done"
+     },
+     "segments": [
+      {
+       "say": "Unknown categories. Tea and cake each get the message. Repairs, with spaces around it, is cleaned and accepted. Pass!",
+       "out_highlight": [
+        2,
+        4,
+        9,
+        10
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_one.py",
+      "heading": "Test: one expense",
+      "code_lines": [
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25
+      ],
+      "highlight": [
+       20,
+       21
+      ],
+      "output": "examples/test_one.expected",
+      "note": "Asha types: cups, 9, done"
+     },
+     "segments": [
+      {
+       "say": "One expense: cups, 9.00, and Biggest, cups. Pass!",
+       "out_highlight": [
+        4,
+        5,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Five test days: results",
+      "label": "Test it",
+      "columns": [
+       "Test",
+       "Expected last lines",
+       "Result"
+      ],
+      "rows": [
+       [
+        "A normal day",
+        "Total: 56.75, Biggest: beans",
+        "Pass"
+       ],
+       [
+        "An empty day",
+        "Total: 0.00, Biggest: none",
+        "Pass"
+       ],
+       [
+        "Bad amounts",
+        "two messages, then Total: 12.50",
+        "Pass"
+       ],
+       [
+        "Unknown categories",
+        "two messages, then Biggest: repairs",
+        "Pass"
+       ],
+       [
+        "One expense",
+        "Total: 9.00, Biggest: cups",
+        "Pass"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "The normal day matched at the start of this video.",
+       "focus_row": 0
+      },
+      {
+       "say": "And the other four runs you saw match too. All five test days pass.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "improve",
+   "section": "Improve it with AI",
+   "title": "Improve it with AI",
+   "direction": "Stage 6: the AI suggests plus equals. Ask what happens to the first milk, then the error on its own screen. Then the six stages table, and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: a shorter line?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Every test passes. Suggest one way to make lines 16 to 18 shorter. Do not change what the program prints.",
+        "code": "project/expense_tracker.py",
+        "code_lines": [
+         16,
+         17,
+         18
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Use `totals[category] += amount` on line 18. Plus equals adds the amount to the total, so you do not need `get()`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Every test passes. Asha asks for one way to make lines 16 to 18 shorter, and says: do not change what it prints."
+      },
+      {
+       "say": "The AI suggests plus equals on line 18, without get. It sounds shorter and sensible.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Remember why line 18 uses get. Plus equals must read the old total first."
+      }
+     ],
+     "ask": {
+      "question": "With `+=`, what happens when the first milk arrives?"
+     },
+     "after": [
+      {
+       "say": "There is no milk total yet, so Python cannot read it. Asha tests it on three expenses."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_totals_keyerror.py",
+      "heading": "Testing the AI's suggestion",
+      "highlight": [
+       5
+      ],
+      "error": "examples/ai_totals_keyerror.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Line 5 uses plus equals. The first milk has no total, and Python stops with a Key Error.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The shorter line breaks the program, so Asha keeps get, with its default of 0.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Six stages while building one tracker",
+      "label": "Work with AI",
+      "columns": [
+       "Stage",
+       "How AI helped",
+       "Asha's check"
+      ],
+      "rows": [
+       [
+        "Plan",
+        "Suggested a dictionary model",
+        "A test lost the second milk"
+       ],
+       [
+        "Write",
+        "Predicted the loop's messages",
+        "Ran it with three answers"
+       ],
+       [
+        "Generate",
+        "Wrote `max(totals)`",
+        "Remembered a dictionary gives keys"
+       ],
+       [
+        "Test",
+        "Helped list test days",
+        "One passed only by luck"
+       ],
+       [
+        "Debug",
+        "Explained the empty day",
+        "Ran every day again"
+       ],
+       [
+        "Improve",
+        "Said: use `+=`",
+        "A test gave a `KeyError`"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here are all six stages on one tracker."
+      },
+      {
+       "say": "The AI helped at every stage, from the data model to the review.",
+       "focus_row": 0
+      },
+      {
+       "say": "And it was confidently wrong three times: the model, the biggest category, and the shorter line.",
+       "focus_row": 2
+      },
+      {
+       "say": "Every time, a test with a known result caught it.",
+       "focus_row": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "AI helped at all six stages.",
+       "It was wrong three times, and sounded sure.",
+       "Tests with known results caught every mistake."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. You built a real data tool, and you made the decisions."
+      },
+      {
+       "say": "Let's recap."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Recap points one by one, a final quiz, the badge and the practice table.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you used",
+      "items": [
+       "Keep each record as a tuple in a list, so nothing is lost.",
+       "Build totals with `get(key, 0)`. A set of allowed values rejects anything else.",
+       "`replace(\".\", \"\", 1)` and `isdigit()` check an amount before `float()`.",
+       "`max()` on a dictionary compares the keys. Keep the biggest so far in a loop.",
+       "Test several days, including an empty one. One test can pass by luck."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Here is what you used in this boss level."
+      },
+      {
+       "say": "Keep each record as a tuple in a list, so nothing is lost.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Build totals with get and a default of 0. A set of allowed values rejects anything else.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Replace with a third value, and is digit, check an amount before float converts it.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Max on a dictionary compares the keys. To find the biggest total, keep the biggest so far in a loop.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And test several days, including an empty one. One test can pass by luck.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Asha types `Beans` and then `12.5.0`. What does the tracker print next?",
+      "options": [
+       "OK: beans",
+       "Use milk, beans, cups or repairs.",
+       "A ValueError",
+       "Type an amount like 12.50."
+      ],
+      "answer": 3,
+      "explain": "`Beans` becomes `beans`, which is allowed. `12.5.0` keeps a second point after one is removed, so the check fails."
+     },
+     "segments": [
+      {
+       "say": "One last check. Asha types Beans with a capital B, then the amount 12.5.0. What does the tracker print next?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Lower makes beans, which is allowed. But 12.5.0 keeps a second point after one is removed, so the amount check fails, with a message, not a crash."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "BOSS LEVEL COMPLETE",
+      "title": "Money Mapper",
+      "subtitle": "You earned 300 XP. Module 3 is complete.",
+      "badge": "Badge unlocked: Money Mapper",
+      "tile": 15
+     },
+     "segments": [
+      {
+       "say": "Boss level complete! You earned 300 XP and the Money Mapper badge. And Module 3 is done."
+      }
+     ],
+     "hold": 1.5
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Two expenses in a list; Is it an amount?; Allowed or not",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Totals by category; Ask until the amount is valid; The smallest category",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Over budget; Fix the AI's tracker",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "The practice file has eight more tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-ups, worth 10 XP each, such as checking an amount.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including the smallest category.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, you fix an AI's tracker that forgets its totals.",
+       "focus_row": 2
+      },
+      {
+       "say": "Write down the expected result before you run each one.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease functions as the way to reuse the summary. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 16",
+      "title": "Functions: Reusable Blocks of Logic",
+      "subtitle": "Write it once. Use it everywhere.",
+      "badge": "",
+      "tile": 16
+     },
+     "segments": [
+      {
+       "say": "Asha's tracker works. But the biggest-category loop appears in her tests, her fix and her tracker. Three copies of the same code."
+      },
+      {
+       "say": "In Chapter 16, you will learn functions: named blocks of code that you write once and use many times."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 16."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+Category (or done): milk
+Amount: 12,50
+Type an amount like 12.50.
+Category (or done): milk
+Amount: twelve
+Type an amount like 12.50.
+Category (or done): milk
+Amount: 12.50
+Category (or done): done
+milk      12.50
+Expenses: 1  Total: 12.50
+Biggest: milk

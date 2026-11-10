@@ -1,0 +1,1363 @@
+1
+00:00:00,250 --> 00:00:03,031
+It is closing time at the Corner Cafe.
+
+2
+00:00:03,051 --> 00:00:06,865
+Today, Asha wrote every expense on a scrap
+of paper.
+
+3
+00:00:06,885 --> 00:00:09,150
+Milk, coffee beans, paper cups.
+
+4
+00:00:09,200 --> 00:00:10,252
+Look closely.
+
+5
+00:00:10,272 --> 00:00:11,819
+Milk appears twice.
+
+6
+00:00:23,180 --> 00:00:24,238
+Beans, 30.
+
+7
+00:00:24,258 --> 00:00:29,087
+Milk was bought twice, 12.50 and 8, so
+20.50.
+
+8
+00:00:29,107 --> 00:00:32,212
+Easy on four scraps of paper.
+
+9
+00:00:32,232 --> 00:00:33,613
+Not on forty!
+
+10
+00:00:34,220 --> 00:00:37,400
+Welcome to Chapter 15, the third boss
+level!
+
+11
+00:00:37,433 --> 00:00:42,970
+You will combine lists, dictionaries, sets
+and tuples into one tool that answers that
+
+12
+00:00:42,990 --> 00:00:44,343
+question for any day.
+
+13
+00:00:44,367 --> 00:00:48,866
+And an AI assistant will sound completely
+sure at every stage.
+
+14
+00:00:48,886 --> 00:00:51,491
+Your tests will decide who is right.
+
+15
+00:00:52,083 --> 00:00:53,527
+Here is the mission.
+
+16
+00:00:53,547 --> 00:00:57,333
+Asha types each expense: a category, then
+an amount.
+
+17
+00:00:57,367 --> 00:01:00,017
+When the cafe closes, she types done.
+
+18
+00:01:00,067 --> 00:01:05,303
+The tracker then prints a total for each
+category, the total for the day, and the
+
+19
+00:01:05,323 --> 00:01:06,407
+biggest category.
+
+20
+00:01:06,433 --> 00:01:09,895
+And, like the biscuit jar game, no answer
+may crash it.
+
+21
+00:01:10,487 --> 00:01:12,382
+You know almost every piece.
+
+22
+00:01:12,402 --> 00:01:14,297
+A while loop from Chapter 7.
+
+23
+00:01:14,333 --> 00:01:16,213
+A list from Chapter 11.
+
+24
+00:01:16,233 --> 00:01:18,463
+A dictionary from Chapter 12.
+
+25
+00:01:18,500 --> 00:01:21,110
+Sets and tuples from Chapter 13.
+
+26
+00:01:21,133 --> 00:01:27,570
+And a habit from Chapter 14: run the old
+and the new version on the same test
+
+27
+00:01:27,590 --> 00:01:28,073
+cases.
+
+28
+00:01:28,100 --> 00:01:32,782
+Plus one small new tool: the replace
+method with a third value, to check an
+
+29
+00:01:32,802 --> 00:01:34,098
+amount such as 12.50.
+
+30
+00:01:34,683 --> 00:01:36,455
+Here is where we are going.
+
+31
+00:01:36,475 --> 00:01:41,763
+On the right, Asha types four expenses,
+the same four as on her scraps of paper.
+
+32
+00:01:41,800 --> 00:01:42,817
+She types done.
+
+33
+00:01:42,837 --> 00:01:47,520
+The tracker prints one row for each
+category, in alphabetical order.
+
+34
+00:01:47,567 --> 00:01:52,737
+Then the number of expenses, the total for
+the day, and the biggest category: beans.
+
+35
+00:01:52,767 --> 00:01:54,682
+About twenty-five lines of code.
+
+36
+00:01:54,702 --> 00:01:58,069
+By the end of this video, you will
+understand every one.
+
+37
+00:01:58,650 --> 00:02:01,990
+Asha writes down what done means first.
+
+38
+00:02:02,033 --> 00:02:02,804
+One and two.
+
+39
+00:02:02,824 --> 00:02:07,946
+It asks until done, and it accepts only
+four categories: milk, beans, cups and
+
+40
+00:02:07,966 --> 00:02:08,473
+repairs.
+
+41
+00:02:08,500 --> 00:02:08,899
+Three.
+
+42
+00:02:08,919 --> 00:02:11,626
+It accepts amounts such as 30 or 12.50.
+
+43
+00:02:11,646 --> 00:02:15,820
+A comma, a word or a minus sign gets a
+message, not a crash.
+
+44
+00:02:15,867 --> 00:02:16,771
+Four and five.
+
+45
+00:02:16,791 --> 00:02:21,326
+A total for each category, the day's
+total, and the biggest category.
+
+46
+00:02:21,346 --> 00:02:23,637
+An empty day prints: Biggest, none.
+
+47
+00:02:23,667 --> 00:02:24,180
+And six.
+
+48
+00:02:24,200 --> 00:02:27,710
+It passes at least five test days with
+known results.
+
+49
+00:02:28,320 --> 00:02:30,631
+Quick check, using criterion five.
+
+50
+00:02:30,651 --> 00:02:33,441
+Which test day must print: Biggest, none?
+
+51
+00:02:44,813 --> 00:02:44,933
+A.
+
+52
+00:02:44,953 --> 00:02:46,541
+A day with no expenses.
+
+53
+00:02:46,561 --> 00:02:50,806
+There is no biggest category, and the
+tracker must not crash.
+
+54
+00:02:50,826 --> 00:02:52,065
+Remember this day.
+
+55
+00:02:52,085 --> 00:02:53,113
+It will matter.
+
+56
+00:02:53,720 --> 00:02:54,701
+Take a breather.
+
+57
+00:02:54,721 --> 00:02:57,140
+You know the tool, and what done means.
+
+58
+00:02:57,167 --> 00:03:01,366
+Next, Asha asks an AI assistant how to
+store the data.
+
+59
+00:03:06,117 --> 00:03:11,929
+In this project, all six AI stages help
+build one tracker, piece by piece.
+
+60
+00:03:11,949 --> 00:03:13,032
+Stage 1: plan.
+
+61
+00:03:13,052 --> 00:03:16,421
+Asha asks the AI how to store the
+expenses.
+
+62
+00:03:16,441 --> 00:03:17,367
+No code yet.
+
+63
+00:03:17,400 --> 00:03:23,342
+The AI suggests a dictionary: the category
+is the key, and the amount is the value.
+
+64
+00:03:23,362 --> 00:03:24,420
+It sounds tidy.
+
+65
+00:03:24,467 --> 00:03:27,087
+Now remember Asha's scraps of paper.
+
+66
+00:03:27,107 --> 00:03:28,481
+Milk appears twice.
+
+67
+00:03:28,501 --> 00:03:31,929
+And remember a rule from Chapter 12 about
+keys.
+
+68
+00:03:43,280 --> 00:03:43,481
+No.
+
+69
+00:03:43,501 --> 00:03:45,839
+Keys in a dictionary are unique.
+
+70
+00:03:45,859 --> 00:03:47,386
+Asha tests it anyway.
+
+71
+00:03:47,987 --> 00:03:52,397
+Lines 3 to 5 store milk, then beans, then
+milk again.
+
+72
+00:03:52,433 --> 00:03:55,853
+The second milk replaced the first one.
+
+73
+00:03:55,873 --> 00:03:57,793
+12.50 has disappeared!
+
+74
+00:03:57,833 --> 00:04:03,682
+This is the AI skill of this chapter: let
+AI suggest a data model, then test it
+
+75
+00:04:03,702 --> 00:04:05,390
+against your real data.
+
+76
+00:04:05,987 --> 00:04:08,338
+So Asha chooses a different model.
+
+77
+00:04:08,358 --> 00:04:11,477
+A list of tuples: one tuple for each
+expense.
+
+78
+00:04:11,500 --> 00:04:13,146
+Nothing is ever lost.
+
+79
+00:04:13,166 --> 00:04:15,130
+Two milks are two tuples.
+
+80
+00:04:15,167 --> 00:04:19,171
+And at the end, the program builds a
+dictionary of totals from the list.
+
+81
+00:04:19,750 --> 00:04:20,933
+Time to build.
+
+82
+00:04:20,953 --> 00:04:21,534
+Step 1.
+
+83
+00:04:21,554 --> 00:04:23,940
+Line 2 starts an empty list.
+
+84
+00:04:23,967 --> 00:04:26,607
+Lines 3 and 4 append one tuple each.
+
+85
+00:04:26,627 --> 00:04:30,967
+Append takes one value, so each tuple has
+its own brackets.
+
+86
+00:04:31,000 --> 00:04:35,210
+Line 5 prints the list, and line 6 counts
+the expenses.
+
+87
+00:04:35,233 --> 00:04:40,916
+Line 7 unpacks the first tuple into two
+variables, as in Chapter 13.
+
+88
+00:04:40,936 --> 00:04:43,348
+Index 0 is the first expense.
+
+89
+00:04:54,713 --> 00:04:55,758
+Milk, 12.5.
+
+90
+00:04:55,778 --> 00:05:00,793
+The first tuple gives category milk and
+amount 12.5.
+
+91
+00:05:00,833 --> 00:05:03,268
+And line 6 says 2 expenses.
+
+92
+00:05:03,850 --> 00:05:04,330
+Step 2.
+
+93
+00:05:04,350 --> 00:05:07,900
+Line 2 keeps the four allowed categories
+in a set.
+
+94
+00:05:07,933 --> 00:05:10,855
+Line 4 starts a loop that runs until
+break.
+
+95
+00:05:10,875 --> 00:05:14,892
+Line 5 asks for a category, and calls two
+methods in a row.
+
+96
+00:05:14,912 --> 00:05:18,723
+Strip removes the spaces, and lower makes
+small letters.
+
+97
+00:05:18,767 --> 00:05:21,937
+Lines 6 and 7: done stops the loop.
+
+98
+00:05:21,967 --> 00:05:26,337
+Lines 8 and 9: any answer that is not in
+the set gets a message.
+
+99
+00:05:26,367 --> 00:05:30,204
+Otherwise, lines 11 and 12 count it and
+confirm it.
+
+100
+00:05:30,820 --> 00:05:31,848
+Stage 2: write.
+
+101
+00:05:31,868 --> 00:05:33,874
+Asha wrote this loop herself.
+
+102
+00:05:33,894 --> 00:05:38,694
+Before she runs it, she asks the AI what
+it prints for three answers.
+
+103
+00:05:38,714 --> 00:05:40,720
+Make your own prediction too.
+
+104
+00:05:52,080 --> 00:05:52,342
+Yes.
+
+105
+00:05:52,362 --> 00:05:57,268
+The AI agrees: strip and lower turn it
+into milk, which is in the set.
+
+106
+00:05:57,288 --> 00:06:00,506
+Tea gets the message, and done stops the
+loop.
+
+107
+00:06:01,083 --> 00:06:01,880
+Asha runs it.
+
+108
+00:06:01,900 --> 00:06:04,393
+Milk with a space is accepted: OK, milk.
+
+109
+00:06:04,433 --> 00:06:06,973
+Tea gets the message.
+
+110
+00:06:07,000 --> 00:06:10,633
+And done stops the loop, with one category
+entered.
+
+111
+00:06:10,653 --> 00:06:13,570
+The AI's prediction matches the real run.
+
+112
+00:06:14,150 --> 00:06:15,790
+Step 3: the amount.
+
+113
+00:06:15,810 --> 00:06:19,895
+In Chapter 10, is digit checked a whole
+number.
+
+114
+00:06:19,915 --> 00:06:25,310
+But 12.50 has a decimal point, and is
+digit says False for it.
+
+115
+00:06:25,333 --> 00:06:29,768
+The fix: remove one decimal point first,
+then check.
+
+116
+00:06:29,788 --> 00:06:35,251
+Replace takes an optional third value: how
+many changes to make.
+
+117
+00:06:35,271 --> 00:06:39,363
+Line 2 removes one point, so 12.50 becomes
+1250.
+
+118
+00:06:39,400 --> 00:06:44,225
+Line 3 removes only the first point of
+1.2.3, so it becomes 12.3.
+
+119
+00:06:44,245 --> 00:06:45,940
+That still has a point.
+
+120
+00:06:45,967 --> 00:06:53,319
+Line 4 loops over six texts, and line 5
+prints each one with the result of the
+
+121
+00:06:53,339 --> 00:06:53,886
+check.
+
+122
+00:07:05,247 --> 00:07:07,294
+Only two: 12.50 and 30.
+
+123
+00:07:07,314 --> 00:07:12,507
+A comma, a word, a second point and a
+minus sign all fail.
+
+124
+00:07:12,533 --> 00:07:17,590
+Only text with at most one point and
+nothing but digits passes.
+
+125
+00:07:17,610 --> 00:07:19,121
+Then float is safe.
+
+126
+00:07:19,720 --> 00:07:21,864
+Quick check, with four new answers.
+
+127
+00:07:21,884 --> 00:07:23,967
+Which one passes the amount check?
+
+128
+00:07:35,347 --> 00:07:36,124
+C, 0.75.
+
+129
+00:07:36,144 --> 00:07:40,809
+Without its one point, it is 0 7 5: all
+digits.
+
+130
+00:07:40,829 --> 00:07:46,093
+And 1, dot, dot, 5 keeps a second point,
+so it fails.
+
+131
+00:07:46,687 --> 00:07:47,276
+Breather.
+
+132
+00:07:47,296 --> 00:07:48,426
+Relax your hands.
+
+133
+00:07:48,446 --> 00:07:51,337
+The tracker can now collect clean
+expenses.
+
+134
+00:07:51,367 --> 00:07:52,985
+Next, the totals.
+
+135
+00:07:57,717 --> 00:07:58,238
+Step 4.
+
+136
+00:07:58,258 --> 00:08:01,795
+Line 2 is the list of tuples, with milk
+twice.
+
+137
+00:08:01,815 --> 00:08:05,197
+Line 3 starts an empty dictionary of
+totals.
+
+138
+00:08:05,233 --> 00:08:08,853
+Line 4 unpacks each tuple into category
+and amount.
+
+139
+00:08:08,900 --> 00:08:10,768
+Line 5 is the key line.
+
+140
+00:08:10,788 --> 00:08:16,186
+Get gives the total so far, or 0 for a
+category with no total yet.
+
+141
+00:08:16,206 --> 00:08:18,156
+Then it adds the amount.
+
+142
+00:08:29,513 --> 00:08:29,973
+20.5.
+
+143
+00:08:29,993 --> 00:08:36,877
+The first milk found no total, so get gave
+0, and the total became 12.5.
+
+144
+00:08:36,897 --> 00:08:39,178
+The second milk added 8.
+
+145
+00:08:39,750 --> 00:08:41,511
+Step 5 prints the table.
+
+146
+00:08:41,531 --> 00:08:46,260
+Line 4 loops over sorted totals: the keys
+in alphabetical order.
+
+147
+00:08:46,300 --> 00:08:48,651
+Line 5 is Chapter 3 formatting.
+
+148
+00:08:48,671 --> 00:08:51,939
+Less than 8 fills the name to 8
+characters.
+
+149
+00:08:51,959 --> 00:08:57,980
+Greater than 7 point 2 f puts the amount
+on the right, with two decimal places.
+
+150
+00:08:58,000 --> 00:09:04,369
+Line 6 prints the count of expenses, and
+the sum of the values: 56.75.
+
+151
+00:09:04,950 --> 00:09:06,877
+Step 6: the biggest category.
+
+152
+00:09:06,897 --> 00:09:08,085
+Stage 3: generate.
+
+153
+00:09:08,105 --> 00:09:11,710
+Asha asks the AI for one line, and asks
+what it gives.
+
+154
+00:09:11,733 --> 00:09:14,785
+The AI writes biggest equals max of
+totals.
+
+155
+00:09:14,805 --> 00:09:18,428
+It says this gives the category that cost
+the most.
+
+156
+00:09:18,448 --> 00:09:23,643
+In Chapter 11, max found the largest
+number in a list, so it looks right.
+
+157
+00:09:23,667 --> 00:09:28,791
+But remember what a loop over a dictionary
+gives you, from Chapter 12.
+
+158
+00:09:40,147 --> 00:09:40,339
+No.
+
+159
+00:09:40,359 --> 00:09:46,001
+Max goes through a dictionary like a loop
+does, so it compares the keys, not the
+
+160
+00:09:46,021 --> 00:09:46,496
+totals.
+
+161
+00:09:46,516 --> 00:09:47,487
+Asha tests it.
+
+162
+00:09:48,087 --> 00:09:50,011
+Beans cost 30, the most.
+
+163
+00:09:50,031 --> 00:09:52,037
+But the line prints milk!
+
+164
+00:09:52,067 --> 00:09:53,705
+Max compared the names.
+
+165
+00:09:53,725 --> 00:09:56,518
+In alphabetical order, milk comes last.
+
+166
+00:09:57,120 --> 00:09:58,229
+Stage 4: test.
+
+167
+00:09:58,249 --> 00:10:03,390
+Asha asks the AI for test days, each with
+the answer it expects.
+
+168
+00:10:03,433 --> 00:10:09,291
+The AI lists three days: three categories,
+one category, and a day where repairs cost
+
+169
+00:10:09,311 --> 00:10:09,913
+the most.
+
+170
+00:10:09,933 --> 00:10:11,427
+But it forgot a day.
+
+171
+00:10:11,447 --> 00:10:16,195
+Asha remembers criterion five, and adds a
+day with no expenses.
+
+172
+00:10:16,787 --> 00:10:20,388
+Lines 2 to 4 hold the AI's three test
+days.
+
+173
+00:10:20,408 --> 00:10:24,010
+Lines 5 to 7 run the AI's line on each
+one.
+
+174
+00:10:35,380 --> 00:10:36,541
+Days 2 and 3.
+
+175
+00:10:36,561 --> 00:10:38,540
+Day 1 fails with milk.
+
+176
+00:10:38,567 --> 00:10:44,229
+But Day 3 passed only by luck: repairs is
+also last in alphabetical order.
+
+177
+00:10:44,249 --> 00:10:46,610
+One passing test proves little.
+
+178
+00:10:47,220 --> 00:10:50,153
+Now Asha's own day 4: no expenses.
+
+179
+00:10:50,173 --> 00:10:54,670
+Line 2 is an empty dictionary, and line 4
+calls max.
+
+180
+00:10:54,700 --> 00:10:59,473
+The program prints Summary, then stops
+with a Value Error on line 4.
+
+181
+00:11:00,087 --> 00:11:02,153
+Here are Asha's results.
+
+182
+00:11:02,173 --> 00:11:03,197
+Day 1 fails.
+
+183
+00:11:03,233 --> 00:11:04,633
+Day 2 passes.
+
+184
+00:11:04,667 --> 00:11:07,417
+Day 3 passes, but only by luck.
+
+185
+00:11:07,467 --> 00:11:11,857
+And Day 4, the day the AI forgot, stops
+the program with an error.
+
+186
+00:11:12,453 --> 00:11:13,537
+Stage 5: debug.
+
+187
+00:11:13,557 --> 00:11:17,069
+Asha pastes her lines and the full error
+report.
+
+188
+00:11:17,089 --> 00:11:19,203
+She asks for the cause first.
+
+189
+00:11:19,233 --> 00:11:24,938
+The AI explains: an empty dictionary has
+no keys, so max has nothing to choose
+
+190
+00:11:24,958 --> 00:11:25,304
+from.
+
+191
+00:11:25,324 --> 00:11:28,313
+And it agrees that max compares the keys.
+
+192
+00:11:28,333 --> 00:11:33,764
+Its fix: start biggest at the text none,
+and keep the biggest category so far in a
+
+193
+00:11:33,784 --> 00:11:34,096
+loop.
+
+194
+00:11:34,687 --> 00:11:36,891
+Asha does not trust the fix yet.
+
+195
+00:11:36,911 --> 00:11:39,255
+She runs all four test days again.
+
+196
+00:11:39,275 --> 00:11:43,357
+Lines 2 to 5 hold the four days, and the
+last one is empty.
+
+197
+00:11:43,400 --> 00:11:45,502
+Line 7 starts biggest at none.
+
+198
+00:11:45,522 --> 00:11:47,977
+Lines 8 to 10 check every category.
+
+199
+00:11:47,997 --> 00:11:53,917
+A category wins if nothing is chosen yet,
+or if its total is bigger than the best so
+
+200
+00:11:53,937 --> 00:11:54,200
+far.
+
+201
+00:11:54,233 --> 00:11:59,331
+Here are the results: beans, cups,
+repairs, and none for the empty day.
+
+202
+00:11:59,351 --> 00:12:00,700
+All four days pass!
+
+203
+00:12:01,320 --> 00:12:01,996
+Quick check.
+
+204
+00:12:02,016 --> 00:12:05,012
+What does max compare when you give it a
+dictionary?
+
+205
+00:12:16,380 --> 00:12:16,507
+B.
+
+206
+00:12:16,527 --> 00:12:17,170
+The keys.
+
+207
+00:12:17,190 --> 00:12:21,146
+A dictionary gives its keys, like a loop
+over it does.
+
+208
+00:12:21,753 --> 00:12:22,326
+Breather.
+
+209
+00:12:22,346 --> 00:12:24,629
+The AI was wrong, and sounded sure.
+
+210
+00:12:24,649 --> 00:12:26,603
+Different test days caught it.
+
+211
+00:12:26,633 --> 00:12:28,399
+Now, the complete tracker.
+
+212
+00:12:33,150 --> 00:12:36,118
+Step 7: the complete tracker, in two
+halves.
+
+213
+00:12:36,138 --> 00:12:39,920
+Lines 2 and 3: the set of categories, and
+an empty list.
+
+214
+00:12:39,967 --> 00:12:42,759
+Lines 4 to 9 are the loop from step 2.
+
+215
+00:12:42,779 --> 00:12:45,497
+On the right, Asha's four categories.
+
+216
+00:12:45,533 --> 00:12:50,007
+Lines 11 to 15 ask for the amount and
+check it, as in step 3.
+
+217
+00:12:50,027 --> 00:12:53,100
+A good amount becomes a tuple in the list.
+
+218
+00:12:53,720 --> 00:12:55,086
+The second half.
+
+219
+00:12:55,106 --> 00:12:59,070
+Lines 16 to 18 build the totals, as in
+step 4.
+
+220
+00:12:59,100 --> 00:13:02,320
+The loop on lines 20 to 23 does two jobs.
+
+221
+00:13:02,340 --> 00:13:07,140
+It prints each row, and it keeps the
+biggest category so far.
+
+222
+00:13:07,167 --> 00:13:10,504
+And lines 24 and 25 print the summary.
+
+223
+00:13:11,120 --> 00:13:11,987
+Your turn.
+
+224
+00:13:12,007 --> 00:13:15,534
+Asha buys paper cups twice: 2, then 3.5.
+
+225
+00:13:15,554 --> 00:13:17,308
+Then she types done.
+
+226
+00:13:28,680 --> 00:13:29,739
+Expenses, 2.
+
+227
+00:13:29,759 --> 00:13:30,817
+Total, 5.50.
+
+228
+00:13:30,837 --> 00:13:37,019
+Both cups went into the list, and the
+totals added them into one row.
+
+229
+00:13:37,617 --> 00:13:39,485
+Criterion six says: test it.
+
+230
+00:13:39,505 --> 00:13:44,745
+Each test is a copy of the tracker, with
+its own typed answers and an expected
+
+231
+00:13:44,765 --> 00:13:45,217
+result.
+
+232
+00:13:45,267 --> 00:13:48,017
+A normal day, the day you saw at the
+start.
+
+233
+00:13:48,067 --> 00:13:49,397
+An empty day.
+
+234
+00:13:49,433 --> 00:13:51,983
+Bad amounts, with a comma and a word.
+
+235
+00:13:52,033 --> 00:13:53,643
+Unknown categories.
+
+236
+00:13:53,667 --> 00:13:54,902
+And one expense.
+
+237
+00:13:55,520 --> 00:13:57,242
+The bad amounts test.
+
+238
+00:13:57,262 --> 00:14:03,878
+Asha types milk with 12 comma 50, then
+milk with the word twelve, then milk with
+
+239
+00:14:03,898 --> 00:14:04,375
+12.50.
+
+240
+00:14:04,395 --> 00:14:06,615
+Line 12 checks each amount.
+
+241
+00:14:17,980 --> 00:14:18,317
+One.
+
+242
+00:14:18,337 --> 00:14:22,786
+Each bad amount got a message and was
+never added.
+
+243
+00:14:22,806 --> 00:14:24,484
+Only 12.50 counted.
+
+244
+00:14:24,504 --> 00:14:24,931
+Pass!
+
+245
+00:14:25,553 --> 00:14:30,205
+The empty day: Total, 0.00, and Biggest,
+none.
+
+246
+00:14:30,225 --> 00:14:31,119
+No crash.
+
+247
+00:14:31,139 --> 00:14:31,626
+Pass!
+
+248
+00:14:32,220 --> 00:14:33,601
+Unknown categories.
+
+249
+00:14:33,621 --> 00:14:36,107
+Tea and cake each get the message.
+
+250
+00:14:36,127 --> 00:14:40,235
+Repairs, with spaces around it, is cleaned
+and accepted.
+
+251
+00:14:40,255 --> 00:14:40,604
+Pass!
+
+252
+00:14:41,220 --> 00:14:45,629
+One expense: cups, 9.00, and Biggest,
+cups.
+
+253
+00:14:45,649 --> 00:14:46,144
+Pass!
+
+254
+00:14:46,753 --> 00:14:49,513
+The normal day matched at the start of
+this video.
+
+255
+00:14:49,533 --> 00:14:52,700
+And the other four runs you saw match too.
+
+256
+00:14:52,720 --> 00:14:54,520
+All five test days pass.
+
+257
+00:14:55,117 --> 00:14:56,391
+Stage 6: improve.
+
+258
+00:14:56,411 --> 00:14:57,762
+Every test passes.
+
+259
+00:14:57,782 --> 00:15:04,005
+Asha asks for one way to make lines 16 to
+18 shorter, and says: do not change what
+
+260
+00:15:04,025 --> 00:15:04,767
+it prints.
+
+261
+00:15:04,800 --> 00:15:08,921
+The AI suggests plus equals on line 18,
+without get.
+
+262
+00:15:08,941 --> 00:15:11,390
+It sounds shorter and sensible.
+
+263
+00:15:11,433 --> 00:15:13,701
+Remember why line 18 uses get.
+
+264
+00:15:13,721 --> 00:15:16,904
+Plus equals must read the old total first.
+
+265
+00:15:28,280 --> 00:15:32,236
+There is no milk total yet, so Python
+cannot read it.
+
+266
+00:15:32,256 --> 00:15:34,636
+Asha tests it on three expenses.
+
+267
+00:15:35,253 --> 00:15:37,106
+Line 5 uses plus equals.
+
+268
+00:15:37,126 --> 00:15:42,023
+The first milk has no total, and Python
+stops with a Key Error.
+
+269
+00:15:42,067 --> 00:15:47,755
+The shorter line breaks the program, so
+Asha keeps get, with its default of 0.
+
+270
+00:15:48,353 --> 00:15:51,053
+Here are all six stages on one tracker.
+
+271
+00:15:51,100 --> 00:15:55,660
+The AI helped at every stage, from the
+data model to the review.
+
+272
+00:15:55,700 --> 00:16:00,833
+And it was confidently wrong three times:
+the model, the biggest category, and the
+
+273
+00:16:00,853 --> 00:16:01,650
+shorter line.
+
+274
+00:16:01,700 --> 00:16:05,146
+Every time, a test with a known result
+caught it.
+
+275
+00:16:05,753 --> 00:16:06,663
+Last breather.
+
+276
+00:16:06,683 --> 00:16:10,313
+You built a real data tool, and you made
+the decisions.
+
+277
+00:16:10,333 --> 00:16:11,365
+Let's recap.
+
+278
+00:16:16,117 --> 00:16:18,347
+Here is what you used in this boss level.
+
+279
+00:16:18,367 --> 00:16:22,167
+Keep each record as a tuple in a list, so
+nothing is lost.
+
+280
+00:16:22,200 --> 00:16:24,857
+Build totals with get and a default of 0.
+
+281
+00:16:24,877 --> 00:16:27,860
+A set of allowed values rejects anything
+else.
+
+282
+00:16:27,900 --> 00:16:32,980
+Replace with a third value, and is digit,
+check an amount before float converts it.
+
+283
+00:16:33,000 --> 00:16:35,375
+Max on a dictionary compares the keys.
+
+284
+00:16:35,395 --> 00:16:39,220
+To find the biggest total, keep the
+biggest so far in a loop.
+
+285
+00:16:39,267 --> 00:16:42,589
+And test several days, including an empty
+one.
+
+286
+00:16:42,609 --> 00:16:44,478
+One test can pass by luck.
+
+287
+00:16:45,087 --> 00:16:46,358
+One last check.
+
+288
+00:16:46,378 --> 00:16:51,351
+Asha types Beans with a capital B, then
+the amount 12.5.0.
+
+289
+00:16:51,371 --> 00:16:54,192
+What does the tracker print next?
+
+290
+00:17:05,547 --> 00:17:05,684
+D.
+
+291
+00:17:05,704 --> 00:17:08,507
+Lower makes beans, which is allowed.
+
+292
+00:17:08,527 --> 00:17:14,781
+But 12.5.0 keeps a second point after one
+is removed, so the amount check fails,
+
+293
+00:17:14,801 --> 00:17:16,977
+with a message, not a crash.
+
+294
+00:17:17,587 --> 00:17:19,136
+Boss level complete!
+
+295
+00:17:19,156 --> 00:17:22,668
+You earned 300 XP and the Money Mapper
+badge.
+
+296
+00:17:22,688 --> 00:17:24,316
+And Module 3 is done.
+
+297
+00:17:26,420 --> 00:17:30,940
+The practice file has eight more tasks,
+worth 170 XP.
+
+298
+00:17:30,967 --> 00:17:35,277
+Three warm-ups, worth 10 XP each, such as
+checking an amount.
+
+299
+00:17:35,300 --> 00:17:39,910
+Three apply tasks, worth 20 each,
+including the smallest category.
+
+300
+00:17:39,933 --> 00:17:42,387
+And two stretch tasks, worth 40 each.
+
+301
+00:17:42,407 --> 00:17:46,733
+In the last one, you fix an AI's tracker
+that forgets its totals.
+
+302
+00:17:46,767 --> 00:17:50,041
+Write down the expected result before you
+run each one.
+
+303
+00:17:50,617 --> 00:17:51,996
+Asha's tracker works.
+
+304
+00:17:52,016 --> 00:17:57,058
+But the biggest-category loop appears in
+her tests, her fix and her tracker.
+
+305
+00:17:57,078 --> 00:17:59,057
+Three copies of the same code.
+
+306
+00:17:59,100 --> 00:18:04,426
+In Chapter 16, you will learn functions:
+named blocks of code that you write once
+
+307
+00:18:04,446 --> 00:18:05,680
+and use many times.
+
+308
+00:18:05,700 --> 00:18:07,355
+Do the warm-up tasks now.
+
+309
+00:18:07,375 --> 00:18:09,230
+They take about ten minutes.
+
+310
+00:18:09,267 --> 00:18:11,117
+See you in Chapter 16.
