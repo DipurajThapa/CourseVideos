@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-22",
   "run_id": "2026-11-10-1bb1b5",
-  "verified_at": "2026-11-10T07:51:15+00:00",
+  "verified_at": "2026-11-10T07:56:53+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -202,6 +202,11 @@
           "sentences": 115,
           "average_words": 11.9,
           "longest": 27
+        },
+        "video/script.md": {
+          "sentences": 630,
+          "average_words": 8.6,
+          "longest": 23
         }
       }
     },
@@ -209,38 +214,15 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "scene intro: narration contains unspeakable characters ['<', '>']: 'Welcome to Code Quest, Chapter NN. <one sentence on what the learner w'",
-        "scene intro: narration contains unspeakable characters ['<', '>']: '<set up the hook> <point at the line> <reveal>'",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: output examples/<flawed>.expected must be an existing .expected file",
-        "scene learning-goals: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene why-this-matters: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene the-idea: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene build-it-step-by-step: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene see-the-outcome: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene work-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene common-mistakes: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene think-beyond: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene recap: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene practice: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene whats-next: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "need at least 6 on-screen questions with a timer, found 1",
-        "need at least 2 quick-check quizzes, found 0",
-        "need at least 2 breathers for 1 minutes, found 0",
-        "estimated length 1.1 min is outside 8 to 20 min",
         "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/22-exceptions",
         "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/22-exceptions",
         "missing video/render.json: run python3 tools/render_video.py chapters/python/22-exceptions",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/22-exceptions",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/22-exceptions"
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/22-exceptions"
       ],
       "details": {
-        "estimated_minutes": 1.1
+        "estimated_minutes": 16.8
       }
     }
   ],
-  "fingerprint": "07d7eebc3a516891a5aa0cfec09664c0b93e095dceafe69040d0720ac50409d5"
+  "fingerprint": "b95aa472068e41538fbb5db17770128717a084d6a8a14771bd22bc242782fa01"
 }
