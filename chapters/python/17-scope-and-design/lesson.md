@@ -165,7 +165,8 @@ The rate is now a parameter, so nothing is hidden, and most calls stay short. Pa
 ```python
 # file: examples/ex06_keywords.py
 def order_line(item, price, qty=1):
-    return f"{qty} x {item:<6} {price * qty:>5.2f}"
+    cost = price * qty
+    return f"{qty} x {item:<6} {cost:>5.2f}"
 
 print(order_line("Tea", 3.5))
 print(order_line("Cake", 4.0, qty=2))
@@ -179,7 +180,7 @@ print(order_line(price=2.75, item="Scone"))
 1 x Scone   2.75
 ```
 
-Line 6 names `qty`, so a reader sees at once what the 2 means. Line 7 gives both arguments by name, in a different order from the definition.
+Line 7 names `qty`, so a reader sees at once what the 2 means. Line 8 gives both arguments by name, in a different order from the definition.
 
 **Step 6: One job per function.** A function that calculates and prints is hard to test, because its result goes to the screen, not back to you. Here the jobs are split: one function calculates, one builds the text, and the main code prints.
 
@@ -226,7 +227,8 @@ def day_total(prices, rate=1.1):
 
 def report_line(day, prices, rate=1.1):
     """Return one report line as text."""
-    return f"{day:<8} {len(prices)} sales {day_total(prices, rate):>6.2f}"
+    total = day_total(prices, rate)
+    return f"{day:<8} {len(prices)} sales {total:>6.2f}"
 
 print(report_line("Monday", [3.5, 4.0, 2.75]))
 print(report_line("Friday", [4.25, 3.5], rate=1.2))
@@ -240,7 +242,7 @@ Friday   2 sales   9.30
 True
 ```
 
-Line 18 uses the keyword argument `rate=1.2` for a day with a higher tax, and every function passes the rate on. Line 19 tests a total in one line. Each variable lives exactly where it is needed: `total` and `price` only inside `day_total()`.
+Line 19 uses the keyword argument `rate=1.2` for a day with a higher tax, and every function passes the rate on. Line 20 tests a total in one line. `day_total()` and `report_line()` each have their own local variable called `total`. The two never meet, because each one lives only inside its own function.
 
 ## Work with AI
 
@@ -297,13 +299,14 @@ def day_total(prices):
     return round(total, 2)
 
 def report_line(day, prices):
-    print(f"{day:<8} {len(prices)} sales {day_total(prices):>6.2f}")
+    total = day_total(prices)
+    print(f"{day:<8} {len(prices)} sales {total:>6.2f}")
 
 monday = [3.5, 4.0, 2.75]
 tuesday = [4.25, 3.5]
 print(report_line("Monday", monday))
 print(report_line("Tuesday", tuesday))
-week_total = round(day_total(monday) + day_total(tuesday), 2)
+week_total = day_total(monday) + day_total(tuesday)
 print(f"Week {week_total:>17.2f}")
 ```
 
@@ -316,7 +319,7 @@ None
 Week             19.81
 ```
 
-Two extra lines say `None`. `report_line()` prints instead of returning, so it returns `None`, and lines 13 and 14 print that too. Comparing with the saved output catches it at once. The fix is one word: `return` instead of `print(` on line 9.
+Two extra lines say `None`. `report_line()` prints instead of returning, so it returns `None`, and lines 14 and 15 print that too. Comparing with the saved output catches it at once. The fix: `return` instead of `print(` on line 10.
 
 ```python
 # file: examples/ai_split_fixed.py
@@ -327,13 +330,14 @@ def day_total(prices):
     return round(total, 2)
 
 def report_line(day, prices):
-    return f"{day:<8} {len(prices)} sales {day_total(prices):>6.2f}"
+    total = day_total(prices)
+    return f"{day:<8} {len(prices)} sales {total:>6.2f}"
 
 monday = [3.5, 4.0, 2.75]
 tuesday = [4.25, 3.5]
 print(report_line("Monday", monday))
 print(report_line("Tuesday", tuesday))
-week_total = round(day_total(monday) + day_total(tuesday), 2)
+week_total = day_total(monday) + day_total(tuesday)
 print(f"Week {week_total:>17.2f}")
 ```
 
@@ -396,14 +400,15 @@ Fix: end the function with `return message`, then write `message = thank_you("Om
 ```python
 # file: examples/err02_keyword_order.py
 def order_line(item, price, qty=1):
-    return f"{qty} x {item:<6} {price * qty:>5.2f}"
+    cost = price * qty
+    return f"{qty} x {item:<6} {cost:>5.2f}"
 
 print(order_line(item="Cake", 4.0))
 ```
 
 <!-- error: examples/err02_keyword_order.expected_error -->
 ```output
-  File "err02_keyword_order.py", line 5
+  File "err02_keyword_order.py", line 6
     print(order_line(item="Cake", 4.0))
                                      ^
 SyntaxError: positional argument follows keyword argument

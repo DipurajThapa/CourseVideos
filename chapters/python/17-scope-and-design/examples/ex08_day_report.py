@@ -12,7 +12,8 @@ def day_total(prices, rate=1.1):
 
 def report_line(day, prices, rate=1.1):
     """Return one report line as text."""
-    return f"{day:<8} {len(prices)} sales {day_total(prices, rate):>6.2f}"
+    total = day_total(prices, rate)
+    return f"{day:<8} {len(prices)} sales {total:>6.2f}"
 
 print(report_line("Monday", [3.5, 4.0, 2.75]))
 print(report_line("Friday", [4.25, 3.5], rate=1.2))

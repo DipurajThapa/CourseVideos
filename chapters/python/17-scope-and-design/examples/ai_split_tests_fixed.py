@@ -6,7 +6,8 @@ def day_total(prices):
     return round(total, 2)
 
 def report_line(day, prices):
-    return f"{day:<8} {len(prices)} sales {day_total(prices):>6.2f}"
+    total = day_total(prices)
+    return f"{day:<8} {len(prices)} sales {total:>6.2f}"
 
 cases = [("Monday", [3.5, 4.0, 2.75], "Monday   3 sales  11.28"),
          ("Sunday", [], "Sunday   0 sales   0.00"),
