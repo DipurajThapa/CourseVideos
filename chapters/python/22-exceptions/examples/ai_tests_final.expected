@@ -1,0 +1,6 @@
+Normal: found 2, expected 2: pass
+Skipped Omar: not a score
+Damaged row: found 2, expected 2: pass
+Header only: found 0, expected 0: pass
+Skipped Ben: not a score
+Short row: found 2, expected 2: pass

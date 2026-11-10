@@ -1,0 +1,3 @@
+Normal: found 2, expected 2: pass
+Damaged row: found 1, expected 2: FAIL
+Header only: found 0, expected 0: pass

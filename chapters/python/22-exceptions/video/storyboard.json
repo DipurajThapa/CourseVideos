@@ -1,0 +1,1792 @@
+{
+ "chapter_id": "python-22",
+ "number": 22,
+ "version": 3,
+ "title": "Chapter 22: Handling Errors: try, except and Clear Messages",
+ "video_title": "Python Chapter 22: Handling Errors, try, except and Clear Messages",
+ "summary": "One damaged row crashed the Corner Cafe score board. Follow Asha as she catches errors with try and except, uses else and finally, asks again until an answer is valid, raises her own errors and tests them with pytest. Then watch her build a score loader with an AI assistant at all six stages, where her tests catch two confident AI mistakes.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the Chapter 21 weak spot: one damaged row crashes the score board. Then the title and the AI tease, then the mission code with no output.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "One bad row, and everything stops",
+      "label": "The problem",
+      "body": [
+       "At the Corner Cafe, one row of the score file says three instead of 3."
+      ],
+      "pre": "  > python score_board.py\n  Asha  4 of 4\n  Traceback (most recent call last):\n    ...\n  ValueError: invalid literal for int()\n  with base 10: 'three'"
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, someone typed the word three into Asha's score file, instead of the number 3.",
+       "focus": "pre"
+      },
+      {
+       "say": "The score board prints one line. Then a wall of red text, and nothing else. The staff have no idea what to do."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 22",
+      "title": "Handling Errors: try, except and Clear Messages",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Safety Net badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 22. Today, your programs learn to handle problems."
+      },
+      {
+       "say": "And an AI assistant will promise code that never crashes. It will sound sure. Your tests will decide.",
+       "subtitle": "Catch it. Explain it. Carry on."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_score_board.py",
+      "heading": "Today's mission: a score board that never gives up",
+      "hidden_text": "By the end, you will know every line."
+     },
+     "segments": [
+      {
+       "say": "Here is today's mission: the same score board, now ready for bad data, with clear messages.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11
+       ]
+      },
+      {
+       "say": "And a missing file gets a message too. Let's build it, piece by piece.",
+       "highlight": [
+        15,
+        16
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Catch an error with `try` and `except`, and show a clear message.",
+       "Use `else` and `finally`.",
+       "Catch the specific error you expect.",
+       "Raise your own error, and test it with `pytest.raises`.",
+       "Ask an AI what could go wrong, then handle and test each case."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Catch an error, and show a clear message instead.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Use else and finally.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Catch the specific error you expect.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Raise your own error, and test it.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And ask an AI what could go wrong, then test each case.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define an exception, then real uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "An **exception** is an error while the program runs.",
+       "You have read exception reports since Chapter 9. Now you catch them.",
+       "Good programs expect bad data, say what happened, and carry on."
+      ]
+     },
+     "segments": [
+      {
+       "say": "An exception is an error that happens while a program runs, like a value error, or file not found.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "You have read exception reports since Chapter 9. Now your program catches them, and decides what to do.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Customers type words instead of numbers. Files get deleted. Good programs expect this, and carry on when they can.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: try, except, else, finally",
+   "direction": "Teach the flow with the diagram and the table, then the analogy. Quiz on else. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Try first, catch if it fails",
+      "label": "The idea",
+      "body": [
+       "`try` runs code that might fail. `except` catches the error it names."
+      ],
+      "pre": "  try:                     runs first\n      score = int(answer)  if this fails ...\n  except ValueError:       ... Python jumps here\n      print(\"Please type a whole number.\")\n  else:                    only if nothing failed\n      print(\"Saved.\")\n  finally:                 always, at the end\n      print(\"Done.\")"
+     },
+     "segments": [
+      {
+       "say": "A try block runs code that might fail. If an exception happens inside it, Python stops that block, and jumps to a matching except block.",
+       "focus": "pre"
+      },
+      {
+       "say": "The except line names the exception it catches. An exception of another type is not caught, and the program stops, as before."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Four parts, and when each one runs",
+      "label": "The idea",
+      "columns": [
+       "Part",
+       "When it runs"
+      ],
+      "rows": [
+       [
+        "`try`",
+        "Always first. It stops at the first exception."
+       ],
+       [
+        "`except ValueError:`",
+        "Only when a `ValueError` happened in `try`."
+       ],
+       [
+        "`else`",
+        "Only when `try` finished with no exception."
+       ],
+       [
+        "`finally`",
+        "Always, last."
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Try always runs first. It stops at the first exception.",
+       "focus_row": 0
+      },
+      {
+       "say": "Except value error runs only when a value error happened in try.",
+       "focus_row": 1
+      },
+      {
+       "say": "Else runs only when try finished with no exception at all.",
+       "focus_row": 2
+      },
+      {
+       "say": "And finally runs always, last, whatever happened.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Like a safety net",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "The act goes on as planned. The net catches only after a fall.",
+       "Unlike a real net, `except` catches only the error type it names."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of the safety net under a trapeze. The act goes on as planned, and the net catches the artist only after a fall."
+      },
+      {
+       "say": "But a real net catches anyone. Except catches only the type of error it names.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "When does the `else` block run?",
+      "options": [
+       "Always, at the end",
+       "Only after an exception",
+       "Only when `try` raised no exception",
+       "Before `try`"
+      ],
+      "answer": 2,
+      "explain": "`else` runs only when the `try` block finished with no exception. `finally` is the part that always runs."
+     },
+     "segments": [
+      {
+       "say": "Quick check. When does the else block run?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Only when try raised no exception. Finally is the one that always runs."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`try` runs code that might fail.",
+       "`except` catches the error it names.",
+       "`else` if nothing failed, `finally` always."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Four parts, and you know when each one runs."
+      },
+      {
+       "say": "Next, Asha catches her first error."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Catch a bad number",
+   "direction": "Teach the jump before the ask. Ask which lines run for four. Reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_try_except.py",
+      "heading": "Step 1: Catch a bad number",
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. In Chapter 4, int of the word two stopped the program with a value error. Line 2 holds three answers, and the loop tries each one."
+      },
+      {
+       "say": "Line 5 tries to turn the answer into a whole number. Line 6 prints it.",
+       "highlight": [
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "If line 5 fails, Python skips the rest of the try block, and jumps to the except block on line 7.",
+       "highlight": [
+        5,
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "For the answer `\"four\"`, which line prints: line 6, line 8, or both?"
+     },
+     "after": [
+      {
+       "say": "Only line 8. Line 5 failed, so line 6 never ran. And the loop went on with the next answer.",
+       "output": "examples/ex01_try_except.expected",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Int ignores the spaces around 3, as you saw in Chapter 4. And exclamation r, from Chapter 20, shows the quotation marks.",
+       "highlight": [
+        5,
+        8
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: else and finally",
+   "direction": "Teach else and finally on a missing file. Ask what month.csv prints.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_else_finally.py",
+      "heading": "Step 2: else and finally",
+      "highlight": [
+       7
+      ],
+      "note": "week.csv exists. month.csv does not."
+     },
+     "segments": [
+      {
+       "say": "Step 2. Line 7 reads a file. That can fail with file not found."
+      },
+      {
+       "say": "Lines 8 and 9 catch it, with a message.",
+       "highlight": [
+        8,
+        9
+       ]
+      },
+      {
+       "say": "Else, on line 10, runs only when the file was read. Finally, on line 12, runs every time.",
+       "highlight": [
+        10,
+        11,
+        12,
+        13
+       ]
+      },
+      {
+       "say": "Lines 16 and 17 call it twice: with week, and with month.",
+       "highlight": [
+        16,
+        17
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do the two lines for `month.csv` say?"
+     },
+     "after": [
+      {
+       "say": "No scores yet, then done. The except block ran, else was skipped, and finally ran anyway.",
+       "output": "examples/ex02_else_finally.expected",
+       "highlight": [
+        9,
+        13
+       ],
+       "out_highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "For week, else printed the file, and finally printed done.",
+       "highlight": [
+        11,
+        13
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Keep the try block small. Only the line that can fail belongs inside it.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Ask again until it is valid",
+   "direction": "Callback to Chapter 7. Try inside a while loop. Ask about the answer 7. Then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_ask_again.py",
+      "heading": "Step 3: Ask again until it is valid",
+      "highlight": [
+       2,
+       3
+      ],
+      "note": "The user types: four, then 7, then 3."
+     },
+     "segments": [
+      {
+       "say": "Step 3. In Chapter 7, a while true loop asked until the answer was valid. Now try sits inside the loop."
+      },
+      {
+       "say": "A word gives a value error, and line 7 asks for a whole number.",
+       "highlight": [
+        4,
+        5,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "If the number is from 0 to 4, break ends the loop. Otherwise line 11 explains the range.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types `7`. Which message does the program show?"
+     },
+     "after": [
+      {
+       "say": "Please type a number from 0 to 4. Seven is a whole number, so no exception. But the if on line 9 catches the wrong value.",
+       "output": "examples/ex03_ask_again.expected",
+       "highlight": [
+        9,
+        11
+       ],
+       "out_highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Try catches an answer that is not a number. If catches a number outside the range. And each message says what to type next.",
+       "highlight": [
+        12
+       ],
+       "out_highlight": [
+        5,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`except` catches the error it names.",
+       "`else` holds the code that needs success.",
+       "Try inside a loop, and ask again."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. A word no longer crashes Asha's program."
+      },
+      {
+       "say": "Next, Asha's own functions learn to refuse bad input."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Steps 4 and 5: Raise, and catch what you expect",
+   "direction": "Teach raise and as error, then the bare except trap with a spot-it ask, then the specific version and a quiz.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_raise.py",
+      "heading": "Step 4: Raise your own error",
+      "highlight": [
+       3,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 4. A function can refuse bad input with raise. Line 4 creates a value error, with a message that names the price."
+      },
+      {
+       "say": "Line 11 catches it. As error keeps the exception in a variable called error.",
+       "highlight": [
+        9,
+        10,
+        11
+       ]
+      },
+      {
+       "say": "Line 12 prints that message.",
+       "highlight": [
+        12
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Line 12 prints a message. What does it say?"
+     },
+     "after": [
+      {
+       "say": "Not saved: price cannot be negative: minus 1. The message from line 4 arrives at line 12.",
+       "output": "examples/ex04_raise.expected",
+       "highlight": [
+        4,
+        12
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "A clear message names the problem and the value. Error, with nothing else, helps nobody."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_bare_except.py",
+      "heading": "Step 5: a bare except",
+      "highlight": [
+       7
+      ],
+      "hidden_text": "Find the problem before the output appears."
+     },
+     "segments": [
+      {
+       "say": "Step 5. Line 7 is a bare except: no error type at all. It catches every exception, even the ones your own bugs cause."
+      },
+      {
+       "say": "Look closely at line 5.",
+       "highlight": [
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What happens to the answer `\"4\"`?"
+     },
+     "after": [
+      {
+       "say": "It is refused too! Line 5 says anser, not answer. That name error was caught, and hidden.",
+       "output": "examples/ex05_bare_except.expected",
+       "highlight": [
+        5,
+        7
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_specific.py",
+      "heading": "The same code, catching ValueError only",
+      "highlight": [
+       7
+      ],
+      "error": "examples/ex06_specific.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Now line 7 catches value error only. The spelling mistake is no longer hidden.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The report names line 5, and even suggests the right name. Catch the errors you expect from the data. Let your own bugs show.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which `except` line can hide a spelling mistake in your own code?",
+      "options": [
+       "`except ValueError:`",
+       "`except:`",
+       "`except FileNotFoundError:`",
+       "`except TypeError:`"
+      ],
+      "answer": 1,
+      "explain": "A bare `except:` catches every exception, including the `NameError` from a spelling mistake."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which except line can hide a spelling mistake in your own code?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. The bare except. It catches everything, including your bugs. It even catches Control C, the keys you press to stop a program."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: Test that an error is raised",
+   "direction": "Callback to Chapter 19. pytest.raises on cafe_tools, then a version that forgets to raise. Ask, reveal, breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/cafe_tools.py",
+      "heading": "Asha's module, with the check",
+      "highlight": [
+       4,
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 6. Asha keeps with tax in her cafe tools module, with the new check on lines 4 and 5."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_errors.py",
+      "heading": "Step 6: pytest.raises",
+      "highlight": [
+       10,
+       11,
+       12
+      ],
+      "output": "examples/test_errors.expected"
+     },
+     "segments": [
+      {
+       "say": "In Chapter 19, tests checked return values. Line 11 checks an error. The test passes only if line 12 raises a value error.",
+       "out_highlight": []
+      },
+      {
+       "say": "Both tests pass: two dots.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_errors_missing.py",
+      "heading": "An older with_tax, with no check",
+      "highlight": [
+       5,
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "Here is an older with tax. Lines 5 and 6 have no check for a negative price."
+      },
+      {
+       "say": "The test on lines 9 to 11 is the same as before.",
+       "highlight": [
+        9,
+        10,
+        11
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Will this test pass?"
+     },
+     "after": [
+      {
+       "say": "No. The function returned a value instead of refusing. Pytest reports: did not raise value error.",
+       "output": "examples/test_errors_missing.expected",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        7,
+        10
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`raise` refuses bad input with a message.",
+       "Catch the error you expect, not every error.",
+       "`pytest.raises` checks that the error happens."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You can catch, raise, and test errors."
+      },
+      {
+       "say": "Now, back to the mission."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the score board",
+   "direction": "Show the damaged file, walk the two try blocks, ask how many scores load, reveal, hand over to the AI.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The score file",
+      "label": "The mission",
+      "body": [
+       "One row is damaged."
+      ],
+      "pre": "  scores.csv\n  -----------\n  name,score\n  Asha,4\n  Omar,three\n  Lina,4"
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Here is the score file, with Omar's damaged row.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_score_board.py",
+      "heading": "Mission complete: the score board",
+      "highlight": [
+       5,
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "Line 4 starts a counter. The outer try, on lines 5 and 6, opens the file."
+      },
+      {
+       "say": "Inside the loop, a small try on lines 8 and 9 protects one row at a time.",
+       "highlight": [
+        7,
+        8,
+        9
+       ]
+      },
+      {
+       "say": "A bad score prints a message that names the row and the value.",
+       "highlight": [
+        10,
+        11
+       ]
+      },
+      {
+       "say": "A good score is printed and counted, in else.",
+       "highlight": [
+        12,
+        13,
+        14
+       ]
+      },
+      {
+       "say": "Lines 15 and 16 handle a missing file. Line 17 prints the count.",
+       "highlight": [
+        15,
+        16,
+        17
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many scores does line 17 report?"
+     },
+     "after": [
+      {
+       "say": "2. Omar's row is skipped with a message, and Lina still loads, because the try protects one row at a time.",
+       "output": "examples/ex07_score_board.expected",
+       "highlight": [
+        17
+       ],
+       "out_highlight": [
+        2,
+        4
+       ]
+      },
+      {
+       "say": "Now Asha wants this as a function, load scores, for the quiz app. She builds it with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: a loader that handles every problem",
+   "direction": "Safety first. Six stages on load_scores. Stage 3 plants the bare except around the loop; tests catch it; debug a short row; improve suggests except Exception.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: what could go wrong?",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Ask the AI to list what could go wrong.",
+       "Make one test case for each problem, and run it.",
+       "A real score file is private: paste a made-up sample."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill: ask what could go wrong in your code.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Then make one test case for each problem, and run it.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And never paste private data. A real file of staff names is private, so paste a made-up sample.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: what could go wrong?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My function load_scores reads scores.csv and turns each score into an int. Do not write code yet. What could go wrong, and what should the program do each time?"
+       },
+       {
+        "role": "ai",
+        "text": "1. The file is missing: FileNotFoundError. Give a message, return no scores.\n2. A score is not a number: ValueError. Skip that row with a message.\n3. The file has only the header: no error, return no scores."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha asks what could go wrong, and what the program should do each time. No code yet."
+      },
+      {
+       "say": "The AI lists three problems: a missing file, a score that is not a number, and a file with only the header.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then check",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote this myself. Do not rewrite it. Which lines handle problems 1 and 2?",
+        "code": "examples/ai_mine.py",
+        "code_lines": [
+         7,
+         8,
+         9,
+         10,
+         11,
+         12,
+         13,
+         14,
+         15
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Problem 1: lines 14 and 15 catch FileNotFoundError.\nProblem 2: lines 12 and 13 catch ValueError for one row, so the loop goes on."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes her own load scores first, and asks which lines handle each problem."
+      },
+      {
+       "say": "The AI names lines 12 to 15. That matches what she meant.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: a loader from a request",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write load_scores(path). It returns a list of (name, score). It must never crash, and it must skip a damaged row."
+       },
+       {
+        "role": "ai",
+        "text": "Here it is. It handles every problem, and it never crashes.",
+        "code": "examples/ai_load_flawed.py",
+        "code_lines": [
+         7,
+         8,
+         9,
+         10,
+         11,
+         12
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. To compare, Asha asks the AI for the same function, from a short request."
+      },
+      {
+       "say": "The AI is sure: it handles every problem, and never crashes.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_load_flawed.py",
+      "heading": "The AI's loader, on the damaged file",
+      "code_lines": [
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       16,
+       17
+      ],
+      "highlight": [
+       7,
+       11,
+       12
+      ]
+     },
+     "segments": [
+      {
+       "say": "Look where the try starts, on line 7, and where it ends. Lines 11 and 12 catch everything, and do nothing.",
+       "highlight": [
+        7,
+        11,
+        12
+       ]
+      },
+      {
+       "say": "Line 17 loads the damaged file: Asha, Omar with three, and Lina.",
+       "highlight": [
+        17
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The AI says it handles every problem. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Only Asha loads. The try block holds the whole loop, so Omar's row stopped it, and Lina was lost, with no message.",
+       "output": "examples/ai_load_flawed.expected",
+       "highlight": [
+        7,
+        9
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "A better request names the exceptions to catch, and asks for a small try block.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: one case for each problem",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Give me test cases for load_scores. For each one, write the file contents and how many scores it should return."
+       },
+       {
+        "role": "ai",
+        "text": "1. Normal: Asha and Lina. Expect 2.\n2. Damaged row: Asha, Omar with three, Lina. Expect 2.\n3. Header only: expect 0."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks for test cases, each with the file and the number of scores it should return."
+      },
+      {
+       "say": "The AI lists three. They match the three problems from the plan.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_flawed.py",
+      "heading": "The three cases, on the AI's loader",
+      "code_lines": [
+       2,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "highlight": [
+       4,
+       5,
+       6
+      ],
+      "output": "examples/ai_tests_flawed.expected",
+      "out_highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "She runs all three cases on the AI's loader. The damaged row case fails: it found 1 score, not 2."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: report the failure, ask for a fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "The damaged row case fails: it found 1 score, not 2, with no message. Explain why, then fix it.",
+        "output": "examples/ai_tests_flawed.expected"
+       },
+       {
+        "role": "ai",
+        "text": "The try block holds the whole loop, so the damaged row stopped it. The bare except with pass hid the error.\nFix: a small try around one row, catching ValueError only, and a message for a missing file."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Asha shows the AI the failing case, and asks for the cause, then a fix."
+      },
+      {
+       "say": "The AI explains: the whole loop was inside try, and the bare except hid the error. The fix puts a small try around one row, the same idea as Asha's own version.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_fixed.py",
+      "heading": "The three cases, on the fixed loader",
+      "code_lines": [
+       2,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_tests_fixed.expected",
+      "out_highlight": [
+       1,
+       3,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "She runs all three cases again, on the fixed loader. All three pass, and Omar's row gets a message."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_short_crash.py",
+      "heading": "Stage 5: a row with no score",
+      "highlight": [
+       4
+      ],
+      "error": "examples/ai_short_crash.expected_error",
+      "note": "case_short.csv: Asha,4 then a row with only Ben, then Lina,4."
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. In a new test file, one row says only Ben, with no comma and no score. Her own version has the same gap."
+      },
+      {
+       "say": "Type error! The report points at line 11 of the loader: int of row score.",
+       "out_highlight": [
+        5,
+        6,
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "A row in my file says only Ben. Now load_scores crashes on line 11 with: TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix."
+       },
+       {
+        "role": "ai",
+        "text": "Ben's row has no score, so row[\"score\"] is None, and int(None) raises TypeError.\nFix: catch both on line 12: except (ValueError, TypeError)."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Asha pastes the error, and asks for the cause first."
+      },
+      {
+       "say": "Ben's row has no score, so the value is None, and int of None raises a type error. The fix catches both errors as a tuple: the two names inside round brackets, like the tuples from Chapter 13.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_final.py",
+      "heading": "All four cases, on the final loader",
+      "code_lines": [
+       2,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "highlight": [
+       7
+      ],
+      "output": "examples/ai_tests_final.expected",
+      "out_highlight": [
+       1,
+       3,
+       4,
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "She adds the short row as case 4, and runs every case again. All four pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: one suggestion, then test it",
+      "messages": [
+       {
+        "role": "you",
+        "text": "All four cases pass. Suggest one improvement, with one reason."
+       },
+       {
+        "role": "ai",
+        "text": "Use except Exception instead of except (ValueError, TypeError), so no future error can ever crash it."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one improvement."
+      },
+      {
+       "say": "The AI suggests: except Exception, so no future error can ever crash it.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Exception, with a capital E, is the parent of almost every error type. So except Exception catches nearly every error, your bugs included."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_typo_broad.py",
+      "heading": "Except Exception, with a spelling mistake on purpose",
+      "code_lines": [
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       16
+      ],
+      "highlight": [
+       10,
+       11
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha tests the idea. She adds a spelling mistake on purpose: line 10 says scor, not score. Line 11 catches Exception."
+      },
+      {
+       "say": "Line 16 loads the normal file, with two good rows.",
+       "highlight": [
+        16
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Will Asha see her spelling mistake?"
+     },
+     "after": [
+      {
+       "say": "No. Every row is skipped with a wrong message, and the list is empty. The bug is hidden.",
+       "output": "examples/ai_typo_broad.expected",
+       "highlight": [
+        10,
+        11
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_typo_specific.py",
+      "heading": "The same spelling mistake, with her specific except",
+      "code_lines": [
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       16
+      ],
+      "highlight": [
+       10,
+       11
+      ],
+      "error": "examples/ai_typo_specific.expected_error"
+     },
+     "segments": [
+      {
+       "say": "With her specific except, the key error stops the program, and points at line 10. She finds the spelling mistake at once. So she keeps the specific except.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A score loader reads a file. Which `except` should catch a damaged score?",
+      "options": [
+       "`except:` with `pass`",
+       "`except Exception:`",
+       "`except NameError:`",
+       "`except ValueError:`"
+      ],
+      "answer": 3,
+      "explain": "A damaged score raises `ValueError`. Catch that, and let other errors show your bugs."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A score loader reads a file. Which except should catch a damaged score?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Value error. That is the error a damaged score raises. Let every other error show."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "A small `try` keeps one bad row from stopping the rest.",
+       "Test that a change does not hide your bugs."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. The AI made two confident mistakes, and Asha's tests caught both."
+      },
+      {
+       "say": "Next, four mistakes beginners make with try and except."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistakes 1 and 3 are spot-it asks. Mistakes 2 and 4 are explained.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_wrong_type.py",
+      "heading": "Mistake 1: your turn to spot it",
+      "highlight": [
+       5
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. You try. Line 4 turns the word four into a whole number. Line 5 catches an error."
+      }
+     ],
+     "ask": {
+      "question": "Will line 5 catch the error from line 4?"
+     },
+     "after": [
+      {
+       "say": "No. Int of four raises a value error, not a type error. So the program still stops.",
+       "error": "examples/err01_wrong_type.expected_error",
+       "heading": "Mistake 1: catching the wrong type",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: catch the type the report names. Run the code once without try, to see it.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_unset.py",
+      "heading": "Mistake 2: a name that try never created",
+      "highlight": [
+       7
+      ],
+      "error": "examples/err02_unset.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. Line 4 failed, so score was never created. Line 7 still uses it: name error.",
+       "out_highlight": [
+        1,
+        -1
+       ]
+      },
+      {
+       "say": "The fix: put the code that needs score in else.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_no_except.py",
+      "heading": "Mistake 3: spot it",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 3. Remember the four parts. Look at what follows the try block."
+      }
+     ],
+     "ask": {
+      "question": "What is missing after line 3?"
+     },
+     "after": [
+      {
+       "say": "An except or a finally block. Every try needs one, straight after it. Python cannot even read the file.",
+       "error": "examples/err03_no_except.expected_error",
+       "heading": "Mistake 3: a try with no except",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_raise_text.py",
+      "heading": "Mistake 4: raising text",
+      "highlight": [
+       4
+      ],
+      "error": "examples/err04_raise_text.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. Raise needs an exception, not text. Python stops with a type error.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: put the message inside a value error.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Catch the type the report names.",
+       "Code that needs the result goes in `else`.",
+       "`raise` needs an exception, with a message."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Errors are now part of your plan, not a surprise."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "In `ex03`, a player types `3.5` as the score. Which message do they see, and how would you make it clearer?"
+     },
+     "segments": [
+      {
+       "say": "First. In the ask again program, a player types 3.5 as the score. Which message do they see, and how would you make it clearer?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Try it after the video, and write your new message."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "When is it better to stop the whole program than to skip a damaged row?"
+     },
+     "segments": [
+      {
+       "say": "Second. When is it better to stop the whole program, instead of skipping a damaged row? Think about a file of bank payments."
+      }
+     ],
+     "after": [
+      {
+       "say": "Keep your answer. It is a design choice, not a rule."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "`try` and `except` catch an exception and show a clear message.",
+       "`else` runs when nothing failed. `finally` runs always.",
+       "Catch the exception you expect. A bare `except:` hides your bugs.",
+       "Keep each `try` block small.",
+       "`raise ValueError(\"message\")` refuses bad input.",
+       "`pytest.raises` tests that the error is raised."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. Try and except catch an exception, and show a clear message.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Else runs when nothing failed. Finally runs always.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Catch the exception you expect. A bare except hides your bugs.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Keep each try block small.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Raise refuses bad input, with a message.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And pytest raises tests that the error happens.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Safety Net",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Safety Net",
+      "tile": 22
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Safety Net badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Count the cups safely; The missing special; A total that always prints",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Ask again for the teas; Refuse an empty order; Total the good prices",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Test the refusal; Fix the AI's menu loader",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including an order that asks again until it is valid.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, you fix an AI's menu loader that loses items.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease JSON as the next step for structured data. Hold quietly.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 23",
+      "title": "JSON and APIs: Talking to Other Programs",
+      "subtitle": "Save structured data, and read data from other programs.",
+      "badge": "",
+      "tile": 23
+     },
+     "segments": [
+      {
+       "say": "Asha's scores are safe now. But a C S V row holds only flat values. Her quiz needs questions, answers and settings, inside each other."
+      },
+      {
+       "say": "In Chapter 23, you will save structured data as JSON, and read data that other programs send, through web A P Is."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 23."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}
