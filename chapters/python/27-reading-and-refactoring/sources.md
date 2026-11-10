@@ -1,0 +1,13 @@
+# Sources: Chapter 27
+
+All sources were read or searched during the run on the date shown. Content is paraphrased, not copied. Code behaviour was confirmed by running every example (see `verification.json`), not by sources alone.
+
+| Source | URL | Accessed | What it confirmed |
+|---|---|---|---|
+| Python library: difflib | https://docs.python.org/3/library/difflib.html | 2026-11-10 | `unified_diff(a, b, fromfile, tofile, ..., n, lineterm)` compares two lists of lines and yields a diff with `---` and `+++` header lines, `@@` lines that mark each group, `-` for removed lines, `+` for added lines and a space for unchanged context; `n` sets the number of context lines; `lineterm=""` suits lines without a newline. |
+| PEP 8: Style Guide for Python Code, Constants and Naming Conventions | https://peps.python.org/pep-0008/#constants | 2026-11-10 | Constants are usually defined at module level and written in capital letters with underscores, such as `MAX_OVERFLOW`; function and variable names are lowercase words joined by underscores. |
+| Martin Fowler: refactoring.com | https://refactoring.com/ | 2026-11-10 | Refactoring is restructuring existing code by changing its internal structure without changing its external behaviour, as a series of small changes that each keep the behaviour, so that the system is never broken for long. |
+| Characterization test (Michael Feathers, Working Effectively with Legacy Code) | https://en.wikipedia.org/wiki/Characterization_test | 2026-11-10 | A characterization test records the actual current behaviour of existing code, so that unwanted changes are detected during later changes; it describes what the code does, not what it should do. |
+| pytest: How to write and report assertions in tests | https://docs.pytest.org/en/stable/how-to/assert.html | 2026-11-10 | A test is a function whose name starts with `test`, checked with a plain `assert`; pytest reports each failing test by name in its short summary. |
+| Python tutorial: Tuples and sequences (unpacking) | https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences | 2026-11-10 | Sequence unpacking assigns each value of a tuple to its own name, as in `name, price, count = item`, which the rename step uses in its `for` loop. |
+| Python, real runs during this chapter | Python 3.15.2 and Python 3.13.18, with pytest | 2026-11-10 | Every output and error in the lesson, including `ImportError: cannot import name 'chk' from 'stock_v2'`, `NameError: name 'f' is not defined`, the `NoneType` error from a function with no `return`, the failing pytest summaries `1 failed, 4 passed`, and the 7.67 against 7.68 result of rounding inside the loop. |

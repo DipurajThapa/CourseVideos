@@ -1,0 +1,4 @@
+...F.                                            [100%]
+=============== short test summary info ================
+FAILED test_stock_sorted.py::test_keeps_order_of_the_order
+1 failed, 4 passed in 0.01s

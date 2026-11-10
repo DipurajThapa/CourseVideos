@@ -1,0 +1,1303 @@
+1
+00:00:00,250 --> 00:00:03,660
+At the Corner Cafe, Asha finds the old
+till code.
+
+2
+00:00:03,680 --> 00:00:07,020
+Sam, who helped before her, wrote it in a
+hurry.
+
+3
+00:00:07,067 --> 00:00:08,408
+A function called f.
+
+4
+00:00:08,428 --> 00:00:10,245
+Values called a, b and t 2.
+
+5
+00:00:10,265 --> 00:00:11,742
+Numbers with no names.
+
+6
+00:00:11,762 --> 00:00:12,627
+And no tests.
+
+7
+00:00:12,667 --> 00:00:13,418
+It works.
+
+8
+00:00:13,438 --> 00:00:18,048
+But nobody can read it, and nobody dares
+to change it.
+
+9
+00:00:18,653 --> 00:00:20,961
+This is Code Quest, Chapter 27.
+
+10
+00:00:20,981 --> 00:00:25,993
+Today, you read code someone else wrote,
+and you improve it safely.
+
+11
+00:00:26,033 --> 00:00:29,470
+And an AI assistant will tidy some code
+for Asha.
+
+12
+00:00:29,490 --> 00:00:32,715
+It will say the behaviour is exactly the
+same.
+
+13
+00:00:32,735 --> 00:00:34,267
+Her tests will decide.
+
+14
+00:00:34,887 --> 00:00:40,176
+Here is today's mission: Sam's till, with
+clear names, named numbers and small
+
+15
+00:00:40,196 --> 00:00:40,857
+functions.
+
+16
+00:00:40,900 --> 00:00:44,724
+It must give exactly the same results as
+Sam's code.
+
+17
+00:00:44,744 --> 00:00:47,829
+Let's get there, one small step at a time.
+
+18
+00:00:48,417 --> 00:00:54,317
+Read unfamiliar code, write tests that
+record what it does now, and refactor in
+
+19
+00:00:54,337 --> 00:00:55,217
+small steps.
+
+20
+00:00:55,267 --> 00:00:59,286
+Read a diff, and review an AI's changes
+with your tests.
+
+21
+00:00:59,883 --> 00:01:05,030
+Most programming work is changing code
+that already exists, often written by
+
+22
+00:01:05,050 --> 00:01:05,913
+someone else.
+
+23
+00:01:05,933 --> 00:01:11,126
+Refactoring means changing the structure
+of code, without changing what it does.
+
+24
+00:01:11,146 --> 00:01:15,556
+And the proof is a set of tests, written
+before you change anything.
+
+25
+00:01:16,150 --> 00:01:19,370
+Here is the big idea: a safe refactoring
+loop.
+
+26
+00:01:19,390 --> 00:01:22,750
+First, tests that record what the code
+does now.
+
+27
+00:01:22,800 --> 00:01:24,428
+Then one small change.
+
+28
+00:01:24,448 --> 00:01:25,851
+Then run the tests.
+
+29
+00:01:25,871 --> 00:01:26,825
+Same results?
+
+30
+00:01:26,845 --> 00:01:27,424
+Keep it.
+
+31
+00:01:27,444 --> 00:01:28,174
+Different?
+
+32
+00:01:28,194 --> 00:01:28,773
+Undo it.
+
+33
+00:01:28,793 --> 00:01:31,170
+Then review, and go round again.
+
+34
+00:01:31,200 --> 00:01:35,834
+A test that records what the code does
+now, even the odd parts, is called a
+
+35
+00:01:35,854 --> 00:01:37,199
+characterization test.
+
+36
+00:01:37,219 --> 00:01:39,930
+It does not ask whether the result is
+right.
+
+37
+00:01:39,950 --> 00:01:42,474
+It asks whether it is the same as before.
+
+38
+00:01:43,087 --> 00:01:45,746
+To review a change, you read a diff.
+
+39
+00:01:45,766 --> 00:01:49,467
+A diff shows two versions of a file, line
+by line.
+
+40
+00:01:49,500 --> 00:01:52,399
+A line that starts with minus was removed.
+
+41
+00:01:52,419 --> 00:01:55,110
+A line that starts with plus was added.
+
+42
+00:01:55,130 --> 00:01:58,376
+A line that starts with a space did not
+change.
+
+43
+00:01:58,987 --> 00:01:59,550
+Breather.
+
+44
+00:01:59,570 --> 00:02:02,467
+Tests first, then one small change at a
+time.
+
+45
+00:02:02,500 --> 00:02:05,017
+Next, Asha reads Sam's code.
+
+46
+00:02:09,750 --> 00:02:10,240
+Step 1.
+
+47
+00:02:10,260 --> 00:02:16,363
+Before you change anything, read the code
+from the first line, and say in words what
+
+48
+00:02:16,383 --> 00:02:17,456
+each part does.
+
+49
+00:02:17,476 --> 00:02:20,590
+Line 2 defines f, with two values, a and
+b.
+
+50
+00:02:20,633 --> 00:02:22,679
+Lines 4 and 5 go through a.
+
+51
+00:02:22,699 --> 00:02:27,730
+Each x is a tuple, so x 1 and x 2 are its
+second and third values.
+
+52
+00:02:27,750 --> 00:02:30,943
+So a is an order of name, price and count.
+
+53
+00:02:30,967 --> 00:02:35,138
+Line 6 checks b, and line 7 takes 10
+percent off.
+
+54
+00:02:35,158 --> 00:02:38,817
+So b says whether the customer is a
+member.
+
+55
+00:02:38,867 --> 00:02:41,785
+Line 8 adds tax, and line 9 rounds.
+
+56
+00:02:41,805 --> 00:02:44,640
+Lines 14 to 16 call f three times.
+
+57
+00:02:56,013 --> 00:02:57,641
+Zero point zero.
+
+58
+00:02:57,661 --> 00:03:01,142
+The loop never runs, so t stays 0.
+
+59
+00:03:01,162 --> 00:03:06,703
+But 0 times 1.1 is a float, so round gives
+0.0, not 0.
+
+60
+00:03:06,733 --> 00:03:11,712
+Lines 14 and 15 print 12.38, and 11.14 for
+a member.
+
+61
+00:03:11,732 --> 00:03:14,499
+Remember these three results.
+
+62
+00:03:15,120 --> 00:03:18,333
+To check her reading, Asha traces one
+input.
+
+63
+00:03:18,353 --> 00:03:23,110
+Line 8 prints the running total inside the
+loop, as in Chapter 9.
+
+64
+00:03:23,133 --> 00:03:27,818
+On the first pass, two teas at 3.5 make
+7.0.
+
+65
+00:03:39,180 --> 00:03:42,956
+Cake, 4.25, 1, t equals 11.25.
+
+66
+00:03:42,976 --> 00:03:45,360
+7.0, plus one cake.
+
+67
+00:03:45,400 --> 00:03:47,636
+And with tax, 12.38.
+
+68
+00:03:47,656 --> 00:03:51,809
+Asha's reading of the code was right.
+
+69
+00:03:52,383 --> 00:03:52,875
+Step 2.
+
+70
+00:03:52,895 --> 00:03:56,824
+Now Asha records what f does today, before
+any change.
+
+71
+00:03:56,844 --> 00:04:00,773
+Line 2 imports f, and line 4 is the order
+from step 1.
+
+72
+00:04:00,800 --> 00:04:03,568
+Each test uses one result from step 1.
+
+73
+00:04:03,588 --> 00:04:09,290
+The normal order, the member order, and
+the odd one: an empty order gives 0.0.
+
+74
+00:04:09,333 --> 00:04:10,425
+She runs pytest.
+
+75
+00:04:10,445 --> 00:04:12,163
+Three dots, three passed.
+
+76
+00:04:12,183 --> 00:04:17,305
+From now on, any change that breaks one of
+them has changed the behaviour.
+
+77
+00:04:17,920 --> 00:04:18,904
+Quick check.
+
+78
+00:04:18,924 --> 00:04:23,169
+Why does Asha's test expect 0.0 for an
+empty order?
+
+79
+00:04:34,547 --> 00:04:34,678
+C.
+
+80
+00:04:34,698 --> 00:04:38,852
+A characterization test records what the
+code does now.
+
+81
+00:04:38,872 --> 00:04:41,887
+It is not a judgement of right or wrong.
+
+82
+00:04:42,483 --> 00:04:45,586
+Step 3: the first small change, the names.
+
+83
+00:04:45,606 --> 00:04:50,343
+F becomes order total, a becomes items,
+and b becomes is member.
+
+84
+00:04:50,367 --> 00:04:56,493
+Line 4 unpacks each tuple into name, price
+and count, as in Chapter 13.
+
+85
+00:04:56,513 --> 00:04:58,657
+So x 1 and x 2 disappear.
+
+86
+00:04:58,700 --> 00:05:02,682
+And t 2 becomes with tax, a name that says
+what it holds.
+
+87
+00:05:03,287 --> 00:05:08,013
+The tests change in one way only: line 2
+imports the new name.
+
+88
+00:05:08,033 --> 00:05:11,458
+Every expected value stays exactly as it
+was.
+
+89
+00:05:22,813 --> 00:05:23,678
+Three passed.
+
+90
+00:05:23,698 --> 00:05:26,740
+The names changed, and the behaviour did
+not.
+
+91
+00:05:27,317 --> 00:05:27,854
+Step 4.
+
+92
+00:05:27,874 --> 00:05:33,342
+A magic number is a number in the code
+with no name, like 0.1 or 1.1.
+
+93
+00:05:33,362 --> 00:05:36,127
+A reader cannot tell what it means.
+
+94
+00:05:36,167 --> 00:05:38,026
+A constant gives it a name.
+
+95
+00:05:38,046 --> 00:05:43,596
+By convention, constants are written in
+capital letters, at the top of the file.
+
+96
+00:05:43,616 --> 00:05:48,260
+Python will not stop a change, but the
+capitals tell people not to.
+
+97
+00:05:48,280 --> 00:05:50,627
+Lines 11 and 12 now use the names.
+
+98
+00:05:50,667 --> 00:05:52,361
+Then she runs the tests.
+
+99
+00:05:52,953 --> 00:05:56,096
+Line 2 imports the version with constants.
+
+100
+00:05:56,116 --> 00:05:57,601
+Three passed, again.
+
+101
+00:05:58,220 --> 00:06:00,453
+Now Asha reviews the change.
+
+102
+00:06:00,473 --> 00:06:06,812
+The diff lib module compares till v 2,
+from step 3, with till v 3, from step 4.
+
+103
+00:06:06,832 --> 00:06:11,560
+Lines 7 and 8 skip the file comment on
+line 1 of each file.
+
+104
+00:06:11,600 --> 00:06:18,129
+On line 9, v 2 and v 3 are the labels for
+the two versions, and n equals 1 shows one
+
+105
+00:06:18,149 --> 00:06:20,780
+unchanged line around each change.
+
+106
+00:06:20,800 --> 00:06:24,100
+The plus lines at the top add the two
+constants.
+
+107
+00:06:24,133 --> 00:06:29,815
+And these minus and plus pairs swap 0.1
+and 1.1 for their names.
+
+108
+00:06:29,835 --> 00:06:32,488
+Every other line is unchanged.
+
+109
+00:06:33,087 --> 00:06:33,842
+Quick check.
+
+110
+00:06:33,862 --> 00:06:37,462
+In a diff, what does a line that starts
+with minus mean?
+
+111
+00:06:48,813 --> 00:06:48,961
+B.
+
+112
+00:06:48,981 --> 00:06:50,222
+It was removed.
+
+113
+00:06:50,242 --> 00:06:51,650
+Plus means added.
+
+114
+00:06:52,253 --> 00:06:52,796
+Breather.
+
+115
+00:06:52,816 --> 00:06:56,543
+Two small changes done, and the tests
+passed after each one.
+
+116
+00:06:56,567 --> 00:07:01,538
+Next, the last step, and Sam's code side
+by side with Asha's.
+
+117
+00:07:06,283 --> 00:07:08,158
+Step 5 extracts a function.
+
+118
+00:07:08,178 --> 00:07:13,840
+The loop that adds up the order becomes
+its own function, subtotal, on lines 7 to
+
+119
+00:07:13,860 --> 00:07:15,313
+12, with a docstring.
+
+120
+00:07:15,333 --> 00:07:17,081
+Line 12 returns the total.
+
+121
+00:07:17,101 --> 00:07:21,023
+Without that return, the result would
+never come back out.
+
+122
+00:07:21,067 --> 00:07:26,074
+Order total now calls subtotal on line 17,
+and takes off the discount.
+
+123
+00:07:26,094 --> 00:07:32,107
+The name with tax is no longer needed, so
+the tax moves into the return, on line 20.
+
+124
+00:07:32,133 --> 00:07:35,110
+And line 2 is a docstring for the whole
+module.
+
+125
+00:07:35,720 --> 00:07:39,209
+The tests pass on the final version too:
+three passed.
+
+126
+00:07:39,820 --> 00:07:44,675
+To be sure, Asha runs Sam's f, and her
+order total, side by side.
+
+127
+00:07:44,695 --> 00:07:50,450
+Line 5 has three orders: the one from step
+1, three juices, and an empty one.
+
+128
+00:07:50,500 --> 00:07:54,923
+Lines 6 and 7 try each order with and
+without the member discount.
+
+129
+00:07:54,943 --> 00:07:59,905
+Line 10 prints the old result, the new
+result, and whether they are equal.
+
+130
+00:08:11,280 --> 00:08:12,540
+True, six times.
+
+131
+00:08:12,560 --> 00:08:14,140
+Every pair is equal.
+
+132
+00:08:14,167 --> 00:08:15,349
+Mission complete!
+
+133
+00:08:15,369 --> 00:08:20,017
+The code is easy to read, and it does
+exactly what Sam's code did.
+
+134
+00:08:20,067 --> 00:08:23,692
+But Sam left one more function, a stock
+checker.
+
+135
+00:08:23,712 --> 00:08:28,705
+Asha decides to tidy it with an AI
+assistant, one stage at a time.
+
+136
+00:08:29,283 --> 00:08:32,801
+This chapter's AI skill: a safe
+refactoring loop.
+
+137
+00:08:32,821 --> 00:08:38,433
+Tests first, then the AI's suggestion,
+then your review, then the tests again.
+
+138
+00:08:38,467 --> 00:08:40,844
+Check every claim with a real run.
+
+139
+00:08:40,864 --> 00:08:42,889
+And never paste private data.
+
+140
+00:08:42,909 --> 00:08:44,722
+Use made-up stock numbers.
+
+141
+00:08:45,320 --> 00:08:46,396
+Stage 1: plan.
+
+142
+00:08:46,416 --> 00:08:50,077
+Sam's stock checker has the shortest names
+yet.
+
+143
+00:08:50,097 --> 00:08:54,150
+Asha asks the AI to explain it, without
+changing it.
+
+144
+00:08:54,200 --> 00:08:59,485
+The AI says c h k returns the items that
+will run out after the order.
+
+145
+00:08:59,505 --> 00:09:00,622
+It sounds sure.
+
+146
+00:09:01,220 --> 00:09:03,600
+Asha checks the claim with a run.
+
+147
+00:09:03,620 --> 00:09:08,690
+Line 6 calls c h k, and lines 7 and 8
+print what is left of each item.
+
+148
+00:09:08,733 --> 00:09:09,888
+Cake has 2 left.
+
+149
+00:09:09,908 --> 00:09:12,971
+It has not run out, but it is in the list.
+
+150
+00:09:12,991 --> 00:09:15,833
+And Scone, with exactly 3 left, is not.
+
+151
+00:09:15,867 --> 00:09:20,316
+So c h k returns the items that will have
+fewer than 3 left.
+
+152
+00:09:20,336 --> 00:09:23,445
+The AI's explanation was close, but wrong.
+
+153
+00:09:24,053 --> 00:09:25,143
+Stage 2: write.
+
+154
+00:09:25,163 --> 00:09:31,063
+Asha writes her own characterization tests
+first, with the results of real runs.
+
+155
+00:09:31,100 --> 00:09:35,290
+Exactly 3 left is the boundary, so it gets
+its own test.
+
+156
+00:09:35,333 --> 00:09:40,919
+And one test checks that the results keep
+the order of the order: Scone, then Cake.
+
+157
+00:09:41,520 --> 00:09:43,485
+Here are her five tests.
+
+158
+00:09:43,505 --> 00:09:47,538
+Line 12 expects an empty list for exactly
+3 left.
+
+159
+00:09:47,558 --> 00:09:50,350
+Line 21 expects Scone before Cake.
+
+160
+00:09:50,400 --> 00:09:52,853
+On Sam's code, all five pass.
+
+161
+00:09:53,453 --> 00:09:57,303
+Then she asks the AI which inputs her
+tests do not cover yet.
+
+162
+00:09:57,333 --> 00:10:00,851
+It suggests an item that is not in the
+stock.
+
+163
+00:10:00,871 --> 00:10:02,659
+A fair idea, for later.
+
+164
+00:10:03,253 --> 00:10:04,673
+Stage 3: generate.
+
+165
+00:10:04,693 --> 00:10:10,673
+Asha asks for clear names, exactly the
+same behaviour, and no new features.
+
+166
+00:10:10,700 --> 00:10:15,559
+The AI gives her low stock, with a
+constant, and says the behaviour is
+
+167
+00:10:15,579 --> 00:10:16,744
+exactly the same.
+
+168
+00:10:17,353 --> 00:10:23,505
+Asha reads the change as a diff, this time
+with n equals 0, so no unchanged lines.
+
+169
+00:10:23,525 --> 00:10:29,751
+Every name changed, c h k, s, o, r and k,
+so every line shows as changed: six minus
+
+170
+00:10:29,771 --> 00:10:31,783
+lines, and nine plus lines.
+
+171
+00:10:31,833 --> 00:10:33,996
+So she reads them in pairs.
+
+172
+00:10:34,016 --> 00:10:37,310
+Look at the old if line, and the new one.
+
+173
+00:10:48,680 --> 00:10:49,830
+The comparison.
+
+174
+00:10:49,850 --> 00:10:52,171
+The old line says less than 3.
+
+175
+00:10:52,191 --> 00:10:56,073
+The new line says less than or equal to
+LOW LIMIT.
+
+176
+00:10:56,093 --> 00:11:00,599
+With less than or equal, exactly 3 left
+now counts as low.
+
+177
+00:11:01,220 --> 00:11:02,347
+Stage 4: test.
+
+178
+00:11:02,367 --> 00:11:09,228
+Line 2 imports the AI's function with as c
+h k, like import math as m in Chapter 18.
+
+179
+00:11:09,248 --> 00:11:12,750
+So the same five tests run on the new
+code.
+
+180
+00:11:12,800 --> 00:11:15,894
+One failed: the test for exactly 3 left.
+
+181
+00:11:15,914 --> 00:11:20,021
+The AI changed the behaviour, and it said
+it had not.
+
+182
+00:11:20,620 --> 00:11:26,020
+She shows the AI the failing test, and
+asks which line changed the behaviour.
+
+183
+00:11:26,067 --> 00:11:29,371
+Now the AI names line 8, and the
+comparison.
+
+184
+00:11:29,391 --> 00:11:31,486
+Change it back to less than.
+
+185
+00:11:32,087 --> 00:11:37,628
+Asha changes less than or equal back to
+less than, on line 8, and keeps the clear
+
+186
+00:11:37,648 --> 00:11:38,040
+names.
+
+187
+00:11:38,653 --> 00:11:40,727
+Then she runs every test again.
+
+188
+00:11:40,747 --> 00:11:41,537
+Five passed.
+
+189
+00:11:41,557 --> 00:11:46,534
+A regression is a change that breaks
+something that used to work, and this
+
+190
+00:11:46,554 --> 00:11:47,952
+rerun checks for one.
+
+191
+00:11:48,553 --> 00:11:49,631
+Stage 5: debug.
+
+192
+00:11:49,651 --> 00:11:52,485
+Then Asha's daily report stops working.
+
+193
+00:11:52,505 --> 00:11:57,533
+She pastes the code and the full error,
+and asks for the cause first.
+
+194
+00:11:57,567 --> 00:11:59,390
+Cannot import name c h k.
+
+195
+00:11:59,410 --> 00:12:01,971
+Her report still uses the old name.
+
+196
+00:12:01,991 --> 00:12:07,576
+The AI suggests keeping the old name as a
+second name for the same function.
+
+197
+00:12:08,187 --> 00:12:14,100
+A function is a value, like a number, so
+line 14 can give it a second name, as the
+
+198
+00:12:14,120 --> 00:12:15,909
+as keyword did on import.
+
+199
+00:12:15,929 --> 00:12:19,527
+Now c h k and low stock lead to the same
+function.
+
+200
+00:12:19,567 --> 00:12:24,486
+And line 6 is a docstring with the true
+behaviour: fewer than 3 left.
+
+201
+00:12:25,087 --> 00:12:28,467
+Her report imports c h k again, and it
+runs.
+
+202
+00:12:29,087 --> 00:12:32,757
+And all five tests still pass on the final
+version.
+
+203
+00:12:32,777 --> 00:12:33,770
+No regression.
+
+204
+00:12:34,387 --> 00:12:35,738
+Stage 6: improve.
+
+205
+00:12:35,758 --> 00:12:40,657
+Asha asks for one readability change that
+keeps every result.
+
+206
+00:12:40,700 --> 00:12:45,675
+The AI suggests a comprehension, and
+sorted, so the list is tidier.
+
+207
+00:12:57,047 --> 00:12:57,235
+No.
+
+208
+00:12:57,255 --> 00:13:01,599
+Sorted puts Cake before Scone, so the test
+for the order fails.
+
+209
+00:13:01,619 --> 00:13:04,856
+Sorting is a new feature that nobody asked
+for.
+
+210
+00:13:05,453 --> 00:13:08,323
+One failed: keeps order of the order.
+
+211
+00:13:08,367 --> 00:13:11,985
+A refactoring that changes the output is
+not a refactoring.
+
+212
+00:13:12,587 --> 00:13:18,511
+So Asha keeps the part that helps, the
+comprehension on lines 7 and 8, and drops
+
+213
+00:13:18,531 --> 00:13:19,031
+sorted.
+
+214
+00:13:19,051 --> 00:13:21,484
+Line 9 returns the list as it is.
+
+215
+00:13:22,087 --> 00:13:23,912
+She runs every test again.
+
+216
+00:13:23,932 --> 00:13:24,764
+Five passed.
+
+217
+00:13:24,784 --> 00:13:29,378
+That is a real improvement: clearer code,
+and the same behaviour.
+
+218
+00:13:29,987 --> 00:13:30,848
+Quick check.
+
+219
+00:13:30,868 --> 00:13:34,302
+An AI says its refactoring keeps the
+behaviour.
+
+220
+00:13:34,322 --> 00:13:35,258
+What decides?
+
+221
+00:13:46,613 --> 00:13:46,742
+A.
+
+222
+00:13:46,762 --> 00:13:48,751
+Your tests, and a real run.
+
+223
+00:13:48,771 --> 00:13:54,701
+Today they caught a wrong explanation, a
+changed comparison and a feature nobody
+
+224
+00:13:54,721 --> 00:13:55,445
+asked for.
+
+225
+00:13:56,053 --> 00:13:56,676
+Breather.
+
+226
+00:13:56,696 --> 00:14:01,533
+You watched Asha catch three AI mistakes,
+each with a run or a test.
+
+227
+00:14:01,567 --> 00:14:05,071
+Next, four mistakes people make when they
+refactor.
+
+228
+00:14:09,817 --> 00:14:10,515
+Mistake 1.
+
+229
+00:14:10,535 --> 00:14:14,968
+This tidy version rounds each line inside
+the loop, on line 8.
+
+230
+00:14:14,988 --> 00:14:17,697
+It passes all three tests from step 2.
+
+231
+00:14:17,733 --> 00:14:21,523
+With two teas, both results are 11.14.
+
+232
+00:14:21,567 --> 00:14:24,821
+But with one tea, they are 7.67 and 7.68.
+
+233
+00:14:24,841 --> 00:14:27,216
+Test several different inputs.
+
+234
+00:14:27,236 --> 00:14:31,768
+And never move rounding into a loop during
+a refactoring.
+
+235
+00:14:32,387 --> 00:14:33,196
+Mistake 2.
+
+236
+00:14:33,216 --> 00:14:36,346
+The function has a new name on line 2.
+
+237
+00:14:36,366 --> 00:14:37,590
+Look at line 9.
+
+238
+00:14:48,947 --> 00:14:50,839
+It stops with a name error.
+
+239
+00:14:50,859 --> 00:14:54,877
+F is not defined, because Python only
+knows the new name.
+
+240
+00:14:54,900 --> 00:15:00,939
+The fix: change every call, or keep the
+old name as a second name, as Asha did
+
+241
+00:15:00,959 --> 00:15:01,794
+with c h k.
+
+242
+00:15:02,387 --> 00:15:03,258
+Mistake 3.
+
+243
+00:15:03,278 --> 00:15:07,626
+Lines 2 to 5 are an extracted function,
+subtotal.
+
+244
+00:15:07,646 --> 00:15:09,677
+Line 9 uses its result.
+
+245
+00:15:21,047 --> 00:15:21,809
+A return.
+
+246
+00:15:21,829 --> 00:15:28,507
+Without it, subtotal gives back None, and
+line 9 cannot multiply None by 1.1.
+
+247
+00:15:28,533 --> 00:15:33,019
+The fix: return total, as on line 12 of
+the finished till.
+
+248
+00:15:33,620 --> 00:15:34,573
+Mistake 4.
+
+249
+00:15:34,593 --> 00:15:38,464
+This version forgot the member discount.
+
+250
+00:15:38,484 --> 00:15:41,480
+Old says 11.14, new says 12.38.
+
+251
+00:15:41,500 --> 00:15:45,652
+Changing the test to expect 12.38 would
+hide the bug.
+
+252
+00:15:45,672 --> 00:15:49,588
+Never change expected values during a
+refactoring.
+
+253
+00:15:49,608 --> 00:15:51,477
+Undo the change instead.
+
+254
+00:15:52,087 --> 00:15:52,624
+Breather.
+
+255
+00:15:52,644 --> 00:15:56,027
+Now you know the four most common
+refactoring mistakes.
+
+256
+00:15:56,067 --> 00:15:59,404
+Two questions to think about on your own
+come next.
+
+257
+00:16:04,150 --> 00:16:04,495
+First.
+
+258
+00:16:04,515 --> 00:16:09,058
+Sam's sales function adds up the day and
+prints a report, in the same loop.
+
+259
+00:16:09,078 --> 00:16:12,830
+How would you split it, and which tests
+would you write first?
+
+260
+00:16:24,180 --> 00:16:26,613
+Keep your answer for the practice tasks.
+
+261
+00:16:27,220 --> 00:16:27,661
+Second.
+
+262
+00:16:27,681 --> 00:16:32,991
+Sometimes refactoring is not worth it, for
+example code that will be deleted next
+
+263
+00:16:33,011 --> 00:16:33,320
+week.
+
+264
+00:16:33,340 --> 00:16:35,755
+What would you ask before you decide?
+
+265
+00:16:47,113 --> 00:16:49,226
+Think about it after the video.
+
+266
+00:16:49,817 --> 00:16:50,577
+Let's recap.
+
+267
+00:16:50,597 --> 00:16:54,737
+Read from the top, say what each part
+does, and trace one input.
+
+268
+00:16:54,767 --> 00:16:58,385
+A characterization test records what the
+code does now.
+
+269
+00:16:58,405 --> 00:17:00,767
+Write these tests before any change.
+
+270
+00:17:00,800 --> 00:17:04,980
+Refactor in small steps, and run the tests
+after every step.
+
+271
+00:17:05,000 --> 00:17:08,710
+In a diff, minus was removed and plus was
+added.
+
+272
+00:17:08,733 --> 00:17:14,079
+And check every AI claim with a run, and
+every AI change with your tests.
+
+273
+00:17:14,687 --> 00:17:15,716
+One last check.
+
+274
+00:17:15,736 --> 00:17:18,165
+During a refactoring, a test fails.
+
+275
+00:17:18,185 --> 00:17:19,215
+What do you do?
+
+276
+00:17:30,580 --> 00:17:30,706
+D.
+
+277
+00:17:30,726 --> 00:17:33,630
+Undo the change, and try a smaller step.
+
+278
+00:17:33,650 --> 00:17:36,116
+The test is telling you the truth.
+
+279
+00:17:36,720 --> 00:17:37,880
+Quest complete!
+
+280
+00:17:37,900 --> 00:17:41,500
+You earned 100 XP and the Code Reviewer
+badge.
+
+281
+00:17:43,750 --> 00:17:45,465
+Now it is your turn.
+
+282
+00:17:45,485 --> 00:17:47,980
+Three warm-up tasks at 10 XP.
+
+283
+00:17:48,000 --> 00:17:51,690
+Three apply tasks at 20, including reading
+a diff.
+
+284
+00:17:51,733 --> 00:17:54,333
+And two stretch tasks, worth 40 each.
+
+285
+00:17:54,353 --> 00:17:59,006
+In the last one, you fix an AI's refactor
+that changed a boundary.
+
+286
+00:17:59,583 --> 00:18:02,826
+Today, Asha improved code that someone
+else wrote.
+
+287
+00:18:02,846 --> 00:18:07,263
+Next, she builds a complete program of her
+own, from the first plan.
+
+288
+00:18:07,300 --> 00:18:13,097
+In Chapter 28, the Final Boss, you will
+build a personal task manager with an AI
+
+289
+00:18:13,117 --> 00:18:16,660
+assistant: plan, build, test, review and
+improve.
+
+290
+00:18:16,700 --> 00:18:18,388
+Do the warm-up tasks now.
+
+291
+00:18:18,408 --> 00:18:20,300
+They take about ten minutes.
+
+292
+00:18:20,333 --> 00:18:22,269
+See you in Chapter 28.

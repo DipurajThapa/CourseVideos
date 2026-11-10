@@ -1,0 +1,15 @@
+--- v2
++++ v3
+@@ -1 +1,5 @@
++MEMBER_DISCOUNT = 0.1
++TAX_RATE = 1.1
++
++
+ def order_total(items, is_member):
+@@ -5,4 +9,4 @@
+     if is_member:
+-        total = total - total * 0.1
+-    with_tax = total * 1.1
++        total = total - total * MEMBER_DISCOUNT
++    with_tax = total * TAX_RATE
+     return round(with_tax, 2)
