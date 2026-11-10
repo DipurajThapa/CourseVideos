@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-23",
   "run_id": "2026-11-10-521d54",
-  "verified_at": "2026-11-10T08:34:05+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T09:08:27+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -170,7 +170,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "sources": 7
+        "sources": 8
       }
     },
     {
@@ -179,12 +179,12 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 121,
+          "sentences": 123,
           "average_words": 12.1,
-          "longest": 28
+          "longest": 29
         },
         "video/script.md": {
-          "sentences": 647,
+          "sentences": 651,
           "average_words": 8.3,
           "longest": 24
         }
@@ -192,17 +192,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/23-json-and-apis",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/23-json-and-apis",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/23-json-and-apis",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/23-json-and-apis"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.1
+        "estimated_minutes": 18.3,
+        "duration_seconds": 1112.4,
+        "size_mb": 47.63,
+        "scenes": 17,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "e60f238ec932d2ee09224a54c90298e276971537bfd376ffa64acddaf18bf430"
+  "fingerprint": "216d810bf5481f0b6cf2bc5450acc0b411a645808b05a5a432175fcdf98134b4"
 }

@@ -18,7 +18,7 @@ At the end of Chapter 22, Asha's scores were safe in a CSV file. But a CSV row h
 
 **JSON** (JavaScript Object Notation) is a text format for structured data. It writes dictionaries, lists, text, numbers, true, false and null in a way that almost every programming language can read.
 
-That is why programs talk to each other in JSON. A weather service, a payment system and a delivery app all send their answers as JSON text. If you can read JSON, your program can use their data.
+That is why programs often talk to each other in JSON. Many weather, payment and delivery services send their answers as JSON text. If you can read JSON, your program can use their data.
 
 ## The idea
 
@@ -172,17 +172,20 @@ True
 
 `json.dump()` writes straight into the open file, and `json.load()` reads from it. The loaded dictionary is equal to the original, so nothing was lost. Always open JSON files with `encoding="utf-8"`, as in Chapter 21.
 
-**Step 5: Read a saved API response.** On your own computer, a program can ask a real service for data. This fragment shows how, with the `urllib.request` module from the standard library. `api.example.com` is a placeholder, not a real weather service:
+**Step 5: Read a saved API response.** On your own computer, a program can ask a real service for data. This fragment shows how, with the `urllib.request` module from the standard library. `api.example.com` is a placeholder, not a real weather service.
 
 ```python
 # illustrative
 import json
 from urllib.request import urlopen
 
-with urlopen("https://api.example.com/weather?city=Riverside") as response:
+url = "https://api.example.com/weather?city=Riverside"
+with urlopen(url) as response:
     print(response.status)
     data = json.load(response)
 ```
+
+If the service answers with an error status, such as `404`, `urlopen()` raises an `HTTPError` instead of returning, and you can catch it with `try`, as in Chapter 22.
 
 Live answers change every minute, so they cannot be checked against an expected output. Programmers save one real response as a file, called a **sample response**, and build and test their code on it. Here is Asha's sample, `weather_sample.json`:
 

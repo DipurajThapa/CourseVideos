@@ -24,7 +24,7 @@
      },
      "segments": [
       {
-       "say": "At the Corner Cafe, Asha's quiz has a title, a pass mark, and questions with their own answers. That is data inside data, and a CSV row cannot hold it.",
+       "say": "At the Corner Cafe, the iced tea sold out early on the last hot afternoon. A weather service could have warned Asha, but it answers in JSON. And her quiz is data inside data.",
        "focus": "pre"
       }
      ]
@@ -56,7 +56,7 @@
      },
      "segments": [
       {
-       "say": "Here is today's mission. The daily board reads a weather response, and picks the drink of the day.",
+       "say": "Today's mission: a daily board that reads a weather response, and picks the drink of the day.",
        "highlight": [
         11,
         12,
@@ -129,7 +129,7 @@
       "items": [
        "**JSON** is a text format for structured data.",
        "Almost every programming language can read it.",
-       "Weather, payment and delivery services all answer in JSON."
+       "Many weather, payment and delivery services answer in JSON."
       ]
      },
      "segments": [
@@ -139,7 +139,7 @@
        "focus": 0
       },
       {
-       "say": "Almost every language can read it. So weather, payment and delivery services all send their answers as JSON.",
+       "say": "Almost every language can read it. So many weather, payment and delivery services answer in JSON.",
        "reveal": 3,
        "focus": 2
       }
@@ -236,7 +236,7 @@
       "body": [
        "A **web API** is a service that other programs can ask for data."
       ],
-      "pre": "  Your program                        Weather service\n  REQUEST:  GET https://api.example.com/weather  -->\n                         <--  RESPONSE: status 200 OK\n                              body: {\"current\": {\"temp_c\": 31.5}}"
+      "pre": "  Your program                        Weather service\n  REQUEST:  GET https://api.example.com/weather?city=Riverside  -->\n                         <--  RESPONSE: status 200 OK\n                              body: {\"current\": {\"temp_c\": 31.5}}"
      },
      "segments": [
       {
@@ -405,6 +405,7 @@
        "say": "Large. The text became a dictionary, so sizes is a list, and index 1 is its second item.",
        "output": "examples/ex02_loads.expected",
        "highlight": [
+        8,
         9
        ],
        "out_highlight": [
@@ -454,16 +455,16 @@
        "say": "Step 3. Line 4 holds a drink with an accent: Café au lait."
       },
       {
-       "say": "By default, dump s writes every character outside basic English as a code. So the e with an accent becomes backslash u, 0 0 e 9.",
-       "highlight": [
-        5
-       ]
-      },
-      {
-       "say": "Ensure ascii equals False turns that off. Indent equals 2 puts each value on its own line.",
+       "say": "Lines 6 and 7 add two settings. Ensure ascii equals False keeps every letter as it is. Indent equals 2 puts each value on its own line.",
        "highlight": [
         6,
         7
+       ]
+      },
+      {
+       "say": "Line 5 has no settings. Look closely at the accent in Café.",
+       "highlight": [
+        5
        ]
       }
      ],
@@ -472,7 +473,7 @@
      },
      "after": [
       {
-       "say": "As a code: C a f, then backslash u 0 0 e 9. The data is still correct, but hard for people to read.",
+       "say": "As a code: C a f, then backslash u 0 0 e 9. By default, dump s writes every character outside basic English as a code. The data is still correct, but hard to read.",
        "output": "examples/ex03_pretty.expected",
        "highlight": [
         5
@@ -600,12 +601,15 @@
       "body": [
        "On your own computer, the standard library can send the request."
       ],
-      "pre": "  # illustrative: api.example.com is a placeholder\n  import json\n  from urllib.request import urlopen\n\n  with urlopen(\"https://api.example.com/weather\") as response:\n      print(response.status)\n      data = json.load(response)"
+      "pre": "  # illustrative: api.example.com is a placeholder\n  import json\n  from urllib.request import urlopen\n\n  url = \"https://api.example.com/weather?city=Riverside\"\n  with urlopen(url) as response:\n      print(response.status)\n      data = json.load(response)"
      },
      "segments": [
       {
        "say": "Step 5. On your own computer, a program can ask a real service for data. The url lib module, from the standard library, sends the request.",
        "focus": "pre"
+      },
+      {
+       "say": "An error status, such as 404, makes url open raise an H T T P error, which try can catch."
       },
       {
        "say": "This address is a placeholder. Live answers change every minute, so programmers save one real response as a file, called a sample response, and test on it."
@@ -709,26 +713,26 @@
       }
      ],
      "ask": {
-      "question": "What does line 9 print?"
+      "question": "What happens at line 10?"
      },
      "after": [
       {
-       "say": "Not sent: the default. Get never crashes.",
+       "say": "Line 10 stops with a key error: wind k p h. Square brackets need the field to be there.",
        "error": "examples/ex06_safe_get.expected_error",
-       "highlight": [
-        9
-       ],
-       "out_highlight": [
-        2
-       ]
-      },
-      {
-       "say": "Line 10 stops with a key error. Use square brackets for fields the service always sends, and get for fields that may be missing.",
        "highlight": [
         10
        ],
        "out_highlight": [
         -1
+       ]
+      },
+      {
+       "say": "Line 9 printed the default instead. Use get for fields that may be missing.",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        2
        ]
       }
      ]
@@ -814,7 +818,7 @@
      },
      "segments": [
       {
-       "say": "Breather. You can read a service's answer, and survive a missing field. Now, back to the mission."
+       "say": "Breather. Now, back to the mission."
       }
      ]
     }
@@ -1226,7 +1230,7 @@
        },
        {
         "role": "ai",
-        "text": "This supplier sends every price as a string. Line 9 returns it unchanged.\nFix: return float(item[\"price\"])."
+        "text": "This supplier sends every price as a string. The return line gives it back unchanged.\nFix: return float(item[\"price\"])."
        }
       ],
       "reveal": 1
@@ -1236,7 +1240,7 @@
        "say": "Asha shows the AI the failing cases, and asks why."
       },
       {
-       "say": "The supplier sends prices as strings, so line 9 must convert them with float.",
+       "say": "The supplier sends prices as strings, so the return line must convert them with float.",
        "reveal": 2,
        "focus": 1
       }
@@ -1318,11 +1322,11 @@
       "messages": [
        {
         "role": "you",
-        "text": "Today's response has null as the oat milk price. My code crashed on line 9 with: TypeError: float() argument must be a string or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix."
+        "text": "Today's response has null as the oat milk price. My code crashed on the return line with: TypeError: float() argument must be a string or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix."
        },
        {
         "role": "ai",
-        "text": "JSON null becomes None in Python, and float(None) raises a TypeError.\nFix: before line 9, check for it:\nif item[\"price\"] is None: return None."
+        "text": "JSON null becomes None in Python, and float(None) raises a TypeError.\nFix: before the return line, check for it:\nif item[\"price\"] is None: return None."
        }
       ],
       "reveal": 1
@@ -1447,8 +1451,45 @@
        ]
       },
       {
-       "say": "So Asha keeps her final function. Its four cases still pass, as you saw.",
+       "say": "So Asha keeps her final function.",
        "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_final.py",
+      "heading": "Her final function, one more run",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "highlight": [
+       11
+      ],
+      "output": "examples/ai_tests_final.expected",
+      "out_highlight": [
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "She runs her four cases one more time, on her own function. All four pass."
       }
      ]
     },
@@ -1530,7 +1571,7 @@
        ]
       },
       {
-       "say": "The report runs through the json module's own files. Read the last line: column 2 is the first single quotation mark.",
+       "say": "The report runs through the json module's own files. On your computer, these lines show full file paths. Skip to the last line: column 2 is the first single quotation mark.",
        "out_highlight": []
       }
      ]
@@ -1607,7 +1648,7 @@
        ]
       },
       {
-       "say": "So back, 1 is a key error. Use string keys from the start.",
+       "say": "Asking back for key 1 is a key error. Use string keys from the start.",
        "highlight": [
         7
        ],
@@ -1637,7 +1678,7 @@
      ],
      "after": [
       {
-       "say": "Look for a field in the sample that names the unit."
+       "say": "Try it with the sample after the video."
       }
      ]
     },
@@ -1791,12 +1832,8 @@
      },
      "segments": [
       {
-       "say": "Now it is your turn. Three warm-up tasks, worth 10 XP each.",
+       "say": "Now it is your turn. Three warm-up tasks worth 10 XP each, and three apply tasks worth 20.",
        "focus_row": 0
-      },
-      {
-       "say": "Three apply tasks, worth 20 each, including a JSON loader that never crashes.",
-       "focus_row": 1
       },
       {
        "say": "And two stretch tasks, worth 40 each, including an AI's temperature reader to fix.",

@@ -1,0 +1,152 @@
+{
+  "chapter_id": "python-23",
+  "rendered_at": "2026-11-10T09:05:11+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "d4215c44ccc623334a868c7ab93cd8645ba4b7273be74167fdfd0839399a7874",
+  "inputs_sha256": "143b2f8b2f7454ad1a809b4a6f23e6bf6523558363092f689bc919e21606fccf",
+  "video_sha256": "8e1fd1e2d80cc59a8e7331878c8d6c1c8d245aaf4a140422f8b21ba5a2a5b3ce",
+  "duration_seconds": 1112.4,
+  "size_mb": 47.63,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.0
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 1110,
+  "questions": 19,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 39.5
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 39.5,
+      "end": 52.933
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 52.933,
+      "end": 70.5
+    },
+    {
+      "id": "idea",
+      "title": "The idea: JSON text and Python data",
+      "section": "The idea",
+      "start": 70.5,
+      "end": 165.6
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Data to JSON text",
+      "section": "Build it step by step",
+      "start": 165.6,
+      "end": 206.333
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: JSON text to data",
+      "section": "Build it step by step",
+      "start": 206.333,
+      "end": 257.633
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Readable JSON",
+      "section": "Build it step by step",
+      "start": 257.633,
+      "end": 308.0
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Save and load a file",
+      "section": "Build it step by step",
+      "start": 308.0,
+      "end": 361.333
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: A saved API response",
+      "section": "Build it step by step",
+      "start": 361.333,
+      "end": 434.233
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: Missing fields and bad text",
+      "section": "Build it step by step",
+      "start": 434.233,
+      "end": 541.167
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the daily board",
+      "section": "See the outcome",
+      "start": 541.167,
+      "end": 604.467
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: reading a supplier's prices",
+      "section": "Work with AI",
+      "start": 604.467,
+      "end": 883.533
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 883.533,
+      "end": 972.7
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 972.7,
+      "end": 1015.367
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 1015.367,
+      "end": 1073.667
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1073.667,
+      "end": 1087.033
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1087.033,
+      "end": 1112.4
+    }
+  ]
+}

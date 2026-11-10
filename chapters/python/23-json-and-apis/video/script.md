@@ -2,26 +2,26 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:04 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:32.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:40)
 
 **Section:** Introduction
 
 **Direction:** Open on the Chapter 22 limit: the quiz is data inside data, and a CSV row is flat. Title and AI tease, then the mission code with no output.
 
-- **Narration:** At the Corner Cafe, Asha's quiz has a title, a pass mark, and questions with their own answers. That is data inside data, and a CSV row cannot hold it.
+- **Narration:** At the Corner Cafe, the iced tea sold out early on the last hot afternoon. A weather service could have warned Asha, but it answers in JSON. And her quiz is data inside data.
   **On screen:** Data inside data
 - **Narration:** This is Code Quest, Chapter 23. Today, your programs talk to other programs.
   **On screen:** JSON and APIs: Talking to Other Programs
 - **Narration:** And an AI assistant will read a supplier's price list, and promise you a number. Your tests will decide.
   **On screen:** JSON and APIs: Talking to Other Programs Read it. Check it. Save it.
-- **Narration:** Here is today's mission. The daily board reads a weather response, and picks the drink of the day.
+- **Narration:** Today's mission: a daily board that reads a weather response, and picks the drink of the day.
   **On screen:** Code `examples/ex08_daily_board.py`, line 11, 12, 13 highlighted, output hidden
 - **Narration:** Then it saves the board as JSON, for the screen behind the counter. Let's build it, piece by piece.
   **On screen:** Code `examples/ex08_daily_board.py`, line 19, 20 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:40 to 0:53)
 
 **Section:** Learning goals
 
@@ -45,7 +45,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Read nested values from a saved API response.
     - Ask an AI to explain a JSON response, then check its code.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (0:53 to 1:10)
 
 **Section:** Why this matters
 
@@ -54,13 +54,13 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** JSON, short for JavaScript Object Notation, is a text format for structured data: dictionaries, lists, text and numbers, inside each other.
   **On screen:** Why this matters
     - **JSON** is a text format for structured data.
-- **Narration:** Almost every language can read it. So weather, payment and delivery services all send their answers as JSON.
+- **Narration:** Almost every language can read it. So many weather, payment and delivery services answer in JSON.
   **On screen:** Why this matters
     - **JSON** is a text format for structured data.
     - Almost every programming language can read it.
-    - Weather, payment and delivery services all answer in JSON.
+    - Many weather, payment and delivery services answer in JSON.
 
-## Scene 4: The idea: JSON text and Python data
+## Scene 4: The idea: JSON text and Python data (1:10 to 2:46)
 
 **Section:** The idea
 
@@ -101,7 +101,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - An API answers with a status code and a body.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Step 1: Data to JSON text
+## Scene 5: Step 1: Data to JSON text (2:46 to 3:26)
 
 **Section:** Build it step by step
 
@@ -117,7 +117,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And the result is a string. Now Asha can save it in a file, or send it to another program.
   **On screen:** Code `examples/ex01_dumps.py`, line 8 highlighted, output `examples/ex01_dumps.expected`
 
-## Scene 6: Step 2: JSON text to data
+## Scene 6: Step 2: JSON text to data (3:26 to 4:18)
 
 **Section:** Build it step by step
 
@@ -131,13 +131,13 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex02_loads.py`, line 8, 9 highlighted, output hidden
 - **Interaction:** "What does line 9 print?" stays on screen with a 10-second timer.
 - **Narration:** Large. The text became a dictionary, so sizes is a list, and index 1 is its second item.
-  **On screen:** Code `examples/ex02_loads.py`, line 9 highlighted, output `examples/ex02_loads.expected`
+  **On screen:** Code `examples/ex02_loads.py`, line 8, 9 highlighted, output `examples/ex02_loads.expected`
 - **Narration:** Line 10 shows false and null as Python's False and None.
   **On screen:** Code `examples/ex02_loads.py`, line 10 highlighted, output `examples/ex02_loads.expected`
 - **Narration:** To check for None, write is None, as line 11 does. Python's style guide, pep eight, recommends is for None.
   **On screen:** Code `examples/ex02_loads.py`, line 11 highlighted, output `examples/ex02_loads.expected`
 
-## Scene 7: Step 3: Readable JSON
+## Scene 7: Step 3: Readable JSON (4:18 to 5:08)
 
 **Section:** Build it step by step
 
@@ -145,17 +145,17 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Step 3. Line 4 holds a drink with an accent: Café au lait.
   **On screen:** Code `examples/ex03_pretty.py`, line 4 highlighted, output hidden
-- **Narration:** By default, dump s writes every character outside basic English as a code. So the e with an accent becomes backslash u, 0 0 e 9.
-  **On screen:** Code `examples/ex03_pretty.py`, line 5 highlighted, output hidden
-- **Narration:** Ensure ascii equals False turns that off. Indent equals 2 puts each value on its own line.
+- **Narration:** Lines 6 and 7 add two settings. Ensure ascii equals False keeps every letter as it is. Indent equals 2 puts each value on its own line.
   **On screen:** Code `examples/ex03_pretty.py`, line 6, 7 highlighted, output hidden
+- **Narration:** Line 5 has no settings. Look closely at the accent in Café.
+  **On screen:** Code `examples/ex03_pretty.py`, line 5 highlighted, output hidden
 - **Interaction:** "How does line 5 write the word `Café`?" stays on screen with a 10-second timer.
-- **Narration:** As a code: C a f, then backslash u 0 0 e 9. The data is still correct, but hard for people to read.
+- **Narration:** As a code: C a f, then backslash u 0 0 e 9. By default, dump s writes every character outside basic English as a code. The data is still correct, but hard to read.
   **On screen:** Code `examples/ex03_pretty.py`, line 5 highlighted, output `examples/ex03_pretty.expected`
 - **Narration:** Line 6 keeps the real letter. Line 7 also indents, two spaces for each level.
   **On screen:** Code `examples/ex03_pretty.py`, line 6, 7 highlighted, output `examples/ex03_pretty.expected`
 
-## Scene 8: Step 4: Save and load a file
+## Scene 8: Step 4: Save and load a file (5:08 to 6:01)
 
 **Section:** Build it step by step
 
@@ -181,13 +181,15 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `ensure_ascii=False` keeps accents.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: Step 5: A saved API response
+## Scene 9: Step 5: A saved API response (6:01 to 7:14)
 
 **Section:** Build it step by step
 
 **Direction:** Show the illustrative live call, then why programmers save a sample. Show the sample. Ask what line 7 prints. Reveal.
 
 - **Narration:** Step 5. On your own computer, a program can ask a real service for data. The url lib module, from the standard library, sends the request.
+  **On screen:** Step 5: Asking a real service
+- **Narration:** An error status, such as 404, makes url open raise an H T T P error, which try can catch.
   **On screen:** Step 5: Asking a real service
 - **Narration:** This address is a placeholder. Live answers change every minute, so programmers save one real response as a file, called a sample response, and test on it.
   **On screen:** Step 5: Asking a real service
@@ -203,7 +205,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Forecast is a list, so lines 10 and 11 loop over it. Each slot is a dictionary.
   **On screen:** Code `examples/ex05_weather.py`, line 10, 11 highlighted, output `examples/ex05_weather.expected`
 
-## Scene 10: Step 6: Missing fields and bad text
+## Scene 10: Step 6: Missing fields and bad text (7:14 to 9:01)
 
 **Section:** Build it step by step
 
@@ -213,11 +215,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex06_safe_get.py`, line 8 highlighted, output hidden
 - **Narration:** The sample has no wind field. Line 9 asks for it with get. Line 10 asks with square brackets.
   **On screen:** Code `examples/ex06_safe_get.py`, line 9, 10 highlighted, output hidden
-- **Interaction:** "What does line 9 print?" stays on screen with a 10-second timer.
-- **Narration:** Not sent: the default. Get never crashes.
-  **On screen:** Code `examples/ex06_safe_get.py`, line 9 highlighted, error `examples/ex06_safe_get.expected_error`
-- **Narration:** Line 10 stops with a key error. Use square brackets for fields the service always sends, and get for fields that may be missing.
+- **Interaction:** "What happens at line 10?" stays on screen with a 10-second timer.
+- **Narration:** Line 10 stops with a key error: wind k p h. Square brackets need the field to be there.
   **On screen:** Code `examples/ex06_safe_get.py`, line 10 highlighted, error `examples/ex06_safe_get.expected_error`
+- **Narration:** Line 9 printed the default instead. Use get for fields that may be missing.
+  **On screen:** Code `examples/ex06_safe_get.py`, line 9 highlighted, error `examples/ex06_safe_get.expected_error`
 - **Narration:** Text that is not valid JSON raises a JSON decode error. Line 4 holds three texts. Look at the quotation marks.
   **On screen:** Code `examples/ex07_bad_json.py`, line 4 highlighted, output hidden
 - **Narration:** Lines 6 to 9 catch the error with try, as in Chapter 22. Error dot msg holds the short reason.
@@ -232,14 +234,14 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "Which function writes JSON straight into an open file?" stays on screen with a 10-second timer.
 - **Narration:** A. Dump, without the S. Dump s returns a string instead.
   **On screen:** Quick check: "Which function writes JSON straight into an open file?" (answer revealed: `json.dump()`)
-- **Narration:** Breather. You can read a service's answer, and survive a missing field. Now, back to the mission.
+- **Narration:** Breather. Now, back to the mission.
   **On screen:** Breather card
     - Save a sample response, and test on it.
     - Follow the path from the outside in.
     - `get()` for fields that may be missing.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: See the outcome: the daily board
+## Scene 11: See the outcome: the daily board (9:01 to 10:04)
 
 **Section:** See the outcome
 
@@ -263,7 +265,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Next, Asha reads her milk supplier's prices, with an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex08_daily_board.py`, output `examples/ex08_daily_board.expected`
 
-## Scene 12: Work with AI: reading a supplier's prices
+## Scene 12: Work with AI: reading a supplier's prices (10:04 to 14:44)
 
 **Section:** Work with AI
 
@@ -330,21 +332,21 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Asha shows the AI the failing cases, and asks why.
   **On screen:** AI chat, stage 4: Test: report the failure
     - You: Two cases fail: you return '1.20' as text. Explain why, then fix it.
-- **Narration:** The supplier sends prices as strings, so line 9 must convert them with float.
+- **Narration:** The supplier sends prices as strings, so the return line must convert them with float.
   **On screen:** AI chat, stage 4: Test: report the failure
     - You: Two cases fail: you return '1.20' as text. Explain why, then fix it.
-    - AI (example answer): This supplier sends every price as a string. Line 9 returns it unchanged. Fix: return float(item["price"]).
+    - AI (example answer): This supplier sends every price as a string. The return line gives it back unchanged. Fix: return float(item["price"]).
 - **Narration:** She runs all three cases again. All pass.
   **On screen:** Code `examples/ai_tests_fixed.py`, line 9 highlighted, output `examples/ai_tests_fixed.expected`
 - **Narration:** Stage 5: debug. The next day, oat milk is out of stock, and the supplier sends null as its price. Milk still works. Oat milk crashes on line 9.
   **On screen:** Code `examples/ai_today_crash.py`, line 13, 17 highlighted, error `examples/ai_today_crash.expected_error`
 - **Narration:** Asha pastes the error, and asks for the cause first.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
-    - You: Today's response has null as the oat milk price. My code crashed on line 9 with: TypeError: float() argument must be a string or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix.
+    - You: Today's response has null as the oat milk price. My code crashed on the return line with: TypeError: float() argument must be a string or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix.
 - **Narration:** JSON null became None, and float of None is a type error. The fix checks for it with is None, from step 2.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
-    - You: Today's response has null as the oat milk price. My code crashed on line 9 with: TypeError: float() argument must be a string or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix.
-    - AI (example answer): JSON null becomes None in Python, and float(None) raises a TypeError. Fix: before line 9, check for it: if item["price"] is None: return None.
+    - You: Today's response has null as the oat milk price. My code crashed on the return line with: TypeError: float() argument must be a string or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix.
+    - AI (example answer): JSON null becomes None in Python, and float(None) raises a TypeError. Fix: before the return line, check for it: if item["price"] is None: return None.
 - **Narration:** Lines 9 and 10 are the fix. She adds the new response as case 4, on line 19, and runs every case again. All four pass.
   **On screen:** Code `examples/ai_tests_final.py`, line 9, 10, 19 highlighted, output `examples/ai_tests_final.expected`
 - **Narration:** Stage 6: improve. Asha asks for one improvement, using only field names from her sample.
@@ -359,8 +361,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "Will this run on Asha's sample?" stays on screen with a 10-second timer.
 - **Narration:** No. A key error. The sample has price and unit, but no unit price. The AI invented the field.
   **On screen:** Code `examples/ai_unit_price.py`, line 9 highlighted, error `examples/ai_unit_price.expected_error`
-- **Narration:** So Asha keeps her final function. Its four cases still pass, as you saw.
+- **Narration:** So Asha keeps her final function.
   **On screen:** Code `examples/ai_unit_price.py`, line 9 highlighted, error `examples/ai_unit_price.expected_error`
+- **Narration:** She runs her four cases one more time, on her own function. All four pass.
+  **On screen:** Code `examples/ai_tests_final.py`, line 11 highlighted, output `examples/ai_tests_final.expected`
 - **Narration:** Quick check. An AI's code uses a field name. How do you check it?
   **On screen:** Quick check: "An AI's code uses a field name. How do you check it?" (options shown)
 - **Interaction:** "An AI's code uses a field name. How do you check it?" stays on screen with a 10-second timer.
@@ -378,7 +382,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Every field name must be in the sample.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Common mistakes
+## Scene 13: Common mistakes (14:44 to 16:13)
 
 **Section:** Common mistakes
 
@@ -389,7 +393,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "Why will line 5 fail?" stays on screen with a 10-second timer.
 - **Narration:** The text uses single quotation marks. Python accepts both kinds, but JSON accepts only double ones.
   **On screen:** Code `examples/err01_single_quotes.py`, line 4 highlighted, error `examples/err01_single_quotes.expected_error`
-- **Narration:** The report runs through the json module's own files. Read the last line: column 2 is the first single quotation mark.
+- **Narration:** The report runs through the json module's own files. On your computer, these lines show full file paths. Skip to the last line: column 2 is the first single quotation mark.
   **On screen:** Code `examples/err01_single_quotes.py`, line 4 highlighted, error `examples/err01_single_quotes.expected_error`
 - **Narration:** Mistake 2. Dump writes into a file, so it needs one: F P is the file parameter. To get a string, use dump s.
   **On screen:** Code `examples/err02_dump_no_file.py`, line 5 highlighted, error `examples/err02_dump_no_file.expected_error`
@@ -402,10 +406,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/err03_text_not_dict.py`, line 5, 6 highlighted, error `examples/err03_text_not_dict.expected_error`
 - **Narration:** Mistake 4. JSON object keys are always strings. The table numbers 1 and 2 came back as the text 1 and 2.
   **On screen:** Code `examples/err04_keys_strings.py`, line 4, 5 highlighted, error `examples/err04_keys_strings.expected_error`
-- **Narration:** So back, 1 is a key error. Use string keys from the start.
+- **Narration:** Asking back for key 1 is a key error. Use string keys from the start.
   **On screen:** Code `examples/err04_keys_strings.py`, line 7 highlighted, error `examples/err04_keys_strings.expected_error`
 
-## Scene 14: Think beyond
+## Scene 14: Think beyond (16:13 to 16:55)
 
 **Section:** Think beyond
 
@@ -414,7 +418,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** First. Some weather services send the temperature in Fahrenheit for some cities. How could your code know which unit a response uses?
   **On screen:** Question card: "Some weather services send Fahrenheit for some cities. How could your code know which unit a response uses?"
 - **Interaction:** "Some weather services send Fahrenheit for some cities. How could your code know which unit a response uses?" stays on screen with a 10-second timer.
-- **Narration:** Look for a field in the sample that names the unit.
+- **Narration:** Try it with the sample after the video.
   **On screen:** Question card: "Some weather services send Fahrenheit for some cities. How could your code know which unit a response uses?"
 - **Narration:** Second. Why test your code on a saved sample, instead of the live service?
   **On screen:** Question card: "Why test your code on a saved sample, instead of the live service?"
@@ -422,7 +426,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Keep your answer. You will use it in the next boss level.
   **On screen:** Question card: "Why test your code on a saved sample, instead of the live service?"
 
-## Scene 15: Recap
+## Scene 15: Recap (16:55 to 17:54)
 
 **Section:** Recap
 
@@ -470,20 +474,18 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Connector You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 16: Practice
+## Scene 16: Practice (17:54 to 18:07)
 
 **Section:** Practice
 
 **Direction:** Each tier is highlighted as it is described.
 
-- **Narration:** Now it is your turn. Three warm-up tasks, worth 10 XP each.
+- **Narration:** Now it is your turn. Three warm-up tasks worth 10 XP each, and three apply tasks worth 20.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 1 in focus)
-- **Narration:** Three apply tasks, worth 20 each, including a JSON loader that never crashes.
-  **On screen:** Table: Practice: 8 tasks, 170 XP (row 2 in focus)
 - **Narration:** And two stretch tasks, worth 40 each, including an AI's temperature reader to fix.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 17: What's next
+## Scene 17: What's next (18:07 to 18:32)
 
 **Section:** What's next
 
