@@ -1,0 +1,1298 @@
+1
+00:00:00,250 --> 00:00:04,589
+At the Corner Cafe, Asha keeps a list of
+today's customers.
+
+2
+00:00:04,609 --> 00:00:06,067
+Omar loves the cafe.
+
+3
+00:00:06,087 --> 00:00:08,210
+He is in the list four times.
+
+4
+00:00:08,233 --> 00:00:10,360
+So len counts visits, not people.
+
+5
+00:00:10,380 --> 00:00:13,158
+How many different customers came in
+today?
+
+6
+00:00:13,178 --> 00:00:14,654
+A list cannot tell her.
+
+7
+00:00:15,253 --> 00:00:20,813
+This is Code Quest, Chapter 13: tuples,
+for fixed groups, and sets, which keep
+
+8
+00:00:20,833 --> 00:00:22,243
+each item only once.
+
+9
+00:00:22,267 --> 00:00:27,834
+And an AI assistant will sound completely
+sure about empty brackets, and be wrong.
+
+10
+00:00:27,854 --> 00:00:29,061
+You will catch it.
+
+11
+00:00:29,653 --> 00:00:31,488
+So here is today's mission.
+
+12
+00:00:31,508 --> 00:00:35,333
+Line 2 is the list of today's visits, with
+every repeat.
+
+13
+00:00:35,367 --> 00:00:39,792
+Line 5 makes a set from it, so each
+customer counts once.
+
+14
+00:00:39,812 --> 00:00:43,457
+Line 4 keeps the opening hours as a fixed
+pair.
+
+15
+00:00:43,500 --> 00:00:46,838
+And lines 9 to 11 compare today with
+yesterday.
+
+16
+00:00:46,858 --> 00:00:47,910
+Let's build it.
+
+17
+00:00:48,483 --> 00:00:53,741
+Write and unpack tuples, remove repeats
+with a set, compare two sets, and choose
+
+18
+00:00:53,761 --> 00:00:57,567
+the right collection with an AI that
+compares the options.
+
+19
+00:00:58,150 --> 00:01:01,366
+A set keeps each item once, so it counts
+people.
+
+20
+00:01:01,386 --> 00:01:05,074
+A tuple keeps a fixed group, such as the
+opening hours.
+
+21
+00:01:05,094 --> 00:01:10,669
+Booking sites and maps use both, and the
+right choice makes code shorter and safer.
+
+22
+00:01:11,250 --> 00:01:13,151
+You now know four collections.
+
+23
+00:01:13,171 --> 00:01:17,760
+A list, in square brackets, keeps order,
+allows repeats, and can change.
+
+24
+00:01:17,800 --> 00:01:21,760
+A tuple, in round brackets, is like a list
+that cannot change.
+
+25
+00:01:21,800 --> 00:01:25,005
+A set uses curly brackets with values
+inside.
+
+26
+00:01:25,025 --> 00:01:28,660
+It keeps no order, and each item appears
+only once.
+
+27
+00:01:28,700 --> 00:01:33,525
+And a dictionary also uses curly brackets,
+but with keys and values.
+
+28
+00:01:33,545 --> 00:01:35,092
+Each key appears once.
+
+29
+00:01:35,687 --> 00:01:39,991
+Think of a set as a bag of name cards, in
+no fixed order.
+
+30
+00:01:40,011 --> 00:01:44,771
+Unlike a real bag, a set ignores a card
+that is already inside.
+
+31
+00:01:44,791 --> 00:01:48,489
+Add Omar four times, and it still holds
+one Omar.
+
+32
+00:01:49,087 --> 00:01:49,859
+Quick check.
+
+33
+00:01:49,879 --> 00:01:53,952
+Which collection keeps each item only
+once, in no fixed order?
+
+34
+00:02:05,313 --> 00:02:05,464
+D.
+
+35
+00:02:05,484 --> 00:02:05,976
+A set.
+
+36
+00:02:05,996 --> 00:02:08,960
+Each item once, and no fixed order.
+
+37
+00:02:09,553 --> 00:02:10,621
+Take a breather.
+
+38
+00:02:10,641 --> 00:02:12,593
+Here is what you know so far.
+
+39
+00:02:12,633 --> 00:02:16,038
+Next, Asha stores the opening hours as a
+tuple.
+
+40
+00:02:20,783 --> 00:02:21,285
+Step 1.
+
+41
+00:02:21,305 --> 00:02:24,265
+Asha's cafe opens at 8 and closes at 18.
+
+42
+00:02:24,285 --> 00:02:29,479
+Line 2 keeps both numbers in a tuple, with
+round brackets and a comma.
+
+43
+00:02:29,499 --> 00:02:31,863
+The comma is what makes a tuple.
+
+44
+00:02:31,900 --> 00:02:35,560
+Line 3 keeps one special: a scone and its
+price.
+
+45
+00:02:35,580 --> 00:02:38,090
+A tuple can hold different types.
+
+46
+00:02:38,133 --> 00:02:41,983
+You read a tuple with an index, exactly
+like a list.
+
+47
+00:02:42,003 --> 00:02:43,992
+Index 0 is the first value.
+
+48
+00:02:55,347 --> 00:02:59,827
+Line 4 prints the whole tuple, 8 and 18,
+in round brackets.
+
+49
+00:02:59,867 --> 00:03:03,874
+Then lines 5 and 6 print 8 and 18, and
+Scone.
+
+50
+00:03:03,894 --> 00:03:10,407
+Index 0 of hours is 8, index 1 is 18, and
+index 0 of special is the name.
+
+51
+00:03:10,433 --> 00:03:15,214
+Line 7 counts 2 values, and line 8 shows
+the type: tuple.
+
+52
+00:03:15,817 --> 00:03:16,271
+Step 2.
+
+53
+00:03:16,291 --> 00:03:21,154
+Unpacking puts each value of a tuple into
+its own variable, in one line.
+
+54
+00:03:21,174 --> 00:03:25,087
+Line 3 gives opens the first value, and
+closes the second.
+
+55
+00:03:25,133 --> 00:03:30,051
+The number of names on the left must match
+the number of values.
+
+56
+00:03:30,071 --> 00:03:34,063
+Line 5 unpacks the scone and its price the
+same way.
+
+57
+00:03:34,100 --> 00:03:35,177
+Now lines 7 to 9.
+
+58
+00:03:35,197 --> 00:03:37,114
+First is Omar, second is Lina.
+
+59
+00:03:37,134 --> 00:03:42,148
+Line 9 builds a tuple on the right from
+the old values, second then first, and
+
+60
+00:03:42,168 --> 00:03:43,181
+then unpacks it.
+
+61
+00:03:54,547 --> 00:03:55,700
+Lina, then Omar.
+
+62
+00:03:55,720 --> 00:03:59,587
+The two names swapped places, with no
+third variable.
+
+63
+00:03:59,633 --> 00:04:02,440
+Remember the swap question from Chapter 2?
+
+64
+00:04:02,460 --> 00:04:04,123
+This is the short answer.
+
+65
+00:04:04,143 --> 00:04:07,353
+And lines 4 and 6 print the hours and the
+scone.
+
+66
+00:04:07,950 --> 00:04:08,418
+Step 3.
+
+67
+00:04:08,438 --> 00:04:11,832
+A list of tuples is a common way to keep
+records.
+
+68
+00:04:11,852 --> 00:04:14,270
+Each special is a name and a price.
+
+69
+00:04:14,300 --> 00:04:20,098
+Line 6 unpacks each tuple into name and
+price, the same way items did with a
+
+70
+00:04:20,118 --> 00:04:22,012
+dictionary in Chapter 12.
+
+71
+00:04:22,032 --> 00:04:25,610
+Lines 7 and 8 print the line and add the
+price.
+
+72
+00:04:25,633 --> 00:04:29,853
+Line 10 reads in two steps, like the
+nested menu in Chapter 12.
+
+73
+00:04:29,873 --> 00:04:32,208
+Specials, index 1, gives one tuple.
+
+74
+00:04:32,228 --> 00:04:34,563
+Then index 0 reads from that tuple.
+
+75
+00:04:45,913 --> 00:04:46,468
+Scone.
+
+76
+00:04:46,488 --> 00:04:53,073
+Index 1 is the second tuple, scone and
+2.75, and index 0 is its name.
+
+77
+00:04:53,100 --> 00:04:58,828
+And the loop printed each special, lined
+up, with a total of 10.50.
+
+78
+00:04:59,420 --> 00:05:00,048
+Breather.
+
+79
+00:05:00,068 --> 00:05:01,200
+Tuples are done.
+
+80
+00:05:01,220 --> 00:05:04,079
+Next, the hero of this chapter: the set.
+
+81
+00:05:08,817 --> 00:05:09,302
+Step 4.
+
+82
+00:05:09,322 --> 00:05:12,769
+Line 2 lists five visits, with Omar three
+times.
+
+83
+00:05:12,789 --> 00:05:17,247
+Line 3 turns the list into a set, and
+every repeat disappears.
+
+84
+00:05:17,267 --> 00:05:22,531
+A set has no order, so it has no
+positions, and printed directly, its names
+
+85
+00:05:22,551 --> 00:05:24,644
+can change order between runs.
+
+86
+00:05:24,664 --> 00:05:28,097
+So line 6 prints sorted, a list in a fixed
+order.
+
+87
+00:05:28,133 --> 00:05:33,030
+A set compares the exact text, so Omar and
+omar would be two different items.
+
+88
+00:05:33,050 --> 00:05:37,308
+And in checks a set quickly, even when it
+holds thousands of names.
+
+89
+00:05:48,680 --> 00:05:49,345
+5, then 3.
+
+90
+00:05:49,365 --> 00:05:54,000
+The list has five visits, but the set has
+three different customers.
+
+91
+00:05:54,033 --> 00:05:57,776
+Line 6 shows them in order: Lina, Omar,
+Sam.
+
+92
+00:05:57,796 --> 00:06:00,854
+Lina is in the set, and Ravi is not.
+
+93
+00:06:01,450 --> 00:06:02,006
+Step 5.
+
+94
+00:06:02,026 --> 00:06:04,147
+Line 2 makes an empty set.
+
+95
+00:06:04,167 --> 00:06:06,205
+Add puts an item into it.
+
+96
+00:06:06,225 --> 00:06:09,828
+Lines 3 to 5 add Omar, Lina, and Omar
+again.
+
+97
+00:06:09,848 --> 00:06:12,380
+Remember the bag of name cards.
+
+98
+00:06:12,400 --> 00:06:16,491
+Line 6 prints the sorted names and the
+number of items.
+
+99
+00:06:27,847 --> 00:06:29,382
+Lina and Omar, and 2.
+
+100
+00:06:29,402 --> 00:06:33,457
+The second Omar changed nothing: he was
+already inside.
+
+101
+00:06:33,500 --> 00:06:35,303
+Discard takes an item out.
+
+102
+00:06:35,323 --> 00:06:39,930
+Line 8 discards Zoe, who is not in the
+set, and there is no error.
+
+103
+00:06:39,967 --> 00:06:42,373
+And line 10 shows an important rule.
+
+104
+00:06:42,393 --> 00:06:45,473
+Empty curly brackets make an empty
+dictionary.
+
+105
+00:06:45,493 --> 00:06:49,046
+To make an empty set, write set, with
+round brackets.
+
+106
+00:06:49,653 --> 00:06:50,351
+Quick check.
+
+107
+00:06:50,371 --> 00:06:52,086
+How do you make an empty set?
+
+108
+00:07:03,447 --> 00:07:03,572
+B.
+
+109
+00:07:03,592 --> 00:07:05,393
+Set, with round brackets.
+
+110
+00:07:05,413 --> 00:07:08,233
+Empty curly brackets make a dictionary.
+
+111
+00:07:08,253 --> 00:07:09,836
+Keep this one in mind.
+
+112
+00:07:10,417 --> 00:07:10,953
+Step 6.
+
+113
+00:07:10,973 --> 00:07:13,494
+Four operators compare two sets.
+
+114
+00:07:13,514 --> 00:07:17,227
+The vertical bar is union: items in either
+set.
+
+115
+00:07:17,267 --> 00:07:20,667
+The and sign is intersection: items in
+both.
+
+116
+00:07:20,700 --> 00:07:24,520
+Minus is difference: items in the first
+set only.
+
+117
+00:07:24,567 --> 00:07:29,520
+And the hat sign, called a caret, is
+symmetric difference: items in one set,
+
+118
+00:07:29,540 --> 00:07:30,371
+but not both.
+
+119
+00:07:30,987 --> 00:07:33,851
+Today, Omar, Lina and Sam came in.
+
+120
+00:07:33,871 --> 00:07:36,397
+Yesterday, Lina, Ravi and Sam.
+
+121
+00:07:36,433 --> 00:07:39,516
+Line 6 takes yesterday away from today.
+
+122
+00:07:50,880 --> 00:07:51,675
+Omar, only.
+
+123
+00:07:51,695 --> 00:07:54,120
+He came today, but not yesterday.
+
+124
+00:07:54,167 --> 00:07:59,204
+Union gives all four names, and
+intersection gives Lina and Sam, who came
+
+125
+00:07:59,224 --> 00:07:59,897
+both days.
+
+126
+00:07:59,933 --> 00:08:04,095
+The caret gives Omar and Ravi: each came
+on one day only.
+
+127
+00:08:04,115 --> 00:08:08,716
+And for minus, order matters: yesterday
+minus today gives Ravi.
+
+128
+00:08:09,317 --> 00:08:10,685
+Back to the mission.
+
+129
+00:08:10,705 --> 00:08:13,949
+Line 2 lists today's visits, with every
+repeat.
+
+130
+00:08:13,969 --> 00:08:16,657
+Line 3 is yesterday's set of customers.
+
+131
+00:08:16,700 --> 00:08:22,549
+Line 4 unpacks the opening hours, line 5
+makes the set of today's customers, and
+
+132
+00:08:22,569 --> 00:08:24,310
+line 6 prints the hours.
+
+133
+00:08:24,333 --> 00:08:29,933
+Lines 9 to 11 compare the two days, and
+line 12 checks for Omar with in.
+
+134
+00:08:29,967 --> 00:08:33,700
+And line 7 counts the list, while line 8
+counts the set.
+
+135
+00:08:45,080 --> 00:08:46,103
+Visits today, 7.
+
+136
+00:08:46,123 --> 00:08:47,602
+Different customers, 3.
+
+137
+00:08:47,622 --> 00:08:50,860
+The list counts visits, and the set counts
+people.
+
+138
+00:08:50,900 --> 00:08:52,921
+Lina and Sam came both days.
+
+139
+00:08:52,941 --> 00:08:55,910
+Omar is new today, and Ravi missed today.
+
+140
+00:08:55,933 --> 00:08:59,933
+And line 12 checks the set with in: Omar
+came today, True.
+
+141
+00:08:59,967 --> 00:09:02,048
+Each collection does one job.
+
+142
+00:09:02,068 --> 00:09:03,280
+Mission complete!
+
+143
+00:09:03,300 --> 00:09:09,150
+Next, Asha welcomes each new customer,
+with an AI assistant, one stage at a time.
+
+144
+00:09:09,750 --> 00:09:14,637
+This chapter's AI skill is asking for
+trade-offs: what you gain and what you
+
+145
+00:09:14,657 --> 00:09:16,057
+lose with each choice.
+
+146
+00:09:16,077 --> 00:09:21,223
+Ask for a strength and a weakness for each
+option, and you get an answer you can
+
+147
+00:09:21,243 --> 00:09:21,610
+check.
+
+148
+00:09:22,220 --> 00:09:23,141
+Stage 1: plan.
+
+149
+00:09:23,161 --> 00:09:28,656
+Asha wants to welcome each customer the
+first time they come in, in the order they
+
+150
+00:09:28,676 --> 00:09:29,126
+arrive.
+
+151
+00:09:29,146 --> 00:09:34,170
+She asks the AI to compare all four
+collections, and not to choose for her.
+
+152
+00:09:34,200 --> 00:09:37,372
+The AI gives a strength and a weakness for
+each.
+
+153
+00:09:37,392 --> 00:09:42,492
+Asha chooses: the visit list keeps the
+order, and a set remembers who she has
+
+154
+00:09:42,512 --> 00:09:43,622
+already welcomed.
+
+155
+00:09:44,220 --> 00:09:45,329
+Stage 2: write.
+
+156
+00:09:45,349 --> 00:09:51,574
+Asha writes the first lines herself, and
+asks the AI to explain line 3 with her own
+
+157
+00:09:51,594 --> 00:09:51,950
+list.
+
+158
+00:09:52,000 --> 00:09:57,842
+The AI explains: set of today keeps each
+name once, so the length is 3, and Sam is
+
+159
+00:09:57,862 --> 00:09:58,271
+in it.
+
+160
+00:09:58,291 --> 00:10:01,416
+She runs it, and the worked example
+matches.
+
+161
+00:10:02,020 --> 00:10:03,281
+Stage 3: generate.
+
+162
+00:10:03,301 --> 00:10:08,692
+Asha asks for the welcome code, with an
+empty set called seen, and the exact
+
+163
+00:10:08,712 --> 00:10:09,190
+output.
+
+164
+00:10:09,233 --> 00:10:13,610
+The AI promises three welcomes, then New
+today, 3.
+
+165
+00:10:13,630 --> 00:10:14,929
+Look at line 3.
+
+166
+00:10:26,280 --> 00:10:26,479
+No.
+
+167
+00:10:26,499 --> 00:10:31,380
+Remember step 5: empty curly brackets make
+a dictionary, not a set.
+
+168
+00:10:31,987 --> 00:10:32,972
+Asha runs it.
+
+169
+00:10:32,992 --> 00:10:37,227
+One welcome for Omar, then the program
+stops on line 7.
+
+170
+00:10:37,267 --> 00:10:41,371
+No attribute add means a dictionary has no
+add method.
+
+171
+00:10:41,391 --> 00:10:44,273
+The AI sounded sure, and it was wrong.
+
+172
+00:10:44,293 --> 00:10:47,252
+Set, with round brackets, fixes line 3.
+
+173
+00:10:47,853 --> 00:10:48,961
+Stage 4: test.
+
+174
+00:10:48,981 --> 00:10:55,405
+Asha fixes line 3, and asks for three test
+cases with the exact expected output.
+
+175
+00:10:55,425 --> 00:10:58,063
+Her rule: one welcome per person.
+
+176
+00:10:58,100 --> 00:11:00,038
+The AI predicts each case.
+
+177
+00:11:00,058 --> 00:11:05,535
+For case 3, Omar and omar with a space, it
+predicts one welcome for Omar.
+
+178
+00:11:16,913 --> 00:11:17,105
+No.
+
+179
+00:11:17,125 --> 00:11:19,224
+A set compares the exact text.
+
+180
+00:11:19,244 --> 00:11:24,168
+Omar with a capital O, and omar with a
+space, are two different names.
+
+181
+00:11:24,787 --> 00:11:26,352
+Asha runs every case.
+
+182
+00:11:26,372 --> 00:11:30,956
+The normal day and the empty day print
+what the AI predicted.
+
+183
+00:11:30,976 --> 00:11:36,692
+But case 3 welcomes Omar twice: once as
+Omar, and once as omar with a space.
+
+184
+00:11:37,287 --> 00:11:40,669
+Case 3 fails her rule: one welcome per
+person.
+
+185
+00:11:40,689 --> 00:11:44,071
+And the AI's prediction did not match the
+run.
+
+186
+00:11:44,091 --> 00:11:46,142
+Only running it showed both.
+
+187
+00:11:46,753 --> 00:11:47,839
+Stage 5: debug.
+
+188
+00:11:47,859 --> 00:11:52,927
+Asha cleans each name on line 5, with
+strip and title from Chapter 3.
+
+189
+00:11:52,947 --> 00:11:56,835
+But she types line 8 too fast, and the
+program stops.
+
+190
+00:11:56,855 --> 00:12:01,922
+She pastes the code and the full error,
+and asks for the cause first.
+
+191
+00:12:02,520 --> 00:12:05,851
+The AI names line 8: square brackets after
+add.
+
+192
+00:12:05,871 --> 00:12:08,988
+Add is a method, so it needs round
+brackets.
+
+193
+00:12:09,008 --> 00:12:13,337
+Not subscriptable means you cannot use
+square brackets on it.
+
+194
+00:12:13,953 --> 00:12:18,636
+A fix can break a case that worked before,
+so Asha runs all three cases again.
+
+195
+00:12:18,656 --> 00:12:22,073
+Lines 2 to 4 keep each case name with its
+list of visits.
+
+196
+00:12:22,100 --> 00:12:26,440
+Line 9 cleans each name, and line 12 now
+uses round brackets.
+
+197
+00:12:26,467 --> 00:12:29,814
+The normal day: three welcomes, New today
+3.
+
+198
+00:12:29,834 --> 00:12:30,197
+Pass.
+
+199
+00:12:30,233 --> 00:12:34,192
+Omar typed two ways: one welcome for Omar,
+then Lina.
+
+200
+00:12:34,212 --> 00:12:35,168
+New today, 2.
+
+201
+00:12:35,188 --> 00:12:35,543
+Pass.
+
+202
+00:12:35,567 --> 00:12:38,150
+And the empty day: New today, 0.
+
+203
+00:12:38,170 --> 00:12:38,557
+Pass.
+
+204
+00:12:38,577 --> 00:12:40,266
+All three cases pass.
+
+205
+00:12:40,887 --> 00:12:42,163
+Stage 6: improve.
+
+206
+00:12:42,183 --> 00:12:46,203
+Asha asks for one change that makes the
+code shorter.
+
+207
+00:12:46,223 --> 00:12:50,167
+And she adds: the output must stay exactly
+the same.
+
+208
+00:12:50,200 --> 00:12:54,363
+The AI suggests making the set from the
+whole list on line 3.
+
+209
+00:12:54,383 --> 00:12:57,175
+Then the add line is not needed, it says.
+
+210
+00:12:57,787 --> 00:13:00,084
+Asha tests it on the normal day.
+
+211
+00:13:00,104 --> 00:13:04,718
+Line 3 now fills the set with every name
+before the loop starts.
+
+212
+00:13:04,738 --> 00:13:07,687
+Line 6 checks if the name is not in seen.
+
+213
+00:13:19,047 --> 00:13:19,246
+No.
+
+214
+00:13:19,266 --> 00:13:24,212
+Every name is already in seen, so the
+check on line 6 is never true.
+
+215
+00:13:24,232 --> 00:13:26,987
+No welcomes at all, only New today, 3.
+
+216
+00:13:27,033 --> 00:13:31,201
+The AI broke her rule: the output did not
+stay the same.
+
+217
+00:13:31,221 --> 00:13:32,920
+Asha keeps her version.
+
+218
+00:13:33,520 --> 00:13:34,225
+Quick check.
+
+219
+00:13:34,245 --> 00:13:37,788
+Which prompt gets an answer you can check
+against your job?
+
+220
+00:13:49,147 --> 00:13:49,259
+A.
+
+221
+00:13:49,279 --> 00:13:53,084
+Ask for a comparison, with a strength and
+a weakness each.
+
+222
+00:13:53,104 --> 00:13:54,140
+Then you choose.
+
+223
+00:13:54,753 --> 00:13:55,369
+Breather.
+
+224
+00:13:55,389 --> 00:13:58,262
+Asha compared four options and chose one.
+
+225
+00:13:58,282 --> 00:14:04,050
+Then she caught three AI mistakes: empty
+curly brackets, a wrong prediction, and a
+
+226
+00:14:04,070 --> 00:14:05,955
+change that broke her rule.
+
+227
+00:14:05,975 --> 00:14:09,837
+Next, the mistakes beginners make with
+tuples and sets.
+
+228
+00:14:14,583 --> 00:14:15,349
+Mistake 1.
+
+229
+00:14:15,369 --> 00:14:17,236
+Line 3 prints the hours.
+
+230
+00:14:17,256 --> 00:14:20,773
+Line 4 tries to change the opening hour to
+9.
+
+231
+00:14:20,800 --> 00:14:24,712
+A tuple cannot change, so Python stops
+with a Type Error.
+
+232
+00:14:24,732 --> 00:14:30,230
+Does not support item assignment means you
+cannot give one position a new value.
+
+233
+00:14:30,267 --> 00:14:33,550
+The fix: make a new tuple, nine and
+eighteen.
+
+234
+00:14:33,570 --> 00:14:36,560
+Or use a list if the values change often.
+
+235
+00:14:37,153 --> 00:14:38,049
+Now you try.
+
+236
+00:14:38,069 --> 00:14:41,713
+Line 2 puts round brackets around one
+word, tea.
+
+237
+00:14:41,733 --> 00:14:44,460
+Remember step 1: what makes a tuple?
+
+238
+00:14:55,813 --> 00:14:57,314
+A string, not a tuple.
+
+239
+00:14:57,334 --> 00:15:00,492
+There is no comma, so the brackets do
+nothing.
+
+240
+00:15:00,512 --> 00:15:01,943
+Len counts 3 letters.
+
+241
+00:15:01,967 --> 00:15:05,988
+There is no error, which makes this
+mistake hard to see.
+
+242
+00:15:06,008 --> 00:15:09,381
+The fix: a comma after the value, as on
+line 4.
+
+243
+00:15:09,987 --> 00:15:10,734
+One more.
+
+244
+00:15:10,754 --> 00:15:14,571
+Line 4 asks the set of customers for index
+0.
+
+245
+00:15:14,591 --> 00:15:15,936
+Remember step 4.
+
+246
+00:15:27,313 --> 00:15:29,822
+The program stops with a Type Error.
+
+247
+00:15:29,842 --> 00:15:32,843
+A set has no order, so it has no
+positions.
+
+248
+00:15:32,863 --> 00:15:35,863
+Not subscriptable means no square
+brackets.
+
+249
+00:15:35,900 --> 00:15:40,832
+The fix: check a name with in, or use
+sorted to get a list you can index.
+
+250
+00:15:41,453 --> 00:15:42,367
+Last breather.
+
+251
+00:15:42,387 --> 00:15:46,766
+Now you know the tuple and set mistakes
+that catch most beginners.
+
+252
+00:15:51,517 --> 00:15:51,891
+First.
+
+253
+00:15:51,911 --> 00:15:56,629
+Asha has a set of customers who ordered
+tea, and a set who ordered cake.
+
+254
+00:15:56,649 --> 00:16:00,051
+Which operator gives the customers who
+ordered both?
+
+255
+00:16:00,071 --> 00:16:02,288
+And which gives tea, but not cake?
+
+256
+00:16:13,647 --> 00:16:16,197
+Write both after the video, and run them.
+
+257
+00:16:16,787 --> 00:16:17,234
+Second.
+
+258
+00:16:17,254 --> 00:16:19,570
+A dictionary key must never change.
+
+259
+00:16:19,590 --> 00:16:24,176
+Could a tuple, such as table 4 by the
+window, be a key for a booking?
+
+260
+00:16:24,196 --> 00:16:25,044
+Could a list?
+
+261
+00:16:36,413 --> 00:16:39,728
+Try both, and read the error message if
+you get one.
+
+262
+00:16:40,317 --> 00:16:41,105
+Let's recap.
+
+263
+00:16:41,125 --> 00:16:46,361
+A tuple is a fixed group you cannot
+change, and unpacking puts each value into
+
+264
+00:16:46,381 --> 00:16:47,507
+its own variable.
+
+265
+00:16:47,533 --> 00:16:50,484
+A set keeps each item once, with no order.
+
+266
+00:16:50,504 --> 00:16:53,383
+An empty set is set, with round brackets.
+
+267
+00:16:53,433 --> 00:16:57,873
+Four operators compare two sets, and
+sorted gives a fixed order.
+
+268
+00:16:57,900 --> 00:17:02,185
+And with AI: ask for trade-offs, then
+choose and test yourself.
+
+269
+00:17:02,787 --> 00:17:03,850
+One last check.
+
+270
+00:17:03,870 --> 00:17:05,656
+Set a holds tea and cake.
+
+271
+00:17:05,676 --> 00:17:07,607
+Set b holds cake and scone.
+
+272
+00:17:07,627 --> 00:17:11,364
+What does sorted of a and b give, with the
+and sign?
+
+273
+00:17:22,747 --> 00:17:22,879
+C.
+
+274
+00:17:22,899 --> 00:17:23,720
+Cake, only.
+
+275
+00:17:23,740 --> 00:17:26,929
+The and sign gives the items in both sets.
+
+276
+00:17:27,520 --> 00:17:28,806
+Mission complete!
+
+277
+00:17:28,826 --> 00:17:32,034
+You earned 100 XP and the Collector badge.
+
+278
+00:17:34,283 --> 00:17:38,226
+Now it is your turn: eight tasks, worth
+170 XP.
+
+279
+00:17:38,246 --> 00:17:44,887
+Three warm-up tasks at 10 XP, and three
+apply tasks at 20, including an allergy
+
+280
+00:17:44,907 --> 00:17:45,393
+check.
+
+281
+00:17:45,433 --> 00:17:51,178
+And two stretch tasks, worth 40 each: a
+welcome with a reward, and an AI's set
+
+282
+00:17:51,198 --> 00:17:52,064
+code to fix.
+
+283
+00:17:52,084 --> 00:17:55,168
+Try each one before you open the solution.
+
+284
+00:17:55,750 --> 00:18:00,893
+To make a list of every price with tax
+added, Asha writes four lines: an empty
+
+285
+00:18:00,913 --> 00:18:03,540
+list, a loop, the new price, and append.
+
+286
+00:18:03,567 --> 00:18:08,826
+In Chapter 14, you will write that in one
+line, with a comprehension, and learn when
+
+287
+00:18:08,846 --> 00:18:10,397
+a normal loop is clearer.
+
+288
+00:18:10,433 --> 00:18:12,088
+Do the warm-up tasks now.
+
+289
+00:18:12,108 --> 00:18:13,963
+They take about ten minutes.
+
+290
+00:18:14,000 --> 00:18:15,887
+See you in Chapter 14.

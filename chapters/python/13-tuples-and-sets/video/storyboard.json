@@ -827,19 +827,19 @@
        ]
       },
       {
-       "say": "Line 7 counts the list. Line 8 counts the set.",
-       "highlight": [
-        7,
-        8
-       ]
-      },
-      {
        "say": "Lines 9 to 11 compare the two days, and line 12 checks for Omar with in.",
        "highlight": [
         9,
         10,
         11,
         12
+       ]
+      },
+      {
+       "say": "And line 7 counts the list, while line 8 counts the set.",
+       "highlight": [
+        7,
+        8
        ]
       }
      ],
@@ -1319,9 +1319,9 @@
     {
      "visual": {
       "type": "quiz",
-      "question": "Which prompt gets an AI answer you can check against your job?",
+      "question": "Which prompt gets an AI answer you can check?",
       "options": [
-       "Compare the four collections for my job, with a strength and a weakness each.",
+       "Compare the four collections, with a strength and weakness each.",
        "Which collection is best?",
        "Use a set.",
        "Write the whole program for me."
