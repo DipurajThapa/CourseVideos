@@ -316,6 +316,9 @@ def real_traceback(chapter: Path, rel: str, needle: str) -> list[str]:
             errs = [x.rstrip() for x in err.rstrip().splitlines() if x.strip()]
             if errs and needle in errs[-1]:
                 errs = [re.sub(r'File "[^"]*[/\\]([^/\\"]+)"', r'File "\1"', x) for x in errs]
+                # A quoted path inside a message (such as Python 3.13's "consider renaming" hint) would show
+                # the temporary run folder; keep only the file name, as the File lines do.
+                errs = [re.sub(r"'(?:[^'\s]*[/\\])([^/\\']+\.py)'", r"'\1'", x) for x in errs]
                 lines = [x for x in out.rstrip().splitlines()] + errs
         _TRACES[key] = lines
     return _TRACES[key]

@@ -388,7 +388,7 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'cafe_tool'
 ```
 
-Fix: spell the module name like its file, `cafe_tools`, and keep the file in the same folder as your program. Newer versions of Python add a suggestion such as `Did you mean: 'cafe_tools'?`.
+Fix: spell the module name like its file, `cafe_tools`, and keep the file in the same folder as your program. Some versions of Python add a suggestion such as `Did you mean: 'cafe_tools'?`.
 
 **Mistake 2: calling a function without its module name.** After `import math`, the function's full name is `math.ceil`.
 

@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:59 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:35 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -16,7 +16,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Three programs, three copies
 - **Narration:** This is Code Quest, Chapter 18: write your tools once, and import them everywhere.
   **On screen:** Modules and the Standard Library
-- **Narration:** And an AI assistant will recommend a ready-made function, and name the page where it lives. You will check that page yourself.
+- **Narration:** And an AI assistant will recommend a ready-made function, and even name the page where it lives. Will it be right? You will check that page yourself.
   **On screen:** Modules and the Standard Library Write it once. Import it everywhere.
 - **Narration:** Here is today's mission: Asha's day report. It has no copy of with tax. Lines 2 to 5 import it, together with three of Python's own modules.
   **On screen:** Code `examples/ex07_day_report.py`, line 2, 3, 4, 5 highlighted, output hidden
@@ -97,7 +97,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Teach ceil and floor, ask what lines 7 and 8 print. Then the three import forms side by side.
 
-- **Narration:** Step 1. Asha orders biscuits in boxes of 12, and she needs 40. Line 2 imports the math module.
+- **Narration:** Step 1. Line 2 imports the math module. Lines 4 and 5: Asha needs 40 biscuits, and they come in boxes of 12.
   **On screen:** Code `examples/ex01_import_math.py`, line 2, 4, 5 highlighted, output hidden
 - **Narration:** Line 6 divides. Line 7 uses math dot ceil, which rounds up to the next whole number. Line 8 uses math dot floor, which rounds down.
   **On screen:** Code `examples/ex01_import_math.py`, line 6, 7, 8 highlighted, output hidden
@@ -117,7 +117,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Teach the module file and the main guard, run the module itself, then ask what an importing program prints. Then from-import, a quiz and a breather.
 
-- **Narration:** Step 3. Asha moves her tools into their own file, cafe tools dot p y. The name of a module is its file name without dot p y.
+- **Narration:** Step 3. Asha moves her tools into their own file, cafe tools dot p y. The name of a module is its file name without dot p y. Line 2 is a docstring for the whole module: it says what the file is for.
   **On screen:** Code `examples/cafe_tools.py`, line 2 highlighted, output hidden
 - **Narration:** It holds with tax and money, each with a docstring.
   **On screen:** Code `examples/cafe_tools.py`, line 4, 5, 6, 8, 9, 10 highlighted, output hidden
@@ -162,8 +162,8 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex05_hours.py`, line 2 highlighted, output hidden
 - **Narration:** Line 4: the cafe opens 8 hours after midnight. Line 5: it stays open for 9 hours and 30 minutes. Line 6 adds the two lengths.
   **On screen:** Code `examples/ex05_hours.py`, line 4, 5, 6 highlighted, output hidden
-- **Interaction:** "What does line 7 print?" stays on screen with a 10-second timer.
-- **Narration:** Closes at 17:30:00. Python carries the minutes into hours for you.
+- **Interaction:** "At what time does the cafe close?" stays on screen with a 10-second timer.
+- **Narration:** At half past five in the afternoon. Python prints a time delta as hours, minutes and seconds: 17:30:00. It carries the minutes into hours for you.
   **On screen:** Code `examples/ex05_hours.py`, line 7 highlighted, output `examples/ex05_hours.expected`
 - **Narration:** Line 8: total seconds gives the length in seconds. Divided by 60, that is 570.0 minutes.
   **On screen:** Code `examples/ex05_hours.py`, line 8 highlighted, output `examples/ex05_hours.expected`
@@ -174,8 +174,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Name is the whole file name. Stem is the name without its ending. Suffix is the ending.
   **On screen:** Code `examples/ex06_paths.py`, line 5, 6, 7 highlighted, output hidden
 - **Interaction:** "What do lines 6 and 7 print?" stays on screen with a 10-second timer.
-- **Narration:** Monday, then dot t x t. Line 5 printed the whole name, monday dot t x t.
+- **Narration:** Monday, then dot t x t.
   **On screen:** Code `examples/ex06_paths.py`, line 6, 7 highlighted, output `examples/ex06_paths.expected`
+- **Narration:** Line 5 printed the whole name, monday dot t x t.
+  **On screen:** Code `examples/ex06_paths.py`, line 5 highlighted, output `examples/ex06_paths.expected`
 - **Narration:** Windows writes paths with backslashes. So line 8, as posix, shows the path with forward slashes on every system.
   **On screen:** Code `examples/ex06_paths.py`, line 8 highlighted, output `examples/ex06_paths.expected`
 - **Narration:** Quick check. A path joins menus and winter dot t x t. What is its suffix?
@@ -213,7 +215,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** This chapter's AI skill: ask an AI which standard module fits a task.
   **On screen:** This chapter's AI skill: check the documentation
     - Ask AI which standard module and function fit a task.
-- **Narration:** Then find that function in the official documentation, at docs dot python dot org, and run it on your own test cases.
+- **Narration:** Then find that function in the official documentation, at docs dot python dot org, and run it on your own test cases. And never paste private data.
   **On screen:** This chapter's AI skill: check the documentation
     - Ask AI which standard module and function fit a task.
     - Find that function in the official documentation at docs.python.org.
@@ -242,7 +244,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "The AI says both versions always match. Is it right?" stays on screen with a 10-second timer.
 - **Narration:** No. For 24 biscuits, her version orders 3 boxes, and ceil orders 2. Her version adds a box even when nothing is left over.
   **On screen:** Code `examples/ai_compare_boxes.py`, line 5 highlighted, output `examples/ai_compare_boxes.expected`
-- **Narration:** The AI missed her bug. A number that divides exactly found it.
+- **Narration:** The AI missed her bug. A number that divides exactly found it. So she asks the AI to write the module's version, and she will test it the same way.
   **On screen:** Code `examples/ai_compare_boxes.py`, line 5 highlighted, output `examples/ai_compare_boxes.expected`
 - **Narration:** Stage 3: generate. Asha asks for boxes needed, with a docstring, and asks exactly what it returns for 40 biscuits.
   **On screen:** AI chat, stage 3: Generate: a function for the module
@@ -285,13 +287,15 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 6: Improve: one suggestion
     - You: My function passes every case. Suggest one improvement, with one reason. Name the documentation page for any function you use.
     - AI (example answer): Use `math.ceildiv(biscuits, per_box)`. It divides and rounds up in one step, so the code is shorter. You will find it on the `math` module page.
-- **Narration:** Asha searches the math page for ceil div, and does not find it. To be sure, she runs one line.
+- **Narration:** Before she changes anything, Asha checks. She searches the math page for ceil div, and runs one line.
   **On screen:** Code `examples/ai_ceildiv.py`, line 2, 4 highlighted, output hidden
 - **Interaction:** "Will line 4 run?" stays on screen with a 10-second timer.
-- **Narration:** No. Attribute Error: module math has no attribute ceil div. Here, attribute means a name inside the module. That function does not exist.
+- **Narration:** No. Attribute Error: module math has no attribute ceil div. Here, attribute means a name inside the module. Ceil div was not on the math page either. That function does not exist.
   **On screen:** Code `examples/ai_ceildiv.py`, line 4 highlighted, error `examples/ai_ceildiv.expected_error`
-- **Narration:** The AI made it up, and named a real page for it. Asha keeps math dot ceil. Her four cases still pass.
+- **Narration:** The AI made it up, and named a real page for it.
   **On screen:** Code `examples/ai_ceildiv.py`, line 4 highlighted, error `examples/ai_ceildiv.expected_error`
+- **Narration:** Asha keeps math dot ceil, and runs her four cases once more. All four still pass.
+  **On screen:** Code `examples/ai_boxes_tests_fixed.py`, line 5, 7 highlighted, output `examples/ai_boxes_tests_fixed.expected`
 - **Narration:** Quick check. An AI names a function you have never seen. What do you do first?
   **On screen:** Quick check: "An AI names a function you have never seen. What do you do first?" (options shown)
 - **Interaction:** "An AI names a function you have never seen. What do you do first?" stays on screen with a 10-second timer.
@@ -315,7 +319,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "Why will line 2 fail?" stays on screen with a 10-second timer.
 - **Narration:** The name is cafe tool, without the s. Python looks for a file with exactly that name, finds none, and stops with a Module Not Found Error.
   **On screen:** Code `examples/err01_module_typo.py`, line 2 highlighted, error `examples/err01_module_typo.expected_error`
-- **Narration:** Newer versions of Python even suggest the right name. The fix: spell it like the file.
+- **Narration:** Some Python versions also suggest the right name. The fix: spell it like the file.
   **On screen:** Code `examples/err01_module_typo.py`, line 2 highlighted, error `examples/err01_module_typo.expected_error`
 - **Narration:** Mistake 2 is the quick check from the idea section, in reverse. After import math, the full name is math dot ceil. Ceil on its own is not defined.
   **On screen:** Code `examples/err02_no_prefix.py`, line 2, 4 highlighted, error `examples/err02_no_prefix.expected_error`
@@ -325,7 +329,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/shadow/err03_shadow.py`, line 2 highlighted, error `examples/shadow/err03_shadow.expected_error`
 - **Narration:** The first output line comes from her test file. Then her file has no rand int, so Python stops with an Attribute Error.
   **On screen:** Code `examples/shadow/err03_shadow.py`, line 4 highlighted, error `examples/shadow/err03_shadow.expected_error`
-- **Narration:** Python 3.13 and newer add advice: consider renaming the file. The fix: rename it, for example to random test dot p y.
+- **Narration:** Python 3.13 and newer add advice: consider renaming the file. On your own computer, that message shows the full path of your file. The fix: rename it, for example to random test dot p y.
   **On screen:** Code `examples/shadow/err03_shadow.py`, line 4 highlighted, error `examples/shadow/err03_shadow.expected_error`
 - **Narration:** Mistake 4. This module has a test line at the bottom, line 5, with no main guard. Run on its own, it prints its test line.
   **On screen:** Code `examples/noguard/menu_tools.py`, line 5 highlighted, output `examples/noguard/menu_tools.expected`
@@ -410,7 +414,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** End card. Tease Chapter 19: the module's True checks become real tests. Hold quietly at the end.
 
-- **Narration:** Asha's module checks itself with lines that print True. But if one prints False, nothing stops her, and she might not notice.
+- **Narration:** Asha's module checks itself with lines that print True. But if a change makes one print False, nothing stops her. And every program that imports the module breaks with it.
   **On screen:** Testing Your Code: assert and pytest Checks that stop you when something breaks.
 - **Narration:** In Chapter 19, you will turn these checks into real tests, with assert and pytest.
   **On screen:** Testing Your Code: assert and pytest Checks that stop you when something breaks.

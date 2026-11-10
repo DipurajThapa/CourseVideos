@@ -45,7 +45,7 @@
        "say": "This is Code Quest, Chapter 18: write your tools once, and import them everywhere."
       },
       {
-       "say": "And an AI assistant will recommend a ready-made function, and name the page where it lives. You will check that page yourself.",
+       "say": "And an AI assistant will recommend a ready-made function, and even name the page where it lives. Will it be right? You will check that page yourself.",
        "subtitle": "Write it once. Import it everywhere."
       }
      ]
@@ -297,7 +297,7 @@
      },
      "segments": [
       {
-       "say": "Step 1. Asha orders biscuits in boxes of 12, and she needs 40. Line 2 imports the math module.",
+       "say": "Step 1. Line 2 imports the math module. Lines 4 and 5: Asha needs 40 biscuits, and they come in boxes of 12.",
        "highlight": [
         2,
         4,
@@ -395,7 +395,7 @@
      },
      "segments": [
       {
-       "say": "Step 3. Asha moves her tools into their own file, cafe tools dot p y. The name of a module is its file name without dot p y.",
+       "say": "Step 3. Asha moves her tools into their own file, cafe tools dot p y. The name of a module is its file name without dot p y. Line 2 is a docstring for the whole module: it says what the file is for.",
        "highlight": [
         2
        ]
@@ -595,11 +595,11 @@
       }
      ],
      "ask": {
-      "question": "What does line 7 print?"
+      "question": "At what time does the cafe close?"
      },
      "after": [
       {
-       "say": "Closes at 17:30:00. Python carries the minutes into hours for you.",
+       "say": "At half past five in the afternoon. Python prints a time delta as hours, minutes and seconds: 17:30:00. It carries the minutes into hours for you.",
        "output": "examples/ex05_hours.expected",
        "highlight": [
         7
@@ -656,7 +656,7 @@
      },
      "after": [
       {
-       "say": "Monday, then dot t x t. Line 5 printed the whole name, monday dot t x t.",
+       "say": "Monday, then dot t x t.",
        "output": "examples/ex06_paths.expected",
        "highlight": [
         6,
@@ -665,6 +665,15 @@
        "out_highlight": [
         2,
         3
+       ]
+      },
+      {
+       "say": "Line 5 printed the whole name, monday dot t x t.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1
        ]
       },
       {
@@ -810,7 +819,7 @@
        "focus": 0
       },
       {
-       "say": "Then find that function in the official documentation, at docs dot python dot org, and run it on your own test cases.",
+       "say": "Then find that function in the official documentation, at docs dot python dot org, and run it on your own test cases. And never paste private data.",
        "reveal": 3,
        "focus": 2
       }
@@ -923,7 +932,7 @@
        ]
       },
       {
-       "say": "The AI missed her bug. A number that divides exactly found it.",
+       "say": "The AI missed her bug. A number that divides exactly found it. So she asks the AI to write the module's version, and she will test it the same way.",
        "out_highlight": [
         1,
         2
@@ -1196,7 +1205,7 @@
      },
      "segments": [
       {
-       "say": "Asha searches the math page for ceil div, and does not find it. To be sure, she runs one line.",
+       "say": "Before she changes anything, Asha checks. She searches the math page for ceil div, and runs one line.",
        "highlight": [
         2,
         4
@@ -1208,7 +1217,7 @@
      },
      "after": [
       {
-       "say": "No. Attribute Error: module math has no attribute ceil div. Here, attribute means a name inside the module. That function does not exist.",
+       "say": "No. Attribute Error: module math has no attribute ceil div. Here, attribute means a name inside the module. Ceil div was not on the math page either. That function does not exist.",
        "error": "examples/ai_ceildiv.expected_error",
        "highlight": [
         4
@@ -1218,8 +1227,34 @@
        ]
       },
       {
-       "say": "The AI made it up, and named a real page for it. Asha keeps math dot ceil. Her four cases still pass.",
+       "say": "The AI made it up, and named a real page for it.",
        "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_boxes_tests_fixed.py",
+      "heading": "She keeps math.ceil",
+      "highlight": [
+       5
+      ],
+      "output": "examples/ai_boxes_tests_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha keeps math dot ceil, and runs her four cases once more. All four still pass.",
+       "highlight": [
+        5,
+        7
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4
+       ]
       }
      ]
     },
@@ -1304,7 +1339,7 @@
        ]
       },
       {
-       "say": "Newer versions of Python even suggest the right name. The fix: spell it like the file.",
+       "say": "Some Python versions also suggest the right name. The fix: spell it like the file.",
        "out_highlight": []
       }
      ]
@@ -1364,7 +1399,7 @@
        ]
       },
       {
-       "say": "Python 3.13 and newer add advice: consider renaming the file. The fix: rename it, for example to random test dot p y.",
+       "say": "Python 3.13 and newer add advice: consider renaming the file. On your own computer, that message shows the full path of your file. The fix: rename it, for example to random test dot p y.",
        "out_highlight": []
       }
      ]
@@ -1634,7 +1669,7 @@
      },
      "segments": [
       {
-       "say": "Asha's module checks itself with lines that print True. But if one prints False, nothing stops her, and she might not notice."
+       "say": "Asha's module checks itself with lines that print True. But if a change makes one print False, nothing stops her. And every program that imports the module breaks with it."
       },
       {
        "say": "In Chapter 19, you will turn these checks into real tests, with assert and pytest."
