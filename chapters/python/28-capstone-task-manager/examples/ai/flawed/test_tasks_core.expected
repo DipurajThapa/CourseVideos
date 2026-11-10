@@ -1,0 +1,5 @@
+......F.F.                                       [100%]
+=============== short test summary info ================
+FAILED test_tasks_core.py::test_save_then_load_gives_same_lines
+FAILED test_tasks_core.py::test_empty_file_means_no_tasks
+2 failed, 8 passed in 0.01s

@@ -1,0 +1,17 @@
+2 open tasks
+Command: list
+1. [x] Open the cafe (P1)
+2. [ ] Restock milk (P2)
+3. [ ] Call the supplier (P3)
+Command: done
+Number: 2
+Command: add
+Title: Order paper cups
+Priority 1-3: 2
+Command: list
+1. [x] Open the cafe (P1)
+2. [x] Restock milk (P2)
+3. [ ] Call the supplier (P3)
+4. [ ] Order paper cups (P2)
+Command: quit
+Saved tasks.json

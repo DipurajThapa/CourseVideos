@@ -1,0 +1,54 @@
+{
+  "id": "python-28",
+  "title": "Final Boss: The Personal Task Manager",
+  "language": "python",
+  "type": "project",
+  "module": "M6",
+  "badge": "Python Builder",
+  "xp": {
+    "project": 300,
+    "practice": 170
+  },
+  "concepts": [
+    "a Task data class with a to_dict() method",
+    "a TaskList class whose rules raise ValueError with a clear message",
+    "numbering tasks from 1 for people and from 0 for the list",
+    "saving objects as JSON through dictionaries",
+    "loading with a missing, empty or broken file",
+    "a command loop with input() kept apart from the rules",
+    "ten pytest tests written before the rules",
+    "judging every AI suggestion by running the tests"
+  ],
+  "prerequisites": [
+    "python-26",
+    "python-27"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai/flawed/test_tasks_core.py",
+    "fixed_file": "examples/ai/fixed/test_tasks_core.py",
+    "flaw": "The AI wrote save_tasks() with json.dumps(task_list.tasks) and load_tasks() without an empty-file check, and said they pass all ten tests. JSON cannot save Task objects (TypeError), and json.loads('') raises JSONDecodeError, so two tests failed (examples/ai/flawed). to_dict() and a check for an empty file make all ten pass (examples/ai/fixed)."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The curriculum asks for a command-line task manager that saves tasks, handles errors and has passing tests. The project uses a Task data class, a TaskList class, JSON saving and ten pytest tests written first.",
+    "No new language feature is introduced; the capstone combines what earlier chapters taught.",
+    "The command loop asks for the title, the priority and the number on separate lines, so the commands need no text splitting.",
+    "Each stage of the AI story, each build step and each test case lives in its own folder with copies of the files it needs, so every output in the project is a verified run.",
+    "The save error is checked by its TypeError line only: Python 3.15 adds a note after it, and older versions do not."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the File lines of a traceback show the full path of each file; the project shows only the last line of the save error.",
+    "pytest's separator lines stretch to the width of the terminal; the outputs in this chapter use a fixed width of 56 columns, so some failure messages are cut short, and the run time in the last line changes on every run.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

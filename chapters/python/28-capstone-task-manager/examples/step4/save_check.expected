@@ -1,0 +1,13 @@
+[
+  {
+    "title": "Open the cafe",
+    "priority": 1,
+    "done": true
+  },
+  {
+    "title": "Restock milk",
+    "priority": 2,
+    "done": false
+  }
+]
+['1. [x] Open the cafe (P1)', '2. [ ] Restock milk (P2)']
