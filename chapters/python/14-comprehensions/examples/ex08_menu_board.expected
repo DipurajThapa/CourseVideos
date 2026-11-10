@@ -1,0 +1,6 @@
+Tea           3.85
+Coffee        4.40
+Carrot cake   4.68
+Scone         3.03
+Vegan: ['Tea', 'Coffee']
+Under 4.00 with tax: ['Tea', 'Scone']
