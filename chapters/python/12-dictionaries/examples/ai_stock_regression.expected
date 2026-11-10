@@ -1,0 +1,13 @@
+Case: none sold
+cake: 2 left
+scone: 4 left
+sandwich: 5 left
+Case: last cake
+cake: 0 left
+scone: 4 left
+sandwich: 5 left
+Case: muffin
+No muffin in stock.
+cake: 1 left
+scone: 4 left
+sandwich: 5 left

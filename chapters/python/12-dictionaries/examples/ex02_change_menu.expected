@@ -1,0 +1,4 @@
+{'tea': 3.5, 'coffee': 4.0, 'cake': 4.25, 'scone': 2.75}
+{'tea': 3.75, 'coffee': 4.0, 'cake': 4.25, 'scone': 2.75}
+{'tea': 3.75, 'cake': 4.25, 'scone': 2.75}
+4.25 {'tea': 3.75, 'scone': 2.75}
