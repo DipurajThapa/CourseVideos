@@ -1,0 +1,9 @@
+F..                                              [100%]
+======================= FAILURES =======================
+______________________ test_exact ______________________
+test_floats.py:7: in test_exact
+    assert total == 0.3
+E   assert 0.30000000000000004 == 0.3
+=============== short test summary info ================
+FAILED test_floats.py::test_exact - assert 0.30000000...
+1 failed, 2 passed in 0.01s

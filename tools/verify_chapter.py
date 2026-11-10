@@ -94,7 +94,7 @@ def toolchains(language: str) -> list[dict]:
             if version in seen:
                 continue
             seen.add(version)
-            found.append({"label": version, "cmd": lambda f, exe=exe: [[exe, f.name]]})
+            found.append({"label": version, "cmd": lambda f, exe=exe: python_cmd(exe, f)})
     elif language == "javascript" and shutil.which("node"):
         version = "Node " + run(["node", "--version"]).stdout.strip()
         found.append({"label": version, "cmd": lambda f: [["node", f.name]]})
@@ -110,6 +110,19 @@ def toolchains(language: str) -> list[dict]:
         found.append({"label": version, "cmd": lambda f: [
             ["g++", "-std=c++20", "-Wall", "-Wextra", "-Werror", "-o", "prog.out", f.name], ["./prog.out"]]})
     return found
+
+
+# A Python file with a .pytest sidecar is a test file: it runs with pytest instead of python,
+# using the options in the sidecar (for example "-q --tb=short"), with a fixed 56-column width so
+# pytest's separator lines are the same on every machine. Its .expected holds pytest's output.
+PYTEST_COLUMNS = "56"
+
+
+def python_cmd(exe: str, f: Path) -> list[list[str]]:
+    side = f.with_suffix(".pytest")
+    if side.exists():
+        return [[exe, "-m", "pytest", *side.read_text(encoding="utf-8").split(), f.name]]
+    return [[exe, f.name]]
 
 
 def run(cmd: list[str], cwd: Path | None = None, stdin: str | None = None,
@@ -138,7 +151,12 @@ builtins.input = _echo_input
 """
 
 
+PYTEST_TIME = re.compile(r"((?:\d+ (?:passed|failed|errors?|skipped|warnings?)(?:, )?)+|no tests ran) in \d+\.\d+s")
+
+
 def normalise(text: str) -> str:
+    # pytest's summary line ends with the run time ("2 passed in 0.03s"), which changes every run.
+    text = PYTEST_TIME.sub(r"\1 in 0.01s", text)
     lines = [line.rstrip() for line in text.replace("\r\n", "\n").split("\n")]
     return "\n".join(lines).strip("\n")
 
@@ -151,12 +169,12 @@ def run_file(source: Path, chain: dict) -> tuple[int, str, str]:
         work = Path(tmp) / "work"
         shutil.copytree(source.parent, work)
         target = work / source.name
-        extra_env = None
+        extra_env = {"COLUMNS": PYTEST_COLUMNS} if source.with_suffix(".pytest").exists() else None
         if stdin_file.exists() and source.suffix == ".py":
             hook = Path(tmp) / "echo_input"
             hook.mkdir()
             (hook / "sitecustomize.py").write_text(ECHO_INPUT, encoding="utf-8")
-            extra_env = {"PYTHONPATH": str(hook)}
+            extra_env = {**(extra_env or {}), "PYTHONPATH": str(hook)}
         code, out, err = 0, "", ""
         for step in chain["cmd"](target):
             try:

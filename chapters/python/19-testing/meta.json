@@ -1,0 +1,55 @@
+{
+  "id": "python-19",
+  "title": "Testing Your Code: assert and pytest",
+  "language": "python",
+  "type": "lesson",
+  "module": "M4",
+  "badge": "Quality Guard",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "test",
+    "assert and AssertionError",
+    "assert with a message",
+    "pytest",
+    "test files and test functions (test_ prefix)",
+    "running pytest with -q and --tb=short",
+    "reading a pytest failure report",
+    "edge cases",
+    "comparing decimals with round() and pytest.approx()",
+    "test-first thinking",
+    "breaking code on purpose to check tests"
+  ],
+  "prerequisites": [
+    "python-18"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/test_ai_tools.py",
+    "fixed_file": "examples/test_ai_v2.py",
+    "flaw": "Asked for tests that catch any mistake in boxes_needed(), the AI wrote three tests that all pass on Asha's module. On a broken copy that uses round() they still all pass: the 24-biscuit test divides exactly, and the 0-biscuit test has no assert at all. The improved file tests 40 and 13 biscuits too, and two of its tests fail on the broken copy, as they should."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "pytest is a third-party package. The lesson installs it with `python -m pip install -U pytest` and points to Chapter 24 for packages in depth; virtual environments are left for that chapter.",
+    "Tool change: a Python example with a `.pytest` sidecar file is run with `python -m pytest <options from the sidecar> <file>` at a fixed width of 56 columns, and the run time in pytest's summary line is ignored when outputs are compared. tools/setup_check.py installs pytest into every Python toolchain. STANDARDS.md section 6 documents the sidecar.",
+    "Broken copies of the module live in their own folders (examples/broken, examples/broken2) with copies of the tests, so learners can see a test fail without changing the working module. examples/testfirst holds the module before the USD change, and examples/final the finished module.",
+    "unittest and pytest fixtures are left out to keep the chapter to assert, plain test functions and approx."
+  ],
+  "outstanding_issues": [
+    "pytest's separator lines stretch to the width of the terminal; the lesson's outputs use a fixed width of 56 columns, so lines of = and _ on a learner's screen are longer.",
+    "The run time in pytest's last line changes on every run; the lesson shows 0.01s.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
