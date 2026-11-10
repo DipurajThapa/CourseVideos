@@ -1,0 +1,5 @@
+No stamps: expected 0, got 0 pass
+Nine stamps: expected 0, got 0 pass
+Ten stamps: expected 1, got 1 pass
+25 stamps: expected 2, got 1 FAIL
+Old card, 12: expected 1, got 0 FAIL

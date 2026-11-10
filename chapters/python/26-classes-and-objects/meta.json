@@ -1,0 +1,61 @@
+{
+  "id": "python-26",
+  "title": "Classes and Objects: Modelling Real Things",
+  "language": "python",
+  "type": "lesson",
+  "module": "M6",
+  "badge": "Modeller",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "class",
+    "object",
+    "instance",
+    "attribute",
+    "method",
+    "self",
+    "__init__",
+    "__str__",
+    "special methods",
+    "objects that hold other objects",
+    "computing a value instead of storing it",
+    "@dataclass",
+    "field(default_factory=list)",
+    "== on data classes",
+    "class attribute shared by every object",
+    "TypeError: takes 0 positional arguments",
+    "AttributeError"
+  ],
+  "prerequisites": [
+    "python-25"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_cases_flawed.py",
+    "fixed_file": "examples/ai_cases_fixed.py",
+    "flaw": "Asked to add free teas to Asha's LoyaltyCard (one free tea for every 10 stamps), the AI stored free_teas as an attribute and added one only when the stamps were exactly 10, and said a card with 25 stamps has 2 free teas. A real run showed 25 1, and Asha's cases showed that 25 stamps and an old card created with 12 stamps both failed. Computing free_teas() from the stamps (stamps // 10) made every case pass. Later the AI suggested a history list written in the class body; a test with two cards showed that Omar's card shared Lina's drinks, so Asha moved the list into __init__ and ran her pytest file again."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The chapter uses the cafe's menu items, orders and a loyalty card, continuing Asha's Corner Cafe story from Chapter 25.",
+    "Inheritance is left out: the curriculum entry lists classes, objects, __init__, attributes, methods and data classes, and the chapter keeps to those.",
+    "The default print form of an object (a type name and a memory address) is shown only as an illustrative fragment, because the address changes on every run.",
+    "The AI section's classes live in small module files (card_ai.py, card_fixed.py, card_debug.py, card_lines.py, card_shared.py, card_final.py), so each test run imports one version of the class and the video can show the class and the run separately.",
+    "The lesson's data class ValueError traceback is shortened with '...' because it runs through the dataclasses module's own files; the full report is in the verified run."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the error reports show the full path to the file instead of the short file name.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
