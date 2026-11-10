@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-15",
   "run_id": "2026-11-10-024700",
-  "verified_at": "2026-11-10T03:18:04+00:00",
+  "verified_at": "2026-11-10T03:21:03+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -174,6 +174,11 @@
           "sentences": 120,
           "average_words": 11.7,
           "longest": 30
+        },
+        "video/script.md": {
+          "sentences": 666,
+          "average_words": 8.7,
+          "longest": 28
         }
       }
     },
@@ -181,36 +186,15 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "scene intro: narration contains unspeakable characters ['<', '>']: 'Welcome to Code Quest, Chapter NN. <one sentence on what the learner w'",
-        "scene intro: narration contains unspeakable characters ['<', '>']: '<set up the hook> <point at the line> <reveal>'",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
-        "scene intro: output examples/<flawed>.expected must be an existing .expected file",
-        "scene the-mission: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene what-you-will-build: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene acceptance-criteria: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene plan-it-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene build-it-step-by-step: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene test-it: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene improve-it-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene recap: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "scene whats-next: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
-        "need at least 6 on-screen questions with a timer, found 1",
-        "need at least 2 quick-check quizzes, found 0",
-        "need at least 2 breathers for 1 minutes, found 0",
-        "estimated length 1.0 min is outside 8 to 20 min",
         "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/15-project-expense-tracker",
         "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/15-project-expense-tracker",
         "missing video/render.json: run python3 tools/render_video.py chapters/python/15-project-expense-tracker",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/15-project-expense-tracker",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/15-project-expense-tracker"
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/15-project-expense-tracker"
       ],
       "details": {
-        "estimated_minutes": 1.0
+        "estimated_minutes": 17.3
       }
     }
   ],
-  "fingerprint": "56b6632e628fb4193a756f4cd7b65c2354d0ab9762d2a6847d3219c27094a67c"
+  "fingerprint": "c74b8f6996f37ed8d970361c293a3d21420f0ad516bf9dcd18cb32b98ea22ef8"
 }
