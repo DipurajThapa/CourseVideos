@@ -1,0 +1,56 @@
+{
+  "id": "python-20",
+  "title": "Boss Level 4: The Tested Quiz App",
+  "language": "python",
+  "type": "project",
+  "module": "M4",
+  "badge": "Software Builder",
+  "xp": {
+    "project": 300,
+    "practice": 170
+  },
+  "concepts": [
+    "splitting a program into a data module, a rules module and an app",
+    "pure rule functions with no input() or print()",
+    "a list of dictionaries as quiz data",
+    "writing pytest tests before the code",
+    "stub functions whose body is only a docstring (they return None)",
+    "pytest -q --tb=no -rf for a short report",
+    "strip() and lower() to compare answers",
+    "round() for a whole-number percentage",
+    "boundary tests for grades",
+    "letting tests judge AI-written code, and re-running every test after a fix"
+  ],
+  "prerequisites": [
+    "python-16",
+    "python-17",
+    "python-18",
+    "python-19"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai/flawed/quiz_logic.py",
+    "fixed_file": "examples/ai/fixed/quiz_logic.py",
+    "flaw": "Given Asha's eight tests, the AI wrote percentage() as points // total * 100 and said the module passes all eight tests. Floor division gives 0 for 3 out of 4, so three tests fail: both percentage tests and the result line, which printed 0% Practise again. Dividing with / and rounding at the end, round(points / total * 100), makes all eight pass."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The curriculum asks for a multi-module quiz app with scoring and a passing test suite. The project uses three modules (data, rules, app) and one pytest file with eight tests, written before the rules.",
+    "The project introduces two pytest options, --tb=no and -rf, so the failure lists fit on screen; the debug step uses --tb=short from Chapter 19.",
+    "Every app test is a copy of quiz_app.py with its own typed answers, in examples/apptest, next to copies of the two modules it imports.",
+    "The stub module, the first rule, the AI's flawed module, the debug test and the AI's improve suggestion each live in their own folder with a copy of the tests, so every report in the project is a verified run."
+  ],
+  "outstanding_issues": [
+    "pytest's separator lines stretch to the width of the terminal; the outputs in this chapter use a fixed width of 56 columns, and the run time in the last line changes on every run.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

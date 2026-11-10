@@ -1,0 +1,10 @@
+F                                                [100%]
+======================= FAILURES =======================
+__________________ test_three_of_four __________________
+test_percentage.py:6: in test_three_of_four
+    assert percentage(3, 4) == 75
+E   assert 0 == 75
+E    +  where 0 = percentage(3, 4)
+=============== short test summary info ================
+FAILED test_percentage.py::test_three_of_four - asser...
+1 failed in 0.01s
