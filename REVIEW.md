@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-10T05:04:23+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-10T05:41:29+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -29,6 +29,7 @@ You can also ask Claude to do either.
 - **python-15**: Boss Level 3: The Expense Tracker ([chapters/python/15-project-expense-tracker](chapters/python/15-project-expense-tracker)), video: [chapters/python/15-project-expense-tracker/video/chapter.mp4](chapters/python/15-project-expense-tracker/video/chapter.mp4)
 - **python-16**: Functions: Reusable Blocks of Logic ([chapters/python/16-functions](chapters/python/16-functions)), video: [chapters/python/16-functions/video/chapter.mp4](chapters/python/16-functions/video/chapter.mp4)
 - **python-17**: Scope and Good Function Design ([chapters/python/17-scope-and-design](chapters/python/17-scope-and-design)), video: [chapters/python/17-scope-and-design/video/chapter.mp4](chapters/python/17-scope-and-design/video/chapter.mp4)
+- **python-18**: Modules and the Standard Library ([chapters/python/18-modules-and-standard-library](chapters/python/18-modules-and-standard-library)), video: [chapters/python/18-modules-and-standard-library/video/chapter.mp4](chapters/python/18-modules-and-standard-library/video/chapter.mp4)
 
 ## Changes requested
 

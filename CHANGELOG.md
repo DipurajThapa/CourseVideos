@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-18 "Modules and the Standard Library" ready for review: a day report importing Asha's own module plus math, datetime and pathlib, six AI stages on boxes_needed() checked against the official documentation (round, a missing import, an invented math.ceildiv), 18:45 video, critic 8.5/10 with 12 fixes.
 - python-17 "Scope and Good Function Design" ready for review: the day report redesigned, six AI stages on splitting close_day() against a saved target (None lines, a global fix, a list default), 17:36 video, critic 7.5/10 with 12 fixes.
 - python-16 "Functions: Reusable Blocks of Logic" ready for review: day report from three functions, AI writes share() from a specification and Asha's checks catch three mistakes (19:02).
 - python-15 Boss Level 3: The Expense Tracker ready for review (18:13). Module 3 complete. Code screens can now show an excerpt with `code_lines`.
