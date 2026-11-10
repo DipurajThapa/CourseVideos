@@ -1,0 +1,218 @@
+{
+  "chapter_id": "python-11",
+  "run_id": "2026-11-10-1ed31e",
+  "verified_at": "2026-11-10T00:41:32+00:00",
+  "passed": false,
+  "toolchains": [
+    "Python 3.15.2",
+    "Python 3.13.18"
+  ],
+  "checks": [
+    {
+      "name": "structure",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "code",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "files_run": 25,
+        "toolchains": [
+          "Python 3.15.2",
+          "Python 3.13.18"
+        ],
+        "results": {
+          "examples/ai_slice_check.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_top_fixed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_top_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_top_none.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_top_sorted.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_top_suggest.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_top_tests.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err01_index.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/err02_remove_missing.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex01_order_list.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex02_change_order.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex03_slices.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex04_guesses.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex05_sorting.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex06_day_report.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex07_sort_none.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ex08_missing_comma.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task1.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task3.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task4.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task5.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task6.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task7.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "practice/solutions/task8.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          }
+        }
+      }
+    },
+    {
+      "name": "lesson_blocks",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "code_blocks": 12,
+        "output_blocks": 12
+      }
+    },
+    {
+      "name": "ai_pair",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "practice",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "tasks": 8
+      }
+    },
+    {
+      "name": "ai_prompts",
+      "passed": true,
+      "problems": [],
+      "details": {}
+    },
+    {
+      "name": "sources",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "sources": 6
+      }
+    },
+    {
+      "name": "language",
+      "passed": true,
+      "problems": [],
+      "details": {
+        "lesson.md": {
+          "sentences": 112,
+          "average_words": 11.9,
+          "longest": 29
+        }
+      }
+    },
+    {
+      "name": "video",
+      "passed": false,
+      "problems": [
+        "scene intro: narration contains unspeakable characters ['<', '>']: 'Welcome to Code Quest, Chapter NN. <one sentence on what the learner w'",
+        "scene intro: narration contains unspeakable characters ['<', '>']: '<set up the hook> <point at the line> <reveal>'",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: examples/<flawed>.py is not a verified runnable file of this chapter",
+        "scene intro: output examples/<flawed>.expected must be an existing .expected file",
+        "scene learning-goals: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene why-this-matters: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene the-idea: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene build-it-step-by-step: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene see-the-outcome: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene work-with-ai: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene common-mistakes: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene think-beyond: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene recap: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene practice: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "scene whats-next: narration contains unspeakable characters ['<', '>']: '<narration for item 1> <narration for item 2>'",
+        "need at least 6 on-screen questions with a timer, found 1",
+        "need at least 2 quick-check quizzes, found 0",
+        "need at least 2 breathers for 1 minutes, found 0",
+        "estimated length 1.1 min is outside 8 to 20 min",
+        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/11-lists",
+        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/11-lists",
+        "missing video/render.json: run python3 tools/render_video.py chapters/python/11-lists",
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/11-lists",
+        "missing video/script.md: run python3 tools/render_video.py chapters/python/11-lists"
+      ],
+      "details": {
+        "estimated_minutes": 1.1
+      }
+    }
+  ],
+  "fingerprint": "c3869020ce4b85f410f6729b83d303b705b376f6338d81cda373e789d262b977"
+}

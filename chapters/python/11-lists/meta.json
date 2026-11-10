@@ -1,0 +1,62 @@
+{
+  "id": "python-11",
+  "title": "Lists: Keeping Many Values in Order",
+  "language": "python",
+  "type": "lesson",
+  "module": "M3",
+  "badge": "List Builder",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "list",
+    "index",
+    "negative index",
+    "mutable",
+    "append()",
+    "insert()",
+    "remove()",
+    "pop()",
+    "replacing an item",
+    "slice",
+    "building a list in a loop",
+    "for over a list",
+    "in",
+    "sorted()",
+    "sort() returns None",
+    "reverse=True",
+    "sum()",
+    "min()",
+    "max()",
+    "IndexError"
+  ],
+  "prerequisites": [
+    "python-08"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_top_flawed.py",
+    "fixed_file": "examples/ai_top_fixed.py",
+    "flaw": "Asked for the three biggest sales, the AI sorted the list with sort() and took sales[:3], and said it would print [21.0, 15.75, 12.5]. sort() puts the smallest first, so the code printed the three smallest sales, [6.5, 8.0, 9.25]. Checking the first item against max(sales) catches it; sort(reverse=True) fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "Nested lists, comprehensions, extend(), index(), count(), del and enumerate() are left out to keep one new idea per step; comprehensions follow in Chapter 14.",
+    "The in operator is taught here for lists; it had not been used in earlier chapters.",
+    "The AI section adds verified files for each stage: a worked slice example, a test of three lists, the sort() None error and a suggestion that changes the order of the output."
+  ],
+  "outstanding_issues": [
+    "The tracebacks show the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
