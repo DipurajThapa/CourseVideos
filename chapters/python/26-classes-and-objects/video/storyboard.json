@@ -20,7 +20,7 @@
       "body": [
        "At the Corner Cafe, Asha's report keeps sales as pairs and days as dictionaries."
       ],
-      "pre": "  sale = (\"Tea\", 3.5)          a pair\n  day = {\"item\": ..., ...}     a dictionary\n  row[\"Amount\"]                 KeyError, found only\n                                when the program runs"
+      "pre": "  sale = (\"Tea\", 3.5)          the data: a pair\n  day = {\"item\": ..., ...}     the data: a dictionary\n  def day_total(day): ...       the rules: somewhere else"
      },
      "segments": [
       {
@@ -28,7 +28,7 @@
        "focus": "pre"
       },
       {
-       "say": "The rules, like the total, live in separate functions. And a wrong key, like Amount with a capital A, shows up only when the program runs."
+       "say": "The rules, like the total, live in separate functions. The data, and the rules that work on it, live in different places."
       }
      ]
     },
@@ -506,9 +506,7 @@
       },
       {
        "say": "One more rule. A value written directly in the class body, outside any method, is different. It belongs to the class, and every object shares it. Remember that one.",
-       "highlight": [
-        5
-       ],
+       "highlight": [],
        "out_highlight": []
       }
      ]
@@ -664,10 +662,10 @@
      },
      "segments": [
       {
-       "say": "Step 6. Many classes only store a few values. The data classes module writes init, a print form and the double equals check for you."
+       "say": "Step 6. Many classes only store a few values. At data class is a decorator: a line above the class that changes it. It writes init for you, a print form called repr, and the double equals check."
       },
       {
-       "say": "Line 5 puts at data class above the class. Lines 7 and 8 list the attributes, each with a type after a colon.",
+       "say": "Lines 7 and 8 list the attributes, each with a type after a colon.",
        "highlight": [
         5,
         6,
@@ -748,7 +746,7 @@
        "out_highlight": []
       },
       {
-       "say": "Lina's list has a tea. Omar's list is still empty.",
+       "say": "Lina's list has a tea. Omar's list is still empty. You have every piece of the mission now.",
        "highlight": [
         13,
         14,
@@ -758,21 +756,6 @@
         1,
         2
        ]
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "breather",
-      "items": [
-       "Compute a total in a method; never store it.",
-       "`__str__` gives a readable print form.",
-       "`@dataclass` writes `__init__`, the print form and `==`."
-      ]
-     },
-     "segments": [
-      {
-       "say": "Breather. You have every piece of the mission now. Let's build Asha's receipt."
       }
      ]
     }
@@ -968,7 +951,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "I wrote this myself. Do not change it. Predict exactly what the last line prints.",
+        "text": "I wrote this myself, and I predict it prints Lina 2. Do not change it. Predict exactly what the last line prints.",
         "code": "examples/ai_mine.py",
         "code_lines": [
          11,
@@ -983,7 +966,7 @@
        },
        {
         "role": "you",
-        "text": "I predicted the same. I ran it:",
+        "text": "We agree. I ran it:",
         "output": "examples/ai_mine.expected"
        }
       ],
@@ -991,10 +974,10 @@
      },
      "segments": [
       {
-       "say": "Stage 2: write. Asha writes the start of the class herself, and asks the AI to predict the last line."
+       "say": "Stage 2: write. Asha writes the start of the class herself, writes down her own prediction, Lina 2, and then asks the AI to predict the last line."
       },
       {
-       "say": "The AI says Lina 2. Asha predicted the same, and the run agrees.",
+       "say": "The AI says Lina 2 too, and the run agrees.",
        "reveal": 3,
        "focus": 2
       }
@@ -1078,7 +1061,7 @@
      },
      "after": [
       {
-       "say": "No. 25 stamps, but only 1 free tea. Line 10 counts only stamp number 10, so stamp 20 never counts. And the AI sounded sure.",
+       "say": "No. 25 stamps, but only 1 free tea. Line 10 of the AI's class counts only stamp number 10, so stamp 20 never counts. And the AI sounded sure.",
        "output": "examples/ai_generate_run.expected",
        "highlight": [
         7
@@ -1168,7 +1151,7 @@
        },
        {
         "role": "ai",
-        "text": "free_teas is a stored number. Line 10 adds one only at exactly 10 stamps, and an old card starts at 0.\nFix: work it out from the stamps, with a method that returns self.stamps // 10."
+        "text": "free_teas is set to 0 in __init__, so a card created with 12 stamps still has 0 free teas. And line 10 adds one only at exactly 10 stamps.\nFix: work it out from the stamps, with a method that returns self.stamps // 10."
        }
       ],
       "reveal": 1
@@ -1178,7 +1161,7 @@
        "say": "Asha shows the failing cases, and asks for the cause first."
       },
       {
-       "say": "The AI explains: free teas is a stored number, and an old card starts at 0. The fix works it out from the stamps, with a method. The same rule as the total in step 4.",
+       "say": "The AI explains: free teas is set to 0 in init, so a card created with 12 stamps still has 0. The fix works it out from the stamps, with a method. The same rule as the total in step 4.",
        "reveal": 2,
        "focus": 1
       }
@@ -1312,7 +1295,7 @@
      },
      "segments": [
       {
-       "say": "With self added, she runs all five cases again. All pass, and line 14 prints Omar's card line.",
+       "say": "With self added, she runs all five cases again, as a regression check. All pass, and line 14 prints Omar's card line.",
        "out_highlight": [
         1,
         2,
@@ -1349,6 +1332,23 @@
        "say": "The AI suggests a history of every drink stamped, with a list at the top of the class.",
        "reveal": 2,
        "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/card_shared.py",
+      "heading": "The AI's history, in the class body",
+      "highlight": [
+       3,
+       11
+      ],
+      "hidden_text": "The next screen tests it with two cards."
+     },
+     "segments": [
+      {
+       "say": "Here is the AI's idea. Line 3 creates the list in the class body, and line 11 adds each drink to it."
       }
      ]
     },
@@ -1407,7 +1407,7 @@
      },
      "segments": [
       {
-       "say": "So Asha keeps the idea, but moves the list into init, on line 6. Now each card makes its own list."
+       "say": "So Asha keeps the idea, but moves the list into init, on line 6. Now each card makes its own list. Add stamp also takes a drink now, with Tea as the default, on line 8."
       }
      ]
     },
@@ -1417,32 +1417,47 @@
       "file": "examples/test_loyalty.py",
       "heading": "Every case, as pytest tests",
       "code_lines": [
+       5,
+       6,
+       7,
+       8,
+       9,
        12,
        13,
-       16,
-       17,
-       20,
-       21,
-       24,
-       25,
        28,
        29,
-       30,
-       31,
-       32
+       32,
+       33,
+       34,
+       35,
+       36
       ],
       "highlight": [
-       28,
-       29,
-       30,
-       31,
-       32
+       5,
+       6,
+       7,
+       8,
+       9
       ],
       "output": "examples/test_loyalty.expected"
      },
      "segments": [
       {
-       "say": "She writes her cases as pytest tests, from Chapter 19, and adds one for the history. Five dots: five passed.",
+       "say": "She writes her cases as pytest tests, from Chapter 19. The helper on line 5, stamped, makes a card and adds the stamps.",
+       "out_highlight": []
+      },
+      {
+       "say": "Her five cases become five tests, and one more test checks the history, on lines 32 to 36.",
+       "highlight": [
+        32,
+        33,
+        34,
+        35,
+        36
+       ]
+      },
+      {
+       "say": "She runs every test again. That rerun is her regression check. Six dots: six passed.",
        "out_highlight": [
         1,
         2
@@ -1565,7 +1580,7 @@
      },
      "segments": [
       {
-       "say": "Mistake 3. Line 9 spells price wrongly, so the object has no attribute with that name. Newer versions of Python even suggest the closest one.",
+       "say": "Mistake 3. Line 9 spells price wrongly, so the object has no attribute with that name. At the end of the last line, Python even suggests the right name.",
        "out_highlight": [
         -1
        ]
@@ -1576,32 +1591,29 @@
      "visual": {
       "type": "code",
       "file": "examples/err04_shared_list.py",
-      "heading": "Mistake 4: spot this one too",
-      "highlight": [
-       3
-      ],
-      "hidden_text": "Predict before the output appears."
+      "heading": "Mistake 4: spot the line",
+      "highlight": [],
+      "hidden_text": "Find the line before the output appears."
      },
      "segments": [
       {
-       "say": "Mistake 4. Line 3 creates the list in the class body. Line 14 adds a tea for Lina only.",
+       "say": "Mistake 4. This order class gives no error. Lina orders a tea on line 14, and line 15 prints Omar's items.",
        "highlight": [
-        3,
-        14
+        14,
+        15
        ]
       }
      ],
      "ask": {
-      "question": "What does line 15 print for Omar?"
+      "question": "Omar's list will show Lina's tea. Which line causes it?"
      },
      "after": [
       {
-       "say": "Omar, with a tea. No error at all, which makes it worse. One list, shared by every order.",
+       "say": "Line 3. The list is in the class body, so every order shares it. And there is no error at all, which makes it worse.",
        "output": "examples/err04_shared_list.expected",
        "heading": "Mistake 4: a list in the class body",
        "highlight": [
-        3,
-        15
+        3
        ],
        "out_highlight": [
         1

@@ -9,6 +9,10 @@ def stamped(cups, start=0):
     return card
 
 
+def test_no_stamps():
+    assert stamped(0).free_teas() == 0
+
+
 def test_nine_stamps():
     assert stamped(9).free_teas() == 0
 

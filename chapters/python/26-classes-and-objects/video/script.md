@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:43 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:16 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -12,7 +12,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** At the Corner Cafe, Asha's report from Chapter 25 keeps each sale as a pair, and each day as a dictionary.
   **On screen:** Data here, rules somewhere else
-- **Narration:** The rules, like the total, live in separate functions. And a wrong key, like Amount with a capital A, shows up only when the program runs.
+- **Narration:** The rules, like the total, live in separate functions. The data, and the rules that work on it, live in different places.
   **On screen:** Data here, rules somewhere else
 - **Narration:** This is Code Quest, Chapter 26. Today, you build your own types.
   **On screen:** Classes and Objects: Modelling Real Things
@@ -161,7 +161,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Omar, and a list with only juice. Lina's tea and cake are in her own list.
   **On screen:** Code `examples/ex03_own_data.py`, line 17 highlighted, output `examples/ex03_own_data.expected`
 - **Narration:** One more rule. A value written directly in the class body, outside any method, is different. It belongs to the class, and every object shares it. Remember that one.
-  **On screen:** Code `examples/ex03_own_data.py`, line 5 highlighted, output `examples/ex03_own_data.expected`
+  **On screen:** Code `examples/ex03_own_data.py`, output `examples/ex03_own_data.expected`
 - **Narration:** Breather. You can write a class, create objects, and call their methods.
   **On screen:** Breather card
     - `__init__` stores the starting values on `self`.
@@ -213,9 +213,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Teach @dataclass and ==. Ask lines 13 and 14. Then the list default error and the field fix. Quiz. Breather.
 
-- **Narration:** Step 6. Many classes only store a few values. The data classes module writes init, a print form and the double equals check for you.
+- **Narration:** Step 6. Many classes only store a few values. At data class is a decorator: a line above the class that changes it. It writes init for you, a print form called repr, and the double equals check.
   **On screen:** Code `examples/ex06_dataclass.py`, line 2, 5 highlighted, output hidden
-- **Narration:** Line 5 puts at data class above the class. Lines 7 and 8 list the attributes, each with a type after a colon.
+- **Narration:** Lines 7 and 8 list the attributes, each with a type after a colon.
   **On screen:** Code `examples/ex06_dataclass.py`, line 5, 6, 7, 8 highlighted, output hidden
 - **Narration:** Double equals on two data class objects compares their values, attribute by attribute.
   **On screen:** Code `examples/ex06_dataclass.py`, line 13, 14 highlighted, output hidden
@@ -230,14 +230,8 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex07_list_error.py`, line 8 highlighted, error `examples/ex07_list_error.expected_error`
 - **Narration:** Field, with default factory list, makes a new empty list for each object.
   **On screen:** Code `examples/ex07_list_field.py`, line 8 highlighted, output `examples/ex07_list_field.expected`
-- **Narration:** Lina's list has a tea. Omar's list is still empty.
+- **Narration:** Lina's list has a tea. Omar's list is still empty. You have every piece of the mission now.
   **On screen:** Code `examples/ex07_list_field.py`, line 13, 14, 15 highlighted, output `examples/ex07_list_field.expected`
-- **Narration:** Breather. You have every piece of the mission now. Let's build Asha's receipt.
-  **On screen:** Breather card
-    - Compute a total in a method; never store it.
-    - `__str__` gives a readable print form.
-    - `@dataclass` writes `__init__`, the print form and `==`.
-- **Breather:** 4 quiet seconds.
 
 ## Scene 11: See the outcome: the order receipt
 
@@ -284,14 +278,14 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 1: Plan: a design, not code
     - You: I want to model a cafe loyalty card: one stamp per drink, and a free tea for every 10 stamps. Do not write code. List the attributes and methods, with one job for each method.
     - AI (example answer): Attributes: customer, stamps. Methods: add_stamp() adds one stamp. free_teas() gives the free teas. print_card() prints the card. save_card() saves it to a file.
-- **Narration:** Stage 2: write. Asha writes the start of the class herself, and asks the AI to predict the last line.
+- **Narration:** Stage 2: write. Asha writes the start of the class herself, writes down her own prediction, Lina 2, and then asks the AI to predict the last line.
   **On screen:** AI chat, stage 2: Write it yourself, then check
-    - You: I wrote this myself. Do not change it. Predict exactly what the last line prints. [code `examples/ai_mine.py`]
-- **Narration:** The AI says Lina 2. Asha predicted the same, and the run agrees.
+    - You: I wrote this myself, and I predict it prints Lina 2. Do not change it. Predict exactly what the last line prints. [code `examples/ai_mine.py`]
+- **Narration:** The AI says Lina 2 too, and the run agrees.
   **On screen:** AI chat, stage 2: Write it yourself, then check
-    - You: I wrote this myself. Do not change it. Predict exactly what the last line prints. [code `examples/ai_mine.py`]
+    - You: I wrote this myself, and I predict it prints Lina 2. Do not change it. Predict exactly what the last line prints. [code `examples/ai_mine.py`]
     - AI (example answer): It prints Lina 2. add_stamp ran twice, and each call added 1 to self.stamps.
-    - You: I predicted the same. I ran it:
+    - You: We agree. I ran it:
 - **Narration:** Stage 3: generate. Now the free teas. Asha asks the AI to add them, and to say what a card shows after 25 stamps.
   **On screen:** AI chat, stage 3: Generate: one new feature
     - You: Add free teas to my LoyaltyCard class: one free tea for every 10 stamps. Tell me what a card shows after 25 stamps.
@@ -304,7 +298,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Asha runs it: 25 stamps, then she prints the stamps and the free teas.
   **On screen:** Code `examples/ai_generate_run.py`, line 5, 6, 7 highlighted, output hidden
 - **Interaction:** "The AI says the card shows 2 free teas. Is it right?" stays on screen with a 10-second timer.
-- **Narration:** No. 25 stamps, but only 1 free tea. Line 10 counts only stamp number 10, so stamp 20 never counts. And the AI sounded sure.
+- **Narration:** No. 25 stamps, but only 1 free tea. Line 10 of the AI's class counts only stamp number 10, so stamp 20 never counts. And the AI sounded sure.
   **On screen:** Code `examples/ai_generate_run.py`, line 7 highlighted, output `examples/ai_generate_run.expected`
 - **Narration:** Stage 4: test. Asha asks for test cases, each with an expected result.
   **On screen:** AI chat, stage 4: Test: cases with expected results
@@ -319,10 +313,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Asha shows the failing cases, and asks for the cause first.
   **On screen:** AI chat, stage 4: Test: the cause before the fix
     - You: Two cases fail. Explain the cause before you change any code.
-- **Narration:** The AI explains: free teas is a stored number, and an old card starts at 0. The fix works it out from the stamps, with a method. The same rule as the total in step 4.
+- **Narration:** The AI explains: free teas is set to 0 in init, so a card created with 12 stamps still has 0. The fix works it out from the stamps, with a method. The same rule as the total in step 4.
   **On screen:** AI chat, stage 4: Test: the cause before the fix
     - You: Two cases fail. Explain the cause before you change any code.
-    - AI (example answer): free_teas is a stored number. Line 10 adds one only at exactly 10 stamps, and an old card starts at 0. Fix: work it out from the stamps, with a method that returns self.stamps // 10.
+    - AI (example answer): free_teas is set to 0 in __init__, so a card created with 12 stamps still has 0 free teas. And line 10 adds one only at exactly 10 stamps. Fix: work it out from the stamps, with a method that returns self.stamps // 10.
 - **Narration:** Lines 10 and 11 return the stamps, floor divided by 10. Nothing is stored, so nothing goes stale.
   **On screen:** Code `examples/card_fixed.py`, line 10, 11 highlighted, output hidden
 - **Narration:** She runs all five cases again. Line 11 now calls free teas as a method. All five pass.
@@ -338,7 +332,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: I added card_line and got this error. First explain what it means and which line causes it. Then show the smallest fix. [code `examples/card_debug.py`]
     - AI (example answer): Line 13 defines card_line with no parameter. Python passes the card as the first argument, so the method has nowhere to put it. Fix: def card_line(self):
-- **Narration:** With self added, she runs all five cases again. All pass, and line 14 prints Omar's card line.
+- **Narration:** With self added, she runs all five cases again, as a regression check. All pass, and line 14 prints Omar's card line.
   **On screen:** Code `examples/ai_cases_lines.py`, line 14 highlighted, output `examples/ai_cases_lines.expected`
 - **Narration:** Stage 6: improve. Asha asks for one improvement.
   **On screen:** AI chat, stage 6: Improve: one suggestion, then test it
@@ -347,6 +341,8 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 6: Improve: one suggestion, then test it
     - You: Review my class. Suggest one improvement, with one reason. Do not change what my methods return.
     - AI (example answer): Keep a history of every drink stamped. Write history = [] at the top of the class, and append the drink in add_stamp.
+- **Narration:** Here is the AI's idea. Line 3 creates the list in the class body, and line 11 adds each drink to it.
+  **On screen:** Code `examples/card_shared.py`, line 3, 11 highlighted, output hidden
 - **Narration:** Asha tests the idea with two cards. Only Lina gets a stamp, for a latte. Omar gets nothing.
   **On screen:** Code `examples/ai_history_shared.py`, line 4, 5, 6 highlighted, output hidden
 - **Narration:** Remember the rule from step 3, about a value in the class body.
@@ -354,10 +350,14 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "What does line 8 print for Omar?" stays on screen with a 10-second timer.
 - **Narration:** Omar, with a latte! The list in the class body belongs to the class, so every card shares it. The AI was wrong again.
   **On screen:** Code `examples/ai_history_shared.py`, line 8 highlighted, output `examples/ai_history_shared.expected`
-- **Narration:** So Asha keeps the idea, but moves the list into init, on line 6. Now each card makes its own list.
+- **Narration:** So Asha keeps the idea, but moves the list into init, on line 6. Now each card makes its own list. Add stamp also takes a drink now, with Tea as the default, on line 8.
   **On screen:** Code `examples/card_final.py`, line 6 highlighted, output hidden
-- **Narration:** She writes her cases as pytest tests, from Chapter 19, and adds one for the history. Five dots: five passed.
-  **On screen:** Code `examples/test_loyalty.py`, line 28, 29, 30, 31, 32 highlighted, output `examples/test_loyalty.expected`
+- **Narration:** She writes her cases as pytest tests, from Chapter 19. The helper on line 5, stamped, makes a card and adds the stamps.
+  **On screen:** Code `examples/test_loyalty.py`, line 5, 6, 7, 8, 9 highlighted, output `examples/test_loyalty.expected`
+- **Narration:** Her five cases become five tests, and one more test checks the history, on lines 32 to 36.
+  **On screen:** Code `examples/test_loyalty.py`, line 32, 33, 34, 35, 36 highlighted, output `examples/test_loyalty.expected`
+- **Narration:** She runs every test again. That rerun is her regression check. Six dots: six passed.
+  **On screen:** Code `examples/test_loyalty.py`, line 32, 33, 34, 35, 36 highlighted, output `examples/test_loyalty.expected`
 - **Narration:** Quick check. A card stores its stamps. What is the best design for its free teas?
   **On screen:** Quick check: "A card stores its stamps. What is the best design for its free teas?" (options shown)
 - **Interaction:** "A card stores its stamps. What is the best design for its free teas?" stays on screen with a 10-second timer.
@@ -387,15 +387,15 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/err02_no_brackets.py`, line 8 highlighted, error `examples/err02_no_brackets.expected_error`
 - **Narration:** Type object, in the message, is the clue: tea is a class, not an object.
   **On screen:** Code `examples/err02_no_brackets.py`, line 8 highlighted, error `examples/err02_no_brackets.expected_error`
-- **Narration:** Mistake 3. Line 9 spells price wrongly, so the object has no attribute with that name. Newer versions of Python even suggest the closest one.
+- **Narration:** Mistake 3. Line 9 spells price wrongly, so the object has no attribute with that name. At the end of the last line, Python even suggests the right name.
   **On screen:** Code `examples/err03_attribute_typo.py`, line 9 highlighted, error `examples/err03_attribute_typo.expected_error`
-- **Narration:** Mistake 4. Line 3 creates the list in the class body. Line 14 adds a tea for Lina only.
-  **On screen:** Code `examples/err04_shared_list.py`, line 3, 14 highlighted, output hidden
-- **Interaction:** "What does line 15 print for Omar?" stays on screen with a 10-second timer.
-- **Narration:** Omar, with a tea. No error at all, which makes it worse. One list, shared by every order.
-  **On screen:** Code `examples/err04_shared_list.py`, line 3, 15 highlighted, output `examples/err04_shared_list.expected`
+- **Narration:** Mistake 4. This order class gives no error. Lina orders a tea on line 14, and line 15 prints Omar's items.
+  **On screen:** Code `examples/err04_shared_list.py`, line 14, 15 highlighted, output hidden
+- **Interaction:** "Omar's list will show Lina's tea. Which line causes it?" stays on screen with a 10-second timer.
+- **Narration:** Line 3. The list is in the class body, so every order shares it. And there is no error at all, which makes it worse.
+  **On screen:** Code `examples/err04_shared_list.py`, line 3 highlighted, output `examples/err04_shared_list.expected`
 - **Narration:** The fix: create the list in init, with self dot items, or use field in a data class.
-  **On screen:** Code `examples/err04_shared_list.py`, line 3, 15 highlighted, output `examples/err04_shared_list.expected`
+  **On screen:** Code `examples/err04_shared_list.py`, line 3 highlighted, output `examples/err04_shared_list.expected`
 - **Narration:** Last breather. Two questions to think about on your own come next.
   **On screen:** Breather card
     - Every method needs `self`.

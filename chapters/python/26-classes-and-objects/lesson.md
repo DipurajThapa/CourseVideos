@@ -196,7 +196,7 @@ Today: Tea (3.50)
 
 Special methods such as `__init__` and `__str__` have two underscores on each side. You write them, and Python calls them for you at the right moment.
 
-**Step 6: Data classes.** Many classes only store a few values. The `dataclasses` module writes `__init__`, a print form and `==` for you. You list the attributes with a type after each name.
+**Step 6: Data classes.** Many classes only store a few values. `@dataclass` is a **decorator**: a line above a class that changes it. It writes `__init__`, a print form called `__repr__`, and `==` for you. You list the attributes with a type after each name.
 
 ```python
 # file: examples/ex06_dataclass.py
@@ -449,6 +449,37 @@ Old card, 12: expected 1, got 1 pass
 
 A quick review question catches this kind of design flaw. If a value can be worked out from other attributes, store those attributes and compute the value in a method.
 
+Next, Asha added a method that returns one line for the card, and forgot `self`.
+
+```python
+# file: examples/ai_line_crash.py
+from card_debug import LoyaltyCard
+
+card = LoyaltyCard("Omar", 12)
+print(card.card_line())
+```
+
+<!-- error: examples/ai_line_crash.expected_error -->
+```output
+Traceback (most recent call last):
+  File "ai_line_crash.py", line 5, in <module>
+    print(card.card_line())
+          ~~~~~~~~~~~~~~^^
+TypeError: LoyaltyCard.card_line() takes 0 positional arguments but 1 was given
+```
+
+She pasted the code and the full error, and asked for the cause first. The AI explained that `card_line()` in `card_debug.py` had no parameter, so Python had nowhere to put the card it passed. With `def card_line(self):` (see `card_lines.py`), she ran all five cases again as a regression check.
+
+<!-- output: examples/ai_cases_lines.expected -->
+```output
+No stamps: expected 0, got 0 pass
+Nine stamps: expected 0, got 0 pass
+Ten stamps: expected 1, got 1 pass
+25 stamps: expected 2, got 2 pass
+Old card, 12: expected 1, got 1 pass
+Omar: 12 stamps
+```
+
 Later, the AI suggested a list of every drink stamped, written as `history = []` directly in the class instead of in `__init__`. Asha tested it with two cards.
 
 ```python
@@ -482,6 +513,10 @@ def stamped(cups, start=0):
     return card
 
 
+def test_no_stamps():
+    assert stamped(0).free_teas() == 0
+
+
 def test_nine_stamps():
     assert stamped(9).free_teas() == 0
 
@@ -507,8 +542,8 @@ def test_each_card_has_its_own_history():
 
 <!-- output: examples/test_loyalty.expected -->
 ```output
-.....                                            [100%]
-5 passed in 0.01s
+......                                           [100%]
+6 passed in 0.02s
 ```
 
 ## Common mistakes

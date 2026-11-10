@@ -47,7 +47,8 @@
     "Inheritance is left out: the curriculum entry lists classes, objects, __init__, attributes, methods and data classes, and the chapter keeps to those.",
     "The default print form of an object (a type name and a memory address) is shown only as an illustrative fragment, because the address changes on every run.",
     "The AI section's classes live in small module files (card_ai.py, card_fixed.py, card_debug.py, card_lines.py, card_shared.py, card_final.py), so each test run imports one version of the class and the video can show the class and the run separately.",
-    "The lesson's data class ValueError traceback is shortened with '...' because it runs through the dataclasses module's own files; the full report is in the verified run."
+    "The lesson's data class ValueError traceback is shortened with '...' because it runs through the dataclasses module's own files; the full report is in the verified run.",
+    "Critic review (7.8/10) applied: a plainer hook, a precise cause for the stored free_teas, the AI's history list shown before its test, a sixth pytest test (no stamps) and the stamped() helper explained, the rerun named as the regression check, Mistake 4 as a spot-the-line question, @dataclass named as a decorator that writes __init__, __repr__ and ==, Asha's own prediction shown before the AI's, one breather cut, and a Debug-stage paragraph in the lesson."
   ],
   "outstanding_issues": [
     "On a learner's computer, the error reports show the full path to the file instead of the short file name.",
