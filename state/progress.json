@@ -282,15 +282,19 @@
     "python-14": {
       "language": "python",
       "number": 14,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-10-40305d",
           "started": "2026-11-10T02:36:27+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-10T03:11:31+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-10-40305d"
+      "current_run_id": "2026-11-10-40305d",
+      "path": "chapters/python/14-comprehensions",
+      "completed": "2026-11-10T03:11:31+00:00"
     },
     "python-15": {
       "language": "python",
@@ -377,5 +381,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T02:36:27+00:00"
+  "updated": "2026-11-10T03:11:31+00:00"
 }
