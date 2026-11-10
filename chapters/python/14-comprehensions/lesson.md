@@ -338,7 +338,7 @@ Scone
 
 ```python
 # file: examples/ex09_no_round.py
-prices = [3.5, 4.0, 4.25, 2.75]
+prices = [3.5, 4.25]
 with_tax = [price * 1.1 for price in prices]
 print(with_tax)
 print([round(price, 2) for price in with_tax])
@@ -346,8 +346,8 @@ print([round(price, 2) for price in with_tax])
 
 <!-- output: examples/ex09_no_round.expected -->
 ```output
-[3.8500000000000005, 4.4, 4.675000000000001, 3.0250000000000004]
-[3.85, 4.4, 4.68, 3.03]
+[3.8500000000000005, 4.675000000000001]
+[3.85, 4.68]
 ```
 
 Fix: round inside the comprehension, or format the price with `:.2f` when you print it.

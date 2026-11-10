@@ -1,0 +1,1557 @@
+{
+ "chapter_id": "python-14",
+ "number": 14,
+ "version": 3,
+ "title": "Chapter 14: Comprehensions: Transforming Data in One Line",
+ "video_title": "Python Chapter 14: Comprehensions, Transforming Data in One Line",
+ "summary": "Asha writes the same four-line loop again and again. Follow her as she learns comprehensions: the same list in one line, text changes, filters, choosing a value with if and else, dictionary comprehensions, and when a normal loop is clearer. Then watch her rewrite a loop with an AI assistant at all six stages. She keeps a checklist, runs every case, and catches a missing filter and curly brackets that made a set.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the four-line pattern from Chapter 13. Then the title with the AI tease, then the menu board as the mission, with no output yet.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_tax_loop.py",
+      "heading": "Four lines, again and again",
+      "highlight": [
+       3,
+       4,
+       5
+      ],
+      "output": "examples/ex01_tax_loop.expected"
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha adds tax to every price. She needs four lines: an empty list, a loop, the new price, and append.",
+       "highlight": [
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Then she writes the same pattern for names in capitals, for vegan items, for low stock. Again and again. Is there a shorter way?",
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 14",
+      "title": "Comprehensions: Transforming Data in One Line",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Transformer badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 14: comprehensions. One line that builds a new list."
+      },
+      {
+       "say": "And an AI assistant will rewrite Asha's loop in one line, and promise the same output. Will it keep its promise? You will check.",
+       "subtitle": "One line. The same result. Prove it."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_menu_board.py",
+      "heading": "Today's mission: the menu board",
+      "hidden_text": "By the end, you will know every line of this program."
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission: Asha's menu board. Lines 2 to 5 hold each item, its price, and whether it is vegan.",
+       "highlight": [
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Lines 6, 7 and 8 are three comprehensions. Each one builds something new in one line.",
+       "highlight": [
+        6,
+        7,
+        8
+       ]
+      },
+      {
+       "say": "And the printing stays in a normal loop. You will see why. Let's build it.",
+       "highlight": [
+        9,
+        10
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write a list comprehension that makes a new list from an old one.",
+       "Add an `if` at the end to keep only some items.",
+       "Write a dictionary comprehension that makes a new dictionary.",
+       "Explain when a normal loop is clearer than a comprehension.",
+       "Ask AI to rewrite a loop as one line, then prove the output stayed the same."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write list comprehensions, filter them, build dictionaries the same way, and know when a loop is clearer.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And ask an AI to rewrite a loop, then prove that the output stayed the same.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a comprehension through Asha's repeated pattern, then connect it to real tools and to choosing.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **comprehension** builds a new list or dictionary from another collection, in one line.",
+       "It says what you want, not how to collect it step by step.",
+       "Data tools and reports use them to clean and reshape data.",
+       "It does not replace every loop. Part of the skill is choosing."
+      ]
+     },
+     "segments": [
+      {
+       "say": "A comprehension builds a new list or dictionary from another collection, in one line. It says what you want, not how to collect it.",
+       "reveal": 2,
+       "focus": 0
+      },
+      {
+       "say": "Data tools and reports use comprehensions all the time. But they do not replace every loop. Part of this chapter is learning to choose.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: three parts in square brackets",
+   "direction": "Teach the three parts with the diagram, then the recipe-card comparison and where it stops working. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Three parts in square brackets",
+      "label": "The idea",
+      "body": [
+       "Read the middle part first, then the left part. The filter on the right is optional."
+      ],
+      "pre": "  [ round(price * 1.1, 2)   for price in prices    if price < 4 ]\n    |                       |                      |\n    the new value           the loop               a filter (optional)\n    made for each item      same as a for loop     keep it only if True"
+     },
+     "segments": [
+      {
+       "say": "A list comprehension has three parts inside square brackets. Start in the middle: the loop. For price in prices, exactly like a for loop.",
+       "focus": "pre"
+      },
+      {
+       "say": "On the left is the new value, made for each item. Here, the price with tax, rounded to two places."
+      },
+      {
+       "say": "And on the right, an optional filter. Keep the item only if the condition is True. No empty list. No append."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A recipe card for a new list",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "\"For each price, if it is under 4, write down the price with tax.\"",
+       "Unlike a real recipe card, it cannot do other jobs on the way.",
+       "No printing, and no running total. Only one new list."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a comprehension as a recipe card for a new list. For each price, if it is under 4, write down the price with tax."
+      },
+      {
+       "say": "Unlike a real recipe card, it cannot do other jobs on the way. No printing, and no running total. It only builds the new list.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "In `[name.upper() for name in items]`, which part is the new value?",
+      "options": [
+       "`for name`",
+       "`in items`",
+       "`name.upper()`",
+       "the square brackets"
+      ],
+      "answer": 2,
+      "explain": "The new value comes first, on the left. It is made once for each item."
+     },
+     "segments": [
+      {
+       "say": "Quick check. In this comprehension, which part is the new value?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Name dot upper. The new value comes first, on the left, and it is made for each item."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "The new value comes first.",
+       "Then the loop.",
+       "Then an optional filter."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far. Next, Asha rewrites her tax loop in one line."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Steps 1 and 2: The same list in one line",
+   "direction": "Show Asha's loop as the known starting point, then the comprehension. Ask what lines 4 and 5 print, then compare.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_tax_comp.py",
+      "heading": "Steps 1 and 2: The loop, in one line",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 1 is the loop you saw at the start: an empty list, a loop, and append, with round to two places, from Chapter 2."
+      },
+      {
+       "say": "Step 2. Line 3 builds the same list in one line. The new value first, then for price in prices.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 4 prints the new list. Line 5 prints the length of the new list, and the length of the old one.",
+       "highlight": [
+        4,
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 4 and 5 print?"
+     },
+     "after": [
+      {
+       "say": "Line 4 prints exactly the same list as the loop: 3.85, 4.4, 4.68, and 3.03.",
+       "output": "examples/ex02_tax_comp.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And line 5 prints 4 and 4. Without a filter, the new list has one item for each old item.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Transform text",
+   "direction": "Teach that the new value can be any expression. Ask what lines 5 and 6 print. Reveal that the old list did not change.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_names.py",
+      "heading": "Step 3: Names in title case",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 3. The new value can be any expression. Line 2 holds the menu names, all in small letters."
+      },
+      {
+       "say": "Line 3 uses title, the string method from Chapter 3. Line 4 uses len, so each new item is a number.",
+       "highlight": [
+        3,
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 5 and 6 print?"
+     },
+     "after": [
+      {
+       "say": "Line 5 prints the names with capital letters: Tea, Coffee, Carrot Cake, Scone.",
+       "output": "examples/ex03_names.expected",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 6 prints the lengths: 3, 6, 11 and 5. The space in carrot cake counts too.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And line 7 shows the old list, unchanged. A comprehension always makes a new list.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Keep only some items",
+   "direction": "Teach the filter and unpacking tuples in the loop part, with line 6. Ask what line 9 prints.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_filter.py",
+      "heading": "Step 4: A filter at the end",
+      "highlight": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 4. Each tuple holds a name, a price, and whether the item is vegan. The loop part unpacks all three, as in Chapter 13."
+      },
+      {
+       "say": "An if at the end is a filter. An item goes into the new list only when the condition is True. Line 6 keeps the vegan names.",
+       "highlight": [
+        6
+       ]
+      },
+      {
+       "say": "Line 7 keeps the names of the items that cost less than 4.",
+       "highlight": [
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 9 print?"
+     },
+     "after": [
+      {
+       "say": "Tea and Scone. Coffee costs exactly 4, and 4 is not less than 4.",
+       "output": "examples/ex04_filter.expected",
+       "highlight": [
+        7,
+        9
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And line 8 prints the vegan names: Tea and Coffee. With a filter, the new list can be shorter.",
+       "highlight": [
+        6,
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: Filter or choose",
+   "direction": "Contrast the filter at the end with if-else at the start. Ask how many items line 6 prints. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_if_else.py",
+      "heading": "Step 5: Filter, or choose a value",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 5. Line 3 has an if at the end, so it filters. Only prices under 4 stay.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 4 is different. The if and else come first, before the for. That chooses a value for every item: snack under 4, otherwise treat.",
+       "highlight": [
+        4
+       ]
+      },
+      {
+       "say": "This form must have an else, because every item needs a value.",
+       "highlight": [
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many labels does line 6 print?"
+     },
+     "after": [
+      {
+       "say": "Four. One label for each price: snack, treat, treat, snack.",
+       "output": "examples/ex05_if_else.expected",
+       "highlight": [
+        4,
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "But line 5 prints only two prices. The filter made that list shorter.",
+       "highlight": [
+        3,
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which comprehension keeps only the prices under 4?",
+      "options": [
+       "`[p if p < 4 else 0 for p in prices]`",
+       "`[p for p in prices if p < 4]`",
+       "`[p < 4 for p in prices]`",
+       "`[for p in prices if p < 4]`"
+      ],
+      "answer": 1,
+      "explain": "A filter goes at the end. The first option keeps every item and swaps some for 0."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which comprehension keeps only the prices under 4?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. The filter goes at the end. Option A keeps every item, and puts 0 in place of the others."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "The new value can be any expression.",
+       "An `if` at the end filters.",
+       "`if ... else` at the start chooses."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Relax for a moment. Next, the same idea builds a whole dictionary."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: Build a dictionary",
+   "direction": "Teach key: value in curly brackets with items() from Chapter 12. Ask what lines 5 and 6 print.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_dict_comp.py",
+      "heading": "Step 6: A dictionary comprehension",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 6. Line 2 is the menu dictionary from Chapter 12."
+      },
+      {
+       "say": "Line 3 uses curly brackets with a key, a colon, and a value. That makes a dictionary comprehension. Items gives each name and price.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 5 reads cake from the new dictionary. Line 6 reads cake from the old menu.",
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 5 and 6 print?"
+     },
+     "after": [
+      {
+       "say": "4.68, the cake with tax, and then 4.25. The old menu did not change.",
+       "output": "examples/ex06_dict_comp.expected",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 4 shows the whole new dictionary: the same keys, with new values.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step7",
+   "section": "Build it step by step",
+   "title": "Step 7: When a loop is clearer",
+   "direction": "Show a loop with four jobs per item. Explain why a comprehension would be harder to read here.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_loop_clearer.py",
+      "heading": "Step 7: Four jobs for each item",
+      "highlight": [
+       4,
+       5,
+       6,
+       7
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 7. Today, items of 4 or more cost 0.50 less, and they get a label. Lines 5 to 7 do that.",
+       "highlight": [
+        5,
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Line 8 prints each item, and line 9 adds it to a total. That is four jobs for each item.",
+       "highlight": [
+        8,
+        9
+       ]
+      },
+      {
+       "say": "A comprehension builds one new list and nothing else. Here, a normal loop is much easier to read.",
+       "output": "examples/ex07_loop_clearer.expected",
+       "highlight": [],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "So the rule is simple. One new list or dictionary: use a comprehension. Several steps, a print, or a running total: use a loop.",
+       "out_highlight": [
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the menu board",
+   "direction": "Return to the mission. Walk every line, ask what line 12 prints, then reveal. Hand over to the AI feature.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_menu_board.py",
+      "heading": "Mission complete: the menu board",
+      "highlight": [
+       6
+      ],
+      "hidden_text": "Predict the board before it appears."
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Line 6 builds a dictionary: each name, with its price plus tax.",
+       "highlight": [
+        6
+       ]
+      },
+      {
+       "say": "Line 7 filters the vegan names. Line 8 filters the board, so it compares the prices with tax.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Lines 9 and 10 print the board with a normal loop, because printing is not building a list.",
+       "highlight": [
+        9,
+        10
+       ]
+      },
+      {
+       "say": "Line 12 prints the names whose price with tax is under 4.",
+       "highlight": [
+        8,
+        12
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 12 print?"
+     },
+     "after": [
+      {
+       "say": "Tea and Scone. With tax, Tea is 3.85 and Scone is 3.03. Coffee becomes 4.40, so it is out.",
+       "output": "examples/ex08_menu_board.expected",
+       "highlight": [
+        8,
+        12
+       ],
+       "out_highlight": [
+        1,
+        2,
+        4,
+        6
+       ]
+      },
+      {
+       "say": "Line 11 prints the vegan items, Tea and Coffee. Three comprehensions, one loop. Mission complete!",
+       "highlight": [
+        7,
+        11
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Next, Asha wants a loop of her own in one line. She asks an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one rewrite",
+   "direction": "Teach the refactoring skill. One conversation per stage, all about rewriting the vegan-tax loop. Generate: the AI drops the filter. Test: two cases fail. Debug: if before for, then every case again. Improve: curly brackets fail every case.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: safe refactoring",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "To **refactor** is to change how code is written, not what it does.",
+       "Prove it: run both versions on the same data and compare every line.",
+       "Never paste private data. You are responsible for the code you use."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is safe refactoring. To refactor means to change how code is written, without changing what it does.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "And you prove it: run both versions on the same data, and compare every line.",
+       "reveal": 3,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: what must stay the same?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I want to rewrite this loop as one line. Do not write code yet. List what the new line must keep exactly the same.",
+        "code": "examples/ai_vegan_loop.py",
+        "code_lines": [
+         6,
+         7,
+         8,
+         9
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "1. Only vegan items: the `if` on line 8.\n2. The same order as the menu.\n3. Rounding to two decimal places.\n4. The result is a list."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha's loop adds tax to the vegan items only. Before any rewrite, she asks the AI what the new line must keep exactly the same."
+      },
+      {
+       "say": "The AI gives a checklist: only vegan items, the same order, the same rounding, and a list. Asha keeps this checklist.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: predict, then run",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote this loop myself. Do not change it and do not run it. Predict its exact output.",
+        "code": "examples/ai_vegan_loop.py",
+        "code_lines": [
+         6,
+         7,
+         8,
+         9,
+         10
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "It prints `[3.85, 4.4]`.\nLine 8 keeps only Tea and Coffee, and line 9 adds tax and rounds each price."
+       },
+       {
+        "role": "you",
+        "text": "My prediction was the same. I ran it:",
+        "output": "examples/ai_vegan_loop.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha wrote the loop herself. She asks the AI to predict its exact output, without running it."
+      },
+      {
+       "say": "The AI predicts 3.85 and 4.4, only Tea and Coffee. Asha predicted the same, and the run agrees.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: the loop in one line",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Rewrite my loop as a list comprehension. Keep the output exactly the same, and tell me what it prints."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the one line. It prints `[3.85, 4.4]`, the same as your loop.",
+        "code": "examples/ai_vegan_flawed.py",
+        "code_lines": [
+         6,
+         7
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks the AI to rewrite her loop as a list comprehension, keep the output the same, and say what it prints."
+      },
+      {
+       "say": "The AI gives one line, and promises 3.85 and 4.4, the same as the loop.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_vegan_flawed.py",
+      "heading": "The AI's line, before Asha runs it",
+      "highlight": [
+       6
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Here is the AI's line, on line 6. Compare it with the checklist from stage 1."
+      }
+     ],
+     "ask": {
+      "question": "The AI promises `[3.85, 4.4]`. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Point 1 on the checklist was the filter. Line 6 has no if at the end, so it keeps every item.",
+       "output": "examples/ai_vegan_flawed.expected",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Asha runs it: four prices instead of two. The cake and the scone got tax too. The AI sounded sure, and it dropped part of her loop."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: three cases with expected results",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Give me three test cases with the expected result for each. Use a normal menu and a menu with no vegan items. In the third, two vegan items have the same price."
+       },
+       {
+        "role": "ai",
+        "text": "1. Normal: Tea and Scone. Expected `[3.85]`.\n2. No vegan: only Scone. Expected `[]`.\n3. Same price: Tea and Mint, both 3.5. Expected `[3.85, 3.85]`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks for three test cases, with the expected result for each."
+      },
+      {
+       "say": "A normal menu, a menu with no vegan items, and two vegan items with the same price.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_vegan_cases.py",
+      "heading": "Her loop against the AI's line",
+      "highlight": [
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "hidden_text": "Predict the results before they appear."
+     },
+     "segments": [
+      {
+       "say": "Lines 2 to 6 keep the three cases in a dictionary. For each case, lines 8 to 11 run Asha's loop.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11
+       ]
+      },
+      {
+       "say": "Line 12 runs the AI's line, and line 13 prints pass when both lists are the same.",
+       "highlight": [
+        12,
+        13
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which cases will the AI's line fail?"
+     },
+     "after": [
+      {
+       "say": "The normal menu and the menu with no vegan items. Both get a scone price they should not have.",
+       "output": "examples/ai_vegan_cases.expected",
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "The same-price case passes, because both items are vegan. One passing case proves nothing. Run them all.",
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I added the filter myself, but the program stops with this error. First explain the cause. Then show the smallest fix.",
+        "code": "examples/ai_vegan_typo.py",
+        "code_lines": [
+         6
+        ],
+        "file": "examples/ai_vegan_typo.py",
+        "error": "examples/ai_vegan_typo.expected_error"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha tries to add the filter herself, and puts the if before the for. Python stops with a syntax error. She pastes the line and the full error report."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the AI's answer",
+      "messages": [
+       {
+        "role": "you",
+        "text": "What is the cause, and the smallest fix?"
+       },
+       {
+        "role": "ai",
+        "text": "An `if` before the `for` chooses a value for every item, so it needs an `else`.\nTo keep only some items, move `if vegan` to the end, after `in menu`."
+       }
+      ],
+      "reveal": 2
+     },
+     "segments": [
+      {
+       "say": "The AI explains: an if before the for chooses a value for every item, so it needs an else. Remember step 5. To filter, move if vegan to the end.",
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_vegan_cases_fixed.py",
+      "heading": "Run every case again",
+      "highlight": [
+       12
+      ],
+      "output": "examples/ai_vegan_cases_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha moves the if to the end, on line 12. Then she runs every case again, because a fix can break a case that worked before.",
+       "highlight": [
+        12
+       ]
+      },
+      {
+       "say": "Normal: 3.85, pass. No vegan: an empty list, pass. Same price: pass. All three cases pass.",
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: better, but the same?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My line passes every case. Suggest one change that makes it better, with one reason. The output must stay exactly the same."
+       },
+       {
+        "role": "ai",
+        "text": "Use curly brackets instead of square brackets. A set is faster to search, and the output stays the same."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one change that makes her line better. And she adds: the output must stay exactly the same."
+      },
+      {
+       "say": "The AI suggests curly brackets, because a set is faster to search. It promises the same output.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_vegan_cases_set.py",
+      "heading": "Testing the suggestion",
+      "highlight": [
+       12
+      ],
+      "hidden_text": "Predict the results before they appear."
+     },
+     "segments": [
+      {
+       "say": "Asha does not trust it yet. Line 12 now has curly brackets, with no colon. She runs every case."
+      }
+     ],
+     "ask": {
+      "question": "Will every case still pass?"
+     },
+     "after": [
+      {
+       "say": "No. Every case fails. Curly brackets made a set, so the output looks different, and the two equal prices became one.",
+       "output": "examples/ai_vegan_cases_set.expected",
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "The AI broke her rule: the output did not stay the same. Asha keeps her square brackets.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI rewrote your loop as one line. How do you prove the output stayed the same?",
+      "options": [
+       "Run both on the same test cases.",
+       "Ask the AI if the output is the same.",
+       "Check that the new code is shorter.",
+       "Read the new line once."
+      ],
+      "answer": 0,
+      "explain": "Only a real run on the same cases proves it. The AI's promise is not proof."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI rewrote your loop as one line. How do you prove the output stayed the same?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Run both versions on the same test cases, and compare every line. A promise is not proof."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Run every case again after a fix.",
+       "A promise is not proof. A run is."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha kept a checklist, ran three cases, and caught two AI mistakes: a missing filter, and curly brackets. Next, the comprehension mistakes beginners make."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 calls back to the AI's curly brackets. Mistake 2 is a spot-it question on step 5. Mistake 3 teaches that print gives back None, then asks. Mistake 4 calls back to Chapter 2's float error.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_braces.py",
+      "heading": "Mistake 1: curly brackets instead of square",
+      "highlight": [
+       3
+      ],
+      "output": "examples/err01_braces.expected"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1 is the AI's improvement. Curly brackets with no colon make a set comprehension. Line 5 shows the type: set.",
+       "highlight": [
+        3,
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "There is no error. But the list had 3.5 twice, and the set kept 3.85 only once: 3 items instead of 4.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        1,
+        3
+       ]
+      },
+      {
+       "say": "The fix: square brackets for a list. Curly brackets with key, colon, value for a dictionary.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_else_at_end.py",
+      "heading": "Mistake 2: your turn to spot it",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Find the problem before the answer appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Line 3 has a filter at the end, and then an else. Remember step 5."
+      }
+     ],
+     "ask": {
+      "question": "What is wrong with line 3?"
+     },
+     "after": [
+      {
+       "say": "A filter at the end cannot have an else. Python stops with a syntax error on line 3.",
+       "error": "examples/err02_else_at_end.expected_error",
+       "heading": "Mistake 2: else after a filter",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: to choose a value for every item, move the if and else to the start. To filter, remove the else.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_print_comp.py",
+      "heading": "Mistake 3: a comprehension only to print",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 3. Print shows text on the screen, but it gives back nothing. Python calls that nothing None."
+      },
+      {
+       "say": "Line 3 builds a list from three calls to print. Line 4 prints that list.",
+       "highlight": [
+        3,
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 4 print?"
+     },
+     "after": [
+      {
+       "say": "None, None, None. The names were printed, but the list is useless.",
+       "output": "examples/err03_print_comp.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "The fix: when the job is printing, use a normal for loop.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex09_no_round.py",
+      "heading": "Mistake 4: forgetting to round",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ex09_no_round.expected"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. Line 3 adds tax with no round. Remember Chapter 2: some floats are stored with a tiny error.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The fix: round inside the comprehension, or format the price with two decimal places when you print it.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Square brackets for a list.",
+       "No `else` after a filter.",
+       "Use a loop to print."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Now you know the four comprehension mistakes that catch most beginners."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "`orders = [\"tea\", \"cake\", \"tea\", \"scone\", \"tea\"]`. Keep only the teas, then count them. Could you count without a new list?",
+      "hint": "a filter at the end, then len()."
+     },
+     "segments": [
+      {
+       "say": "First. Asha has five orders. Write a comprehension that keeps only the teas, then count them. Could you count them without making a new list?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Write it after the video, and run it."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "A comprehension can have two `for` parts. For drinks tea and coffee and sizes small and large, what order do the items come in?",
+      "hint": "predict first, then run it."
+     },
+     "segments": [
+      {
+       "say": "Second. A comprehension can have two for parts, such as every size of every drink. Predict the order of the items, then run it."
+      }
+     ],
+     "after": [
+      {
+       "say": "Compare your prediction with the real output."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A list comprehension: the new value, then `for`, then an optional `if`.",
+       "An `if` at the end filters. `if ... else` at the start chooses a value for every item.",
+       "`{key: value for ...}` builds a dictionary. Curly brackets without a colon build a set.",
+       "A comprehension makes a new collection. The old one does not change.",
+       "Use a normal loop for several steps, a `print()` or a running total.",
+       "Refactor with AI, then run both versions on the same cases."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. A list comprehension: the new value, then for, then an optional if.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "An if at the end filters. An if and else at the start chooses a value for every item.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Curly brackets with a colon build a dictionary. And the old collection never changes.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Use a loop for several steps, and with AI, run both versions on the same cases.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "What does `[n * 2 for n in [1, 2, 3] if n > 1]` give?",
+      "options": [
+       "`[2, 4, 6]`",
+       "`[2, 3]`",
+       "`[1, 4, 6]`",
+       "`[4, 6]`"
+      ],
+      "answer": 3,
+      "explain": "The filter keeps 2 and 3. The new value doubles each one."
+     },
+     "segments": [
+      {
+       "say": "One last check. What does this comprehension give?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. 4 and 6. The filter keeps 2 and 3, and the new value doubles each one."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Transformer",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Transformer",
+      "tile": 14
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Transformer badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Double portions; Shout the menu; Short names",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Sale labels; Stock check; From loop to one line",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Vegan menu board; Check the AI's refactor",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20, including a stock check.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each: a vegan menu board, and an AI's refactor to check. Try each one before you open the solution.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease Boss Level 3: the expense tracker that combines everything in Module 3. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 15",
+      "title": "Boss Level 3: The Expense Tracker",
+      "subtitle": "Lists, dictionaries, loops and decisions, together.",
+      "badge": "",
+      "tile": 15
+     },
+     "segments": [
+      {
+       "say": "Asha now knows lists, dictionaries, tuples, sets and comprehensions. But every day, she still adds up the cafe's costs on paper: milk, cups, tea leaves."
+      },
+      {
+       "say": "In Chapter 15, Boss Level 3, you will build an expense tracker that does it for her."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 15."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}

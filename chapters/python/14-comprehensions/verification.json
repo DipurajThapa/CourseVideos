@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-14",
   "run_id": "2026-11-10-40305d",
-  "verified_at": "2026-11-10T02:40:58+00:00",
+  "verified_at": "2026-11-10T02:46:45+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -10,10 +10,8 @@
   "checks": [
     {
       "name": "structure",
-      "passed": false,
-      "problems": [
-        "missing video/storyboard.json"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {}
     },
     {
@@ -184,6 +182,11 @@
           "sentences": 117,
           "average_words": 11.3,
           "longest": 28
+        },
+        "video/script.md": {
+          "sentences": 588,
+          "average_words": 8.8,
+          "longest": 26
         }
       }
     },
@@ -191,10 +194,15 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "missing video/storyboard.json"
+        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/14-comprehensions",
+        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/14-comprehensions",
+        "missing video/render.json: run python3 tools/render_video.py chapters/python/14-comprehensions",
+        "missing video/description.md: run python3 tools/render_video.py chapters/python/14-comprehensions"
       ],
-      "details": {}
+      "details": {
+        "estimated_minutes": 17.5
+      }
     }
   ],
-  "fingerprint": "7d360e34c1eee7d678e1015e3968d0d61d6001bcd9cb6ada6c1cd2be7f88317c"
+  "fingerprint": "46791303dafc62720783f4af9c1128cc7d05f87377f5644d12381aa31da22819"
 }
