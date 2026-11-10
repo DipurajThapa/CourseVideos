@@ -1,0 +1,12 @@
+F                                                [100%]
+======================= FAILURES =======================
+_________________ test_money_shows_usd _________________
+test_money_usd.py:6: in test_money_shows_usd
+    assert money(4) == "USD 4.00"
+E   AssertionError: assert '4.00' == 'USD 4.00'
+E
+E     - USD 4.00
+E     + 4.00
+=============== short test summary info ================
+FAILED test_money_usd.py::test_money_shows_usd - Asse...
+1 failed in 0.01s

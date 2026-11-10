@@ -1,0 +1,5 @@
+....F.F                                          [100%]
+=============== short test summary info ================
+FAILED test_ai_v2.py::test_part_box - assert 3 == 4
+FAILED test_ai_v2.py::test_just_over - assert 1 == 2
+2 failed, 5 passed in 0.01s

@@ -1,0 +1,10 @@
+F                                                [100%]
+======================= FAILURES =======================
+______________________ test_boxes ______________________
+err02_missing_import.py:6: in test_boxes
+    assert boxes_needed(40) == 4
+           ^^^^^^^^^^^^
+E   NameError: name 'boxes_needed' is not defined
+=============== short test summary info ================
+FAILED err02_missing_import.py::test_boxes - NameErro...
+1 failed in 0.01s

@@ -66,6 +66,7 @@ Safety habits taught from Chapter 1: never paste passwords, keys or private data
 
 - Every code block in a lesson that the learner could run must be a real file, marked by its first line: `# file: examples/<name>.py` (use the language's comment syntax). The tool checks that the block matches the file exactly.
 - Every runnable file has a `.expected` file with its exact standard output. If it reads input, a `.stdin` file provides it; for Python, the verifier echoes each typed answer after its prompt, so `.expected` shows the terminal exactly as the learner sees it (`How many teas? 2`). If it is meant to fail, an `.expected_error` file holds a line that must appear in the error output.
+- A Python test file is marked by a `.pytest` file beside it that holds the pytest options (for example `-q --tb=short`). The verifier runs it with `python -m pytest <options> <file>` at a fixed width of 56 columns, and ignores the run time in pytest's last line (`3 passed in 0.01s`). Its `.expected` holds pytest's report; a run with failing tests also has an `.expected_error` with the summary (`1 failed, 2 passed`).
 - Code that is shown only to illustrate (for example a fragment) starts with `# illustrative` and is never presented as runnable.
 - Use current, idiomatic style for the language version in `curriculum/<language>.json`. Follow the official style guide (PEP 8 for Python).
 - Keep examples short: 25 lines or fewer for lessons, unless a project needs more.

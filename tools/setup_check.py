@@ -59,6 +59,12 @@ def main() -> int:
     if latest:
         pythons.insert(0, latest)
     report["python"] = [p for p in dict.fromkeys(pythons) if p]
+    # pytest is the test runner taught from Chapter 19; every Python toolchain needs it so that
+    # test examples (files with a .pytest sidecar) run on each one.
+    for exe in report["python"]:
+        sh([exe, "-m", "pip", "install", "--quiet", "--upgrade", "--break-system-packages", "pytest"])
+        if sh([exe, "-m", "pytest", "--version"]).returncode != 0:
+            print(f"pytest could not be installed for {exe}")
     for name in ("node", "java", "gcc", "g++"):
         report[name] = shutil.which(name)
     video = sh([sys.executable, str(Path(__file__).resolve().parent / "render_video.py"), "--setup"], timeout=900)

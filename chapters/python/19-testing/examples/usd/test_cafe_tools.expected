@@ -1,0 +1,12 @@
+.F.                                              [100%]
+======================= FAILURES =======================
+_____________ test_money_has_two_decimals ______________
+test_cafe_tools.py:10: in test_money_has_two_decimals
+    assert money(4) == "4.00"
+E   AssertionError: assert 'USD 4.00' == '4.00'
+E
+E     - 4.00
+E     + USD 4.00
+=============== short test summary info ================
+FAILED test_cafe_tools.py::test_money_has_two_decimals
+1 failed, 2 passed in 0.01s
