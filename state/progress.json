@@ -333,8 +333,15 @@
     "python-17": {
       "language": "python",
       "number": 17,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-10-660a07",
+          "started": "2026-11-10T04:28:02+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-10-660a07"
     },
     "python-18": {
       "language": "python",
@@ -403,5 +410,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T04:26:53+00:00"
+  "updated": "2026-11-10T04:28:02+00:00"
 }
