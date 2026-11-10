@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 15:38 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 16:00 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -53,7 +53,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Table: Everything from Module 4 (row 3 in focus)
 - **Narration:** And pytest from Chapter 19.
   **On screen:** Table: Everything from Module 4 (row 4 in focus)
-- **Narration:** Plus two new pytest options. Dash dash t b equals no hides the details, and dash r f lists each failed test on one line.
+- **Narration:** Plus one new pytest option. Dash dash t b equals no hides the details of each failure, so the report is a short list.
   **On screen:** Table: Everything from Module 4 (row 5 in focus)
 
 ## Scene 3: What you will build
@@ -157,7 +157,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 **Direction:** The data module, then a short program that reads it, with an ask.
 
 - **Narration:** Time to build. Step 1: the data. Each question is a dictionary with two keys, a question and an answer.
-  **On screen:** Code `project/quiz_data.py`, line 3 highlighted, output hidden
+  **On screen:** Code `project/quiz_data.py`, line 4 highlighted, output hidden
 - **Narration:** The list on lines 3 to 8 keeps the four questions in order.
   **On screen:** Code `project/quiz_data.py`, line 3, 4, 5, 6, 7, 8 highlighted, output hidden
 - **Narration:** The name is in capital letters. Programmers use capitals for a value that the program reads but never changes.
@@ -176,8 +176,8 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Walk the test file in groups, teach assert not and the docstring-only stub returning None, then predict how many tests pass. Quiz on test-first.
 
-- **Narration:** Step 2 is the big change. Asha writes the tests before any rule exists. The file imports the four rules she plans to write, by name.
-  **On screen:** Code `project/test_quiz_logic.py`, output hidden
+- **Narration:** Step 2 is the big change. Asha writes the tests before any rule exists. Line 3 imports the four rules she plans to write, by name.
+  **On screen:** Code `project/test_quiz_logic.py`, line 3 highlighted, output hidden
 - **Narration:** Lines 6 and 7: an exact answer is right. Lines 10 and 11: spaces and capitals are still right.
   **On screen:** Code `project/test_quiz_logic.py`, line 6, 7, 10, 11 highlighted, output hidden
 - **Narration:** Lines 14 to 19 use assert not. It checks that something is false. A wrong answer and a blank answer must not count.
@@ -190,14 +190,14 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `project/test_quiz_logic.py`, line 37, 38 highlighted, output hidden
 - **Narration:** To run the tests, the rules need names. Asha writes each function with only its docstring. No code yet.
   **On screen:** Code `examples/testfirst/quiz_logic.py`, line 5, 6 highlighted, output hidden
-- **Narration:** A function whose body is only a docstring returns None. Remember: None counts as false.
-  **On screen:** Code `examples/testfirst/quiz_logic.py`, line 5, 6, 9, 10, 13, 14, 17, 18 highlighted, output hidden
-- **Narration:** Now think about the two assert not tests. Not None is True.
+- **Narration:** A function whose body is only a docstring returns None, as in Chapter 16.
   **On screen:** Code `examples/testfirst/quiz_logic.py`, line 5, 6, 9, 10, 13, 14, 17, 18 highlighted, output hidden
 - **Interaction:** "With these empty rules, how many of the eight tests pass?" stays on screen with a 10-second timer.
-- **Narration:** Asha runs pytest, with dash q, dash dash t b equals no, and dash r f.
+- **Narration:** Asha runs pytest with dash q and dash dash t b equals no.
   **On screen:** Code `examples/testfirst/quiz_logic.py`, line 5, 6, 9, 10, 13, 14, 17, 18 highlighted, output hidden
-- **Narration:** Two pass. Six fail, as expected, because there is no code. The wrong-answer and blank-answer tests pass already, because not None is True.
+- **Narration:** Two pass, and six fail. The six fail as expected, because there is no code.
+  **On screen:** Code `examples/testfirst/test_quiz_logic.py`, output `examples/testfirst/test_quiz_logic.expected`
+- **Narration:** Here is something new. If and not treat None as false, so not None is True. That is why the wrong-answer and blank-answer tests pass already.
   **On screen:** Code `examples/testfirst/test_quiz_logic.py`, line 14, 15, 18, 19 highlighted, output `examples/testfirst/test_quiz_logic.expected`
 - **Narration:** A test that says this must be false is weak on its own. The exact-answer test is its partner, and it fails until the rule works.
   **On screen:** Code `examples/testfirst/test_quiz_logic.py`, output `examples/testfirst/test_quiz_logic.expected`
@@ -227,7 +227,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Stage 2: write. Asha wrote her rule first. Now she asks the AI for its own version, without showing hers.
   **On screen:** AI chat, stage 2: Write it yourself, then compare
     - You: Write a function check_answer(given, correct) that returns True when the answer matches, ignoring spaces and capitals. Show only the function.
-- **Narration:** The AI calls lower before strip. A different order. Does it matter?
+- **Narration:** The AI calls lower before strip. A different order. Asha renames it ai version, so both functions can sit in one file. Does the order matter?
   **On screen:** AI chat, stage 2: Write it yourself, then compare
     - You: Write a function check_answer(given, correct) that returns True when the answer matches, ignoring spaces and capitals. Show only the function.
     - AI (example answer): Here is the function: [code `examples/ai/write_compare.py`]
@@ -282,9 +282,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 4: Test: which rule do the failures share?
     - You: I ran my eight tests on your module. Three failed: test_three_of_four, test_percentage_rounds and test_result_line. Which function do they have in common? Do not fix anything yet.
     - AI (example answer): All three failing tests call `percentage()`. Two test it directly, and `result_line()` uses it for the score.
-- **Narration:** Stage 5: debug. Asha runs one failing test with the details on, using dash dash t b equals short from Chapter 19.
+- **Narration:** Stage 5: debug. Asha copies one failing test into a small file of its own, and runs it with the details on, using dash dash t b equals short from Chapter 19.
   **On screen:** Code `examples/ai/debug/test_percentage.py`, line 6 highlighted, output `examples/ai/debug/test_percentage.expected`
-- **Narration:** The report shows the test line, and the real value: 0, not 75.
+- **Narration:** The report shows the test line, and the real value: 0, not 75. The where line says the 0 came from percentage of 3 and 4.
   **On screen:** Code `examples/ai/debug/test_percentage.py`, line 6 highlighted, output `examples/ai/debug/test_percentage.expected`
 - **Narration:** She pastes the report and asks for the cause first, then the smallest fix.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
@@ -362,7 +362,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Here are the results. Every real last line matches what Asha expected.
   **On screen:** Table: Four typed runs: results
 - **Narration:** All four runs pass, and so do the eight tests.
-  **On screen:** Table: Four typed runs: results (row 4 in focus)
+  **On screen:** Table: Four typed runs: results
 
 ## Scene 12: Improve it with AI
 
@@ -382,17 +382,19 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "With the AI's version, what does `grade(75)` return?" stays on screen with a 10-second timer.
 - **Narration:** Almost. Line 17 says greater than 75, not greater than or equal. The AI changed one sign.
   **On screen:** Code `examples/ai/improve/quiz_logic.py`, line 17 highlighted, output hidden
-- **Narration:** Asha runs her tests. Two fail: the grade boundaries, and the last line, which now says Almost.
+- **Narration:** Asha runs her tests. Two fail: the grade boundaries, and the last line, which now ends in Almost, because it uses grade.
   **On screen:** Code `examples/ai/improve/test_quiz_logic.py`, line 31 highlighted, output `examples/ai/improve/test_quiz_logic.expected`
-- **Narration:** Line 31, the boundary test from step 2, found it in less than a second. Asha keeps her own grade.
+- **Narration:** Line 31, the boundary test from step 2, found it in less than a second.
   **On screen:** Code `examples/ai/improve/test_quiz_logic.py`, line 31 highlighted, output `examples/ai/improve/test_quiz_logic.expected`
+- **Narration:** Asha keeps her own grade, and runs all eight tests one more time. Eight passed.
+  **On screen:** Code `project/test_quiz_logic.py`, line 31 highlighted, output `project/test_quiz_logic.expected`
 - **Narration:** Here are all six stages, on one module of rules.
   **On screen:** Table: Six stages, one module of rules
-- **Narration:** The AI helped at every stage, from the plan to the review.
+- **Narration:** The AI helped at every stage, from the plan to the improvement.
   **On screen:** Table: Six stages, one module of rules (row 1 in focus)
 - **Narration:** And it was confidently wrong three times: the plan, the percentage, and the shorter grade.
   **On screen:** Table: Six stages, one module of rules (row 3 in focus)
-- **Narration:** Every time, a test written before the code caught it.
+- **Narration:** Every time, something Asha wrote first caught it: criterion two, then her tests.
   **On screen:** Table: Six stages, one module of rules (row 6 in focus)
 - **Narration:** Last breather. You built software with tests, and you made the decisions.
   **On screen:** Breather card
@@ -421,22 +423,22 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Recap
     - Split a program by job: data, rules and the app that talks.
     - Keep rules pure, with no `input()` and no `print()`, so a test can check them.
-- **Narration:** Write the tests first. With no code yet, they should fail.
+- **Narration:** Write the tests first. With no code yet, most of them should fail.
   **On screen:** Recap
     - Split a program by job: data, rules and the app that talks.
     - Keep rules pure, with no `input()` and no `print()`, so a test can check them.
-    - Write the tests first. With no code yet, they should fail.
+    - Write the tests first. With no code yet, most of them should fail.
 - **Narration:** Give an AI your tests. Then run them yourself. The report decides, not the AI.
   **On screen:** Recap
     - Split a program by job: data, rules and the app that talks.
     - Keep rules pure, with no `input()` and no `print()`, so a test can check them.
-    - Write the tests first. With no code yet, they should fail.
+    - Write the tests first. With no code yet, most of them should fail.
     - Give an AI your tests. Then run them yourself: the report decides.
 - **Narration:** And test the edges, such as exactly 75.
   **On screen:** Recap
     - Split a program by job: data, rules and the app that talks.
     - Keep rules pure, with no `input()` and no `print()`, so a test can check them.
-    - Write the tests first. With no code yet, they should fail.
+    - Write the tests first. With no code yet, most of them should fail.
     - Give an AI your tests. Then run them yourself: the report decides.
     - Test the edges, such as exactly 75.
 - **Narration:** One last check, on an edge. With Asha's final rules, what does grade of 50 return?

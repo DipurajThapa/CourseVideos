@@ -16,7 +16,7 @@ This time she works like a software team. She writes the tests first, before any
 | 17 | Pure functions with one job each: no `input()` and no `print()` inside the rules |
 | 18 | Your own modules, imported with `from ... import ...` |
 | 19 | A `pytest` file written first, run with `-q`, and a report you can read |
-| New | Two more `pytest` options: `--tb=no` hides the details, and `-rf` lists each failed test on one line |
+| New | One more `pytest` option: `--tb=no` hides the details of each failure, so the report is a short list |
 
 ## What you will build
 
@@ -151,7 +151,7 @@ def test_result_line():
 
 `assert not` checks that something is false, so lines 15 and 19 say that a wrong answer and a blank answer must not count. Lines 31 to 34 test the edges of each grade: 75 and 74, then 50 and 49.
 
-To run the tests, the rules need names. Asha writes each function with only its docstring. A function whose body is only a docstring returns `None`.
+To run the tests, the rules need names. Asha writes each function with only its docstring. A function whose body is only a docstring returns `None`. `if` and `not` treat `None` as false, so `not None` is `True`.
 
 ```python
 # file: examples/testfirst/quiz_logic.py
@@ -174,7 +174,7 @@ def result_line(points, total):
     """Return the last line of the quiz."""
 ```
 
-She runs `pytest -q --tb=no -rf`. The option `--tb=no` hides the details, and `-rf` lists each failed test on one line.
+She runs `pytest -q --tb=no`. The option `--tb=no` hides the details of each failure. pytest still lists each failed test on one line in its short summary.
 
 <!-- output: examples/testfirst/test_quiz_logic.expected -->
 ```output
@@ -458,7 +458,7 @@ These are the six ways AI helped with this project. The full prompts are in [ai-
 
 - Split a program by job: data in one module, rules in another, and the talking in the app.
 - Keep rules pure, with no `input()` and no `print()`, so a test can check them.
-- Write the tests first. They fail at the start, and a test that passes with no code checks very little.
+- Write the tests first. With no code yet, most of them should fail, and a test that passes with no code checks very little.
 - Give an AI your tests with your request. Then run them yourself: the report, not the AI, decides.
 - Test the edges, such as exactly 75, because small mistakes such as `>` instead of `>=` live there.
 

@@ -30,7 +30,7 @@ Use these with an AI assistant such as ChatGPT or Claude. Replace the parts in a
 
 **A good answer:** one module with exactly the functions the tests import, each with a docstring, and no changes to the tests.
 
-**Check it:** run `pytest -q --tb=no -rf`. Every test must pass. If the AI says "this passes all your tests", that is a prediction. The report is the result.
+**Check it:** run `pytest -q --tb=no`. Every test must pass. If the AI says "this passes all your tests", that is a prediction. The report is the result.
 
 ## Test: Read a failure report with the AI
 

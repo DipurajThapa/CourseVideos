@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-20",
   "run_id": "2026-11-10-cc88df",
-  "verified_at": "2026-11-10T06:42:15+00:00",
+  "verified_at": "2026-11-10T06:48:37+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -203,14 +203,14 @@
       "problems": [],
       "details": {
         "project.md": {
-          "sentences": 126,
+          "sentences": 127,
           "average_words": 11.0,
           "longest": 26
         },
         "video/script.md": {
-          "sentences": 626,
-          "average_words": 8.5,
-          "longest": 24
+          "sentences": 629,
+          "average_words": 8.6,
+          "longest": 29
         }
       }
     },
@@ -224,9 +224,9 @@
         "missing video/description.md: run python3 tools/render_video.py chapters/python/20-project-quiz-app"
       ],
       "details": {
-        "estimated_minutes": 15.6
+        "estimated_minutes": 16.0
       }
     }
   ],
-  "fingerprint": "f14d6ed900959e07c47125c0deca41663e6b58e1a1db92ddfc7dde46a187cc30"
+  "fingerprint": "e8f6d5d067d3980f38eb6caa940ac6d03842fbf25f8a97d89d622fa7e652c6f4"
 }

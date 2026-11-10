@@ -125,7 +125,7 @@
        ],
        [
         "New",
-        "`--tb=no` and `-rf`: a short list of failed tests"
+        "`--tb=no`: a short list of failed tests"
        ]
       ]
      },
@@ -147,7 +147,7 @@
        "focus_row": 3
       },
       {
-       "say": "Plus two new pytest options. Dash dash t b equals no hides the details, and dash r f lists each failed test on one line.",
+       "say": "Plus one new pytest option. Dash dash t b equals no hides the details of each failure, so the report is a short list.",
        "focus_row": 4
       }
      ]
@@ -397,7 +397,10 @@
      },
      "segments": [
       {
-       "say": "Time to build. Step 1: the data. Each question is a dictionary with two keys, a question and an answer."
+       "say": "Time to build. Step 1: the data. Each question is a dictionary with two keys, a question and an answer.",
+       "highlight": [
+        4
+       ]
       },
       {
        "say": "The list on lines 3 to 8 keeps the four questions in order.",
@@ -475,6 +478,8 @@
       "file": "project/test_quiz_logic.py",
       "heading": "Step 2: Eight tests, before any rule",
       "code_lines": [
+       3,
+       4,
        5,
        6,
        7,
@@ -491,11 +496,13 @@
        18,
        19
       ],
-      "highlight": []
+      "highlight": [
+       3
+      ]
      },
      "segments": [
       {
-       "say": "Step 2 is the big change. Asha writes the tests before any rule exists. The file imports the four rules she plans to write, by name."
+       "say": "Step 2 is the big change. Asha writes the tests before any rule exists. Line 3 imports the four rules she plans to write, by name."
       },
       {
        "say": "Lines 6 and 7: an exact answer is right. Lines 10 and 11: spaces and capitals are still right.",
@@ -593,7 +600,7 @@
        "say": "To run the tests, the rules need names. Asha writes each function with only its docstring. No code yet."
       },
       {
-       "say": "A function whose body is only a docstring returns None. Remember: None counts as false.",
+       "say": "A function whose body is only a docstring returns None, as in Chapter 16.",
        "highlight": [
         5,
         6,
@@ -604,9 +611,6 @@
         17,
         18
        ]
-      },
-      {
-       "say": "Now think about the two assert not tests. Not None is True."
       }
      ],
      "ask": {
@@ -614,7 +618,7 @@
      },
      "after": [
       {
-       "say": "Asha runs pytest, with dash q, dash dash t b equals no, and dash r f."
+       "say": "Asha runs pytest with dash q and dash dash t b equals no."
       }
      ]
     },
@@ -634,7 +638,15 @@
      },
      "segments": [
       {
-       "say": "Two pass. Six fail, as expected, because there is no code. The wrong-answer and blank-answer tests pass already, because not None is True.",
+       "say": "Two pass, and six fail. The six fail as expected, because there is no code.",
+       "highlight": [],
+       "out_highlight": [
+        1,
+        9
+       ]
+      },
+      {
+       "say": "Here is something new. If and not treat None as false, so not None is True. That is why the wrong-answer and blank-answer tests pass already.",
        "highlight": [
         14,
         15,
@@ -642,8 +654,7 @@
         19
        ],
        "out_highlight": [
-        1,
-        8
+        1
        ]
       },
       {
@@ -793,7 +804,7 @@
        "say": "Stage 2: write. Asha wrote her rule first. Now she asks the AI for its own version, without showing hers."
       },
       {
-       "say": "The AI calls lower before strip. A different order. Does it matter?",
+       "say": "The AI calls lower before strip. A different order. Asha renames it ai version, so both functions can sit in one file. Does the order matter?",
        "reveal": 2,
        "focus": 1
       }
@@ -1007,13 +1018,14 @@
      },
      "segments": [
       {
-       "say": "Stage 5: debug. Asha runs one failing test with the details on, using dash dash t b equals short from Chapter 19."
+       "say": "Stage 5: debug. Asha copies one failing test into a small file of its own, and runs it with the details on, using dash dash t b equals short from Chapter 19."
       },
       {
-       "say": "The report shows the test line, and the real value: 0, not 75.",
+       "say": "The report shows the test line, and the real value: 0, not 75. The where line says the 0 came from percentage of 3 and 4.",
        "out_highlight": [
         5,
-        6
+        6,
+        7
        ]
       }
      ]
@@ -1254,8 +1266,8 @@
        ],
        [
         "Spaces and capitals",
-        "\" 3.50\", \"  CARROT \", \"Yes\", \"2.75 \"",
-        "Score: 4/4 (100%) Ready"
+        "space 3.50, space CARROT space, Yes, 2.75 space",
+        "Your turn: predict it"
        ],
        [
         "Blank answers",
@@ -1295,7 +1307,7 @@
        9
       ],
       "hidden_text": "Does it count?",
-      "note": "Answers typed: \" 3.50\", \"  CARROT \", \"Yes\", \"2.75 \""
+      "note": "Answers typed: space 3.50, two spaces CARROT space, Yes, 2.75 space"
      },
      "segments": [
       {
@@ -1381,7 +1393,7 @@
       },
       {
        "say": "All four runs pass, and so do the eight tests.",
-       "focus_row": 3
+       "focus_row": null
       }
      ]
     }
@@ -1488,7 +1500,7 @@
      },
      "segments": [
       {
-       "say": "Asha runs her tests. Two fail: the grade boundaries, and the last line, which now says Almost.",
+       "say": "Asha runs her tests. Two fail: the grade boundaries, and the last line, which now ends in Almost, because it uses grade.",
        "out_highlight": [
         3,
         4,
@@ -1496,12 +1508,43 @@
        ]
       },
       {
-       "say": "Line 31, the boundary test from step 2, found it in less than a second. Asha keeps her own grade.",
+       "say": "Line 31, the boundary test from step 2, found it in less than a second.",
        "highlight": [
         31
        ],
        "out_highlight": [
         3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "project/test_quiz_logic.py",
+      "heading": "Her own grade(), all eight again",
+      "code_lines": [
+       30,
+       31,
+       32,
+       33,
+       34,
+       35,
+       36,
+       37,
+       38
+      ],
+      "highlight": [
+       31
+      ],
+      "output": "project/test_quiz_logic.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha keeps her own grade, and runs all eight tests one more time. Eight passed.",
+       "out_highlight": [
+        1,
+        2
        ]
       }
      ]
@@ -1554,7 +1597,7 @@
        "say": "Here are all six stages, on one module of rules."
       },
       {
-       "say": "The AI helped at every stage, from the plan to the review.",
+       "say": "The AI helped at every stage, from the plan to the improvement.",
        "focus_row": 0
       },
       {
@@ -1562,7 +1605,7 @@
        "focus_row": 2
       },
       {
-       "say": "Every time, a test written before the code caught it.",
+       "say": "Every time, something Asha wrote first caught it: criterion two, then her tests.",
        "focus_row": 5
       }
      ]
@@ -1601,7 +1644,7 @@
       "items": [
        "Split a program by job: data, rules and the app that talks.",
        "Keep rules pure, with no `input()` and no `print()`, so a test can check them.",
-       "Write the tests first. With no code yet, they should fail.",
+       "Write the tests first. With no code yet, most of them should fail.",
        "Give an AI your tests. Then run them yourself: the report decides.",
        "Test the edges, such as exactly 75."
       ],
@@ -1622,7 +1665,7 @@
        "focus": 1
       },
       {
-       "say": "Write the tests first. With no code yet, they should fail.",
+       "say": "Write the tests first. With no code yet, most of them should fail.",
        "reveal": 3,
        "focus": 2
       },

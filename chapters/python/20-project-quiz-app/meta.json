@@ -15,7 +15,7 @@
     "a list of dictionaries as quiz data",
     "writing pytest tests before the code",
     "stub functions whose body is only a docstring (they return None)",
-    "pytest -q --tb=no -rf for a short report",
+    "pytest -q --tb=no for a short report",
     "strip() and lower() to compare answers",
     "round() for a whole-number percentage",
     "boundary tests for grades",
@@ -40,7 +40,7 @@
   "research_date": "2026-11-10",
   "changes": [
     "The curriculum asks for a multi-module quiz app with scoring and a passing test suite. The project uses three modules (data, rules, app) and one pytest file with eight tests, written before the rules.",
-    "The project introduces two pytest options, --tb=no and -rf, so the failure lists fit on screen; the debug step uses --tb=short from Chapter 19.",
+    "The project introduces one pytest option, --tb=no, so the failure lists fit on screen (pytest lists each failed test in its short summary by default); the debug step uses --tb=short from Chapter 19.",
     "Every app test is a copy of quiz_app.py with its own typed answers, in examples/apptest, next to copies of the two modules it imports.",
     "The stub module, the first rule, the AI's flawed module, the debug test and the AI's improve suggestion each live in their own folder with a copy of the tests, so every report in the project is a verified run."
   ],
