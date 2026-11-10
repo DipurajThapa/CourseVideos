@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:39 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:27 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -63,7 +63,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Section:** The idea
 
-**Direction:** Teach the loop, characterization tests and the diff format. Then the kitchen analogy, a breather.
+**Direction:** Teach the loop, characterization tests and the diff format, then a breather. The kitchen analogy stays in the lesson.
 
 - **Narration:** Here is the big idea: a safe refactoring loop. First, tests that record what the code does now.
   **On screen:** A safe refactoring loop
@@ -75,13 +75,6 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** How to read a diff
 - **Narration:** A line that starts with minus was removed. A line that starts with plus was added. A line that starts with a space did not change.
   **On screen:** How to read a diff
-- **Narration:** Think of rearranging the cafe kitchen. The shelves move, but every recipe must taste exactly the same afterwards.
-  **On screen:** Like rearranging a kitchen
-    - The shelves move, but every recipe must taste the same.
-- **Narration:** The comparison stops at one point. In code, your tests check every recipe automatically, every time you move a shelf.
-  **On screen:** Like rearranging a kitchen
-    - The shelves move, but every recipe must taste the same.
-    - Unlike a kitchen, you can check every recipe automatically, every time.
 - **Narration:** Breather. Tests first, then one small change at a time.
   **On screen:** Breather card
     - Refactoring keeps the behaviour.
@@ -167,18 +160,20 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Step 4. A magic number is a number in the code with no name, like 0.1 or 1.1. A reader cannot tell what it means.
   **On screen:** Code `examples/till_v3.py`, line 2, 3 highlighted, output hidden
-- **Narration:** A constant gives it a name. In Python, constants are written in capital letters, at the top of the file. Lines 11 and 12 now use the names.
+- **Narration:** A constant gives it a name. By convention, constants are written in capital letters, at the top of the file. Python will not stop a change, but the capitals tell people not to. Lines 11 and 12 now use the names.
   **On screen:** Code `examples/till_v3.py`, line 11, 12 highlighted, output hidden
 - **Narration:** Then she runs the tests.
   **On screen:** Code `examples/till_v3.py`, output hidden
 - **Narration:** Line 2 imports the version with constants. Three passed, again.
   **On screen:** Code `examples/test_till_v3.py`, line 2 highlighted, output `examples/test_till_v3.expected`
-- **Narration:** Now Asha reviews the change. The diff lib module compares Step 3 with Step 4. Lines 7 and 8 skip the file comment on line 1 of each file.
+- **Narration:** Now Asha reviews the change. The diff lib module compares till v 2, from step 3, with till v 3, from step 4. Lines 7 and 8 skip the file comment on line 1 of each file.
   **On screen:** Code `examples/ex05_diff.py`, line 5, 6, 7, 8 highlighted, output `examples/ex05_diff.expected`
+- **Narration:** On line 9, v 2 and v 3 are the labels for the two versions, and n equals 1 shows one unchanged line around each change.
+  **On screen:** Code `examples/ex05_diff.py`, line 9, 10 highlighted, output `examples/ex05_diff.expected`
 - **Narration:** The plus lines at the top add the two constants.
-  **On screen:** Code `examples/ex05_diff.py`, line 5, 6, 7, 8 highlighted, output `examples/ex05_diff.expected`
+  **On screen:** Code `examples/ex05_diff.py`, line 9, 10 highlighted, output `examples/ex05_diff.expected`
 - **Narration:** And these minus and plus pairs swap 0.1 and 1.1 for their names. Every other line is unchanged.
-  **On screen:** Code `examples/ex05_diff.py`, line 5, 6, 7, 8 highlighted, output `examples/ex05_diff.expected`
+  **On screen:** Code `examples/ex05_diff.py`, line 9, 10 highlighted, output `examples/ex05_diff.expected`
 - **Narration:** Quick check. In a diff, what does a line that starts with minus mean?
   **On screen:** Quick check: "In a unified diff, what does a line that starts with `-` mean?" (options shown)
 - **Interaction:** "In a unified diff, what does a line that starts with `-` mean?" stays on screen with a 10-second timer.
@@ -206,7 +201,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/till_final.py`, line 7, 8, 9, 10, 11, 12 highlighted, output hidden
 - **Narration:** Line 12 returns the total. Without that return, the result would never come back out.
   **On screen:** Code `examples/till_final.py`, line 12 highlighted, output hidden
-- **Narration:** Order total now calls subtotal on line 17, takes off the discount, and adds tax with the two constants.
+- **Narration:** Order total now calls subtotal on line 17, and takes off the discount. The name with tax is no longer needed, so the tax moves into the return, on line 20.
   **On screen:** Code `examples/till_final.py`, line 15, 17, 18, 19, 20 highlighted, output hidden
 - **Narration:** And line 2 is a docstring for the whole module.
   **On screen:** Code `examples/till_final.py`, line 2 highlighted, output hidden
@@ -257,7 +252,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Table: Write: Asha's own tests, from real runs (row 2 in focus)
 - **Narration:** And one test checks that the results keep the order of the order: Scone, then Cake.
   **On screen:** Table: Write: Asha's own tests, from real runs (row 4 in focus)
-- **Narration:** Here are two of them. Line 12 expects an empty list for exactly 3 left. Line 21 expects Scone before Cake.
+- **Narration:** Here are her five tests. Line 12 expects an empty list for exactly 3 left. Line 21 expects Scone before Cake.
   **On screen:** Code `examples/test_stock.py`, line 12, 21 highlighted, output `examples/test_stock.expected`
 - **Narration:** On Sam's code, all five pass.
   **On screen:** Code `examples/test_stock.py`, output `examples/test_stock.expected`
@@ -275,17 +270,17 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 3: Generate: one refactoring, same behaviour
     - You: Refactor chk with clear names. Keep the behaviour exactly the same. Do not add features.
     - AI (example answer): Here it is. The behaviour is exactly the same. [code `examples/stock_ai.py`]
-- **Narration:** Asha reads the change as a diff. Because the name changed, every line shows as changed: six minus lines, and nine plus lines.
+- **Narration:** Asha reads the change as a diff, this time with n equals 0, so no unchanged lines. Every name changed, c h k, s, o, r and k, so every line shows as changed: six minus lines, and nine plus lines.
   **On screen:** Code `examples/ai_diff.py`, line 9, 10 highlighted, output `examples/ai_diff.expected`
 - **Narration:** So she reads them in pairs. Look at the old if line, and the new one.
   **On screen:** Code `examples/ai_diff.py`, line 9, 10 highlighted, output `examples/ai_diff.expected`
 - **Interaction:** "Every line changed. Which change can change the result?" stays on screen with a 10-second timer.
 - **Narration:** The comparison. The old line says less than 3. The new line says less than or equal to LOW LIMIT. With less than or equal, exactly 3 left now counts as low.
   **On screen:** Code `examples/ai_diff.py`, line 9, 10 highlighted, output `examples/ai_diff.expected`
-- **Narration:** Stage 4: test. Line 2 imports the AI's function under the old name, so the same five tests run on the new code.
+- **Narration:** Stage 4: test. Line 2 imports the AI's function with as c h k, like import math as m in Chapter 18. So the same five tests run on the new code.
   **On screen:** Code `examples/test_stock_ai.py`, line 2 highlighted, output `examples/test_stock_ai.expected`
 - **Narration:** One failed: the test for exactly 3 left. The AI changed the behaviour, and it said it had not.
-  **On screen:** Code `examples/test_stock_ai.py`, line 10, 11, 12 highlighted, output `examples/test_stock_ai.expected`
+  **On screen:** Code `examples/test_stock_ai.py`, line 11, 12 highlighted, output `examples/test_stock_ai.expected`
 - **Narration:** She shows the AI the failing test, and asks which line changed the behaviour.
   **On screen:** AI chat, stage 4: Test: which line changed the behaviour?
     - You: I ran my five tests on your version. One failed, and the old version passed it. Which line changed the behaviour?
@@ -293,7 +288,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 4: Test: which line changed the behaviour?
     - You: I ran my five tests on your version. One failed, and the old version passed it. Which line changed the behaviour?
     - AI (example answer): Line 8. I changed < 3 to <= LOW_LIMIT, so an item with exactly 3 left now counts as low. Fix: change <= back to <.
-- **Narration:** Asha changes less than or equal back to less than, and keeps the clear names. She runs every test again. Five passed.
+- **Narration:** Asha changes less than or equal back to less than, on line 8, and keeps the clear names.
+  **On screen:** Code `examples/stock_v2.py`, line 8 highlighted, output hidden
+- **Narration:** Then she runs every test again. Five passed. A regression is a change that breaks something that used to work, and this rerun checks for one.
   **On screen:** Code `examples/test_stock_v2.py`, line 2 highlighted, output `examples/test_stock_v2.expected`
 - **Narration:** Stage 5: debug. Then Asha's daily report stops working. She pastes the code and the full error, and asks for the cause first.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
@@ -302,11 +299,13 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: After the rename, my report stopped working. First explain the cause. Then show the smallest fix. [code `examples/ai_report_crash.py`]
     - AI (example answer): Line 2 imports chk, but stock_v2 now only has low_stock. Smallest fix: keep the old name as a second name, chk = low_stock, at the end of the module.
-- **Narration:** Line 14 says c h k equals low stock. Now both names lead to the same function. And line 6 is a docstring with the true behaviour: fewer than 3 left.
+- **Narration:** A function is a value, like a number, so line 14 can give it a second name, as the as keyword did on import. Now c h k and low stock lead to the same function.
   **On screen:** Code `examples/stock_final.py`, line 14 highlighted, output hidden
+- **Narration:** And line 6 is a docstring with the true behaviour: fewer than 3 left.
+  **On screen:** Code `examples/stock_final.py`, line 6 highlighted, output hidden
 - **Narration:** Her report imports c h k again, and it runs.
   **On screen:** Code `examples/ai_report.py`, line 2 highlighted, output `examples/ai_report.expected`
-- **Narration:** And all five tests still pass on the final version. That rerun is her regression check.
+- **Narration:** And all five tests still pass on the final version. No regression.
   **On screen:** Code `examples/test_stock_final.py`, line 2 highlighted, output `examples/test_stock_final.expected`
 - **Narration:** Stage 6: improve. Asha asks for one readability change that keeps every result.
   **On screen:** AI chat, stage 6: Improve: one change, then every test
@@ -322,8 +321,12 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - AI (example answer): Use a comprehension, and return sorted(low), so the list is tidier. [code `examples/stock_sorted.py`]
 - **Narration:** One failed: keeps order of the order.
   **On screen:** Code `examples/test_stock_sorted.py`, line 21 highlighted, output `examples/test_stock_sorted.expected`
-- **Narration:** So she keeps her final version. A refactoring that changes the output is not a refactoring.
+- **Narration:** A refactoring that changes the output is not a refactoring.
   **On screen:** Code `examples/test_stock_sorted.py`, line 21 highlighted, output `examples/test_stock_sorted.expected`
+- **Narration:** So Asha keeps the part that helps, the comprehension on lines 7 and 8, and drops sorted. Line 9 returns the list as it is.
+  **On screen:** Code `examples/stock_v3.py`, line 7, 8, 9 highlighted, output hidden
+- **Narration:** She runs every test again. Five passed. That is a real improvement: clearer code, and the same behaviour.
+  **On screen:** Code `examples/test_stock_v3.py`, line 2 highlighted, output `examples/test_stock_v3.expected`
 - **Narration:** Quick check. An AI says its refactoring keeps the behaviour. What decides?
   **On screen:** Quick check: "An AI says its refactoring keeps the behaviour exactly the same. What decides?" (options shown)
 - **Interaction:** "An AI says its refactoring keeps the behaviour exactly the same. What decides?" stays on screen with a 10-second timer.
@@ -449,7 +452,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Each tier is highlighted as it is described.
 
-- **Narration:** Now it is your turn. Three warm-up tasks at 10 XP, and three apply tasks at 20.
+- **Narration:** Now it is your turn. Three warm-up tasks at 10 XP.
+  **On screen:** Table: Practice: 8 tasks, 170 XP (row 1 in focus)
+- **Narration:** Three apply tasks at 20, including reading a diff.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 2 in focus)
 - **Narration:** And two stretch tasks, worth 40 each. In the last one, you fix an AI's refactor that changed a boundary.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)

@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-27",
   "run_id": "2026-11-10-f86318",
-  "verified_at": "2026-11-10T11:41:08+00:00",
+  "verified_at": "2026-11-10T11:53:07+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -19,7 +19,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 37,
+        "files_run": 39,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
@@ -89,6 +89,10 @@
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
+          "examples/stock_v3.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/test_stock.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
@@ -106,6 +110,10 @@
             "Python 3.13.18": "pass"
           },
           "examples/test_stock_v2.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/test_stock_v3.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -181,8 +189,8 @@
       "passed": true,
       "problems": [],
       "details": {
-        "code_blocks": 23,
-        "output_blocks": 21
+        "code_blocks": 24,
+        "output_blocks": 22
       }
     },
     {
@@ -219,13 +227,13 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 128,
+          "sentences": 138,
           "average_words": 13.4,
           "longest": 30
         },
         "video/script.md": {
-          "sentences": 594,
-          "average_words": 9.0,
+          "sentences": 601,
+          "average_words": 9.2,
           "longest": 30
         }
       }
@@ -240,9 +248,9 @@
         "missing video/description.md: run python3 tools/render_video.py chapters/python/27-reading-and-refactoring"
       ],
       "details": {
-        "estimated_minutes": 17.6
+        "estimated_minutes": 18.4
       }
     }
   ],
-  "fingerprint": "c0d4d91e62cda823d4b8dca728c4eee67ce93999fda691dd10149bf4bdee10cc"
+  "fingerprint": "203a542f1ff333031d6b0bf7229d801a58a46c80b77bbdd894b09eddd885de37"
 }

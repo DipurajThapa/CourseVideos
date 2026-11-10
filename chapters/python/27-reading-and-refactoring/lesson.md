@@ -36,7 +36,7 @@ A safe refactoring loop has four parts, and you go round it once for every small
 
 A **characterization test** is a test that records what a program does now, even the odd parts. It does not ask whether the result is right. It asks whether the result is the same as before. If you want to change a behaviour, that is a separate change, made on purpose, after the refactoring.
 
-A **diff** shows two versions of a file side by side, line by line. Lines that start with `-` were removed, and lines that start with `+` were added. Lines that start with a space did not change.
+A **diff** compares two versions of a file, line by line. Lines that start with `-` were removed, and lines that start with `+` were added. Lines that start with a space did not change.
 
 Think of refactoring like rearranging a cafe kitchen. The shelves move, but every recipe must taste the same afterwards. The comparison stops working at one point: in code, you can check every "recipe" automatically with tests, every time you move a shelf.
 
@@ -165,7 +165,7 @@ def test_empty_order():
 3 passed in 0.01s
 ```
 
-**Step 4: Replace magic numbers with constants, and read the diff.** A **magic number** is a number in the code with no name, such as `0.1` or `1.1`. A reader cannot tell what it means. A constant gives it a name. In Python, constants are written in capital letters at the top of the file.
+**Step 4: Replace magic numbers with constants, and read the diff.** A **magic number** is a number in the code with no name, such as `0.1` or `1.1`. A reader cannot tell what it means. A constant gives it a name. By convention (PEP 8), constants are written in capital letters at the top of the file. Python does not stop you from changing them; the capital letters tell other people not to.
 
 ```python
 # file: examples/till_v3.py
@@ -189,7 +189,7 @@ def order_total(items, is_member):
 3 passed in 0.01s
 ```
 
-The `difflib` module in the standard library shows the difference between two versions. This program compares Step 3 with Step 4, and skips the first line of each file, the `# file:` comment.
+The `difflib` module in the standard library shows the difference between two versions. This program compares Step 3 (`till_v2.py`, labelled `v2`) with Step 4 (`till_v3.py`, labelled `v3`), and skips the first line of each file, the `# file:` comment. `n=1` shows one unchanged line around each change.
 
 ```python
 # file: examples/ex05_diff.py
@@ -229,7 +229,7 @@ The two `---` and `+++` lines name the old and the new version. Each `@@` line s
 
 ## See the outcome
 
-Step 5 extracts a function. The loop that adds up the order becomes its own function, `subtotal`, with a docstring. Here is the finished till module.
+Step 5 extracts a function. The loop that adds up the order becomes its own function, `subtotal`, with a docstring. The name `with_tax` is no longer needed, so the tax moves into the `return` line. Here is the finished till module.
 
 ```python
 # file: examples/till_final.py
@@ -375,7 +375,7 @@ def test_empty_order():
 5 passed in 0.01s
 ```
 
-Then she asked: "Refactor this function with clear names. Keep the behaviour exactly the same." The AI answered with this version and said the behaviour was the same:
+Then she asked: "Refactor this function with clear names. Keep the behaviour exactly the same." The AI answered with this version and said the behaviour was the same.
 
 ```python
 # file: examples/stock_ai.py
@@ -390,7 +390,7 @@ def low_stock(stock, order):
     return low
 ```
 
-Because the name changed, the diff shows every line as changed. Asha read it carefully:
+Every name changed (`chk`, `s`, `o`, `r` and `k`), so the diff shows every line as changed. With `n=0` it shows no unchanged lines. Asha read it carefully:
 
 ```python
 # file: examples/ai_diff.py
@@ -429,7 +429,7 @@ for line in diff:
 +    return low
 ```
 
-The old line says `< 3` and the new line says `<= LOW_LIMIT`. With `<=`, an item with exactly 3 left now counts as low. Her tests, pointed at the AI's function, show it:
+The old line says `< 3` and the new line says `<= LOW_LIMIT`. With `<=`, an item with exactly 3 left now counts as low. Her tests, pointed at the AI's function, show it.
 
 ```python
 # file: examples/test_stock_ai.py
@@ -467,7 +467,7 @@ FAILED test_stock_ai.py::test_exactly_three_left - As...
 1 failed, 4 passed in 0.01s
 ```
 
-The test for exactly 3 left fails. The AI's refactoring changed the behaviour, and it sounded sure that it had not. Asha changed `<=` back to `<` and kept the clear names.
+Line 2 of the test file imports `low_stock` with `as chk`, like `import math as m` in Chapter 18, so the same tests run on the new function. The test for exactly 3 left fails. The AI's refactoring changed the behaviour, and it sounded sure that it had not. Asha changed `<=` back to `<` and kept the clear names.
 
 ```python
 # file: examples/stock_v2.py
@@ -506,7 +506,7 @@ Traceback (most recent call last):
 ImportError: cannot import name 'chk' from 'stock_v2'
 ```
 
-Renaming a function breaks every program that uses the old name. Asha kept the old name as a second name for the same function, on the last line:
+Renaming a function breaks every program that uses the old name. Asha kept the old name as a second name for the same function, on the last line. A function is a value, so `chk = low_stock` makes `chk` lead to the same function. Running every test again after a fix is a **regression** check: a regression is a change that breaks something that used to work.
 
 ```python
 # file: examples/stock_final.py
@@ -561,7 +561,28 @@ FAILED test_stock_sorted.py::test_keeps_order_of_the_order
 1 failed, 4 passed in 0.01s
 ```
 
-Asha kept `stock_final.py`. A refactoring that changes the output is not a refactoring.
+A refactoring that changes the output is not a refactoring. Asha kept the comprehension, dropped `sorted()`, and ran every test again.
+
+```python
+# file: examples/stock_v3.py
+LOW_LIMIT = 3
+
+
+def low_stock(stock, order):
+    """Return the ordered items that will have fewer than 3 left."""
+    low = [item for item in order
+           if stock[item] - order[item] < LOW_LIMIT]
+    return low
+
+
+chk = low_stock  # the old name, for code that still uses it
+```
+
+<!-- output: examples/test_stock_v3.expected -->
+```output
+.....                                            [100%]
+5 passed in 0.01s
+```
 
 ## Common mistakes
 

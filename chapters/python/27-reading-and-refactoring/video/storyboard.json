@@ -181,7 +181,7 @@
    "id": "idea",
    "section": "The idea",
    "title": "The idea: a safe refactoring loop",
-   "direction": "Teach the loop, characterization tests and the diff format. Then the kitchen analogy, a breather.",
+   "direction": "Teach the loop, characterization tests and the diff format, then a breather. The kitchen analogy stays in the lesson.",
    "beats": [
     {
      "visual": {
@@ -223,29 +223,6 @@
       },
       {
        "say": "A line that starts with minus was removed. A line that starts with plus was added. A line that starts with a space did not change."
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "bullets",
-      "heading": "Like rearranging a kitchen",
-      "label": "Analogy",
-      "reveal": 1,
-      "focus": 0,
-      "items": [
-       "The shelves move, but every recipe must taste the same.",
-       "Unlike a kitchen, you can check every recipe automatically, every time."
-      ]
-     },
-     "segments": [
-      {
-       "say": "Think of rearranging the cafe kitchen. The shelves move, but every recipe must taste exactly the same afterwards."
-      },
-      {
-       "say": "The comparison stops at one point. In code, your tests check every recipe automatically, every time you move a shelf.",
-       "reveal": 2,
-       "focus": 1
       }
      ]
     },
@@ -550,7 +527,7 @@
        "say": "Step 4. A magic number is a number in the code with no name, like 0.1 or 1.1. A reader cannot tell what it means."
       },
       {
-       "say": "A constant gives it a name. In Python, constants are written in capital letters, at the top of the file. Lines 11 and 12 now use the names.",
+       "say": "A constant gives it a name. By convention, constants are written in capital letters, at the top of the file. Python will not stop a change, but the capitals tell people not to. Lines 11 and 12 now use the names.",
        "highlight": [
         11,
         12
@@ -606,7 +583,14 @@
      },
      "segments": [
       {
-       "say": "Now Asha reviews the change. The diff lib module compares Step 3 with Step 4. Lines 7 and 8 skip the file comment on line 1 of each file."
+       "say": "Now Asha reviews the change. The diff lib module compares till v 2, from step 3, with till v 3, from step 4. Lines 7 and 8 skip the file comment on line 1 of each file."
+      },
+      {
+       "say": "On line 9, v 2 and v 3 are the labels for the two versions, and n equals 1 shows one unchanged line around each change.",
+       "highlight": [
+        9,
+        10
+       ]
       },
       {
        "say": "The plus lines at the top add the two constants.",
@@ -702,7 +686,7 @@
        ]
       },
       {
-       "say": "Order total now calls subtotal on line 17, takes off the discount, and adds tax with the two constants.",
+       "say": "Order total now calls subtotal on line 17, and takes off the discount. The name with tax is no longer needed, so the tax moves into the return, on line 20.",
        "highlight": [
         15,
         17,
@@ -953,16 +937,19 @@
       "code_lines": [
        2,
        4,
-       10,
+       7,
+       8,
        11,
        12,
-       18,
+       15,
+       16,
        19,
        20,
-       21
+       21,
+       24,
+       25
       ],
       "highlight": [
-       10,
        11,
        12
       ],
@@ -970,7 +957,7 @@
      },
      "segments": [
       {
-       "say": "Here are two of them. Line 12 expects an empty list for exactly 3 left. Line 21 expects Scone before Cake.",
+       "say": "Here are her five tests. Line 12 expects an empty list for exactly 3 left. Line 21 expects Scone before Cake.",
        "highlight": [
         12,
         21
@@ -996,10 +983,8 @@
         "text": "I wrote my own tests first, from real runs. Which inputs do they not cover yet?",
         "code": "examples/test_stock.py",
         "code_lines": [
-         10,
          11,
          12,
-         14,
          15,
          16
         ]
@@ -1081,7 +1066,7 @@
      },
      "segments": [
       {
-       "say": "Asha reads the change as a diff. Because the name changed, every line shows as changed: six minus lines, and nine plus lines.",
+       "say": "Asha reads the change as a diff, this time with n equals 0, so no unchanged lines. Every name changed, c h k, s, o, r and k, so every line shows as changed: six minus lines, and nine plus lines.",
        "out_highlight": [
         4,
         10
@@ -1112,7 +1097,6 @@
       "heading": "Test: her tests on the AI's version",
       "code_lines": [
        2,
-       10,
        11,
        12
       ],
@@ -1123,12 +1107,11 @@
      },
      "segments": [
       {
-       "say": "Stage 4: test. Line 2 imports the AI's function under the old name, so the same five tests run on the new code."
+       "say": "Stage 4: test. Line 2 imports the AI's function with as c h k, like import math as m in Chapter 18. So the same five tests run on the new code."
       },
       {
        "say": "One failed: the test for exactly 3 left. The AI changed the behaviour, and it said it had not.",
        "highlight": [
-        10,
         11,
         12
        ],
@@ -1170,8 +1153,24 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/test_stock_v2.py",
+      "file": "examples/stock_v2.py",
       "heading": "Test: less than, put back",
+      "highlight": [
+       8
+      ],
+      "hidden_text": "The tests run on the next screen."
+     },
+     "segments": [
+      {
+       "say": "Asha changes less than or equal back to less than, on line 8, and keeps the clear names."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_stock_v2.py",
+      "heading": "Test: every test again",
       "code_lines": [
        2
       ],
@@ -1182,8 +1181,9 @@
      },
      "segments": [
       {
-       "say": "Asha changes less than or equal back to less than, and keeps the clear names. She runs every test again. Five passed.",
+       "say": "Then she runs every test again. Five passed. A regression is a change that breaks something that used to work, and this rerun checks for one.",
        "out_highlight": [
+        1,
         2
        ]
       }
@@ -1235,7 +1235,13 @@
      },
      "segments": [
       {
-       "say": "Line 14 says c h k equals low stock. Now both names lead to the same function. And line 6 is a docstring with the true behaviour: fewer than 3 left."
+       "say": "A function is a value, like a number, so line 14 can give it a second name, as the as keyword did on import. Now c h k and low stock lead to the same function."
+      },
+      {
+       "say": "And line 6 is a docstring with the true behaviour: fewer than 3 left.",
+       "highlight": [
+        6
+       ]
       }
      ]
     },
@@ -1273,7 +1279,7 @@
      },
      "segments": [
       {
-       "say": "And all five tests still pass on the final version. That rerun is her regression check.",
+       "say": "And all five tests still pass on the final version. No regression.",
        "out_highlight": [
         1,
         2
@@ -1330,7 +1336,6 @@
       "heading": "Improve: the order test catches it",
       "code_lines": [
        2,
-       18,
        19,
        20,
        21
@@ -1349,8 +1354,49 @@
        ]
       },
       {
-       "say": "So she keeps her final version. A refactoring that changes the output is not a refactoring.",
+       "say": "A refactoring that changes the output is not a refactoring.",
        "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/stock_v3.py",
+      "heading": "Improve: keep the comprehension, drop sorted",
+      "highlight": [
+       7,
+       8,
+       9
+      ],
+      "hidden_text": "The tests run on the next screen."
+     },
+     "segments": [
+      {
+       "say": "So Asha keeps the part that helps, the comprehension on lines 7 and 8, and drops sorted. Line 9 returns the list as it is."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_stock_v3.py",
+      "heading": "Improve: every test again",
+      "code_lines": [
+       2
+      ],
+      "highlight": [
+       2
+      ],
+      "output": "examples/test_stock_v3.expected"
+     },
+     "segments": [
+      {
+       "say": "She runs every test again. Five passed. That is a real improvement: clearer code, and the same behaviour.",
+       "out_highlight": [
+        1,
+        2
+       ]
       }
      ]
     },
@@ -1720,7 +1766,11 @@
      },
      "segments": [
       {
-       "say": "Now it is your turn. Three warm-up tasks at 10 XP, and three apply tasks at 20.",
+       "say": "Now it is your turn. Three warm-up tasks at 10 XP.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks at 20, including reading a diff.",
        "focus_row": 1
       },
       {
