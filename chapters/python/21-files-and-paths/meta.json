@@ -1,0 +1,58 @@
+{
+  "id": "python-21",
+  "title": "Files and Paths: Saving and Loading Data",
+  "language": "python",
+  "type": "lesson",
+  "module": "M5",
+  "badge": "Archivist",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "file",
+    "Path.write_text and Path.read_text",
+    "open() with the with statement",
+    "modes r, w and a",
+    "encoding=\"utf-8\"",
+    "reading line by line with strip()",
+    "Path.exists()",
+    "relative paths and the working directory",
+    "joining paths with /",
+    "CSV files",
+    "csv.writer and writerow",
+    "csv.DictReader",
+    "newline=\"\"",
+    "FileNotFoundError",
+    "UnicodeDecodeError"
+  ],
+  "prerequisites": [
+    "python-18"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_save_flawed.py",
+    "fixed_file": "examples/ai_save_fixed.py",
+    "flaw": "Asked for a save_score() that keeps every score, the AI opened the file with mode \"w\". Each call empties the file, so after saving Asha and then Omar only Omar's row is left, with no error. The fixed function appends with mode \"a\" and writes the header only when the file is new."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "Every example opens text files with encoding=\"utf-8\", although Python 3.15 and newer use UTF-8 by default (PEP 686), because the course supports Python 3.12 and newer, where the default can depend on the computer.",
+    "Path.mkdir(exist_ok=True) appears only in the AI section, to fix a save into a missing folder; folders are not otherwise covered.",
+    "print(..., end=\"\") from Chapter 1 is used after file.read(), so the file's last newline does not add an empty line; Step 1 shows the empty line once and explains it.",
+    "Data files for the examples (menu.txt, sales.csv, scores.csv, log.txt, case_old.csv and old_menu.txt, which is saved in Latin-1 on purpose) sit beside the examples; the checker runs every example on a fresh copy of its folder, so no run changes the originals."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the traceback for Mistakes 1, 3 and 4 shows the full path to the file instead of the short file name.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
