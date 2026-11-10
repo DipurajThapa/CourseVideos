@@ -20,7 +20,7 @@
       "body": [
        "Asha's tracker summary from Chapter 15, copied for three days."
       ],
-      "pre": "  # Monday summary         # Tuesday summary        # Friday summary\n  total = 0                total = 0                total = 0\n  for price in monday:     for price in tuesday:    for price in friday:\n      total += price           total += price           total += price\n  print(...)               print(...)               print(...)"
+      "pre": "  # The same summary, copied three times. Then tax was added:\n\n  # Monday:     total += round(price * 1.1, 2)    <- fixed\n  # Tuesday:    total += round(price * 1.1, 2)    <- fixed\n  # Friday:     total += price                    <- missed!"
      },
      "segments": [
       {
@@ -28,7 +28,8 @@
        "focus": "pre"
       },
       {
-       "say": "Then she found a mistake. She fixed it in two copies, and missed the third. Copying code means copying its mistakes."
+       "say": "Then she added tax. She changed the Monday copy and the Tuesday copy, and missed Friday. Copying code means copying its mistakes.",
+       "focus": "pre"
       }
      ]
     },
@@ -104,7 +105,7 @@
      },
      "segments": [
       {
-       "say": "Write and call functions, return values, write docstrings, and read a longer traceback.",
+       "say": "Write functions, return values and docstrings, and read a longer traceback.",
        "reveal": 4,
        "focus": 3
       },
@@ -143,7 +144,7 @@
        "focus": 1
       },
       {
-       "say": "You have used functions since Chapter 1: print, len, round and input. Now you write your own.",
+       "say": "You have used functions since the first chapters: print, len, round and input. Now you write your own.",
        "reveal": 4,
        "focus": 3
       }
@@ -224,11 +225,7 @@
        "focus_row": 1
       },
       {
-       "say": "A parameter is a name in the def line. An argument is the value you pass in a call.",
-       "focus_row": 3
-      },
-      {
-       "say": "And the return value is what the function hands back.",
+       "say": "A parameter is a name in the def line, an argument is the value in a call, and the return value is what comes back.",
        "focus_row": 4
       }
      ]
@@ -445,7 +442,7 @@
      },
      "after": [
       {
-       "say": "4.4, and True. With tax, 2.75 becomes 3.03, which is more than 3.",
+       "say": "4.4, and True. With tax, 2.75 becomes about 3.03, which is more than 3.",
        "output": "examples/ex03_with_tax.expected",
        "highlight": [
         7,
@@ -689,7 +686,7 @@
        ]
       },
       {
-       "say": "Day total passes each price to with tax, one at a time.",
+       "say": "Day total passes each price to with tax, one at a time. Chapter 9 promised that tracebacks grow longer with functions. Here is one.",
        "highlight": [
         8
        ]
@@ -700,7 +697,7 @@
      },
      "after": [
       {
-       "say": "In with tax, on line 3. Here is the error report. It lists every call on the way, one block for each function.",
+       "say": "In with tax, on line 3. Python cannot multiply text by a decimal number. The error report lists every call on the way, one block for each function.",
        "error": "examples/ex07_traceback.expected_error",
        "highlight": [
         3
@@ -717,10 +714,20 @@
        ]
       },
       {
-       "say": "The block above that shows who called it: line 8, in day total. And the top block is line 11, the main program. Most recent call last means the deepest call is at the bottom.",
+       "say": "The block above that shows who called it: line 8, in day total.",
+       "out_highlight": [
+        5,
+        6
+       ],
+       "highlight": [
+        8
+       ]
+      },
+      {
+       "say": "And the top block is line 11, the main program. Most recent call last means the deepest call is at the bottom.",
        "out_highlight": [
         2,
-        5
+        3
        ],
        "highlight": [
         11
@@ -978,12 +985,18 @@
       {
        "say": "No. Line 4 prints the share, and the function returns nothing. So the call gives back None.",
        "error": "examples/ai_share_print.expected_error",
+       "highlight": [
+        4
+       ],
        "out_highlight": [
         1
        ]
       },
       {
-       "say": "The f string cannot format None with two decimal places, so Python stops with a Type Error. The AI broke its own specification, and it sounded sure.",
+       "say": "The f string cannot format None with two decimal places, so Python stops with a Type Error on line 6. The AI broke its own specification, and it sounded sure.",
+       "highlight": [
+        6
+       ],
        "out_highlight": [
         -1
        ]
@@ -998,7 +1011,7 @@
       "messages": [
        {
         "role": "you",
-        "text": "Your function printed instead of returning, so my line crashed. Fix it so that it returns the value."
+        "text": "Your function printed instead of returning, so my line crashed. Fix it so that it returns the value. Then I will run my three checks on it."
        },
        {
         "role": "ai",
@@ -1057,7 +1070,7 @@
      },
      "after": [
       {
-       "say": "Lines 6 and 7. The AI forgot to round, so the second share is 10.7675, and the third has many digits.",
+       "say": "Lines 9 and 10. The AI forgot to round. The second check is the Chapter 5 table: 43.07 shared by 4 is 10.7675, which Chapter 5 rounded to 10.77. The third has many digits.",
        "output": "examples/ai_share_noround.expected",
        "highlight": [
         9,
@@ -1167,7 +1180,30 @@
        "focus": 1
       },
       {
-       "say": "The function has three parameters, but line 6 passes only two arguments. The fix: pass the tip too. Asha adds it, and you will see her program run at the end of this section."
+       "say": "The function has three parameters, but line 6 passes only two arguments. The fix: pass the tip too."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_share_missing_fixed.py",
+      "heading": "The fix: pass all three arguments",
+      "highlight": [
+       6
+      ],
+      "output": "examples/ai_share_missing_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha adds the tip on line 6, and runs it again. Table 4, 11.0. The program works.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
       }
      ]
     },
@@ -1244,11 +1280,9 @@
      "visual": {
       "type": "code",
       "file": "examples/ai_share_final.py",
-      "heading": "The final function",
+      "heading": "The final function, checked again",
       "highlight": [
-       2,
-       3,
-       4
+       3
       ],
       "output": "examples/ai_share_final.expected"
      },
@@ -1260,14 +1294,28 @@
        ]
       },
       {
-       "say": "Lines 6 and 7 use it in her bill splitter: 11.00 for table 4, and 10.77 for table 7.",
+       "say": "She adds the docstring, so she runs every check again. True, True, True.",
        "highlight": [
         6,
-        7
+        7,
+        8,
+        9,
+        10,
+        11
        ],
        "out_highlight": [
         1,
-        2
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And line 12 uses it in her bill splitter: each pays 11.00.",
+       "highlight": [
+        12
+       ],
+       "out_highlight": [
+        4
        ]
       }
      ]
@@ -1542,12 +1590,7 @@
      },
      "segments": [
       {
-       "say": "Let's recap. Def defines a function, and a call with brackets runs it.",
-       "reveal": 1,
-       "focus": 0
-      },
-      {
-       "say": "Parameters receive the arguments, in order. Return hands a value back, and without it you get None.",
+       "say": "Let's recap. Def defines a function, a call runs it, and parameters receive the arguments in order. Without return, you get None.",
        "reveal": 3,
        "focus": 2
       },
@@ -1641,11 +1684,11 @@
      },
      "segments": [
       {
-       "say": "Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20, including menu lines.",
+       "say": "Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20.",
        "focus_row": 1
       },
       {
-       "say": "And two stretch tasks, worth 40 each: an average with an empty day, and an AI's member price to fix. Try each one before you open the solution.",
+       "say": "And two stretch tasks at 40, including an AI's member price to fix. Try each one before you open the solution.",
        "focus_row": 2
       }
      ]

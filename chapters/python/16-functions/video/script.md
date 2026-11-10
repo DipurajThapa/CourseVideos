@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:32 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:40 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -12,7 +12,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** At the Corner Cafe, Asha wanted a summary for three days. So she copied the same lines three times.
   **On screen:** The same lines, three times
-- **Narration:** Then she found a mistake. She fixed it in two copies, and missed the third. Copying code means copying its mistakes.
+- **Narration:** Then she added tax. She changed the Monday copy and the Tuesday copy, and missed Friday. Copying code means copying its mistakes.
   **On screen:** The same lines, three times
 - **Narration:** This is Code Quest, Chapter 16: functions. Write it once, use it many times.
   **On screen:** Functions: Reusable Blocks of Logic
@@ -31,7 +31,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Each goal appears as it is spoken.
 
-- **Narration:** Write and call functions, return values, write docstrings, and read a longer traceback.
+- **Narration:** Write functions, return values and docstrings, and read a longer traceback.
   **On screen:** By the end, you will be able to:
     - Write a function with `def`, call it, and give it inputs with parameters.
     - Explain `return` versus `print()`, and recognise `None`.
@@ -55,7 +55,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Why this matters
     - A **function** is a named block of code you write once and run whenever you need it.
     - Fix a mistake inside it, and every call gets the fix.
-- **Narration:** You have used functions since Chapter 1: print, len, round and input. Now you write your own.
+- **Narration:** You have used functions since the first chapters: print, len, round and input. Now you write your own.
   **On screen:** Why this matters
     - A **function** is a named block of code you write once and run whenever you need it.
     - Fix a mistake inside it, and every call gets the fix.
@@ -76,9 +76,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** One definition, many calls
 - **Narration:** Five words. To define means to write the function, and nothing runs yet. To call means to run it, with its name and brackets.
   **On screen:** Table: Five words for functions (row 2 in focus)
-- **Narration:** A parameter is a name in the def line. An argument is the value you pass in a call.
-  **On screen:** Table: Five words for functions (row 4 in focus)
-- **Narration:** And the return value is what the function hands back.
+- **Narration:** A parameter is a name in the def line, an argument is the value in a call, and the return value is what comes back.
   **On screen:** Table: Five words for functions (row 5 in focus)
 - **Narration:** Think of a recipe card in the cafe kitchen. The cook follows the same steps every time. Today's ingredients go in, and one dish comes out.
   **On screen:** A recipe card in the kitchen
@@ -137,7 +135,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Line 7 prints a returned value directly. Line 8 compares one with 3, so it prints True or False.
   **On screen:** Code `examples/ex03_with_tax.py`, line 7, 8 highlighted, output hidden
 - **Interaction:** "What do lines 7 and 8 print?" stays on screen with a 10-second timer.
-- **Narration:** 4.4, and True. With tax, 2.75 becomes 3.03, which is more than 3.
+- **Narration:** 4.4, and True. With tax, 2.75 becomes about 3.03, which is more than 3.
   **On screen:** Code `examples/ex03_with_tax.py`, line 7, 8 highlighted, output `examples/ex03_with_tax.expected`
 - **Narration:** And line 6 prints 3.85, the value stored in tea. A returned value can be stored, printed or compared.
   **On screen:** Code `examples/ex03_with_tax.py`, line 6 highlighted, output `examples/ex03_with_tax.expected`
@@ -196,14 +194,16 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex06_calls.py`, line 9, 11 highlighted, output `examples/ex06_calls.expected`
 - **Narration:** Now line 11 passes a list with one price written as text: 4.0, in quotation marks.
   **On screen:** Code `examples/ex07_traceback.py`, line 11 highlighted, output hidden
-- **Narration:** Day total passes each price to with tax, one at a time.
+- **Narration:** Day total passes each price to with tax, one at a time. Chapter 9 promised that tracebacks grow longer with functions. Here is one.
   **On screen:** Code `examples/ex07_traceback.py`, line 8 highlighted, output hidden
 - **Interaction:** "In which function will Python stop?" stays on screen with a 10-second timer.
-- **Narration:** In with tax, on line 3. Here is the error report. It lists every call on the way, one block for each function.
+- **Narration:** In with tax, on line 3. Python cannot multiply text by a decimal number. The error report lists every call on the way, one block for each function.
   **On screen:** Code `examples/ex07_traceback.py`, line 3 highlighted, error `examples/ex07_traceback.expected_error`
 - **Narration:** Read it from the bottom up, as in Chapter 9. The last line names the error. The block directly above it shows where it happened: line 3, in with tax.
   **On screen:** Code `examples/ex07_traceback.py`, line 3 highlighted, error `examples/ex07_traceback.expected_error`
-- **Narration:** The block above that shows who called it: line 8, in day total. And the top block is line 11, the main program. Most recent call last means the deepest call is at the bottom.
+- **Narration:** The block above that shows who called it: line 8, in day total.
+  **On screen:** Code `examples/ex07_traceback.py`, line 8 highlighted, error `examples/ex07_traceback.expected_error`
+- **Narration:** And the top block is line 11, the main program. Most recent call last means the deepest call is at the bottom.
   **On screen:** Code `examples/ex07_traceback.py`, line 11 highlighted, error `examples/ex07_traceback.expected_error`
 - **Narration:** The cause is on line 11: the price in quotation marks.
   **On screen:** Code `examples/ex07_traceback.py`, line 11 highlighted, error `examples/ex07_traceback.expected_error`
@@ -269,22 +269,22 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ai_share_print.py`, line 4, 6 highlighted, output hidden
 - **Interaction:** "The AI promises `Each pays 11.00`. Is it right?" stays on screen with a 10-second timer.
 - **Narration:** No. Line 4 prints the share, and the function returns nothing. So the call gives back None.
-  **On screen:** Code `examples/ai_share_print.py`, line 4, 6 highlighted, error `examples/ai_share_print.expected_error`
-- **Narration:** The f string cannot format None with two decimal places, so Python stops with a Type Error. The AI broke its own specification, and it sounded sure.
-  **On screen:** Code `examples/ai_share_print.py`, line 4, 6 highlighted, error `examples/ai_share_print.expected_error`
+  **On screen:** Code `examples/ai_share_print.py`, line 4 highlighted, error `examples/ai_share_print.expected_error`
+- **Narration:** The f string cannot format None with two decimal places, so Python stops with a Type Error on line 6. The AI broke its own specification, and it sounded sure.
+  **On screen:** Code `examples/ai_share_print.py`, line 6 highlighted, error `examples/ai_share_print.expected_error`
 - **Narration:** Stage 4: test. Asha tells the AI what happened, and asks for a function that returns the value.
   **On screen:** AI chat, stage 4: Test: run the checks on the new version
-    - You: Your function printed instead of returning, so my line crashed. Fix it so that it returns the value.
+    - You: Your function printed instead of returning, so my line crashed. Fix it so that it returns the value. Then I will run my three checks on it.
 - **Narration:** The AI gives a corrected version. It returns the share now. Asha does not trust it yet. She runs her three checks on it.
   **On screen:** AI chat, stage 4: Test: run the checks on the new version
-    - You: Your function printed instead of returning, so my line crashed. Fix it so that it returns the value.
+    - You: Your function printed instead of returning, so my line crashed. Fix it so that it returns the value. Then I will run my three checks on it.
     - AI (example answer): You are right. Here is the corrected function. It now returns the share. [code `examples/ai_share_noround.py`]
 - **Narration:** Line 3 returns the share. Compare it with the specification: rounded to cents.
   **On screen:** Code `examples/ai_share_noround.py`, line 3 highlighted, output hidden
 - **Narration:** Lines 5 to 10 are Asha's checks: three calls with the three examples, then three prints.
   **On screen:** Code `examples/ai_share_noround.py`, line 5, 6, 7, 8, 9, 10 highlighted, output hidden
 - **Interaction:** "Which checks will print `False`?" stays on screen with a 10-second timer.
-- **Narration:** Lines 6 and 7. The AI forgot to round, so the second share is 10.7675, and the third has many digits.
+- **Narration:** Lines 9 and 10. The AI forgot to round. The second check is the Chapter 5 table: 43.07 shared by 4 is 10.7675, which Chapter 5 rounded to 10.77. The third has many digits.
   **On screen:** Code `examples/ai_share_noround.py`, line 9, 10 highlighted, output `examples/ai_share_noround.expected`
 - **Narration:** And the first check passed only by luck: its exact answer has no extra digits. One passing check proves nothing. Run them all.
   **On screen:** Code `examples/ai_share_noround.py`, line 8 highlighted, output `examples/ai_share_noround.expected`
@@ -299,10 +299,12 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 5: Debug: the AI's answer
     - You: I used your function in my program, and it stopped with this error. First explain the cause and the line. Then show the smallest fix. [code `examples/ai_share_missing.py`]
     - AI (example answer): `share()` has three parameters, but the call on line 6 passes only two arguments. Python cannot fill `tip_percent`. The fix: pass the tip too, such as `share(40.0, 4, 10)`.
-- **Narration:** The function has three parameters, but line 6 passes only two arguments. The fix: pass the tip too. Asha adds it, and you will see her program run at the end of this section.
+- **Narration:** The function has three parameters, but line 6 passes only two arguments. The fix: pass the tip too.
   **On screen:** AI chat, stage 5: Debug: the AI's answer
     - You: I used your function in my program, and it stopped with this error. First explain the cause and the line. Then show the smallest fix. [code `examples/ai_share_missing.py`]
     - AI (example answer): `share()` has three parameters, but the call on line 6 passes only two arguments. Python cannot fill `tip_percent`. The fix: pass the tip too, such as `share(40.0, 4, 10)`.
+- **Narration:** Asha adds the tip on line 6, and runs it again. Table 4, 11.0. The program works.
+  **On screen:** Code `examples/ai_share_missing_fixed.py`, line 6 highlighted, output `examples/ai_share_missing_fixed.expected`
 - **Narration:** Stage 6: improve. Asha asks for one improvement. And she adds a rule: do not change the name, the parameters, or what the function returns.
   **On screen:** AI chat, stage 6: Improve: better, but the same?
     - You: My function passes every check. Suggest one improvement, with one reason. Do not change its name, its parameters or what it returns.
@@ -319,8 +321,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ai_share_swapped.py`, line 5 highlighted, output `examples/ai_share_swapped.expected`
 - **Narration:** Here is Asha's final function, with a docstring from the specification, on line 3.
   **On screen:** Code `examples/ai_share_final.py`, line 3 highlighted, output `examples/ai_share_final.expected`
-- **Narration:** Lines 6 and 7 use it in her bill splitter: 11.00 for table 4, and 10.77 for table 7.
-  **On screen:** Code `examples/ai_share_final.py`, line 6, 7 highlighted, output `examples/ai_share_final.expected`
+- **Narration:** She adds the docstring, so she runs every check again. True, True, True.
+  **On screen:** Code `examples/ai_share_final.py`, line 6, 7, 8, 9, 10, 11 highlighted, output `examples/ai_share_final.expected`
+- **Narration:** And line 12 uses it in her bill splitter: each pays 11.00.
+  **On screen:** Code `examples/ai_share_final.py`, line 12 highlighted, output `examples/ai_share_final.expected`
 - **Narration:** Quick check. An AI wrote a function from your specification. Who decides if it is right?
   **On screen:** Quick check: "An AI wrote a function from your specification. Who decides if it is right?" (options shown)
 - **Interaction:** "An AI wrote a function from your specification. Who decides if it is right?" stays on screen with a 10-second timer.
@@ -393,10 +397,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Each recap point appears as it is spoken, then a final quick check, then the badge.
 
-- **Narration:** Let's recap. Def defines a function, and a call with brackets runs it.
-  **On screen:** Recap
-    - A function is a named block of code. `def` defines it; a call with brackets runs it.
-- **Narration:** Parameters receive the arguments, in order. Return hands a value back, and without it you get None.
+- **Narration:** Let's recap. Def defines a function, a call runs it, and parameters receive the arguments in order. Without return, you get None.
   **On screen:** Recap
     - A function is a named block of code. `def` defines it; a call with brackets runs it.
     - Parameters are names in the `def` line. Arguments are the values in a call, in order.
@@ -431,9 +432,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Each tier is highlighted as it is described.
 
-- **Narration:** Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20, including menu lines.
+- **Narration:** Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 2 in focus)
-- **Narration:** And two stretch tasks, worth 40 each: an average with an empty day, and an AI's member price to fix. Try each one before you open the solution.
+- **Narration:** And two stretch tasks at 40, including an AI's member price to fix. Try each one before you open the solution.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
 ## Scene 15: What's next
