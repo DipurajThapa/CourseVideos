@@ -15,7 +15,7 @@
     {
      "visual": {
       "type": "text",
-      "heading": "One letter",
+      "heading": "Two swapped letters",
       "label": "The problem",
       "body": [
        "An AI assistant answers Asha's question."
@@ -28,7 +28,7 @@
        "focus": "pre"
       },
       {
-       "say": "The AI gives her one command to run. Read the package name slowly. Would you run it?"
+       "say": "Read the package name slowly. Would you run it?"
       }
      ]
     },
@@ -59,11 +59,8 @@
      },
      "segments": [
       {
-       "say": "Here is Asha's draft list of packages for the weather board.",
+       "say": "Here is Asha's draft list of packages for the weather board. By the end, her own program will check it before anything is installed.",
        "focus": "pre"
-      },
-      {
-       "say": "By the end, her own program will check this list before anything is installed. And you will see exactly what it finds."
       }
      ]
     }
@@ -274,10 +271,7 @@
      },
      "segments": [
       {
-       "say": "Breather. Here is what you know so far."
-      },
-      {
-       "say": "Next, Asha builds the toolbox for her weather board."
+       "say": "Breather. Next, Asha builds the toolbox for her weather board."
       }
      ]
     }
@@ -334,8 +328,12 @@
       ],
       "rows": [
        [
-        "Windows",
+        "Windows, Command Prompt",
         "`.venv\\Scripts\\activate`"
+       ],
+       [
+        "Windows, PowerShell",
+        "`.venv\\Scripts\\Activate.ps1`"
        ],
        [
         "macOS and Linux",
@@ -356,12 +354,16 @@
        "focus_row": 0
       },
       {
-       "say": "On macOS and Linux, source, dot v e n v, slash, bin, slash, activate.",
+       "say": "In PowerShell, the script ends in dot p s 1. The lesson shows what to do if PowerShell refuses it.",
        "focus_row": 1
       },
       {
-       "say": "To leave it, type deactivate. And one rule: activate it again every time you open a new terminal.",
+       "say": "On macOS and Linux, source, dot v e n v, slash, bin, slash, activate.",
        "focus_row": 2
+      },
+      {
+       "say": "To leave it, type deactivate. And one rule: activate it again every time you open a new terminal.",
+       "focus_row": 3
       }
      ]
     },
@@ -421,6 +423,9 @@
       },
       {
        "say": "Python dash m makes sure pip installs into the Python she is running. Pip list then shows what is installed here. Your version numbers may differ."
+      },
+      {
+       "say": "In Chapter 19, you installed pytest once, with no virtual environment. From now on, each project's packages go inside its own dot v e n v."
       }
      ]
     },
@@ -446,6 +451,23 @@
     },
     {
      "visual": {
+      "type": "text",
+      "heading": "The board's requirements file",
+      "label": "Build it",
+      "body": [
+       "The versions here are examples. Check pypi.org for the version you want."
+      ],
+      "pre": "  requirements.txt\n  # Packages for the weather board\n  requests==2.32.3\n  tabulate==0.9.0"
+     },
+     "segments": [
+      {
+       "say": "Here is the board's file. The hash sign line is a comment. Each other line pins one package.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
       "type": "code",
       "file": "examples/ex01_read_requirements.py",
       "heading": "Read the pinned file",
@@ -456,7 +478,7 @@
      },
      "segments": [
       {
-       "say": "The board's file pins requests and tabulate, under one comment line. Asha's program reads it. Lines 4 and 5 read the text, and line 6 goes through it."
+       "say": "Asha's program reads that file. Lines 4 and 5 read the text, and line 6 goes through it."
       },
       {
        "say": "Lines 8 and 9 skip empty lines and comments.",
@@ -589,10 +611,7 @@
      },
      "segments": [
       {
-       "say": "Breather. Asha's board now has its own toolbox, and a list of exact versions."
-      },
-      {
-       "say": "Next, the most important habit of all: checking a name before you install it."
+       "say": "Breather. Asha's board now has its own toolbox, and a list of exact versions. Next, the most important habit: checking a name first."
       }
      ]
     }
@@ -641,7 +660,15 @@
        "focus_row": 0
       },
       {
-       "say": "Two, links to its code and documentation. Three, its release history. Four, who publishes it.",
+       "say": "Two, links to its code and documentation.",
+       "focus_row": 1
+      },
+      {
+       "say": "Three, its release history.",
+       "focus_row": 2
+      },
+      {
+       "say": "Four, who publishes it.",
        "focus_row": 3
       }
      ]
@@ -663,7 +690,7 @@
        "say": "The standard module diff lib measures how alike two names are. Its score goes from 0, nothing alike, to 1, the same."
       },
       {
-       "say": "Lines 5 and 6 score reqeusts against requests. Even with two letters swapped, the score is 0.875.",
+       "say": "Line 5 compares reqeusts with requests. Its first argument, None, means no characters are ignored. Even with two letters swapped, line 6 prints a score of 0.875.",
        "highlight": [
         5,
         6
@@ -851,7 +878,7 @@
        ]
       },
       {
-       "say": "Problems found: 3. Mission complete! She pins tabulate and pytest, and fixes the spelling of requests, before she installs anything.",
+       "say": "Problems found: 3. Mission solved: three problems found. She pins tabulate and pytest, and fixes the spelling of requests, before she installs anything.",
        "out_highlight": [
         5
        ]
@@ -1265,7 +1292,7 @@
        "say": "So the real problem is a spelling mistake in her import line, not a missing package. She fixes it to requests, and installs requests inside her virtual environment."
       },
       {
-       "say": "Installing the look-alike could have run someone else's code on the cafe laptop."
+       "say": "The look-alike could have run someone else's code on the cafe laptop."
       }
      ]
     },
@@ -1317,26 +1344,65 @@
       "messages": [
        {
         "role": "you",
-        "text": "My setup works. Suggest one improvement, with one reason."
+        "text": "My setup works. Suggest at most two improvements, each with one reason."
        },
        {
         "role": "ai",
-        "text": "Skip the virtual environment. Install with sudo pip install requests, so every program can use it. If pip refuses, add --break-system-packages."
+        "text": "1. Remove spaces with strip(). A name copied from a chat can carry spaces.\n2. Skip the virtual environment. Install with sudo, and add --break-system-packages if pip refuses."
        }
       ],
       "reveal": 1
      },
      "segments": [
       {
-       "say": "Stage 6: improve. Her setup works. Asha asks for one improvement."
+       "say": "Stage 6: improve. Her setup works. Asha asks for at most two improvements."
       },
       {
-       "say": "The AI says: skip the virtual environment, install with sudo, and force it if pip refuses.",
+       "say": "One. Remove spaces with strip, because a name copied from a chat can carry spaces. That is useful.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "That breaks this chapter's first rule: install only into the project's own dot v e n v. Asha says no, and her code stays the same."
+       "say": "Two. Skip the virtual environment, and force the install with break system packages. That forces pip to change the computer's own Python, which other programs need. It breaks this chapter's first rule, so Asha says no."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_final.py",
+      "heading": "Five cases, after the strip change",
+      "code_lines": [
+       7,
+       8,
+       9,
+       10,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25
+      ],
+      "highlight": [
+       8,
+       21
+      ],
+      "output": "examples/ai_tests_final.expected",
+      "out_highlight": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "She keeps suggestion one. Line 8 now strips spaces, and line 21 adds a fifth case: requests, with spaces around it. She runs every case again. All five pass."
       }
      ]
     },
@@ -1375,7 +1441,7 @@
      },
      "segments": [
       {
-       "say": "Breather. The AI made three confident mistakes. A score, four test cases and one rule caught them all."
+       "say": "Breather. The AI made four confident mistakes. A score, test cases, her name check and one rule caught them all."
       },
       {
        "say": "Next, four mistakes beginners make with environments and packages."
@@ -1402,7 +1468,7 @@
      },
      "segments": [
       {
-       "say": "Mistake 1. Asha installs a package in her virtual environment, opens a new terminal, and runs her board. It stops with a module not found error.",
+       "say": "Mistake 1. Asha installs a package in her virtual environment, opens a new terminal, and runs her board. Here, weather tables stands for that package. It stops with a module not found error.",
        "out_highlight": [
         -1
        ]
@@ -1462,11 +1528,8 @@
      },
      "segments": [
       {
-       "say": "Mistake 3. Some systems refuse a plain pip install outside a virtual environment, with externally managed environment.",
+       "say": "Mistake 3. Some systems refuse a plain pip install outside a virtual environment. Do not force it, as the AI suggested. Activate a virtual environment, and install there.",
        "focus": "pre"
-      },
-      {
-       "say": "Do not force it with sudo, or with break system packages, as the AI suggested. Create and activate a virtual environment, and install there."
       }
      ]
     },
@@ -1507,10 +1570,7 @@
      },
      "segments": [
       {
-       "say": "Last breather. These four mistakes will not catch you out now."
-      },
-      {
-       "say": "Two questions to think about on your own come next."
+       "say": "Last breather. Two questions to think about on your own come next."
       }
      ]
     }
@@ -1591,17 +1651,12 @@
        "focus": 2
       },
       {
-       "say": "Requirements dot t x t pins exact versions, and pip install dash r installs them on another computer.",
+       "say": "Requirements dot t x t pins exact versions for every computer.",
        "reveal": 4,
        "focus": 3
       },
       {
-       "say": "Check every name on pypi dot org. A look-alike name is a warning sign.",
-       "reveal": 5,
-       "focus": 4
-      },
-      {
-       "say": "And never install a name from an AI before you check it.",
+       "say": "And check every name before you install it, especially a name from an AI.",
        "reveal": 6,
        "focus": 5
       }
@@ -1692,7 +1747,7 @@
        "focus_row": 0
       },
       {
-       "say": "Three apply tasks, worth 20 each, including a look-alike finder.",
+       "say": "Three apply tasks, worth 20 each.",
        "focus_row": 1
       },
       {
@@ -1720,13 +1775,13 @@
      },
      "segments": [
       {
-       "say": "Asha's day numbers are still scattered across files."
+       "say": "Asha's quiz scores sit in a CSV file, her weather board saves JSON, and her loaders handle bad rows. But her day's numbers are still scattered across files."
       },
       {
        "say": "In Chapter 25, Boss Level 5, you will build the Data Report Generator: a tool that reads a data file, handles bad rows, and writes one clear report."
       },
       {
-       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "say": "Do the warm-up tasks now.",
        "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
        "badge": "practice/practice.md"
       },

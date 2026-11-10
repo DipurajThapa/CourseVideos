@@ -60,10 +60,11 @@ Nothing prints, but a new `.venv` folder appears. On macOS and Linux it holds a 
 
 | System | Type this |
 |---|---|
-| Windows (Command Prompt or PowerShell) | `.venv\Scripts\activate` |
+| Windows (Command Prompt) | `.venv\Scripts\activate` |
+| Windows (PowerShell) | `.venv\Scripts\Activate.ps1` |
 | macOS and Linux | `source .venv/bin/activate` |
 
-The prompt now starts with `(.venv)`. You can check that you are inside it:
+If PowerShell refuses to run the script, allow scripts for your own user once with `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`, then activate again. The prompt now starts with `(.venv)`. You can check that you are inside it:
 
 ```console
 (.venv) $ python -c "import sys; print(sys.prefix != sys.base_prefix)"
@@ -83,7 +84,7 @@ pip      26.2.2
 tabulate 0.9.0
 ```
 
-`pip list` shows what is installed in this environment. Your pip version can differ. `python -m pip show tabulate` prints details, including `Requires:`, the other packages it needs. `tabulate` needs none. In version 2.32.3, `requests` needs four helper packages, and pip installs them for you.
+In Chapter 19 you installed `pytest` once, with no virtual environment. From now on, install each project's packages inside its own `.venv`. `pip list` shows what is installed in this environment. Your pip version can differ. `python -m pip show tabulate` prints details, including `Requires:`, the other packages it needs. `tabulate` needs none. In version 2.32.3, `requests` needs four helper packages, and pip installs them for you.
 
 **Step 4: Record and reinstall.** `pip freeze` prints every installed package as a pinned line. Save it into `requirements.txt` with `>`.
 
@@ -177,7 +178,7 @@ print(get_close_matches("numpy", trusted, cutoff=0.8))
 []
 ```
 
-The swapped letters still score 0.875. `get_close_matches()` returns the trusted names whose score is at least `cutoff`, so `reqeusts` matches `requests`, and `numpy` matches nothing.
+`SequenceMatcher` compares two texts. Its first argument, `None`, means that no characters are ignored. The swapped letters still score 0.875. `get_close_matches()` returns the trusted names whose score is at least `cutoff`, so `reqeusts` matches `requests`, and `numpy` matches nothing.
 
 ## See the outcome
 
@@ -416,9 +417,48 @@ requests -> trusted
 
 The real problem was a spelling mistake in the import line, not a missing package. She fixed the spelling to `requests` and installed `requests` inside her virtual environment. Installing the look-alike could have run someone else's code on the cafe laptop.
 
+Finally, Asha asked for two improvements to her setup. The AI suggested removing spaces with `strip()`, because a name copied from a chat can carry spaces. It also suggested skipping the virtual environment and installing with `sudo` or `--break-system-packages`. That option forces pip to change the computer's own Python, which other programs need, so she rejected it. She kept the first suggestion, added a fifth case with spaces, and ran every case again:
+
+```python
+# file: examples/ai_tests_final.py
+from difflib import get_close_matches
+
+TRUSTED = ["requests", "tabulate", "pytest"]
+
+
+def name_check(name):
+    name = name.strip().lower()
+    if name in TRUSTED:
+        return "trusted"
+    close = get_close_matches(name, TRUSTED, cutoff=0.8)
+    if close:
+        return f"look-alike of {close[0]}"
+    return "unknown: check pypi.org"
+
+
+cases = [("requests", "trusted"),
+         ("reqeusts", "look-alike of requests"),
+         ("Requests", "trusted"),
+         ("numpy", "unknown: check pypi.org"),
+         (" requests ", "trusted")]
+for name, expected in cases:
+    result = name_check(name)
+    status = "pass" if result == expected else "FAIL"
+    print(f"{name:<10} {status}: {result}")
+```
+
+<!-- output: examples/ai_tests_final.expected -->
+```output
+requests   pass: trusted
+reqeusts   pass: look-alike of requests
+Requests   pass: trusted
+numpy      pass: unknown: check pypi.org
+ requests  pass: trusted
+```
+
 ## Common mistakes
 
-**Mistake 1: the environment is not active.** Asha installs a package in her virtual environment, opens a new terminal and runs her program. It stops:
+**Mistake 1: the environment is not active.** Asha installs a package in her virtual environment, opens a new terminal and runs her program. It stops. In this example, `weather_tables` stands for any package that is installed only inside `.venv`:
 
 ```python
 # file: examples/err01_missing_module.py
