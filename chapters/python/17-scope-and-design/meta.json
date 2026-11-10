@@ -1,0 +1,57 @@
+{
+  "id": "python-17",
+  "title": "Scope and Good Function Design",
+  "language": "python",
+  "type": "lesson",
+  "module": "M4",
+  "badge": "Architect",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "scope",
+    "local variable",
+    "global variable",
+    "NameError from a local name",
+    "UnboundLocalError",
+    "global keyword (to avoid)",
+    "pass values in, return results out",
+    "default argument",
+    "keyword argument",
+    "argument order rules",
+    "pure function",
+    "side effect",
+    "single responsibility",
+    "list as a default value"
+  ],
+  "prerequisites": [
+    "python-16"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_split_flawed.py",
+    "fixed_file": "examples/ai_split_fixed.py",
+    "flaw": "Asked to split Asha's close_day() function into small functions with no globals and the same output, the AI's report_line() printed instead of returning and the AI said the output was unchanged. The main code printed each call's result, so two extra lines said None. Comparing with the saved original output caught it; return instead of print fixes it. Its later suggestion, a default list sales=[], made Tuesday's sale appear in Monday's list."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "Nested functions, the enclosing scope and nonlocal are left out; no example needs them yet.",
+    "The global keyword appears only in the original program Asha splits, as a habit to avoid.",
+    "The list-default fix removes the default and passes a new list, because the usual None-and-is fix uses the is operator, which the course has not taught.",
+    "The AI section adds verified files for each stage: the original function and its saved output, the AI's split that prints None, the fixed split, test cases run before and after the fix, the UnboundLocalError from a week total and its fix, and the default-list suggestion with its fix."
+  ],
+  "outstanding_issues": [
+    "The error reports show the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
