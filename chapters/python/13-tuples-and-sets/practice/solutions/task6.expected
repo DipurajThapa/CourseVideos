@@ -1,0 +1,4 @@
+Cake has egg: True
+Scone has egg: False
+In either: ['egg', 'milk', 'wheat']
+Only in cake: ['egg']
