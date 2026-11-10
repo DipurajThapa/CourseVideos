@@ -160,7 +160,7 @@ Not saved: price cannot be negative: -1
 
 `except ValueError as error:` keeps the exception in the name `error`, so line 12 can show its message. A clear message names the problem and the value. Compare "price cannot be negative: -1" with "Error!": only the first one helps someone fix the input.
 
-**Step 5: Catch the error you expect.** A bare `except:` catches every exception, including the ones that come from your own bugs. Line 5 has a typing error: `anser` instead of `answer`.
+**Step 5: Catch the error you expect.** A bare `except:` catches every exception, including the ones that come from your own bugs. Line 5 has a spelling mistake: `anser` instead of `answer`.
 
 ```python
 # file: examples/ex05_bare_except.py
@@ -179,7 +179,7 @@ Please type a whole number.
 Please type a whole number.
 ```
 
-Even `"4"` is refused, and nothing tells you why. The `NameError` from the typing error was caught and hidden. Now the same code catches only `ValueError`:
+Even `"4"` is refused, and nothing tells you why. The `NameError` from the spelling mistake was caught and hidden. Now the same code catches only `ValueError`:
 
 ```python
 # file: examples/ex06_specific.py
@@ -201,7 +201,7 @@ Traceback (most recent call last):
 NameError: name 'anser' is not defined. Did you mean: 'answer'?
 ```
 
-The bug is no longer hidden: the report names line 5 and even suggests the right name. Catch the exceptions you expect from the data. Let the others stop the program, so you can find and fix them.
+The bug is no longer hidden: the report names line 5 and even suggests the right name. Catch the exceptions you expect from the data. Let the others stop the program, so you can find and fix them. A bare `except:` even catches Ctrl+C, the keys you press to stop a program.
 
 **Step 6: Test that an error is raised.** In Chapter 19, tests checked return values. `pytest.raises` checks that a function raises an exception. Asha keeps `with_tax()` in her `cafe_tools` module.
 
@@ -390,7 +390,40 @@ Damaged row: found 2, expected 2: pass
 Header only: found 0, expected 0: pass
 ```
 
-Later, the AI suggested `except Exception:` "so no future error can crash it". Asha tested the idea with a deliberate typing error, `row["scor"]`, and the broad version skipped every row with a wrong message. A specific `except` lets that `KeyError` stop the program and point at the line, so she kept it.
+Then Asha found a gap that her own version had too. In a new test file, one row says only `Ben`, with no comma. `DictReader` gives that row no score, so `row["score"]` is `None`, and `int(None)` raises a `TypeError`. The fix catches both exceptions as a **tuple**: the names inside round brackets, like the tuples in Chapter 13.
+
+```python
+# file: examples/ai_load_final.py
+import csv
+
+
+def load_scores(path):
+    scores = []
+    try:
+        with open(path, newline="", encoding="utf-8") as file:
+            for row in csv.DictReader(file):
+                try:
+                    scores.append((row["name"], int(row["score"])))
+                except (ValueError, TypeError):
+                    print(f"Skipped {row['name']}: not a score")
+    except FileNotFoundError:
+        print(f"{path} not found: starting with no scores")
+    return scores
+```
+
+She added the short row as a fourth test case and ran every case again:
+
+<!-- output: examples/ai_tests_final.expected -->
+```output
+Normal: found 2, expected 2: pass
+Skipped Omar: not a score
+Damaged row: found 2, expected 2: pass
+Header only: found 0, expected 0: pass
+Skipped Ben: not a score
+Short row: found 2, expected 2: pass
+```
+
+Later, the AI suggested `except Exception:` "so no future error can crash it". `Exception` is the parent of almost every exception type, so it catches nearly every error. Asha tested the idea with a deliberate spelling mistake, `row["scor"]`, and the broad version skipped every row with a wrong message. A specific `except` lets that `KeyError` stop the program and point at the line, so she kept it.
 
 ## Common mistakes
 
@@ -486,7 +519,7 @@ TypeError: exceptions must derive from BaseException
 
 - An exception is an error while the program runs. `try` and `except` catch it and let you show a clear message.
 - `else` runs when nothing went wrong, and `finally` runs always.
-- Catch the specific exception you expect. A bare `except:` also hides your own bugs, such as a typing error.
+- Catch the specific exception you expect. A bare `except:` also hides your own bugs, such as a spelling mistake.
 - Keep each `try` block small, so one bad row does not stop the rest.
 - `raise ValueError("message")` refuses bad input. A clear message names the problem and the value.
 - `pytest.raises` tests that a function raises the exception it should.

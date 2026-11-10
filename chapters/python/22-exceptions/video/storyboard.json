@@ -59,7 +59,7 @@
      },
      "segments": [
       {
-       "say": "Here is today's mission. The same score board, but a damaged row gets a clear message, and the rest still loads.",
+       "say": "Here is today's mission: the same score board, now ready for bad data, with clear messages.",
        "highlight": [
         8,
         9,
@@ -510,7 +510,7 @@
        ]
       },
       {
-       "say": "Try catches the wrong type of answer. If catches the wrong value. And each message says what to type next.",
+       "say": "Try catches an answer that is not a number. If catches a number outside the range. And each message says what to type next.",
        "highlight": [
         12
        ],
@@ -562,7 +562,7 @@
        "say": "Step 4. A function can refuse bad input with raise. Line 4 creates a value error, with a message that names the price."
       },
       {
-       "say": "Line 11 catches it, and keeps it in the name error.",
+       "say": "Line 11 catches it. As error keeps the exception in a variable called error.",
        "highlight": [
         9,
         10,
@@ -577,7 +577,7 @@
       }
      ],
      "ask": {
-      "question": "What does line 12 print?"
+      "question": "Line 12 prints a message. What does it say?"
      },
      "after": [
       {
@@ -647,7 +647,7 @@
      },
      "segments": [
       {
-       "say": "Now line 7 catches value error only. The typing error is no longer hidden.",
+       "say": "Now line 7 catches value error only. The spelling mistake is no longer hidden.",
        "out_highlight": [
         -1
        ]
@@ -664,7 +664,7 @@
     {
      "visual": {
       "type": "quiz",
-      "question": "Which `except` line can hide a typing error in your own code?",
+      "question": "Which `except` line can hide a spelling mistake in your own code?",
       "options": [
        "`except ValueError:`",
        "`except:`",
@@ -672,16 +672,16 @@
        "`except TypeError:`"
       ],
       "answer": 1,
-      "explain": "A bare `except:` catches every exception, including the `NameError` from a typing error."
+      "explain": "A bare `except:` catches every exception, including the `NameError` from a spelling mistake."
      },
      "segments": [
       {
-       "say": "Quick check. Which except line can hide a typing error in your own code?"
+       "say": "Quick check. Which except line can hide a spelling mistake in your own code?"
       }
      ],
      "after": [
       {
-       "say": "B. The bare except. It catches everything, including your bugs."
+       "say": "B. The bare except. It catches everything, including your bugs. It even catches Control C, the keys you press to stop a program."
       }
      ]
     }
@@ -1083,6 +1083,11 @@
        "out_highlight": [
         1
        ]
+      },
+      {
+       "say": "A better request names the exceptions to catch, and asks for a small try block.",
+       "highlight": [],
+       "out_highlight": []
       }
      ]
     },
@@ -1168,7 +1173,7 @@
        "say": "Asha shows the AI the failing case, and asks for the cause, then a fix."
       },
       {
-       "say": "The AI explains: the whole loop was inside try, and the bare except hid the error. The fix puts a small try around one row.",
+       "say": "The AI explains: the whole loop was inside try, and the bare except hid the error. The fix puts a small try around one row, the same idea as Asha's own version.",
        "reveal": 2,
        "focus": 1
       }
@@ -1218,7 +1223,7 @@
      },
      "segments": [
       {
-       "say": "Stage 5: debug. In a new test file, one row says only Ben, with no comma and no score."
+       "say": "Stage 5: debug. In a new test file, one row says only Ben, with no comma and no score. Her own version has the same gap."
       },
       {
        "say": "Type error! The report points at line 11 of the loader: int of row score.",
@@ -1252,7 +1257,7 @@
        "say": "Asha pastes the error, and asks for the cause first."
       },
       {
-       "say": "Ben's row has no score, so the value is None, and int of None raises a type error. The fix catches both errors, written as a pair in brackets.",
+       "say": "Ben's row has no score, so the value is None, and int of None raises a type error. The fix catches both errors as a tuple: the two names inside round brackets, like the tuples from Chapter 13.",
        "reveal": 2,
        "focus": 1
       }
@@ -1316,6 +1321,9 @@
        "say": "The AI suggests: except Exception, so no future error can ever crash it.",
        "reveal": 2,
        "focus": 1
+      },
+      {
+       "say": "Exception, with a capital E, is the parent of almost every error type. So except Exception catches nearly every error, your bugs included."
       }
      ]
     },
@@ -1323,7 +1331,7 @@
      "visual": {
       "type": "code",
       "file": "examples/ai_typo_broad.py",
-      "heading": "Except Exception, with a typing error on purpose",
+      "heading": "Except Exception, with a spelling mistake on purpose",
       "code_lines": [
        5,
        6,
@@ -1343,7 +1351,7 @@
      },
      "segments": [
       {
-       "say": "Asha tests the idea. She adds a typing error on purpose: line 10 says scor, not score. Line 11 catches Exception."
+       "say": "Asha tests the idea. She adds a spelling mistake on purpose: line 10 says scor, not score. Line 11 catches Exception."
       },
       {
        "say": "Line 16 loads the normal file, with two good rows.",
@@ -1353,7 +1361,7 @@
       }
      ],
      "ask": {
-      "question": "Will Asha see her typing error?"
+      "question": "Will Asha see her spelling mistake?"
      },
      "after": [
       {
@@ -1375,7 +1383,7 @@
      "visual": {
       "type": "code",
       "file": "examples/ai_typo_specific.py",
-      "heading": "The same typing error, with her specific except",
+      "heading": "The same spelling mistake, with her specific except",
       "code_lines": [
        5,
        6,
@@ -1396,7 +1404,7 @@
      },
      "segments": [
       {
-       "say": "With her specific except, the key error stops the program, and points at line 10. She finds the typing error at once. So she keeps her version.",
+       "say": "With her specific except, the key error stops the program, and points at line 10. She finds the spelling mistake at once. So she keeps the specific except.",
        "out_highlight": [
         -1
        ]
@@ -1591,17 +1599,16 @@
     {
      "visual": {
       "type": "pause",
-      "question": "A customer types `3.5` for the number of teas in `ex03`. Which message do they see, and how would you make it clearer?",
-      "hint": "int() cannot read a decimal point."
+      "question": "In `ex03`, a player types `3.5` as the score. Which message do they see, and how would you make it clearer?"
      },
      "segments": [
       {
-       "say": "First. In the ask again program, a customer types 3.5. Which message do they see, and how would you make it clearer?"
+       "say": "First. In the ask again program, a player types 3.5 as the score. Which message do they see, and how would you make it clearer?"
       }
      ],
      "after": [
       {
-       "say": "Try it, and change the message so it says only whole numbers are allowed."
+       "say": "Try it after the video, and write your new message."
       }
      ]
     },
@@ -1766,7 +1773,7 @@
        "say": "Asha's scores are safe now. But a C S V row holds only flat values. Her quiz needs questions, answers and settings, inside each other."
       },
       {
-       "say": "In Chapter 23, you will save structured data as JSON, and read data that other programs send."
+       "say": "In Chapter 23, you will save structured data as JSON, and read data that other programs send, through web A P Is."
       },
       {
        "say": "Do the warm-up tasks now. They take about ten minutes.",

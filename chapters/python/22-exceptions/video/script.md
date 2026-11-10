@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 16:49 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:19 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -18,7 +18,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Handling Errors: try, except and Clear Messages
 - **Narration:** And an AI assistant will promise code that never crashes. It will sound sure. Your tests will decide.
   **On screen:** Handling Errors: try, except and Clear Messages Catch it. Explain it. Carry on.
-- **Narration:** Here is today's mission. The same score board, but a damaged row gets a clear message, and the rest still loads.
+- **Narration:** Here is today's mission: the same score board, now ready for bad data, with clear messages.
   **On screen:** Code `examples/ex07_score_board.py`, line 8, 9, 10, 11 highlighted, output hidden
 - **Narration:** And a missing file gets a message too. Let's build it, piece by piece.
   **On screen:** Code `examples/ex07_score_board.py`, line 15, 16 highlighted, output hidden
@@ -171,7 +171,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "The user types `7`. Which message does the program show?" stays on screen with a 10-second timer.
 - **Narration:** Please type a number from 0 to 4. Seven is a whole number, so no exception. But the if on line 9 catches the wrong value.
   **On screen:** Code `examples/ex03_ask_again.py`, line 9, 11 highlighted, output `examples/ex03_ask_again.expected`
-- **Narration:** Try catches the wrong type of answer. If catches the wrong value. And each message says what to type next.
+- **Narration:** Try catches an answer that is not a number. If catches a number outside the range. And each message says what to type next.
   **On screen:** Code `examples/ex03_ask_again.py`, line 12 highlighted, output `examples/ex03_ask_again.expected`
 - **Narration:** Breather. A word no longer crashes Asha's program.
   **On screen:** Breather card
@@ -193,11 +193,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Step 4. A function can refuse bad input with raise. Line 4 creates a value error, with a message that names the price.
   **On screen:** Code `examples/ex04_raise.py`, line 3, 4 highlighted, output hidden
-- **Narration:** Line 11 catches it, and keeps it in the name error.
+- **Narration:** Line 11 catches it. As error keeps the exception in a variable called error.
   **On screen:** Code `examples/ex04_raise.py`, line 9, 10, 11 highlighted, output hidden
 - **Narration:** Line 12 prints that message.
   **On screen:** Code `examples/ex04_raise.py`, line 12 highlighted, output hidden
-- **Interaction:** "What does line 12 print?" stays on screen with a 10-second timer.
+- **Interaction:** "Line 12 prints a message. What does it say?" stays on screen with a 10-second timer.
 - **Narration:** Not saved: price cannot be negative: minus 1. The message from line 4 arrives at line 12.
   **On screen:** Code `examples/ex04_raise.py`, line 4, 12 highlighted, output `examples/ex04_raise.expected`
 - **Narration:** A clear message names the problem and the value. Error, with nothing else, helps nobody.
@@ -209,15 +209,15 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "What happens to the answer `"4"`?" stays on screen with a 10-second timer.
 - **Narration:** It is refused too! Line 5 says anser, not answer. That name error was caught, and hidden.
   **On screen:** Code `examples/ex05_bare_except.py`, line 5, 7 highlighted, output `examples/ex05_bare_except.expected`
-- **Narration:** Now line 7 catches value error only. The typing error is no longer hidden.
+- **Narration:** Now line 7 catches value error only. The spelling mistake is no longer hidden.
   **On screen:** Code `examples/ex06_specific.py`, line 7 highlighted, error `examples/ex06_specific.expected_error`
 - **Narration:** The report names line 5, and even suggests the right name. Catch the errors you expect from the data. Let your own bugs show.
   **On screen:** Code `examples/ex06_specific.py`, line 5 highlighted, error `examples/ex06_specific.expected_error`
-- **Narration:** Quick check. Which except line can hide a typing error in your own code?
-  **On screen:** Quick check: "Which `except` line can hide a typing error in your own code?" (options shown)
-- **Interaction:** "Which `except` line can hide a typing error in your own code?" stays on screen with a 10-second timer.
-- **Narration:** B. The bare except. It catches everything, including your bugs.
-  **On screen:** Quick check: "Which `except` line can hide a typing error in your own code?" (answer revealed: `except:`)
+- **Narration:** Quick check. Which except line can hide a spelling mistake in your own code?
+  **On screen:** Quick check: "Which `except` line can hide a spelling mistake in your own code?" (options shown)
+- **Interaction:** "Which `except` line can hide a spelling mistake in your own code?" stays on screen with a 10-second timer.
+- **Narration:** B. The bare except. It catches everything, including your bugs. It even catches Control C, the keys you press to stop a program.
+  **On screen:** Quick check: "Which `except` line can hide a spelling mistake in your own code?" (answer revealed: `except:`)
 
 ## Scene 9: Step 6: Test that an error is raised
 
@@ -320,6 +320,8 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "The AI says it handles every problem. Is it right?" stays on screen with a 10-second timer.
 - **Narration:** No. Only Asha loads. The try block holds the whole loop, so Omar's row stopped it, and Lina was lost, with no message.
   **On screen:** Code `examples/ai_load_flawed.py`, line 7, 9 highlighted, output `examples/ai_load_flawed.expected`
+- **Narration:** A better request names the exceptions to catch, and asks for a small try block.
+  **On screen:** Code `examples/ai_load_flawed.py`, output `examples/ai_load_flawed.expected`
 - **Narration:** Stage 4: test. Asha asks for test cases, each with the file and the number of scores it should return.
   **On screen:** AI chat, stage 4: Test: one case for each problem
     - You: Give me test cases for load_scores. For each one, write the file contents and how many scores it should return.
@@ -332,20 +334,20 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Asha shows the AI the failing case, and asks for the cause, then a fix.
   **On screen:** AI chat, stage 4: Test: report the failure, ask for a fix
     - You: The damaged row case fails: it found 1 score, not 2, with no message. Explain why, then fix it.
-- **Narration:** The AI explains: the whole loop was inside try, and the bare except hid the error. The fix puts a small try around one row.
+- **Narration:** The AI explains: the whole loop was inside try, and the bare except hid the error. The fix puts a small try around one row, the same idea as Asha's own version.
   **On screen:** AI chat, stage 4: Test: report the failure, ask for a fix
     - You: The damaged row case fails: it found 1 score, not 2, with no message. Explain why, then fix it.
     - AI (example answer): The try block holds the whole loop, so the damaged row stopped it. The bare except with pass hid the error. Fix: a small try around one row, catching ValueError only, and a message for a missing file.
 - **Narration:** She runs all three cases again, on the fixed loader. All three pass, and Omar's row gets a message.
   **On screen:** Code `examples/ai_tests_fixed.py`, line 2 highlighted, output `examples/ai_tests_fixed.expected`
-- **Narration:** Stage 5: debug. In a new test file, one row says only Ben, with no comma and no score.
+- **Narration:** Stage 5: debug. In a new test file, one row says only Ben, with no comma and no score. Her own version has the same gap.
   **On screen:** Code `examples/ai_short_crash.py`, line 4 highlighted, error `examples/ai_short_crash.expected_error`
 - **Narration:** Type error! The report points at line 11 of the loader: int of row score.
   **On screen:** Code `examples/ai_short_crash.py`, line 4 highlighted, error `examples/ai_short_crash.expected_error`
 - **Narration:** Asha pastes the error, and asks for the cause first.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: A row in my file says only Ben. Now load_scores crashes on line 11 with: TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix.
-- **Narration:** Ben's row has no score, so the value is None, and int of None raises a type error. The fix catches both errors, written as a pair in brackets.
+- **Narration:** Ben's row has no score, so the value is None, and int of None raises a type error. The fix catches both errors as a tuple: the two names inside round brackets, like the tuples from Chapter 13.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: A row in my file says only Ben. Now load_scores crashes on line 11 with: TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix.
     - AI (example answer): Ben's row has no score, so row["score"] is None, and int(None) raises TypeError. Fix: catch both on line 12: except (ValueError, TypeError).
@@ -358,14 +360,18 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 6: Improve: one suggestion, then test it
     - You: All four cases pass. Suggest one improvement, with one reason.
     - AI (example answer): Use except Exception instead of except (ValueError, TypeError), so no future error can ever crash it.
-- **Narration:** Asha tests the idea. She adds a typing error on purpose: line 10 says scor, not score. Line 11 catches Exception.
+- **Narration:** Exception, with a capital E, is the parent of almost every error type. So except Exception catches nearly every error, your bugs included.
+  **On screen:** AI chat, stage 6: Improve: one suggestion, then test it
+    - You: All four cases pass. Suggest one improvement, with one reason.
+    - AI (example answer): Use except Exception instead of except (ValueError, TypeError), so no future error can ever crash it.
+- **Narration:** Asha tests the idea. She adds a spelling mistake on purpose: line 10 says scor, not score. Line 11 catches Exception.
   **On screen:** Code `examples/ai_typo_broad.py`, line 10, 11 highlighted, output hidden
 - **Narration:** Line 16 loads the normal file, with two good rows.
   **On screen:** Code `examples/ai_typo_broad.py`, line 16 highlighted, output hidden
-- **Interaction:** "Will Asha see her typing error?" stays on screen with a 10-second timer.
+- **Interaction:** "Will Asha see her spelling mistake?" stays on screen with a 10-second timer.
 - **Narration:** No. Every row is skipped with a wrong message, and the list is empty. The bug is hidden.
   **On screen:** Code `examples/ai_typo_broad.py`, line 10, 11 highlighted, output `examples/ai_typo_broad.expected`
-- **Narration:** With her specific except, the key error stops the program, and points at line 10. She finds the typing error at once. So she keeps her version.
+- **Narration:** With her specific except, the key error stops the program, and points at line 10. She finds the spelling mistake at once. So she keeps the specific except.
   **On screen:** Code `examples/ai_typo_specific.py`, line 10, 11 highlighted, error `examples/ai_typo_specific.expected_error`
 - **Narration:** Quick check. A score loader reads a file. Which except should catch a damaged score?
   **On screen:** Quick check: "A score loader reads a file. Which `except` should catch a damaged score?" (options shown)
@@ -428,11 +434,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Two open questions. No answers are given.
 
-- **Narration:** First. In the ask again program, a customer types 3.5. Which message do they see, and how would you make it clearer?
-  **On screen:** Question card: "A customer types `3.5` for the number of teas in `ex03`. Which message do they see, and how would you make it clearer?"
-- **Interaction:** "A customer types `3.5` for the number of teas in `ex03`. Which message do they see, and how would you make it clearer?" stays on screen with a 10-second timer.
-- **Narration:** Try it, and change the message so it says only whole numbers are allowed.
-  **On screen:** Question card: "A customer types `3.5` for the number of teas in `ex03`. Which message do they see, and how would you make it clearer?"
+- **Narration:** First. In the ask again program, a player types 3.5 as the score. Which message do they see, and how would you make it clearer?
+  **On screen:** Question card: "In `ex03`, a player types `3.5` as the score. Which message do they see, and how would you make it clearer?"
+- **Interaction:** "In `ex03`, a player types `3.5` as the score. Which message do they see, and how would you make it clearer?" stays on screen with a 10-second timer.
+- **Narration:** Try it after the video, and write your new message.
+  **On screen:** Question card: "In `ex03`, a player types `3.5` as the score. Which message do they see, and how would you make it clearer?"
 - **Narration:** Second. When is it better to stop the whole program, instead of skipping a damaged row? Think about a file of bank payments.
   **On screen:** Question card: "When is it better to stop the whole program than to skip a damaged row?"
 - **Interaction:** "When is it better to stop the whole program than to skip a damaged row?" stays on screen with a 10-second timer.
@@ -503,7 +509,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Asha's scores are safe now. But a C S V row holds only flat values. Her quiz needs questions, answers and settings, inside each other.
   **On screen:** JSON and APIs: Talking to Other Programs Save structured data, and read data from other programs.
-- **Narration:** In Chapter 23, you will save structured data as JSON, and read data that other programs send.
+- **Narration:** In Chapter 23, you will save structured data as JSON, and read data that other programs send, through web A P Is.
   **On screen:** JSON and APIs: Talking to Other Programs Save structured data, and read data from other programs.
 - **Narration:** Do the warm-up tasks now. They take about ten minutes.
   **On screen:** JSON and APIs: Talking to Other Programs Do the warm-up tasks now. They take about ten minutes.

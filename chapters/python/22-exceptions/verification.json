@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-22",
   "run_id": "2026-11-10-1bb1b5",
-  "verified_at": "2026-11-10T07:56:53+00:00",
+  "verified_at": "2026-11-10T08:00:26+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -161,8 +161,8 @@
       "passed": true,
       "problems": [],
       "details": {
-        "code_blocks": 16,
-        "output_blocks": 16
+        "code_blocks": 17,
+        "output_blocks": 17
       }
     },
     {
@@ -199,12 +199,12 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 115,
-          "average_words": 11.9,
+          "sentences": 121,
+          "average_words": 12.2,
           "longest": 27
         },
         "video/script.md": {
-          "sentences": 630,
+          "sentences": 641,
           "average_words": 8.6,
           "longest": 23
         }
@@ -220,9 +220,9 @@
         "missing video/description.md: run python3 tools/render_video.py chapters/python/22-exceptions"
       ],
       "details": {
-        "estimated_minutes": 16.8
+        "estimated_minutes": 17.3
       }
     }
   ],
-  "fingerprint": "b95aa472068e41538fbb5db17770128717a084d6a8a14771bd22bc242782fa01"
+  "fingerprint": "454ded7a595d9fe346250b9b0c0409f067ea5b730dfc6419685c9b9972281dd9"
 }
