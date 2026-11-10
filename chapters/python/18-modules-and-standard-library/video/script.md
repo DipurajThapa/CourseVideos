@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:35 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:46.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:52)
 
 **Section:** Introduction
 
@@ -23,7 +23,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Lines 13 to 16 print a total, a biscuit order, a closing time and a file name. Let's build it.
   **On screen:** Code `examples/ex07_day_report.py`, line 13, 14, 15, 16 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:52 to 1:04)
 
 **Section:** Learning goals
 
@@ -37,7 +37,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Check an AI's suggested function in the official documentation, then run it.
     - Fix the errors beginners meet with imports.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (1:04 to 1:24)
 
 **Section:** Why this matters
 
@@ -53,7 +53,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Write `with_tax()` once. Fix it once. Every program gets the fix.
     - The **standard library** is the set of modules that comes with Python. You met `random` in Chapter 10.
 
-## Scene 4: The idea: importing
+## Scene 4: The idea: importing (1:24 to 2:42)
 
 **Section:** The idea
 
@@ -91,7 +91,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Importing runs the whole file once.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Steps 1 and 2: Import a standard module
+## Scene 5: Steps 1 and 2: Import a standard module (2:42 to 3:45)
 
 **Section:** Build it step by step
 
@@ -111,7 +111,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** All three print 3. In your own programs, pick one style, so readers are not confused.
   **On screen:** Code `examples/ex02_import_forms.py`, line 2, 3, 4, 6, 7, 8 highlighted, output `examples/ex02_import_forms.expected`
 
-## Scene 6: Step 3: Your own module
+## Scene 6: Step 3: Your own module (3:45 to 5:59)
 
 **Section:** Build it step by step
 
@@ -152,7 +152,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - The main guard hides test lines on import.
 - **Breather:** 4 quiet seconds.
 
-## Scene 7: Steps 4 and 5: Times and file names
+## Scene 7: Steps 4 and 5: Times and file names (5:59 to 8:00)
 
 **Section:** Build it step by step
 
@@ -186,7 +186,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** D. Dot t x t. The suffix is the ending. Winter would be the stem.
   **On screen:** Quick check: "`Path("menus") / "winter.txt"`. What is its `suffix`?" (answer revealed: `.txt`)
 
-## Scene 8: See the outcome: the day report
+## Scene 8: See the outcome: the day report (8:00 to 9:03)
 
 **Section:** See the outcome
 
@@ -206,7 +206,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Now Asha wants one more tool for her module: how many boxes to order. She builds it with an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex07_day_report.py`, output `examples/ex07_day_report.expected`
 
-## Scene 9: Work with AI: six stages, one function
+## Scene 9: Work with AI: six stages, one function (9:03 to 14:01)
 
 **Section:** Work with AI
 
@@ -308,7 +308,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Run every case after every fix.
 - **Breather:** 4 quiet seconds.
 
-## Scene 10: Common mistakes
+## Scene 10: Common mistakes (14:01 to 16:13)
 
 **Section:** Common mistakes
 
@@ -347,7 +347,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Test lines go under the main guard.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: Think beyond
+## Scene 11: Think beyond (16:13 to 17:02)
 
 **Section:** Think beyond
 
@@ -364,7 +364,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Think back to the three copies at the start of this chapter.
   **On screen:** Question card: "Two folders of programs both need `cafe_tools.py`. Asha copies it into both, then fixes a bug in one copy. What happens?"
 
-## Scene 12: Recap
+## Scene 12: Recap (17:02 to 17:58)
 
 **Section:** Recap
 
@@ -397,7 +397,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Librarian You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 13: Practice
+## Scene 13: Practice (17:58 to 18:21)
 
 **Section:** Practice
 
@@ -408,7 +408,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks at 40, including an AI's cake planner that calls a function the math module does not have. Try each one before you open the solution.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 14: What's next
+## Scene 14: What's next (18:21 to 18:46)
 
 **Section:** What's next
 
