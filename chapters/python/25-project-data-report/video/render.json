@@ -1,0 +1,131 @@
+{
+  "chapter_id": "python-25",
+  "rendered_at": "2026-11-10T10:34:36+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "54642d001c5d9e3fddd96f03afae727354721fa2a30fed2b46ab27680660db58",
+  "inputs_sha256": "eb3d02e01afd2781f1e44314fe639a3a4e79984fec35216360948b8fd790c267",
+  "video_sha256": "1d62d74577aeb8417ae1b5292926df825d8c3e24fa0cfd9913ca7bc246647125",
+  "duration_seconds": 1079.0,
+  "size_mb": 46.52,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.0,
+    "true_peak_dbtp": -2.3
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 663,
+  "questions": 10,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 37.9
+    },
+    {
+      "id": "mission",
+      "title": "The mission",
+      "section": "The mission",
+      "start": 37.9,
+      "end": 86.867
+    },
+    {
+      "id": "build-preview",
+      "title": "What you will build",
+      "section": "What you will build",
+      "start": 86.867,
+      "end": 122.433
+    },
+    {
+      "id": "criteria",
+      "title": "Acceptance criteria",
+      "section": "Acceptance criteria",
+      "start": 122.433,
+      "end": 185.633
+    },
+    {
+      "id": "plan",
+      "title": "Plan it with AI",
+      "section": "Plan it with AI",
+      "start": 185.633,
+      "end": 225.333
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Look at the real files",
+      "section": "Build it step by step",
+      "start": 225.333,
+      "end": 280.6
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Settings with a clear message",
+      "section": "Build it step by step",
+      "start": 280.6,
+      "end": 328.5
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: One amount at a time",
+      "section": "Build it step by step",
+      "start": 328.5,
+      "end": 428.033
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Let the tests judge the AI",
+      "section": "Build it step by step",
+      "start": 428.033,
+      "end": 579.333
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: The week and the report",
+      "section": "Build it step by step",
+      "start": 579.333,
+      "end": 710.2
+    },
+    {
+      "id": "test",
+      "title": "Test it",
+      "section": "Test it",
+      "start": 710.2,
+      "end": 865.033
+    },
+    {
+      "id": "improve",
+      "title": "Improve it with AI",
+      "section": "Improve it with AI",
+      "start": 865.033,
+      "end": 967.367
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 967.367,
+      "end": 1053.9
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1053.9,
+      "end": 1078.967
+    }
+  ]
+}

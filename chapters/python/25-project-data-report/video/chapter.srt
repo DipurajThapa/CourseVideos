@@ -1,0 +1,1367 @@
+1
+00:00:00,250 --> 00:00:05,219
+Every evening, the till at the Corner Cafe
+saves the day's sales as a file.
+
+2
+00:00:05,239 --> 00:00:08,079
+On Friday, Asha adds four files up by
+hand.
+
+3
+00:00:08,099 --> 00:00:09,210
+It takes an hour.
+
+4
+00:00:09,233 --> 00:00:11,216
+And the files are messy.
+
+5
+00:00:11,236 --> 00:00:12,885
+One price is a word.
+
+6
+00:00:12,905 --> 00:00:15,222
+One row has no price at all.
+
+7
+00:00:15,242 --> 00:00:16,724
+One file is empty.
+
+8
+00:00:17,320 --> 00:00:20,650
+Welcome to Chapter 25, the fifth boss
+level!
+
+9
+00:00:20,700 --> 00:00:26,493
+Asha will build a report generator that
+reads every file, survives the bad rows,
+
+10
+00:00:26,513 --> 00:00:28,310
+and saves a clean report.
+
+11
+00:00:28,333 --> 00:00:32,706
+An AI assistant will write part of it, and
+make it look perfect.
+
+12
+00:00:32,726 --> 00:00:35,931
+It will report nothing at all, and say
+nothing.
+
+13
+00:00:35,951 --> 00:00:37,578
+Her tests will catch it.
+
+14
+00:00:38,150 --> 00:00:39,585
+Here is the mission.
+
+15
+00:00:39,605 --> 00:00:42,130
+Read every till file in one folder.
+
+16
+00:00:42,167 --> 00:00:46,417
+Skip the bad rows, and count them, so Asha
+knows how many.
+
+17
+00:00:46,467 --> 00:00:51,263
+Keep the currency and the tax rate in a
+settings file, so the owner can change
+
+18
+00:00:51,283 --> 00:00:53,177
+them without touching the code.
+
+19
+00:00:53,200 --> 00:00:56,365
+And when something is wrong, say what is
+wrong.
+
+20
+00:00:56,385 --> 00:00:57,178
+Never crash.
+
+21
+00:00:57,787 --> 00:01:00,243
+Every piece comes from Module 5.
+
+22
+00:01:00,263 --> 00:01:03,417
+CSV files and text files from Chapter 21.
+
+23
+00:01:03,467 --> 00:01:08,727
+Small try blocks, and raise value error
+with a clear message, from Chapter 22.
+
+24
+00:01:08,767 --> 00:01:10,977
+JSON from Chapter 23.
+
+25
+00:01:11,000 --> 00:01:13,510
+And from Chapter 24, a project folder.
+
+26
+00:01:13,530 --> 00:01:18,437
+This project needs only the standard
+library and pytest, so nothing new to
+
+27
+00:01:18,457 --> 00:01:18,970
+install.
+
+28
+00:01:19,000 --> 00:01:20,289
+Plus one new tool.
+
+29
+00:01:20,309 --> 00:01:26,254
+Glob finds every file in a folder whose
+name matches a pattern, such as star dot c
+
+30
+00:01:26,274 --> 00:01:26,545
+s v.
+
+31
+00:01:27,117 --> 00:01:29,097
+Report tools holds the rules.
+
+32
+00:01:29,133 --> 00:01:33,233
+Report dot p y runs the rules and saves
+two reports.
+
+33
+00:01:33,267 --> 00:01:35,587
+A test file checks the rules.
+
+34
+00:01:35,633 --> 00:01:40,443
+The settings file holds the currency and
+the tax rate: 8 percent.
+
+35
+00:01:40,467 --> 00:01:43,034
+And the data folder holds the till files.
+
+36
+00:01:43,054 --> 00:01:48,021
+Each name starts with a number, so the
+days stay in order when they are sorted.
+
+37
+00:01:48,620 --> 00:01:50,703
+Here is the finished report.
+
+38
+00:01:50,723 --> 00:01:51,980
+One line per day.
+
+39
+00:01:52,000 --> 00:01:54,940
+The total, the tax, and the total with
+tax.
+
+40
+00:01:54,967 --> 00:01:57,077
+And how many rows were skipped.
+
+41
+00:01:57,100 --> 00:01:59,851
+The program itself is about twenty lines.
+
+42
+00:01:59,871 --> 00:02:02,082
+The rules live in the other file.
+
+43
+00:02:02,683 --> 00:02:04,843
+Asha writes down what done means.
+
+44
+00:02:04,867 --> 00:02:05,195
+One.
+
+45
+00:02:05,215 --> 00:02:09,457
+Read every file, in day order, even an
+empty one.
+
+46
+00:02:09,500 --> 00:02:10,216
+Two and three.
+
+47
+00:02:10,236 --> 00:02:14,380
+Skip and count a row with a bad price or
+no price, and refuse a negative price.
+
+48
+00:02:14,400 --> 00:02:15,220
+Four and five.
+
+49
+00:02:15,240 --> 00:02:19,780
+The settings come from a file, and a
+problem with them gives one clear line.
+
+50
+00:02:19,800 --> 00:02:20,850
+Six and seven.
+
+51
+00:02:20,870 --> 00:02:24,750
+The report, saved twice, and seven tests
+that pass.
+
+52
+00:02:24,800 --> 00:02:25,441
+And eight.
+
+53
+00:02:25,461 --> 00:02:28,151
+Nothing is rounded before it is added up.
+
+54
+00:02:28,753 --> 00:02:30,739
+Quick check, from Chapter 22.
+
+55
+00:02:30,759 --> 00:02:32,744
+The settings file is missing.
+
+56
+00:02:32,764 --> 00:02:34,472
+What should a person see?
+
+57
+00:02:45,847 --> 00:02:45,967
+D.
+
+58
+00:02:45,987 --> 00:02:48,696
+One clear line that says what is wrong.
+
+59
+00:02:48,716 --> 00:02:52,966
+A traceback is for developers, and silence
+hides the problem.
+
+60
+00:02:53,587 --> 00:02:54,590
+Take a breather.
+
+61
+00:02:54,610 --> 00:02:57,147
+You know the files, and what done means.
+
+62
+00:02:57,167 --> 00:03:01,162
+Next, Asha plans the functions with an AI
+assistant.
+
+63
+00:03:05,883 --> 00:03:11,288
+In this project, all six AI stages help
+build one module: the report rules.
+
+64
+00:03:11,308 --> 00:03:12,301
+Stage 1: plan.
+
+65
+00:03:12,321 --> 00:03:15,483
+Asha asks for a plan, and says: no code
+yet.
+
+66
+00:03:15,533 --> 00:03:21,483
+The AI suggests one function that does
+everything, inside one big try, with
+
+67
+00:03:21,503 --> 00:03:22,836
+except Exception.
+
+68
+00:03:22,856 --> 00:03:25,223
+Its promise: it never crashes.
+
+69
+00:03:25,267 --> 00:03:28,298
+Asha checks it against Chapters 17 and 22.
+
+70
+00:03:28,318 --> 00:03:31,421
+One big function cannot be tested in
+parts.
+
+71
+00:03:31,441 --> 00:03:37,087
+And except Exception hides the real
+problem: the program never crashes, but it
+
+72
+00:03:37,107 --> 00:03:38,177
+never says why.
+
+73
+00:03:38,200 --> 00:03:43,702
+So she asks for small functions with one
+job each, and a small try around the one
+
+74
+00:03:43,722 --> 00:03:44,997
+line that can fail.
+
+75
+00:03:45,583 --> 00:03:46,581
+Time to build.
+
+76
+00:03:46,601 --> 00:03:50,435
+Step 1: before any rule, Asha looks at the
+real data.
+
+77
+00:03:50,455 --> 00:03:53,343
+She prints two of the files, row by row.
+
+78
+00:03:53,367 --> 00:03:57,611
+Every till file starts with the same line:
+item comma amount.
+
+79
+00:03:57,631 --> 00:04:00,757
+Those are the column names, in small
+letters.
+
+80
+00:04:00,800 --> 00:04:06,414
+Line 6 joins the folder and the file name
+with a slash, as in Chapter 21.
+
+81
+00:04:06,434 --> 00:04:11,740
+Line 8 reads each row as a dictionary,
+with the column names as keys.
+
+82
+00:04:11,767 --> 00:04:13,297
+One rule to know first.
+
+83
+00:04:13,317 --> 00:04:18,961
+When a row is shorter than the first line,
+Dict reader fills each missing value with
+
+84
+00:04:18,981 --> 00:04:19,298
+None.
+
+85
+00:04:30,680 --> 00:04:33,570
+3 wednesday dot c s v, cake, None.
+
+86
+00:04:33,600 --> 00:04:36,740
+And on Tuesday, the amount is the word
+four.
+
+87
+00:04:36,760 --> 00:04:37,961
+Two damaged rows.
+
+88
+00:04:37,981 --> 00:04:40,259
+Every good amount is still text.
+
+89
+00:04:40,850 --> 00:04:42,505
+Step 2: the settings.
+
+90
+00:04:42,525 --> 00:04:45,456
+Load config has two small try blocks.
+
+91
+00:04:45,476 --> 00:04:47,450
+The first reads the file.
+
+92
+00:04:47,470 --> 00:04:50,880
+A missing file raises file not found
+error.
+
+93
+00:04:50,900 --> 00:04:56,764
+Line 12 turns it into a value error with a
+message a person can act on: missing
+
+94
+00:04:56,784 --> 00:04:58,850
+settings file, and its name.
+
+95
+00:04:58,900 --> 00:05:01,371
+The second try reads the JSON.
+
+96
+00:05:01,391 --> 00:05:04,775
+A broken file raises a JSON decode error.
+
+97
+00:05:04,795 --> 00:05:08,760
+Line 16 turns it into one clear value
+error too.
+
+98
+00:05:08,800 --> 00:05:12,839
+Error dot msg is the short reason from the
+JSON module.
+
+99
+00:05:12,859 --> 00:05:17,119
+So the main program needs to catch only
+one kind of error.
+
+100
+00:05:17,720 --> 00:05:23,280
+When the file is fine, the settings come
+back as a dictionary.
+
+101
+00:05:23,300 --> 00:05:28,150
+The currency is U S D, and the tax rate is
+0.08, which is 8 percent.
+
+102
+00:05:28,750 --> 00:05:31,005
+Step 3: one amount at a time.
+
+103
+00:05:31,025 --> 00:05:33,593
+Asha writes parse amount herself.
+
+104
+00:05:33,613 --> 00:05:37,044
+Line 21: float turns the text into a
+number.
+
+105
+00:05:37,064 --> 00:05:40,260
+A word already raises a value error here.
+
+106
+00:05:40,300 --> 00:05:46,734
+Lines 22 and 23: a price below zero is
+refused, with its own value error.
+
+107
+00:05:47,353 --> 00:05:52,353
+She tries three amounts: 3.50, the word
+four, and minus 2.
+
+108
+00:05:52,373 --> 00:05:57,718
+Line 7 catches the value error, and line 8
+prints its message.
+
+109
+00:06:09,080 --> 00:06:11,929
+Minus 2 refused: negative amount.
+
+110
+00:06:11,949 --> 00:06:15,320
+The message from line 23 of the module.
+
+111
+00:06:15,367 --> 00:06:19,775
+And the word four is refused by float,
+with Python's own message.
+
+112
+00:06:20,387 --> 00:06:21,467
+Stage 2: write.
+
+113
+00:06:21,487 --> 00:06:23,595
+Asha wrote her version first.
+
+114
+00:06:23,615 --> 00:06:27,557
+Now she asks the AI for its own, without
+showing hers.
+
+115
+00:06:27,600 --> 00:06:31,616
+The AI's version is one line, with strip
+for spaces.
+
+116
+00:06:31,636 --> 00:06:35,963
+Asha renames it ai version, so both can
+sit in one file.
+
+117
+00:06:36,553 --> 00:06:41,053
+She runs both on the same three amounts.
+
+118
+00:06:41,100 --> 00:06:44,190
+3.50 and 2.75 with a space: both agree.
+
+119
+00:06:44,233 --> 00:06:45,349
+But minus 2.
+
+120
+00:06:45,369 --> 00:06:48,663
+The AI's version returns minus 2.0.
+
+121
+00:06:48,683 --> 00:06:50,273
+A negative price.
+
+122
+00:06:50,293 --> 00:06:51,787
+Hers refuses it.
+
+123
+00:06:51,807 --> 00:06:53,586
+Asha keeps her own.
+
+124
+00:06:54,187 --> 00:06:54,757
+Breather.
+
+125
+00:06:54,777 --> 00:06:56,134
+Relax your shoulders.
+
+126
+00:06:56,154 --> 00:06:58,627
+The settings and the amounts are safe.
+
+127
+00:06:58,667 --> 00:07:03,531
+Next, Asha writes her tests, and lets the
+AI write the reading code.
+
+128
+00:07:08,283 --> 00:07:08,774
+Step 4.
+
+129
+00:07:08,794 --> 00:07:12,127
+As in Chapter 20, Asha writes the tests
+first.
+
+130
+00:07:12,147 --> 00:07:15,334
+Four check the amounts and the money
+format.
+
+131
+00:07:15,354 --> 00:07:17,593
+These two check the whole week.
+
+132
+00:07:17,633 --> 00:07:23,603
+The week total must be 37.25, and exactly
+two rows must be skipped.
+
+133
+00:07:23,633 --> 00:07:27,230
+And Tuesday must be 11.25, not rounded.
+
+134
+00:07:27,853 --> 00:07:29,186
+Stage 3: generate.
+
+135
+00:07:29,206 --> 00:07:33,095
+Asha pastes her tests and asks for the
+reading code.
+
+136
+00:07:33,115 --> 00:07:34,823
+Do not change my tests.
+
+137
+00:07:34,867 --> 00:07:40,690
+The AI writes read sales, and says: it
+skips only the two damaged rows, so your
+
+138
+00:07:40,710 --> 00:07:41,503
+tests pass.
+
+139
+00:07:41,523 --> 00:07:42,613
+It sounds sure.
+
+140
+00:07:43,220 --> 00:07:44,483
+Look at line 33.
+
+141
+00:07:44,503 --> 00:07:51,138
+Then remember the first line of every till
+file, from step 1: item comma amount, in
+
+142
+00:07:51,158 --> 00:07:52,260
+small letters.
+
+143
+00:07:52,300 --> 00:07:55,551
+And line 35 catches every kind of
+exception.
+
+144
+00:08:06,913 --> 00:08:10,141
+Line 33 asks for Amount, with a capital A.
+
+145
+00:08:10,161 --> 00:08:14,317
+There is no such key, so every row raises
+a key error.
+
+146
+00:08:14,337 --> 00:08:16,637
+And except Exception hides it.
+
+147
+00:08:17,253 --> 00:08:18,652
+Asha does not argue.
+
+148
+00:08:18,672 --> 00:08:21,913
+She counts the good and bad rows in each
+file.
+
+149
+00:08:21,933 --> 00:08:22,619
+Zero good.
+
+150
+00:08:22,639 --> 00:08:23,820
+Every row is bad.
+
+151
+00:08:23,840 --> 00:08:27,985
+The program ran with no error, and it
+would report nothing.
+
+152
+00:08:28,587 --> 00:08:30,034
+Her six tests agree.
+
+153
+00:08:30,054 --> 00:08:33,410
+The first four pass, and both week tests
+fail.
+
+154
+00:08:34,020 --> 00:08:39,721
+Asha fixes it with the rule from Chapter
+22: catch only the exceptions you expect.
+
+155
+00:08:39,741 --> 00:08:43,140
+Line 33: the right key, and her own parse
+amount.
+
+156
+00:08:43,167 --> 00:08:46,643
+Line 34 catches only the two exceptions
+she expects.
+
+157
+00:08:46,663 --> 00:08:48,659
+Value error for the word four.
+
+158
+00:08:48,679 --> 00:08:54,038
+And type error for the missing price,
+because float of None raises a type error,
+
+159
+00:08:54,058 --> 00:08:56,727
+the same as the short row in Chapter 22.
+
+160
+00:08:56,767 --> 00:09:01,291
+Line 37 adds the sale only when nothing
+went wrong, in else.
+
+161
+00:09:01,887 --> 00:09:03,995
+Now Monday has four good rows.
+
+162
+00:09:04,015 --> 00:09:07,117
+Tuesday and Wednesday each have one bad
+row.
+
+163
+00:09:07,137 --> 00:09:08,394
+Thursday is empty.
+
+164
+00:09:08,987 --> 00:09:11,351
+And she runs all six tests again.
+
+165
+00:09:11,371 --> 00:09:12,146
+Six passed.
+
+166
+00:09:12,753 --> 00:09:13,593
+Quick check.
+
+167
+00:09:13,613 --> 00:09:16,601
+A row has no price, so its amount is None.
+
+168
+00:09:16,621 --> 00:09:19,538
+Which exception does float of None raise?
+
+169
+00:09:30,913 --> 00:09:31,038
+C.
+
+170
+00:09:31,058 --> 00:09:31,836
+Type error.
+
+171
+00:09:31,856 --> 00:09:34,156
+None is the wrong type of value.
+
+172
+00:09:34,176 --> 00:09:39,013
+A word such as four is a string, so it
+gives a value error instead.
+
+173
+00:09:39,583 --> 00:09:40,130
+Step 5.
+
+174
+00:09:40,150 --> 00:09:42,722
+Build week puts it all together.
+
+175
+00:09:42,742 --> 00:09:46,853
+Line 44: glob finds every file ending in
+dot c s v.
+
+176
+00:09:46,873 --> 00:09:51,793
+Glob gives no fixed order, so sorted puts
+them in name order.
+
+177
+00:09:51,833 --> 00:09:54,015
+Line 45 reads each file.
+
+178
+00:09:54,035 --> 00:09:57,593
+Line 46 adds its bad rows to the count.
+
+179
+00:09:57,633 --> 00:10:04,598
+Lines 48 to 51 add each amount to its item
+and to the day, with get, as in Chapter
+
+180
+00:10:04,618 --> 00:10:04,853
+12.
+
+181
+00:10:04,900 --> 00:10:08,412
+Line 52 makes the day name from the file
+name.
+
+182
+00:10:08,432 --> 00:10:14,862
+Stem drops dot c s v, split takes the part
+after the dash, and title gives a capital
+
+183
+00:10:14,882 --> 00:10:15,400
+letter.
+
+184
+00:10:16,020 --> 00:10:16,764
+Quick check.
+
+185
+00:10:16,784 --> 00:10:19,627
+Why does build week sort the paths from
+glob?
+
+186
+00:10:30,980 --> 00:10:31,103
+A.
+
+187
+00:10:31,123 --> 00:10:32,962
+Glob gives no fixed order.
+
+188
+00:10:32,982 --> 00:10:38,467
+Sorted puts the names in order, and the
+number at the start keeps the days in
+
+189
+00:10:38,487 --> 00:10:38,896
+order.
+
+190
+00:10:39,487 --> 00:10:45,347
+Asha prints the days as JSON, with an
+indent of two, as in Chapter 23.
+
+191
+00:10:45,367 --> 00:10:49,686
+Thursday's file is empty, so build week
+adds nothing for it.
+
+192
+00:11:01,047 --> 00:11:01,685
+37.25.
+
+193
+00:11:01,705 --> 00:11:06,627
+14, plus 11.25, plus 12, plus 0 for
+Thursday.
+
+194
+00:11:06,667 --> 00:11:09,961
+And two rows skipped.
+
+195
+00:11:10,553 --> 00:11:12,228
+The main program is short.
+
+196
+00:11:12,248 --> 00:11:17,182
+The try block holds two lines, and both
+raise only value error, with a clear
+
+197
+00:11:17,202 --> 00:11:17,703
+message.
+
+198
+00:11:17,733 --> 00:11:23,443
+Lines 10 and 11 catch it once, and print
+Report stopped, and the message.
+
+199
+00:11:23,467 --> 00:11:26,771
+The else block runs only when both worked.
+
+200
+00:11:26,791 --> 00:11:30,887
+Lines 13 to 15 write the report, one line
+at a time.
+
+201
+00:11:30,933 --> 00:11:33,358
+Lines 16 and 17 save the week as JSON.
+
+202
+00:11:33,378 --> 00:11:38,698
+And line 18 reads the text report back, so
+the screen shows exactly what was saved.
+
+203
+00:11:39,320 --> 00:11:39,920
+Breather.
+
+204
+00:11:39,940 --> 00:11:42,260
+The report works on the real week.
+
+205
+00:11:42,300 --> 00:11:45,699
+Next, Asha tries to break it with new test
+data.
+
+206
+00:11:50,450 --> 00:11:51,622
+Stage 4: test.
+
+207
+00:11:51,642 --> 00:11:57,840
+Asha asks the AI for realistic test data,
+in the same format as her till.
+
+208
+00:11:57,867 --> 00:12:02,576
+The AI gives her a small file, and says it
+is in her till's format.
+
+209
+00:12:03,187 --> 00:12:07,977
+Asha compares the first line with a real
+till file, letter by letter.
+
+210
+00:12:08,000 --> 00:12:12,215
+The real file starts item comma amount, in
+small letters.
+
+211
+00:12:12,235 --> 00:12:14,593
+Now look at the AI's first line.
+
+212
+00:12:25,947 --> 00:12:27,880
+It crashes with a key error.
+
+213
+00:12:27,900 --> 00:12:32,834
+The AI's columns start with capital
+letters, so there is no key amount.
+
+214
+00:12:32,854 --> 00:12:37,718
+And her except catches only value error
+and type error, not key error.
+
+215
+00:12:37,738 --> 00:12:42,114
+Asha saves the file as a fifth day, and
+runs the report to see.
+
+216
+00:12:42,720 --> 00:12:43,508
+It crashes.
+
+217
+00:12:43,528 --> 00:12:44,390
+A key error.
+
+218
+00:12:44,410 --> 00:12:48,210
+Read the last line first: the key amount
+is missing.
+
+219
+00:12:48,233 --> 00:12:53,684
+Then the last file line shows where: line
+33 of report tools, inside read sales.
+
+220
+00:12:53,704 --> 00:12:57,923
+On your computer, these lines show the
+full path of each file.
+
+221
+00:12:57,967 --> 00:13:01,986
+Her except catches value error and type
+error, not key error.
+
+222
+00:13:02,006 --> 00:13:06,556
+That is right: a whole file in the wrong
+format is not a damaged row.
+
+223
+00:13:07,153 --> 00:13:08,225
+Stage 5: debug.
+
+224
+00:13:08,245 --> 00:13:13,683
+Asha pastes the error, and asks for the
+cause first, then the smallest fix.
+
+225
+00:13:13,733 --> 00:13:18,928
+The AI explains: Dict reader uses the
+first line as the keys, exactly as
+
+226
+00:13:18,948 --> 00:13:19,507
+written.
+
+227
+00:13:19,527 --> 00:13:22,983
+Its fix checks the column names before the
+loop.
+
+228
+00:13:23,033 --> 00:13:26,340
+Field names is the list of names from the
+first line.
+
+229
+00:13:26,360 --> 00:13:30,105
+An empty file has none, so if columns lets
+Thursday through.
+
+230
+00:13:30,720 --> 00:13:33,501
+She runs the report on the same file.
+
+231
+00:13:33,521 --> 00:13:37,059
+One clear line: the file needs item and
+amount.
+
+232
+00:13:37,079 --> 00:13:37,740
+No crash.
+
+233
+00:13:38,353 --> 00:13:42,928
+Asha keeps the AI's file as test data, and
+adds a seventh test.
+
+234
+00:13:42,948 --> 00:13:46,063
+Read sales must raise a value error for
+it.
+
+235
+00:13:46,100 --> 00:13:48,602
+Then she runs every test again.
+
+236
+00:13:48,622 --> 00:13:49,659
+Seven passed.
+
+237
+00:13:50,253 --> 00:13:54,089
+Last, Asha runs the whole report on three
+more folders.
+
+238
+00:13:54,109 --> 00:13:56,683
+She writes the expected result first.
+
+239
+00:13:56,733 --> 00:13:58,883
+No settings file at all.
+
+240
+00:13:58,933 --> 00:14:01,803
+A settings file that is missing a comma.
+
+241
+00:14:01,833 --> 00:14:06,641
+And a week where the cafe was closed every
+day but Thursday's empty file.
+
+242
+00:14:07,253 --> 00:14:08,708
+No settings file.
+
+243
+00:14:08,728 --> 00:14:10,009
+One clear line.
+
+244
+00:14:10,029 --> 00:14:10,442
+Pass.
+
+245
+00:14:11,053 --> 00:14:12,346
+Broken settings.
+
+246
+00:14:12,366 --> 00:14:15,956
+The JSON module's reason: expecting a
+comma.
+
+247
+00:14:15,976 --> 00:14:16,366
+Pass.
+
+248
+00:14:16,987 --> 00:14:18,873
+And the closed week.
+
+249
+00:14:18,893 --> 00:14:22,684
+Only Thursday, and every amount is 0.00.
+
+250
+00:14:22,704 --> 00:14:23,161
+Pass.
+
+251
+00:14:23,181 --> 00:14:24,686
+All three match.
+
+252
+00:14:25,283 --> 00:14:26,536
+Stage 6: improve.
+
+253
+00:14:26,556 --> 00:14:28,108
+All seven tests pass.
+
+254
+00:14:28,128 --> 00:14:33,723
+Asha asks for one improvement, and says:
+do not change what the totals are.
+
+255
+00:14:33,767 --> 00:14:39,162
+The AI says: round each day's total to a
+whole number before you store it.
+
+256
+00:14:39,182 --> 00:14:40,114
+Tidy amounts.
+
+257
+00:14:40,720 --> 00:14:43,937
+Here is the AI's change, on line 56.
+
+258
+00:14:43,957 --> 00:14:46,634
+Tuesday's real total is 11.25.
+
+259
+00:14:46,654 --> 00:14:53,468
+Round with no second value gives the
+nearest whole number, as in Chapter 18.
+
+260
+00:15:04,847 --> 00:15:05,136
+11.
+
+261
+00:15:05,156 --> 00:15:09,357
+And the week becomes 37 instead of 37.25.
+
+262
+00:15:09,377 --> 00:15:12,550
+Asha runs her tests to be sure.
+
+263
+00:15:13,153 --> 00:15:17,713
+Two tests fail: the week total, and the
+day that must not be rounded.
+
+264
+00:15:17,733 --> 00:15:21,428
+The suggestion broke her rule: it changed
+the totals.
+
+265
+00:15:21,448 --> 00:15:26,754
+Rounding belongs in the display, and money
+already shows two decimal places.
+
+266
+00:15:26,774 --> 00:15:28,365
+Asha keeps her version.
+
+267
+00:15:28,987 --> 00:15:32,247
+Here are all six stages, on one module of
+rules.
+
+268
+00:15:32,267 --> 00:15:36,347
+The AI helped at every stage, from the
+plan to the improvement.
+
+269
+00:15:36,367 --> 00:15:42,195
+And it was confidently wrong five times:
+the plan, a negative price, a hidden key
+
+270
+00:15:42,215 --> 00:15:45,877
+error, test data in the wrong format, and
+rounding.
+
+271
+00:15:45,900 --> 00:15:50,365
+Every time, something Asha did first
+caught it: looking at real files,
+
+272
+00:15:50,385 --> 00:15:51,967
+comparing, and her tests.
+
+273
+00:15:52,587 --> 00:15:53,550
+Last breather.
+
+274
+00:15:53,570 --> 00:15:58,817
+Before she pasted any code into the chat,
+Asha checked it for private data.
+
+275
+00:15:58,837 --> 00:16:01,837
+The till files hold only items and
+amounts.
+
+276
+00:16:01,867 --> 00:16:02,881
+Let's recap.
+
+277
+00:16:07,617 --> 00:16:09,877
+Here is what you used in this boss level.
+
+278
+00:16:09,900 --> 00:16:11,899
+Look at the real data first.
+
+279
+00:16:11,919 --> 00:16:13,630
+Damaged rows are normal.
+
+280
+00:16:13,667 --> 00:16:17,827
+Small functions, and a small try around
+the one line that can fail.
+
+281
+00:16:17,867 --> 00:16:20,022
+Catch the exceptions you expect.
+
+282
+00:16:20,042 --> 00:16:22,197
+Except Exception can hide a bug.
+
+283
+00:16:22,233 --> 00:16:26,843
+Turn file and JSON errors into one clear
+message, and catch it once.
+
+284
+00:16:26,867 --> 00:16:31,617
+Check AI test data against a real file,
+and keep it as a test.
+
+285
+00:16:31,667 --> 00:16:34,226
+And round only when you display a number.
+
+286
+00:16:34,820 --> 00:16:36,149
+One last check.
+
+287
+00:16:36,169 --> 00:16:39,118
+Monday is 2.4 and Tuesday is 2.4.
+
+288
+00:16:39,138 --> 00:16:42,267
+Which line shows the correct total?
+
+289
+00:16:53,647 --> 00:16:53,798
+B.
+
+290
+00:16:53,818 --> 00:16:56,617
+Add the exact amounts first: 4.8.
+
+291
+00:16:56,637 --> 00:16:59,779
+Then show it with two decimal places.
+
+292
+00:17:00,387 --> 00:17:01,983
+Boss level complete!
+
+293
+00:17:02,003 --> 00:17:05,699
+You earned 300 XP and the Report Master
+badge.
+
+294
+00:17:05,719 --> 00:17:07,396
+And Module 5 is done.
+
+295
+00:17:09,487 --> 00:17:13,967
+The practice file has eight more tasks,
+worth 170 XP.
+
+296
+00:17:14,000 --> 00:17:18,410
+Three warm-ups, worth 10 XP each, such as
+reading one till file.
+
+297
+00:17:18,433 --> 00:17:22,869
+Three apply tasks, worth 20 each,
+including a clear message for missing
+
+298
+00:17:22,889 --> 00:17:23,433
+settings.
+
+299
+00:17:23,467 --> 00:17:26,001
+And two stretch tasks, worth 40 each.
+
+300
+00:17:26,021 --> 00:17:30,627
+In the last one, you fix an AI's report
+that rounds before it adds.
+
+301
+00:17:30,667 --> 00:17:33,555
+Look at your data first, then write the
+rule.
+
+302
+00:17:34,150 --> 00:17:39,411
+Asha's report keeps each sale as a pair of
+an item and an amount, and each day as a
+
+303
+00:17:39,431 --> 00:17:40,111
+dictionary.
+
+304
+00:17:40,131 --> 00:17:42,020
+The rules live somewhere else.
+
+305
+00:17:42,067 --> 00:17:47,577
+In Chapter 26, you will build your own
+types with classes, so a sale or a day
+
+306
+00:17:47,597 --> 00:17:50,737
+carries its data and its own rules
+together.
+
+307
+00:17:50,767 --> 00:17:52,459
+Do the warm-up tasks now.
+
+308
+00:17:52,479 --> 00:17:54,377
+They take about ten minutes.
+
+309
+00:17:54,400 --> 00:17:56,485
+See you in Chapter 26.

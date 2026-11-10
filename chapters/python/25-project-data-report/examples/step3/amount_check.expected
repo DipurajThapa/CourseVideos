@@ -1,0 +1,3 @@
+'3.50' gives 3.5
+'four' refused: could not convert string to float: 'four'
+'-2.00' refused: negative amount '-2.00'
