@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-10T06:27:58+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-10T07:06:22+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -31,6 +31,7 @@ You can also ask Claude to do either.
 - **python-17**: Scope and Good Function Design ([chapters/python/17-scope-and-design](chapters/python/17-scope-and-design)), video: [chapters/python/17-scope-and-design/video/chapter.mp4](chapters/python/17-scope-and-design/video/chapter.mp4)
 - **python-18**: Modules and the Standard Library ([chapters/python/18-modules-and-standard-library](chapters/python/18-modules-and-standard-library)), video: [chapters/python/18-modules-and-standard-library/video/chapter.mp4](chapters/python/18-modules-and-standard-library/video/chapter.mp4)
 - **python-19**: Testing Your Code: assert and pytest ([chapters/python/19-testing](chapters/python/19-testing)), video: [chapters/python/19-testing/video/chapter.mp4](chapters/python/19-testing/video/chapter.mp4)
+- **python-20**: Boss Level 4: The Tested Quiz App ([chapters/python/20-project-quiz-app](chapters/python/20-project-quiz-app)), video: [chapters/python/20-project-quiz-app/video/chapter.mp4](chapters/python/20-project-quiz-app/video/chapter.mp4)
 
 ## Changes requested
 
