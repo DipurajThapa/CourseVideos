@@ -1,0 +1,1308 @@
+1
+00:00:00,250 --> 00:00:04,005
+At the Corner Cafe, Asha wanted a summary
+for three days.
+
+2
+00:00:04,025 --> 00:00:06,720
+So she copied the same lines three times.
+
+3
+00:00:06,767 --> 00:00:08,070
+Then she added tax.
+
+4
+00:00:08,090 --> 00:00:12,805
+She changed the Monday copy and the
+Tuesday copy, and missed Friday.
+
+5
+00:00:12,825 --> 00:00:15,591
+Copying code means copying its mistakes.
+
+6
+00:00:16,187 --> 00:00:19,347
+This is Code Quest, Chapter 16: functions.
+
+7
+00:00:19,367 --> 00:00:21,847
+Write it once, use it many times.
+
+8
+00:00:21,867 --> 00:00:27,236
+And an AI assistant will write a function
+for Asha, and promise exactly what it
+
+9
+00:00:27,256 --> 00:00:27,713
+prints.
+
+10
+00:00:27,733 --> 00:00:29,351
+Your checks will decide.
+
+11
+00:00:29,953 --> 00:00:33,107
+So here is today's mission: the day
+report.
+
+12
+00:00:33,127 --> 00:00:36,133
+Three small functions, each with one job.
+
+13
+00:00:36,167 --> 00:00:40,567
+And three short lines at the bottom print
+a report for three different days.
+
+14
+00:00:40,600 --> 00:00:43,835
+If the tax changes, Asha edits one line.
+
+15
+00:00:43,855 --> 00:00:45,055
+Let's build it.
+
+16
+00:00:45,650 --> 00:00:50,690
+Write functions, return values and
+docstrings, and read a longer traceback.
+
+17
+00:00:50,733 --> 00:00:55,805
+And write a specification, ask an AI for
+the code, and test it with your own
+
+18
+00:00:55,825 --> 00:00:56,274
+checks.
+
+19
+00:00:56,850 --> 00:00:59,131
+A function is a named block of code.
+
+20
+00:00:59,151 --> 00:01:02,392
+You write it once, and run it whenever you
+need it.
+
+21
+00:01:02,412 --> 00:01:05,780
+Fix a mistake inside it, and every call
+gets the fix.
+
+22
+00:01:05,800 --> 00:01:11,254
+You have used functions since the first
+chapters: print, len, round and input.
+
+23
+00:01:11,274 --> 00:01:12,868
+Now you write your own.
+
+24
+00:01:13,450 --> 00:01:15,149
+Here is a whole function.
+
+25
+00:01:15,169 --> 00:01:19,620
+The def line gives it a name, with tax,
+and one parameter, price.
+
+26
+00:01:19,667 --> 00:01:21,733
+The indented line is the body.
+
+27
+00:01:21,753 --> 00:01:25,697
+Return hands a value back to whoever
+called the function.
+
+28
+00:01:25,733 --> 00:01:27,344
+The last line is a call.
+
+29
+00:01:27,364 --> 00:01:32,168
+A value goes in, and the returned value
+comes out and is stored in tea.
+
+30
+00:01:32,787 --> 00:01:33,561
+Five words.
+
+31
+00:01:33,581 --> 00:01:37,893
+To define means to write the function, and
+nothing runs yet.
+
+32
+00:01:37,913 --> 00:01:41,647
+To call means to run it, with its name and
+brackets.
+
+33
+00:01:41,667 --> 00:01:47,072
+A parameter is a name in the def line, an
+argument is the value in a call, and the
+
+34
+00:01:47,092 --> 00:01:49,190
+return value is what comes back.
+
+35
+00:01:49,787 --> 00:01:52,840
+Think of a recipe card in the cafe
+kitchen.
+
+36
+00:01:52,860 --> 00:01:55,913
+The cook follows the same steps every
+time.
+
+37
+00:01:55,933 --> 00:01:59,487
+Today's ingredients go in, and one dish
+comes out.
+
+38
+00:01:59,533 --> 00:02:03,998
+But unlike a cook, a function cannot taste
+the dish and adjust it.
+
+39
+00:02:04,018 --> 00:02:07,192
+It does exactly what its body says, every
+time.
+
+40
+00:02:07,787 --> 00:02:08,612
+Quick check.
+
+41
+00:02:08,632 --> 00:02:10,796
+In this def line, what is name?
+
+42
+00:02:22,147 --> 00:02:22,267
+B.
+
+43
+00:02:22,287 --> 00:02:23,110
+A parameter.
+
+44
+00:02:23,130 --> 00:02:25,146
+It is a name in the def line.
+
+45
+00:02:25,166 --> 00:02:29,501
+The value you pass when you call the
+function is the argument.
+
+46
+00:02:30,120 --> 00:02:31,207
+Take a breather.
+
+47
+00:02:31,227 --> 00:02:33,214
+Here is what you know so far.
+
+48
+00:02:33,234 --> 00:02:35,775
+Next, Asha writes her first function.
+
+49
+00:02:40,517 --> 00:02:41,010
+Step 1.
+
+50
+00:02:41,030 --> 00:02:44,017
+Line 2 defines a function called welcome.
+
+51
+00:02:44,037 --> 00:02:47,537
+It has no parameters, so the brackets are
+empty.
+
+52
+00:02:47,567 --> 00:02:51,413
+Lines 3 and 4 are its body, indented by
+four spaces.
+
+53
+00:02:51,433 --> 00:02:54,387
+Defining the function does not run them.
+
+54
+00:02:54,433 --> 00:02:56,628
+Lines 6 and 7 are two calls.
+
+55
+00:02:56,648 --> 00:02:59,001
+Each call runs the whole body.
+
+56
+00:03:10,380 --> 00:03:10,668
+Four.
+
+57
+00:03:10,688 --> 00:03:15,356
+Each call prints the welcome and the
+special, so the two lines appear twice.
+
+58
+00:03:15,953 --> 00:03:16,499
+Step 2.
+
+59
+00:03:16,519 --> 00:03:19,654
+Now the def line has a parameter, name.
+
+60
+00:03:19,674 --> 00:03:22,403
+Line 3 uses it inside an f string.
+
+61
+00:03:22,433 --> 00:03:25,789
+Line 5 calls greet with the argument Omar.
+
+62
+00:03:25,809 --> 00:03:28,522
+In that call, name refers to Omar.
+
+63
+00:03:39,880 --> 00:03:40,727
+Hello, Lina!
+
+64
+00:03:40,747 --> 00:03:42,027
+Your tea is ready.
+
+65
+00:03:42,047 --> 00:03:44,916
+In the second call, name refers to Lina.
+
+66
+00:03:45,517 --> 00:03:46,046
+Step 3.
+
+67
+00:03:46,066 --> 00:03:51,937
+Return ends the function and hands a value
+back to the line that called it.
+
+68
+00:03:51,967 --> 00:03:55,927
+Line 5 stores the returned value in tea,
+and line 6 prints it.
+
+69
+00:03:55,967 --> 00:03:59,239
+Line 7 prints a returned value directly.
+
+70
+00:03:59,259 --> 00:04:03,767
+Line 8 compares one with 3, so it prints
+True or False.
+
+71
+00:04:15,147 --> 00:04:16,511
+4.4, and True.
+
+72
+00:04:16,531 --> 00:04:22,047
+With tax, 2.75 becomes about 3.03, which
+is more than 3.
+
+73
+00:04:22,067 --> 00:04:26,627
+And line 6 prints 3.85, the value stored
+in tea.
+
+74
+00:04:26,647 --> 00:04:31,589
+A returned value can be stored, printed or
+compared.
+
+75
+00:04:32,187 --> 00:04:32,643
+Step 4.
+
+76
+00:04:32,663 --> 00:04:34,954
+Print shows a value on the screen.
+
+77
+00:04:34,974 --> 00:04:37,741
+Return hands a value back to the program.
+
+78
+00:04:37,761 --> 00:04:39,237
+They are not the same.
+
+79
+00:04:39,267 --> 00:04:43,615
+A function without return hands back a
+special value: None.
+
+80
+00:04:43,635 --> 00:04:45,467
+It means no value at all.
+
+81
+00:04:45,500 --> 00:04:48,302
+This function prints the price with tax.
+
+82
+00:04:48,322 --> 00:04:51,618
+Line 5 stores whatever it hands back in
+result.
+
+83
+00:05:02,980 --> 00:05:04,158
+Result is None.
+
+84
+00:05:04,178 --> 00:05:09,350
+The function printed 3.85 on the screen,
+but it returned nothing.
+
+85
+00:05:09,400 --> 00:05:13,228
+So if the caller needs the value, the
+function must return it.
+
+86
+00:05:13,817 --> 00:05:14,375
+Step 5.
+
+87
+00:05:14,395 --> 00:05:19,747
+Line 2 has two parameters, separated by a
+comma: price and count.
+
+88
+00:05:19,767 --> 00:05:25,168
+Line 3 is a docstring: a string on the
+first line of the body that says what the
+
+89
+00:05:25,188 --> 00:05:26,117
+function does.
+
+90
+00:05:26,167 --> 00:05:29,681
+In a call, the arguments fill the
+parameters in order.
+
+91
+00:05:29,701 --> 00:05:33,411
+The first argument is the price, the
+second is the count.
+
+92
+00:05:44,780 --> 00:05:45,282
+8.25.
+
+93
+00:05:45,302 --> 00:05:51,550
+The price is 2.75, the count is 3, and
+2.75 times 3 is 8.25.
+
+94
+00:05:51,600 --> 00:05:54,516
+And line 8 prints the docstring.
+
+95
+00:05:54,536 --> 00:06:00,939
+Python keeps it under the name doc, with
+two underscores on each side.
+
+96
+00:06:01,553 --> 00:06:02,362
+Quick check.
+
+97
+00:06:02,382 --> 00:06:05,191
+The function area is called with 3 and 5.
+
+98
+00:06:05,211 --> 00:06:06,226
+What is height?
+
+99
+00:06:17,580 --> 00:06:17,725
+D.
+
+100
+00:06:17,745 --> 00:06:17,891
+5.
+
+101
+00:06:17,911 --> 00:06:21,117
+Arguments fill the parameters in order.
+
+102
+00:06:21,137 --> 00:06:23,764
+Width gets 3, and height gets 5.
+
+103
+00:06:24,387 --> 00:06:24,943
+Breather.
+
+104
+00:06:24,963 --> 00:06:27,119
+Relax your shoulders for a moment.
+
+105
+00:06:27,139 --> 00:06:32,431
+Next, functions that call other functions,
+and what happens when one of them fails.
+
+106
+00:06:37,183 --> 00:06:37,726
+Step 6.
+
+107
+00:06:37,746 --> 00:06:40,699
+A function can call another function.
+
+108
+00:06:40,719 --> 00:06:43,993
+Day total starts a total at 0, on line 6.
+
+109
+00:06:44,033 --> 00:06:50,843
+For every price, line 8 calls with tax,
+and adds the returned value to the total.
+
+110
+00:06:50,867 --> 00:06:53,725
+Line 9 returns the total, rounded.
+
+111
+00:06:53,745 --> 00:06:56,942
+Line 11 prints 11.28 for three prices.
+
+112
+00:06:57,553 --> 00:07:04,513
+Now line 11 passes a list with one price
+written as text: 4.0, in quotation marks.
+
+113
+00:07:04,533 --> 00:07:08,621
+Day total passes each price to with tax,
+one at a time.
+
+114
+00:07:08,641 --> 00:07:13,252
+Chapter 9 promised that tracebacks grow
+longer with functions.
+
+115
+00:07:13,272 --> 00:07:14,148
+Here is one.
+
+116
+00:07:25,513 --> 00:07:27,102
+In with tax, on line 3.
+
+117
+00:07:27,122 --> 00:07:30,458
+Python cannot multiply text by a decimal
+number.
+
+118
+00:07:30,478 --> 00:07:35,633
+The error report lists every call on the
+way, one block for each function.
+
+119
+00:07:35,667 --> 00:07:38,793
+Read it from the bottom up, as in Chapter
+9.
+
+120
+00:07:38,813 --> 00:07:40,937
+The last line names the error.
+
+121
+00:07:40,957 --> 00:07:46,157
+The block directly above it shows where it
+happened: line 3, in with tax.
+
+122
+00:07:46,200 --> 00:07:50,690
+The block above that shows who called it:
+line 8, in day total.
+
+123
+00:07:50,733 --> 00:07:54,016
+And the top block is line 11, the main
+program.
+
+124
+00:07:54,036 --> 00:07:58,373
+Most recent call last means the deepest
+call is at the bottom.
+
+125
+00:07:58,400 --> 00:08:02,738
+The cause is on line 11: the price in
+quotation marks.
+
+126
+00:08:03,317 --> 00:08:04,618
+Back to the mission.
+
+127
+00:08:04,638 --> 00:08:07,394
+Each function has one job and a docstring.
+
+128
+00:08:07,414 --> 00:08:10,897
+With tax, on lines 2 to 4, adds the tax to
+one price.
+
+129
+00:08:10,933 --> 00:08:14,420
+Day total, on lines 6 to 11, adds up a
+whole day.
+
+130
+00:08:14,440 --> 00:08:16,853
+It calls with tax for every price.
+
+131
+00:08:16,900 --> 00:08:22,429
+Report, on lines 13 to 15, prints one
+line: the day, the number of sales, and
+
+132
+00:08:22,449 --> 00:08:24,230
+the total from day total.
+
+133
+00:08:24,267 --> 00:08:29,267
+Line 19 asks for the report of a day with
+no sales at all: an empty list.
+
+134
+00:08:40,647 --> 00:08:42,261
+Friday, 0 sales, 0.00.
+
+135
+00:08:42,281 --> 00:08:46,717
+The loop in day total runs zero times, so
+the total stays 0.
+
+136
+00:08:46,767 --> 00:08:52,592
+And Monday and Tuesday get their own lines
+from the same three functions.
+
+137
+00:08:52,612 --> 00:08:56,355
+To change the tax, Asha edits one line:
+line 4.
+
+138
+00:08:56,375 --> 00:08:57,717
+Mission complete!
+
+139
+00:08:57,767 --> 00:09:02,311
+Next, Asha wants a function for her bill
+splitter from Chapter 5.
+
+140
+00:09:02,331 --> 00:09:06,806
+This time, an AI assistant writes the
+code, one stage at a time.
+
+141
+00:09:07,383 --> 00:09:10,557
+This chapter's AI skill is the
+specification.
+
+142
+00:09:10,577 --> 00:09:16,376
+A specification says a function's name,
+its parameters, what it returns, and a few
+
+143
+00:09:16,396 --> 00:09:18,363
+examples with exact results.
+
+144
+00:09:18,400 --> 00:09:21,794
+You write the specification and your own
+checks.
+
+145
+00:09:21,814 --> 00:09:23,430
+The AI writes the code.
+
+146
+00:09:23,450 --> 00:09:26,559
+And your checks decide if the code is
+right.
+
+147
+00:09:27,153 --> 00:09:28,184
+Stage 1: plan.
+
+148
+00:09:28,204 --> 00:09:32,911
+Asha describes the job: a total, a number
+of people, and a tip.
+
+149
+00:09:32,931 --> 00:09:36,363
+She asks for a specification, and no code
+yet.
+
+150
+00:09:36,400 --> 00:09:42,679
+The AI gives a name, three parameters, the
+return value, and three examples.
+
+151
+00:09:42,699 --> 00:09:49,476
+Asha checks example 1 by hand: 40 plus 10
+percent is 44, and 44 shared by 4 is 11.
+
+152
+00:09:50,087 --> 00:09:51,237
+Stage 2: write.
+
+153
+00:09:51,257 --> 00:09:55,917
+Asha writes three check lines herself, one
+for each example.
+
+154
+00:09:55,937 --> 00:10:01,767
+Each prints the returned value, then
+whether it equals the expected result.
+
+155
+00:10:01,800 --> 00:10:08,281
+She asks the AI to predict them for a
+correct function: 11.0 True, 10.77 True,
+
+156
+00:10:08,301 --> 00:10:09,115
+3.33 True.
+
+157
+00:10:09,135 --> 00:10:11,115
+Asha predicted the same.
+
+158
+00:10:11,720 --> 00:10:13,072
+Stage 3: generate.
+
+159
+00:10:13,092 --> 00:10:19,246
+Asha asks the AI to write the function,
+and to say exactly what her f string line
+
+160
+00:10:19,266 --> 00:10:19,780
+prints.
+
+161
+00:10:19,800 --> 00:10:25,460
+The AI writes three lines, and promises:
+Each pays 11.00.
+
+162
+00:10:26,053 --> 00:10:30,054
+Here is the AI's function with Asha's
+line, line 6.
+
+163
+00:10:30,074 --> 00:10:32,892
+Look at line 4, and remember step 4.
+
+164
+00:10:44,247 --> 00:10:44,438
+No.
+
+165
+00:10:44,458 --> 00:10:48,531
+Line 4 prints the share, and the function
+returns nothing.
+
+166
+00:10:48,551 --> 00:10:50,507
+So the call gives back None.
+
+167
+00:10:50,533 --> 00:10:56,365
+The f string cannot format None with two
+decimal places, so Python stops with a
+
+168
+00:10:56,385 --> 00:10:57,920
+Type Error on line 6.
+
+169
+00:10:57,940 --> 00:11:02,068
+The AI broke its own specification, and it
+sounded sure.
+
+170
+00:11:02,687 --> 00:11:03,724
+Stage 4: test.
+
+171
+00:11:03,744 --> 00:11:09,767
+Asha tells the AI what happened, and asks
+for a function that returns the value.
+
+172
+00:11:09,800 --> 00:11:12,182
+The AI gives a corrected version.
+
+173
+00:11:12,202 --> 00:11:14,002
+It returns the share now.
+
+174
+00:11:14,022 --> 00:11:15,967
+Asha does not trust it yet.
+
+175
+00:11:15,987 --> 00:11:18,296
+She runs her three checks on it.
+
+176
+00:11:18,887 --> 00:11:20,724
+Line 3 returns the share.
+
+177
+00:11:20,744 --> 00:11:24,587
+Compare it with the specification: rounded
+to cents.
+
+178
+00:11:24,633 --> 00:11:30,726
+Lines 5 to 10 are Asha's checks: three
+calls with the three examples, then three
+
+179
+00:11:30,746 --> 00:11:31,261
+prints.
+
+180
+00:11:42,613 --> 00:11:43,934
+Lines 9 and 10.
+
+181
+00:11:43,954 --> 00:11:45,991
+The AI forgot to round.
+
+182
+00:11:46,011 --> 00:11:52,785
+The second check is the Chapter 5 table:
+43.07 shared by 4 is 10.7675, which
+
+183
+00:11:52,805 --> 00:11:55,199
+Chapter 5 rounded to 10.77.
+
+184
+00:11:55,219 --> 00:11:57,523
+The third has many digits.
+
+185
+00:11:57,567 --> 00:12:04,255
+And the first check passed only by luck:
+its exact answer has no extra digits.
+
+186
+00:12:04,275 --> 00:12:07,093
+One passing check proves nothing.
+
+187
+00:12:07,113 --> 00:12:08,211
+Run them all.
+
+188
+00:12:08,820 --> 00:12:15,900
+Asha adds round, with 2 places, on line 3,
+as the specification says.
+
+189
+00:12:15,933 --> 00:12:18,799
+Then she runs every check again.
+
+190
+00:12:18,819 --> 00:12:21,776
+11.0 True, 10.77 True, 3.33 True.
+
+191
+00:12:21,796 --> 00:12:23,128
+All three pass.
+
+192
+00:12:23,720 --> 00:12:24,757
+Stage 5: debug.
+
+193
+00:12:24,777 --> 00:12:29,692
+Asha uses the function in her program, and
+it stops with a Type Error.
+
+194
+00:12:29,712 --> 00:12:35,049
+She pastes the code and the full error
+report, and asks for the cause first.
+
+195
+00:12:35,653 --> 00:12:40,765
+The AI reads the last line: share is
+missing one required argument, tip
+
+196
+00:12:40,785 --> 00:12:41,343
+percent.
+
+197
+00:12:41,367 --> 00:12:46,975
+The function has three parameters, but
+line 6 passes only two arguments.
+
+198
+00:12:46,995 --> 00:12:49,008
+The fix: pass the tip too.
+
+199
+00:12:49,620 --> 00:12:54,153
+Asha adds the tip on line 6, and runs it
+again.
+
+200
+00:12:54,173 --> 00:12:55,509
+Table 4, 11.0.
+
+201
+00:12:55,529 --> 00:12:57,253
+The program works.
+
+202
+00:12:57,853 --> 00:12:59,116
+Stage 6: improve.
+
+203
+00:12:59,136 --> 00:13:01,379
+Asha asks for one improvement.
+
+204
+00:13:01,399 --> 00:13:07,490
+And she adds a rule: do not change the
+name, the parameters, or what the function
+
+205
+00:13:07,510 --> 00:13:08,093
+returns.
+
+206
+00:13:08,133 --> 00:13:12,820
+The AI suggests putting people first,
+because it reads more naturally.
+
+207
+00:13:12,840 --> 00:13:14,770
+It promises the same results.
+
+208
+00:13:15,387 --> 00:13:16,396
+Asha tries it.
+
+209
+00:13:16,416 --> 00:13:18,454
+Line 2 now has people first.
+
+210
+00:13:18,474 --> 00:13:23,085
+Her check lines stay the same: they still
+pass the total first.
+
+211
+00:13:34,447 --> 00:13:34,652
+No.
+
+212
+00:13:34,672 --> 00:13:36,534
+Every check prints False.
+
+213
+00:13:36,554 --> 00:13:41,877
+The calls pass 40 as people and 4 as the
+total, so the shares are tiny.
+
+214
+00:13:41,900 --> 00:13:45,671
+The AI broke Asha's rule: it changed the
+parameters.
+
+215
+00:13:45,691 --> 00:13:51,140
+Arguments fill parameters in order, so
+every call now means something else.
+
+216
+00:13:51,160 --> 00:13:52,817
+Asha keeps her version.
+
+217
+00:13:53,420 --> 00:13:58,910
+Here is Asha's final function, with a
+docstring from the specification, on line
+
+218
+00:13:58,930 --> 00:13:59,050
+3.
+
+219
+00:13:59,100 --> 00:14:03,430
+She adds the docstring, so she runs every
+check again.
+
+220
+00:14:03,450 --> 00:14:04,800
+True, True, True.
+
+221
+00:14:04,833 --> 00:14:10,222
+And line 12 uses it in her bill splitter:
+each pays 11.00.
+
+222
+00:14:10,820 --> 00:14:11,666
+Quick check.
+
+223
+00:14:11,686 --> 00:14:15,059
+An AI wrote a function from your
+specification.
+
+224
+00:14:15,079 --> 00:14:17,008
+Who decides if it is right?
+
+225
+00:14:28,380 --> 00:14:28,508
+C.
+
+226
+00:14:28,528 --> 00:14:30,659
+Your checks, run on its code.
+
+227
+00:14:30,679 --> 00:14:32,883
+The AI's promise is not proof.
+
+228
+00:14:33,487 --> 00:14:34,086
+Breather.
+
+229
+00:14:34,106 --> 00:14:39,457
+Asha wrote a specification and her own
+checks, and caught three AI mistakes: a
+
+230
+00:14:39,477 --> 00:14:44,070
+print instead of a return, a missing
+round, and swapped parameters.
+
+231
+00:14:48,817 --> 00:14:49,534
+Mistake 1.
+
+232
+00:14:49,554 --> 00:14:53,734
+Line 2 calls welcome, but the def comes
+later, on line 4.
+
+233
+00:14:53,754 --> 00:14:58,597
+Python runs from top to bottom, so it does
+not know that name yet.
+
+234
+00:14:58,633 --> 00:15:00,920
+Python stops with a Name Error.
+
+235
+00:15:00,940 --> 00:15:04,045
+The fix: move the call below the function.
+
+236
+00:15:04,653 --> 00:15:05,510
+Now you try.
+
+237
+00:15:05,530 --> 00:15:09,529
+Look closely at line 5, and remember what
+a call needs.
+
+238
+00:15:20,880 --> 00:15:22,680
+The brackets are missing.
+
+239
+00:15:22,700 --> 00:15:27,339
+Without them, tea refers to the function
+itself, not to a price.
+
+240
+00:15:27,359 --> 00:15:29,960
+Line 6 tries to add 1 to a function.
+
+241
+00:15:30,000 --> 00:15:34,832
+The fix: call it with an argument, such as
+with tax of 3.5.
+
+242
+00:15:35,453 --> 00:15:39,851
+Mistake 3 is step 4 again, and the AI's
+first mistake.
+
+243
+00:15:39,871 --> 00:15:43,613
+The function prints 3.85, but it returns
+None.
+
+244
+00:15:43,633 --> 00:15:46,323
+So line 5 tries to add 1 to None.
+
+245
+00:15:46,343 --> 00:15:48,787
+None Type is the type of None.
+
+246
+00:15:48,807 --> 00:15:51,497
+The fix: return instead of print.
+
+247
+00:15:52,120 --> 00:15:52,928
+Mistake 4.
+
+248
+00:15:52,948 --> 00:15:55,745
+Look at the indentation of line 6.
+
+249
+00:15:55,765 --> 00:15:58,230
+The return is inside the loop.
+
+250
+00:15:58,267 --> 00:16:02,690
+A return ends the whole function at once,
+even in the middle of a loop.
+
+251
+00:16:14,047 --> 00:16:14,337
+3.5.
+
+252
+00:16:14,357 --> 00:16:19,532
+The loop added the first price, and then
+return ended the function.
+
+253
+00:16:19,552 --> 00:16:22,557
+There is no error, only a wrong answer.
+
+254
+00:16:22,600 --> 00:16:27,703
+The fix: move return four spaces to the
+left, so it runs after the loop has
+
+255
+00:16:27,723 --> 00:16:28,318
+finished.
+
+256
+00:16:28,920 --> 00:16:29,774
+Last breather.
+
+257
+00:16:29,794 --> 00:16:33,892
+Now you know the four function mistakes
+that catch most beginners.
+
+258
+00:16:38,617 --> 00:16:39,012
+First.
+
+259
+00:16:39,032 --> 00:16:42,886
+Asha wants a function that gives members
+10 percent off.
+
+260
+00:16:42,906 --> 00:16:48,283
+Write its specification first: the return
+value, and three examples, one for a
+
+261
+00:16:48,303 --> 00:16:49,044
+non-member.
+
+262
+00:17:00,413 --> 00:17:02,804
+Then write the function, and your checks.
+
+263
+00:17:03,420 --> 00:17:03,849
+Second.
+
+264
+00:17:03,869 --> 00:17:07,251
+A function can return two values at once,
+as a tuple.
+
+265
+00:17:07,271 --> 00:17:10,589
+How would you unpack them in the line that
+calls it?
+
+266
+00:17:21,947 --> 00:17:25,783
+Write a day summary function that returns
+both, and test it.
+
+267
+00:17:26,383 --> 00:17:27,220
+Let's recap.
+
+268
+00:17:27,240 --> 00:17:32,856
+Def defines a function, a call runs it,
+and parameters receive the arguments in
+
+269
+00:17:32,876 --> 00:17:33,284
+order.
+
+270
+00:17:33,304 --> 00:17:35,353
+Without return, you get None.
+
+271
+00:17:35,400 --> 00:17:38,014
+A docstring says what the function does.
+
+272
+00:17:38,034 --> 00:17:40,780
+A long traceback reads from the bottom up.
+
+273
+00:17:40,800 --> 00:17:45,201
+And with AI: write the specification and
+your checks first.
+
+274
+00:17:45,221 --> 00:17:46,550
+The checks decide.
+
+275
+00:17:47,153 --> 00:17:48,258
+One last check.
+
+276
+00:17:48,278 --> 00:17:52,306
+This function calculates n times 2, but
+has no return.
+
+277
+00:17:52,326 --> 00:17:55,005
+What does print of double of 4 show?
+
+278
+00:18:06,380 --> 00:18:06,519
+A.
+
+279
+00:18:06,539 --> 00:18:06,915
+None.
+
+280
+00:18:06,935 --> 00:18:10,563
+The body calculates 8, but hands nothing
+back.
+
+281
+00:18:11,153 --> 00:18:12,472
+Mission complete!
+
+282
+00:18:12,492 --> 00:18:16,253
+You earned 100 XP and the Function Forger
+badge.
+
+283
+00:18:18,483 --> 00:18:22,671
+Now it is your turn: eight tasks, worth
+170 XP.
+
+284
+00:18:22,691 --> 00:18:27,863
+Three warm-up tasks at 10 XP, and three
+apply tasks at 20.
+
+285
+00:18:27,900 --> 00:18:33,038
+And two stretch tasks at 40, including an
+AI's member price to fix.
+
+286
+00:18:33,058 --> 00:18:36,272
+Try each one before you open the solution.
+
+287
+00:18:36,850 --> 00:18:38,249
+Asha's functions work.
+
+288
+00:18:38,269 --> 00:18:41,734
+But inside day total there is a variable
+called total.
+
+289
+00:18:41,754 --> 00:18:43,992
+Can the rest of the program see it?
+
+290
+00:18:44,012 --> 00:18:46,250
+And how big should one function be?
+
+291
+00:18:46,300 --> 00:18:51,650
+In Chapter 17, you will learn where
+variables live, and how to design small
+
+292
+00:18:51,670 --> 00:18:53,870
+functions that each do one job.
+
+293
+00:18:53,900 --> 00:18:55,630
+Do the warm-up tasks now.
+
+294
+00:18:55,650 --> 00:18:57,590
+They take about ten minutes.
+
+295
+00:18:57,633 --> 00:18:59,592
+See you in Chapter 17.

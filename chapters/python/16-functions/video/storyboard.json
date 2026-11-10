@@ -1,0 +1,1734 @@
+{
+ "chapter_id": "python-16",
+ "number": 16,
+ "version": 3,
+ "title": "Chapter 16: Functions: Reusable Blocks of Logic",
+ "video_title": "Python Chapter 16: Functions, Reusable Blocks of Logic",
+ "summary": "Asha copied the same summary code three times and missed a fix. Follow her as she learns functions: define and call, parameters and arguments, return versus print and None, docstrings, and a traceback through three functions. Then watch her get a function from an AI assistant at all six stages. She writes a specification and her own checks, and catches three AI mistakes.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on Asha's three copies of the summary code and the missed fix, in her words. Then the title with the AI tease, then the day report as the mission, with no output yet.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The same lines, three times",
+      "label": "Previously",
+      "body": [
+       "Asha's tracker summary from Chapter 15, copied for three days."
+      ],
+      "pre": "  # The same summary, copied three times. Then tax was added:\n\n  # Monday:     total += round(price * 1.1, 2)    <- fixed\n  # Tuesday:    total += round(price * 1.1, 2)    <- fixed\n  # Friday:     total += price                    <- missed!"
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha wanted a summary for three days. So she copied the same lines three times.",
+       "focus": "pre"
+      },
+      {
+       "say": "Then she added tax. She changed the Monday copy and the Tuesday copy, and missed Friday. Copying code means copying its mistakes.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 16",
+      "title": "Functions: Reusable Blocks of Logic",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Function Forger badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 16: functions. Write it once, use it many times."
+      },
+      {
+       "say": "And an AI assistant will write a function for Asha, and promise exactly what it prints. Your checks will decide.",
+       "subtitle": "Write it once. Name it. Test it."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_day_report.py",
+      "heading": "Today's mission: the day report",
+      "hidden_text": "By the end, you will know every line of this program."
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission: the day report. Three small functions, each with one job.",
+       "highlight": [
+        2,
+        6,
+        13
+       ]
+      },
+      {
+       "say": "And three short lines at the bottom print a report for three different days.",
+       "highlight": [
+        17,
+        18,
+        19
+       ]
+      },
+      {
+       "say": "If the tax changes, Asha edits one line. Let's build it.",
+       "highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write a function with `def`, call it, and give it inputs with parameters.",
+       "Explain `return` versus `print()`, and recognise `None`.",
+       "Write a docstring that says what a function does.",
+       "Read a traceback through several functions, from the bottom up.",
+       "Write a specification, ask AI for the code, and test it with your own checks."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write functions, return values and docstrings, and read a longer traceback.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And write a specification, ask an AI for the code, and test it with your own checks.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a function through Asha's copied code, then connect it to functions the learner already uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **function** is a named block of code you write once and run whenever you need it.",
+       "Fix a mistake inside it, and every call gets the fix.",
+       "You already use functions: `print()`, `len()`, `round()`, `input()`.",
+       "Every real program is built from many small functions."
+      ]
+     },
+     "segments": [
+      {
+       "say": "A function is a named block of code. You write it once, and run it whenever you need it. Fix a mistake inside it, and every call gets the fix.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "You have used functions since the first chapters: print, len, round and input. Now you write your own.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: define once, call many times",
+   "direction": "Teach the parts with the diagram, then the five words in a table, then the recipe card and where it stops working. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "One definition, many calls",
+      "label": "The idea",
+      "body": [
+       "The `def` line names the function. The indented lines are its body."
+      ],
+      "pre": "  def with_tax(price):              <- the name and one parameter\n      return round(price * 1.1, 2)  <- the body: indented\n                |\n  tea = with_tax(3.5)               <- a call: the argument goes in,\n                                       the returned value comes out"
+     },
+     "segments": [
+      {
+       "say": "Here is a whole function. The def line gives it a name, with tax, and one parameter, price.",
+       "focus": "pre"
+      },
+      {
+       "say": "The indented line is the body. Return hands a value back to whoever called the function."
+      },
+      {
+       "say": "The last line is a call. A value goes in, and the returned value comes out and is stored in tea."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Five words for functions",
+      "label": "The idea",
+      "columns": [
+       "Word",
+       "Meaning",
+       "Example"
+      ],
+      "rows": [
+       [
+        "define",
+        "Write the function with `def`. Nothing runs yet.",
+        "`def with_tax(price):`"
+       ],
+       [
+        "call",
+        "Run it by its name and brackets.",
+        "`with_tax(3.5)`"
+       ],
+       [
+        "parameter",
+        "A name in the `def` line that receives a value.",
+        "`price`"
+       ],
+       [
+        "argument",
+        "The value you pass in a call.",
+        "`3.5`"
+       ],
+       [
+        "return value",
+        "The value handed back to the caller.",
+        "the price with tax"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Five words. To define means to write the function, and nothing runs yet. To call means to run it, with its name and brackets.",
+       "focus_row": 1
+      },
+      {
+       "say": "A parameter is a name in the def line, an argument is the value in a call, and the return value is what comes back.",
+       "focus_row": 4
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A recipe card in the kitchen",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "The card has a name and its ingredients. The cook follows the same steps every time.",
+       "Today's ingredients go in. One dish comes out.",
+       "Unlike a cook, a function cannot taste and adjust. It does exactly what its body says."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a recipe card in the cafe kitchen. The cook follows the same steps every time. Today's ingredients go in, and one dish comes out.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "But unlike a cook, a function cannot taste the dish and adjust it. It does exactly what its body says, every time.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "In `def greet(name):`, what is `name`?",
+      "options": [
+       "an argument",
+       "a parameter",
+       "a return value",
+       "a call"
+      ],
+      "answer": 1,
+      "explain": "A name in the `def` line is a parameter. The value in a call is the argument."
+     },
+     "segments": [
+      {
+       "say": "Quick check. In this def line, what is name?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. A parameter. It is a name in the def line. The value you pass when you call the function is the argument."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`def` defines. A call runs.",
+       "Parameters receive arguments.",
+       "`return` hands a value back."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far. Next, Asha writes her first function."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Steps 1 and 2: Define, call, and pass a value",
+   "direction": "Teach that defining does not run the body and that each call runs all of it, then ask how many lines appear. Then a parameter, and ask what line 6 prints.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_welcome.py",
+      "heading": "Step 1: Define a function, then call it",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 1. Line 2 defines a function called welcome. It has no parameters, so the brackets are empty.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Lines 3 and 4 are its body, indented by four spaces. Defining the function does not run them.",
+       "highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Lines 6 and 7 are two calls. Each call runs the whole body.",
+       "highlight": [
+        6,
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How many lines does this program print?"
+     },
+     "after": [
+      {
+       "say": "Four. Each call prints the welcome and the special, so the two lines appear twice.",
+       "output": "examples/ex01_welcome.expected",
+       "highlight": [
+        6,
+        7
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_greet.py",
+      "heading": "Step 2: Give the function an input",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 2. Now the def line has a parameter, name. Line 3 uses it inside an f string.",
+       "highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 5 calls greet with the argument Omar. In that call, name refers to Omar.",
+       "highlight": [
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 6 print?"
+     },
+     "after": [
+      {
+       "say": "Hello, Lina! Your tea is ready. In the second call, name refers to Lina.",
+       "output": "examples/ex02_greet.expected",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Steps 3 and 4: Return, or print?",
+   "direction": "Teach return with ex03 and ask about lines 7 and 8. Then teach that a function without return gives back None, and ask what line 6 of ex04 prints.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_with_tax.py",
+      "heading": "Step 3: Return a value",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 3. Return ends the function and hands a value back to the line that called it.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 5 stores the returned value in tea, and line 6 prints it.",
+       "highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Line 7 prints a returned value directly. Line 8 compares one with 3, so it prints True or False.",
+       "highlight": [
+        7,
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 7 and 8 print?"
+     },
+     "after": [
+      {
+       "say": "4.4, and True. With tax, 2.75 becomes about 3.03, which is more than 3.",
+       "output": "examples/ex03_with_tax.expected",
+       "highlight": [
+        7,
+        8
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And line 6 prints 3.85, the value stored in tea. A returned value can be stored, printed or compared.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_print_not_return.py",
+      "heading": "Step 4: Print is not return",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 4. Print shows a value on the screen. Return hands a value back to the program. They are not the same.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "A function without return hands back a special value: None. It means no value at all.",
+       "highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "This function prints the price with tax. Line 5 stores whatever it hands back in result.",
+       "highlight": [
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 6 print?"
+     },
+     "after": [
+      {
+       "say": "Result is None. The function printed 3.85 on the screen, but it returned nothing.",
+       "output": "examples/ex04_print_not_return.expected",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "So if the caller needs the value, the function must return it.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: Several parameters and a docstring",
+   "direction": "Teach that arguments fill parameters in order, and the docstring. Ask what line 7 prints. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_line_total.py",
+      "heading": "Step 5: Two parameters and a docstring",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 5. Line 2 has two parameters, separated by a comma: price and count.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 3 is a docstring: a string on the first line of the body that says what the function does.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "In a call, the arguments fill the parameters in order. The first argument is the price, the second is the count.",
+       "highlight": [
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 7 print?"
+     },
+     "after": [
+      {
+       "say": "8.25. The price is 2.75, the count is 3, and 2.75 times 3 is 8.25.",
+       "output": "examples/ex05_line_total.expected",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And line 8 prints the docstring. Python keeps it under the name doc, with two underscores on each side.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`def area(width, height):` is called as `area(3, 5)`. What is `height`?",
+      "options": [
+       "`3`",
+       "`area`",
+       "`None`",
+       "`5`"
+      ],
+      "answer": 3,
+      "explain": "Arguments fill the parameters in order: width is 3, height is 5."
+     },
+     "segments": [
+      {
+       "say": "Quick check. The function area is called with 3 and 5. What is height?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. 5. Arguments fill the parameters in order. Width gets 3, and height gets 5."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A call runs the whole body.",
+       "Without `return`, you get `None`.",
+       "Arguments fill parameters in order."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Relax your shoulders for a moment. Next, functions that call other functions, and what happens when one of them fails."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: Functions that call functions",
+   "direction": "Show day_total calling with_tax. Then the same code with a text price: ask where Python stops, reveal the traceback through three functions, read it bottom-up (Chapter 9 promised this).",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_calls.py",
+      "heading": "Step 6: One function calls another",
+      "highlight": [
+       5
+      ],
+      "output": "examples/ex06_calls.expected"
+     },
+     "segments": [
+      {
+       "say": "Step 6. A function can call another function. Day total starts a total at 0, on line 6.",
+       "highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "For every price, line 8 calls with tax, and adds the returned value to the total.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Line 9 returns the total, rounded. Line 11 prints 11.28 for three prices.",
+       "highlight": [
+        9,
+        11
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_traceback.py",
+      "heading": "When something fails deep inside",
+      "highlight": [
+       11
+      ],
+      "hidden_text": "Predict where Python stops."
+     },
+     "segments": [
+      {
+       "say": "Now line 11 passes a list with one price written as text: 4.0, in quotation marks.",
+       "highlight": [
+        11
+       ]
+      },
+      {
+       "say": "Day total passes each price to with tax, one at a time. Chapter 9 promised that tracebacks grow longer with functions. Here is one.",
+       "highlight": [
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "In which function will Python stop?"
+     },
+     "after": [
+      {
+       "say": "In with tax, on line 3. Python cannot multiply text by a decimal number. The error report lists every call on the way, one block for each function.",
+       "error": "examples/ex07_traceback.expected_error",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Read it from the bottom up, as in Chapter 9. The last line names the error. The block directly above it shows where it happened: line 3, in with tax.",
+       "out_highlight": [
+        8,
+        9
+       ]
+      },
+      {
+       "say": "The block above that shows who called it: line 8, in day total.",
+       "out_highlight": [
+        5,
+        6
+       ],
+       "highlight": [
+        8
+       ]
+      },
+      {
+       "say": "And the top block is line 11, the main program. Most recent call last means the deepest call is at the bottom.",
+       "out_highlight": [
+        2,
+        3
+       ],
+       "highlight": [
+        11
+       ]
+      },
+      {
+       "say": "The cause is on line 11: the price in quotation marks.",
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the day report",
+   "direction": "Return to the mission. Walk the three functions and their docstrings, ask what line 19 prints, then reveal. Hand over to the AI feature.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_day_report.py",
+      "heading": "Mission complete: the day report",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Each function has one job and a docstring. With tax, on lines 2 to 4, adds the tax to one price.",
+       "highlight": [
+        2,
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Day total, on lines 6 to 11, adds up a whole day. It calls with tax for every price.",
+       "highlight": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+       ]
+      },
+      {
+       "say": "Report, on lines 13 to 15, prints one line: the day, the number of sales, and the total from day total.",
+       "highlight": [
+        13,
+        14,
+        15
+       ]
+      },
+      {
+       "say": "Line 19 asks for the report of a day with no sales at all: an empty list.",
+       "highlight": [
+        19
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 19 print?"
+     },
+     "after": [
+      {
+       "say": "Friday, 0 sales, 0.00. The loop in day total runs zero times, so the total stays 0.",
+       "output": "examples/ex08_day_report.expected",
+       "highlight": [
+        19
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "And Monday and Tuesday get their own lines from the same three functions. To change the tax, Asha edits one line: line 4. Mission complete!",
+       "highlight": [
+        17,
+        18
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Next, Asha wants a function for her bill splitter from Chapter 5. This time, an AI assistant writes the code, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one function",
+   "direction": "Teach the specification skill. One conversation per stage, all about share(). Generate: print instead of return. Test: no rounding, two checks False, then all True. Debug: missing argument. Improve: swapped parameters fail every check.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: a specification",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "A **specification** says a function's name, its parameters, what it returns, and examples with exact results.",
+       "You write the specification and your own checks. The AI writes the code.",
+       "Your checks decide. Never paste private data into an AI tool."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is the specification. A specification says a function's name, its parameters, what it returns, and a few examples with exact results.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "You write the specification and your own checks. The AI writes the code. And your checks decide if the code is right.",
+       "reveal": 3,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: the specification first",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I want a function for my bill splitter. It takes a total, a number of people and a tip percent. Do not write code yet. Write a specification: the name, the parameters, what it returns, and three examples with exact results."
+       },
+       {
+        "role": "ai",
+        "text": "Name: `share(total, people, tip_percent)`.\nReturns each person's share with the tip, rounded to cents.\nExamples: `share(40.0, 4, 10)` returns `11.0`. `share(43.07, 4, 0)` returns `10.77`. `share(10.0, 3, 0)` returns `3.33`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha describes the job: a total, a number of people, and a tip. She asks for a specification, and no code yet."
+      },
+      {
+       "say": "The AI gives a name, three parameters, the return value, and three examples. Asha checks example 1 by hand: 40 plus 10 percent is 44, and 44 shared by 4 is 11.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: your own checks",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote these check lines myself, from the three examples. Do not write the function. Predict what each line prints if the function follows the specification.",
+        "code": "examples/ai_share_fixed.py",
+        "code_lines": [
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Each line prints the returned value, then `True`:\n`11.0 True`, then `10.77 True`, then `3.33 True`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes three check lines herself, one for each example. Each prints the returned value, then whether it equals the expected result."
+      },
+      {
+       "say": "She asks the AI to predict them for a correct function: 11.0 True, 10.77 True, 3.33 True. Asha predicted the same.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: the function from the specification",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write the function from my specification. Then tell me exactly what this line prints: `print(f\"Each pays {share(40.0, 4, 10):.2f}\")`"
+       },
+       {
+        "role": "ai",
+        "text": "Here is the function. Your line prints `Each pays 11.00`.",
+        "code": "examples/ai_share_print.py",
+        "code_lines": [
+         2,
+         3,
+         4
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks the AI to write the function, and to say exactly what her f string line prints."
+      },
+      {
+       "say": "The AI writes three lines, and promises: Each pays 11.00.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_share_print.py",
+      "heading": "The AI's function, before Asha runs it",
+      "highlight": [
+       4,
+       6
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Here is the AI's function with Asha's line, line 6. Look at line 4, and remember step 4.",
+       "highlight": [
+        4,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The AI promises `Each pays 11.00`. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Line 4 prints the share, and the function returns nothing. So the call gives back None.",
+       "error": "examples/ai_share_print.expected_error",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The f string cannot format None with two decimal places, so Python stops with a Type Error on line 6. The AI broke its own specification, and it sounded sure.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: run the checks on the new version",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Your function printed instead of returning, so my line crashed. Fix it so that it returns the value. Then I will run my three checks on it."
+       },
+       {
+        "role": "ai",
+        "text": "You are right. Here is the corrected function. It now returns the share.",
+        "code": "examples/ai_share_noround.py",
+        "code_lines": [
+         2,
+         3
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha tells the AI what happened, and asks for a function that returns the value."
+      },
+      {
+       "say": "The AI gives a corrected version. It returns the share now. Asha does not trust it yet. She runs her three checks on it.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_share_noround.py",
+      "heading": "Asha's checks on the AI's new version",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict the checks before they run."
+     },
+     "segments": [
+      {
+       "say": "Line 3 returns the share. Compare it with the specification: rounded to cents.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Lines 5 to 10 are Asha's checks: three calls with the three examples, then three prints.",
+       "highlight": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which checks will print `False`?"
+     },
+     "after": [
+      {
+       "say": "Lines 9 and 10. The AI forgot to round. The second check is the Chapter 5 table: 43.07 shared by 4 is 10.7675, which Chapter 5 rounded to 10.77. The third has many digits.",
+       "output": "examples/ai_share_noround.expected",
+       "highlight": [
+        9,
+        10
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And the first check passed only by luck: its exact answer has no extra digits. One passing check proves nothing. Run them all.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_share_fixed.py",
+      "heading": "Round to cents, then run every check again",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_share_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha adds round, with 2 places, on line 3, as the specification says.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Then she runs every check again. 11.0 True, 10.77 True, 3.33 True. All three pass.",
+       "highlight": [
+        8,
+        9,
+        10
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I used your function in my program, and it stopped with this error. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_share_missing.py",
+        "code_lines": [
+         5,
+         6
+        ],
+        "file": "examples/ai_share_missing.py",
+        "error": "examples/ai_share_missing.expected_error"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha uses the function in her program, and it stops with a Type Error. She pastes the code and the full error report, and asks for the cause first."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the AI's answer",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I used your function in my program, and it stopped with this error. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_share_missing.py",
+        "code_lines": [
+         5,
+         6
+        ],
+        "file": "examples/ai_share_missing.py",
+        "error": "examples/ai_share_missing.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "`share()` has three parameters, but the call on line 6 passes only two arguments. Python cannot fill `tip_percent`.\nThe fix: pass the tip too, such as `share(40.0, 4, 10)`."
+       }
+      ],
+      "reveal": 2
+     },
+     "segments": [
+      {
+       "say": "The AI reads the last line: share is missing one required argument, tip percent.",
+       "focus": 1
+      },
+      {
+       "say": "The function has three parameters, but line 6 passes only two arguments. The fix: pass the tip too."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_share_missing_fixed.py",
+      "heading": "The fix: pass all three arguments",
+      "highlight": [
+       6
+      ],
+      "output": "examples/ai_share_missing_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "Asha adds the tip on line 6, and runs it again. Table 4, 11.0. The program works.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: better, but the same?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My function passes every check. Suggest one improvement, with one reason. Do not change its name, its parameters or what it returns."
+       },
+       {
+        "role": "ai",
+        "text": "Put `people` first: `share(people, total, tip_percent)`. People come before money, so it reads more naturally. The results stay the same."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one improvement. And she adds a rule: do not change the name, the parameters, or what the function returns."
+      },
+      {
+       "say": "The AI suggests putting people first, because it reads more naturally. It promises the same results.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_share_swapped.py",
+      "heading": "Testing the suggestion",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the checks before they run."
+     },
+     "segments": [
+      {
+       "say": "Asha tries it. Line 2 now has people first. Her check lines stay the same: they still pass the total first.",
+       "highlight": [
+        2,
+        5
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Will every check still print `True`?"
+     },
+     "after": [
+      {
+       "say": "No. Every check prints False. The calls pass 40 as people and 4 as the total, so the shares are tiny.",
+       "output": "examples/ai_share_swapped.expected",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "The AI broke Asha's rule: it changed the parameters. Arguments fill parameters in order, so every call now means something else. Asha keeps her version.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_share_final.py",
+      "heading": "The final function, checked again",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_share_final.expected"
+     },
+     "segments": [
+      {
+       "say": "Here is Asha's final function, with a docstring from the specification, on line 3.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "She adds the docstring, so she runs every check again. True, True, True.",
+       "highlight": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And line 12 uses it in her bill splitter: each pays 11.00.",
+       "highlight": [
+        12
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI wrote a function from your specification. Who decides if it is right?",
+      "options": [
+       "The AI's explanation",
+       "How short the code is",
+       "Your checks, run on its code",
+       "The docstring"
+      ],
+      "answer": 2,
+      "explain": "Only a real run of your checks proves it. A promise or a docstring is not proof."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI wrote a function from your specification. Who decides if it is right?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Your checks, run on its code. The AI's promise is not proof."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Specification first, then code.",
+       "Run every check after every change.",
+       "Never change the parameters without changing every call."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha wrote a specification and her own checks, and caught three AI mistakes: a print instead of a return, a missing round, and swapped parameters."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 is shown with its error. Mistake 2 is a spot-it question on the call brackets. Mistake 3 calls back to step 4. Mistake 4 asks what a return inside the loop gives.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_call_before_def.py",
+      "heading": "Mistake 1: a call before the definition",
+      "highlight": [
+       2
+      ],
+      "error": "examples/err01_call_before_def.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. Line 2 calls welcome, but the def comes later, on line 4. Python runs from top to bottom, so it does not know that name yet.",
+       "highlight": [
+        2,
+        4
+       ]
+      },
+      {
+       "say": "Python stops with a Name Error. The fix: move the call below the function.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_no_brackets.py",
+      "heading": "Mistake 2: your turn to spot it",
+      "highlight": [
+       5
+      ],
+      "hidden_text": "Find the problem before the answer appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Look closely at line 5, and remember what a call needs."
+      }
+     ],
+     "ask": {
+      "question": "What is wrong with line 5?"
+     },
+     "after": [
+      {
+       "say": "The brackets are missing. Without them, tea refers to the function itself, not to a price. Line 6 tries to add 1 to a function.",
+       "error": "examples/err02_no_brackets.expected_error",
+       "heading": "Mistake 2: a call without brackets",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: call it with an argument, such as with tax of 3.5.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_none_plus.py",
+      "heading": "Mistake 3: printing instead of returning",
+      "highlight": [
+       3
+      ],
+      "error": "examples/err03_none_plus.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 3 is step 4 again, and the AI's first mistake. The function prints 3.85, but it returns None.",
+       "highlight": [
+        3,
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "So line 5 tries to add 1 to None. None Type is the type of None. The fix: return instead of print.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex09_return_too_early.py",
+      "heading": "Mistake 4: returning too early",
+      "highlight": [
+       4,
+       5,
+       6
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. Look at the indentation of line 6. The return is inside the loop.",
+       "highlight": [
+        6
+       ]
+      },
+      {
+       "say": "A return ends the whole function at once, even in the middle of a loop.",
+       "highlight": [
+        4,
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 8 print?"
+     },
+     "after": [
+      {
+       "say": "3.5. The loop added the first price, and then return ended the function. There is no error, only a wrong answer.",
+       "output": "examples/ex09_return_too_early.expected",
+       "highlight": [
+        6,
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The fix: move return four spaces to the left, so it runs after the loop has finished.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Define before you call.",
+       "A call needs brackets.",
+       "Return after the loop, not inside it."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Now you know the four function mistakes that catch most beginners."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Write the specification for `member_price(price, is_member)`: 10 percent off for members. Give three examples, one for a non-member.",
+      "hint": "the return value, then exact examples; the body needs an if."
+     },
+     "segments": [
+      {
+       "say": "First. Asha wants a function that gives members 10 percent off. Write its specification first: the return value, and three examples, one for a non-member."
+      }
+     ],
+     "after": [
+      {
+       "say": "Then write the function, and your checks."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "A function can `return total, count`. How do you unpack the two values in the caller?",
+      "hint": "remember tuple unpacking from Chapter 13."
+     },
+     "segments": [
+      {
+       "say": "Second. A function can return two values at once, as a tuple. How would you unpack them in the line that calls it?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Write a day summary function that returns both, and test it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A function is a named block of code. `def` defines it; a call with brackets runs it.",
+       "Parameters are names in the `def` line. Arguments are the values in a call, in order.",
+       "`return` hands a value back. Without `return`, a function gives back `None`.",
+       "A docstring on the first line of the body says what the function does.",
+       "Read a long traceback from the bottom up: the bottom block is where it happened.",
+       "Write the specification and your checks first. The checks decide."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. Def defines a function, a call runs it, and parameters receive the arguments in order. Without return, you get None.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "A docstring says what the function does. A long traceback reads from the bottom up.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And with AI: write the specification and your checks first. The checks decide.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`def double(n):` has the body `n * 2`, with no `return`. What does `print(double(4))` show?",
+      "options": [
+       "`None`",
+       "`8`",
+       "`4`",
+       "an error"
+      ],
+      "answer": 0,
+      "explain": "The body calculates 8 but hands nothing back, so the call gives `None`."
+     },
+     "segments": [
+      {
+       "say": "One last check. This function calculates n times 2, but has no return. What does print of double of 4 show?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. None. The body calculates 8, but hands nothing back."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Function Forger",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Function Forger",
+      "tile": 16
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Function Forger badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "A thank-you card; Double it; Fix the None",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Change for a note; Minutes to hours; Menu lines",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Average with an empty day; Fix the AI's member price",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn: eight tasks, worth 170 XP. Three warm-up tasks at 10 XP, and three apply tasks at 20.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks at 40, including an AI's member price to fix. Try each one before you open the solution.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease Chapter 17: where variables live, and small functions with one job each. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 17",
+      "title": "Scope and Good Function Design",
+      "subtitle": "Where variables live, and functions that do one job.",
+      "badge": "",
+      "tile": 17
+     },
+     "segments": [
+      {
+       "say": "Asha's functions work. But inside day total there is a variable called total. Can the rest of the program see it? And how big should one function be?"
+      },
+      {
+       "say": "In Chapter 17, you will learn where variables live, and how to design small functions that each do one job."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 17."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}
