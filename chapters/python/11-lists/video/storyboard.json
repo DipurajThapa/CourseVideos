@@ -1,404 +1,1778 @@
 {
-  "chapter_id": "<language>-NN",
-  "number": 0,
-  "title": "Chapter NN: <Title>",
-  "video_title": "<Language> Chapter NN: <Title>",
-  "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
-  "scenes": [
+ "chapter_id": "python-11",
+ "number": 11,
+ "version": 3,
+ "title": "Chapter 11: Lists: Keeping Many Values in Order",
+ "video_title": "Python Chapter 11: Lists, Keeping Many Values in Order",
+ "summary": "The guessing game forgot every guess. Follow Asha as she learns lists: indexes from 0 and from the end, append, insert, remove and pop, slices, building a list in a loop, the in test, and sorted() against sort(). Then watch her build a top three sales line with an AI assistant at all six stages, catching the three smallest sales, an error that never happens and a change of order she did not ask for.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the forgetful game from Chapter 10. Then the title and the AI tease, then the day report as the mission, with no output yet.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
-      "beats": [
-        {
-          "visual": {
-            "type": "title",
-            "kicker": "CHAPTER NN",
-            "title": "<Title>",
-            "subtitle": "<quest line>",
-            "badge": "Reward: 100 XP and the <Badge> badge"
-          },
-          "segments": [
-            {
-              "say": "Welcome to Code Quest, Chapter NN."
-            },
-            {
-              "say": "<one sentence on what the learner will do>."
-            }
-          ]
-        },
-        {
-          "visual": {
-            "type": "code",
-            "heading": "<what to look at>",
-            "file": "examples/<flawed>.py"
-          },
-          "segments": [
-            {
-              "say": "<set up the hook>"
-            },
-            {
-              "say": "<point at the line>",
-              "highlight": [
-                2
-              ]
-            }
-          ],
-          "ask": {
-            "question": "<the question, shown with a 10-second timer>",
-            "seconds": 10
-          },
-          "after": [
-            {
-              "say": "<reveal>",
-              "output": "examples/<flawed>.expected"
-            }
-          ]
-        }
+     "visual": {
+      "type": "bullets",
+      "heading": "A game that forgets",
+      "label": "Chapter 10",
+      "reveal": 0,
+      "items": [
+       "The player guesses 7, then 12, then 15.",
+       "Each new guess replaces the one before.",
+       "At the end, the game cannot show a single guess."
       ]
+     },
+     "segments": [
+      {
+       "say": "Remember the guessing game? The player guesses 7, then 12, then 15.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Each guess lives in one variable, so each new guess replaces the one before.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "At the end, the game cannot show a single guess. It forgot them all.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
     },
     {
-      "id": "learning-goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Learning goals",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 11",
+      "title": "Lists: Keeping Many Values in Order",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the List Builder badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 11. Today you learn lists: one variable that keeps many values, in order."
+      },
+      {
+       "say": "And an AI assistant will promise the three biggest sales of the day. It will print the three smallest.",
+       "subtitle": "Keep every value. Find any one."
+      }
+     ]
     },
     {
-      "id": "why-this-matters",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Why this matters",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "the-idea",
-      "section": "The idea",
-      "title": "The idea",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "The idea",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "build-it-step-by-step",
-      "section": "Build it step by step",
-      "title": "Build it step by step",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Build it step by step",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "see-the-outcome",
-      "section": "See the outcome",
-      "title": "See the outcome",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "See the outcome",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work-with-ai",
-      "section": "Work with AI",
-      "title": "Work with AI",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Work with AI",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "common-mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Common mistakes",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "think-beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Think beyond",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Recap",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Practice",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "whats-next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "What's next",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_day_report.py",
+      "heading": "Today's mission: a report that keeps every sale",
+      "hidden_text": "By the end, you will know every line of this report."
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission. Asha's day report keeps every sale in one list, on line 2.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Then it reports the total, the average, the biggest and the smallest sale, and the best two.",
+       "highlight": [
+        6,
+        7,
+        8,
+        9,
+        12
+       ]
+      },
+      {
+       "say": "And it still shows the sales in the order they happened. Let's build it.",
+       "highlight": [
+        13
+       ]
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write a list and read any item by its index, from the start or the end.",
+       "Change a list with `append()`, `insert()`, `remove()` and `pop()`.",
+       "Take a part of a list with a slice, and predict which items it gives.",
+       "Build a list in a loop, go through it with `for`, and check for an item with `in`.",
+       "Sort a list, and use `sum()`, `min()` and `max()` to report on it."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write a list, and read any item by its position.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Add and remove items.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Take a part of a list with a slice.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "Build a list in a loop, and check whether a value is in it.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And sort a list, and add it up.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a list through the forgetful game, then connect it to apps the learner uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **list** keeps many values in one variable, in a fixed order.",
+       "A list of 3 sales and a list of 3,000 sales need the same code.",
+       "A playlist, a shopping basket, the messages in a chat: each one is a list."
+      ]
+     },
+     "segments": [
+      {
+       "say": "A list keeps many values in one variable, in a fixed order. You can add values, remove them, sort them and go through them one by one.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "And a list of 3 sales needs the same code as a list of 3,000.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Your music playlist is a list. So is your shopping basket, and the messages in a chat.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: items with an index",
+   "direction": "Teach brackets, indexes from 0 and negative indexes with the diagram. Then mutable versus strings, a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Every item has an index",
+      "label": "The idea",
+      "body": [
+       "Square brackets, with commas between the items. Counting starts at **0**."
+      ],
+      "pre": "menu = [\"tea\", \"cake\", \"juice\", \"scone\"]\n\n  index:      0       1        2        3\n  item:    \"tea\"  \"cake\"  \"juice\"  \"scone\"\n  from end:  -4      -3       -2       -1"
+     },
+     "segments": [
+      {
+       "say": "A list is written with square brackets, and commas between the items. This list has four items."
+      },
+      {
+       "say": "Each item has an index: its position. Counting starts at 0. So tea is at index 0, and scone is at index 3.",
+       "focus": "pre"
+      },
+      {
+       "say": "Negative indexes count from the end. Minus 1 is always the last item, whatever the length of the list."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A list can change",
+      "label": "The idea",
+      "reveal": 0,
+      "items": [
+       "Chapter 3: a string cannot be changed after it is made.",
+       "A list can: replace an item, add one or remove one.",
+       "A list is **mutable**: it can change after it is made."
+      ]
+     },
+     "segments": [
+      {
+       "say": "In Chapter 3, you learned that a string cannot be changed after it is made.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "A list can. You can replace an item, add one or remove one, and the list itself changes.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "We say a list is mutable. It can change after it is made.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which one can you change after it is made?",
+      "options": [
+       "A string",
+       "Both a string and a list",
+       "A list",
+       "Neither"
+      ],
+      "answer": 2,
+      "explain": "A list is mutable. A string cannot be changed after it is made."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which one can you change after it is made?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. A list. A string cannot be changed. Its methods give you a new string instead."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A list keeps many values in order.",
+       "Indexes start at 0; minus 1 is the last item.",
+       "A list can change after it is made."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far."
+      },
+      {
+       "say": "Next, Asha writes her first list."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Make a list and read its items",
+   "direction": "The file types itself in. Teach len() on lists, then ask about lines 5 and 6, then reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_order_list.py",
+      "heading": "Step 1: Today's first order",
+      "lines": 2,
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 1. Asha writes today's first order as a list: tea, cake, sandwich, and tea again. A list can hold the same value twice."
+      },
+      {
+       "say": "Line 3 prints the whole list. Line 4 prints the item at index 0.",
+       "lines": 4,
+       "highlight": [
+        3,
+        4
+       ]
+      },
+      {
+       "say": "Lines 5 and 6 print the items at index 2 and minus 1.",
+       "lines": 6,
+       "highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "And line 7 uses len, from Chapter 3. For a list, it counts the items.",
+       "lines": 7,
+       "highlight": [
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 5 and 6 print?"
+     },
+     "after": [
+      {
+       "say": "Line 5 prints sandwich, the third item, because counting starts at 0.",
+       "output": "examples/ex01_order_list.expected",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 6 prints tea, the last item.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "And notice line 3. Printing a whole list shows the brackets and the quotation marks.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Change a list",
+   "direction": "Teach the five ways to change a list with the table, then the code. Ask which item line 7 replaces, then reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Step 2: Five ways to change a list",
+      "label": "Build it",
+      "columns": [
+       "Code",
+       "What it does"
+      ],
+      "rows": [
+       [
+        "`order.append(x)`",
+        "Adds `x` at the end."
+       ],
+       [
+        "`order.insert(i, x)`",
+        "Puts `x` at index `i` and moves the rest along."
+       ],
+       [
+        "`order[i] = x`",
+        "Replaces the item at index `i`."
+       ],
+       [
+        "`order.remove(x)`",
+        "Removes the first item equal to `x`."
+       ],
+       [
+        "`order.pop()`",
+        "Removes the last item and gives it back."
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 2. A method is a function that belongs to a value, like upper for strings. Lists have methods that change the list itself."
+      },
+      {
+       "say": "Append adds an item at the end.",
+       "focus_row": 0
+      },
+      {
+       "say": "Insert puts an item at an index, and moves the rest along.",
+       "focus_row": 1
+      },
+      {
+       "say": "An index with an equals sign replaces one item.",
+       "focus_row": 2
+      },
+      {
+       "say": "Remove deletes the first item that matches.",
+       "focus_row": 3
+      },
+      {
+       "say": "And pop removes the last item, and gives it back to you.",
+       "focus_row": 4
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_change_order.py",
+      "heading": "Step 2: The order changes",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Asha's order starts with tea and cake. Line 3 appends a sandwich at the end."
+      },
+      {
+       "say": "Line 5 inserts juice at index 0, at the front. Everything else moves along by one.",
+       "highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Line 7 replaces the item at index 1 with green tea.",
+       "highlight": [
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which item does line 7 replace: juice, tea or cake?"
+     },
+     "after": [
+      {
+       "say": "Tea. After line 5, juice is at index 0, so tea moved to index 1.",
+       "output": "examples/ex02_change_order.expected",
+       "highlight": [
+        5,
+        7
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 9 removes cake.",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "And line 11 pops the last item, sandwich, and keeps it in the variable last. Line 12 prints it, then the shorter list.",
+       "highlight": [
+        11,
+        12
+       ],
+       "out_highlight": [
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Slices",
+   "direction": "Teach the slice rules first, with the range callback. Ask what line 3 prints, then reveal every line, ending with the slice past the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Step 3: A slice takes a part",
+      "label": "Build it",
+      "reveal": 0,
+      "items": [
+       "`sales[start:stop]` gives a new list.",
+       "It starts at `start` and stops **before** `stop`, like `range()`.",
+       "No start: from index 0. No stop: to the end.",
+       "A slice never goes past the end. It gives no error."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 3. A slice takes a part of a list, and gives you a new list. You write a start and a stop, with a colon between them.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "It starts at the start index, and stops before the stop index. Exactly like range in Chapter 8.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Leave out the start, and it starts at 0. Leave out the stop, and it goes to the end.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "And a slice never goes past the end of the list. It stops there, with no error.",
+       "reveal": 4,
+       "focus": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_slices.py",
+      "heading": "Step 3: Five slices",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Here are five sales. Line 3 slices from 1 to 3."
+      }
+     ],
+     "ask": {
+      "question": "What does line 3 print?"
+     },
+     "after": [
+      {
+       "say": "8.0 and 15.75: the items at index 1 and 2. Index 3 is the stop, so it is left out.",
+       "output": "examples/ex03_slices.expected",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 4 has no start, so it gives the first two. Line 5 has no stop, so it goes from index 2 to the end.",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 6 starts at minus 2, so it gives the last two sales.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "And line 7 asks for items up to index 10. The list has only five, so the slice stops at the end. No error.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Build a list in a loop",
+   "direction": "The fix for the forgetful game. Teach append in a loop, for over a list and in, then ask what line 11 prints.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_guesses.py",
+      "heading": "Step 4: A game that remembers",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears.",
+      "note": "The user will type: 7, 12 and 15"
+     },
+     "segments": [
+      {
+       "say": "Step 4. Here is the fix for the game that forgot. Line 2 makes an empty list: two brackets with nothing between them."
+      },
+      {
+       "say": "The loop asks three times. Line 5 appends each guess, so the list grows by one item on every pass.",
+       "highlight": [
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 7 goes through the list with for, one item at a time, as it went through a string in Chapter 8.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "And the word in checks whether a value is in the list. It gives True or False.",
+       "highlight": [
+        9,
+        11
+       ]
+      }
+     ],
+     "ask": {
+      "question": "The user types 7, 12 and 15. What does line 11 print?"
+     },
+     "after": [
+      {
+       "say": "False. 20 is not one of the guesses.",
+       "output": "examples/ex04_guesses.expected",
+       "highlight": [
+        11
+       ],
+       "out_highlight": [
+        9
+       ]
+      },
+      {
+       "say": "And the game remembers every guess. Line 6 shows all three.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "12 is in the list, so line 10 prints, You tried 12.",
+       "highlight": [
+        9,
+        10
+       ],
+       "out_highlight": [
+        8
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: Sort and add up",
+   "direction": "Teach sorted() against sort() with the table first. Ask what line 4 prints, reveal, then sum, min and max. Quiz, then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Step 5: Two ways to sort",
+      "label": "Build it",
+      "columns": [
+       "Code",
+       "The original list",
+       "What it gives back"
+      ],
+      "rows": [
+       [
+        "`sorted(sales)`",
+        "stays the same",
+        "a new sorted list"
+       ],
+       [
+        "`sales.sort()`",
+        "is sorted",
+        "`None`: no value"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 5. There are two ways to sort a list, and the difference matters."
+      },
+      {
+       "say": "The function sorted makes a new sorted list. The original list stays the same.",
+       "focus_row": 0
+      },
+      {
+       "say": "The method sort changes the list itself. And it gives back None, a special value that means no value.",
+       "focus_row": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_sorting.py",
+      "heading": "Step 5: sorted() and sort()",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Line 3 prints sorted sales. Line 4 prints sales itself.",
+       "highlight": [
+        3,
+        4
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 4 print?"
+     },
+     "after": [
+      {
+       "say": "The original order: 12.5, 8.0, 15.75, 9.25. Sorted made a new list, and left sales alone.",
+       "output": "examples/ex05_sorting.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 5 uses sort, so now the list itself is sorted, smallest first.",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Reverse equals True sorts from the biggest to the smallest.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        4
+       ]
+      },
+      {
+       "say": "And sum, min and max give the total, the smallest and the biggest number.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "What does `sales.sort()` give back?",
+      "options": [
+       "`None`",
+       "A new sorted list",
+       "The first item",
+       "An error"
+      ],
+      "answer": 0,
+      "explain": "`sort()` changes the list itself and gives back `None`."
+     },
+     "segments": [
+      {
+       "say": "Quick check. What does the method sort give back?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. None. It changes the list itself. The function sorted is the one that gives a new list."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`append()`, `insert()`, `remove()`, `pop()` change a list.",
+       "A slice stops before its stop index.",
+       "`sorted()` makes a new list; `sort()` gives `None`."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You now have every piece of the mission. Let's put them together."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the day report",
+   "direction": "Return to the mission. Walk every line, ask about the best two, reveal. Hand over to the top three feature.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_day_report.py",
+      "heading": "Mission complete: the day report",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the best two before the output appears."
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Line 2 keeps five sales. Line 3 appends a sixth, 6.50."
+      },
+      {
+       "say": "Line 4 adds them up with sum. Line 5 counts them with len.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 7 divides the total by len, so the average stays right when more sales arrive.",
+       "highlight": [
+        6,
+        7
+       ]
+      },
+      {
+       "say": "Lines 8 and 9 use max and min, and line 10 slices the last three. Line 11 makes a sorted copy, biggest first, and line 12 slices its first two.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11,
+        12
+       ]
+      },
+      {
+       "say": "And line 13 prints the list in the order of the day.",
+       "highlight": [
+        13
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 12 print?"
+     },
+     "after": [
+      {
+       "say": "21.0 and 15.75, the two biggest sales.",
+       "output": "examples/ex06_day_report.expected",
+       "highlight": [
+        11,
+        12
+       ],
+       "out_highlight": [
+        7
+       ]
+      },
+      {
+       "say": "And because line 11 used sorted, not sort, the last line still shows the day in order.",
+       "highlight": [
+        13
+       ],
+       "out_highlight": [
+        8
+       ]
+      },
+      {
+       "say": "Mission complete! Then Asha wants one more line: the top three sales of the day. She builds it with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one top three line",
+   "direction": "Teach the worked example skill. One conversation per stage, all about the top three line. Stage 3 gives the three smallest, stage 4 predicts a wrong IndexError, stage 5 is Asha's sort() error, stage 6 reverses the order.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: a worked example",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Ask AI to explain a slice or a method with a small list and the exact result.",
+       "Run the example yourself. The run decides.",
+       "Never paste private data. You are responsible for the code you use."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is the worked example. When AI explains a slice or a method, ask for a small list, the code and the exact result.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Then run the example yourself. And the safety habits from Chapter 1 still apply.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: the steps before the code",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I am a beginner. My list `sales` holds today's sales in the order they happened. I want a line that shows the three biggest sales, biggest first, and the day order must stay the same. Do not write code yet. List the steps and name the method or function for each."
+       },
+       {
+        "role": "ai",
+        "text": "1. Make a sorted copy, biggest first: `sorted(sales, reverse=True)`.\n2. Take its first three items with a slice: `[:3]`.\n3. Print them.\n4. Print `sales` to check that the day order did not change."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha wants the three biggest sales, biggest first, and the day order must stay the same. She asks for steps, with no code."
+      },
+      {
+       "say": "The AI's plan: a sorted copy, biggest first. A slice of its first three. Print them. Then print sales, to check the day order.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: a worked example of a slice",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote this line myself. Explain what `sales[:3]` gives, with my list as a worked example. Do not change my code.",
+        "code": "examples/ai_slice_check.py",
+        "code_lines": [
+         2,
+         3
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "`sales[:3]` takes the items at index 0, 1 and 2, in the order of the list: `[12.5, 8.0, 15.75]`.\nIt does not pick the biggest. It picks the first three."
+       },
+       {
+        "role": "you",
+        "text": "I ran it. Your example was right:",
+        "output": "examples/ai_slice_check.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes a slice herself, and asks the AI to explain it with her own list as a worked example."
+      },
+      {
+       "say": "The AI says: the first three items, in the order of the list. Not the biggest.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "She runs it. The example matches the run.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: the three biggest sales",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write code that prints the three biggest sales from my list. Show the exact output."
+       },
+       {
+        "role": "ai",
+        "text": "Here it is. It prints `Top three: [21.0, 15.75, 12.5]`.",
+        "code": "examples/ai_top_flawed.py"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks for the code, and the exact output."
+      },
+      {
+       "say": "The AI promises 21.0, 15.75 and 12.5. It sounds completely sure.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Look at line 3. Remember which way sort puts the numbers."
+      }
+     ],
+     "ask": {
+      "question": "The AI says this prints the three biggest sales. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Sort puts the smallest first, so the first three items are the three smallest."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_top_flawed.py",
+      "heading": "Asha runs it",
+      "highlight": [
+       3,
+       4
+      ],
+      "output": "examples/ai_top_flawed.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha runs it. 6.5, 8.0 and 9.25: the three smallest sales of the day."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: three lists with expected results",
+      "messages": [
+       {
+        "role": "you",
+        "text": "It printed `[6.5, 8.0, 9.25]`. My check: the first item must equal `max(sales)`, 21.0, so it fails. Fix it, then give me three test lists with the expected output: a normal day, three equal sales and a day with only two sales."
+       },
+       {
+        "role": "ai",
+        "text": "Sort with `reverse=True`, so the biggest comes first.\n1. Normal day: `[21.0, 15.75, 12.5]`\n2. Equal sales: `[5.0, 5.0, 5.0]`\n3. Two sales: an `IndexError`, because the list has fewer than three items.",
+        "code": "examples/ai_top_fixed.py",
+        "code_lines": [
+         3,
+         4
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha shows the AI a check that fails: the first of the top three must equal max, 21.0. Then she asks for a fix and three test lists, each with its expected output."
+      },
+      {
+       "say": "The fix: reverse equals True. And three expected results. For a day with only two sales, the AI predicts an Index Error.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ],
+     "ask": {
+      "question": "The AI says a day with two sales gives an `IndexError`. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Remember step 3: a slice never goes past the end of the list. It stops there, with no error."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_top_tests.py",
+      "heading": "Three test lists, on the fixed code",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "output": "examples/ai_top_tests.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha runs all three lists. A normal day: 21.0 first, and it equals max. Pass."
+      },
+      {
+       "say": "Three equal sales: three fives. Pass.",
+       "highlight": [
+        5,
+        6,
+        7
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And only two sales: 9.0 and 4.0, with no error.",
+       "highlight": [
+        8,
+        9,
+        10
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Three test lists",
+      "label": "Test",
+      "columns": [
+       "Case",
+       "The AI expected",
+       "The real run",
+       "Result"
+      ],
+      "rows": [
+       [
+        "A normal day",
+        "`[21.0, 15.75, 12.5]`",
+        "`[21.0, 15.75, 12.5]`",
+        "pass"
+       ],
+       [
+        "Three equal sales",
+        "`[5.0, 5.0, 5.0]`",
+        "`[5.0, 5.0, 5.0]`",
+        "pass"
+       ],
+       [
+        "Only two sales",
+        "an `IndexError`",
+        "`[9.0, 4.0]`",
+        "the AI was wrong"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "So the code passes all three tests. But the AI's own expectation for case 3 was wrong. A prediction is not a test. The run is.",
+       "focus_row": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I want to keep the day order, so I tried this. I got the error below. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_top_none.py",
+        "code_lines": [
+         3,
+         4
+        ],
+        "file": "examples/ai_top_none.py",
+        "error": "examples/ai_top_none.expected_error"
+       },
+       {
+        "role": "ai",
+        "text": "Line 3 is the cause. `sort()` sorts the list and gives back `None`, so `top` is `None`. Line 4 cannot slice `None`.\nThe smallest fix: `top = sorted(sales, reverse=True)`."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. The fix sorts sales itself, so the day order is lost. Asha wants to keep it, so she stores the result of sort in a new variable, top. Python stops with a Type Error."
+      },
+      {
+       "say": "She pastes the code and the full error, and asks for the cause first. The AI names line 3: sort gives back None, and nobody can slice None. The fix is sorted.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_top_sorted.py",
+      "heading": "The fix: sorted() keeps the day order",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_top_sorted.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha uses sorted on line 3. The top three are right."
+      },
+      {
+       "say": "And the day order is still there, on the last line.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: shorter, but the same?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My top three line works. Suggest one change that makes it shorter or clearer, with one reason. Do not change what it prints."
+       },
+       {
+        "role": "ai",
+        "text": "Drop `reverse=True`: sort normally and take the last three items with `top[-3:]`. It is shorter and shows the same three sales."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one change that makes the line shorter or clearer. And she adds: do not change what it prints."
+      },
+      {
+       "say": "The AI suggests: sort normally, and take the last three items with a negative slice. It says the output is the same.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_top_suggest.py",
+      "heading": "Testing the suggestion",
+      "highlight": [
+       3,
+       4
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Asha tests it. Line 3 sorts smallest first. Line 4 takes the last three."
+      }
+     ],
+     "ask": {
+      "question": "Asha said: do not change what it prints. Does the suggestion keep that promise?"
+     },
+     "after": [
+      {
+       "say": "No. The same three sales, but in the opposite order: the biggest is now last. The AI ignored her instruction.",
+       "output": "examples/ai_top_suggest.expected",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "A different order is a different output. Asha keeps her sorted version.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI explains what a slice does. What do you do next?",
+      "options": [
+       "Trust it: the explanation sounds clear",
+       "Ask the same question again",
+       "Rewrite the slice without testing",
+       "Run its worked example and compare"
+      ],
+      "answer": 3,
+      "explain": "An explanation is only as good as the result it predicts. Run it."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI explains what a slice does. What do you do next?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. Run its worked example, and compare the result."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "A prediction is not a test. The run is.",
+       "A different order is a different output."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha caught three AI mistakes: the three smallest sales, an error that never happens, and a change of order."
+      },
+      {
+       "say": "Next, the mistakes beginners make with lists."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 shows the IndexError. Mistake 2 is a spot-it on sort(). Mistake 3 shows remove(). Mistake 4 is the missing comma, then a quiz.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_index.py",
+      "heading": "Mistake 1: an index past the end",
+      "highlight": [
+       4
+      ],
+      "error": "examples/err01_index.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. This list has four items, so its indexes are 0 to 3. Line 3 prints tea.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 4 asks for index 4, which does not exist. Python stops with an Index Error: list index out of range.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: the last index is the length minus 1. Or use minus 1.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_sort_none.py",
+      "heading": "Mistake 2: your turn to spot it",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Line 3 sorts the sales, and stores the result back in sales."
+      }
+     ],
+     "ask": {
+      "question": "What does line 4 print?"
+     },
+     "after": [
+      {
+       "say": "None. Sort gives back None, so line 3 replaced the whole list with None.",
+       "output": "examples/ex07_sort_none.expected",
+       "heading": "Mistake 2: keeping the result of sort()",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The fix: write sales dot sort on its own line, or use sorted.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_remove_missing.py",
+      "heading": "Mistake 3: removing an item that is not there",
+      "highlight": [
+       3
+      ],
+      "error": "examples/err02_remove_missing.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 3. The list has tea twice. Line 3 removes only the first tea.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 5 removes juice, which is not in the list. Python stops with a Value Error.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: check with in first, and remove only when it is there.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_missing_comma.py",
+      "heading": "Mistake 4: a missing comma",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ex08_missing_comma.expected"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. Line 2 has no comma between tea and cake. Python joins two strings that stand next to each other, so you get one item: teacake.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "There is no error, but the list has 2 items, not 3. Check the count with len.",
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A list has 5 items. What is the index of the last item, counting from the start?",
+      "options": [
+       "5",
+       "minus 5",
+       "4",
+       "0"
+      ],
+      "answer": 2,
+      "explain": "Counting starts at 0, so 5 items have the indexes 0 to 4."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A list has 5 items. What is the index of the last item, counting from the start?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. 4. Counting starts at 0, so the indexes are 0 to 4."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "The last index is the length minus 1.",
+       "Never keep the result of `sort()`.",
+       "Check with `in` before you remove."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Now you know the four list mistakes that catch most beginners."
+      },
+      {
+       "say": "Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "A player types 7 twice. How could `in` let the game say \"You already guessed 7\" and not count the try?",
+      "hint": "check the list before you append."
+     },
+     "segments": [
+      {
+       "say": "First. A player types 7 twice. How could the word in let the game say, you already guessed 7, and not count the second try?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Try it in your editor after the video."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "`range()` has a step. A slice can have one too: `sales[::2]`. Which sales does it give?",
+      "hint": "predict first, then run it."
+     },
+     "segments": [
+      {
+       "say": "Second. Range has a step. A slice can have one too: two colons, then 2. Which sales does it give? Predict first, then run it."
+      }
+     ],
+     "after": [
+      {
+       "say": "Compare your prediction with the real run."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A list keeps many values in order. Indexes start at 0; `-1` is the last item.",
+       "A list is mutable: `append()`, `insert()`, `remove()` and `pop()` change it.",
+       "A slice `[start:stop]` stops before `stop` and never goes past the end.",
+       "`for` goes through a list; `in` checks whether a value is in it.",
+       "`sorted()` gives a new list; `sort()` changes the list and gives `None`.",
+       "Ask AI for a worked example, then run it yourself."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. A list keeps many values in order. Indexes start at 0, and minus 1 is the last item.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "A list can change: append, insert, remove and pop.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A slice stops before its stop index, and never goes past the end.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "For goes through a list, and in checks whether a value is in it.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Sorted gives a new list. Sort changes the list, and gives None.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And with AI: ask for a worked example, then run it yourself.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`sales = [3, 9, 1]`. What does `sorted(sales)[-1]` give?",
+      "options": [
+       "1",
+       "9",
+       "3",
+       "[1, 3, 9]"
+      ],
+      "answer": 1,
+      "explain": "`sorted()` gives `[1, 3, 9]`, and index -1 is its last item, 9."
+     },
+     "segments": [
+      {
+       "say": "One last check. Sales holds 3, 9 and 1. What does sorted sales, index minus 1, give?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. 9. Sorted gives 1, 3, 9, and minus 1 is the last item."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "List Builder",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: List Builder",
+      "tile": 11
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the List Builder badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "The drinks menu; Change the order; A week of visitors",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "The shopping list; Sales numbers; Is it on the menu?",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "The game remembers; Fix the AI's top scores",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP."
+      },
+      {
+       "say": "Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including a shopping list.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each: a game that remembers, and an AI's top scores to fix.",
+       "focus_row": 2
+      },
+      {
+       "say": "Predict first, then run. Try each task before you open the solution.",
+       "focus_row": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease dictionaries: find a price by its name, not its position. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 12",
+      "title": "Dictionaries: Looking Things Up by Name",
+      "subtitle": "Find a value by its name, not its position.",
+      "badge": "",
+      "tile": 12
+     },
+     "segments": [
+      {
+       "say": "Lists find a value by its position. But what is the price of tea? A list cannot answer by name."
+      },
+      {
+       "say": "In Chapter 12, you will learn dictionaries. They find a value by its name, like the price of tea."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 12."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }

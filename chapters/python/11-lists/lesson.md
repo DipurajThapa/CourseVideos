@@ -25,14 +25,14 @@ Lists are everywhere in real programs. A music app keeps your playlist in a list
 A list is written with square brackets, with commas between the items. Each item has an **index**: its position, counting from 0. Negative indexes count from the end, so `-1` is always the last item.
 
 ```text
-order = ["tea", "cake", "sandwich", "tea"]
+menu = ["tea", "cake", "juice", "scone"]
 
-  index:      0        1         2        3
-  item:    "tea"   "cake"  "sandwich"  "tea"
-  from end:  -4       -3        -2       -1
+  index:      0       1        2        3
+  item:    "tea"  "cake"  "juice"  "scone"
+  from end:  -4      -3       -2       -1
 ```
 
-A list can hold the same value twice, like `"tea"` here. It can hold any type: strings, numbers or a mix.
+A list can hold any type: strings, numbers or a mix. It can also hold the same value twice.
 
 In Chapter 3, you learned that a string cannot be changed after it is made. A list can. You can replace an item, add one or remove one, and the list itself changes. A list is **mutable**, which means it can change after it is made.
 
