@@ -1,0 +1,152 @@
+{
+  "chapter_id": "python-13",
+  "rendered_at": "2026-11-10T02:32:36+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "ae49082e2fd58a9cdc6ac82c42d29748bbeddcbbd4f077b0ccc62e5082f46dc5",
+  "inputs_sha256": "42b39657acfdae354c0bcdeda2262a5ef2e6f63c44b78d1e9fad72ebc2bd6471",
+  "video_sha256": "f21aa47028cd966fa77e809c8debf3b2abbc9717da330deba36b309c2913312d",
+  "duration_seconds": 1098.4,
+  "size_mb": 46.1,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.2
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 1045,
+  "questions": 18,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 48.233
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 48.233,
+      "end": 57.9
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 57.9,
+      "end": 71.0
+    },
+    {
+      "id": "idea",
+      "title": "The idea: four collections",
+      "section": "The idea",
+      "start": 71.0,
+      "end": 140.533
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Make a tuple",
+      "section": "Build it step by step",
+      "start": 140.533,
+      "end": 195.567
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Unpack a tuple",
+      "section": "Build it step by step",
+      "start": 195.567,
+      "end": 247.7
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: A list of tuples",
+      "section": "Build it step by step",
+      "start": 247.7,
+      "end": 308.567
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Remove repeats with a set",
+      "section": "Build it step by step",
+      "start": 308.567,
+      "end": 361.2
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: Add and remove items",
+      "section": "Build it step by step",
+      "start": 361.2,
+      "end": 430.167
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: Compare two sets",
+      "section": "Build it step by step",
+      "start": 430.167,
+      "end": 489.067
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the loyalty report",
+      "section": "See the outcome",
+      "start": 489.067,
+      "end": 549.5
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one welcome",
+      "section": "Work with AI",
+      "start": 549.5,
+      "end": 854.333
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 854.333,
+      "end": 951.267
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 951.267,
+      "end": 1000.067
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 1000.067,
+      "end": 1054.033
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1054.033,
+      "end": 1075.5
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1075.5,
+      "end": 1098.367
+    }
+  ]
+}

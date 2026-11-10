@@ -1,0 +1,10 @@
+# file: examples/ex05_change_set.py
+regulars = set()
+regulars.add("Omar")
+regulars.add("Lina")
+regulars.add("Omar")
+print(sorted(regulars), len(regulars))
+regulars.discard("Lina")
+regulars.discard("Zoe")
+print(sorted(regulars))
+print(type({}), type(set()))

@@ -1,0 +1,61 @@
+{
+  "id": "python-13",
+  "title": "Tuples and Sets: Fixed Groups and Unique Items",
+  "language": "python",
+  "type": "lesson",
+  "module": "M3",
+  "badge": "Collector",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "tuple",
+    "tuple index",
+    "immutability",
+    "unpacking",
+    "swapping with unpacking",
+    "list of tuples",
+    "set",
+    "set() removes repeats",
+    "in on a set",
+    "add()",
+    "discard()",
+    "empty set with set()",
+    "union |",
+    "intersection &",
+    "difference -",
+    "symmetric difference ^",
+    "sorted() for a fixed order",
+    "choosing a collection"
+  ],
+  "prerequisites": [
+    "python-12"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_welcome_flawed.py",
+    "fixed_file": "examples/ai_welcome_fixed.py",
+    "flaw": "Asked for code with an empty set called seen, the AI wrote `seen = {}` and promised three welcomes and `New today: 3`. Empty curly brackets make a dictionary, which has no `add()`, so the program stopped with `AttributeError: 'dict' object has no attribute 'add'` after the first welcome. Step 5 of the lesson catches it; `seen = set()` fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "Every example prints sorted(...) instead of a set, because the printed order of a set of strings can change between runs.",
+    "remove() on a set, frozenset, set comprehensions and the tuple methods count() and index() are left out to keep one new idea per step; comprehensions follow in Chapter 14.",
+    "The unpacking error is checked by its shared part only, because newer Python versions add how many values they got.",
+    "The AI section adds verified files for each stage: a worked example of one line, the pair moment, two test cases (one welcomes Omar twice), a typing error in the debug stage, a run of every case again, and a suggestion that removes every welcome."
+  ],
+  "outstanding_issues": [
+    "The tracebacks show the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}
