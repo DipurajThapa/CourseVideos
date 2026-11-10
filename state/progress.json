@@ -469,15 +469,19 @@
     "python-25": {
       "language": "python",
       "number": 25,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-10-47e7f0",
           "started": "2026-11-10T09:54:00+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-10T10:38:04+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-10-47e7f0"
+      "current_run_id": "2026-11-10-47e7f0",
+      "path": "chapters/python/25-project-data-report",
+      "completed": "2026-11-10T10:38:04+00:00"
     },
     "python-26": {
       "language": "python",
@@ -498,5 +502,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T09:54:00+00:00"
+  "updated": "2026-11-10T10:38:04+00:00"
 }
