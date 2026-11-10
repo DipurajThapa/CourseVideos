@@ -1,0 +1,9 @@
+tea
+coffee
+cake
+tea       3.50
+coffee    4.00
+cake      4.25
+['tea', 'coffee', 'cake']
+[3.5, 4.0, 4.25]
+11.75

@@ -1,0 +1,61 @@
+{
+  "id": "python-12",
+  "title": "Dictionaries: Looking Things Up by Name",
+  "language": "python",
+  "type": "lesson",
+  "module": "M3",
+  "badge": "Key Master",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "dictionary",
+    "key",
+    "value",
+    "d[key]",
+    "adding and changing items",
+    "del",
+    "pop()",
+    "in on keys",
+    "get()",
+    "default value",
+    "None from get()",
+    "for over a dictionary gives keys",
+    "items()",
+    "keys()",
+    "values()",
+    "counting with a dictionary",
+    "nested data",
+    "KeyError",
+    "insertion order"
+  ],
+  "prerequisites": [
+    "python-11"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_stock_flawed.py",
+    "fixed_file": "examples/ai_stock_fixed.py",
+    "flaw": "Asked to print how many of each item are left, the AI looped with `for count in stock:` and promised `Left: 4`. A loop over a dictionary gives its keys, so the program printed `Left: cake`, `Left: scone` and `Left: sandwich`. Comparing the output with the promise catches it; `for item, count in stock.items():` fixes it."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "setdefault(), update(), dictionary comprehensions, Counter and defaultdict are left out to keep one new idea per step; comprehensions follow in Chapter 14.",
+    "A missing colon after a key was dropped as a common mistake because its error message differs between Python versions; looping over a dictionary when you need its values replaces it.",
+    "The AI section adds verified files for each stage: a worked example of one line, the pair moment, three test cases (one stops with a KeyError), the fix with an in check, a run of all cases again, and a get() suggestion that changes the output."
+  ],
+  "outstanding_issues": [
+    "The tracebacks show the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

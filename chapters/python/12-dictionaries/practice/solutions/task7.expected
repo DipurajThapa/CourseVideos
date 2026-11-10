@@ -1,0 +1,10 @@
+Item (or done): tea
+How many? 2
+Item (or done): pizza
+Not on the menu.
+Item (or done): Cake
+How many? 1
+Item (or done): done
+tea: 2
+cake: 1
+Total: 11.25
