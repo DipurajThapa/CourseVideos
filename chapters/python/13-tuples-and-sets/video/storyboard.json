@@ -1,0 +1,1740 @@
+{
+ "chapter_id": "python-13",
+ "number": 13,
+ "version": 3,
+ "title": "Chapter 13: Tuples and Sets: Fixed Groups and Unique Items",
+ "video_title": "Python Chapter 13: Tuples and Sets, Fixed Groups and Unique Items",
+ "summary": "Omar is in Asha's customer list four times, so a list counts visits, not people. Follow Asha as she learns tuples and sets: fixed groups, unpacking and swapping, lists of tuples, removing repeats, add and discard, and comparing two days of customers. Then watch her build a welcome with an AI assistant at all six stages. She asks for trade-offs, and catches empty curly brackets, a wrong prediction, and a change that removed every welcome.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the problem from Chapter 12: Omar is in the customer list four times. Then the title with the AI tease, then the loyalty report as the mission, with no output yet.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Omar, four times",
+      "label": "Chapter 12",
+      "reveal": 0,
+      "items": [
+       "Asha's list of today's customers has Omar in it four times.",
+       "`len()` counts visits, not people.",
+       "How many different customers came in today?"
+      ]
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha keeps a list of today's customers. Omar loves the cafe. He is in the list four times.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "So len counts visits, not people. How many different customers came in today? A list cannot tell her.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 13",
+      "title": "Tuples and Sets: Fixed Groups and Unique Items",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Collector badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 13: tuples, for fixed groups, and sets, which keep each item only once."
+      },
+      {
+       "say": "And an AI assistant will sound completely sure about empty brackets, and be wrong. You will catch it.",
+       "subtitle": "Each item once. Fixed groups stay fixed."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_loyalty.py",
+      "heading": "Today's mission: the loyalty report",
+      "hidden_text": "By the end, you will know every line of this program."
+     },
+     "segments": [
+      {
+       "say": "So here is today's mission. Line 2 is the list of today's visits, with every repeat.",
+       "highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 5 makes a set from it, so each customer counts once. Line 4 keeps the opening hours as a fixed pair.",
+       "highlight": [
+        4,
+        5
+       ]
+      },
+      {
+       "say": "And lines 9 to 11 compare today with yesterday: who came both days, who is new, and who did not come back. Let's build it.",
+       "highlight": [
+        9,
+        10,
+        11
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write a tuple, read its values and unpack them into variables.",
+       "Make a set from a list to remove repeats, and check items with `in`.",
+       "Compare two sets with `|`, `&`, `-` and `^`.",
+       "Choose between a list, a tuple, a set and a dictionary for a task.",
+       "Ask AI to compare options with trade-offs, then test its advice."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write and unpack tuples, remove repeats with a set, compare two sets, and choose the right collection with an AI that compares the options.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a set and a tuple through the cafe, then connect them to apps the learner uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **set** keeps each item only once. It counts people, not visits.",
+       "A **tuple** keeps a fixed group, such as the opening hours.",
+       "A booking site keeps each seat once. A map stores each place as a fixed pair of numbers."
+      ]
+     },
+     "segments": [
+      {
+       "say": "A set keeps each item only once, so it counts people, not visits. A tuple keeps a fixed group together, such as the opening hours.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A booking site keeps each seat once. A map stores each place as a fixed pair of numbers. The right collection makes code shorter and safer.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: four collections",
+   "direction": "Teach the four collections with the table, row by row, then the bag of name cards. Then a quiz and a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Four collections, four jobs",
+      "label": "The idea",
+      "columns": [
+       "Collection",
+       "Written with",
+       "Keeps order",
+       "Allows repeats",
+       "Can change"
+      ],
+      "rows": [
+       [
+        "list",
+        "`[ ]`",
+        "yes",
+        "yes",
+        "yes"
+       ],
+       [
+        "tuple",
+        "`( )`",
+        "yes",
+        "yes",
+        "no"
+       ],
+       [
+        "set",
+        "`{ }` with values",
+        "no",
+        "no",
+        "yes"
+       ],
+       [
+        "dictionary",
+        "`{ }` with keys",
+        "yes",
+        "keys: no",
+        "yes"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "You now know four collections. A list, in square brackets, keeps order, allows repeats, and can change.",
+       "focus_row": 0
+      },
+      {
+       "say": "A tuple, in round brackets, is like a list that cannot change.",
+       "focus_row": 1
+      },
+      {
+       "say": "A set uses curly brackets with values inside. It keeps no order, and each item appears only once.",
+       "focus_row": 2
+      },
+      {
+       "say": "And a dictionary also uses curly brackets, but with keys and values. Each key appears once.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "A set is like a bag of name cards",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "Each name card is in the bag once. The cards are in no fixed order.",
+       "Unlike a bag: a set ignores a card that is already inside.",
+       "Add Omar four times, and the set still holds one Omar."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of a set as a bag of name cards, in no fixed order. Unlike a real bag, a set ignores a card that is already inside. Add Omar four times, and it still holds one Omar.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which collection keeps each item only once, in no fixed order?",
+      "options": [
+       "A list",
+       "A tuple",
+       "A dictionary",
+       "A set"
+      ],
+      "answer": 3,
+      "explain": "A set keeps each item once and has no order."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which collection keeps each item only once, in no fixed order?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. A set. Each item once, and no fixed order."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A list keeps every repeat.",
+       "A tuple is a fixed group.",
+       "A set keeps each item once."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Take a breather. Here is what you know so far."
+      },
+      {
+       "say": "Next, Asha stores the opening hours as a tuple."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Make a tuple",
+   "direction": "The file types itself in. Teach round brackets, the comma and indexing, then ask what lines 5 and 6 print.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_tuples.py",
+      "heading": "Step 1: The opening hours as a tuple",
+      "lines": 3,
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 1. Asha's cafe opens at 8 and closes at 18. Line 2 keeps both numbers in a tuple, with round brackets and a comma. The comma is what makes a tuple."
+      },
+      {
+       "say": "Line 3 keeps one special: a scone and its price. A tuple can hold different types.",
+       "highlight": [
+        3
+       ]
+      },
+      {
+       "say": "You read a tuple with an index, exactly like a list. Index 0 is the first value.",
+       "lines": 8,
+       "highlight": [
+        5,
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 5 and 6 print?"
+     },
+     "after": [
+      {
+       "say": "8 and 18, then Scone. Index 0 of hours is 8, index 1 is 18, and index 0 of special is the name.",
+       "output": "examples/ex01_tuples.expected",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Line 7 counts 2 values, and line 8 shows the type: tuple.",
+       "highlight": [
+        7,
+        8
+       ],
+       "out_highlight": [
+        4,
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Unpack a tuple",
+   "direction": "Teach unpacking on line 3, then the swap on line 9. Ask what line 10 prints, then call back to the Chapter 2 swap question.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_unpacking.py",
+      "heading": "Step 2: Unpacking",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 2. Unpacking puts each value of a tuple into its own variable, in one line. Line 3 gives opens the first value, and closes the second."
+      },
+      {
+       "say": "The number of names on the left must match the number of values. Line 5 unpacks the scone and its price the same way.",
+       "highlight": [
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Now lines 7 to 9. First is Omar, second is Lina. Line 9 builds a tuple on the right from the old values, second then first, and then unpacks it.",
+       "highlight": [
+        7,
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 10 print?"
+     },
+     "after": [
+      {
+       "say": "Lina, then Omar. The two names swapped places, with no third variable.",
+       "output": "examples/ex02_unpacking.expected",
+       "highlight": [
+        9,
+        10
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Remember the swap question from Chapter 2? This is the short answer. And lines 4 and 6 print the hours and the scone.",
+       "highlight": [
+        4,
+        6
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: A list of tuples",
+   "direction": "Teach unpacking in a loop, like items() in Chapter 12, and reading in two steps. Ask what line 8 prints. Then a breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_specials.py",
+      "heading": "Step 3: The specials board",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 3. A list of tuples is a common way to keep records. Each special is a name and a price."
+      },
+      {
+       "say": "Line 6 unpacks each tuple into name and price, the same way items did with a dictionary in Chapter 12. Lines 7 and 8 print the line and add the price.",
+       "highlight": [
+        6,
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Line 10 reads in two steps, like the nested menu in Chapter 12. Specials, index 1, gives one tuple. Then index 0 reads from that tuple.",
+       "highlight": [
+        10
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 10 print?"
+     },
+     "after": [
+      {
+       "say": "Scone. Index 1 is the second tuple, scone and 2.75, and index 0 is its name.",
+       "output": "examples/ex03_specials.expected",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "And the loop printed each special, lined up, with a total of 10.50.",
+       "highlight": [
+        6,
+        7,
+        8,
+        9
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Round brackets and a comma make a tuple.",
+       "Unpacking: one name for each value.",
+       "A list of tuples keeps records."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Tuples are done. Next, the hero of this chapter: the set."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Remove repeats with a set",
+   "direction": "Teach set(), no order and no positions, sorted() and in. Ask what lines 4 and 5 print, then reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_unique.py",
+      "heading": "Step 4: How many different customers?",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 4. Line 2 lists five visits, with Omar three times. Line 3 turns the list into a set, and every repeat disappears.",
+       "highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "A set has no order, so it has no positions, and printed directly, its names can change order between runs. So line 6 prints sorted, a list in a fixed order.",
+       "highlight": [
+        6
+       ]
+      },
+      {
+       "say": "And in checks a set quickly, even when it holds thousands of names.",
+       "highlight": [
+        7,
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 4 and 5 print?"
+     },
+     "after": [
+      {
+       "say": "5, then 3. The list has five visits, but the set has three different customers.",
+       "output": "examples/ex04_unique.expected",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Line 6 shows them in order: Lina, Omar, Sam. Lina is in the set, and Ravi is not.",
+       "highlight": [
+        6,
+        7,
+        8
+       ],
+       "out_highlight": [
+        3,
+        4,
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: Add and remove items",
+   "direction": "Teach add() and discard(), ask what line 6 prints, then the empty-set rule on line 10, then a quiz on it.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_change_set.py",
+      "heading": "Step 5: add() and discard()",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Step 5. Line 2 makes an empty set, with set and round brackets."
+      },
+      {
+       "say": "Add puts an item into the set. Lines 3 to 5 add Omar, Lina, and Omar again. Remember the bag of name cards.",
+       "highlight": [
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 6 prints the sorted names and the number of items.",
+       "highlight": [
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 6 print?"
+     },
+     "after": [
+      {
+       "say": "Lina and Omar, and 2. The second Omar changed nothing: he was already inside.",
+       "output": "examples/ex05_change_set.expected",
+       "highlight": [
+        5,
+        6
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Discard takes an item out. Line 8 discards Zoe, who is not in the set, and there is no error.",
+       "highlight": [
+        7,
+        8,
+        9
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "And line 10 shows an important rule. Empty curly brackets make an empty dictionary. To make an empty set, write set, with round brackets.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "How do you make an empty set?",
+      "options": [
+       "`{}`",
+       "`set()`",
+       "`[]`",
+       "`()`"
+      ],
+      "answer": 1,
+      "explain": "`{}` makes an empty dictionary. `set()` makes an empty set."
+     },
+     "segments": [
+      {
+       "say": "Quick check. How do you make an empty set?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. Set, with round brackets. Empty curly brackets make a dictionary. Keep this one in mind."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: Compare two sets",
+   "direction": "Teach the four operators with the table, then the code. Ask what line 6 prints, then reveal all four.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Step 6: Four ways to compare two sets",
+      "label": "Build it",
+      "columns": [
+       "Operator",
+       "Name",
+       "Gives the items",
+       "For the cafe"
+      ],
+      "rows": [
+       [
+        "`|`",
+        "union",
+        "in either set",
+        "everyone from both days"
+       ],
+       [
+        "`&`",
+        "intersection",
+        "in both sets",
+        "came both days"
+       ],
+       [
+        "`-`",
+        "difference",
+        "in the first set only",
+        "new today"
+       ],
+       [
+        "`^`",
+        "symmetric difference",
+        "in one set, not both",
+        "came on one day only"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 6. Four operators compare two sets. The bar is union: items in either set.",
+       "focus_row": 0
+      },
+      {
+       "say": "The and sign is intersection: items in both.",
+       "focus_row": 1
+      },
+      {
+       "say": "Minus is difference: items in the first set only.",
+       "focus_row": 2
+      },
+      {
+       "say": "And the hat sign is symmetric difference: items in one set, but not both.",
+       "focus_row": 3
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_set_ops.py",
+      "heading": "Step 6: Today and yesterday",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Today, Omar, Lina and Sam came in. Yesterday, Lina, Ravi and Sam."
+      },
+      {
+       "say": "Line 6 takes yesterday away from today.",
+       "highlight": [
+        6
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 6 print?"
+     },
+     "after": [
+      {
+       "say": "Omar, only. He came today, but not yesterday.",
+       "output": "examples/ex06_set_ops.expected",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Union gives all four names, and intersection gives Lina and Sam, who came both days.",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Symmetric difference gives Omar and Ravi: each came on one day only. And for minus, the order matters. Yesterday minus today would give Ravi.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the loyalty report",
+   "direction": "Return to the mission. Walk every line, ask about lines 7 and 8, reveal the rest. Hand over to the welcome feature.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_loyalty.py",
+      "heading": "Mission complete: the loyalty report",
+      "highlight": [
+       2,
+       3
+      ],
+      "hidden_text": "Predict the report before it appears."
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Line 2 lists today's seven visits, with Omar four times. Line 3 is yesterday's set of customers."
+      },
+      {
+       "say": "Line 4 unpacks the opening hours, and line 5 makes the set of today's customers.",
+       "highlight": [
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Line 7 counts the list. Line 8 counts the set.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Lines 9 to 11 compare the two days, and line 12 checks for Omar with in.",
+       "highlight": [
+        9,
+        10,
+        11,
+        12
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What numbers do lines 7 and 8 print?"
+     },
+     "after": [
+      {
+       "say": "Visits today, 7. Different customers, 3. The list counts visits, and the set counts people.",
+       "output": "examples/ex07_loyalty.expected",
+       "highlight": [
+        7,
+        8
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "Lina and Sam came both days. Omar is new today, and Ravi missed today.",
+       "highlight": [
+        9,
+        10,
+        11
+       ],
+       "out_highlight": [
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Each collection does one job. Mission complete! Next, Asha welcomes each new customer, with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: six stages, one welcome",
+   "direction": "Teach the trade-offs skill. One conversation per stage, all about the welcome. Generate: the AI's empty curly brackets. Test: the AI predicts one welcome for omar with a space. Debug: square brackets after add, then every case again. Improve: a suggestion that removes every welcome.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: ask for trade-offs",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "\"Which is best?\" gets one answer you cannot judge.",
+       "\"Compare the options, with a strength and a weakness each\" gets an answer you can check.",
+       "Never paste private data. You are responsible for the code you use."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill is asking for trade-offs: what you gain and what you lose with each choice. Ask for a strength and a weakness for each option, and you get an answer you can check.",
+       "reveal": 3,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: compare, then choose",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I want to welcome each customer the first time they come in today, in the order they arrive. Compare a list, a tuple, a set and a dictionary for remembering who I have welcomed. One strength and one weakness each. Do not choose for me."
+       },
+       {
+        "role": "ai",
+        "text": "List: keeps order. Weakness: `in` checks every item, one by one.\nTuple: fixed. Weakness: you cannot add a name.\nSet: each name once, and `in` is fast. Weakness: no order.\nDictionary: can count visits per name. Weakness: more than you need."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha wants to welcome each customer the first time they come in, in the order they arrive. She asks the AI to compare all four collections, and not to choose for her."
+      },
+      {
+       "say": "The AI gives a strength and a weakness for each. Asha chooses: the visit list keeps the order, and a set remembers who she has already welcomed.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write: a worked example of one line",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote these lines myself. Explain line 3 step by step, with my list as a worked example. Do not change my code.",
+        "code": "examples/ai_seen_write.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "`set(today)` goes through the list and keeps each name once: Omar, Lina and Sam.\nOmar's second visit adds nothing new, so `len(seen)` is 3, and `\"Sam\" in seen` is `True`."
+       },
+       {
+        "role": "you",
+        "text": "I ran it. Your worked example was right:",
+        "output": "examples/ai_seen_write.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes the first lines herself, and asks the AI to explain line 3 with her own list."
+      },
+      {
+       "say": "The AI explains: set of today keeps each name once, so the length is 3, and Sam is in it. She runs it, and the worked example matches.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: welcome each customer once",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write code that prints Welcome and the name the first time each customer in my list appears, then the number of new customers. Use an empty set called seen. Show the exact output."
+       },
+       {
+        "role": "ai",
+        "text": "Here it is. It prints three welcomes, then `New today: 3`.",
+        "code": "examples/ai_welcome_flawed.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Asha asks for the welcome code, with an empty set called seen, and the exact output."
+      },
+      {
+       "say": "The AI promises three welcomes, then New today, 3. Look at line 3.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ],
+     "ask": {
+      "question": "The AI promises three welcomes and `New today: 3`. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. Remember step 5: empty curly brackets make a dictionary, not a set."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_welcome_flawed.py",
+      "heading": "Asha runs it",
+      "highlight": [
+       3,
+       7
+      ],
+      "error": "examples/ai_welcome_flawed.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Asha runs it. One welcome for Omar, then the program stops on line 7.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "No attribute add means a dictionary has no add method. The AI sounded sure, and it was wrong. Set, with round brackets, fixes line 3.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: three cases, with expected output",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I fixed line 3 with set(). My rule: one welcome per person. Give me three test cases with the exact expected output: a normal day, an empty day, and a day where Omar is also typed as \"omar \", with a small letter and a space."
+       },
+       {
+        "role": "ai",
+        "text": "1. A normal day: Omar, Lina and Sam are welcomed. New today: 3.\n2. An empty day: no welcomes. New today: 0.\n3. Omar and \"omar \": one welcome for Omar, then Lina. New today: 2."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha fixes line 3, and asks for three test cases with the exact expected output. Her rule: one welcome per person."
+      },
+      {
+       "say": "The AI predicts each case. For case 3, Omar and omar with a space, it predicts one welcome for Omar.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ],
+     "ask": {
+      "question": "The AI predicts one welcome for Omar in case 3. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. A set compares the exact text. Omar with a capital O, and omar with a space, are two different names."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_welcome_fixed.py",
+      "heading": "Case 1: a normal day",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_welcome_fixed.expected",
+      "out_highlight": [
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha runs every case. The normal day: Omar, Lina and Sam are welcomed once each. New today, 3. Pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_case_empty.py",
+      "heading": "Case 2: an empty day",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_case_empty.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "The empty day: no welcomes, and New today, 0. Pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_case_spelling.py",
+      "heading": "Case 3: Omar, typed two ways",
+      "highlight": [
+       2
+      ],
+      "output": "examples/ai_case_spelling.expected",
+      "out_highlight": [
+       1,
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "And case 3: Omar is welcomed twice, once as Omar, and once as omar with a space. Fail."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Three cases on the fixed code",
+      "label": "Test",
+      "columns": [
+       "Case",
+       "Expected",
+       "The real run",
+       "Result"
+      ],
+      "rows": [
+       [
+        "A normal day",
+        "3 welcomes, New today: 3",
+        "3 welcomes, New today: 3",
+        "pass"
+       ],
+       [
+        "An empty day",
+        "New today: 0",
+        "New today: 0",
+        "pass"
+       ],
+       [
+        "Omar, typed two ways",
+        "1 welcome for Omar, New today: 2",
+        "2 welcomes for Omar, New today: 3",
+        "FAIL"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Two cases pass, and one fails. The AI's prediction for case 3 was wrong, and only the run showed it.",
+       "focus_row": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I clean each name with line 5 now. But the program stopped with this error. First explain the cause and the line. Then show the smallest fix.",
+        "code": "examples/ai_welcome_typo.py",
+        "code_lines": [
+         5,
+         6,
+         7,
+         8
+        ],
+        "file": "examples/ai_welcome_typo.py",
+        "error": "examples/ai_welcome_typo.expected_error"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha cleans each name on line 5, with strip and title from Chapter 3. But she types line 8 too fast, and the program stops. She pastes the code and the full error, and asks for the cause first."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the AI's answer",
+      "messages": [
+       {
+        "role": "you",
+        "text": "What is the cause, and the smallest fix?"
+       },
+       {
+        "role": "ai",
+        "text": "Line 8 uses square brackets after `add`. `add` is a method, so you call it with round brackets: `seen.add(name)`.\n\"Not subscriptable\" means you cannot use square brackets on it."
+       }
+      ],
+      "reveal": 2
+     },
+     "segments": [
+      {
+       "say": "The AI names line 8: square brackets after add. Add is a method, so it needs round brackets. Not subscriptable means you cannot use square brackets on it.",
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_welcome_regression.py",
+      "heading": "Run every case again",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "output": "examples/ai_welcome_regression.expected"
+     },
+     "segments": [
+      {
+       "say": "A fix can break a case that worked before, so Asha runs all three cases again. Lines 2 to 4 keep each case name with its list of visits."
+      },
+      {
+       "say": "Line 9 cleans each name, and line 12 now uses round brackets.",
+       "highlight": [
+        9,
+        12
+       ]
+      },
+      {
+       "say": "The normal day: three welcomes, New today 3. Pass.",
+       "highlight": [],
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Omar typed two ways: one welcome for Omar, then Lina. New today, 2. Pass.",
+       "out_highlight": [
+        6,
+        7,
+        8,
+        9
+       ]
+      },
+      {
+       "say": "And the empty day: New today, 0. Pass. All three cases pass.",
+       "out_highlight": [
+        10,
+        11
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: shorter, but the same?",
+      "messages": [
+       {
+        "role": "you",
+        "text": "My program passes every case. Suggest one change that makes it shorter, with one reason. The output must stay exactly the same."
+       },
+       {
+        "role": "ai",
+        "text": "Make the set from the list on line 3: `seen = set(today)`. The set then holds every name already, so you can delete the `add` line. The output stays the same."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one change that makes the code shorter. And she adds: the output must stay exactly the same."
+      },
+      {
+       "say": "The AI suggests making the set from the whole list on line 3. Then the add line is not needed, it says.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_welcome_suggest.py",
+      "heading": "Testing the suggestion",
+      "highlight": [
+       3,
+       6
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "Asha tests it on the normal day. Line 3 now fills the set with every name before the loop starts. Line 6 checks if the name is not in seen."
+      }
+     ],
+     "ask": {
+      "question": "Does the AI's version still welcome Omar, Lina and Sam?"
+     },
+     "after": [
+      {
+       "say": "No. Every name is already in seen, so the check on line 6 is never true. No welcomes at all, only New today, 3.",
+       "output": "examples/ai_welcome_suggest.expected",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The AI broke her rule: the output did not stay the same. Asha keeps her version.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which prompt gets an AI answer you can check against your job?",
+      "options": [
+       "Compare the four collections for my job, with a strength and a weakness each.",
+       "Which collection is best?",
+       "Use a set.",
+       "Write the whole program for me."
+      ],
+      "answer": 0,
+      "explain": "A comparison with trade-offs lets you judge each option against your own job."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which prompt gets an answer you can check against your job?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Ask for a comparison, with a strength and a weakness each. Then you choose."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "A set compares the exact text.",
+       "Run every case again after a fix."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha compared four options and chose one. Then she caught three AI mistakes: empty curly brackets, a wrong prediction, and a change that broke her rule. Next, the mistakes beginners make with tuples and sets."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 shows changing a tuple. Mistakes 2 and 3 are spot-it questions on rules taught in steps 1 and 4. The video leaves the unpacking mistake to the lesson.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_change_tuple.py",
+      "heading": "Mistake 1: changing a tuple",
+      "highlight": [
+       4
+      ],
+      "error": "examples/err01_change_tuple.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. Line 3 prints the hours. Line 4 tries to change the opening hour to 9.",
+       "highlight": [
+        3,
+        4
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "A tuple cannot change, so Python stops with a Type Error. Does not support item assignment means you cannot give one position a new value.",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: make a new tuple, nine and eighteen. Or use a list if the values change often.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_one_item.py",
+      "heading": "Mistake 2: your turn to spot it",
+      "highlight": [
+       2
+      ],
+      "hidden_text": "Find the problem before the answer appears."
+     },
+     "segments": [
+      {
+       "say": "Now you try. Line 2 puts round brackets around one word, tea. Remember step 1: what makes a tuple?"
+      }
+     ],
+     "ask": {
+      "question": "What type is `special` on line 2?"
+     },
+     "after": [
+      {
+       "say": "A string, not a tuple. There is no comma, so the brackets do nothing. Len counts 3 letters.",
+       "output": "examples/ex08_one_item.expected",
+       "heading": "Mistake 2: a one-item tuple without a comma",
+       "highlight": [
+        2,
+        3
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "There is no error, which makes this mistake hard to see. The fix: a comma after the value, as on line 4.",
+       "highlight": [
+        4,
+        5
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_set_index.py",
+      "heading": "Mistake 3: spot this one too",
+      "highlight": [
+       4
+      ],
+      "hidden_text": "Find the problem before the answer appears."
+     },
+     "segments": [
+      {
+       "say": "One more. Line 4 asks the set of customers for index 0. Remember step 4."
+      }
+     ],
+     "ask": {
+      "question": "What happens on line 4?"
+     },
+     "after": [
+      {
+       "say": "The program stops with a Type Error. A set has no order, so it has no positions. Not subscriptable means no square brackets.",
+       "error": "examples/err02_set_index.expected_error",
+       "heading": "Mistake 3: asking a set for a position",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: check a name with in, or use sorted to get a list you can index.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A tuple cannot change.",
+       "The comma makes a tuple.",
+       "A set has no positions."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Now you know the tuple and set mistakes that catch most beginners."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions that apply what was taught. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "One set holds the tea drinkers, one holds the cake eaters. Which operator gives both? Which gives tea but not cake?",
+      "hint": "look at the operator table from step 6."
+     },
+     "segments": [
+      {
+       "say": "First. Asha has a set of customers who ordered tea, and a set who ordered cake. Which operator gives the customers who ordered both? And which gives tea, but not cake?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Write both after the video, and run them."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "A dictionary key must never change. Could the tuple `(4, \"window\")` be a key for a table booking? Could a list?",
+      "hint": "try both, and read the error message if you get one."
+     },
+     "segments": [
+      {
+       "say": "Second. A dictionary key must never change. Could a tuple, such as table 4 by the window, be a key for a booking? Could a list?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Try both, and read the error message if you get one."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a final quick check, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A tuple is a fixed group in round brackets. Read it like a list; you cannot change it.",
+       "Unpacking puts each value into its own variable: `opens, closes = hours`.",
+       "A set keeps each item once and has no order. `set(visits)` removes repeats.",
+       "`{}` is an empty dictionary. An empty set is `set()`.",
+       "`|`, `&`, `-` and `^` compare two sets. Print `sorted(...)` for a fixed order.",
+       "Ask AI to compare options with trade-offs, then choose and test."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. A tuple is a fixed group you cannot change, and unpacking puts each value into its own variable.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A set keeps each item once, with no order. An empty set is set, with round brackets.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Four operators compare two sets, and sorted gives a fixed order.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And with AI: ask for trade-offs, then choose and test yourself.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`a = {\"tea\", \"cake\"}` and `b = {\"cake\", \"scone\"}`. What does `sorted(a & b)` give?",
+      "options": [
+       "`['cake', 'scone', 'tea']`",
+       "`['scone', 'tea']`",
+       "`['cake']`",
+       "`['tea']`"
+      ],
+      "answer": 2,
+      "explain": "`&` gives the items in both sets. Only cake is in both."
+     },
+     "segments": [
+      {
+       "say": "One last check. Set a holds tea and cake. Set b holds cake and scone. What does sorted of a and b give, with the and sign?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. Cake, only. The and sign gives the items in both sets."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Collector",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Collector",
+      "tile": 13
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Collector badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Weekend hours; Different visitors; Unpack a menu item",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "The lunch specials; Monday and Tuesday; Allergy check",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Welcome and reward; Fix the AI's set code",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. The practice file has eight tasks, worth 170 XP.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three warm-up tasks, worth 10 XP each, and three apply tasks, worth 20 each, including an allergy check.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each: a welcome with a reward, and an AI's set code to fix. Try each one before you open the solution.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease comprehensions: a loop that builds a new list in four lines, written in one. Hold quietly at the end.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 14",
+      "title": "Comprehensions: Transforming Data in One Line",
+      "subtitle": "Build a new list in one line.",
+      "badge": "",
+      "tile": 14
+     },
+     "segments": [
+      {
+       "say": "To make a list of every price with tax added, Asha writes four lines: an empty list, a loop, a sum, and append."
+      },
+      {
+       "say": "In Chapter 14, you will write that in one line, with a comprehension, and learn when a normal loop is clearer."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 14."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
+}

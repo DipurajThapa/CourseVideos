@@ -87,7 +87,9 @@ Line 3 gives `opens` the first value and `closes` the second. The number of name
 
 ```python
 # file: examples/ex03_specials.py
-specials = [("Tea", 3.5), ("Scone", 2.75), ("Cake", 4.25)]
+specials = [("Tea", 3.5),
+            ("Scone", 2.75),
+            ("Cake", 4.25)]
 total = 0
 for name, price in specials:
     print(f"{name:<8}{price:>6.2f}")
@@ -105,7 +107,7 @@ Total    10.50
 Scone
 ```
 
-Line 4 unpacks each tuple into `name` and `price`, as `items()` did with a dictionary in Chapter 12. Line 8 reads in two steps: `specials[1]` is the tuple `("Scone", 2.75)`, and `[0]` reads its first value.
+The list spreads over lines 2 to 4 to keep it easy to read. Line 6 unpacks each tuple into `name` and `price`, as `items()` did with a dictionary in Chapter 12. Line 10 reads in two steps: `specials[1]` is the tuple `("Scone", 2.75)`, and `[0]` reads its first value.
 
 **Step 4: Remove repeats with a set.** `set()` turns a list into a set, and every repeat disappears.
 

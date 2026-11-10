@@ -1,5 +1,7 @@
 # file: examples/ex03_specials.py
-specials = [("Tea", 3.5), ("Scone", 2.75), ("Cake", 4.25)]
+specials = [("Tea", 3.5),
+            ("Scone", 2.75),
+            ("Cake", 4.25)]
 total = 0
 for name, price in specials:
     print(f"{name:<8}{price:>6.2f}")
