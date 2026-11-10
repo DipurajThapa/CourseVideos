@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-17",
   "run_id": "2026-11-10-660a07",
-  "verified_at": "2026-11-10T04:45:12+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T05:04:03+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -208,17 +208,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/17-scope-and-design",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/17-scope-and-design",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/17-scope-and-design",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/17-scope-and-design"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 17.3
+        "estimated_minutes": 17.3,
+        "duration_seconds": 1056.3,
+        "size_mb": 44.7,
+        "scenes": 15,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "3bb8a82e1471c4eef748400b76929e11bc6c514c221ad3e0d216159d567f2358"
+  "fingerprint": "1bcb790eb224707ad13eb757fd7fa1447243f1c7c6fe8f2288367e44ab2b8f19"
 }

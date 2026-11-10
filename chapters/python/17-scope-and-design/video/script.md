@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:18 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:36.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:50)
 
 **Section:** Introduction
 
@@ -23,7 +23,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Only the last three lines print. Let's build it.
   **On screen:** Code `examples/ex08_day_report.py`, line 18, 19, 20 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:50 to 1:01)
 
 **Section:** Learning goals
 
@@ -37,7 +37,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Split a function that does several jobs into small functions.
     - Ask AI to split a function, and check the split against saved output.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (1:01 to 1:14)
 
 **Section:** Why this matters
 
@@ -49,7 +49,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A small function that gets its values as parameters and returns its result can be tested on its own.
     - An AI can change one small function without breaking the rest.
 
-## Scene 4: The idea: where a variable lives
+## Scene 4: The idea: where a variable lives (1:14 to 2:44)
 
 **Section:** The idea
 
@@ -83,7 +83,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Pass values in, return results out.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Steps 1 and 2: Local and global
+## Scene 5: Steps 1 and 2: Local and global (2:44 to 4:06)
 
 **Section:** Build it step by step
 
@@ -108,7 +108,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Nothing in the call shows that hidden link to line 8. That is why good functions take what they need as parameters.
   **On screen:** Code `examples/ex02_global_read.py`, line 7, 9 highlighted, output `examples/ex02_global_read.expected`
 
-## Scene 6: Step 3: Changing a global inside a function
+## Scene 6: Step 3: Changing a global inside a function (4:06 to 5:08)
 
 **Section:** Build it step by step
 
@@ -130,7 +130,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Lines 6 and 7 store each returned value. Two sales, so line 8 prints 2.
   **On screen:** Code `examples/ex04_pass_in.py`, line 6, 7, 8 highlighted, output `examples/ex04_pass_in.expected`
 
-## Scene 7: Steps 4 and 5: Default and keyword arguments
+## Scene 7: Steps 4 and 5: Default and keyword arguments (5:08 to 7:20)
 
 **Section:** Build it step by step
 
@@ -168,7 +168,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Keywords go last in the call.
 - **Breather:** 4 quiet seconds.
 
-## Scene 8: Step 6: One job per function
+## Scene 8: Step 6: One job per function (7:20 to 7:41)
 
 **Section:** Build it step by step
 
@@ -181,7 +181,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Only the main code prints. And line 13 tests day total with one comparison: True. A function that only prints could never be tested like that.
   **On screen:** Code `examples/ex07_one_job.py`, line 12, 13 highlighted, output `examples/ex07_one_job.expected`
 
-## Scene 9: See the outcome: the day report, redesigned
+## Scene 9: See the outcome: the day report, redesigned (7:41 to 8:42)
 
 **Section:** See the outcome
 
@@ -203,7 +203,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Now Asha wants to split her oldest function, close day. She asks an AI assistant to help, one stage at a time.
   **On screen:** Code `examples/ex08_day_report.py`, output `examples/ex08_day_report.expected`
 
-## Scene 10: Work with AI: six stages, one split
+## Scene 10: Work with AI: six stages, one split (8:42 to 13:42)
 
 **Section:** Work with AI
 
@@ -303,7 +303,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Test a default with two separate calls.
 - **Breather:** 4 quiet seconds.
 
-## Scene 11: Common mistakes
+## Scene 11: Common mistakes (13:42 to 15:06)
 
 **Section:** Common mistakes
 
@@ -334,7 +334,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Never a list as a default.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Think beyond
+## Scene 12: Think beyond (15:06 to 15:54)
 
 **Section:** Think beyond
 
@@ -351,7 +351,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Write the list of jobs first, as Asha did in stage 1.
   **On screen:** Question card: "A 30-line `close_day()` reads input, calculates, prints and saves. Which smaller functions would you split it into? Which could be pure?"
 
-## Scene 13: Recap
+## Scene 13: Recap (15:54 to 16:53)
 
 **Section:** Recap
 
@@ -384,7 +384,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Architect You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 14: Practice
+## Scene 14: Practice (16:53 to 17:12)
 
 **Section:** Practice
 
@@ -395,7 +395,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks at 40, including an AI's loyalty card to fix. Try each one before you open the solution.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 15: What's next
+## Scene 15: What's next (17:12 to 17:36)
 
 **Section:** What's next
 
