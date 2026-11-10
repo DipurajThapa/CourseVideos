@@ -1,6 +1,6 @@
 # Chapter 10: Boss Level 2: The Number Guessing Game
 
-> Quest: build a guessing game that picks a secret number, gives hints, counts the tries and never crashes, whatever the player types. Reward: 300 XP and the **Game Maker** badge.
+> Quest: build a guessing game that picks a secret number, gives hints, counts the tries and handles words, empty answers and wrong numbers without crashing. Reward: 300 XP and the **Game Maker** badge.
 
 ## The mission
 
@@ -16,7 +16,7 @@ This boss level uses everything from Chapters 6 to 9, and one new tool:
 | 7 | A `while` loop with a counter, `+=` and `break` |
 | 8 | A `for` loop with `range()`, to run a test many times |
 | 9 | Reading an error report, and testing with known results |
-| New | `import random` and `random.randint()`, to pick the secret number |
+| New | `import random`, `randint()`, `randrange()` and `seed()` to pick the secret number, and `isdigit()` to check an answer |
 
 ## What you will build
 
@@ -133,7 +133,7 @@ print(random.randint(1, 20))
 18
 ```
 
-Run it twice, and you get 8, 19 and 18 both times. Delete line 3, and the numbers change on every run. A real game has no seed.
+On the same version of Python, you get the same three numbers on every run. Another version can give different numbers. Delete line 3, and the numbers change on every run. A real game has no seed.
 
 **Step 4: A word crashes the game.** `int()` can only convert text that looks like a whole number. Asha typed `seven`:
 
@@ -323,7 +323,7 @@ Highest: 20
 
 ## Improve it with AI
 
-When all six tests passed, Asha asked an AI assistant: "Review my game for readability. Suggest at most two changes, each with one reason. Do not change what it prints or which answers it accepts." One suggestion was to remove `.strip()` from line 7, "because `isdigit()` already ignores spaces". Step 4 showed that `" 7".isdigit()` is `False`, so Asha tested the suggestion before accepting it. Phone keyboards often add a space after a word, so she typed `7` with a space after it:
+When all six tests passed, Asha asked an AI assistant: "Review my game for readability. Suggest at most two changes, each with one reason. Do not change what it prints or which answers it accepts." One suggestion was to remove `.strip()` from line 7, "because `isdigit()` already ignores spaces". Step 4 showed that `" 7".isdigit()` is `False`, so Asha tested the suggestion before accepting it. A space typed by accident is an easy slip, so she typed `7` with a space after it:
 
 <!-- output: examples/ai_no_strip.expected -->
 ```output

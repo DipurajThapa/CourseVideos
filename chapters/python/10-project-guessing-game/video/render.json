@@ -1,0 +1,138 @@
+{
+  "chapter_id": "python-10",
+  "rendered_at": "2026-11-10T00:33:58+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "bad610563968ebe85db8dc53903eb6052cf2df1d6a2a2b391aa0b3df82e28cae",
+  "inputs_sha256": "6cfa33540fb145adc1e75b000b13e3d5cb6e5d98831b3dba7d44e686c784b93f",
+  "video_sha256": "bf840b4e9c99a0fc5a795f9b98574d20b395a5ef4a1a27cf91b16bab67ef5399",
+  "duration_seconds": 1067.2,
+  "size_mb": 44.99,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.2
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 910,
+  "questions": 15,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 59.7
+    },
+    {
+      "id": "mission",
+      "title": "The mission",
+      "section": "The mission",
+      "start": 59.7,
+      "end": 97.9
+    },
+    {
+      "id": "build-preview",
+      "title": "What you will build",
+      "section": "What you will build",
+      "start": 97.9,
+      "end": 118.933
+    },
+    {
+      "id": "criteria",
+      "title": "Acceptance criteria",
+      "section": "Acceptance criteria",
+      "start": 118.933,
+      "end": 187.433
+    },
+    {
+      "id": "plan",
+      "title": "Plan it with AI",
+      "section": "Plan it with AI",
+      "start": 187.433,
+      "end": 234.0
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: One guess, three answers",
+      "section": "Build it step by step",
+      "start": 234.0,
+      "end": 291.833
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Five tries",
+      "section": "Build it step by step",
+      "start": 291.833,
+      "end": 347.867
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: A random secret",
+      "section": "Build it step by step",
+      "start": 347.867,
+      "end": 548.4
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Check before you convert",
+      "section": "Build it step by step",
+      "start": 548.4,
+      "end": 613.4
+    },
+    {
+      "id": "step5",
+      "title": "Step 5: Check, then convert",
+      "section": "Build it step by step",
+      "start": 613.4,
+      "end": 657.233
+    },
+    {
+      "id": "step6",
+      "title": "Step 6: Put it together",
+      "section": "Build it step by step",
+      "start": 657.233,
+      "end": 733.8
+    },
+    {
+      "id": "test",
+      "title": "Test it",
+      "section": "Test it",
+      "start": 733.8,
+      "end": 851.533
+    },
+    {
+      "id": "improve",
+      "title": "Improve it with AI",
+      "section": "Improve it with AI",
+      "start": 851.533,
+      "end": 955.1
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 955.1,
+      "end": 1043.167
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1043.167,
+      "end": 1067.2
+    }
+  ]
+}

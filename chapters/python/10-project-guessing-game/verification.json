@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-10",
   "run_id": "2026-11-09-22422e",
-  "verified_at": "2026-11-10T00:14:37+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T00:36:22+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -163,26 +163,29 @@
       "problems": [],
       "details": {
         "project.md": {
-          "sentences": 104,
+          "sentences": 105,
           "average_words": 13.0,
           "longest": 30
+        },
+        "video/script.md": {
+          "sentences": 703,
+          "average_words": 9.0,
+          "longest": 25
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/10-project-guessing-game",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/10-project-guessing-game",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/10-project-guessing-game",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/10-project-guessing-game",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/10-project-guessing-game"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.1
+        "estimated_minutes": 18.6,
+        "duration_seconds": 1067.2,
+        "size_mb": 44.99,
+        "scenes": 15,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "c1b83ec7c99a806c7dbc9a49c7a6b2569edcb24a0a27a7f5ef959c58de1e8508"
+  "fingerprint": "eafd95fca19b4cc7299caf451618f62b00c8479cde1770b902a9ed534316da5a"
 }
