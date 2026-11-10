@@ -231,8 +231,15 @@
     "python-11": {
       "language": "python",
       "number": 11,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-10-1ed31e",
+          "started": "2026-11-10T00:37:52+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-10-1ed31e"
     },
     "python-12": {
       "language": "python",
@@ -337,5 +344,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T00:36:39+00:00"
+  "updated": "2026-11-10T00:37:52+00:00"
 }
