@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-10T08:17:43+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-10T09:08:51+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -34,6 +34,7 @@ You can also ask Claude to do either.
 - **python-20**: Boss Level 4: The Tested Quiz App ([chapters/python/20-project-quiz-app](chapters/python/20-project-quiz-app)), video: [chapters/python/20-project-quiz-app/video/chapter.mp4](chapters/python/20-project-quiz-app/video/chapter.mp4)
 - **python-21**: Files and Paths: Saving and Loading Data ([chapters/python/21-files-and-paths](chapters/python/21-files-and-paths)), video: [chapters/python/21-files-and-paths/video/chapter.mp4](chapters/python/21-files-and-paths/video/chapter.mp4)
 - **python-22**: Handling Errors: try, except and Clear Messages ([chapters/python/22-exceptions](chapters/python/22-exceptions)), video: [chapters/python/22-exceptions/video/chapter.mp4](chapters/python/22-exceptions/video/chapter.mp4)
+- **python-23**: JSON and APIs: Talking to Other Programs ([chapters/python/23-json-and-apis](chapters/python/23-json-and-apis)), video: [chapters/python/23-json-and-apis/video/chapter.mp4](chapters/python/23-json-and-apis/video/chapter.mp4)
 
 ## Changes requested
 
