@@ -251,7 +251,7 @@ Biggest: milk
 
 Beans cost 30.00, so the answer should be beans. Chapter 12 explains the result: a loop over a dictionary goes through its keys, and `max()` does the same. It compares the names, not the amounts, and `milk` comes last in alphabetical order.
 
-Asha made a list of test days with the result she expected for each one. Then she ran the AI's line on all of them.
+Asha asked the AI for test days, each with the category it expected. It listed three days: three categories, one category, and a day where repairs cost the most. It forgot a day with no expenses, which criterion 5 asks for, so Asha added it as Day 4. Then she ran the AI's line on the first three days.
 
 ```python
 # file: examples/ai_max_tests.py
@@ -395,7 +395,7 @@ These are the six ways AI helped with this project. The full prompts are in [ai-
 | Plan | Suggested a data model, which Asha tested and replaced: a dictionary would lose the second milk. |
 | Write | Said which message each answer gets in Asha's own category loop, before she ran it. |
 | Generate | Wrote the biggest-category line, with a confident mistake: `max(totals)` compares names. |
-| Test | Helped list test days with expected results; one passed only by luck. |
+| Test | Listed three test days with expected results, but forgot the empty day; one day passed only by luck. |
 | Debug | Explained the `ValueError` on an empty day, then gave a loop that works for every day. |
 | Improve | Suggested `+=`, which a test showed would stop the program with a `KeyError`. |
 

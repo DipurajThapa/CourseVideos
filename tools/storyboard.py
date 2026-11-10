@@ -11,7 +11,9 @@ A beat is one picture that changes in step with its narration:
      "narration": "...",                   one block of speech, or
      "segments": [{"say": "...", ...}],    speech split into parts; the other keys of each part
                                            change the picture while that part is spoken
-                                           (highlight, lines, output, reveal, focus, focus_row ...)
+                                           (highlight, lines, output, reveal, focus, focus_row ...);
+                                           a code visual's `code_lines` shows an excerpt of a long file
+                                           with its real line numbers
      "ask": {"question": "...", "seconds": 10},
                                            an on-screen question with a digital timer; the
                                            picture stays visible underneath

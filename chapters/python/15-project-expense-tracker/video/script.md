@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:15 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:10 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -21,7 +21,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** The Expense Tracker
 - **Narration:** You will combine lists, dictionaries, sets and tuples into one tool that answers that question for any day.
   **On screen:** The Expense Tracker Record. Total. Find the biggest.
-- **Narration:** And an AI assistant will name the wrong category, and sound completely sure. Your tests will catch it.
+- **Narration:** And an AI assistant will sound completely sure at every stage. Your tests will decide who is right.
   **On screen:** The Expense Tracker Record. Total. Find the biggest.
 
 ## Scene 2: The mission
@@ -48,12 +48,18 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - She types `done` when the cafe closes.
     - The tracker prints a total for each category, the day's total and the biggest category.
     - No answer may crash it.
-- **Narration:** You know almost every piece. A while loop from Chapter 7, and a list from Chapter 11.
+- **Narration:** You know almost every piece. A while loop from Chapter 7.
+  **On screen:** Table: Everything you need (row 1 in focus)
+- **Narration:** A list from Chapter 11.
   **On screen:** Table: Everything you need (row 2 in focus)
-- **Narration:** A dictionary from Chapter 12, and sets and tuples from Chapter 13.
+- **Narration:** A dictionary from Chapter 12.
+  **On screen:** Table: Everything you need (row 3 in focus)
+- **Narration:** Sets and tuples from Chapter 13.
   **On screen:** Table: Everything you need (row 4 in focus)
-- **Narration:** And one small new tool: the replace method with a third value, to check an amount such as 12.50.
+- **Narration:** And a habit from Chapter 14: run the old and the new version on the same test cases.
   **On screen:** Table: Everything you need (row 5 in focus)
+- **Narration:** Plus one small new tool: the replace method with a third value, to check an amount such as 12.50.
+  **On screen:** Table: Everything you need (row 6 in focus)
 
 ## Scene 3: What you will build
 
@@ -67,7 +73,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `project/expense_tracker.py`, output `project/expense_tracker.expected`
 - **Narration:** Then the number of expenses, the total for the day, and the biggest category: beans.
   **On screen:** Code `project/expense_tracker.py`, output `project/expense_tracker.expected`
-- **Narration:** About twenty lines of code. By the end of this video, you will understand every one.
+- **Narration:** About twenty-five lines of code. By the end of this video, you will understand every one.
   **On screen:** Code `project/expense_tracker.py`, output `project/expense_tracker.expected`
 
 ## Scene 4: Acceptance criteria
@@ -237,11 +243,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex03_amount_check.py`, line 4, 5 highlighted, output `examples/ex03_amount_check.expected`
 - **Narration:** Only text with at most one point and nothing but digits passes. Then float is safe.
   **On screen:** Code `examples/ex03_amount_check.py`, line 4, 5 highlighted, output `examples/ex03_amount_check.expected`
-- **Narration:** Quick check. Which answer passes the amount check?
+- **Narration:** Quick check, with four new answers. Which one passes the amount check?
   **On screen:** Quick check: "Which answer passes the amount check?" (options shown)
 - **Interaction:** "Which answer passes the amount check?" stays on screen with a 10-second timer.
-- **Narration:** C, 7.25. Without its one point, it is 725: all digits.
-  **On screen:** Quick check: "Which answer passes the amount check?" (answer revealed: `7.25`)
+- **Narration:** C, 0.75. Without its one point, it is 0 7 5: all digits. And 1, dot, dot, 5 keeps a second point, so it fails.
+  **On screen:** Quick check: "Which answer passes the amount check?" (answer revealed: `0.75`)
 - **Narration:** Breather. Relax your hands. The tracker can now collect clean expenses.
   **On screen:** Breather card
     - Each expense is a tuple in a list.
@@ -287,7 +293,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Section:** Build it step by step
 
-**Direction:** Stage 3 plants the AI mistake. The learner judges it from Chapter 12, the test reveals milk, stage 4 runs test days, stage 5 debugs the empty day, a re-run of every day passes. Quiz, breather.
+**Direction:** Stage 3 plants the AI mistake. The learner judges it, the test reveals milk. Stage 4: the AI lists test days but forgets the empty day. The runs, the empty-day error, the table, stage 5 debug, a re-run of every day. Quiz, breather.
 
 - **Narration:** Step 6: the biggest category. Stage 3: generate. Asha asks the AI for one line, and asks what it gives.
   **On screen:** AI chat, stage 3: Generate: one line for the biggest
@@ -309,22 +315,38 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ai_biggest_flawed.py`, line 3 highlighted, output `examples/ai_biggest_flawed.expected`
 - **Narration:** Max compared the names. In alphabetical order, milk comes last.
   **On screen:** Code `examples/ai_biggest_flawed.py`, line 3 highlighted, output `examples/ai_biggest_flawed.expected`
-- **Narration:** Stage 4: test. Asha writes test days with the answer she expects. Day 1: beans. Day 2 has only cups. Day 3: repairs cost the most, 45.
-  **On screen:** Code `examples/ai_max_tests.py`, line 2, 3, 4 highlighted, output hidden
-- **Narration:** Lines 5 to 7 run the AI's line on each day.
+- **Narration:** Stage 4: test. Asha asks the AI for test days, each with the answer it expects.
+  **On screen:** AI chat, stage 4: Test: days with known results
+    - You: List test days for my biggest-category line. For each day, give the totals and the category you expect.
+- **Narration:** The AI lists three days: three categories, one category, and a day where repairs cost the most.
+  **On screen:** AI chat, stage 4: Test: days with known results
+    - You: List test days for my biggest-category line. For each day, give the totals and the category you expect.
+    - AI (example answer): Day 1: milk 20.5, beans 30, cups 6.25. Expect beans. Day 2: cups 9. Expect cups. Day 3: beans 5, repairs 45. Expect repairs.
+- **Narration:** But it forgot a day. Asha remembers criterion five, and adds a day with no expenses.
+  **On screen:** AI chat, stage 4: Test: days with known results
+    - You: List test days for my biggest-category line. For each day, give the totals and the category you expect.
+    - AI (example answer): Day 1: milk 20.5, beans 30, cups 6.25. Expect beans. Day 2: cups 9. Expect cups. Day 3: beans 5, repairs 45. Expect repairs.
+    - You: You forgot one day. My criteria say a day with no expenses prints Biggest: none. I am adding Day 4 with no expenses.
+- **Narration:** Lines 2 to 4 hold the AI's three test days. Lines 5 to 7 run the AI's line on each one.
   **On screen:** Code `examples/ai_max_tests.py`, line 5, 6, 7 highlighted, output hidden
 - **Interaction:** "Which of the three days give the right answer?" stays on screen with a 10-second timer.
 - **Narration:** Days 2 and 3. Day 1 fails with milk.
   **On screen:** Code `examples/ai_max_tests.py`, line 5, 6, 7 highlighted, output `examples/ai_max_tests.expected`
 - **Narration:** But Day 3 passed only by luck: repairs is also last in alphabetical order. One passing test proves little.
   **On screen:** Code `examples/ai_max_tests.py`, line 4 highlighted, output `examples/ai_max_tests.expected`
+- **Narration:** Now Asha's own day 4: no expenses. Line 2 is an empty dictionary, and line 4 calls max.
+  **On screen:** Code `examples/ai_max_empty.py`, line 2, 4 highlighted, error `examples/ai_max_empty.expected_error`
+- **Narration:** The program prints Summary, then stops with a Value Error on line 4.
+  **On screen:** Code `examples/ai_max_empty.py`, line 2, 4 highlighted, error `examples/ai_max_empty.expected_error`
 - **Narration:** Here are Asha's results. Day 1 fails.
   **On screen:** Table: Test days for the AI's line (row 1 in focus)
-- **Narration:** Days 2 and 3 pass, but Day 3 only by luck.
+- **Narration:** Day 2 passes.
+  **On screen:** Table: Test days for the AI's line (row 2 in focus)
+- **Narration:** Day 3 passes, but only by luck.
   **On screen:** Table: Test days for the AI's line (row 3 in focus)
-- **Narration:** And Day 4, the empty day from the criteria quiz, stops the program with an error.
+- **Narration:** And Day 4, the day the AI forgot, stops the program with an error.
   **On screen:** Table: Test days for the AI's line (row 4 in focus)
-- **Narration:** Stage 5: debug. Asha pastes her lines and the full error report. Value Error: max, iterable argument is empty. She asks for the cause first.
+- **Narration:** Stage 5: debug. Asha pastes her lines and the full error report. She asks for the cause first.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: On a day with no expenses, my program stopped. Here are my lines and the full error. Explain the cause first. Then show a fix that works for every day. [code `examples/ai_max_empty.py`]
 - **Narration:** The AI explains: an empty dictionary has no keys, so max has nothing to choose from. And it agrees that max compares the keys.
@@ -349,12 +371,12 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Breather. The AI was wrong, and sounded sure. Different test days caught it.
   **On screen:** Breather card
     - `max()` on a dictionary compares names.
-    - One test passed by luck.
+    - One test passed by luck, and the AI forgot a day.
     - After the fix, every day ran again.
 - **Narration:** Now, the complete tracker.
   **On screen:** Breather card
     - `max()` on a dictionary compares names.
-    - One test passed by luck.
+    - One test passed by luck, and the AI forgot a day.
     - After the fix, every day ran again.
 - **Breather:** 4 quiet seconds.
 
@@ -362,29 +384,31 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Section:** Build it step by step
 
-**Direction:** Walk the complete tracker in groups, then ask about the empty day.
+**Direction:** Walk the complete tracker in two halves, each beside the real output, then a new prediction with a test copy.
 
-- **Narration:** Step 7: the complete tracker. Lines 2 and 3: the set of categories, and an empty list.
-  **On screen:** Code `project/expense_tracker.py`, line 2, 3 highlighted, output hidden
-- **Narration:** Lines 4 to 9 are the loop from step 2.
-  **On screen:** Code `project/expense_tracker.py`, line 4, 5, 6, 7, 8, 9 highlighted, output hidden
+- **Narration:** Step 7: the complete tracker, in two halves. Lines 2 and 3: the set of categories, and an empty list.
+  **On screen:** Code `project/expense_tracker.py`, line 2, 3 highlighted, output `project/expense_tracker.expected`
+- **Narration:** Lines 4 to 9 are the loop from step 2. On the right, Asha's four categories.
+  **On screen:** Code `project/expense_tracker.py`, line 4, 5, 6, 7, 8, 9 highlighted, output `project/expense_tracker.expected`
 - **Narration:** Lines 11 to 15 ask for the amount and check it, as in step 3. A good amount becomes a tuple in the list.
-  **On screen:** Code `project/expense_tracker.py`, line 10, 11, 12, 13, 14, 15 highlighted, output hidden
-- **Narration:** Lines 16 to 18 build the totals, as in step 4.
-  **On screen:** Code `project/expense_tracker.py`, line 16, 17, 18 highlighted, output hidden
+  **On screen:** Code `project/expense_tracker.py`, line 10, 11, 12, 13, 14, 15 highlighted, output `project/expense_tracker.expected`
+- **Narration:** The second half. Lines 16 to 18 build the totals, as in step 4.
+  **On screen:** Code `project/expense_tracker.py`, line 16, 17, 18 highlighted, output `project/expense_tracker.expected`
 - **Narration:** The loop on lines 20 to 23 does two jobs. It prints each row, and it keeps the biggest category so far.
-  **On screen:** Code `project/expense_tracker.py`, line 19, 20, 21, 22, 23 highlighted, output hidden
+  **On screen:** Code `project/expense_tracker.py`, line 19, 20, 21, 22, 23 highlighted, output `project/expense_tracker.expected`
 - **Narration:** And lines 24 and 25 print the summary.
-  **On screen:** Code `project/expense_tracker.py`, line 24, 25 highlighted, output hidden
-- **Interaction:** "Asha types done at once. What does line 25 print?" stays on screen with a 10-second timer.
-- **Narration:** Biggest, none. With no expenses, the loop on line 20 never runs, so biggest keeps its starting value from line 19.
-  **On screen:** Code `project/expense_tracker.py`, line 19, 20, 25 highlighted, output hidden
+  **On screen:** Code `project/expense_tracker.py`, line 24, 25 highlighted, output `project/expense_tracker.expected`
+- **Narration:** Your turn. Asha buys paper cups twice: 2, then 3.5. Then she types done.
+  **On screen:** Code `examples/test_two_cups.py`, line 24 highlighted, output hidden
+- **Interaction:** "What does line 24 print?" stays on screen with a 10-second timer.
+- **Narration:** Expenses, 2. Total, 5.50. Both cups went into the list, and the totals added them into one row.
+  **On screen:** Code `examples/test_two_cups.py`, line 24 highlighted, output `examples/test_two_cups.expected`
 
 ## Scene 14: Test it
 
 **Section:** Test it
 
-**Direction:** The five whole-day tests with expected results, then a prediction on bad amounts, and the other runs shown as proof.
+**Direction:** The five whole-day tests with expected results, a prediction on bad amounts, the other runs as proof, then the results table.
 
 - **Narration:** Criterion six says: test it. Each test is a copy of the tracker, with its own typed answers and an expected result.
   **On screen:** Table: Five test days
@@ -394,19 +418,25 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Table: Five test days (row 2 in focus)
 - **Narration:** Bad amounts, with a comma and a word.
   **On screen:** Table: Five test days (row 3 in focus)
-- **Narration:** Unknown categories, and one expense.
+- **Narration:** Unknown categories.
+  **On screen:** Table: Five test days (row 4 in focus)
+- **Narration:** And one expense.
   **On screen:** Table: Five test days (row 5 in focus)
-- **Narration:** The bad amounts test. Asha types milk with 12 comma 50, then milk with the word twelve, then milk with 12.50.
+- **Narration:** The bad amounts test. Asha types milk with 12 comma 50, then milk with the word twelve, then milk with 12.50. Line 12 checks each amount.
   **On screen:** Code `examples/test_bad_amount.py`, line 12 highlighted, output hidden
 - **Interaction:** "How many expenses does the summary count?" stays on screen with a 10-second timer.
 - **Narration:** One. Each bad amount got a message and was never added. Only 12.50 counted. Pass!
   **On screen:** Code `examples/test_bad_amount.py`, line 12 highlighted, output `examples/test_bad_amount.expected`
 - **Narration:** The empty day: Total, 0.00, and Biggest, none. No crash. Pass!
-  **On screen:** Code `examples/test_empty.py`, line 19 highlighted, output `examples/test_empty.expected`
+  **On screen:** Code `examples/test_empty.py`, line 19, 25 highlighted, output `examples/test_empty.expected`
 - **Narration:** Unknown categories. Tea and cake each get the message. Repairs, with spaces around it, is cleaned and accepted. Pass!
-  **On screen:** Code `examples/test_unknown.py`, line 8, 9 highlighted, output `examples/test_unknown.expected`
-- **Narration:** One expense: cups, 9.00, and Biggest, cups. Pass! All five test days match their expected results.
-  **On screen:** Code `examples/test_one.py`, line 20 highlighted, output `examples/test_one.expected`
+  **On screen:** Code `examples/test_unknown.py`, line 5, 8, 9 highlighted, output `examples/test_unknown.expected`
+- **Narration:** One expense: cups, 9.00, and Biggest, cups. Pass!
+  **On screen:** Code `examples/test_one.py`, line 20, 21 highlighted, output `examples/test_one.expected`
+- **Narration:** The normal day matched at the start of this video.
+  **On screen:** Table: Five test days: results (row 1 in focus)
+- **Narration:** And the other four runs you saw match too. All five test days pass.
+  **On screen:** Table: Five test days: results
 
 ## Scene 15: Improve it with AI
 

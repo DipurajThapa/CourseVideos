@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-15",
   "run_id": "2026-11-10-024700",
-  "verified_at": "2026-11-10T03:21:03+00:00",
+  "verified_at": "2026-11-10T03:29:55+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -19,7 +19,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 25,
+        "files_run": 26,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
@@ -82,6 +82,10 @@
             "Python 3.13.18": "pass"
           },
           "examples/test_one.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/test_two_cups.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -171,14 +175,14 @@
       "problems": [],
       "details": {
         "project.md": {
-          "sentences": 120,
+          "sentences": 122,
           "average_words": 11.7,
           "longest": 30
         },
         "video/script.md": {
-          "sentences": 666,
+          "sentences": 718,
           "average_words": 8.7,
-          "longest": 28
+          "longest": 22
         }
       }
     },
@@ -192,9 +196,9 @@
         "missing video/description.md: run python3 tools/render_video.py chapters/python/15-project-expense-tracker"
       ],
       "details": {
-        "estimated_minutes": 17.3
+        "estimated_minutes": 18.2
       }
     }
   ],
-  "fingerprint": "c74b8f6996f37ed8d970361c293a3d21420f0ad516bf9dcd18cb32b98ea22ef8"
+  "fingerprint": "68e9c961af349e58e25810a1311769f17672968eb6a45f9aac92f57eac9da9c8"
 }

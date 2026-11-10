@@ -409,8 +409,12 @@ def draw_code(fr: "Frame", chapter: Path, v: dict, ask: dict | None) -> None:
     if v.get("note"):
         top = draw_rich(d, X0, top - 6, v["note"], 28, X1 - X0, C["muted"]) + 6
     src = chapter / v["file"]
-    lines = token_colours(src, src.read_text(encoding="utf-8").rstrip("\n"))
-    visible = int(v.get("lines") or len(lines))
+    all_lines = token_colours(src, src.read_text(encoding="utf-8").rstrip("\n"))
+    visible = int(v.get("lines") or len(all_lines))
+    # `code_lines` shows an excerpt of a long file, keeping the real line numbers.
+    only = v.get("code_lines")
+    numbered = [(n, ln) for n, ln in enumerate(all_lines, start=1) if not only or n in only]
+    lines = [ln for _, ln in numbered]
     side = side_panel_lines(chapter, v["file"])
     side_chars = max([28] + [len(x) for x in side])
     side_w = int(min(820, max(620, side_chars * 26 * 0.6 + 110)))
@@ -433,7 +437,7 @@ def draw_code(fr: "Frame", chapter: Path, v: dict, ask: dict | None) -> None:
     mono = font("mono", size)
     y = code_box[1] + 80
     hl = set(v.get("highlight", []))
-    for n, line in enumerate(lines, start=1):
+    for n, line in numbered:
         if n > visible:
             break
         lit = n in hl
@@ -448,7 +452,7 @@ def draw_code(fr: "Frame", chapter: Path, v: dict, ask: dict | None) -> None:
         for piece, colour in line:
             d.text((x, y), piece, font=mono, fill=_mute(colour) if dim else colour)
             x += mono.getlength(piece)
-        if n == visible and visible < len(lines):
+        if n == visible and visible < len(all_lines):
             d.rounded_rectangle([x + 4, y + 2, x + 4 + size * 0.5, y + size * 1.2], radius=2, fill=C["sky"])
         y += int(size * 1.5)
     if ask and not strip:
