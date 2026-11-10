@@ -2,7 +2,8 @@
 import json
 from pathlib import Path
 
-text = Path("scone.json").read_text(encoding="utf-8")
+path = Path("scone.json")
+text = path.read_text(encoding="utf-8")
 data = json.loads(text)
 print(type(text), type(data))
 print(data["sizes"][1])

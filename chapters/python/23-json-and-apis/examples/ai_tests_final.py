@@ -19,7 +19,8 @@ cases = [
     ("prices_today.json", "oat milk", None),
 ]
 for path, name, expected in cases:
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    text = Path(path).read_text(encoding="utf-8")
+    data = json.loads(text)
     got = price_of(data, name)
     result = "pass" if got == expected else "FAIL"
-    print(f"{path} {name}: expected {expected!r}, got {got!r}: {result}")
+    print(f"{path} {name}: got {got!r}, {result}")

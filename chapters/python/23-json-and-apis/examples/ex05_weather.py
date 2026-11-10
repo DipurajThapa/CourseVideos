@@ -2,9 +2,10 @@
 import json
 from pathlib import Path
 
-text = Path("weather_sample.json").read_text(encoding="utf-8")
-data = json.loads(text)
-print(data["location"]["name"], data["current"]["temp_c"])
+path = Path("weather_sample.json")
+data = json.loads(path.read_text(encoding="utf-8"))
+place = data["location"]["name"]
+print(place, data["current"]["temp_c"])
 print(data["current"]["condition"])
 for slot in data["forecast"]:
-    print(slot["hour"], slot["temp_c"], "rain:", slot["rain_chance"])
+    print(slot["hour"], "rain:", slot["rain_chance"])

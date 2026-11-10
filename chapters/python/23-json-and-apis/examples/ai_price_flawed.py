@@ -7,5 +7,6 @@ def price_of(data, name):
     return float(data["items"][name]["price"])
 
 
-data = json.loads(Path("prices.json").read_text(encoding="utf-8"))
+text = Path("prices.json").read_text(encoding="utf-8")
+data = json.loads(text)
 print(price_of(data, "milk"))

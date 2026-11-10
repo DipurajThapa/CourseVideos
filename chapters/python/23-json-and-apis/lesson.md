@@ -63,7 +63,8 @@ Think of a JSON response as a delivery box with labelled compartments. You open 
 # file: examples/ex01_dumps.py
 import json
 
-menu = {"item": "Tea", "price": 3.5, "vegan": True, "offer": None}
+menu = {"item": "Tea", "price": 3.5,
+        "vegan": True, "offer": None}
 text = json.dumps(menu)
 print(text)
 print(type(text))
@@ -94,7 +95,8 @@ print(type(text))
 import json
 from pathlib import Path
 
-text = Path("scone.json").read_text(encoding="utf-8")
+path = Path("scone.json")
+text = path.read_text(encoding="utf-8")
 data = json.loads(text)
 print(type(text), type(data))
 print(data["sizes"][1])
@@ -110,7 +112,7 @@ False None
 True
 ```
 
-`read_text()` gives a string. `json.loads()` turns it into a dictionary, so `data["sizes"][1]` works like any list inside a dictionary. To check for `None`, write `is None`, as line 10 does. The style guide, PEP 8, recommends `is` for `None`.
+`read_text()` gives a string. `json.loads()` turns it into a dictionary, so `data["sizes"][1]` works like any list inside a dictionary. To check for `None`, write `is None`, as line 11 does. The style guide, PEP 8, recommends `is` for `None`.
 
 **Step 3: Make JSON easy to read.** Two settings change how the text looks.
 
@@ -118,7 +120,7 @@ True
 # file: examples/ex03_pretty.py
 import json
 
-order = {"drink": "Café au lait", "sizes": ["small", "large"]}
+order = {"drink": "Café au lait", "cups": 2}
 print(json.dumps(order))
 print(json.dumps(order, ensure_ascii=False))
 print(json.dumps(order, indent=2, ensure_ascii=False))
@@ -126,14 +128,11 @@ print(json.dumps(order, indent=2, ensure_ascii=False))
 
 <!-- output: examples/ex03_pretty.expected -->
 ```output
-{"drink": "Caf\u00e9 au lait", "sizes": ["small", "large"]}
-{"drink": "Café au lait", "sizes": ["small", "large"]}
+{"drink": "Caf\u00e9 au lait", "cups": 2}
+{"drink": "Café au lait", "cups": 2}
 {
   "drink": "Café au lait",
-  "sizes": [
-    "small",
-    "large"
-  ]
+  "cups": 2
 }
 ```
 
@@ -145,10 +144,12 @@ By default, `json.dumps()` writes every character outside basic English as a cod
 # file: examples/ex04_save_load.py
 import json
 
-quiz = {"title": "Menu quiz", "pass_mark": 2, "questions": [
+questions = [
     {"ask": "Price of tea?", "answer": "3.50"},
     {"ask": "Which cake has nuts?", "answer": "carrot"},
-]}
+]
+quiz = {"title": "Menu quiz", "pass_mark": 2,
+        "questions": questions}
 
 with open("quiz.json", "w", encoding="utf-8") as file:
     json.dump(quiz, file, indent=2)
@@ -156,7 +157,8 @@ with open("quiz.json", "w", encoding="utf-8") as file:
 with open("quiz.json", encoding="utf-8") as file:
     loaded = json.load(file)
 
-print(loaded["title"], "has", len(loaded["questions"]), "questions")
+count = len(loaded["questions"])
+print(loaded["title"], "has", count, "questions")
 print(loaded["questions"][1]["ask"])
 print(loaded == quiz)
 ```
@@ -201,21 +203,22 @@ Live answers change every minute, so they cannot be checked against an expected 
 import json
 from pathlib import Path
 
-text = Path("weather_sample.json").read_text(encoding="utf-8")
-data = json.loads(text)
-print(data["location"]["name"], data["current"]["temp_c"])
+path = Path("weather_sample.json")
+data = json.loads(path.read_text(encoding="utf-8"))
+place = data["location"]["name"]
+print(place, data["current"]["temp_c"])
 print(data["current"]["condition"])
 for slot in data["forecast"]:
-    print(slot["hour"], slot["temp_c"], "rain:", slot["rain_chance"])
+    print(slot["hour"], "rain:", slot["rain_chance"])
 ```
 
 <!-- output: examples/ex05_weather.expected -->
 ```output
 Riverside 31.5
 Sunny
-12:00 33.0 rain: 0
-15:00 34.5 rain: 10
-18:00 29.0 rain: 40
+12:00 rain: 0
+15:00 rain: 10
+18:00 rain: 40
 ```
 
 Follow the path from the outside in. `data["current"]` is a dictionary, so `["temp_c"]` comes next. `data["forecast"]` is a list, so you loop over it, and each `slot` is a dictionary.
@@ -227,19 +230,20 @@ Follow the path from the outside in. `data["current"]` is a dictionary, so `["te
 import json
 from pathlib import Path
 
-text = Path("weather_sample.json").read_text(encoding="utf-8")
-current = json.loads(text)["current"]
+path = Path("weather_sample.json")
+data = json.loads(path.read_text(encoding="utf-8"))
+current = data["current"]
 print(current.get("condition", "unknown"))
-print(current.get("wind_kph", "not in this response"))
+print(current.get("wind_kph", "not sent"))
 print(current["wind_kph"])
 ```
 
 <!-- error: examples/ex06_safe_get.expected_error -->
 ```output
 Sunny
-not in this response
+not sent
 Traceback (most recent call last):
-  File "ex06_safe_get.py", line 9, in <module>
+  File "ex06_safe_get.py", line 10, in <module>
     print(current["wind_kph"])
           ~~~~~~~^^^^^^^^^^^^
 KeyError: 'wind_kph'
@@ -288,8 +292,10 @@ def load_json(path):
 weather = load_json("weather_sample.json")
 temp = weather["current"]["temp_c"]
 drink = "Iced tea" if temp >= 30 else "Hot tea"
-rain = [slot["hour"] for slot in weather["forecast"] if slot["rain_chance"] >= 30]
-board = {"drink": drink, "temp_c": temp, "rain_hours": rain, "tip": "Café au lait"}
+rain = [slot["hour"] for slot in weather["forecast"]
+        if slot["rain_chance"] >= 30]
+board = {"drink": drink, "temp_c": temp,
+         "rain_hours": rain, "tip": "Café au lait"}
 
 text = json.dumps(board, indent=2, ensure_ascii=False)
 Path("board.json").write_text(text, encoding="utf-8")
@@ -353,14 +359,15 @@ def price_of(data, name):
     return float(data["items"][name]["price"])
 
 
-data = json.loads(Path("prices.json").read_text(encoding="utf-8"))
+text = Path("prices.json").read_text(encoding="utf-8")
+data = json.loads(text)
 print(price_of(data, "milk"))
 ```
 
 <!-- error: examples/ai_price_flawed.expected_error -->
 ```output
 Traceback (most recent call last):
-  File "ai_price_flawed.py", line 11, in <module>
+  File "ai_price_flawed.py", line 12, in <module>
     print(price_of(data, "milk"))
           ~~~~~~~~^^^^^^^^^^^^^^
   File "ai_price_flawed.py", line 7, in price_of
@@ -384,19 +391,21 @@ def price_of(data, name):
     return None
 
 
-data = json.loads(Path("prices.json").read_text(encoding="utf-8"))
-cases = [("milk", 1.2), ("oat milk", 1.85), ("flour", None)]
+text = Path("prices.json").read_text(encoding="utf-8")
+data = json.loads(text)
+cases = [("milk", 1.2), ("oat milk", 1.85),
+         ("flour", None)]
 for name, expected in cases:
     got = price_of(data, name)
     result = "pass" if got == expected else "FAIL"
-    print(f"{name}: expected {expected!r}, got {got!r}: {result}")
+    print(f"{name}: got {got!r}, {result}")
 ```
 
 <!-- output: examples/ai_tests_flawed.expected -->
 ```output
-milk: expected 1.2, got '1.20': FAIL
-oat milk: expected 1.85, got '1.85': FAIL
-flour: expected None, got None: pass
+milk: got '1.20', FAIL
+oat milk: got '1.85', FAIL
+flour: got None, pass
 ```
 
 This supplier sends prices as strings, with quotation marks. Adding `float()` fixed it, and every case passed:
@@ -414,19 +423,21 @@ def price_of(data, name):
     return None
 
 
-data = json.loads(Path("prices.json").read_text(encoding="utf-8"))
-cases = [("milk", 1.2), ("oat milk", 1.85), ("flour", None)]
+text = Path("prices.json").read_text(encoding="utf-8")
+data = json.loads(text)
+cases = [("milk", 1.2), ("oat milk", 1.85),
+         ("flour", None)]
 for name, expected in cases:
     got = price_of(data, name)
     result = "pass" if got == expected else "FAIL"
-    print(f"{name}: expected {expected!r}, got {got!r}: {result}")
+    print(f"{name}: got {got!r}, {result}")
 ```
 
 <!-- output: examples/ai_tests_fixed.expected -->
 ```output
-milk: expected 1.2, got 1.2: pass
-oat milk: expected 1.85, got 1.85: pass
-flour: expected None, got None: pass
+milk: got 1.2, pass
+oat milk: got 1.85, pass
+flour: got None, pass
 ```
 
 Two habits caught both mistakes: reading the sample yourself, and testing the exact value and type.
@@ -482,14 +493,15 @@ TypeError: dump() missing 1 required positional argument: 'fp'
 # file: examples/err03_text_not_dict.py
 from pathlib import Path
 
-text = Path("scone.json").read_text(encoding="utf-8")
+path = Path("scone.json")
+text = path.read_text(encoding="utf-8")
 print(text["item"])
 ```
 
 <!-- error: examples/err03_text_not_dict.expected_error -->
 ```output
 Traceback (most recent call last):
-  File "err03_text_not_dict.py", line 5, in <module>
+  File "err03_text_not_dict.py", line 6, in <module>
     print(text["item"])
           ~~~~^^^^^^^^
 TypeError: string indices must be integers, not 'str'

@@ -1,4 +1,4 @@
-prices.json milk: expected 1.2, got 1.2: pass
-prices.json oat milk: expected 1.85, got 1.85: pass
-prices.json flour: expected None, got None: pass
-prices_today.json oat milk: expected None, got None: pass
+prices.json milk: got 1.2, pass
+prices.json oat milk: got 1.85, pass
+prices.json flour: got None, pass
+prices_today.json oat milk: got None, pass

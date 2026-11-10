@@ -10,6 +10,8 @@ def price_of(data, name):
     return None
 
 
-data = json.loads(Path("prices_today.json").read_text(encoding="utf-8"))
+path = Path("prices_today.json")
+text = path.read_text(encoding="utf-8")
+data = json.loads(text)
 print(price_of(data, "milk"))
 print(price_of(data, "oat milk"))

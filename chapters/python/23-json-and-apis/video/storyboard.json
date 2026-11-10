@@ -1,404 +1,1845 @@
 {
-  "chapter_id": "<language>-NN",
-  "number": 0,
-  "title": "Chapter NN: <Title>",
-  "video_title": "<Language> Chapter NN: <Title>",
-  "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
-  "scenes": [
+ "chapter_id": "python-23",
+ "number": 23,
+ "version": 3,
+ "title": "Chapter 23: JSON and APIs: Talking to Other Programs",
+ "video_title": "Python Chapter 23: JSON and APIs, Talking to Other Programs",
+ "summary": "Asha's quiz is data inside data, and a weather service answers in JSON. Follow her as she turns data into JSON and back, saves and loads JSON files, and reads a saved API response. Then watch her build a supplier price reader with an AI assistant at all six stages, where the sample and her tests catch three confident AI mistakes.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the Chapter 22 limit: the quiz is data inside data, and a CSV row is flat. Title and AI tease, then the mission code with no output.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
-      "beats": [
-        {
-          "visual": {
-            "type": "title",
-            "kicker": "CHAPTER NN",
-            "title": "<Title>",
-            "subtitle": "<quest line>",
-            "badge": "Reward: 100 XP and the <Badge> badge"
-          },
-          "segments": [
-            {
-              "say": "Welcome to Code Quest, Chapter NN."
-            },
-            {
-              "say": "<one sentence on what the learner will do>."
-            }
-          ]
-        },
-        {
-          "visual": {
-            "type": "code",
-            "heading": "<what to look at>",
-            "file": "examples/<flawed>.py"
-          },
-          "segments": [
-            {
-              "say": "<set up the hook>"
-            },
-            {
-              "say": "<point at the line>",
-              "highlight": [
-                2
-              ]
-            }
-          ],
-          "ask": {
-            "question": "<the question, shown with a 10-second timer>",
-            "seconds": 10
-          },
-          "after": [
-            {
-              "say": "<reveal>",
-              "output": "examples/<flawed>.expected"
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "text",
+      "heading": "Data inside data",
+      "label": "The problem",
+      "body": [
+       "A CSV row holds only flat values."
+      ],
+      "pre": "  Asha's quiz\n  -----------\n  title:      Menu quiz\n  pass mark:  2\n  questions:  Price of tea?          3.50\n              Which cake has nuts?   carrot"
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha's quiz has a title, a pass mark, and questions with their own answers. That is data inside data, and a CSV row cannot hold it.",
+       "focus": "pre"
+      }
+     ]
     },
     {
-      "id": "learning-goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Learning goals",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 23",
+      "title": "JSON and APIs: Talking to Other Programs",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Connector badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 23. Today, your programs talk to other programs."
+      },
+      {
+       "say": "And an AI assistant will read a supplier's price list, and promise you a number. Your tests will decide.",
+       "subtitle": "Read it. Check it. Save it."
+      }
+     ]
     },
     {
-      "id": "why-this-matters",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Why this matters",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "the-idea",
-      "section": "The idea",
-      "title": "The idea",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "The idea",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "build-it-step-by-step",
-      "section": "Build it step by step",
-      "title": "Build it step by step",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Build it step by step",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "see-the-outcome",
-      "section": "See the outcome",
-      "title": "See the outcome",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "See the outcome",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work-with-ai",
-      "section": "Work with AI",
-      "title": "Work with AI",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Work with AI",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "common-mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Common mistakes",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "think-beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Think beyond",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Recap",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Practice",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "whats-next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "What's next",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_daily_board.py",
+      "heading": "Today's mission: the cafe's daily board",
+      "hidden_text": "By the end, you will know every line."
+     },
+     "segments": [
+      {
+       "say": "Here is today's mission. The daily board reads a weather response, and picks the drink of the day.",
+       "highlight": [
+        11,
+        12,
+        13
+       ]
+      },
+      {
+       "say": "Then it saves the board as JSON, for the screen behind the counter. Let's build it, piece by piece.",
+       "highlight": [
+        19,
+        20
+       ]
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Turn Python data into JSON text and back.",
+       "Save and load JSON files, keeping accents.",
+       "Explain how a web API answers a request.",
+       "Read nested values from a saved API response.",
+       "Ask an AI to explain a JSON response, then check its code."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Turn data into JSON text and back, and save it in files.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Explain how a web service answers, and read the values you need.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And ask an AI to explain a response, then check its code.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define JSON and why programs share it.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "**JSON** is a text format for structured data.",
+       "Almost every programming language can read it.",
+       "Weather, payment and delivery services all answer in JSON."
+      ]
+     },
+     "segments": [
+      {
+       "say": "JSON, short for JavaScript Object Notation, is a text format for structured data: dictionaries, lists, text and numbers, inside each other.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Almost every language can read it. So weather, payment and delivery services all send their answers as JSON.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: JSON text and Python data",
+   "direction": "Teach the type table, the two directions, the API conversation and the analogy. Quiz on null. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "JSON and Python",
+      "label": "The idea",
+      "columns": [
+       "JSON",
+       "Python"
+      ],
+      "rows": [
+       [
+        "object `{\"item\": \"Tea\"}`",
+        "`dict`"
+       ],
+       [
+        "array `[\"small\", \"large\"]`",
+        "`list`"
+       ],
+       [
+        "string `\"Tea\"`, double quotes only",
+        "`str`"
+       ],
+       [
+        "number `3.5`",
+        "`int` or `float`"
+       ],
+       [
+        "`true` and `false`",
+        "`True` and `False`"
+       ],
+       [
+        "`null`",
+        "`None`"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "JSON looks almost like a Python dictionary, but it is text. A JSON object becomes a dictionary.",
+       "focus_row": 0
+      },
+      {
+       "say": "An array becomes a list.",
+       "focus_row": 1
+      },
+      {
+       "say": "A string becomes a string. JSON allows only double quotation marks.",
+       "focus_row": 2
+      },
+      {
+       "say": "True and false are written in small letters. And null is JSON's word for nothing.",
+       "focus_row": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Two directions",
+      "label": "The idea",
+      "body": [
+       "`json.dumps()`: data to text. `json.loads()`: text to data."
+      ],
+      "pre": "   Python data           json.dumps()         JSON text\n  {\"vegan\": True}   ------------------->  '{\"vegan\": true}'\n                    <-------------------\n                         json.loads()"
+     },
+     "segments": [
+      {
+       "say": "The json module translates in both directions. Dump s turns Python data into JSON text. Load s turns the text back into data.",
+       "focus": "pre"
+      },
+      {
+       "say": "Read the S as string. Without the S, dump and load work with a file instead."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "How a web API answers",
+      "label": "The idea",
+      "body": [
+       "A **web API** is a service that other programs can ask for data."
+      ],
+      "pre": "  Your program                        Weather service\n  REQUEST:  GET https://api.example.com/weather  -->\n                         <--  RESPONSE: status 200 OK\n                              body: {\"current\": {\"temp_c\": 31.5}}"
+     },
+     "segments": [
+      {
+       "say": "A web API is a service that other programs can ask for data. Your program sends a request to a web address.",
+       "focus": "pre"
+      },
+      {
+       "say": "The service sends back a response. The status code says how it went: 200 means OK, and 404 means not found."
+      },
+      {
+       "say": "The body holds the data, usually as JSON. Many services also want an API key: a secret password for programs. Keep it out of your code, and out of AI chats."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "What does JSON `null` become in Python?",
+      "options": [
+       "`0`",
+       "`\"\"`, an empty string",
+       "`False`",
+       "`None`"
+      ],
+      "answer": 3,
+      "explain": "`null` is JSON's word for nothing, and Python's word for nothing is `None`."
+     },
+     "segments": [
+      {
+       "say": "Quick check. What does JSON null become in Python?"
+      }
+     ],
+     "after": [
+      {
+       "say": "D. None. Null and None both mean: nothing here."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "JSON is text for structured data.",
+       "`dumps` makes text. `loads` makes data.",
+       "An API answers with a status code and a body."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You know what JSON is, and how a service answers."
+      },
+      {
+       "say": "Next, Asha turns her first dictionary into JSON."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Data to JSON text",
+   "direction": "Teach dumps on the menu item. Ask what line 6 prints for True and None. Reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_dumps.py",
+      "heading": "Step 1: Data to JSON text",
+      "highlight": [
+       4,
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. Lines 4 and 5 hold a Python dictionary for one menu item. It holds a string, a float, True, and None."
+      },
+      {
+       "say": "Line 6 turns it into JSON text with dump s. Line 7 prints it, and line 8 prints its type.",
+       "highlight": [
+        6,
+        7,
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How does line 7 write `True` and `None`?"
+     },
+     "after": [
+      {
+       "say": "True becomes true, in small letters. And None becomes null. Exactly as the table said.",
+       "output": "examples/ex01_dumps.expected",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And the result is a string. Now Asha can save it in a file, or send it to another program.",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: JSON text to data",
+   "direction": "Show the scone file. Teach read_text then loads. Ask what line 8 prints. Reveal, then is None.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "A saved JSON file",
+      "label": "Build it",
+      "body": [
+       "`scone.json`: one menu item, saved as JSON."
+      ],
+      "pre": "  scone.json\n  {\n    \"item\": \"Scone\",\n    \"price\": 2.75,\n    \"sizes\": [\"small\", \"large\"],\n    \"vegan\": false,\n    \"offer\": null\n  }"
+     },
+     "segments": [
+      {
+       "say": "Step 2. Here is a saved file, scone dot json. Look at the sizes: an array of two strings.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_loads.py",
+      "heading": "Step 2: JSON text to data",
+      "highlight": [
+       5,
+       6,
+       7
+      ]
+     },
+     "segments": [
+      {
+       "say": "Lines 5 and 6 read the file. Read text gives a string. Line 7 turns that string into data, with load s."
+      },
+      {
+       "say": "Line 8 prints both types. Line 9 picks one size from the list.",
+       "highlight": [
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 9 print?"
+     },
+     "after": [
+      {
+       "say": "Large. The text became a dictionary, so sizes is a list, and index 1 is its second item.",
+       "output": "examples/ex02_loads.expected",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Line 10 shows false and null as Python's False and None.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "To check for None, write is None, as line 11 does. Python's style guide, pep eight, recommends is for None.",
+       "highlight": [
+        11
+       ],
+       "out_highlight": [
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Readable JSON",
+   "direction": "Teach the default escape codes and the two settings. Ask what line 5 prints for the accent. Reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_pretty.py",
+      "heading": "Step 3: JSON that people can read",
+      "highlight": [
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 3. Line 4 holds a drink with an accent: Café au lait."
+      },
+      {
+       "say": "By default, dump s writes every character outside basic English as a code. So the e with an accent becomes backslash u, 0 0 e 9.",
+       "highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Ensure ascii equals False turns that off. Indent equals 2 puts each value on its own line.",
+       "highlight": [
+        6,
+        7
+       ]
+      }
+     ],
+     "ask": {
+      "question": "How does line 5 write the word `Café`?"
+     },
+     "after": [
+      {
+       "say": "As a code: C a f, then backslash u 0 0 e 9. The data is still correct, but hard for people to read.",
+       "output": "examples/ex03_pretty.expected",
+       "highlight": [
+        5
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Line 6 keeps the real letter. Line 7 also indents, two spaces for each level.",
+       "highlight": [
+        6,
+        7
+       ],
+       "out_highlight": [
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Save and load a file",
+   "direction": "Asha saves her quiz with dump and loads it with load. Ask what line 17 prints. Reveal. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_save_load.py",
+      "heading": "Step 4: Save the quiz, load it back",
+      "highlight": [
+       4,
+       5,
+       6,
+       7,
+       8,
+       9
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 4. Here is Asha's quiz: a title, a pass mark, and a list of questions, each a dictionary."
+      },
+      {
+       "say": "Line 12 uses dump, without the S. It writes straight into the open file.",
+       "highlight": [
+        11,
+        12
+       ]
+      },
+      {
+       "say": "Line 15 uses load, without the S. It reads the data back from the file.",
+       "highlight": [
+        14,
+        15
+       ]
+      },
+      {
+       "say": "Line 20 compares the loaded data with the original.",
+       "highlight": [
+        20
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 20 print?"
+     },
+     "after": [
+      {
+       "say": "True. The loaded quiz is equal to the original, so nothing was lost.",
+       "output": "examples/ex04_save_load.expected",
+       "highlight": [
+        20
+       ],
+       "out_highlight": [
+        3
+       ]
+      },
+      {
+       "say": "Line 19 reaches inside: the second question, then its ask.",
+       "highlight": [
+        19
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`dumps` and `loads` work with strings.",
+       "`dump` and `load` work with files.",
+       "`ensure_ascii=False` keeps accents."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Asha's quiz now lives in a file, data inside data. Next, the weather service."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: A saved API response",
+   "direction": "Show the illustrative live call, then why programmers save a sample. Show the sample. Ask what line 7 prints. Reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Step 5: Asking a real service",
+      "label": "Build it",
+      "body": [
+       "On your own computer, the standard library can send the request."
+      ],
+      "pre": "  # illustrative: api.example.com is a placeholder\n  import json\n  from urllib.request import urlopen\n\n  with urlopen(\"https://api.example.com/weather\") as response:\n      print(response.status)\n      data = json.load(response)"
+     },
+     "segments": [
+      {
+       "say": "Step 5. On your own computer, a program can ask a real service for data. The url lib module, from the standard library, sends the request.",
+       "focus": "pre"
+      },
+      {
+       "say": "This address is a placeholder. Live answers change every minute, so programmers save one real response as a file, called a sample response, and test on it."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "Asha's sample response",
+      "label": "Build it",
+      "body": [
+       "A saved answer from a weather service."
+      ],
+      "pre": "  weather_sample.json\n  {\n    \"location\": {\"name\": \"Riverside\"},\n    \"current\": {\"temp_c\": 31.5, \"condition\": \"Sunny\"},\n    \"forecast\": [\n      {\"hour\": \"12:00\", \"temp_c\": 33.0, \"rain_chance\": 0},\n      {\"hour\": \"15:00\", \"temp_c\": 34.5, \"rain_chance\": 10},\n      {\"hour\": \"18:00\", \"temp_c\": 29.0, \"rain_chance\": 40}\n    ]\n  }"
+     },
+     "segments": [
+      {
+       "say": "Here is Asha's sample. Location and current are objects. Forecast is a list of three objects.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_weather.py",
+      "heading": "Step 5: Read the sample",
+      "highlight": [
+       5,
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "Lines 5 and 6 read the file, and turn it into data."
+      },
+      {
+       "say": "Follow the path from the outside in. Line 7 opens location, then name. Line 8 opens current, then temp C, the number inside it.",
+       "highlight": [
+        7,
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 8 print?"
+     },
+     "after": [
+      {
+       "say": "Riverside 31.5. The name from location, and the temperature from current.",
+       "output": "examples/ex05_weather.expected",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "Forecast is a list, so lines 10 and 11 loop over it. Each slot is a dictionary.",
+       "highlight": [
+        10,
+        11
+       ],
+       "out_highlight": [
+        3,
+        4,
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: Missing fields and bad text",
+   "direction": "get() with a default, then a KeyError. Then JSONDecodeError with try. Quiz. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_safe_get.py",
+      "heading": "Step 6: A field that is not there",
+      "highlight": [
+       8
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 6. A service can leave a field out. Get, from Chapter 12, returns a default instead of crashing."
+      },
+      {
+       "say": "The sample has no wind field. Line 9 asks for it with get. Line 10 asks with square brackets.",
+       "highlight": [
+        9,
+        10
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 9 print?"
+     },
+     "after": [
+      {
+       "say": "Not sent: the default. Get never crashes.",
+       "error": "examples/ex06_safe_get.expected_error",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "Line 10 stops with a key error. Use square brackets for fields the service always sends, and get for fields that may be missing.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_bad_json.py",
+      "heading": "Text that is not valid JSON",
+      "highlight": [
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Text that is not valid JSON raises a JSON decode error. Line 4 holds three texts. Look at the quotation marks."
+      },
+      {
+       "say": "Lines 6 to 9 catch the error with try, as in Chapter 22. Error dot msg holds the short reason.",
+       "highlight": [
+        6,
+        7,
+        8,
+        9
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Which of the three texts loads?"
+     },
+     "after": [
+      {
+       "say": "Only the first. JSON allows only double quotation marks, so the second fails.",
+       "output": "examples/ex07_bad_json.expected",
+       "highlight": [
+        4
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "The third is empty. That happens when a service sends no body: expecting value.",
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "Which function writes JSON straight into an open file?",
+      "options": [
+       "`json.dump()`",
+       "`json.dumps()`",
+       "`json.loads()`",
+       "`json.load()`"
+      ],
+      "answer": 0,
+      "explain": "`dump` without the s writes into a file. `dumps` returns a string."
+     },
+     "segments": [
+      {
+       "say": "Quick check. Which function writes JSON straight into an open file?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. Dump, without the S. Dump s returns a string instead."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Save a sample response, and test on it.",
+       "Follow the path from the outside in.",
+       "`get()` for fields that may be missing."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You can read a service's answer, and survive a missing field. Now, back to the mission."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the daily board",
+   "direction": "Walk the daily board in groups. Ask which hours land in rain_hours. Reveal. Hand over to the AI story.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_daily_board.py",
+      "heading": "Mission complete: the daily board",
+      "highlight": [
+       6,
+       7,
+       8
+      ]
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Lines 6 to 8 are a small function: open a file, and load its JSON."
+      },
+      {
+       "say": "Line 12 follows the path to the temperature. Line 13 picks iced tea at 30 degrees or more.",
+       "highlight": [
+        11,
+        12,
+        13
+       ]
+      },
+      {
+       "say": "Lines 14 and 15 keep the hour of every slot with a rain chance of 30 or more.",
+       "highlight": [
+        14,
+        15
+       ]
+      },
+      {
+       "say": "Lines 16 and 17 build the board. Lines 19 to 21 save it as JSON, with an accent, and print the file.",
+       "highlight": [
+        16,
+        17,
+        19,
+        20,
+        21
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_daily_board.py",
+      "heading": "Mission complete: the daily board",
+      "code_lines": [
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17
+      ],
+      "highlight": [
+       14,
+       15
+      ]
+     },
+     "segments": [
+      {
+       "say": "Remember the sample's forecast: three slots, each with its own rain chance."
+      }
+     ],
+     "ask": {
+      "question": "Which hours end up in `rain_hours`?"
+     },
+     "after": [
+      {
+       "say": "Only 18:00. Its rain chance is 40. The other two slots have 0 and 10.",
+       "output": "examples/ex08_daily_board.expected",
+       "highlight": [
+        14,
+        15
+       ],
+       "out_highlight": [
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "It reads JSON, picks what it needs, and writes new JSON for the cafe's screen.",
+       "highlight": [
+        16,
+        17
+       ],
+       "out_highlight": [
+        7
+       ]
+      },
+      {
+       "say": "Next, Asha reads her milk supplier's prices, with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: reading a supplier's prices",
+   "direction": "Safety first. Six stages on price_of. Generate treats a list as a dictionary. Test catches text prices. Debug handles null. Improve invents a field.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: explain a response",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "Paste a sample response, and ask for its structure.",
+       "Check every field name and path against the real sample.",
+       "Never paste an API key or private customer data."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill: paste a sample response, ask the AI to explain it, then check every field name against the real sample.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "And never paste an API key, or private customer data.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "text",
+      "heading": "The supplier's saved response",
+      "label": "Work with AI",
+      "body": [
+       "`prices.json`: the milk supplier's price list."
+      ],
+      "pre": "  prices.json\n  {\n    \"supplier\": \"Fresh Farm\",\n    \"currency\": \"USD\",\n    \"items\": [\n      {\"name\": \"milk\", \"price\": \"1.20\", \"unit\": \"litre\"},\n      {\"name\": \"oat milk\", \"price\": \"1.85\", \"unit\": \"litre\"},\n      {\"name\": \"butter\", \"price\": \"3.40\", \"unit\": \"pack\"}\n    ]\n  }"
+     },
+     "segments": [
+      {
+       "say": "Here is the supplier's saved response, prices dot json. Look closely at each price.",
+       "focus": "pre"
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: explain the structure",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Here is a saved response from my milk supplier's price service. Do not write code yet. Describe its structure, level by level. Which values are text, and which are numbers?"
+       },
+       {
+        "role": "ai",
+        "text": "The response is an object with supplier, currency and items.\nitems is a list. Each entry is an object with name, price and unit.\nEvery price is text in quotation marks, such as \"1.20\", not a number."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha pastes the sample, and asks for its structure, level by level. No code yet."
+      },
+      {
+       "say": "The AI says items is a list, and every price is text in quotation marks. Asha checks the sample: both are true.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then check",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote price_of myself. Do not rewrite it. What does it return for milk, and which line handles an item that is missing?",
+        "code": "examples/ai_mine.py",
+        "code_lines": [
+         6,
+         7,
+         8,
+         9,
+         10
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "For milk it returns 1.2, a float, because line 9 converts the text.\nLine 10 returns None when no name matches."
+       },
+       {
+        "role": "you",
+        "text": "I ran it for milk and for flour:",
+        "output": "examples/ai_mine.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes her own price of first. It loops over the list, and converts the text with float."
+      },
+      {
+       "say": "The AI says milk gives 1.2, and line 10 handles a missing item.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "She runs it. Milk gives 1.2, and flour gives None. Her version works.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: a second version",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Write price_of(data, name) for this response. It returns the price of the named item as a number. What does it return for milk?"
+       },
+       {
+        "role": "ai",
+        "text": "Here it is. For milk, it returns 1.2.",
+        "code": "examples/ai_price_flawed.py",
+        "code_lines": [
+         6,
+         7
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. To compare, Asha asks the AI for the same function, and what it returns for milk."
+      },
+      {
+       "say": "The AI writes one line, and says: milk gives 1.2.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_price_flawed.py",
+      "heading": "The AI's version, on the sample",
+      "code_lines": [
+       6,
+       7,
+       10,
+       11,
+       12
+      ],
+      "highlight": [
+       7
+      ]
+     },
+     "segments": [
+      {
+       "say": "Look at line 7. It asks items for milk, by name. Remember what items is in the sample."
+      }
+     ],
+     "ask": {
+      "question": "The AI says this returns `1.2` for milk. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. A type error. Items is a list, and a list needs a number as its index, not the name milk.",
+       "error": "examples/ai_price_flawed.expected_error",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "That is what list indices must be integers means. The AI treated the list as a dictionary of names.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: exact values",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Your code stopped with a TypeError: list indices must be integers. Fix it. Then give me test cases with the exact value I should get."
+       },
+       {
+        "role": "ai",
+        "text": "Here is a version that loops over the list.\nCases: milk gives 1.2, oat milk gives 1.85, and flour gives None.",
+        "code": "examples/ai_tests_flawed.py",
+        "code_lines": [
+         6,
+         7,
+         8,
+         9,
+         10
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha reports the error, and asks for test cases with exact values."
+      },
+      {
+       "say": "The AI's next version loops over the list. And it lists three cases: milk, oat milk, and flour.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_flawed.py",
+      "heading": "The three cases, on the AI's loop",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "highlight": [
+       9
+      ]
+     },
+     "segments": [
+      {
+       "say": "Line 9 returns the price. Line 20 prints each result with exclamation r, so text shows its quotation marks.",
+       "highlight": [
+        9,
+        20
+       ]
+      }
+     ],
+     "ask": {
+      "question": "Will the milk case pass?"
+     },
+     "after": [
+      {
+       "say": "No. It got 1.20 in quotation marks: text, not a number. Text is never equal to the float 1.2.",
+       "output": "examples/ai_tests_flawed.expected",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "Only flour passes. Plan said every price is text, and the AI forgot its own words.",
+       "out_highlight": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: report the failure",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Two cases fail: you return '1.20' as text. Explain why, then fix it."
+       },
+       {
+        "role": "ai",
+        "text": "This supplier sends every price as a string. Line 9 returns it unchanged.\nFix: return float(item[\"price\"])."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Asha shows the AI the failing cases, and asks why."
+      },
+      {
+       "say": "The supplier sends prices as strings, so line 9 must convert them with float.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_fixed.py",
+      "heading": "The three cases, after the fix",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "highlight": [
+       9
+      ],
+      "output": "examples/ai_tests_fixed.expected",
+      "out_highlight": [
+       1,
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "She runs all three cases again. All pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_today_crash.py",
+      "heading": "Stage 5: the next day's response",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       13,
+       14,
+       15,
+       16,
+       17
+      ],
+      "highlight": [
+       13,
+       17
+      ],
+      "error": "examples/ai_today_crash.expected_error",
+      "note": "prices_today.json: oat milk is out of stock, and its price is null."
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. The next day, oat milk is out of stock, and the supplier sends null as its price. Milk still works. Oat milk crashes on line 9.",
+       "out_highlight": [
+        1,
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Today's response has null as the oat milk price. My code crashed on line 9 with: TypeError: float() argument must be a string or a real number, not 'NoneType'. Explain the cause first. Then show the smallest fix."
+       },
+       {
+        "role": "ai",
+        "text": "JSON null becomes None in Python, and float(None) raises a TypeError.\nFix: before line 9, check for it:\nif item[\"price\"] is None: return None."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Asha pastes the error, and asks for the cause first."
+      },
+      {
+       "say": "JSON null became None, and float of None is a type error. The fix checks for it with is None, from step 2.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_final.py",
+      "heading": "All four cases, on the final function",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "highlight": [
+       9,
+       10,
+       19
+      ],
+      "output": "examples/ai_tests_final.expected",
+      "out_highlight": [
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     "segments": [
+      {
+       "say": "Lines 9 and 10 are the fix. She adds the new response as case 4, on line 19, and runs every case again. All four pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: one suggestion",
+      "messages": [
+       {
+        "role": "you",
+        "text": "All four cases pass. Suggest one improvement, with one reason. Use only field names that are in my sample."
+       },
+       {
+        "role": "ai",
+        "text": "Read item[\"unit_price\"] instead of item[\"price\"]. It is the standard field for the price of one unit, so the code is clearer."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one improvement, using only field names from her sample."
+      },
+      {
+       "say": "The AI suggests unit price, and calls it the standard field.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_unit_price.py",
+      "heading": "The suggestion, on the sample",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       15,
+       16,
+       17
+      ],
+      "highlight": [
+       9,
+       11
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha's rule: every field name must appear in the sample. Lines 9 and 11 read unit price."
+      }
+     ],
+     "ask": {
+      "question": "Will this run on Asha's sample?"
+     },
+     "after": [
+      {
+       "say": "No. A key error. The sample has price and unit, but no unit price. The AI invented the field.",
+       "error": "examples/ai_unit_price.expected_error",
+       "highlight": [
+        9
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "So Asha keeps her final function. Its four cases still pass, as you saw.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "An AI's code uses a field name. How do you check it?",
+      "options": [
+       "Ask the AI if it is sure",
+       "Search the real sample for it",
+       "Trust it if the code is short",
+       "Rename your own variables"
+      ],
+      "answer": 1,
+      "explain": "Only the real sample shows which fields the service sends."
+     },
+     "segments": [
+      {
+       "say": "Quick check. An AI's code uses a field name. How do you check it?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. Search the real sample for it. Only the sample shows what the service sends."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Test the exact value and its type.",
+       "Every field name must be in the sample."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. The AI made three confident mistakes, and the sample and the tests caught every one."
+      },
+      {
+       "say": "Next, four mistakes beginners make with JSON."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistakes 1 and 3 are spot-it asks. Mistakes 2 and 4 are explained.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_single_quotes.py",
+      "heading": "Mistake 1: your turn to spot it",
+      "highlight": [
+       4
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 1. You try. Line 4 holds some JSON text. Line 5 loads it."
+      }
+     ],
+     "ask": {
+      "question": "Why will line 5 fail?"
+     },
+     "after": [
+      {
+       "say": "The text uses single quotation marks. Python accepts both kinds, but JSON accepts only double ones.",
+       "error": "examples/err01_single_quotes.expected_error",
+       "heading": "Mistake 1: single quotation marks",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The report runs through the json module's own files. Read the last line: column 2 is the first single quotation mark.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_dump_no_file.py",
+      "heading": "Mistake 2: dump without a file",
+      "highlight": [
+       5
+      ],
+      "error": "examples/err02_dump_no_file.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. Dump writes into a file, so it needs one: F P is the file parameter. To get a string, use dump s.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_text_not_dict.py",
+      "heading": "Mistake 3: spot it",
+      "highlight": [
+       5,
+       6
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 3. Lines 4 and 5 read scone dot json. Line 6 asks for the item."
+      }
+     ],
+     "ask": {
+      "question": "Will line 6 work?"
+     },
+     "after": [
+      {
+       "say": "No. Read text gives a string, not a dictionary. A string accepts only number indexes.",
+       "error": "examples/err03_text_not_dict.expected_error",
+       "heading": "Mistake 3: text is not data",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "The fix: turn the text into data first, with load s.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_keys_strings.py",
+      "heading": "Mistake 4: number keys come back as text",
+      "highlight": [
+       4,
+       5
+      ],
+      "error": "examples/err04_keys_strings.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. JSON object keys are always strings. The table numbers 1 and 2 came back as the text 1 and 2.",
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "So back, 1 is a key error. Use string keys from the start.",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Some weather services send Fahrenheit for some cities. How could your code know which unit a response uses?"
+     },
+     "segments": [
+      {
+       "say": "First. Some weather services send the temperature in Fahrenheit for some cities. How could your code know which unit a response uses?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Look for a field in the sample that names the unit."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Why test your code on a saved sample, instead of the live service?"
+     },
+     "segments": [
+      {
+       "say": "Second. Why test your code on a saved sample, instead of the live service?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Keep your answer. You will use it in the next boss level."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, a quiz, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "`json.dumps()` makes JSON text. `json.loads()` turns it back into data.",
+       "`json.dump()` and `json.load()` work with an open file.",
+       "`true`, `false` and `null` become `True`, `False` and `None`.",
+       "An API answers with a status code and a JSON body.",
+       "Follow the path from the outside in. Use `get()` for missing fields.",
+       "Check every field name an AI uses against the real sample."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. Dump s makes JSON text, and load s turns it back into data.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Dump and load work with an open file.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "True, false and null become True, False and None.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "An API answers with a status code, and a JSON body.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "Follow the path from the outside in, and use get for missing fields.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And check every field name an AI uses against the real sample.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A response says `\"price\": \"1.20\"`. What type is the price after `json.loads()`?",
+      "options": [
+       "`float`",
+       "`int`",
+       "`str`",
+       "`None`"
+      ],
+      "answer": 2,
+      "explain": "It is in quotation marks, so it is a string. Convert it with `float()`."
+     },
+     "segments": [
+      {
+       "say": "One last check. A response says price, 1.20, in quotation marks. What type is it after load s?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. A string. The quotation marks decide. Convert it with float before you calculate."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Connector",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Connector",
+      "tile": 23
+     },
+     "segments": [
+      {
+       "say": "Mission complete! You earned 100 XP and the Connector badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "Turn the special into JSON; Read the opening hours; Predict the types",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "Save the order; Today's rain hours; A safe JSON loader",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "Prices in other currencies; Fix the AI's temperature reader",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. Three warm-up tasks, worth 10 XP each.",
+       "focus_row": 0
+      },
+      {
+       "say": "Three apply tasks, worth 20 each, including a JSON loader that never crashes.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each, including an AI's temperature reader to fix.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease packages and virtual environments. Hold quietly.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 24",
+      "title": "Virtual Environments and Packages",
+      "subtitle": "Install packages safely, in their own space.",
+      "badge": "",
+      "tile": 24
+     },
+     "segments": [
+      {
+       "say": "Many programmers call web services with a package called requests. It is not part of Python, so it must be installed."
+      },
+      {
+       "say": "In Chapter 24, you will create a virtual environment, and install packages safely, after checking that each one is real and trustworthy."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 24."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }

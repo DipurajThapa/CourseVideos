@@ -10,9 +10,11 @@ def price_of(data, name):
     return None
 
 
-data = json.loads(Path("prices.json").read_text(encoding="utf-8"))
-cases = [("milk", 1.2), ("oat milk", 1.85), ("flour", None)]
+text = Path("prices.json").read_text(encoding="utf-8")
+data = json.loads(text)
+cases = [("milk", 1.2), ("oat milk", 1.85),
+         ("flour", None)]
 for name, expected in cases:
     got = price_of(data, name)
     result = "pass" if got == expected else "FAIL"
-    print(f"{name}: expected {expected!r}, got {got!r}: {result}")
+    print(f"{name}: got {got!r}, {result}")

@@ -2,8 +2,9 @@
 import json
 from pathlib import Path
 
-text = Path("weather_sample.json").read_text(encoding="utf-8")
-current = json.loads(text)["current"]
+path = Path("weather_sample.json")
+data = json.loads(path.read_text(encoding="utf-8"))
+current = data["current"]
 print(current.get("condition", "unknown"))
-print(current.get("wind_kph", "not in this response"))
+print(current.get("wind_kph", "not sent"))
 print(current["wind_kph"])
