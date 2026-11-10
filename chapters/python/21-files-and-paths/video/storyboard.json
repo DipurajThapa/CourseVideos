@@ -271,7 +271,8 @@
       "body": [
        "A file stores bytes. An **encoding** turns letters into bytes and back.",
        "UTF-8 stores every language, including the é in Café.",
-       "Always write `encoding=\"utf-8\"`, so your program works the same on every computer."
+       "Older Python versions can use another encoding on some computers, mostly on Windows.",
+       "Always write `encoding=\"utf-8\"`, so your program works the same everywhere."
       ]
      },
      "segments": [
@@ -279,7 +280,7 @@
        "say": "One more idea. A file stores bytes, not letters. An encoding is the rule that turns letters into bytes, and back."
       },
       {
-       "say": "UTF-8 is the standard. It stores every language, including the e with an accent in Café. So always write encoding equals utf 8."
+       "say": "UTF-8 is the standard. It stores every language, including the e with an accent in Café. Older versions of Python can use a different encoding on some computers, mostly on Windows. So always write encoding equals utf 8."
       }
      ]
     },
@@ -504,7 +505,7 @@
        "say": "A file opened for reading works in a for loop. Line 3 gives one line at a time."
       },
       {
-       "say": "Each line ends with its new line. Strip, from Chapter 3, removes it.",
+       "say": "Each line ends with its new line. Strip, from Chapter 3, removes spaces and new lines from both ends.",
        "highlight": [
         4
        ]
@@ -561,7 +562,7 @@
        "say": "Step 4. Reading a missing file stops the program. So line 5 checks first, with exists and an if."
       },
       {
-       "say": "There is no scores dot t x t in this folder yet.",
+       "say": "Read lines 5 to 8, and the note above the code.",
        "highlight": [
         5,
         6,
@@ -684,7 +685,7 @@
        ]
       },
       {
-       "say": "Asha reads the file back.",
+       "say": "Line 10 reads it back as plain text, not with the C S V module, so it opens the file normally.",
        "output": "examples/ex06_csv_write.expected",
        "highlight": [
         10,
@@ -735,7 +736,7 @@
        ]
       },
       {
-       "say": "Line 9 prints each item and its amount.",
+       "say": "Line 8 adds each amount to the total, and line 9 prints the item and its amount.",
        "highlight": [
         8,
         9
@@ -1134,6 +1135,35 @@
     },
     {
      "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: report the failures, ask for a fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Cases 2 and 3 fail on your function: each lost a row, with no error. Explain why, then fix it so every case passes.",
+        "output": "examples/ai_tests_flawed.expected"
+       },
+       {
+        "role": "ai",
+        "text": "Mode \"w\" empties the file on every call. Use mode \"a\", and write the header only when the file is new."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Asha shows the AI its failing cases, and asks for the cause, then a fix."
+      },
+      {
+       "say": "The AI names mode W, and suggests mode A, with the header only for a new file.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
       "type": "code",
       "file": "examples/ai_save_fixed.py",
       "heading": "The fixed function: append, header only when new",
@@ -1159,7 +1189,7 @@
      },
      "segments": [
       {
-       "say": "The AI fixes it: mode A, and the header only when the file is new. The same idea as Asha's own version.",
+       "say": "Here is the fix: mode A, and the header only when the file is new. The same idea as Asha's own version.",
        "highlight": [
         7,
         8,
@@ -1178,6 +1208,37 @@
         2,
         3
        ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_tests_append.py",
+      "heading": "The three cases again, on the fixed function",
+      "code_lines": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "highlight": [
+       7,
+       8
+      ],
+      "output": "examples/ai_tests_append.expected",
+      "out_highlight": [
+       1,
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "And she runs all three cases again. All three pass."
       }
      ]
     },
@@ -1214,6 +1275,8 @@
         8
        ],
        "out_highlight": [
+        5,
+        6,
         -1
        ]
       }
@@ -1231,7 +1294,7 @@
        },
        {
         "role": "ai",
-        "text": "Line 8 opens data/week.csv, but there is no data folder. Mode \"a\" creates a missing file, not a missing folder.\nFix: start the function with Path(path).parent.mkdir(exist_ok=True). It makes the folder only if it is missing."
+        "text": "Line 8 opens data/week.csv, but there is no data folder. Mode \"a\" creates a missing file, not a missing folder.\nFix: start the function with Path(path).parent.mkdir(exist_ok=True). It makes the folder only if it is missing. For a folder inside a folder, add parents=True too."
        }
       ],
       "reveal": 1
@@ -1326,7 +1389,7 @@
      },
      "segments": [
       {
-       "say": "Here is the shorter version. Line 10 writes the header every time. Remember how Dict reader finds its column names."
+       "say": "Here is the shorter version. Line 10 runs on every call. Picture the file after two saves."
       }
      ],
      "ask": {
@@ -1409,13 +1472,12 @@
      "segments": [
       {
        "say": "Mistake 1. The file is called scores, with an s. Line 3 asks for score, without one.",
-       "out_highlight": [
-        1
-       ]
+       "out_highlight": []
       },
       {
        "say": "Line 2 printed, then Python stopped: file not found, with the exact name it looked for.",
        "out_highlight": [
+        1,
         -1
        ]
       },
@@ -1465,13 +1527,13 @@
       "file": "examples/err03_encoding.py",
       "heading": "Mistake 3: the wrong encoding",
       "highlight": [
-       2
+       3
       ],
       "error": "examples/err03_encoding.expected_error"
      },
      "segments": [
       {
-       "say": "Mistake 3. An old cash register saved its menu with a different encoding. Reading it as UTF-8 fails at the e with an accent.",
+       "say": "Mistake 3. An old cash register saved its menu with a different encoding. Line 3 reads it as UTF-8, and fails at the e with an accent.",
        "out_highlight": [
         -1
        ]
@@ -1623,17 +1685,17 @@
     {
      "visual": {
       "type": "pause",
-      "question": "Asha runs the score board three times. How many rows does `scores.csv` have now? How could she stop the same score being saved twice?",
+      "question": "`scores.csv` starts with two scores. Asha runs the score board three times. How many score rows, not counting the header, does it have now?",
       "hint": "count the rows from the start, then think about checking before saving."
      },
      "segments": [
       {
-       "say": "First. Asha runs the score board three times. How many rows does the file have now, and how could she stop the same score being saved twice?"
+       "say": "First. The score file starts with two scores. Asha runs the score board three times. How many score rows, not counting the header, does it have now?"
       }
      ],
      "after": [
       {
-       "say": "Try it on a copy of the file."
+       "say": "Then think: how could she stop the same score being saved twice? Try it on a copy of the file."
       }
      ]
     },

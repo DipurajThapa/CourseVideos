@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:30 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:08 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -101,7 +101,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Unlike a person, mode `"w"` empties the book with no warning.
 - **Narration:** One more idea. A file stores bytes, not letters. An encoding is the rule that turns letters into bytes, and back.
   **On screen:** Text and encoding
-- **Narration:** UTF-8 is the standard. It stores every language, including the e with an accent in Café. So always write encoding equals utf 8.
+- **Narration:** UTF-8 is the standard. It stores every language, including the e with an accent in Café. Older versions of Python can use a different encoding on some computers, mostly on Windows. So always write encoding equals utf 8.
   **On screen:** Text and encoding
 - **Narration:** Quick check. Asha wants to add a line and keep the old ones. Which mode?
   **On screen:** Quick check: "Asha wants to add a line to the end of a file and keep the old lines. Which mode?" (options shown)
@@ -170,7 +170,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** The menu file
 - **Narration:** A file opened for reading works in a for loop. Line 3 gives one line at a time.
   **On screen:** Code `examples/ex03_lines.py`, line 3 highlighted, output hidden
-- **Narration:** Each line ends with its new line. Strip, from Chapter 3, removes it.
+- **Narration:** Each line ends with its new line. Strip, from Chapter 3, removes spaces and new lines from both ends.
   **On screen:** Code `examples/ex03_lines.py`, line 4 highlighted, output hidden
 - **Narration:** Line 5 prints the name and its number of letters.
   **On screen:** Code `examples/ex03_lines.py`, line 5 highlighted, output hidden
@@ -188,7 +188,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Step 4. Reading a missing file stops the program. So line 5 checks first, with exists and an if.
   **On screen:** Code `examples/ex04_exists.py`, line 5 highlighted, output hidden
-- **Narration:** There is no scores dot t x t in this folder yet.
+- **Narration:** Read lines 5 to 8, and the note above the code.
   **On screen:** Code `examples/ex04_exists.py`, line 5, 6, 7, 8 highlighted, output hidden
 - **Interaction:** "Which line prints: line 6 or line 8?" stays on screen with a 10-second timer.
 - **Narration:** Line 8. The file does not exist, so the else block runs.
@@ -225,7 +225,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex06_csv_write.py`, line 4 highlighted, output hidden
 - **Narration:** Line 5 makes a writer. Each writerow takes a list, and writes one row. The first row is the header: the column names.
   **On screen:** Code `examples/ex06_csv_write.py`, line 5, 6, 7, 8 highlighted, output hidden
-- **Narration:** Asha reads the file back.
+- **Narration:** Line 10 reads it back as plain text, not with the C S V module, so it opens the file normally.
   **On screen:** Code `examples/ex06_csv_write.py`, line 10, 11 highlighted, output `examples/ex06_csv_write.expected`
 - **Narration:** Step 7. Here are the day's sales: item, quantity and price.
   **On screen:** The day's sales
@@ -233,7 +233,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex07_csv_read.py`, line 6 highlighted, output hidden
 - **Narration:** Every value comes back as text, even twelve. So line 7 converts with int and float, from Chapter 4.
   **On screen:** Code `examples/ex07_csv_read.py`, line 7 highlighted, output hidden
-- **Narration:** Line 9 prints each item and its amount.
+- **Narration:** Line 8 adds each amount to the total, and line 9 prints the item and its amount.
   **On screen:** Code `examples/ex07_csv_read.py`, line 8, 9 highlighted, output hidden
 - **Interaction:** "What amount does output line 1 show for Tea?" stays on screen with a 10-second timer.
 - **Narration:** 42.00. Twelve teas at 3.50.
@@ -328,10 +328,19 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - AI (example answer): 1. New file, save Asha: the header, then Asha,4. 2. Two saves, Asha then Omar: the header and both rows. 3. An old file with Asha, save Lina: Lina after Asha.
 - **Narration:** She runs all three cases on the AI's function. Case 1 passes. Cases 2 and 3 fail: both lost a row, with no error.
   **On screen:** Code `examples/ai_tests_flawed.py`, line 6 highlighted, output `examples/ai_tests_flawed.expected`
-- **Narration:** The AI fixes it: mode A, and the header only when the file is new. The same idea as Asha's own version.
+- **Narration:** Asha shows the AI its failing cases, and asks for the cause, then a fix.
+  **On screen:** AI chat, stage 4: Test: report the failures, ask for a fix
+    - You: Cases 2 and 3 fail on your function: each lost a row, with no error. Explain why, then fix it so every case passes.
+- **Narration:** The AI names mode W, and suggests mode A, with the header only for a new file.
+  **On screen:** AI chat, stage 4: Test: report the failures, ask for a fix
+    - You: Cases 2 and 3 fail on your function: each lost a row, with no error. Explain why, then fix it so every case passes.
+    - AI (example answer): Mode "w" empties the file on every call. Use mode "a", and write the header only when the file is new.
+- **Narration:** Here is the fix: mode A, and the header only when the file is new. The same idea as Asha's own version.
   **On screen:** Code `examples/ai_save_fixed.py`, line 7, 8, 10, 11 highlighted, output `examples/ai_save_fixed.expected`
 - **Narration:** Two saves now keep both rows.
   **On screen:** Code `examples/ai_save_fixed.py`, line 15, 16 highlighted, output `examples/ai_save_fixed.expected`
+- **Narration:** And she runs all three cases again. All three pass.
+  **On screen:** Code `examples/ai_tests_append.py`, line 7, 8 highlighted, output `examples/ai_tests_append.expected`
 - **Narration:** Stage 5: debug. Asha moves the scores into a data folder. Line 15 saves to data, slash, week dot c s v.
   **On screen:** Code `examples/ai_folder_crash.py`, line 15 highlighted, error `examples/ai_folder_crash.expected_error`
 - **Narration:** File not found! The report points at line 8, inside the function.
@@ -342,7 +351,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The AI explains. Mode A creates a missing file, but not a missing folder. The fix makes the folder, only if it is missing.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: I moved the scores into a data folder. Line 15 now saves to data/week.csv, and I got FileNotFoundError: No such file or directory: 'data/week.csv'. First explain the cause. Then show the smallest fix.
-    - AI (example answer): Line 8 opens data/week.csv, but there is no data folder. Mode "a" creates a missing file, not a missing folder. Fix: start the function with Path(path).parent.mkdir(exist_ok=True). It makes the folder only if it is missing.
+    - AI (example answer): Line 8 opens data/week.csv, but there is no data folder. Mode "a" creates a missing file, not a missing folder. Fix: start the function with Path(path).parent.mkdir(exist_ok=True). It makes the folder only if it is missing. For a folder inside a folder, add parents=True too.
 - **Narration:** Line 7 is the fix. Then Asha runs every case again, plus a fourth: a file in a folder. All four pass.
   **On screen:** Code `examples/ai_tests_fixed.py`, line 7 highlighted, output `examples/ai_tests_fixed.expected`
 - **Narration:** Stage 6: improve. Asha asks for one improvement that does not change the file.
@@ -352,7 +361,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 6: Improve: one suggestion, then every test
     - You: All four cases pass. Suggest at most one improvement, with one reason. Do not change what the file contains.
     - AI (example answer): Remove the exists check and write the header on every save. It is simpler, and CSV readers skip repeated headers.
-- **Narration:** Here is the shorter version. Line 10 writes the header every time. Remember how Dict reader finds its column names.
+- **Narration:** Here is the shorter version. Line 10 runs on every call. Picture the file after two saves.
   **On screen:** Code `examples/ai_tests_improve.py`, line 10 highlighted, output hidden
 - **Interaction:** "Will case 2, two saves, still pass?" stays on screen with a 10-second timer.
 - **Narration:** No. Cases 2 and 3 fail: the header is written twice.
@@ -395,10 +404,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/err02_w_erases.py`, line 2 highlighted, output `examples/err02_w_erases.expected`
 - **Narration:** The fix: use A to add. Use W only when you want to start again.
   **On screen:** Code `examples/err02_w_erases.py`, line 2 highlighted, output `examples/err02_w_erases.expected`
-- **Narration:** Mistake 3. An old cash register saved its menu with a different encoding. Reading it as UTF-8 fails at the e with an accent.
-  **On screen:** Code `examples/err03_encoding.py`, line 2 highlighted, error `examples/err03_encoding.expected_error`
+- **Narration:** Mistake 3. An old cash register saved its menu with a different encoding. Line 3 reads it as UTF-8, and fails at the e with an accent.
+  **On screen:** Code `examples/err03_encoding.py`, line 3 highlighted, error `examples/err03_encoding.expected_error`
 - **Narration:** Find out which encoding saved the file, read it once with that encoding, and save it again as UTF-8.
-  **On screen:** Code `examples/err03_encoding.py`, line 2 highlighted, error `examples/err03_encoding.expected_error`
+  **On screen:** Code `examples/err03_encoding.py`, line 3 highlighted, error `examples/err03_encoding.expected_error`
 - **Narration:** One more. Remember what Dict reader gives back.
   **On screen:** Code `examples/err04_text_numbers.py`, line 7 highlighted, output hidden
 - **Interaction:** "What is wrong with line 7?" stays on screen with a 10-second timer.
@@ -439,11 +448,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Two open questions. No answers are given.
 
-- **Narration:** First. Asha runs the score board three times. How many rows does the file have now, and how could she stop the same score being saved twice?
-  **On screen:** Question card: "Asha runs the score board three times. How many rows does `scores.csv` have now? How could she stop the same score being saved twice?"
-- **Interaction:** "Asha runs the score board three times. How many rows does `scores.csv` have now? How could she stop the same score being saved twice?" stays on screen with a 10-second timer.
-- **Narration:** Try it on a copy of the file.
-  **On screen:** Question card: "Asha runs the score board three times. How many rows does `scores.csv` have now? How could she stop the same score being saved twice?"
+- **Narration:** First. The score file starts with two scores. Asha runs the score board three times. How many score rows, not counting the header, does it have now?
+  **On screen:** Question card: "`scores.csv` starts with two scores. Asha runs the score board three times. How many score rows, not counting the header, does it have now?"
+- **Interaction:** "`scores.csv` starts with two scores. Asha runs the score board three times. How many score rows, not counting the header, does it have now?" stays on screen with a 10-second timer.
+- **Narration:** Then think: how could she stop the same score being saved twice? Try it on a copy of the file.
+  **On screen:** Question card: "`scores.csv` starts with two scores. Asha runs the score board three times. How many score rows, not counting the header, does it have now?"
 - **Narration:** Second. A program crashes halfway through a with block that writes a file. What does with still do, and what could be missing from the file?
   **On screen:** Question card: "A program crashes halfway through a `with` block that writes a file. What does `with` still do, and what could be missing?"
 - **Interaction:** "A program crashes halfway through a `with` block that writes a file. What does `with` still do, and what could be missing?" stays on screen with a 10-second timer.

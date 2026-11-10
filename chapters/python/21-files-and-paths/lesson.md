@@ -44,7 +44,7 @@ The **mode** tells Python what you want to do with the file.
 
 A file is like the cafe's order book. You can read it, start a new empty book, or add a line at the end of the old one. The comparison stops working at one point: a person would never tear out every page by accident, but mode `"w"` empties the file with no warning.
 
-**Text and encoding.** A file stores bytes, not letters. An **encoding** is the rule that turns letters into bytes and back. UTF-8 is the standard encoding: it can store every language, including the "é" in "Café". Always write `encoding="utf-8"` when you open a text file. Python 3.15 and newer use UTF-8 by default, but older versions may use a different encoding on some computers, so writing it every time keeps your program the same everywhere.
+**Text and encoding.** A file stores bytes, not letters. An **encoding** is the rule that turns letters into bytes and back. UTF-8 is the standard encoding: it can store every language, including the "é" in "Café". Always write `encoding="utf-8"` when you open a text file. Python 3.15 and newer use UTF-8 by default, but older versions can use a different encoding on some computers, mostly on Windows. Writing it every time keeps your program the same everywhere.
 
 ## Build it step by step
 
@@ -116,7 +116,7 @@ with open("menu.txt", encoding="utf-8") as file:
 - Scone (5 letters)
 ```
 
-Each `line` ends with `\n`. `strip()` from Chapter 3 removes it, so "Tea" has 3 letters, not 4. "Café" keeps its "é" because the file was read as UTF-8.
+Each `line` ends with `\n`. `strip()` from Chapter 3 removes spaces and newlines from both ends, so "Tea" has 3 letters, not 4. "Café" keeps its "é" because the file was read as UTF-8.
 
 **Step 4: Check that a file exists.** Reading a missing file stops the program. `exists()` lets you check first, and choose what to do with `if` and `else`.
 
@@ -182,7 +182,7 @@ Tea,2
 Café latte,1
 ```
 
-`writerow()` takes a list and writes one row. The first row is the **header**: the names of the columns. The Python documentation says to open CSV files with `newline=""`, so the `csv` module controls the line endings itself.
+`writerow()` takes a list and writes one row. The first row is the **header**: the names of the columns. The Python documentation says to open CSV files with `newline=""`, so the `csv` module controls the line endings itself. Line 10 reads the file as plain text, not with the `csv` module, so it opens the file normally.
 
 **Step 7: Read a CSV file.** `csv.DictReader` reads the header, then gives each row as a dictionary with the column names as keys. The day's sales are in `sales.csv`.
 
@@ -425,7 +425,7 @@ Fix: convert first, `total = total + float(row["price"])`.
 
 ## Think beyond
 
-1. Asha runs the score board three times. How many rows does `scores.csv` have now, and how could she stop the same score being saved twice?
+1. `scores.csv` starts with two scores. Asha runs the score board three times. How many score rows, not counting the header, does it have now? How could she stop the same score being saved twice?
 2. A program crashes halfway through a `with` block that writes a file. What does the `with` statement guarantee, and what could still be missing from the file?
 
 ## Recap

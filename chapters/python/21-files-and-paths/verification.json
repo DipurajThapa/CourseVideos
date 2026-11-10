@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-21",
   "run_id": "2026-11-10-ca18fb",
-  "verified_at": "2026-11-10T07:17:59+00:00",
+  "verified_at": "2026-11-10T07:24:13+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -19,7 +19,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 27,
+        "files_run": 28,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
@@ -38,6 +38,10 @@
             "Python 3.13.18": "pass"
           },
           "examples/ai_save_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_tests_append.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -179,14 +183,14 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 120,
-          "average_words": 12.0,
-          "longest": 30
+          "sentences": 124,
+          "average_words": 11.9,
+          "longest": 26
         },
         "video/script.md": {
-          "sentences": 665,
-          "average_words": 8.6,
-          "longest": 21
+          "sentences": 682,
+          "average_words": 8.7,
+          "longest": 22
         }
       }
     },
@@ -200,9 +204,9 @@
         "missing video/description.md: run python3 tools/render_video.py chapters/python/21-files-and-paths"
       ],
       "details": {
-        "estimated_minutes": 17.5
+        "estimated_minutes": 18.1
       }
     }
   ],
-  "fingerprint": "b0ae1d8bb4e61e291b9349997ec691a4bb0f650c13383d15133e260ef086024b"
+  "fingerprint": "233905b697c5eb0b5db161a5b8235babf5743205f1c3bf276a5117d9c4147cae"
 }
