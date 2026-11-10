@@ -520,9 +520,16 @@
     "python-28": {
       "language": "python",
       "number": 28,
-      "status": "pending",
-      "runs": []
+      "status": "in_progress",
+      "runs": [
+        {
+          "run_id": "2026-11-10-eb1386",
+          "started": "2026-11-10T12:16:25+00:00",
+          "from_status": "pending"
+        }
+      ],
+      "current_run_id": "2026-11-10-eb1386"
     }
   },
-  "updated": "2026-11-10T12:15:00+00:00"
+  "updated": "2026-11-10T12:16:25+00:00"
 }
