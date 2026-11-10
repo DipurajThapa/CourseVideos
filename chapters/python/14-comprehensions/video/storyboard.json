@@ -4,29 +4,28 @@
  "version": 3,
  "title": "Chapter 14: Comprehensions: Transforming Data in One Line",
  "video_title": "Python Chapter 14: Comprehensions, Transforming Data in One Line",
- "summary": "Asha writes the same four-line loop again and again. Follow her as she learns comprehensions: the same list in one line, text changes, filters, choosing a value with if and else, dictionary comprehensions, and when a normal loop is clearer. Then watch her rewrite a loop with an AI assistant at all six stages. She keeps a checklist, runs every case, and catches a missing filter and curly brackets that made a set.",
+ "summary": "Asha writes the same three-line loop again and again. Follow her as she learns comprehensions: the same list in one line, text changes, filters, choosing a value with if and else, dictionary comprehensions, and when a normal loop is clearer. Then watch her rewrite a loop with an AI assistant at all six stages. She keeps a checklist, runs every case, and catches a missing filter and curly brackets that made a set.",
  "scenes": [
   {
    "id": "intro",
    "section": "Introduction",
    "title": "Introduction",
-   "direction": "Open on the four-line pattern from Chapter 13. Then the title with the AI tease, then the menu board as the mission, with no output yet.",
+   "direction": "Open on the three-line loop pattern that builds a new list, in Asha's words. Then the title with the AI tease, then the menu board as the mission, with no output yet.",
    "beats": [
     {
      "visual": {
       "type": "code",
       "file": "examples/ex01_tax_loop.py",
-      "heading": "Four lines, again and again",
+      "heading": "Three lines, again and again",
       "highlight": [
        3,
        4,
        5
-      ],
-      "output": "examples/ex01_tax_loop.expected"
+      ]
      },
      "segments": [
       {
-       "say": "At the Corner Cafe, Asha adds tax to every price. She needs four lines: an empty list, a loop, the new price, and append.",
+       "say": "At the Corner Cafe, Asha adds tax to every price. She needs three lines: an empty list, a loop, and append with the new price.",
        "highlight": [
         3,
         4,
@@ -34,10 +33,7 @@
        ]
       },
       {
-       "say": "Then she writes the same pattern for names in capitals, for vegan items, for low stock. Again and again. Is there a shorter way?",
-       "out_highlight": [
-        1
-       ]
+       "say": "Then names in capitals. Then only the vegan items. Asha thinks: another empty list, another loop, another append. There must be a shorter way!"
       }
      ]
     },
@@ -68,7 +64,7 @@
      },
      "segments": [
       {
-       "say": "So here is today's mission: Asha's menu board. Lines 2 to 5 hold each item, its price, and whether it is vegan.",
+       "say": "So here is today's mission: the menu board for the Corner Cafe. Lines 2 to 5 hold each item, its price, and whether it is vegan.",
        "highlight": [
         2,
         3,
@@ -262,7 +258,7 @@
    "id": "step1",
    "section": "Build it step by step",
    "title": "Steps 1 and 2: The same list in one line",
-   "direction": "Show Asha's loop as the known starting point, then the comprehension. Ask what lines 4 and 5 print, then compare.",
+   "direction": "Recall the loop from the opening as the known starting point, then the comprehension. Ask what lines 4 and 5 print, then compare.",
    "beats": [
     {
      "visual": {
@@ -276,7 +272,8 @@
      },
      "segments": [
       {
-       "say": "Step 1 is the loop you saw at the start: an empty list, a loop, and append, with round to two places, from Chapter 2."
+       "say": "Step 1 is the loop you saw at the start: an empty list, a loop, and append, with round to two places, from Chapter 2.",
+       "highlight": []
       },
       {
        "say": "Step 2. Line 3 builds the same list in one line. The new value first, then for price in prices.",
@@ -965,7 +962,17 @@
      },
      "segments": [
       {
-       "say": "Lines 2 to 6 keep the three cases in a dictionary. For each case, lines 8 to 11 run Asha's loop.",
+       "say": "Lines 2 to 6 keep the three cases in a dictionary: a name, and a small menu for each.",
+       "highlight": [
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "For each case, lines 8 to 11 run Asha's loop.",
        "highlight": [
         8,
         9,
@@ -974,7 +981,7 @@
        ]
       },
       {
-       "say": "Line 12 runs the AI's line, and line 13 prints pass when both lists are the same.",
+       "say": "Line 12 runs the AI's line. Line 13 uses the same if and else from step 5: it prints pass when both lists are the same, otherwise FAIL.",
        "highlight": [
         12,
         13
@@ -1034,7 +1041,13 @@
       "messages": [
        {
         "role": "you",
-        "text": "What is the cause, and the smallest fix?"
+        "text": "I added the filter myself, but the program stops with this error. First explain the cause. Then show the smallest fix.",
+        "code": "examples/ai_vegan_typo.py",
+        "code_lines": [
+         6
+        ],
+        "file": "examples/ai_vegan_typo.py",
+        "error": "examples/ai_vegan_typo.expected_error"
        },
        {
         "role": "ai",
@@ -1125,11 +1138,17 @@
      },
      "after": [
       {
-       "say": "No. Every case fails. Curly brackets made a set, so the output looks different, and the two equal prices became one.",
+       "say": "No. Every case fails. Curly brackets made a set, and a set is never equal to a list. Set, with empty round brackets, is an empty set.",
        "output": "examples/ai_vegan_cases_set.expected",
        "out_highlight": [
         1,
         2,
+        3
+       ]
+      },
+      {
+       "say": "And look at the same-price case: the two equal prices merged into one. A set keeps each value once.",
+       "out_highlight": [
         3
        ]
       },
@@ -1198,22 +1217,23 @@
      },
      "segments": [
       {
-       "say": "Mistake 1 is the AI's improvement. Curly brackets with no colon make a set comprehension. Line 5 shows the type: set.",
+       "say": "Mistake 1 is the AI's improvement. Curly brackets with no colon make a set comprehension. Line 4 shows the type: set.",
        "highlight": [
         3,
-        5
+        4
        ],
        "out_highlight": [
-        2
+        1
        ]
       },
       {
-       "say": "There is no error. But the list had 3.5 twice, and the set kept 3.85 only once: 3 items instead of 4.",
+       "say": "A set has no fixed order, so line 5 prints it sorted. There is no error. But the list had 3.5 twice, and the set kept 3.85 only once: 3 items instead of 4.",
        "highlight": [
+        5,
         6
        ],
        "out_highlight": [
-        1,
+        2,
         3
        ]
       },
@@ -1235,7 +1255,7 @@
      },
      "segments": [
       {
-       "say": "Now you try. Line 3 has a filter at the end, and then an else. Remember step 5."
+       "say": "Now you try. Look closely at line 3, and remember step 5."
       }
      ],
      "ask": {
@@ -1316,7 +1336,7 @@
        ]
       },
       {
-       "say": "The fix: round inside the comprehension, or format the price with two decimal places when you print it.",
+       "say": "The fix: round inside the comprehension, as line 5 does. Or format the price with two decimal places when you print it.",
        "highlight": [
         5
        ],
@@ -1369,7 +1389,7 @@
     {
      "visual": {
       "type": "pause",
-      "question": "A comprehension can have two `for` parts. For drinks tea and coffee and sizes small and large, what order do the items come in?",
+      "question": "`[size + \" \" + drink for drink in drinks for size in sizes]` with drinks tea and coffee, and sizes small and large. In what order do the items come?",
       "hint": "predict first, then run it."
      },
      "segments": [
@@ -1535,7 +1555,7 @@
      },
      "segments": [
       {
-       "say": "Asha now knows lists, dictionaries, tuples, sets and comprehensions. But every day, she still adds up the cafe's costs on paper: milk, cups, tea leaves."
+       "say": "Asha now knows lists, dictionaries, tuples, sets and comprehensions. But every day, she still adds up the Corner Cafe's costs on paper: milk, cups, tea leaves."
       },
       {
        "say": "In Chapter 15, Boss Level 3, you will build an expense tracker that does it for her."

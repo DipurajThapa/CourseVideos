@@ -2,23 +2,23 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:32 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:54 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
 **Section:** Introduction
 
-**Direction:** Open on the four-line pattern from Chapter 13. Then the title with the AI tease, then the menu board as the mission, with no output yet.
+**Direction:** Open on the three-line loop pattern that builds a new list, in Asha's words. Then the title with the AI tease, then the menu board as the mission, with no output yet.
 
-- **Narration:** At the Corner Cafe, Asha adds tax to every price. She needs four lines: an empty list, a loop, the new price, and append.
-  **On screen:** Code `examples/ex01_tax_loop.py`, line 3, 4, 5 highlighted, output `examples/ex01_tax_loop.expected`
-- **Narration:** Then she writes the same pattern for names in capitals, for vegan items, for low stock. Again and again. Is there a shorter way?
-  **On screen:** Code `examples/ex01_tax_loop.py`, line 3, 4, 5 highlighted, output `examples/ex01_tax_loop.expected`
+- **Narration:** At the Corner Cafe, Asha adds tax to every price. She needs three lines: an empty list, a loop, and append with the new price.
+  **On screen:** Code `examples/ex01_tax_loop.py`, line 3, 4, 5 highlighted, output hidden
+- **Narration:** Then names in capitals. Then only the vegan items. Asha sighs: another empty list, another loop, another append. Is there a shorter way?
+  **On screen:** Code `examples/ex01_tax_loop.py`, line 3, 4, 5 highlighted, output hidden
 - **Narration:** This is Code Quest, Chapter 14: comprehensions. One line that builds a new list.
   **On screen:** Comprehensions: Transforming Data in One Line
 - **Narration:** And an AI assistant will rewrite Asha's loop in one line, and promise the same output. Will it keep its promise? You will check.
   **On screen:** Comprehensions: Transforming Data in One Line One line. The same result. Prove it.
-- **Narration:** So here is today's mission: Asha's menu board. Lines 2 to 5 hold each item, its price, and whether it is vegan.
+- **Narration:** So here is today's mission: the menu board for the Corner Cafe. Lines 2 to 5 hold each item, its price, and whether it is vegan.
   **On screen:** Code `examples/ex08_menu_board.py`, line 2, 3, 4, 5 highlighted, output hidden
 - **Narration:** Lines 6, 7 and 8 are three comprehensions. Each one builds something new in one line.
   **On screen:** Code `examples/ex08_menu_board.py`, line 6, 7, 8 highlighted, output hidden
@@ -98,10 +98,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Section:** Build it step by step
 
-**Direction:** Show Asha's loop as the known starting point, then the comprehension. Ask what lines 4 and 5 print, then compare.
+**Direction:** Recall the loop from the opening as the known starting point, then the comprehension. Ask what lines 4 and 5 print, then compare.
 
 - **Narration:** Step 1 is the loop you saw at the start: an empty list, a loop, and append, with round to two places, from Chapter 2.
-  **On screen:** Code `examples/ex02_tax_comp.py`, line 3 highlighted, output hidden
+  **On screen:** Code `examples/ex02_tax_comp.py`, output hidden
 - **Narration:** Step 2. Line 3 builds the same list in one line. The new value first, then for price in prices.
   **On screen:** Code `examples/ex02_tax_comp.py`, line 3 highlighted, output hidden
 - **Narration:** Line 4 prints the new list. Line 5 prints the length of the new list, and the length of the old one.
@@ -282,9 +282,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 4: Test: three cases with expected results
     - You: Give me three test cases with the expected result for each. Use a normal menu and a menu with no vegan items. In the third, two vegan items have the same price.
     - AI (example answer): 1. Normal: Tea and Scone. Expected `[3.85]`. 2. No vegan: only Scone. Expected `[]`. 3. Same price: Tea and Mint, both 3.5. Expected `[3.85, 3.85]`.
-- **Narration:** Lines 2 to 6 keep the three cases in a dictionary. For each case, lines 8 to 11 run Asha's loop.
+- **Narration:** Lines 2 to 6 keep the three cases in a dictionary: a name, and a small menu for each.
+  **On screen:** Code `examples/ai_vegan_cases.py`, line 2, 3, 4, 5, 6 highlighted, output hidden
+- **Narration:** For each case, lines 8 to 11 run Asha's loop.
   **On screen:** Code `examples/ai_vegan_cases.py`, line 8, 9, 10, 11 highlighted, output hidden
-- **Narration:** Line 12 runs the AI's line, and line 13 prints pass when both lists are the same.
+- **Narration:** Line 12 runs the AI's line. Line 13 uses the same if and else from step 5: it prints pass when both lists are the same, otherwise FAIL.
   **On screen:** Code `examples/ai_vegan_cases.py`, line 12, 13 highlighted, output hidden
 - **Interaction:** "Which cases will the AI's line fail?" stays on screen with a 10-second timer.
 - **Narration:** The normal menu and the menu with no vegan items. Both get a scone price they should not have.
@@ -296,7 +298,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: I added the filter myself, but the program stops with this error. First explain the cause. Then show the smallest fix. [code `examples/ai_vegan_typo.py`]
 - **Narration:** The AI explains: an if before the for chooses a value for every item, so it needs an else. Remember step 5. To filter, move if vegan to the end.
   **On screen:** AI chat, stage 5: Debug: the AI's answer
-    - You: What is the cause, and the smallest fix?
+    - You: I added the filter myself, but the program stops with this error. First explain the cause. Then show the smallest fix. [code `examples/ai_vegan_typo.py`]
     - AI (example answer): An `if` before the `for` chooses a value for every item, so it needs an `else`. To keep only some items, move `if vegan` to the end, after `in menu`.
 - **Narration:** Asha moves the if to the end, on line 12. Then she runs every case again, because a fix can break a case that worked before.
   **On screen:** Code `examples/ai_vegan_cases_fixed.py`, line 12 highlighted, output `examples/ai_vegan_cases_fixed.expected`
@@ -312,7 +314,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Asha does not trust it yet. Line 12 now has curly brackets, with no colon. She runs every case.
   **On screen:** Code `examples/ai_vegan_cases_set.py`, line 12 highlighted, output hidden
 - **Interaction:** "Will every case still pass?" stays on screen with a 10-second timer.
-- **Narration:** No. Every case fails. Curly brackets made a set, so the output looks different, and the two equal prices became one.
+- **Narration:** No. Every case fails. Curly brackets made a set, and a set is never equal to a list. Set, with empty round brackets, is an empty set.
+  **On screen:** Code `examples/ai_vegan_cases_set.py`, line 12 highlighted, output `examples/ai_vegan_cases_set.expected`
+- **Narration:** And look at the same-price case: the two equal prices merged into one. A set keeps each value once.
   **On screen:** Code `examples/ai_vegan_cases_set.py`, line 12 highlighted, output `examples/ai_vegan_cases_set.expected`
 - **Narration:** The AI broke her rule: the output did not stay the same. Asha keeps her square brackets.
   **On screen:** Code `examples/ai_vegan_cases_set.py`, line 12 highlighted, output `examples/ai_vegan_cases_set.expected`
@@ -334,13 +338,13 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Mistake 1 calls back to the AI's curly brackets. Mistake 2 is a spot-it question on step 5. Mistake 3 teaches that print gives back None, then asks. Mistake 4 calls back to Chapter 2's float error.
 
-- **Narration:** Mistake 1 is the AI's improvement. Curly brackets with no colon make a set comprehension. Line 5 shows the type: set.
-  **On screen:** Code `examples/err01_braces.py`, line 3, 5 highlighted, output `examples/err01_braces.expected`
-- **Narration:** There is no error. But the list had 3.5 twice, and the set kept 3.85 only once: 3 items instead of 4.
-  **On screen:** Code `examples/err01_braces.py`, line 6 highlighted, output `examples/err01_braces.expected`
+- **Narration:** Mistake 1 is the AI's improvement. Curly brackets with no colon make a set comprehension. Line 4 shows the type: set.
+  **On screen:** Code `examples/err01_braces.py`, line 3, 4 highlighted, output `examples/err01_braces.expected`
+- **Narration:** A set has no fixed order, so line 5 prints it sorted. There is no error. But the list had 3.5 twice, and the set kept 3.85 only once: 3 items instead of 4.
+  **On screen:** Code `examples/err01_braces.py`, line 5, 6 highlighted, output `examples/err01_braces.expected`
 - **Narration:** The fix: square brackets for a list. Curly brackets with key, colon, value for a dictionary.
-  **On screen:** Code `examples/err01_braces.py`, line 6 highlighted, output `examples/err01_braces.expected`
-- **Narration:** Now you try. Line 3 has a filter at the end, and then an else. Remember step 5.
+  **On screen:** Code `examples/err01_braces.py`, line 5, 6 highlighted, output `examples/err01_braces.expected`
+- **Narration:** Now you try. Look closely at line 3, and remember step 5.
   **On screen:** Code `examples/err02_else_at_end.py`, line 3 highlighted, output hidden
 - **Interaction:** "What is wrong with line 3?" stays on screen with a 10-second timer.
 - **Narration:** A filter at the end cannot have an else. Python stops with a syntax error on line 3.
@@ -358,7 +362,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/err03_print_comp.py`, line 4 highlighted, output `examples/err03_print_comp.expected`
 - **Narration:** Mistake 4. Line 3 adds tax with no round. Remember Chapter 2: some floats are stored with a tiny error.
   **On screen:** Code `examples/ex09_no_round.py`, line 3 highlighted, output `examples/ex09_no_round.expected`
-- **Narration:** The fix: round inside the comprehension, or format the price with two decimal places when you print it.
+- **Narration:** The fix: round inside the comprehension, as line 5 does. Or format the price with two decimal places when you print it.
   **On screen:** Code `examples/ex09_no_round.py`, line 5 highlighted, output `examples/ex09_no_round.expected`
 - **Narration:** Last breather. Now you know the four comprehension mistakes that catch most beginners.
   **On screen:** Breather card
@@ -379,10 +383,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Write it after the video, and run it.
   **On screen:** Question card: "`orders = ["tea", "cake", "tea", "scone", "tea"]`. Keep only the teas, then count them. Could you count without a new list?"
 - **Narration:** Second. A comprehension can have two for parts, such as every size of every drink. Predict the order of the items, then run it.
-  **On screen:** Question card: "A comprehension can have two `for` parts. For drinks tea and coffee and sizes small and large, what order do the items come in?"
-- **Interaction:** "A comprehension can have two `for` parts. For drinks tea and coffee and sizes small and large, what order do the items come in?" stays on screen with a 10-second timer.
+  **On screen:** Question card: "`[size + " " + drink for drink in drinks for size in sizes]` with drinks tea and coffee, and sizes small and large. In what order do the items come?"
+- **Interaction:** "`[size + " " + drink for drink in drinks for size in sizes]` with drinks tea and coffee, and sizes small and large. In what order do the items come?" stays on screen with a 10-second timer.
 - **Narration:** Compare your prediction with the real output.
-  **On screen:** Question card: "A comprehension can have two `for` parts. For drinks tea and coffee and sizes small and large, what order do the items come in?"
+  **On screen:** Question card: "`[size + " " + drink for drink in drinks for size in sizes]` with drinks tea and coffee, and sizes small and large. In what order do the items come?"
 
 ## Scene 15: Recap
 
@@ -437,7 +441,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** End card. Tease Boss Level 3: the expense tracker that combines everything in Module 3. Hold quietly at the end.
 
-- **Narration:** Asha now knows lists, dictionaries, tuples, sets and comprehensions. But every day, she still adds up the cafe's costs on paper: milk, cups, tea leaves.
+- **Narration:** Asha now knows lists, dictionaries, tuples, sets and comprehensions. But every day, she still adds up the Corner Cafe's costs on paper: milk, cups, tea leaves.
   **On screen:** Boss Level 3: The Expense Tracker Lists, dictionaries, loops and decisions, together.
 - **Narration:** In Chapter 15, Boss Level 3, you will build an expense tracker that does it for her.
   **On screen:** Boss Level 3: The Expense Tracker Lists, dictionaries, loops and decisions, together.

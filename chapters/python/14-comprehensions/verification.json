@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-14",
   "run_id": "2026-11-10-40305d",
-  "verified_at": "2026-11-10T02:46:45+00:00",
+  "verified_at": "2026-11-10T02:51:59+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -179,12 +179,12 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 117,
-          "average_words": 11.3,
+          "sentences": 118,
+          "average_words": 11.6,
           "longest": 28
         },
         "video/script.md": {
-          "sentences": 588,
+          "sentences": 598,
           "average_words": 8.8,
           "longest": 26
         }
@@ -200,9 +200,9 @@
         "missing video/description.md: run python3 tools/render_video.py chapters/python/14-comprehensions"
       ],
       "details": {
-        "estimated_minutes": 17.5
+        "estimated_minutes": 17.9
       }
     }
   ],
-  "fingerprint": "46791303dafc62720783f4af9c1128cc7d05f87377f5644d12381aa31da22819"
+  "fingerprint": "85c340f3c1499edefe0bbdc4b737cbe23b3de6d179ddc983c45fcb21ff2a85c7"
 }

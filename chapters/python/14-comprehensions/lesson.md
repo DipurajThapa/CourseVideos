@@ -14,7 +14,7 @@ By the end of this chapter, you will be able to:
 
 ## Why this matters
 
-At the end of Chapter 13, Asha wanted a list of every price with tax added. She needed four lines: an empty list, a loop, the new price, and `append()`. She writes this pattern again and again: new prices, names in capital letters, only the vegan items.
+Chapter 13 ended with a pattern you have used many times: a loop that builds a new list. To add tax to every price, Asha needs three lines: an empty list, a loop, and `append()` with the new price. She writes this pattern again and again: new prices, names in capital letters, only the vegan items.
 
 A **comprehension** is a short way to build a new list or dictionary from another collection, in one line. It says what you want, not how to collect it step by step. Data tools, reports and websites use comprehensions all the time to clean and reshape data.
 
@@ -44,7 +44,7 @@ Think of a comprehension as a recipe card for a new list: "for each price, if it
 
 ## Build it step by step
 
-**Step 1: The loop you already know.** Here is Asha's loop from the end of Chapter 13. It adds 10 percent tax to every price.
+**Step 1: The loop you already know.** Here is the pattern from earlier chapters: a loop that builds a new list. It adds 10 percent tax to every price.
 
 ```python
 # file: examples/ex01_tax_loop.py
@@ -282,19 +282,19 @@ Asha then ran her loop and the AI's line on three test cases. The fixed line pas
 # file: examples/err01_braces.py
 prices = [3.5, 3.5, 4.0, 2.75]
 with_tax = {round(price * 1.1, 2) for price in prices}
-print(with_tax)
 print(type(with_tax))
+print(sorted(with_tax))
 print(len(with_tax), len(prices))
 ```
 
 <!-- output: examples/err01_braces.expected -->
 ```output
-{3.03, 3.85, 4.4}
 <class 'set'>
+[3.03, 3.85, 4.4]
 3 4
 ```
 
-There is no error, but one 3.85 is gone. Fix: use square brackets for a list, and curly brackets with `key: value` for a dictionary.
+There is no error, but one 3.85 is gone: the set has 3 values, the list had 4. A set has no fixed order, so line 5 prints it with `sorted()`. Fix: use square brackets for a list, and curly brackets with `key: value` for a dictionary.
 
 **Mistake 2: `else` after a filter.** A filter at the end cannot have an `else`.
 
@@ -341,7 +341,7 @@ Scone
 prices = [3.5, 4.25]
 with_tax = [price * 1.1 for price in prices]
 print(with_tax)
-print([round(price, 2) for price in with_tax])
+print([round(price * 1.1, 2) for price in prices])
 ```
 
 <!-- output: examples/ex09_no_round.expected -->
@@ -350,7 +350,7 @@ print([round(price, 2) for price in with_tax])
 [3.85, 4.68]
 ```
 
-Fix: round inside the comprehension, or format the price with `:.2f` when you print it.
+Fix: round inside the comprehension, as line 5 does, or format the price with `:.2f` when you print it.
 
 ## Think beyond
 
