@@ -1,6 +1,6 @@
 # Review Queue
 
-Generated 2026-11-10T03:50:19+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
+Generated 2026-11-10T04:26:53+00:00 by `tools/build_review_queue.py`. Do not edit by hand.
 
 To approve a chapter: `python3 tools/state.py approve <chapter-id>`.
 To ask for changes: `python3 tools/state.py request-changes <chapter-id> "<what to change>"`.
@@ -27,6 +27,7 @@ You can also ask Claude to do either.
 - **python-13**: Tuples and Sets: Fixed Groups and Unique Items ([chapters/python/13-tuples-and-sets](chapters/python/13-tuples-and-sets)), video: [chapters/python/13-tuples-and-sets/video/chapter.mp4](chapters/python/13-tuples-and-sets/video/chapter.mp4)
 - **python-14**: Comprehensions: Transforming Data in One Line ([chapters/python/14-comprehensions](chapters/python/14-comprehensions)), video: [chapters/python/14-comprehensions/video/chapter.mp4](chapters/python/14-comprehensions/video/chapter.mp4)
 - **python-15**: Boss Level 3: The Expense Tracker ([chapters/python/15-project-expense-tracker](chapters/python/15-project-expense-tracker)), video: [chapters/python/15-project-expense-tracker/video/chapter.mp4](chapters/python/15-project-expense-tracker/video/chapter.mp4)
+- **python-16**: Functions: Reusable Blocks of Logic ([chapters/python/16-functions](chapters/python/16-functions)), video: [chapters/python/16-functions/video/chapter.mp4](chapters/python/16-functions/video/chapter.mp4)
 
 ## Changes requested
 
