@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-12",
   "run_id": "2026-11-10-bbf260",
-  "verified_at": "2026-11-10T01:34:20+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T01:52:40+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -186,23 +186,26 @@
           "sentences": 119,
           "average_words": 11.5,
           "longest": 30
+        },
+        "video/script.md": {
+          "sentences": 663,
+          "average_words": 9.3,
+          "longest": 30
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/12-dictionaries",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/12-dictionaries",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/12-dictionaries",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/12-dictionaries",
-        "missing video/script.md: run python3 tools/render_video.py chapters/python/12-dictionaries"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.6
+        "estimated_minutes": 18.6,
+        "duration_seconds": 1090.3,
+        "size_mb": 45.82,
+        "scenes": 16,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "af8c76a5fc93dd2eddedfa6e2f1fd4674c06e7df9f7d88d93196476a71410d53"
+  "fingerprint": "98060f993961205f60d20c2edd1ed654e664bcacb8fb752776de3237a24d434a"
 }

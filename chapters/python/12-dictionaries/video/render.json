@@ -1,0 +1,145 @@
+{
+  "chapter_id": "python-12",
+  "rendered_at": "2026-11-10T01:49:42+00:00",
+  "renderer_version": "3.0.1",
+  "storyboard_sha256": "b7caca5e0d02904d1d2086f2a90ea8afeb8f9d6e9fba68fec96f660157c21546",
+  "inputs_sha256": "dc511b329bf45f04d18d4849665b4272594bd17e41e8f6ec730cfe7f11eba796",
+  "video_sha256": "59af04744a5a96bc33b7247b4c9225d05ad16ab67bc6f3f8f6dd85caffaf58bc",
+  "duration_seconds": 1090.3,
+  "size_mb": 45.82,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video": "h264",
+    "audio": "aac",
+    "captions": "mov_text",
+    "loudness_lufs": -14,
+    "measured_lufs": -15.1,
+    "true_peak_dbtp": -2.2
+  },
+  "voice": {
+    "engine": "kokoro-onnx 0.6.1, model v1.0 (Apache-2.0)",
+    "voice": "bm_lewis",
+    "language": "en-gb",
+    "speed": 0.95
+  },
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "states": 953,
+  "questions": 16,
+  "breathers": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "section": "Introduction",
+      "start": 0.0,
+      "end": 52.467
+    },
+    {
+      "id": "goals",
+      "title": "Learning goals",
+      "section": "Learning goals",
+      "start": 52.467,
+      "end": 63.033
+    },
+    {
+      "id": "why",
+      "title": "Why this matters",
+      "section": "Why this matters",
+      "start": 63.033,
+      "end": 79.3
+    },
+    {
+      "id": "idea",
+      "title": "The idea: keys and values",
+      "section": "The idea",
+      "start": 79.3,
+      "end": 147.3
+    },
+    {
+      "id": "step1",
+      "title": "Step 1: Make a dictionary and read values",
+      "section": "Build it step by step",
+      "start": 147.3,
+      "end": 188.233
+    },
+    {
+      "id": "step2",
+      "title": "Step 2: Add, change and remove",
+      "section": "Build it step by step",
+      "start": 188.233,
+      "end": 249.267
+    },
+    {
+      "id": "step3",
+      "title": "Step 3: Check before you look up",
+      "section": "Build it step by step",
+      "start": 249.267,
+      "end": 295.633
+    },
+    {
+      "id": "step4",
+      "title": "Step 4: Go through a dictionary",
+      "section": "Build it step by step",
+      "start": 295.633,
+      "end": 352.067
+    },
+    {
+      "id": "step5",
+      "title": "Steps 5 and 6: Count, then nest",
+      "section": "Build it step by step",
+      "start": 352.067,
+      "end": 431.4
+    },
+    {
+      "id": "outcome",
+      "title": "See the outcome: the order taker",
+      "section": "See the outcome",
+      "start": 431.4,
+      "end": 496.6
+    },
+    {
+      "id": "ai",
+      "title": "Work with AI: six stages, one stock tracker",
+      "section": "Work with AI",
+      "start": 496.6,
+      "end": 816.5
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "section": "Common mistakes",
+      "start": 816.5,
+      "end": 934.833
+    },
+    {
+      "id": "beyond",
+      "title": "Think beyond",
+      "section": "Think beyond",
+      "start": 934.833,
+      "end": 982.633
+    },
+    {
+      "id": "recap",
+      "title": "Recap",
+      "section": "Recap",
+      "start": 982.633,
+      "end": 1042.267
+    },
+    {
+      "id": "practice",
+      "title": "Practice",
+      "section": "Practice",
+      "start": 1042.267,
+      "end": 1066.767
+    },
+    {
+      "id": "next",
+      "title": "What's next",
+      "section": "What's next",
+      "start": 1066.767,
+      "end": 1090.3
+    }
+  ]
+}
