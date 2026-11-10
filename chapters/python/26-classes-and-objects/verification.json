@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-26",
   "run_id": "2026-11-10-70d586",
-  "verified_at": "2026-11-10T11:03:19+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T11:26:33+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -224,17 +224,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/26-classes-and-objects",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/26-classes-and-objects",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/26-classes-and-objects",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/26-classes-and-objects"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.3
+        "estimated_minutes": 18.3,
+        "duration_seconds": 1089.0,
+        "size_mb": 46.38,
+        "scenes": 17,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "58185dd5e1c0308ae6b1b1d9c9e03f1225fcdd3850bd2817d69a6d0aabfa1659"
+  "fingerprint": "b2583aaaafb49b2bbfaf9143469c1e5c92024df255a6261117a591be2a448e43"
 }

@@ -1,0 +1,1268 @@
+1
+00:00:00,250 --> 00:00:05,921
+At the Corner Cafe, Asha's report from
+Chapter 25 keeps each sale as a pair, and
+
+2
+00:00:05,941 --> 00:00:07,700
+each day as a dictionary.
+
+3
+00:00:07,733 --> 00:00:11,434
+The rules, like the total, live in
+separate functions.
+
+4
+00:00:11,454 --> 00:00:15,982
+The data, and the rules that work on it,
+live in different places.
+
+5
+00:00:16,587 --> 00:00:19,052
+This is Code Quest, Chapter 26.
+
+6
+00:00:19,072 --> 00:00:21,617
+Today, you build your own types.
+
+7
+00:00:21,667 --> 00:00:25,748
+And an AI assistant will design a loyalty
+card for Asha.
+
+8
+00:00:25,768 --> 00:00:28,605
+It will sound sure about the free teas.
+
+9
+00:00:28,625 --> 00:00:30,656
+Your test cases will decide.
+
+10
+00:00:31,253 --> 00:00:36,568
+Here is today's mission: an order that
+keeps its own items, and works out its own
+
+11
+00:00:36,588 --> 00:00:36,963
+total.
+
+12
+00:00:37,000 --> 00:00:39,586
+By the end, you will know every line.
+
+13
+00:00:39,606 --> 00:00:41,769
+Let's build it, piece by piece.
+
+14
+00:00:42,350 --> 00:00:44,700
+Write a class, and explain self.
+
+15
+00:00:44,733 --> 00:00:48,843
+Give an object a readable print form, and
+write a data class.
+
+16
+00:00:48,867 --> 00:00:53,031
+And ask an AI to design a class, then test
+the design.
+
+17
+00:00:53,617 --> 00:00:56,764
+A class is a new type that you define
+yourself.
+
+18
+00:00:56,784 --> 00:01:02,020
+It bundles data and the functions that
+work on it, like a menu item that knows
+
+19
+00:01:02,040 --> 00:01:04,177
+how to add tax to its own price.
+
+20
+00:01:04,200 --> 00:01:06,507
+A shop has products and baskets.
+
+21
+00:01:06,527 --> 00:01:08,689
+A game has players and levels.
+
+22
+00:01:08,709 --> 00:01:14,289
+And AI assistants design code in classes,
+so you need to judge their designs.
+
+23
+00:01:14,883 --> 00:01:16,256
+A class is the plan.
+
+24
+00:01:16,276 --> 00:01:19,251
+An object is one thing made from that
+plan.
+
+25
+00:01:19,271 --> 00:01:22,873
+Each object is also called an instance of
+the class.
+
+26
+00:01:22,900 --> 00:01:26,043
+Tea and cake are two objects from the same
+plan.
+
+27
+00:01:26,063 --> 00:01:29,009
+Each one has its own name, and its own
+price.
+
+28
+00:01:29,620 --> 00:01:30,717
+Class, the plan.
+
+29
+00:01:30,737 --> 00:01:33,790
+Object, or instance, one thing made from
+it.
+
+30
+00:01:33,833 --> 00:01:37,973
+Attribute: a value stored in an object,
+read with a dot.
+
+31
+00:01:38,000 --> 00:01:41,190
+Method: a function that belongs to the
+class.
+
+32
+00:01:41,233 --> 00:01:44,458
+And self: the object a method is working
+on.
+
+33
+00:01:45,053 --> 00:01:47,602
+Think of the cafe's printed order slip.
+
+34
+00:01:47,622 --> 00:01:49,446
+The blank slip is the class.
+
+35
+00:01:49,466 --> 00:01:53,793
+Each filled-in slip is an object, with its
+own customer and items.
+
+36
+00:01:53,833 --> 00:01:56,226
+The comparison stops at one point.
+
+37
+00:01:56,246 --> 00:01:59,135
+A paper slip cannot add up its own total.
+
+38
+00:01:59,155 --> 00:02:01,193
+An object can, with a method.
+
+39
+00:02:01,787 --> 00:02:02,364
+Breather.
+
+40
+00:02:02,384 --> 00:02:05,617
+One picture: a plan, and the things made
+from it.
+
+41
+00:02:05,667 --> 00:02:08,166
+Next, Asha writes her first class.
+
+42
+00:02:12,917 --> 00:02:13,497
+Step 1.
+
+43
+00:02:13,517 --> 00:02:15,553
+Line 2 starts the class.
+
+44
+00:02:15,573 --> 00:02:19,667
+Class names use capital letters, like Menu
+Item.
+
+45
+00:02:19,700 --> 00:02:25,118
+The special method init, written with two
+underscores on each side, runs when you
+
+46
+00:02:25,138 --> 00:02:26,259
+create an object.
+
+47
+00:02:26,279 --> 00:02:28,810
+It stores the starting values on self.
+
+48
+00:02:28,833 --> 00:02:30,682
+Line 8 creates an object.
+
+49
+00:02:30,702 --> 00:02:35,091
+Python runs init with name set to Tea and
+price set to 3.5.
+
+50
+00:02:35,111 --> 00:02:40,173
+It passes the new object as self, so you
+never write it in the call.
+
+51
+00:02:40,200 --> 00:02:42,956
+Line 9 creates a second object.
+
+52
+00:02:42,976 --> 00:02:46,806
+Lines 10 and 11 read attributes with a
+dot.
+
+53
+00:02:58,180 --> 00:02:59,012
+Tea 3.5.
+
+54
+00:02:59,032 --> 00:03:02,420
+Tea dot name, and tea dot price.
+
+55
+00:03:02,467 --> 00:03:07,254
+And line 11 reads cake's own values: Cake
+4.25.
+
+56
+00:03:07,850 --> 00:03:08,283
+Step 2.
+
+57
+00:03:08,303 --> 00:03:11,393
+A method is a function written inside the
+class.
+
+58
+00:03:11,413 --> 00:03:13,660
+Its first parameter is always self.
+
+59
+00:03:13,700 --> 00:03:19,109
+Line 8 uses self dot price, the price of
+whichever object called the method.
+
+60
+00:03:19,129 --> 00:03:22,610
+It adds 10 percent tax, and rounds to two
+places.
+
+61
+00:03:22,633 --> 00:03:28,343
+Line 11 calls another method through self,
+and shows it with two decimal places.
+
+62
+00:03:28,367 --> 00:03:32,171
+Lines 15 and 16 call both methods on tea.
+
+63
+00:03:43,547 --> 00:03:45,467
+3.85, then Tea: 3.85.
+
+64
+00:03:45,487 --> 00:03:50,917
+In tea dot with tax, self is tea, so self
+dot price is 3.5.
+
+65
+00:03:50,967 --> 00:03:55,056
+And label adds the name in front.
+
+66
+00:03:55,653 --> 00:03:56,467
+Quick check.
+
+67
+00:03:56,487 --> 00:03:58,897
+In cake dot with tax, what is self?
+
+68
+00:04:10,280 --> 00:04:10,409
+C.
+
+69
+00:04:10,429 --> 00:04:11,598
+The object cake.
+
+70
+00:04:11,618 --> 00:04:15,167
+Python passes the object before the dot as
+self.
+
+71
+00:04:15,750 --> 00:04:16,248
+Step 3.
+
+72
+00:04:16,268 --> 00:04:20,536
+In Chapter 17, each function call had its
+own local names.
+
+73
+00:04:20,556 --> 00:04:24,380
+In the same way, each object has its own
+attributes.
+
+74
+00:04:24,400 --> 00:04:29,640
+Line 5 runs once for each new object, so
+every order gets a new empty list.
+
+75
+00:04:29,667 --> 00:04:32,461
+Lines 11 and 12 create two orders.
+
+76
+00:04:32,481 --> 00:04:36,601
+Lina gets a tea and a cake, and Omar gets
+a juice.
+
+77
+00:04:47,980 --> 00:04:50,284
+Omar, and a list with only juice.
+
+78
+00:04:50,304 --> 00:04:53,100
+Lina's tea and cake are in her own list.
+
+79
+00:04:53,133 --> 00:04:54,048
+One more rule.
+
+80
+00:04:54,068 --> 00:04:59,189
+A value written directly in the class
+body, outside any method, is different.
+
+81
+00:04:59,209 --> 00:05:02,661
+It belongs to the class, and every object
+shares it.
+
+82
+00:05:02,681 --> 00:05:03,862
+Remember that one.
+
+83
+00:05:04,453 --> 00:05:04,963
+Breather.
+
+84
+00:05:04,983 --> 00:05:08,613
+You can write a class, create objects, and
+call their methods.
+
+85
+00:05:08,633 --> 00:05:11,366
+Next, objects start working together.
+
+86
+00:05:16,117 --> 00:05:16,624
+Step 4.
+
+87
+00:05:16,644 --> 00:05:19,334
+An order can hold menu item objects.
+
+88
+00:05:19,354 --> 00:05:22,797
+Add, on lines 13 and 14, puts one in the
+list.
+
+89
+00:05:22,833 --> 00:05:26,291
+Line 17 is a list comprehension from
+Chapter 14.
+
+90
+00:05:26,311 --> 00:05:30,493
+It collects the price of every item, and
+sum adds them up.
+
+91
+00:05:30,533 --> 00:05:32,831
+The order does not store its total.
+
+92
+00:05:32,851 --> 00:05:35,083
+It works it out each time you ask.
+
+93
+00:05:35,133 --> 00:05:40,834
+Lines 21 to 24 add a tea, print the total,
+add a cake, and print it again.
+
+94
+00:05:52,213 --> 00:05:53,325
+3.5, then 7.75.
+
+95
+00:05:53,345 --> 00:05:55,813
+The total follows every new item.
+
+96
+00:05:55,833 --> 00:06:02,858
+If the order stored its total as a number,
+that number would be wrong after the next
+
+97
+00:06:02,878 --> 00:06:03,193
+add.
+
+98
+00:06:03,213 --> 00:06:06,715
+Keep that rule in mind for the AI section.
+
+99
+00:06:07,317 --> 00:06:07,772
+Step 5.
+
+100
+00:06:07,792 --> 00:06:13,277
+Printing your own object shows its type
+and a memory address, a code that changes
+
+101
+00:06:13,297 --> 00:06:13,957
+every run.
+
+102
+00:06:14,000 --> 00:06:19,731
+The special method s t r, also written
+with two underscores on each side, returns
+
+103
+00:06:19,751 --> 00:06:22,500
+the text that print and f strings show.
+
+104
+00:06:22,533 --> 00:06:23,524
+Asha runs it.
+
+105
+00:06:23,544 --> 00:06:29,508
+Print shows Tea, with the price in
+brackets, and the f string on line 13 uses
+
+106
+00:06:29,528 --> 00:06:30,596
+the same text.
+
+107
+00:06:31,183 --> 00:06:31,656
+Step 6.
+
+108
+00:06:31,676 --> 00:06:34,257
+Many classes only store a few values.
+
+109
+00:06:34,277 --> 00:06:39,109
+At data class is a decorator: a line above
+the class that changes it.
+
+110
+00:06:39,129 --> 00:06:44,593
+It writes init for you, a print form
+called repr, and the double equals check.
+
+111
+00:06:44,633 --> 00:06:49,283
+Lines 7 and 8 list the attributes, each
+with a type after a colon.
+
+112
+00:06:49,333 --> 00:06:54,444
+Double equals on two data class objects
+compares their values, attribute by
+
+113
+00:06:54,464 --> 00:06:55,128
+attribute.
+
+114
+00:07:06,480 --> 00:07:07,650
+True, then False.
+
+115
+00:07:07,670 --> 00:07:10,730
+Same name and price, then a different
+price.
+
+116
+00:07:10,767 --> 00:07:16,540
+And line 12 shows the print form the data
+class wrote: the type, then each attribute
+
+117
+00:07:16,560 --> 00:07:17,506
+and its value.
+
+118
+00:07:18,120 --> 00:07:23,976
+Chapter 17 showed that a list as a default
+value is a trap: every call shares one
+
+119
+00:07:23,996 --> 00:07:24,339
+list.
+
+120
+00:07:24,359 --> 00:07:26,080
+A data class refuses it.
+
+121
+00:07:26,100 --> 00:07:31,626
+Read the last line: mutable default, not
+allowed, use default factory.
+
+122
+00:07:31,646 --> 00:07:33,844
+Mutable means it can change.
+
+123
+00:07:34,453 --> 00:07:39,123
+Field, with default factory list, makes a
+new empty list for each object.
+
+124
+00:07:39,167 --> 00:07:40,723
+Lina's list has a tea.
+
+125
+00:07:40,743 --> 00:07:42,658
+Omar's list is still empty.
+
+126
+00:07:42,678 --> 00:07:45,525
+You have every piece of the mission now.
+
+127
+00:07:46,117 --> 00:07:47,718
+Back to the mission.
+
+128
+00:07:47,738 --> 00:07:52,097
+Lines 5 to 8 describe a menu item: a name
+and a price.
+
+129
+00:07:52,133 --> 00:07:57,943
+Lines 11 to 14 describe an order: a
+customer, and its own list of items.
+
+130
+00:07:57,967 --> 00:07:59,958
+Add puts an item in the list.
+
+131
+00:07:59,978 --> 00:08:02,109
+Total works it out, every time.
+
+132
+00:08:02,720 --> 00:08:05,380
+Line 23 creates Lina's order.
+
+133
+00:08:05,400 --> 00:08:10,000
+Lines 24 to 26 add a tea, a cake, and
+another tea.
+
+134
+00:08:10,033 --> 00:08:12,416
+Line 27 prints the customer.
+
+135
+00:08:12,436 --> 00:08:19,193
+Lines 28 and 29 print each item, lined up
+with the format codes from Chapter 3.
+
+136
+00:08:19,233 --> 00:08:21,549
+Line 30 prints the total.
+
+137
+00:08:32,913 --> 00:08:34,600
+Total, 11.25.
+
+138
+00:08:34,620 --> 00:08:37,883
+3.5, plus 4.25, plus 3.5.
+
+139
+00:08:37,933 --> 00:08:39,419
+Mission complete!
+
+140
+00:08:39,439 --> 00:08:43,760
+Next, Asha wants a loyalty card for her
+regulars.
+
+141
+00:08:43,780 --> 00:08:48,809
+She designs it with an AI assistant, one
+stage at a time.
+
+142
+00:08:49,383 --> 00:08:55,402
+This chapter's AI skill: ask an AI to
+design a class, then review whether the
+
+143
+00:08:55,422 --> 00:08:56,343
+design fits.
+
+144
+00:08:56,367 --> 00:08:58,999
+Test every choice with real cases.
+
+145
+00:08:59,019 --> 00:09:02,743
+And never paste private data: use made-up
+names.
+
+146
+00:09:03,353 --> 00:09:04,425
+Stage 1: plan.
+
+147
+00:09:04,445 --> 00:09:10,742
+Asha describes the loyalty card: one stamp
+per drink, and a free tea for every 10
+
+148
+00:09:10,762 --> 00:09:11,288
+stamps.
+
+149
+00:09:11,308 --> 00:09:12,223
+No code yet.
+
+150
+00:09:12,267 --> 00:09:15,468
+The AI lists two attributes and four
+methods.
+
+151
+00:09:15,488 --> 00:09:19,977
+Print card and save card are separate
+jobs, so Asha drops them.
+
+152
+00:09:19,997 --> 00:09:21,909
+Her main program can print.
+
+153
+00:09:21,929 --> 00:09:24,916
+One job for each method, as in Chapter 17.
+
+154
+00:09:25,520 --> 00:09:26,586
+Stage 2: write.
+
+155
+00:09:26,606 --> 00:09:32,019
+Asha writes the start of the class
+herself, writes down her own prediction,
+
+156
+00:09:32,039 --> 00:09:35,930
+Lina 2, and then asks the AI to predict
+the last line.
+
+157
+00:09:35,967 --> 00:09:39,640
+The AI says Lina 2 too, and the run
+agrees.
+
+158
+00:09:40,253 --> 00:09:41,719
+Stage 3: generate.
+
+159
+00:09:41,739 --> 00:09:43,204
+Now the free teas.
+
+160
+00:09:43,224 --> 00:09:49,393
+Asha asks the AI to add them, and to say
+what a card shows after 25 stamps.
+
+161
+00:09:49,433 --> 00:09:53,838
+The AI is sure: after 25 stamps, 2 free
+teas.
+
+162
+00:09:54,453 --> 00:09:56,176
+Look at the AI's class.
+
+163
+00:09:56,196 --> 00:09:58,903
+Line 6 stores free teas as a number.
+
+164
+00:09:58,923 --> 00:10:02,539
+Line 10 adds one when the stamps are
+exactly 10.
+
+165
+00:10:03,153 --> 00:10:08,253
+Asha runs it: 25 stamps, then she prints
+the stamps and the free teas.
+
+166
+00:10:19,613 --> 00:10:19,851
+No.
+
+167
+00:10:19,871 --> 00:10:22,515
+25 stamps, but only 1 free tea.
+
+168
+00:10:22,535 --> 00:10:29,388
+Line 10 of the AI's class counts only
+stamp number 10, so stamp 20 never counts.
+
+169
+00:10:29,408 --> 00:10:31,450
+And the AI sounded sure.
+
+170
+00:10:32,053 --> 00:10:33,157
+Stage 4: test.
+
+171
+00:10:33,177 --> 00:10:37,573
+Asha asks for test cases, each with an
+expected result.
+
+172
+00:10:37,600 --> 00:10:41,123
+The AI suggests 0, 9, 10 and 25 stamps.
+
+173
+00:10:41,143 --> 00:10:46,483
+Asha adds one more: an old card that
+starts with 12 stamps.
+
+174
+00:10:47,087 --> 00:10:50,555
+She runs all five cases on the AI's class.
+
+175
+00:10:50,575 --> 00:10:55,040
+Two fail: 25 stamps gives 1, and the old
+card gives 0.
+
+176
+00:10:55,653 --> 00:10:59,743
+Asha shows the failing cases, and asks for
+the cause first.
+
+177
+00:10:59,767 --> 00:11:05,916
+The AI explains: free teas is set to 0 in
+init, so a card created with 12 stamps
+
+178
+00:11:05,936 --> 00:11:06,842
+still has 0.
+
+179
+00:11:06,862 --> 00:11:10,852
+The fix works it out from the stamps, with
+a method.
+
+180
+00:11:10,872 --> 00:11:13,706
+The same rule as the total in step 4.
+
+181
+00:11:14,320 --> 00:11:18,501
+Lines 10 and 11 return the stamps, floor
+divided by 10.
+
+182
+00:11:18,521 --> 00:11:21,633
+Nothing is stored, so nothing goes stale.
+
+183
+00:11:22,253 --> 00:11:24,614
+She runs all five cases again.
+
+184
+00:11:24,634 --> 00:11:27,788
+Line 11 now calls free teas as a method.
+
+185
+00:11:27,808 --> 00:11:28,899
+All five pass.
+
+186
+00:11:29,520 --> 00:11:30,601
+Stage 5: debug.
+
+187
+00:11:30,621 --> 00:11:34,563
+Asha adds a method, card line, and calls
+it on line 5.
+
+188
+00:11:34,583 --> 00:11:35,370
+Type error!
+
+189
+00:11:35,400 --> 00:11:41,691
+Read the last line: card line takes 0
+positional arguments, but 1 was given.
+
+190
+00:11:42,287 --> 00:11:48,157
+She pastes the code and the full error,
+and asks for the cause first.
+
+191
+00:11:48,200 --> 00:11:50,931
+The AI explains: line 13 has no parameter.
+
+192
+00:11:50,951 --> 00:11:55,581
+Python passes the card as the first
+argument, so the method needs self.
+
+193
+00:11:56,187 --> 00:12:01,406
+With self added, she runs all five cases
+again, as a regression check.
+
+194
+00:12:01,426 --> 00:12:04,850
+All pass, and line 14 prints Omar's card
+line.
+
+195
+00:12:05,453 --> 00:12:07,021
+Stage 6: improve.
+
+196
+00:12:07,041 --> 00:12:09,823
+Asha asks for one improvement.
+
+197
+00:12:09,867 --> 00:12:14,927
+The AI suggests a history of every drink
+stamped, with a list at the top of the
+
+198
+00:12:14,947 --> 00:12:15,313
+class.
+
+199
+00:12:15,920 --> 00:12:17,591
+Here is the AI's idea.
+
+200
+00:12:17,611 --> 00:12:23,510
+Line 3 creates the list in the class body,
+and line 11 adds each drink to it.
+
+201
+00:12:24,120 --> 00:12:26,935
+Asha tests the idea with two cards.
+
+202
+00:12:26,955 --> 00:12:29,852
+Only Lina gets a stamp, for a latte.
+
+203
+00:12:29,872 --> 00:12:31,310
+Omar gets nothing.
+
+204
+00:12:31,333 --> 00:12:35,580
+Remember the rule from step 3, about a
+value in the class body.
+
+205
+00:12:46,947 --> 00:12:48,308
+Omar, with a latte!
+
+206
+00:12:48,328 --> 00:12:53,613
+The list in the class body belongs to the
+class, so every card shares it.
+
+207
+00:12:53,633 --> 00:12:55,285
+The AI was wrong again.
+
+208
+00:12:55,887 --> 00:13:00,719
+So Asha keeps the idea, but moves the list
+into init, on line 6.
+
+209
+00:13:00,739 --> 00:13:03,222
+Now each card makes its own list.
+
+210
+00:13:03,242 --> 00:13:08,454
+Add stamp also takes a drink now, with Tea
+as the default, on line 8.
+
+211
+00:13:09,053 --> 00:13:12,708
+She writes her cases as pytest tests, from
+Chapter 19.
+
+212
+00:13:12,728 --> 00:13:17,063
+The helper on line 5, stamped, makes a
+card and adds the stamps.
+
+213
+00:13:17,100 --> 00:13:23,841
+Her five cases become five tests, and one
+more test checks the history, on lines 32
+
+214
+00:13:23,861 --> 00:13:24,330
+to 36.
+
+215
+00:13:24,367 --> 00:13:26,385
+She runs every test again.
+
+216
+00:13:26,405 --> 00:13:29,129
+That rerun is her regression check.
+
+217
+00:13:29,149 --> 00:13:30,776
+Six dots: six passed.
+
+218
+00:13:31,387 --> 00:13:32,206
+Quick check.
+
+219
+00:13:32,226 --> 00:13:33,954
+A card stores its stamps.
+
+220
+00:13:33,974 --> 00:13:36,892
+What is the best design for its free teas?
+
+221
+00:13:48,247 --> 00:13:48,352
+B.
+
+222
+00:13:48,372 --> 00:13:51,164
+A method that works them out from the
+stamps.
+
+223
+00:13:51,184 --> 00:13:52,976
+Then they can never go stale.
+
+224
+00:13:53,587 --> 00:13:54,238
+Breather.
+
+225
+00:13:54,258 --> 00:13:59,607
+The AI made two confident design mistakes,
+and Asha's cases caught both.
+
+226
+00:13:59,627 --> 00:14:01,695
+Next, four classic mistakes.
+
+227
+00:14:06,417 --> 00:14:09,027
+Mistake 1 is the one Asha debugged.
+
+228
+00:14:09,047 --> 00:14:13,537
+Line 7 has no self, so Python has nowhere
+to put the object.
+
+229
+00:14:13,567 --> 00:14:17,310
+Takes 0 positional arguments, but 1 was
+given.
+
+230
+00:14:17,330 --> 00:14:19,028
+That 1 is the object.
+
+231
+00:14:19,048 --> 00:14:21,319
+The fix: def with tax, self.
+
+232
+00:14:21,920 --> 00:14:22,706
+Mistake 2.
+
+233
+00:14:22,726 --> 00:14:23,350
+You try.
+
+234
+00:14:23,370 --> 00:14:26,412
+Line 8 is meant to create a menu item.
+
+235
+00:14:26,432 --> 00:14:29,151
+Look closely, and remember step 1.
+
+236
+00:14:40,513 --> 00:14:42,378
+The brackets, and the values.
+
+237
+00:14:42,398 --> 00:14:47,513
+Without them, tea is the class itself, the
+plan, which has no price of its own.
+
+238
+00:14:47,533 --> 00:14:52,589
+Type object, in the message, is the clue:
+tea is a class, not an object.
+
+239
+00:14:53,187 --> 00:14:53,898
+Mistake 3.
+
+240
+00:14:53,918 --> 00:14:59,380
+Line 9 spells price wrongly, so the object
+has no attribute with that name.
+
+241
+00:14:59,400 --> 00:15:04,132
+At the end of the last line, Python even
+suggests the right name.
+
+242
+00:15:04,753 --> 00:15:05,559
+Mistake 4.
+
+243
+00:15:05,579 --> 00:15:08,203
+This order class gives no error.
+
+244
+00:15:08,223 --> 00:15:13,324
+Lina orders a tea on line 14, and line 15
+prints Omar's items.
+
+245
+00:15:24,680 --> 00:15:25,132
+Line 3.
+
+246
+00:15:25,152 --> 00:15:28,910
+The list is in the class body, so every
+order shares it.
+
+247
+00:15:28,930 --> 00:15:32,350
+And there is no error at all, which makes
+it worse.
+
+248
+00:15:32,400 --> 00:15:38,363
+The fix: create the list in init, with
+self dot items, or use field in a data
+
+249
+00:15:38,383 --> 00:15:38,829
+class.
+
+250
+00:15:39,420 --> 00:15:40,340
+Last breather.
+
+251
+00:15:40,360 --> 00:15:43,762
+Two questions to think about on your own
+come next.
+
+252
+00:15:48,483 --> 00:15:48,880
+First.
+
+253
+00:15:48,900 --> 00:15:52,910
+Asha's cafe has tables, and each table has
+several orders.
+
+254
+00:15:52,930 --> 00:15:54,369
+Design a table class.
+
+255
+00:15:54,389 --> 00:15:59,023
+Which attributes does it store, and which
+value should be a method?
+
+256
+00:16:10,380 --> 00:16:14,179
+Sketch it after the video, then try it in
+the practice tasks.
+
+257
+00:16:14,787 --> 00:16:15,250
+Second.
+
+258
+00:16:15,270 --> 00:16:18,980
+Two data class objects with the same
+values are equal.
+
+259
+00:16:19,000 --> 00:16:24,299
+Are two objects of a normal class, like
+the menu item from step 1, equal too?
+
+260
+00:16:35,680 --> 00:16:37,239
+Predict, then test it.
+
+261
+00:16:37,817 --> 00:16:38,665
+Let's recap.
+
+262
+00:16:38,685 --> 00:16:40,112
+A class is the plan.
+
+263
+00:16:40,132 --> 00:16:42,717
+An object is one thing made from it.
+
+264
+00:16:42,767 --> 00:16:47,257
+Init stores the starting values on self,
+and methods work on self.
+
+265
+00:16:47,300 --> 00:16:50,510
+Attributes set in init belong to one
+object.
+
+266
+00:16:50,533 --> 00:16:53,223
+S t r gives a readable print form.
+
+267
+00:16:53,267 --> 00:16:57,667
+A data class writes init, the print form
+and double equals for you.
+
+268
+00:16:57,700 --> 00:17:01,314
+And a value that depends on other
+attributes belongs in a method.
+
+269
+00:17:01,920 --> 00:17:03,014
+One last check.
+
+270
+00:17:03,034 --> 00:17:04,946
+Menu item is a data class.
+
+271
+00:17:04,966 --> 00:17:07,249
+What does printing a cake show?
+
+272
+00:17:18,613 --> 00:17:18,747
+A.
+
+273
+00:17:18,767 --> 00:17:23,969
+The type, then each attribute and its
+value, like line 12 in step 6.
+
+274
+00:17:24,587 --> 00:17:25,692
+Quest complete!
+
+275
+00:17:25,712 --> 00:17:28,770
+You earned 100 XP and the Modeller badge.
+
+276
+00:17:31,017 --> 00:17:32,638
+Now it is your turn.
+
+277
+00:17:32,658 --> 00:17:37,397
+Three warm-up tasks at 10 XP, and three
+apply tasks at 20.
+
+278
+00:17:37,433 --> 00:17:40,072
+And two stretch tasks, worth 40 each.
+
+279
+00:17:40,092 --> 00:17:44,959
+In the last one, you fix an AI's order
+class whose total goes stale.
+
+280
+00:17:45,550 --> 00:17:49,211
+Today, Asha reviewed an AI's design before
+she trusted it.
+
+281
+00:17:49,231 --> 00:17:53,210
+But soon she will meet a whole program
+written by someone else.
+
+282
+00:17:53,233 --> 00:17:59,094
+In Chapter 27, you will read unfamiliar
+code, and improve it safely, with tests
+
+283
+00:17:59,114 --> 00:18:00,583
+and an AI assistant.
+
+284
+00:18:00,633 --> 00:18:02,406
+Do the warm-up tasks now.
+
+285
+00:18:02,426 --> 00:18:04,413
+They take about ten minutes.
+
+286
+00:18:04,433 --> 00:18:06,491
+See you in Chapter 27.

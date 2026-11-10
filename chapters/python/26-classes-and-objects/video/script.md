@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:16 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:09.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:42)
 
 **Section:** Introduction
 
@@ -23,7 +23,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** By the end, you will know every line. Let's build it, piece by piece.
   **On screen:** Code `examples/ex08_order_receipt.py`, line 19, 20 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:42 to 0:53)
 
 **Section:** Learning goals
 
@@ -47,7 +47,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Write a data class with `@dataclass`.
     - Ask an AI to design a class, then test the design.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (0:53 to 1:15)
 
 **Section:** Why this matters
 
@@ -63,7 +63,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - It bundles data and the functions that work on that data.
     - Shops, games and apps are built from types like these. AI assistants design code this way too.
 
-## Scene 4: The idea: a plan and its objects
+## Scene 4: The idea: a plan and its objects (1:15 to 2:13)
 
 **Section:** The idea
 
@@ -100,7 +100,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Attributes store data; methods do the work.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Step 1: Your first class
+## Scene 5: Step 1: Your first class (2:13 to 3:08)
 
 **Section:** Build it step by step
 
@@ -120,7 +120,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And line 11 reads cake's own values: Cake 4.25.
   **On screen:** Code `examples/ex01_menu_item.py`, line 11 highlighted, output `examples/ex01_menu_item.expected`
 
-## Scene 6: Step 2: Methods
+## Scene 6: Step 2: Methods (3:08 to 4:16)
 
 **Section:** Build it step by step
 
@@ -145,7 +145,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** C. The object cake. Python passes the object before the dot as self.
   **On screen:** Quick check: "In `cake.with_tax()`, what is `self`?" (answer revealed: The object `cake`)
 
-## Scene 7: Step 3: Each object keeps its own data
+## Scene 7: Step 3: Each object keeps its own data (4:16 to 5:16)
 
 **Section:** Build it step by step
 
@@ -174,7 +174,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Each object keeps its own attributes.
 - **Breather:** 4 quiet seconds.
 
-## Scene 8: Step 4: Objects that work together
+## Scene 8: Step 4: Objects that work together (5:16 to 6:07)
 
 **Section:** Build it step by step
 
@@ -194,7 +194,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** If the order stored its total as a number, that number would be wrong after the next add. Keep that rule in mind for the AI section.
   **On screen:** Code `examples/ex04_order_total.py`, line 17 highlighted, output `examples/ex04_order_total.expected`
 
-## Scene 9: Step 5: A readable print form
+## Scene 9: Step 5: A readable print form (6:07 to 6:31)
 
 **Section:** Build it step by step
 
@@ -207,7 +207,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Asha runs it. Print shows Tea, with the price in brackets, and the f string on line 13 uses the same text.
   **On screen:** Code `examples/ex05_str.py`, line 12, 13 highlighted, output `examples/ex05_str.expected`
 
-## Scene 10: Step 6: Data classes
+## Scene 10: Step 6: Data classes (6:31 to 7:46)
 
 **Section:** Build it step by step
 
@@ -233,7 +233,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Lina's list has a tea. Omar's list is still empty. You have every piece of the mission now.
   **On screen:** Code `examples/ex07_list_field.py`, line 13, 14, 15 highlighted, output `examples/ex07_list_field.expected`
 
-## Scene 11: See the outcome: the order receipt
+## Scene 11: See the outcome: the order receipt (7:46 to 8:49)
 
 **Section:** See the outcome
 
@@ -257,7 +257,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Mission complete! Next, Asha wants a loyalty card for her regulars. She designs it with an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex08_order_receipt.py`, output `examples/ex08_order_receipt.expected`
 
-## Scene 12: Work with AI: a loyalty card
+## Scene 12: Work with AI: a loyalty card (8:49 to 14:06)
 
 **Section:** Work with AI
 
@@ -370,7 +370,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Test a design with two objects.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Common mistakes
+## Scene 13: Common mistakes (14:06 to 15:48)
 
 **Section:** Common mistakes
 
@@ -403,7 +403,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Lists belong in `__init__`, not the class body.
 - **Breather:** 4 quiet seconds.
 
-## Scene 14: Think beyond
+## Scene 14: Think beyond (15:48 to 16:38)
 
 **Section:** Think beyond
 
@@ -420,7 +420,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Predict, then test it.
   **On screen:** Question card: "Are two objects of a normal class, such as `MenuItem("Tea", 3.5)` from Step 1, equal with `==`?"
 
-## Scene 15: Recap
+## Scene 15: Recap (16:38 to 17:31)
 
 **Section:** Recap
 
@@ -468,7 +468,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Modeller You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 16: Practice
+## Scene 16: Practice (17:31 to 17:45)
 
 **Section:** Practice
 
@@ -479,7 +479,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks, worth 40 each. In the last one, you fix an AI's order class whose total goes stale.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 17: What's next
+## Scene 17: What's next (17:45 to 18:09)
 
 **Section:** What's next
 
