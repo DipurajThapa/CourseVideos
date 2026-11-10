@@ -1,404 +1,1852 @@
 {
-  "chapter_id": "<language>-NN",
-  "number": 0,
-  "title": "Chapter NN: <Title>",
-  "video_title": "<Language> Chapter NN: <Title>",
-  "summary": "<two sentences for the upload description>",
-  "_help": "See STANDARDS.md section 11 and the docstring of tools/storyboard.py. Split narration into segments that move highlights; add asks (10-second timer), quizzes and breathers. Delete this key.",
-  "scenes": [
+ "chapter_id": "python-26",
+ "number": 26,
+ "version": 3,
+ "title": "Chapter 26: Classes and Objects: Modelling Real Things",
+ "video_title": "Python Chapter 26: Classes and Objects, Modelling Real Things",
+ "summary": "Asha's report kept data and rules apart. Follow her as she builds her own types at the Corner Cafe: classes, objects, methods, __str__ and data classes. Then watch her design a loyalty card with an AI assistant at all six stages, where her test cases catch two confident design mistakes.",
+ "scenes": [
+  {
+   "id": "intro",
+   "section": "Introduction",
+   "title": "Introduction",
+   "direction": "Open on the Chapter 25 limit: data and rules live apart. Then the title, the AI tease and the mission code with no output.",
+   "beats": [
     {
-      "id": "intro",
-      "section": "Introduction",
-      "title": "Introduction",
-      "direction": "Title card, then a hook: a problem or an AI mistake the chapter solves. Keep any output hidden until a pause.",
-      "beats": [
-        {
-          "visual": {
-            "type": "title",
-            "kicker": "CHAPTER NN",
-            "title": "<Title>",
-            "subtitle": "<quest line>",
-            "badge": "Reward: 100 XP and the <Badge> badge"
-          },
-          "segments": [
-            {
-              "say": "Welcome to Code Quest, Chapter NN."
-            },
-            {
-              "say": "<one sentence on what the learner will do>."
-            }
-          ]
-        },
-        {
-          "visual": {
-            "type": "code",
-            "heading": "<what to look at>",
-            "file": "examples/<flawed>.py"
-          },
-          "segments": [
-            {
-              "say": "<set up the hook>"
-            },
-            {
-              "say": "<point at the line>",
-              "highlight": [
-                2
-              ]
-            }
-          ],
-          "ask": {
-            "question": "<the question, shown with a 10-second timer>",
-            "seconds": 10
-          },
-          "after": [
-            {
-              "say": "<reveal>",
-              "output": "examples/<flawed>.expected"
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "text",
+      "heading": "Data here, rules somewhere else",
+      "label": "The problem",
+      "body": [
+       "At the Corner Cafe, Asha's report keeps sales as pairs and days as dictionaries."
+      ],
+      "pre": "  sale = (\"Tea\", 3.5)          a pair\n  day = {\"item\": ..., ...}     a dictionary\n  row[\"Amount\"]                 KeyError, found only\n                                when the program runs"
+     },
+     "segments": [
+      {
+       "say": "At the Corner Cafe, Asha's report from Chapter 25 keeps each sale as a pair, and each day as a dictionary.",
+       "focus": "pre"
+      },
+      {
+       "say": "The rules, like the total, live in separate functions. And a wrong key, like Amount with a capital A, shows up only when the program runs."
+      }
+     ]
     },
     {
-      "id": "learning-goals",
-      "section": "Learning goals",
-      "title": "Learning goals",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Learning goals",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "title",
+      "kicker": "CHAPTER 26",
+      "title": "Classes and Objects: Modelling Real Things",
+      "subtitle": "",
+      "badge": "Reward: 100 XP and the Modeller badge"
+     },
+     "segments": [
+      {
+       "say": "This is Code Quest, Chapter 26. Today, you build your own types."
+      },
+      {
+       "say": "And an AI assistant will design a loyalty card for Asha. It will sound sure about the free teas. Your test cases will decide.",
+       "subtitle": "Data and rules, together."
+      }
+     ]
     },
     {
-      "id": "why-this-matters",
-      "section": "Why this matters",
-      "title": "Why this matters",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Why this matters",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "the-idea",
-      "section": "The idea",
-      "title": "The idea",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "The idea",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "build-it-step-by-step",
-      "section": "Build it step by step",
-      "title": "Build it step by step",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Build it step by step",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "see-the-outcome",
-      "section": "See the outcome",
-      "title": "See the outcome",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "See the outcome",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "work-with-ai",
-      "section": "Work with AI",
-      "title": "Work with AI",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Work with AI",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "common-mistakes",
-      "section": "Common mistakes",
-      "title": "Common mistakes",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Common mistakes",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "think-beyond",
-      "section": "Think beyond",
-      "title": "Think beyond",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Think beyond",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recap",
-      "section": "Recap",
-      "title": "Recap",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Recap",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "practice",
-      "section": "Practice",
-      "title": "Practice",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "Practice",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "whats-next",
-      "section": "What's next",
-      "title": "What's next",
-      "direction": "<what the editor should do in this scene>",
-      "beats": [
-        {
-          "visual": {
-            "type": "bullets",
-            "heading": "What's next",
-            "items": [
-              "<item 1>",
-              "<item 2>"
-            ],
-            "reveal": 0
-          },
-          "segments": [
-            {
-              "say": "<narration for item 1>",
-              "reveal": 1,
-              "focus": 0
-            },
-            {
-              "say": "<narration for item 2>",
-              "reveal": 2,
-              "focus": 1
-            }
-          ]
-        }
-      ]
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_order_receipt.py",
+      "heading": "Today's mission: an order that knows its own total",
+      "code_lines": [
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "hidden_text": "By the end, you will know every line."
+     },
+     "segments": [
+      {
+       "say": "Here is today's mission: an order that keeps its own items, and works out its own total.",
+       "highlight": [
+        12,
+        13,
+        14
+       ]
+      },
+      {
+       "say": "By the end, you will know every line. Let's build it, piece by piece.",
+       "highlight": [
+        19,
+        20
+       ]
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "goals",
+   "section": "Learning goals",
+   "title": "Learning goals",
+   "direction": "Each goal appears as it is spoken.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "By the end, you will be able to:",
+      "label": "Learning goals",
+      "items": [
+       "Write a class with `__init__`, attributes and methods.",
+       "Explain `self`, and why each object keeps its own data.",
+       "Give an object a readable print form with `__str__`.",
+       "Write a data class with `@dataclass`.",
+       "Ask an AI to design a class, then test the design."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Write a class, and explain self.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Give an object a readable print form, and write a data class.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "And ask an AI to design a class, then test the design.",
+       "reveal": 5,
+       "focus": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "section": "Why this matters",
+   "title": "Why this matters",
+   "direction": "Define a class through Asha's problem, then real uses.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Why this matters",
+      "label": "The big picture",
+      "reveal": 0,
+      "items": [
+       "A **class** is a new type that you define yourself.",
+       "It bundles data and the functions that work on that data.",
+       "Shops, games and apps are built from types like these. AI assistants design code this way too."
+      ]
+     },
+     "segments": [
+      {
+       "say": "A class is a new type that you define yourself. It bundles data and the functions that work on it, like a menu item that knows how to add tax to its own price.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "A shop has products and baskets. A game has players and levels. And AI assistants design code in classes, so you need to judge their designs.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "idea",
+   "section": "The idea",
+   "title": "The idea: a plan and its objects",
+   "direction": "Teach class and object with the diagram, the five words with the table, then the order slip analogy. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "text",
+      "heading": "One plan, many objects",
+      "label": "The idea",
+      "body": [
+       "A class is the plan. An **object** is one thing made from it, also called an **instance**."
+      ],
+      "pre": "  class MenuItem        the plan: a name and a price\n     |\n     +--> tea  = MenuItem(\"Tea\", 3.5)     one object\n     +--> cake = MenuItem(\"Cake\", 4.25)   another object"
+     },
+     "segments": [
+      {
+       "say": "A class is the plan. An object is one thing made from that plan. Each object is also called an instance of the class.",
+       "focus": "pre"
+      },
+      {
+       "say": "Tea and cake are two objects from the same plan. Each one has its own name, and its own price."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Five words you need",
+      "label": "The idea",
+      "columns": [
+       "Word",
+       "Meaning",
+       "Example"
+      ],
+      "rows": [
+       [
+        "class",
+        "The plan for a new type",
+        "`class MenuItem:`"
+       ],
+       [
+        "object, instance",
+        "One thing made from the class",
+        "`MenuItem(\"Tea\", 3.5)`"
+       ],
+       [
+        "attribute",
+        "A value stored in an object",
+        "`tea.price`"
+       ],
+       [
+        "method",
+        "A function inside the class",
+        "`tea.with_tax()`"
+       ],
+       [
+        "`self`",
+        "The object a method works on",
+        "`self.price`"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Class, the plan. Object, or instance, one thing made from it.",
+       "focus_row": 1
+      },
+      {
+       "say": "Attribute: a value stored in an object, read with a dot.",
+       "focus_row": 2
+      },
+      {
+       "say": "Method: a function that belongs to the class.",
+       "focus_row": 3
+      },
+      {
+       "say": "And self: the object a method is working on.",
+       "focus_row": 4
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Like a printed order slip",
+      "label": "Analogy",
+      "reveal": 1,
+      "focus": 0,
+      "items": [
+       "The blank slip is the class. Each filled-in slip is an object.",
+       "Unlike a paper slip, an object can add up its own total, with a method."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Think of the cafe's printed order slip. The blank slip is the class. Each filled-in slip is an object, with its own customer and items."
+      },
+      {
+       "say": "The comparison stops at one point. A paper slip cannot add up its own total. An object can, with a method.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "A class is the plan for a new type.",
+       "An object is one thing made from it.",
+       "Attributes store data; methods do the work."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. One picture: a plan, and the things made from it."
+      },
+      {
+       "say": "Next, Asha writes her first class."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step1",
+   "section": "Build it step by step",
+   "title": "Step 1: Your first class",
+   "direction": "Teach __init__ and self before the ask. Ask what line 10 prints. Reveal.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex01_menu_item.py",
+      "heading": "Step 1: Your first class",
+      "highlight": [
+       2
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 1. Line 2 starts the class. Class names use capital letters, like Menu Item."
+      },
+      {
+       "say": "The special method init, written with two underscores on each side, runs when you create an object. It stores the starting values on self.",
+       "highlight": [
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Line 8 creates an object. Python runs init with name set to Tea and price set to 3.5. It passes the new object as self, so you never write it in the call.",
+       "highlight": [
+        8
+       ]
+      },
+      {
+       "say": "Line 9 creates a second object. Lines 10 and 11 read attributes with a dot.",
+       "highlight": [
+        9,
+        10,
+        11
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 10 print?"
+     },
+     "after": [
+      {
+       "say": "Tea 3.5. Tea dot name, and tea dot price.",
+       "output": "examples/ex01_menu_item.expected",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And line 11 reads cake's own values: Cake 4.25.",
+       "highlight": [
+        11
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step2",
+   "section": "Build it step by step",
+   "title": "Step 2: Methods",
+   "direction": "Teach a method and self.price, and a method calling a method. Ask lines 15 and 16. Quiz on self.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex02_methods.py",
+      "heading": "Step 2: Add methods",
+      "highlight": [
+       7,
+       8
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 2. A method is a function written inside the class. Its first parameter is always self."
+      },
+      {
+       "say": "Line 8 uses self dot price, the price of whichever object called the method. It adds 10 percent tax, and rounds to two places.",
+       "highlight": [
+        8
+       ]
+      },
+      {
+       "say": "Line 11 calls another method through self, and shows it with two decimal places.",
+       "highlight": [
+        10,
+        11
+       ]
+      },
+      {
+       "say": "Lines 15 and 16 call both methods on tea.",
+       "highlight": [
+        14,
+        15,
+        16
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 15 and 16 print?"
+     },
+     "after": [
+      {
+       "say": "3.85, then Tea: 3.85. In tea dot with tax, self is tea, so self dot price is 3.5.",
+       "output": "examples/ex02_methods.expected",
+       "highlight": [
+        8,
+        15
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "And label adds the name in front.",
+       "highlight": [
+        11,
+        16
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "In `cake.with_tax()`, what is `self`?",
+      "options": [
+       "The class `MenuItem`",
+       "The price, 4.25",
+       "The object `cake`",
+       "Nothing: no value is passed"
+      ],
+      "answer": 2,
+      "explain": "Python passes the object before the dot as `self`, so `self` is `cake`."
+     },
+     "segments": [
+      {
+       "say": "Quick check. In cake dot with tax, what is self?"
+      }
+     ],
+     "after": [
+      {
+       "say": "C. The object cake. Python passes the object before the dot as self."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step3",
+   "section": "Build it step by step",
+   "title": "Step 3: Each object keeps its own data",
+   "direction": "Callback to Chapter 17 scope. Teach line 5, and the class-body rule. Ask about Omar. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex03_own_data.py",
+      "heading": "Step 3: Each object keeps its own data",
+      "highlight": [
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 3. In Chapter 17, each function call had its own local names. In the same way, each object has its own attributes."
+      },
+      {
+       "say": "Line 5 runs once for each new object, so every order gets a new empty list.",
+       "highlight": [
+        3,
+        4,
+        5
+       ]
+      },
+      {
+       "say": "Lines 11 and 12 create two orders. Lina gets a tea and a cake, and Omar gets a juice.",
+       "highlight": [
+        11,
+        12,
+        13,
+        14,
+        15
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 17 print for Omar?"
+     },
+     "after": [
+      {
+       "say": "Omar, and a list with only juice. Lina's tea and cake are in her own list.",
+       "output": "examples/ex03_own_data.expected",
+       "highlight": [
+        17
+       ],
+       "out_highlight": [
+        2
+       ]
+      },
+      {
+       "say": "One more rule. A value written directly in the class body, outside any method, is different. It belongs to the class, and every object shares it. Remember that one.",
+       "highlight": [
+        5
+       ],
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "`__init__` stores the starting values on `self`.",
+       "A method's first parameter is `self`.",
+       "Each object keeps its own attributes."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You can write a class, create objects, and call their methods."
+      },
+      {
+       "say": "Next, objects start working together."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step4",
+   "section": "Build it step by step",
+   "title": "Step 4: Objects that work together",
+   "direction": "An order holds menu items. The total is computed, not stored. Ask lines 22 and 24.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex04_order_total.py",
+      "heading": "Step 4: An order holds menu items",
+      "highlight": [
+       13,
+       14
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 4. An order can hold menu item objects. Add, on lines 13 and 14, puts one in the list."
+      },
+      {
+       "say": "Line 17 is a list comprehension from Chapter 14. It collects the price of every item, and sum adds them up.",
+       "highlight": [
+        16,
+        17
+       ]
+      },
+      {
+       "say": "The order does not store its total. It works it out each time you ask.",
+       "highlight": [
+        17
+       ]
+      },
+      {
+       "say": "Lines 21 to 24 add a tea, print the total, add a cake, and print it again.",
+       "highlight": [
+        21,
+        22,
+        23,
+        24
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 22 and 24 print?"
+     },
+     "after": [
+      {
+       "say": "3.5, then 7.75. The total follows every new item.",
+       "output": "examples/ex04_order_total.expected",
+       "highlight": [
+        22,
+        24
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      },
+      {
+       "say": "If the order stored its total as a number, that number would be wrong after the next add. Keep that rule in mind for the AI section.",
+       "highlight": [
+        17
+       ],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step5",
+   "section": "Build it step by step",
+   "title": "Step 5: A readable print form",
+   "direction": "Teach __str__. Show the run. No ask.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex05_str.py",
+      "heading": "Step 5: A readable print form",
+      "highlight": [
+       7,
+       8
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 5. Printing your own object shows its type and a memory address, a code that changes every run."
+      },
+      {
+       "say": "The special method s t r, also written with two underscores on each side, returns the text that print and f strings show.",
+       "highlight": [
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Asha runs it. Print shows Tea, with the price in brackets, and the f string on line 13 uses the same text.",
+       "highlight": [
+        12,
+        13
+       ],
+       "output": "examples/ex05_str.expected",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "step6",
+   "section": "Build it step by step",
+   "title": "Step 6: Data classes",
+   "direction": "Teach @dataclass and ==. Ask lines 13 and 14. Then the list default error and the field fix. Quiz. Breather.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex06_dataclass.py",
+      "heading": "Step 6: Data classes",
+      "highlight": [
+       2,
+       5
+      ]
+     },
+     "segments": [
+      {
+       "say": "Step 6. Many classes only store a few values. The data classes module writes init, a print form and the double equals check for you."
+      },
+      {
+       "say": "Line 5 puts at data class above the class. Lines 7 and 8 list the attributes, each with a type after a colon.",
+       "highlight": [
+        5,
+        6,
+        7,
+        8
+       ]
+      },
+      {
+       "say": "Double equals on two data class objects compares their values, attribute by attribute.",
+       "highlight": [
+        13,
+        14
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What do lines 13 and 14 print?"
+     },
+     "after": [
+      {
+       "say": "True, then False. Same name and price, then a different price.",
+       "output": "examples/ex06_dataclass.expected",
+       "highlight": [
+        13,
+        14
+       ],
+       "out_highlight": [
+        2,
+        3
+       ]
+      },
+      {
+       "say": "And line 12 shows the print form the data class wrote: the type, then each attribute and its value.",
+       "highlight": [
+        12
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_list_error.py",
+      "heading": "A list as a default value",
+      "highlight": [
+       8
+      ],
+      "error": "examples/ex07_list_error.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Chapter 17 showed that a list as a default value is a trap: every call shares one list. A data class refuses it."
+      },
+      {
+       "say": "Read the last line: mutable default, not allowed, use default factory. Mutable means it can change.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex07_list_field.py",
+      "heading": "field(default_factory=list): a new list for each object",
+      "highlight": [
+       8
+      ],
+      "output": "examples/ex07_list_field.expected"
+     },
+     "segments": [
+      {
+       "say": "Field, with default factory list, makes a new empty list for each object.",
+       "out_highlight": []
+      },
+      {
+       "say": "Lina's list has a tea. Omar's list is still empty.",
+       "highlight": [
+        13,
+        14,
+        15
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Compute a total in a method; never store it.",
+       "`__str__` gives a readable print form.",
+       "`@dataclass` writes `__init__`, the print form and `==`."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. You have every piece of the mission now. Let's build Asha's receipt."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "outcome",
+   "section": "See the outcome",
+   "title": "See the outcome: the order receipt",
+   "direction": "Walk the two data classes, then the main lines. Ask what line 30 prints. Hand over to the AI.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_order_receipt.py",
+      "heading": "Mission: two data classes",
+      "code_lines": [
+       2,
+       5,
+       6,
+       7,
+       8,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "highlight": [
+       5,
+       6,
+       7,
+       8
+      ]
+     },
+     "segments": [
+      {
+       "say": "Back to the mission. Lines 5 to 8 describe a menu item: a name and a price."
+      },
+      {
+       "say": "Lines 11 to 14 describe an order: a customer, and its own list of items.",
+       "highlight": [
+        11,
+        12,
+        13,
+        14
+       ]
+      },
+      {
+       "say": "Add puts an item in the list. Total works it out, every time.",
+       "highlight": [
+        16,
+        17,
+        19,
+        20
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ex08_order_receipt.py",
+      "heading": "Mission: the receipt",
+      "code_lines": [
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29,
+       30
+      ],
+      "highlight": [
+       23,
+       24,
+       25,
+       26
+      ]
+     },
+     "segments": [
+      {
+       "say": "Line 23 creates Lina's order. Lines 24 to 26 add a tea, a cake, and another tea."
+      },
+      {
+       "say": "Line 27 prints the customer. Lines 28 and 29 print each item, lined up with the format codes from Chapter 3.",
+       "highlight": [
+        27,
+        28,
+        29
+       ]
+      },
+      {
+       "say": "Line 30 prints the total.",
+       "highlight": [
+        30
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 30 print?"
+     },
+     "after": [
+      {
+       "say": "Total, 11.25. 3.5, plus 4.25, plus 3.5.",
+       "output": "examples/ex08_order_receipt.expected",
+       "highlight": [
+        30
+       ],
+       "out_highlight": [
+        5
+       ]
+      },
+      {
+       "say": "Mission complete! Next, Asha wants a loyalty card for her regulars. She designs it with an AI assistant, one stage at a time.",
+       "highlight": [],
+       "out_highlight": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "section": "Work with AI",
+   "title": "Work with AI: a loyalty card",
+   "direction": "Safety first. Six stages on LoyaltyCard. Plan drops print and save jobs; Write is Asha's own; Generate stores free_teas; Test catches it; Debug a missing self; Improve a class-body list.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "This chapter's AI skill: review a class design",
+      "label": "Before you start",
+      "reveal": 0,
+      "items": [
+       "A design is a set of choices: what each object stores, what each method does.",
+       "Test every choice with real cases before you accept it.",
+       "A real customer list is private: use made-up names."
+      ]
+     },
+     "segments": [
+      {
+       "say": "This chapter's AI skill: ask an AI to design a class, then review whether the design fits.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Test every choice with real cases. And never paste private data: use made-up names.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 1,
+      "heading": "Plan: a design, not code",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I want to model a cafe loyalty card: one stamp per drink, and a free tea for every 10 stamps. Do not write code. List the attributes and methods, with one job for each method."
+       },
+       {
+        "role": "ai",
+        "text": "Attributes: customer, stamps.\nMethods: add_stamp() adds one stamp. free_teas() gives the free teas. print_card() prints the card. save_card() saves it to a file."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 1: plan. Asha describes the loyalty card: one stamp per drink, and a free tea for every 10 stamps. No code yet."
+      },
+      {
+       "say": "The AI lists two attributes and four methods. Print card and save card are separate jobs, so Asha drops them. Her main program can print. One job for each method, as in Chapter 17.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 2,
+      "heading": "Write it yourself, then check",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I wrote this myself. Do not change it. Predict exactly what the last line prints.",
+        "code": "examples/ai_mine.py",
+        "code_lines": [
+         11,
+         12,
+         13,
+         14
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "It prints Lina 2. add_stamp ran twice, and each call added 1 to self.stamps."
+       },
+       {
+        "role": "you",
+        "text": "I predicted the same. I ran it:",
+        "output": "examples/ai_mine.expected"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 2: write. Asha writes the start of the class herself, and asks the AI to predict the last line."
+      },
+      {
+       "say": "The AI says Lina 2. Asha predicted the same, and the run agrees.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 3,
+      "heading": "Generate: one new feature",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Add free teas to my LoyaltyCard class: one free tea for every 10 stamps. Tell me what a card shows after 25 stamps."
+       },
+       {
+        "role": "ai",
+        "text": "Here is the class. After 25 stamps, free_teas is 2.",
+        "code": "examples/card_ai.py",
+        "code_lines": [
+         6,
+         8,
+         9,
+         10,
+         11
+        ]
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 3: generate. Now the free teas. Asha asks the AI to add them, and to say what a card shows after 25 stamps."
+      },
+      {
+       "say": "The AI is sure: after 25 stamps, 2 free teas.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/card_ai.py",
+      "heading": "The AI's class",
+      "highlight": [
+       6
+      ],
+      "hidden_text": "The next screen runs this class."
+     },
+     "segments": [
+      {
+       "say": "Look at the AI's class. Line 6 stores free teas as a number. Line 10 adds one when the stamps are exactly 10.",
+       "highlight": [
+        6,
+        10,
+        11
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_generate_run.py",
+      "heading": "25 stamps",
+      "highlight": [
+       5,
+       6,
+       7
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha runs it: 25 stamps, then she prints the stamps and the free teas."
+      }
+     ],
+     "ask": {
+      "question": "The AI says the card shows 2 free teas. Is it right?"
+     },
+     "after": [
+      {
+       "say": "No. 25 stamps, but only 1 free tea. Line 10 counts only stamp number 10, so stamp 20 never counts. And the AI sounded sure.",
+       "output": "examples/ai_generate_run.expected",
+       "highlight": [
+        7
+       ],
+       "out_highlight": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: cases with expected results",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Suggest test cases for free teas, each with an expected result."
+       },
+       {
+        "role": "ai",
+        "text": "Test 0, 9, 10 and 25 stamps. Expect 0, 0, 1 and 2 free teas."
+       },
+       {
+        "role": "you",
+        "text": "I am adding one more case: an old card that starts with 12 stamps. It should have 1 free tea."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 4: test. Asha asks for test cases, each with an expected result."
+      },
+      {
+       "say": "The AI suggests 0, 9, 10 and 25 stamps. Asha adds one more: an old card that starts with 12 stamps.",
+       "reveal": 3,
+       "focus": 2
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_cases_flawed.py",
+      "heading": "The five cases, on the AI's class",
+      "code_lines": [
+       2,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13
+      ],
+      "highlight": [
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "output": "examples/ai_cases_flawed.expected"
+     },
+     "segments": [
+      {
+       "say": "She runs all five cases on the AI's class. Two fail: 25 stamps gives 1, and the old card gives 0.",
+       "out_highlight": [
+        4,
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 4,
+      "heading": "Test: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Two cases fail. Explain the cause before you change any code.",
+        "output": "examples/ai_cases_flawed.expected"
+       },
+       {
+        "role": "ai",
+        "text": "free_teas is a stored number. Line 10 adds one only at exactly 10 stamps, and an old card starts at 0.\nFix: work it out from the stamps, with a method that returns self.stamps // 10."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Asha shows the failing cases, and asks for the cause first."
+      },
+      {
+       "say": "The AI explains: free teas is a stored number, and an old card starts at 0. The fix works it out from the stamps, with a method. The same rule as the total in step 4.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/card_fixed.py",
+      "heading": "The fixed class: free teas is a method",
+      "highlight": [
+       10,
+       11
+      ],
+      "hidden_text": "The next screen runs the five cases on it."
+     },
+     "segments": [
+      {
+       "say": "Lines 10 and 11 return the stamps, floor divided by 10. Nothing is stored, so nothing goes stale."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_cases_fixed.py",
+      "heading": "The five cases, on the fixed class",
+      "code_lines": [
+       2,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13
+      ],
+      "highlight": [
+       11
+      ],
+      "output": "examples/ai_cases_fixed.expected"
+     },
+     "segments": [
+      {
+       "say": "She runs all five cases again. Line 11 now calls free teas as a method. All five pass.",
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_line_crash.py",
+      "heading": "Stage 5: a new method, and an error",
+      "highlight": [
+       5
+      ],
+      "error": "examples/ai_line_crash.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Stage 5: debug. Asha adds a method, card line, and calls it on line 5. Type error!"
+      },
+      {
+       "say": "Read the last line: card line takes 0 positional arguments, but 1 was given.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 5,
+      "heading": "Debug: the cause before the fix",
+      "messages": [
+       {
+        "role": "you",
+        "text": "I added card_line and got this error. First explain what it means and which line causes it. Then show the smallest fix.",
+        "code": "examples/card_debug.py",
+        "code_lines": [
+         13,
+         14
+        ]
+       },
+       {
+        "role": "ai",
+        "text": "Line 13 defines card_line with no parameter. Python passes the card as the first argument, so the method has nowhere to put it.\nFix: def card_line(self):"
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "She pastes the code and the full error, and asks for the cause first."
+      },
+      {
+       "say": "The AI explains: line 13 has no parameter. Python passes the card as the first argument, so the method needs self.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_cases_lines.py",
+      "heading": "All five cases, and the card line",
+      "code_lines": [
+       2,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "highlight": [
+       14
+      ],
+      "output": "examples/ai_cases_lines.expected"
+     },
+     "segments": [
+      {
+       "say": "With self added, she runs all five cases again. All pass, and line 14 prints Omar's card line.",
+       "out_highlight": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "chat",
+      "stage": 6,
+      "heading": "Improve: one suggestion, then test it",
+      "messages": [
+       {
+        "role": "you",
+        "text": "Review my class. Suggest one improvement, with one reason. Do not change what my methods return."
+       },
+       {
+        "role": "ai",
+        "text": "Keep a history of every drink stamped. Write history = [] at the top of the class, and append the drink in add_stamp."
+       }
+      ],
+      "reveal": 1
+     },
+     "segments": [
+      {
+       "say": "Stage 6: improve. Asha asks for one improvement."
+      },
+      {
+       "say": "The AI suggests a history of every drink stamped, with a list at the top of the class.",
+       "reveal": 2,
+       "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_history_shared.py",
+      "heading": "Testing the idea with two cards",
+      "highlight": [
+       4,
+       5,
+       6
+      ]
+     },
+     "segments": [
+      {
+       "say": "Asha tests the idea with two cards. Only Lina gets a stamp, for a latte. Omar gets nothing.",
+       "highlight": [
+        4,
+        5,
+        6
+       ]
+      },
+      {
+       "say": "Remember the rule from step 3, about a value in the class body.",
+       "highlight": [
+        8
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 8 print for Omar?"
+     },
+     "after": [
+      {
+       "say": "Omar, with a latte! The list in the class body belongs to the class, so every card shares it. The AI was wrong again.",
+       "output": "examples/ai_history_shared.expected",
+       "highlight": [
+        8
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/card_final.py",
+      "heading": "The history moves into __init__",
+      "highlight": [
+       6
+      ],
+      "hidden_text": "The next screen tests it with pytest."
+     },
+     "segments": [
+      {
+       "say": "So Asha keeps the idea, but moves the list into init, on line 6. Now each card makes its own list."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/test_loyalty.py",
+      "heading": "Every case, as pytest tests",
+      "code_lines": [
+       12,
+       13,
+       16,
+       17,
+       20,
+       21,
+       24,
+       25,
+       28,
+       29,
+       30,
+       31,
+       32
+      ],
+      "highlight": [
+       28,
+       29,
+       30,
+       31,
+       32
+      ],
+      "output": "examples/test_loyalty.expected"
+     },
+     "segments": [
+      {
+       "say": "She writes her cases as pytest tests, from Chapter 19, and adds one for the history. Five dots: five passed.",
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "A card stores its stamps. What is the best design for its free teas?",
+      "options": [
+       "Store `free_teas`, and update it in `add_stamp()`",
+       "A method that returns `self.stamps // 10`",
+       "A list in the class body",
+       "Ask the customer how many they have"
+      ],
+      "answer": 1,
+      "explain": "Free teas can be worked out from the stamps, so a method computes them and they never go stale."
+     },
+     "segments": [
+      {
+       "say": "Quick check. A card stores its stamps. What is the best design for its free teas?"
+      }
+     ],
+     "after": [
+      {
+       "say": "B. A method that works them out from the stamps. Then they can never go stale."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Plan, write, generate, test, debug, improve.",
+       "Compute a value from other attributes in a method.",
+       "Test a design with two objects."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. The AI made two confident design mistakes, and Asha's cases caught both. Next, four classic mistakes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mistakes",
+   "section": "Common mistakes",
+   "title": "Common mistakes",
+   "direction": "Mistake 1 calls back to the debug stage. Mistakes 2 and 4 are spot-it asks. Mistake 3 is explained.",
+   "beats": [
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err01_no_self.py",
+      "heading": "Mistake 1: forgetting self",
+      "highlight": [
+       7
+      ],
+      "error": "examples/err01_no_self.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 1 is the one Asha debugged. Line 7 has no self, so Python has nowhere to put the object.",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Takes 0 positional arguments, but 1 was given. That 1 is the object. The fix: def with tax, self.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err02_no_brackets.py",
+      "heading": "Mistake 2: your turn to spot it",
+      "highlight": [
+       8
+      ],
+      "hidden_text": "Find the problem before the error appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 2. You try. Line 8 is meant to create a menu item. Look closely, and remember step 1."
+      }
+     ],
+     "ask": {
+      "question": "What is missing on line 8?"
+     },
+     "after": [
+      {
+       "say": "The brackets, and the values. Without them, tea is the class itself, the plan, which has no price of its own.",
+       "error": "examples/err02_no_brackets.expected_error",
+       "heading": "Mistake 2: forgetting the brackets",
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "Type object, in the message, is the clue: tea is a class, not an object.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err03_attribute_typo.py",
+      "heading": "Mistake 3: a spelling mistake in an attribute",
+      "highlight": [
+       9
+      ],
+      "error": "examples/err03_attribute_typo.expected_error"
+     },
+     "segments": [
+      {
+       "say": "Mistake 3. Line 9 spells price wrongly, so the object has no attribute with that name. Newer versions of Python even suggest the closest one.",
+       "out_highlight": [
+        -1
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/err04_shared_list.py",
+      "heading": "Mistake 4: spot this one too",
+      "highlight": [
+       3
+      ],
+      "hidden_text": "Predict before the output appears."
+     },
+     "segments": [
+      {
+       "say": "Mistake 4. Line 3 creates the list in the class body. Line 14 adds a tea for Lina only.",
+       "highlight": [
+        3,
+        14
+       ]
+      }
+     ],
+     "ask": {
+      "question": "What does line 15 print for Omar?"
+     },
+     "after": [
+      {
+       "say": "Omar, with a tea. No error at all, which makes it worse. One list, shared by every order.",
+       "output": "examples/err04_shared_list.expected",
+       "heading": "Mistake 4: a list in the class body",
+       "highlight": [
+        3,
+        15
+       ],
+       "out_highlight": [
+        1
+       ]
+      },
+      {
+       "say": "The fix: create the list in init, with self dot items, or use field in a data class.",
+       "out_highlight": []
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Every method needs `self`.",
+       "Create an object with brackets and values.",
+       "Lists belong in `__init__`, not the class body."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Last breather. Two questions to think about on your own come next."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "section": "Think beyond",
+   "title": "Think beyond",
+   "direction": "Two open questions. No answers are given.",
+   "beats": [
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Design a `Table` class that holds several orders. Which attributes does it store, and which value should be a method?"
+     },
+     "segments": [
+      {
+       "say": "First. Asha's cafe has tables, and each table has several orders. Design a table class. Which attributes does it store, and which value should be a method?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Sketch it after the video, then try it in the practice tasks."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "pause",
+      "question": "Are two objects of a normal class, such as `MenuItem(\"Tea\", 3.5)` from Step 1, equal with `==`?"
+     },
+     "segments": [
+      {
+       "say": "Second. Two data class objects with the same values are equal. Are two objects of a normal class, like the menu item from step 1, equal too?"
+      }
+     ],
+     "after": [
+      {
+       "say": "Predict, then test it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "section": "Recap",
+   "title": "Recap",
+   "direction": "Each recap point appears as it is spoken, then a quiz, then the badge.",
+   "beats": [
+    {
+     "visual": {
+      "type": "bullets",
+      "heading": "Recap",
+      "label": "What you learned",
+      "items": [
+       "A class is the plan; an object is one thing made from it.",
+       "`__init__` stores attributes on `self`. Methods work on `self`.",
+       "Attributes set in `__init__` belong to one object.",
+       "`__str__` gives a readable print form.",
+       "`@dataclass` writes `__init__`, a print form and `==`.",
+       "Compute a value from other attributes in a method."
+      ],
+      "reveal": 0
+     },
+     "segments": [
+      {
+       "say": "Let's recap. A class is the plan. An object is one thing made from it.",
+       "reveal": 1,
+       "focus": 0
+      },
+      {
+       "say": "Init stores the starting values on self, and methods work on self.",
+       "reveal": 2,
+       "focus": 1
+      },
+      {
+       "say": "Attributes set in init belong to one object.",
+       "reveal": 3,
+       "focus": 2
+      },
+      {
+       "say": "S t r gives a readable print form.",
+       "reveal": 4,
+       "focus": 3
+      },
+      {
+       "say": "A data class writes init, the print form and double equals for you.",
+       "reveal": 5,
+       "focus": 4
+      },
+      {
+       "say": "And a value that depends on other attributes belongs in a method.",
+       "reveal": 6,
+       "focus": 5
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "quiz",
+      "question": "`MenuItem` is a data class. What does `print(MenuItem(\"Cake\", 4.25))` show?",
+      "options": [
+       "`MenuItem(name='Cake', price=4.25)`",
+       "`Cake 4.25`",
+       "A memory address",
+       "An error"
+      ],
+      "answer": 0,
+      "explain": "A data class writes a print form with the type, then each attribute and its value."
+     },
+     "segments": [
+      {
+       "say": "One last check. Menu item is a data class. What does printing a cake show?"
+      }
+     ],
+     "after": [
+      {
+       "say": "A. The type, then each attribute and its value, like line 12 in step 6."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "title",
+      "kicker": "QUEST COMPLETE",
+      "title": "Modeller",
+      "subtitle": "You earned 100 XP.",
+      "badge": "Badge unlocked: Modeller",
+      "tile": 26
+     },
+     "segments": [
+      {
+       "say": "Quest complete! You earned 100 XP and the Modeller badge."
+      }
+     ],
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "section": "Practice",
+   "title": "Practice",
+   "direction": "Each tier is highlighted as it is described.",
+   "beats": [
+    {
+     "visual": {
+      "type": "table",
+      "heading": "Practice: 8 tasks, 170 XP",
+      "label": "Practice",
+      "columns": [
+       "Tier",
+       "Tasks",
+       "XP"
+      ],
+      "rows": [
+       [
+        "Warm-up",
+        "A customer class; A greeting method; Two baskets",
+        "10 each"
+       ],
+       [
+        "Apply",
+        "A basket total; A readable drink; Equal drinks",
+        "20 each"
+       ],
+       [
+        "Stretch",
+        "A table of orders; Fix the AI's stale total",
+        "40 each"
+       ]
+      ]
+     },
+     "segments": [
+      {
+       "say": "Now it is your turn. Three warm-up tasks at 10 XP, and three apply tasks at 20.",
+       "focus_row": 1
+      },
+      {
+       "say": "And two stretch tasks, worth 40 each. In the last one, you fix an AI's order class whose total goes stale.",
+       "focus_row": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "section": "What's next",
+   "title": "What's next",
+   "direction": "End card. Tease Chapter 27: reading and improving code you did not write. Hold quietly.",
+   "beats": [
+    {
+     "visual": {
+      "type": "end",
+      "kicker": "NEXT: CHAPTER 27",
+      "title": "Reading and Improving Code with AI",
+      "subtitle": "Read code you did not write, and improve it safely.",
+      "badge": "",
+      "tile": 27
+     },
+     "segments": [
+      {
+       "say": "Today, Asha reviewed an AI's design before she trusted it. But soon she will meet a whole program written by someone else."
+      },
+      {
+       "say": "In Chapter 27, you will read unfamiliar code, and improve it safely, with tests and an AI assistant."
+      },
+      {
+       "say": "Do the warm-up tasks now. They take about ten minutes.",
+       "subtitle": "Do the warm-up tasks now. They take about ten minutes.",
+       "badge": "practice/practice.md"
+      },
+      {
+       "say": "See you in Chapter 27."
+      }
+     ],
+     "hold": 2
+    }
+   ]
+  }
+ ]
 }

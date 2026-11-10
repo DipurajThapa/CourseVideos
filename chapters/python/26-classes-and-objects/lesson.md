@@ -124,7 +124,7 @@ Lina ['Tea', 'Cake']
 Omar ['Juice']
 ```
 
-Line 5 runs once for each new object, so Lina and Omar each get a new empty list. Adding a tea to Lina's order does not change Omar's order.
+Line 5 runs once for each new object, so Lina and Omar each get a new empty list. Adding a tea to Lina's order does not change Omar's order. A value written directly in the class body, outside any method, is different: it belongs to the class, and every object shares it (see Mistake 4).
 
 **Step 4: Objects that work together.** An order can hold menu item objects. Its total is worked out by a method each time you ask, so it is always up to date.
 
