@@ -1,4 +1,4 @@
-# file: examples/broken2/cafe_tools.py
+# file: examples/ai/broken2/cafe_tools.py
 """Small tools for the Corner Cafe programs."""
 import math
 
@@ -9,8 +9,8 @@ def with_tax(price, rate=1.1):
 
 
 def money(amount):
-    """Return an amount as text with two decimal places."""
-    return f"{amount:.2f}"
+    """Return an amount as text, such as USD 4.00."""
+    return f"USD {amount:.2f}"
 
 
 def boxes_needed(biscuits, per_box=12):

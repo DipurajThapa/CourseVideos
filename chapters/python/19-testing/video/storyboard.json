@@ -358,6 +358,12 @@
        "out_highlight": [
         1
        ]
+      },
+      {
+       "say": "But when a condition is false, assert stops the program with an Assertion Error. After a comma, you can add a message.",
+       "highlight": [
+        5
+       ]
       }
      ]
     },
@@ -379,7 +385,7 @@
        ]
       },
       {
-       "say": "When an assert condition is false, Python stops with an Assertion Error. After a comma, you can add a message. Line 6 would save the report.",
+       "say": "Line 5 checks the tea price with assert, and adds a message. Line 6 saves the report.",
        "highlight": [
         5,
         6
@@ -479,12 +485,16 @@
        ]
       },
       {
-       "say": "She adds boxes needed, from the AI section of Chapter 18. Line 18 rounds up with math dot ceil. Run on its own, the module prints nothing.",
+       "say": "She adds boxes needed, from the AI section of Chapter 18. Line 18 rounds up with math dot ceil.",
        "highlight": [
         16,
         17,
         18
        ]
+      },
+      {
+       "say": "And she removes the old printed checks from the bottom of the file. Tests will replace them, so the module now prints nothing.",
+       "highlight": []
       }
      ]
     },
@@ -500,7 +510,7 @@
      },
      "segments": [
       {
-       "say": "A test file has two naming rules. The file name starts with test and an underscore. And every test is a function whose name starts the same way.",
+       "say": "Here is the safe rule for names. Every test is a function whose name starts with test and an underscore. And the file name starts the same way, so pytest finds it when it searches a folder.",
        "highlight": [
         5,
         9,
@@ -600,7 +610,8 @@
       ],
       "highlight": [
        18
-      ]
+      ],
+      "hidden_text": "Only line 18 changed. Next, the tests run on this copy."
      },
      "segments": [
       {
@@ -625,7 +636,7 @@
      },
      "segments": [
       {
-       "say": "She runs the same three tests on the broken copy. Remember: round goes to the nearest whole number.",
+       "say": "She runs the same three tests on the broken copy, and adds dash dash t b equals short, for a shorter report. Remember: round goes to the nearest whole number.",
        "highlight": [
         6,
         10,
@@ -785,7 +796,7 @@
      },
      "after": [
       {
-       "say": "The first one, test exact. The total is 0.30000000000000004, not 0.3.",
+       "say": "The first one, test exact. The total is a tiny bit more than 0.3.",
        "output": "examples/test_floats.expected",
        "highlight": [
         7
@@ -796,7 +807,7 @@
        ]
       },
       {
-       "say": "The other two pass. For decimals, round both sides, or use approx.",
+       "say": "The other two pass. For decimals, round the result to two places, or use approx.",
        "highlight": [
         12,
         17
@@ -871,13 +882,67 @@
       ],
       "highlight": [
        13
-      ]
+      ],
+      "hidden_text": "Next, she runs the new test again."
      },
      "segments": [
       {
-       "say": "Now she changes line 13, and runs the test again. It passes. This is test first thinking: a test that fails before the change and passes after it proves the change did its job.",
+       "say": "Now she changes line 13, to add U S D before the amount.",
        "highlight": [
         13
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/final/test_money_usd.py",
+      "heading": "The new test, after the change",
+      "highlight": [
+       6
+      ],
+      "output": "examples/final/test_money_usd.expected"
+     },
+     "segments": [
+      {
+       "say": "She runs the new test again, and it passes. This is test first thinking: a test that fails before the change and passes after it proves the change did its job.",
+       "highlight": [
+        6
+       ],
+       "out_highlight": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/usd/test_cafe_tools.py",
+      "heading": "One more run: the old tests",
+      "highlight": [
+       10
+      ],
+      "output": "examples/usd/test_cafe_tools.expected"
+     },
+     "segments": [
+      {
+       "say": "One more run. Her test file from step 3 still expects 4.00, so it now fails on the new module.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        1,
+        6
+       ]
+      },
+      {
+       "say": "The rule changed on purpose, so this old test is out of date. Asha updates it to expect U S D 4.00. When a rule changes, its tests change with it.",
+       "out_highlight": [
+        8,
+        9
        ]
       }
      ]
@@ -951,7 +1016,7 @@
        ]
       },
       {
-       "say": "Line 15 tests the new U S D label. Lines 18 to 26 test the boxes: normal values, and then the edges. A test can hold several asserts.",
+       "say": "Line 15 is the updated money test, with the new U S D label. Lines 18 to 26 test the boxes: normal values, and then the edges. A test can hold several asserts.",
        "highlight": [
         15,
         18,
@@ -1068,7 +1133,7 @@
        {
         "role": "you",
         "text": "First I wrote two tests myself. Do not change them. Which behaviour do they not test yet?",
-        "code": "examples/test_mine.py",
+        "code": "examples/ai/test_mine.py",
         "code_lines": [
          5,
          6,
@@ -1107,7 +1172,7 @@
        {
         "role": "ai",
         "text": "Here are three tests. They will catch any mistake in `boxes_needed`.",
-        "code": "examples/test_ai_tools.py"
+        "code": "examples/ai/test_ai_tools.py"
        }
       ],
       "reveal": 1
@@ -1126,7 +1191,7 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/test_ai_tools.py",
+      "file": "examples/ai/test_ai_tools.py",
       "heading": "The AI's tests: all three pass",
       "highlight": [
        9,
@@ -1135,7 +1200,7 @@
        14,
        15
       ],
-      "output": "examples/test_ai_tools.expected"
+      "output": "examples/ai/test_ai_tools.expected"
      },
      "segments": [
       {
@@ -1176,6 +1241,10 @@
        {
         "role": "ai",
         "text": "None of them. 24 divided by 12 is exactly 2, so round gives the right answer. And test_zero has no assert, so it can never fail."
+       },
+       {
+        "role": "you",
+        "text": "Then write a better file. Test exact expected values, normal cases and the edge cases from my plan, one behaviour per test."
        }
       ],
       "reveal": 1
@@ -1188,23 +1257,28 @@
        "say": "This time the AI admits it: none of them.",
        "reveal": 2,
        "focus": 1
+      },
+      {
+       "say": "So she asks for a better file: exact values, normal cases and edge cases, one behaviour per test.",
+       "reveal": 3,
+       "focus": 2
       }
      ]
     },
     {
      "visual": {
       "type": "code",
-      "file": "examples/broken/test_ai_tools.py",
+      "file": "examples/ai/broken/test_ai_tools.py",
       "heading": "On the broken copy: the AI's tests",
       "highlight": [
        10,
        15
       ],
-      "output": "examples/broken/test_ai_tools.expected"
+      "output": "examples/ai/broken/test_ai_tools.expected"
      },
      "segments": [
       {
-       "say": "She runs them on the broken copy anyway. Three passed. The tests did not see the broken code.",
+       "say": "She makes a broken copy of her finished module, with round on line 18, and runs them anyway. Three passed. The tests did not see the broken code.",
        "highlight": [
         10,
         15
@@ -1219,12 +1293,12 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/broken/test_mine.py",
+      "file": "examples/ai/broken/test_mine.py",
       "heading": "On the broken copy: Asha's own tests",
       "highlight": [
        10
       ],
-      "output": "examples/broken/test_mine.expected"
+      "output": "examples/ai/broken/test_mine.expected"
      },
      "segments": [
       {
@@ -1243,7 +1317,7 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/test_ai_float.py",
+      "file": "examples/ai/test_ai_float.py",
       "heading": "The AI's seven tests, on the working module",
       "code_lines": [
        9,
@@ -1253,11 +1327,11 @@
       "highlight": [
        11
       ],
-      "output": "examples/test_ai_float.expected"
+      "output": "examples/ai/test_ai_float.expected"
      },
      "segments": [
       {
-       "say": "Stage 5: debug. The AI writes a better file, with seven tests. But on Asha's working module, one test fails: test two items, on line 11.",
+       "say": "Stage 5: debug. The AI writes the better file, with seven tests. But on Asha's working module, one test fails: test two items, on line 11.",
        "highlight": [
         11
        ],
@@ -1278,7 +1352,7 @@
        {
         "role": "you",
         "text": "Your new test file fails on my working module. Here is the failing test, and the report says: assert 3.3000000000000003 == 3.3. Is the code or the test wrong? Explain why first.",
-        "code": "examples/test_ai_float.py",
+        "code": "examples/ai/test_ai_float.py",
         "code_lines": [
          9,
          10,
@@ -1306,7 +1380,7 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/test_ai_v2.py",
+      "file": "examples/ai/test_ai_v2.py",
       "heading": "The fixed file, on the working module",
       "code_lines": [
        9,
@@ -1317,7 +1391,7 @@
        10,
        11
       ],
-      "output": "examples/test_ai_v2.expected"
+      "output": "examples/ai/test_ai_v2.expected"
      },
      "segments": [
       {
@@ -1335,7 +1409,7 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/broken/test_ai_v2.py",
+      "file": "examples/ai/broken/test_ai_v2.py",
       "heading": "The fixed file, on the broken copy",
       "code_lines": [
        22,
@@ -1347,7 +1421,7 @@
        23,
        31
       ],
-      "output": "examples/broken/test_ai_v2.expected"
+      "output": "examples/ai/broken/test_ai_v2.expected"
      },
      "segments": [
       {
@@ -1396,7 +1470,7 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/broken2/cafe_tools.py",
+      "file": "examples/ai/broken2/cafe_tools.py",
       "heading": "Another broken copy: Asha's old bug",
       "code_lines": [
        16,
@@ -1405,7 +1479,8 @@
       ],
       "highlight": [
        18
-      ]
+      ],
+      "hidden_text": "Only line 18 changed. Next, the tests run on this copy."
      },
      "segments": [
       {
@@ -1419,7 +1494,7 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/broken2/test_ai_short.py",
+      "file": "examples/ai/broken2/test_ai_short.py",
       "heading": "The shorter file, on Asha's old bug",
       "code_lines": [
        18,
@@ -1433,11 +1508,11 @@
        22,
        23
       ],
-      "output": "examples/broken2/test_ai_short.expected"
+      "output": "examples/ai/broken2/test_ai_short.expected"
      },
      "segments": [
       {
-       "say": "The shorter file passes on it. Five passed. Without those two tests, her old bug would slip through.",
+       "say": "Asha tries the AI's shorter file on it. Five passed. Without those two tests, her old bug would slip through.",
        "highlight": [
         19,
         23
@@ -1452,7 +1527,7 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/broken2/test_ai_v2.py",
+      "file": "examples/ai/broken2/test_ai_v2.py",
       "heading": "The full file, on Asha's old bug",
       "code_lines": [
        18,
@@ -1464,7 +1539,7 @@
        19,
        27
       ],
-      "output": "examples/broken2/test_ai_v2.expected"
+      "output": "examples/ai/broken2/test_ai_v2.expected"
      },
      "segments": [
       {
@@ -1551,11 +1626,11 @@
       }
      ],
      "ask": {
-      "question": "pytest says that no tests ran. Why?"
+      "question": "pytest says that no tests ran. Which name breaks the rule?"
      },
      "after": [
       {
-       "say": "The function name does not start with test and an underscore, so pytest skips it. Rename it test tea tax.",
+       "say": "The function name, tea tax, on line 5. It does not start with test and an underscore, so pytest skips it, even when you give it this file by name. Rename it test tea tax.",
        "output": "examples/err01_no_prefix.expected",
        "heading": "Mistake 1: a test without the test_ prefix",
        "highlight": [
@@ -1576,15 +1651,12 @@
       "focus": 0,
       "items": [
        "A test with no `assert` always passes. Every test needs an `assert` with an exact expected value.",
-       "Comparing decimals exactly can fail on correct code. Use `round()` or `pytest.approx()`."
+       "Comparing decimals exactly can fail on correct code. Round the result, or use `pytest.approx()`."
       ]
      },
      "segments": [
       {
-       "say": "Mistake 2 was in the AI's first file: a test with no assert. It always passes."
-      },
-      {
-       "say": "Mistake 3 was in its second file: an exact comparison of decimals. Round both sides, or use approx.",
+       "say": "You have seen mistakes 2 and 3 in the AI's files. A test with no assert always passes. And an exact comparison of decimals can fail on correct code: round the result, or use approx.",
        "reveal": 2,
        "focus": 1
       }
@@ -1626,9 +1698,10 @@
        ]
       },
       {
-       "say": "A Name Error inside a test means the test itself is wrong, not the code it tests.",
+       "say": "The report points at line 6 of the test file, not at the module. A Name Error inside a test means the test itself is wrong.",
        "out_highlight": [
-        10
+        4,
+        7
        ]
       }
      ]
@@ -1700,17 +1773,7 @@
      },
      "segments": [
       {
-       "say": "Let's recap. A test runs code with a known input, and compares the result with the answer you expect.",
-       "reveal": 1,
-       "focus": 0
-      },
-      {
-       "say": "Assert stops the program when its condition is false.",
-       "reveal": 2,
-       "focus": 1
-      },
-      {
-       "say": "pytest runs every test function, and names each failure, its line and its values.",
+       "say": "Let's recap. A test compares a result with the answer you expect. Assert stops the program when it fails, and pytest names each failure, its line and its values.",
        "reveal": 3,
        "focus": 2
       },
@@ -1811,7 +1874,7 @@
        "say": "Asha's tests guard three small tools. But what about a whole program, with several modules?"
       },
       {
-       "say": "In Chapter 20, the Boss Level, you will build a quiz app for the cafe, and write its tests first."
+       "say": "In Chapter 20, the Boss Level, you will build a quiz app for the cafe. You will write its tests first, let an AI help with the code, and let the tests be the judge."
       },
       {
        "say": "Do the warm-up tasks now. They take about ten minutes.",

@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:10 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:17 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -108,9 +108,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex02_assert_pass.py`, line 5, 6 highlighted, output `examples/ex02_assert_pass.expected`
 - **Narration:** Here the tax rate is right. Both conditions are true, so assert does nothing, and line 7 saves the report.
   **On screen:** Code `examples/ex02_assert_pass.py`, line 7 highlighted, output `examples/ex02_assert_pass.expected`
+- **Narration:** But when a condition is false, assert stops the program with an Assertion Error. After a comma, you can add a message.
+  **On screen:** Code `examples/ex02_assert_pass.py`, line 5 highlighted, output `examples/ex02_assert_pass.expected`
 - **Narration:** Now the wrong rate again, on line 2.
   **On screen:** Code `examples/ex03_assert_fail.py`, line 2 highlighted, output hidden
-- **Narration:** When an assert condition is false, Python stops with an Assertion Error. After a comma, you can add a message. Line 6 would save the report.
+- **Narration:** Line 5 checks the tea price with assert, and adds a message. Line 6 saves the report.
   **On screen:** Code `examples/ex03_assert_fail.py`, line 5, 6 highlighted, output hidden
 - **Interaction:** "Does line 6 save the report?" stays on screen with a 10-second timer.
 - **Narration:** No. Line 5 stops the program, so the report is never saved.
@@ -132,9 +134,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Table: Step 3: Install and run pytest (row 2 in focus)
 - **Narration:** Here is Asha's module from Chapter 18: with tax, and money.
   **On screen:** Code `examples/cafe_tools.py`, line 6, 7, 8, 11, 12, 13 highlighted, output `examples/cafe_tools.expected`
-- **Narration:** She adds boxes needed, from the AI section of Chapter 18. Line 18 rounds up with math dot ceil. Run on its own, the module prints nothing.
+- **Narration:** She adds boxes needed, from the AI section of Chapter 18. Line 18 rounds up with math dot ceil.
   **On screen:** Code `examples/cafe_tools.py`, line 16, 17, 18 highlighted, output `examples/cafe_tools.expected`
-- **Narration:** A test file has two naming rules. The file name starts with test and an underscore. And every test is a function whose name starts the same way.
+- **Narration:** And she removes the old printed checks from the bottom of the file. Tests will replace them, so the module now prints nothing.
+  **On screen:** Code `examples/cafe_tools.py`, output `examples/cafe_tools.expected`
+- **Narration:** Here is the safe rule for names. Every test is a function whose name starts with test and an underscore. And the file name starts the same way, so pytest finds it when it searches a folder.
   **On screen:** Code `examples/test_cafe_tools.py`, line 5, 9, 13 highlighted, output hidden
 - **Narration:** Line 2 imports the three tools. Each test has one assert, with an exact expected value.
   **On screen:** Code `examples/test_cafe_tools.py`, line 2, 6, 10, 14 highlighted, output hidden
@@ -163,7 +167,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Step 4. Asha copies her files into a folder called broken. In the copy, line 18 uses round instead of math dot ceil. That is the AI's mistake from Chapter 18.
   **On screen:** Code `examples/broken/cafe_tools.py`, line 18 highlighted, output hidden
-- **Narration:** She runs the same three tests on the broken copy. Remember: round goes to the nearest whole number.
+- **Narration:** She runs the same three tests on the broken copy, and adds dash dash t b equals short, for a shorter report. Remember: round goes to the nearest whole number.
   **On screen:** Code `examples/broken/test_cafe_tools.py`, line 6, 10, 14 highlighted, output hidden
 - **Interaction:** "Which of the three tests will fail?" stays on screen with a 10-second timer.
 - **Narration:** The third one. The first line shows two dots and an F. F means one test failed.
@@ -195,9 +199,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Line 12 rounds the total to two decimal places. Line 17 uses pytest dot approx, which accepts a value that is very close.
   **On screen:** Code `examples/test_floats.py`, line 12, 17 highlighted, output hidden
 - **Interaction:** "Which of the three tests fails?" stays on screen with a 10-second timer.
-- **Narration:** The first one, test exact. The total is 0.30000000000000004, not 0.3.
+- **Narration:** The first one, test exact. The total is a tiny bit more than 0.3.
   **On screen:** Code `examples/test_floats.py`, line 7 highlighted, output `examples/test_floats.expected`
-- **Narration:** The other two pass. For decimals, round both sides, or use approx.
+- **Narration:** The other two pass. For decimals, round the result to two places, or use approx.
   **On screen:** Code `examples/test_floats.py`, line 12, 17 highlighted, output `examples/test_floats.expected`
 
 ## Scene 9: Step 7: Write the test first
@@ -213,8 +217,14 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/testfirst/test_money_usd.py`, line 6 highlighted, output `examples/testfirst/test_money_usd.expected`
 - **Narration:** The minus line shows what the test expected. The plus line shows what the function returned.
   **On screen:** Code `examples/testfirst/test_money_usd.py`, line 6 highlighted, output `examples/testfirst/test_money_usd.expected`
-- **Narration:** Now she changes line 13, and runs the test again. It passes. This is test first thinking: a test that fails before the change and passes after it proves the change did its job.
+- **Narration:** Now she changes line 13, to add U S D before the amount.
   **On screen:** Code `examples/final/cafe_tools.py`, line 13 highlighted, output hidden
+- **Narration:** She runs the new test again, and it passes. This is test first thinking: a test that fails before the change and passes after it proves the change did its job.
+  **On screen:** Code `examples/final/test_money_usd.py`, line 6 highlighted, output `examples/final/test_money_usd.expected`
+- **Narration:** One more run. Her test file from step 3 still expects 4.00, so it now fails on the new module.
+  **On screen:** Code `examples/usd/test_cafe_tools.py`, line 10 highlighted, output `examples/usd/test_cafe_tools.expected`
+- **Narration:** The rule changed on purpose, so this old test is out of date. Asha updates it to expect U S D 4.00. When a rule changes, its tests change with it.
+  **On screen:** Code `examples/usd/test_cafe_tools.py`, line 10 highlighted, output `examples/usd/test_cafe_tools.expected`
 - **Narration:** Quick check. You write a test for a new rule, before you change the code. What should happen the first time you run it?
   **On screen:** Quick check: "You write a test for a new rule before you change the code. What should happen when you first run it?" (options shown)
 - **Interaction:** "You write a test for a new rule before you change the code. What should happen when you first run it?" stays on screen with a 10-second timer.
@@ -235,7 +245,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Back to the mission. Lines 5 and 9 test the tax. Line 11 rounds the decimal total first.
   **On screen:** Code `examples/final/test_cafe_tools.py`, line 5, 6, 9, 10, 11 highlighted, output hidden
-- **Narration:** Line 15 tests the new U S D label. Lines 18 to 26 test the boxes: normal values, and then the edges. A test can hold several asserts.
+- **Narration:** Line 15 is the updated money test, with the new U S D label. Lines 18 to 26 test the boxes: normal values, and then the edges. A test can hold several asserts.
   **On screen:** Code `examples/final/test_cafe_tools.py`, line 15, 18, 19, 20, 23, 24, 25, 26 highlighted, output hidden
 - **Interaction:** "How many dots will pytest print?" stays on screen with a 10-second timer.
 - **Narration:** Five dots, one for each test function, and five passed. A test with three asserts still counts as one test.
@@ -273,10 +283,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: I checked each one by hand: 40 divided by 12 is 3.33, so 4 boxes. They are all right.
 - **Narration:** Stage 2: write. Asha writes two tests herself: 24 biscuits, and 40 biscuits. She asks the AI what they do not test yet.
   **On screen:** AI chat, stage 2: Write: her own tests first
-    - You: First I wrote two tests myself. Do not change them. Which behaviour do they not test yet? [code `examples/test_mine.py`]
+    - You: First I wrote two tests myself. Do not change them. Which behaviour do they not test yet? [code `examples/ai/test_mine.py`]
 - **Narration:** The AI names zero, and the edge between 12 and 13. She will check the AI's file for those too.
   **On screen:** AI chat, stage 2: Write: her own tests first
-    - You: First I wrote two tests myself. Do not change them. Which behaviour do they not test yet? [code `examples/test_mine.py`]
+    - You: First I wrote two tests myself. Do not change them. Which behaviour do they not test yet? [code `examples/ai/test_mine.py`]
     - AI (example answer): They test an exact division and a part box. They do not test 0 biscuits, or the edge between 12 and 13.
 - **Narration:** Stage 3: generate. Asha asks the AI for a test file that catches any mistake in boxes needed.
   **On screen:** AI chat, stage 3: Generate: a test file from the AI
@@ -284,12 +294,12 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The AI writes three tests, and makes a big promise.
   **On screen:** AI chat, stage 3: Generate: a test file from the AI
     - You: Write pytest tests for my cafe_tools module. They must catch any mistake in boxes_needed.
-    - AI (example answer): Here are three tests. They will catch any mistake in `boxes_needed`. [code `examples/test_ai_tools.py`]
+    - AI (example answer): Here are three tests. They will catch any mistake in `boxes_needed`. [code `examples/ai/test_ai_tools.py`]
 - **Narration:** On Asha's working module, all three pass. Look at the two box tests. Line 10 uses 24 biscuits. And the test on line 14 calls boxes needed with zero.
-  **On screen:** Code `examples/test_ai_tools.py`, line 10, 14, 15 highlighted, output `examples/test_ai_tools.expected`
+  **On screen:** Code `examples/ai/test_ai_tools.py`, line 10, 14, 15 highlighted, output `examples/ai/test_ai_tools.expected`
 - **Interaction:** "The AI says these tests catch any mistake in `boxes_needed`. Is it right?" stays on screen with a 10-second timer.
 - **Narration:** No. 24 divides exactly, so even round gives 2. And line 15 has no assert, so that test can never fail.
-  **On screen:** Code `examples/test_ai_tools.py`, line 10, 15 highlighted, output `examples/test_ai_tools.expected`
+  **On screen:** Code `examples/ai/test_ai_tools.py`, line 10, 15 highlighted, output `examples/ai/test_ai_tools.expected`
 - **Narration:** Stage 4: test. Asha asks which of the AI's tests should fail on her broken copy.
   **On screen:** AI chat, stage 4: Test: run them on the broken copy
     - You: My broken copy uses round instead of math.ceil. Which of your three tests should fail on it, and why?
@@ -297,23 +307,28 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 4: Test: run them on the broken copy
     - You: My broken copy uses round instead of math.ceil. Which of your three tests should fail on it, and why?
     - AI (example answer): None of them. 24 divided by 12 is exactly 2, so round gives the right answer. And test_zero has no assert, so it can never fail.
-- **Narration:** She runs them on the broken copy anyway. Three passed. The tests did not see the broken code.
-  **On screen:** Code `examples/broken/test_ai_tools.py`, line 10, 15 highlighted, output `examples/broken/test_ai_tools.expected`
+- **Narration:** So she asks for a better file: exact values, normal cases and edge cases, one behaviour per test.
+  **On screen:** AI chat, stage 4: Test: run them on the broken copy
+    - You: My broken copy uses round instead of math.ceil. Which of your three tests should fail on it, and why?
+    - AI (example answer): None of them. 24 divided by 12 is exactly 2, so round gives the right answer. And test_zero has no assert, so it can never fail.
+    - You: Then write a better file. Test exact expected values, normal cases and the edge cases from my plan, one behaviour per test.
+- **Narration:** She makes a broken copy of her finished module, with round on line 18, and runs them anyway. Three passed. The tests did not see the broken code.
+  **On screen:** Code `examples/ai/broken/test_ai_tools.py`, line 10, 15 highlighted, output `examples/ai/broken/test_ai_tools.expected`
 - **Narration:** Then she runs her own two tests on the same copy. The test for 40 biscuits fails, as a good test should.
-  **On screen:** Code `examples/broken/test_mine.py`, line 10 highlighted, output `examples/broken/test_mine.expected`
-- **Narration:** Stage 5: debug. The AI writes a better file, with seven tests. But on Asha's working module, one test fails: test two items, on line 11.
-  **On screen:** Code `examples/test_ai_float.py`, line 11 highlighted, output `examples/test_ai_float.expected`
+  **On screen:** Code `examples/ai/broken/test_mine.py`, line 10 highlighted, output `examples/ai/broken/test_mine.expected`
+- **Narration:** Stage 5: debug. The AI writes the better file, with seven tests. But on Asha's working module, one test fails: test two items, on line 11.
+  **On screen:** Code `examples/ai/test_ai_float.py`, line 11 highlighted, output `examples/ai/test_ai_float.expected`
 - **Narration:** She pastes the failing test and the values from the report.
   **On screen:** AI chat, stage 5: Debug: is the code or the test wrong?
-    - You: Your new test file fails on my working module. Here is the failing test, and the report says: assert 3.3000000000000003 == 3.3. Is the code or the test wrong? Explain why first. [code `examples/test_ai_float.py`]
+    - You: Your new test file fails on my working module. Here is the failing test, and the report says: assert 3.3000000000000003 == 3.3. Is the code or the test wrong? Explain why first. [code `examples/ai/test_ai_float.py`]
 - **Narration:** She asks whether the code or the test is wrong. The AI reads the values: the test compares decimals exactly. Round the total first.
   **On screen:** AI chat, stage 5: Debug: is the code or the test wrong?
-    - You: Your new test file fails on my working module. Here is the failing test, and the report says: assert 3.3000000000000003 == 3.3. Is the code or the test wrong? Explain why first. [code `examples/test_ai_float.py`]
+    - You: Your new test file fails on my working module. Here is the failing test, and the report says: assert 3.3000000000000003 == 3.3. Is the code or the test wrong? Explain why first. [code `examples/ai/test_ai_float.py`]
     - AI (example answer): The test is wrong, not the code. 1.1 plus 2.2 is stored as 3.3000000000000003. Round the total to 2 decimal places before you compare.
 - **Narration:** With the total rounded on line 11, all seven tests pass on the working module.
-  **On screen:** Code `examples/test_ai_v2.py`, line 11 highlighted, output `examples/test_ai_v2.expected`
+  **On screen:** Code `examples/ai/test_ai_v2.py`, line 11 highlighted, output `examples/ai/test_ai_v2.expected`
 - **Narration:** And on the broken copy, two tests fail: 40 biscuits and 13 biscuits. Now the tests can see the broken code.
-  **On screen:** Code `examples/broken/test_ai_v2.py`, line 23, 31 highlighted, output `examples/broken/test_ai_v2.expected`
+  **On screen:** Code `examples/ai/broken/test_ai_v2.py`, line 23, 31 highlighted, output `examples/ai/broken/test_ai_v2.expected`
 - **Narration:** Stage 6: improve. Asha asks for one improvement.
   **On screen:** AI chat, stage 6: Improve: before you delete a test
     - You: All seven tests pass. Suggest at most one improvement, with one reason.
@@ -322,11 +337,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: All seven tests pass. Suggest at most one improvement, with one reason.
     - AI (example answer): Delete test_full_boxes and test_zero. The tests for 40 and 13 already check rounding up, so those two repeat them.
 - **Narration:** Asha remembers her own bug from Chapter 18: double slash, then plus 1. It was wrong for 24 biscuits. She makes a second broken copy with that bug.
-  **On screen:** Code `examples/broken2/cafe_tools.py`, line 18 highlighted, output hidden
-- **Narration:** The shorter file passes on it. Five passed. Without those two tests, her old bug would slip through.
-  **On screen:** Code `examples/broken2/test_ai_short.py`, line 19, 23 highlighted, output `examples/broken2/test_ai_short.expected`
+  **On screen:** Code `examples/ai/broken2/cafe_tools.py`, line 18 highlighted, output hidden
+- **Narration:** Asha tries the AI's shorter file on it. Five passed. Without those two tests, her old bug would slip through.
+  **On screen:** Code `examples/ai/broken2/test_ai_short.py`, line 19, 23 highlighted, output `examples/ai/broken2/test_ai_short.expected`
 - **Narration:** The full file catches it: 24 biscuits gives 3, and zero biscuits gives 1. So Asha keeps every test. The AI was wrong again.
-  **On screen:** Code `examples/broken2/test_ai_v2.py`, line 19, 27 highlighted, output `examples/broken2/test_ai_v2.expected`
+  **On screen:** Code `examples/ai/broken2/test_ai_v2.py`, line 19, 27 highlighted, output `examples/ai/broken2/test_ai_v2.expected`
 - **Narration:** Quick check. All of an AI's tests pass. What is the best next check?
   **On screen:** Quick check: "All of an AI's tests pass. What is the best next check?" (options shown)
 - **Interaction:** "All of an AI's tests pass. What is the best next check?" stays on screen with a 10-second timer.
@@ -352,22 +367,19 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Mistake 1. Asha runs this file with pytest. Remember the naming rule from step 3.
   **On screen:** Code `examples/err01_no_prefix.py`, line 5, 6 highlighted, output hidden
-- **Interaction:** "pytest says that no tests ran. Why?" stays on screen with a 10-second timer.
-- **Narration:** The function name does not start with test and an underscore, so pytest skips it. Rename it test tea tax.
+- **Interaction:** "pytest says that no tests ran. Which name breaks the rule?" stays on screen with a 10-second timer.
+- **Narration:** The function name, tea tax, on line 5. It does not start with test and an underscore, so pytest skips it, even when you give it this file by name. Rename it test tea tax.
   **On screen:** Code `examples/err01_no_prefix.py`, line 5 highlighted, output `examples/err01_no_prefix.expected`
-- **Narration:** Mistake 2 was in the AI's first file: a test with no assert. It always passes.
+- **Narration:** You have seen mistakes 2 and 3 in the AI's files. A test with no assert always passes. And an exact comparison of decimals can fail on correct code: round the result, or use approx.
   **On screen:** Mistakes 2 and 3: you have seen them
     - A test with no `assert` always passes. Every test needs an `assert` with an exact expected value.
-- **Narration:** Mistake 3 was in its second file: an exact comparison of decimals. Round both sides, or use approx.
-  **On screen:** Mistakes 2 and 3: you have seen them
-    - A test with no `assert` always passes. Every test needs an `assert` with an exact expected value.
-    - Comparing decimals exactly can fail on correct code. Use `round()` or `pytest.approx()`.
+    - Comparing decimals exactly can fail on correct code. Round the result, or use `pytest.approx()`.
 - **Narration:** Mistake 4. Look at the import on line 2, and the test on line 6.
   **On screen:** Code `examples/err02_missing_import.py`, line 2, 6 highlighted, output hidden
 - **Interaction:** "What is missing?" stays on screen with a 10-second timer.
 - **Narration:** Boxes needed is never imported, so the test stops with a Name Error. Add it to line 2.
   **On screen:** Code `examples/err02_missing_import.py`, line 2 highlighted, output `examples/err02_missing_import.expected`
-- **Narration:** A Name Error inside a test means the test itself is wrong, not the code it tests.
+- **Narration:** The report points at line 6 of the test file, not at the module. A Name Error inside a test means the test itself is wrong.
   **On screen:** Code `examples/err02_missing_import.py`, line 2 highlighted, output `examples/err02_missing_import.expected`
 
 ## Scene 13: Think beyond
@@ -393,14 +405,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Each recap point appears as it is spoken, then the badge.
 
-- **Narration:** Let's recap. A test runs code with a known input, and compares the result with the answer you expect.
-  **On screen:** Recap
-    - A test runs code with a known input and compares the result with the expected answer.
-- **Narration:** Assert stops the program when its condition is false.
-  **On screen:** Recap
-    - A test runs code with a known input and compares the result with the expected answer.
-    - `assert condition, "message"` stops the program when the condition is false.
-- **Narration:** pytest runs every test function, and names each failure, its line and its values.
+- **Narration:** Let's recap. A test compares a result with the answer you expect. Assert stops the program when it fails, and pytest names each failure, its line and its values.
   **On screen:** Recap
     - A test runs code with a known input and compares the result with the expected answer.
     - `assert condition, "message"` stops the program when the condition is false.
@@ -442,7 +447,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Asha's tests guard three small tools. But what about a whole program, with several modules?
   **On screen:** Boss Level 4: The Tested Quiz App Write the tests first. Then build the app.
-- **Narration:** In Chapter 20, the Boss Level, you will build a quiz app for the cafe, and write its tests first.
+- **Narration:** In Chapter 20, the Boss Level, you will build a quiz app for the cafe. You will write its tests first, let an AI help with the code, and let the tests be the judge.
   **On screen:** Boss Level 4: The Tested Quiz App Write the tests first. Then build the app.
 - **Narration:** Do the warm-up tasks now. They take about ten minutes.
   **On screen:** Boss Level 4: The Tested Quiz App Do the warm-up tasks now. They take about ten minutes.

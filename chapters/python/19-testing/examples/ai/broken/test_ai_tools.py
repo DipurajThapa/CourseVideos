@@ -1,4 +1,4 @@
-# file: examples/test_ai_tools.py
+# file: examples/ai/broken/test_ai_tools.py
 from cafe_tools import with_tax, boxes_needed
 
 

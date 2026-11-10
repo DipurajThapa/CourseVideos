@@ -1,4 +1,4 @@
-# file: examples/test_ai_short.py
+# file: examples/ai/test_ai_v2.py
 from cafe_tools import with_tax, money, boxes_needed
 
 
@@ -12,11 +12,19 @@ def test_two_items():
 
 
 def test_money():
-    assert money(4) == "4.00"
+    assert money(4) == "USD 4.00"
+
+
+def test_full_boxes():
+    assert boxes_needed(24) == 2
 
 
 def test_part_box():
     assert boxes_needed(40) == 4
+
+
+def test_zero():
+    assert boxes_needed(0) == 0
 
 
 def test_just_over():

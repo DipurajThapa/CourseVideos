@@ -108,7 +108,7 @@ python -m pip install -U pytest
 
 On macOS and Linux, type `python3` instead of `python`. You will learn more about installing packages in Chapter 24.
 
-Here is Asha's module from Chapter 18, with `boxes_needed()` added to it.
+Here is Asha's module from Chapter 18, with `boxes_needed()` added to it. She removes the old printed checks at the bottom of the file, because tests will replace them.
 
 ```python
 # file: examples/cafe_tools.py
@@ -131,7 +131,7 @@ def boxes_needed(biscuits, per_box=12):
     return math.ceil(biscuits / per_box)
 ```
 
-A test file for `pytest` follows two naming rules. The file name starts with `test_`, and each test is a function whose name starts with `test_`. Inside each test, a plain `assert` does the checking.
+The safe rule for names has two parts. Each test is a function whose name starts with `test_`, and the file name starts with `test_` too. When you give `pytest` a folder instead of a file, it looks for file names that start with `test_` or end with `_test.py`. Inside each test, a plain `assert` does the checking.
 
 ```python
 # file: examples/test_cafe_tools.py
@@ -287,7 +287,7 @@ FAILED test_floats.py::test_exact - assert 0.30000000...
 1 failed, 2 passed in 0.01s
 ```
 
-The first test fails, because the total is `0.30000000000000004`. The second test rounds the total to two decimal places first. The third uses `pytest.approx()`, which accepts a value that is very close to the expected one.
+The first test fails, because the total is a tiny bit more than 0.3: `0.30000000000000004`. The second test rounds the result to two decimal places first. The third uses `pytest.approx()`, which accepts a value that is very close to the expected one.
 
 **Step 7: Write the test first.** The cafe owner wants every price label to start with `USD`. Before Asha changes `money()`, she writes the test for the new rule.
 
@@ -318,7 +318,44 @@ FAILED test_money_usd.py::test_money_shows_usd - Asse...
 1 failed in 0.01s
 ```
 
-The `-` line shows what the test expected and the `+` line shows what the function returned. Now she changes line 13 of `cafe_tools.py`, runs the test again, and it passes. Writing the test first is called **test-first thinking**. A test that fails before the change and passes after it proves that the change really did the job.
+The `-` line shows what the test expected and the `+` line shows what the function returned. Now she changes line 13 of `cafe_tools.py` and runs the test again. It passes.
+
+```python
+# file: examples/final/test_money_usd.py
+from cafe_tools import money
+
+
+def test_money_shows_usd():
+    assert money(4) == "USD 4.00"
+```
+
+<!-- output: examples/final/test_money_usd.expected -->
+```output
+.                                                [100%]
+1 passed in 0.01s
+```
+
+Writing the test first is called **test-first thinking**. A test that fails before the change and passes after it proves that the change really did the job.
+
+One more run is needed. Asha's test file from Step 3 still expects `"4.00"`, so it now fails on the new module.
+
+<!-- output: examples/usd/test_cafe_tools.expected -->
+```output
+.F.                                              [100%]
+======================= FAILURES =======================
+_____________ test_money_has_two_decimals ______________
+test_cafe_tools.py:10: in test_money_has_two_decimals
+    assert money(4) == "4.00"
+E   AssertionError: assert 'USD 4.00' == '4.00'
+E
+E     - 4.00
+E     + USD 4.00
+=============== short test summary info ================
+FAILED test_cafe_tools.py::test_money_has_two_decimals
+1 failed, 2 passed in 0.01s
+```
+
+The rule changed on purpose, so the old test is out of date. Asha updates it to expect `"USD 4.00"`. When a rule changes, its tests change with it.
 
 ## See the outcome
 
@@ -408,7 +445,7 @@ The full prompts are in [ai-prompts.md](ai-prompts.md).
 **AI pair moment.** Asha asked an AI assistant: "Write pytest tests for my cafe_tools module. They must catch any mistake in boxes_needed." The AI answered with this file. It said: "These tests will catch any mistake in `boxes_needed`."
 
 ```python
-# file: examples/test_ai_tools.py
+# file: examples/ai/test_ai_tools.py
 from cafe_tools import with_tax, boxes_needed
 
 
@@ -427,26 +464,26 @@ def test_zero():
 
 Asha ran them on her module, and all three passed.
 
-<!-- output: examples/test_ai_tools.expected -->
+<!-- output: examples/ai/test_ai_tools.expected -->
 ```output
 ...                                              [100%]
 3 passed in 0.01s
 ```
 
-That looks good, but it proves nothing yet. Asha ran the same tests on the broken copy from Step 4, the one that uses `round()`.
+That looks good, but it proves nothing yet. Asha made a broken copy of her finished module, with `round()` on line 18, as in Step 4. She ran the same tests on it.
 
-<!-- output: examples/broken/test_ai_tools.expected -->
+<!-- output: examples/ai/broken/test_ai_tools.expected -->
 ```output
 ...                                              [100%]
 3 passed in 0.01s
 ```
 
-All three still pass, so these tests cannot catch the `round()` mistake. The test for 24 biscuits divides exactly, so `round()` gives the right answer too. The test for 0 biscuits has no `assert` at all, so it can never fail. Asha's own test for 40 biscuits, from Step 3, does fail on the broken copy.
+All three still pass, so these tests cannot catch the `round()` mistake. The test for 24 biscuits divides exactly, so `round()` gives the right answer too. The test for 0 biscuits has no `assert` at all, so it can never fail. Asha's own test for 40 biscuits does fail on the broken copy.
 
-The AI's improved file tests exact values, normal cases and edge cases.
+Asha asked for a better file, with exact expected values, normal cases and the edge cases from her plan. After one fix to a decimal comparison, the AI's file looked like this.
 
 ```python
-# file: examples/test_ai_v2.py
+# file: examples/ai/test_ai_v2.py
 from cafe_tools import with_tax, money, boxes_needed
 
 
@@ -460,7 +497,7 @@ def test_two_items():
 
 
 def test_money():
-    assert money(4) == "4.00"
+    assert money(4) == "USD 4.00"
 
 
 def test_full_boxes():
@@ -479,7 +516,7 @@ def test_just_over():
     assert boxes_needed(13) == 2
 ```
 
-<!-- output: examples/test_ai_v2.expected -->
+<!-- output: examples/ai/test_ai_v2.expected -->
 ```output
 .......                                          [100%]
 7 passed in 0.01s
@@ -487,7 +524,7 @@ def test_just_over():
 
 On the broken copy, two of these tests now fail, as they should.
 
-<!-- output: examples/broken/test_ai_v2.expected -->
+<!-- output: examples/ai/broken/test_ai_v2.expected -->
 ```output
 ....F.F                                          [100%]
 =============== short test summary info ================
@@ -520,7 +557,7 @@ Fix: rename the function to `test_tea_tax`. If `pytest` says "no tests ran", che
 
 **Mistake 2: a test with no `assert`.** A test that only calls a function, like `test_zero` in the AI pair moment, always passes. Fix: every test needs an `assert` with an exact expected value.
 
-**Mistake 3: comparing decimals exactly.** As Step 6 showed, `0.1 * 3 == 0.3` is `False`. Fix: round both sides, or use `pytest.approx()`.
+**Mistake 3: comparing decimals exactly.** As Step 6 showed, `0.1 * 3 == 0.3` is `False`. Fix: round the result to two decimal places, or use `pytest.approx()`.
 
 **Mistake 4: forgetting to import the function you test.**
 
@@ -547,7 +584,7 @@ FAILED err02_missing_import.py::test_boxes - NameErro...
 1 failed in 0.01s
 ```
 
-Fix: add `boxes_needed` to the import on line 2. A `NameError` inside a test means the test itself is wrong, not the code it tests.
+Fix: add `boxes_needed` to the import on line 2. The report points at line 6 of the test file, not at the module. A `NameError` inside a test means the test itself is wrong, not the code it tests.
 
 ## Think beyond
 

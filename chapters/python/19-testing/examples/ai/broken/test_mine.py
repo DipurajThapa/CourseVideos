@@ -1,4 +1,4 @@
-# file: examples/test_mine.py
+# file: examples/ai/broken/test_mine.py
 from cafe_tools import boxes_needed
 
 

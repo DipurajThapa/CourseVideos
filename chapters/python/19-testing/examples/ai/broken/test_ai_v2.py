@@ -1,4 +1,4 @@
-# file: examples/test_ai_float.py
+# file: examples/ai/broken/test_ai_v2.py
 from cafe_tools import with_tax, money, boxes_needed
 
 
@@ -8,11 +8,11 @@ def test_tax():
 
 def test_two_items():
     total = with_tax(1.0) + with_tax(2.0)
-    assert total == 3.3
+    assert round(total, 2) == 3.3
 
 
 def test_money():
-    assert money(4) == "4.00"
+    assert money(4) == "USD 4.00"
 
 
 def test_full_boxes():
