@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 15:52 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:24 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -14,7 +14,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** The list on the paper
 - **Narration:** By lunch, the paper is lost, and nobody knows what is done.
   **On screen:** The list on the paper
-- **Narration:** Welcome to Chapter 28. The final boss!
+- **Narration:** Welcome to Chapter 28. The final boss! In Chapter 1, Asha printed one receipt. Today she builds real software.
   **On screen:** The Personal Task Manager
 - **Narration:** Asha will build a task manager that keeps her jobs in a file, with tests written first, and an AI assistant at every stage.
   **On screen:** The Personal Task Manager Plan it. Test it. Build it. Judge every answer.
@@ -192,8 +192,6 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** Step 2. A task is a data class, as in Chapter 26: a title, a priority that starts at 2, and done, which starts as False.
   **On screen:** Code `project/tasks_core.py`, line 7, 8, 9, 10, 11 highlighted, output hidden
-- **Narration:** To dict returns the task as a dictionary. You will see why it matters soon.
-  **On screen:** Code `project/tasks_core.py`, line 13, 14, 15, 16, 17 highlighted, output hidden
 - **Narration:** The task list keeps the tasks in a list. Tasks or empty list gives the list that was passed in, or a new empty one. List makes a copy, so nothing is shared.
   **On screen:** Code `project/tasks_core.py`, line 23, 24 highlighted, output hidden
 - **Narration:** Add strips the spaces around the title first.
@@ -202,9 +200,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `project/tasks_core.py`, line 28, 29, 30, 31 highlighted, output hidden
 - **Narration:** Asha adds three tasks. Line 6 adds Restock milk with spaces around it, and no priority.
   **On screen:** Code `examples/step2/list_check.py`, line 6 highlighted, output hidden
+- **Narration:** Line 9 prints one line per task: its number, a box that is empty until the task is done, the title, and P with the priority.
+  **On screen:** Code `examples/step2/list_check.py`, line 8, 9 highlighted, output hidden
 - **Interaction:** "What does the second line of the output show for line 6's task?" stays on screen with a 10-second timer.
 - **Narration:** 2, the title without spaces, and P2, the default priority.
-  **On screen:** Code `examples/step2/list_check.py`, line 6 highlighted, output `examples/step2/list_check.expected`
+  **On screen:** Code `examples/step2/list_check.py`, line 8, 9 highlighted, output `examples/step2/list_check.expected`
 - **Narration:** And the empty title on line 11 is refused, with the message from add.
   **On screen:** Code `examples/step2/list_check.py`, line 11 highlighted, output `examples/step2/list_check.expected`
 
@@ -313,25 +313,34 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 4: Test: cases for loading
     - You: List test cases for load_tasks(path), with the expected result for each. Include unusual files.
     - AI (example answer): 1. A normal file: the saved tasks. 2. A missing file: no tasks. 3. A broken file: a ValueError. 4. An empty file is broken JSON, so it should raise a ValueError too.
-- **Narration:** Stage 5: debug. For the other failure, Asha saves one task with the AI's code. It stops with an error, and a long report of the lines inside the JSON module.
+- **Narration:** Stage 5: debug. For the other failure, Asha saves one task with the AI's code. It stops with a long error report, through the lines of the JSON module.
   **On screen:** Code `examples/ai/debug/save_crash.py`, line 7 highlighted, error `examples/ai/debug/save_crash.expected_error`
-- **Narration:** As she learned in Chapter 1, she reads the last line first. Type error: object of type Task is not JSON serializable. Serializable means it can be saved as text.
+- **Narration:** As she learned in Chapter 1, she finds the error line at the bottom. Type error: object of type Task is not JSON serializable. Serializable means it can be saved as text.
   **On screen:** Code `examples/ai/debug/save_crash.py`, line 7 highlighted, error `examples/ai/debug/save_crash.expected_error`
-- **Narration:** Here you see only that last line. On your computer, the lines above it show full file paths.
+- **Narration:** Here you see only that error line. On your computer, the report above it shows full file paths, and Python 3.14 and newer add a short note under it.
   **On screen:** Code `examples/ai/debug/save_crash.py`, line 7 highlighted, error `examples/ai/debug/save_crash.expected_error`
 - **Narration:** She pastes the code and the error, and asks for the cause first.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: save_tasks() stops with TypeError: Object of type Task is not JSON serializable. First explain the cause. Then show the smallest fix.
-- **Narration:** The AI explains: JSON can save numbers, text, true and false, lists and dictionaries. A task is none of these. So each task becomes a dictionary first, with to dict.
+- **Narration:** The AI explains: JSON can save numbers, text, true and false, None, lists and dictionaries. A task is none of these. So each task becomes a dictionary first, with a new method, to dict.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: save_tasks() stops with TypeError: Object of type Task is not JSON serializable. First explain the cause. Then show the smallest fix.
-    - AI (example answer): `json.dumps()` can save numbers, text, True, False, lists and dictionaries. A `Task` is none of these. The fix: turn each task into a dictionary first, with a `to_dict()` method. [code `project/tasks_core.py`]
+    - AI (example answer): `json.dumps()` can save numbers, text, True, False, None, lists and dictionaries. A `Task` is none of these. The fix: turn each task into a dictionary first, with a `to_dict()` method. [code `project/tasks_core.py`]
+- **Narration:** The new to dict method returns a task as a dictionary.
+  **On screen:** Code `examples/ai/fixed/tasks_core.py`, line 13, 14, 15, 16, 17 highlighted, output hidden
 - **Narration:** Line 53 turns each task into a dictionary before dumps.
   **On screen:** Code `examples/ai/fixed/tasks_core.py`, line 53 highlighted, output hidden
 - **Narration:** And lines 64 and 65 treat an empty file as no tasks, before JSON loads can complain.
   **On screen:** Code `examples/ai/fixed/tasks_core.py`, line 64, 65 highlighted, output hidden
 - **Narration:** Then she runs every test again, not only the two that failed. Ten passed.
   **On screen:** Code `examples/ai/fixed/test_tasks_core.py`, output `examples/ai/fixed/test_tasks_core.expected`
+- **Narration:** One more check, by hand. Asha saves two tasks, the first one done. Line 10 prints the saved file, and line 11 loads it again.
+  **On screen:** Code `examples/step4/save_check.py`, line 8, 9, 10, 11 highlighted, output hidden
+- **Interaction:** "After loading the file again, what does line 12 print?" stays on screen with a 10-second timer.
+- **Narration:** The same two lines as before saving: task 1 with its x, and task 2 still open.
+  **On screen:** Code `examples/step4/save_check.py`, line 12 highlighted, output `examples/step4/save_check.expected`
+- **Narration:** And the file shows each task as a dictionary. JSON writes True as true, in small letters.
+  **On screen:** Code `examples/step4/save_check.py`, line 10 highlighted, output `examples/step4/save_check.expected`
 - **Narration:** Quick check. Which of these can JSON dumps save, as it is?
   **On screen:** Quick check: "Which of these can `json.dumps()` save as it is?" (options shown)
 - **Interaction:** "Which of these can `json.dumps()` save as it is?" stays on screen with a 10-second timer.
@@ -354,8 +363,22 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/cases/bad_input/task_app.py`, line 18, 28 highlighted, output `examples/cases/bad_input/task_app.expected`
 - **Narration:** An empty title and task 9 are refused too. And an unknown command shows the list of commands. Pass.
   **On screen:** Code `examples/cases/bad_input/task_app.py`, output `examples/cases/bad_input/task_app.expected`
-- **Narration:** And the broken file, which is missing a comma between two tasks. One clear line: expecting a comma. Pass. All three match.
+- **Narration:** And the broken file, which is missing a comma between two tasks. Load tasks raises a value error for a broken file.
+  **On screen:** Code `examples/cases/bad_json/task_app.py`, line 32 highlighted, output hidden
+- **Interaction:** "The file is broken. Will the app crash?" stays on screen with a 10-second timer.
+- **Narration:** No. Line 34 prints one clear line: expecting a comma. Pass. All three match.
   **On screen:** Code `examples/cases/bad_json/task_app.py`, line 33, 34 highlighted, output `examples/cases/bad_json/task_app.expected`
+- **Narration:** Breather. Every test passes, and every known case matches.
+  **On screen:** Breather card
+    - Read the error line first.
+    - JSON saves dictionaries, not objects.
+    - Run every test after every fix.
+- **Narration:** Next, the last stage: a review from the AI.
+  **On screen:** Breather card
+    - Read the error line first.
+    - JSON saves dictionaries, not objects.
+    - Run every test after every fix.
+- **Breather:** 4 quiet seconds.
 
 ## Scene 12: Improve it with AI
 
@@ -381,10 +404,20 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Table: Six stages, one module of rules
 - **Narration:** The AI helped at every stage, from the plan to the improvement.
   **On screen:** Table: Six stages, one module of rules (row 1 in focus)
-- **Narration:** And it was confidently wrong five times: the plan, the wrong task, a promise of ten passes, the empty file, and a check it wanted to remove.
+- **Narration:** It was confidently wrong five times. A plan that could not be tested.
+  **On screen:** Table: Six stages, one module of rules (row 1 in focus)
+- **Narration:** The wrong task.
+  **On screen:** Table: Six stages, one module of rules (row 2 in focus)
+- **Narration:** A promise of ten passes.
   **On screen:** Table: Six stages, one module of rules (row 3 in focus)
-- **Narration:** Every time, something Asha wrote first caught it: her criteria, a side by side run, and her tests.
+- **Narration:** A case list with no empty file.
+  **On screen:** Table: Six stages, one module of rules (row 4 in focus)
+- **Narration:** And a check it wanted to remove.
   **On screen:** Table: Six stages, one module of rules (row 6 in focus)
+- **Narration:** At debug, the AI was right. Asha could tell, because the fix made every test pass.
+  **On screen:** Table: Six stages, one module of rules (row 5 in focus)
+- **Narration:** Every time, something Asha wrote first decided: her criteria, a side by side run, and her tests.
+  **On screen:** Table: Six stages, one module of rules
 - **Narration:** Last breather. Before she pasted any code into the chat, Asha checked it for private data, the habit from Chapter 1. Her tasks hold only cafe jobs.
   **On screen:** Breather card
     - A promise is not a result. Run the tests.
@@ -430,14 +463,14 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Number tasks from 1 for people, and subtract 1 for the list.
     - JSON saves dictionaries, not objects. `to_dict()` turns one into the other.
     - A missing or empty file can mean nothing yet. A broken one gets a clear message.
-- **Narration:** And every AI suggestion was judged by running your tests.
+- **Narration:** And every AI suggestion was judged by your criteria, a run, or your tests.
   **On screen:** Recap
     - Keep the rules free of `input()` and `print()`, so tests can check them.
     - Write the tests first. A test that passes on empty rules proves nothing.
     - Number tasks from 1 for people, and subtract 1 for the list.
     - JSON saves dictionaries, not objects. `to_dict()` turns one into the other.
     - A missing or empty file can mean nothing yet. A broken one gets a clear message.
-    - Every AI suggestion was judged by running your tests.
+    - Every AI suggestion was judged by your criteria, a run, or your tests.
 - **Narration:** One last check. An AI says its new code passes all your tests. What do you do?
   **On screen:** Quick check: "An AI says its new code passes all your tests. What do you do?" (options shown)
 - **Interaction:** "An AI says its new code passes all your tests. What do you do?" stays on screen with a 10-second timer.
@@ -473,7 +506,15 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Module 3: lists, dictionaries, tuples, sets. The Expense Tracker.
     - Module 4: functions, modules and tests. The Quiz App.
     - Module 5: files, errors, JSON and packages. The Report Generator.
-- **Narration:** And classes, safe changes, and today's task manager. At every step, you used AI, and checked every answer yourself.
+- **Narration:** And classes, safe changes, and today's task manager.
+  **On screen:** Look back: 28 chapters
+    - Module 1: print, variables, text and input. The Bill Splitter.
+    - Module 2: decisions, loops and debugging. The Guessing Game.
+    - Module 3: lists, dictionaries, tuples, sets. The Expense Tracker.
+    - Module 4: functions, modules and tests. The Quiz App.
+    - Module 5: files, errors, JSON and packages. The Report Generator.
+    - Module 6: classes, safe changes, and this task manager.
+- **Narration:** 28 chapters, 6 boss levels, and one AI habit: check every answer.
   **On screen:** Look back: 28 chapters
     - Module 1: print, variables, text and input. The Bill Splitter.
     - Module 2: decisions, loops and debugging. The Guessing Game.

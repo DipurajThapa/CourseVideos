@@ -115,18 +115,12 @@ Seven tests fail, as they should. Three pass already, because empty rules return
 **Step 2: Tasks and a task list.** A `Task` is a data class, as in Chapter 26. `TaskList` keeps the tasks in a list and checks every new task.
 
 ```python
-# illustrative: lines 7 to 32 of project/tasks_core.py
+# illustrative: lines 7 to 11 and 20 to 32 of project/tasks_core.py
 @dataclass
 class Task:
     title: str
     priority: int = 2
     done: bool = False
-
-    def to_dict(self):
-        """Return the task as a dict that JSON can save."""
-        return {"title": self.title,
-                "priority": self.priority,
-                "done": self.done}
 
 
 class TaskList:
@@ -144,7 +138,7 @@ class TaskList:
         self.tasks.append(Task(title, priority))
 ```
 
-`tasks or []` gives the list that was passed in, or a new empty list when there is none. `list()` makes a copy, so the task list never shares a list with the caller. `add()` removes the spaces around the title first.
+A data class writes `__init__` for you, so `Task` needs only its fields. `tasks or []` gives the list that was passed in, or a new empty list when there is none. `list()` makes a copy, so the task list never shares a list with the caller. `add()` removes the spaces around the title first.
 
 ```python
 # file: examples/step2/list_check.py
@@ -253,7 +247,7 @@ print(again.lines())
 ['1. [x] Open the cafe (P1)', '2. [ ] Restock milk (P2)']
 ```
 
-JSON has no type for a `Task`, so `to_dict()` turns each task into a dictionary first. `true` and `false` are how JSON writes `True` and `False`.
+Each task is saved as a dictionary, with the `to_dict()` method that you will meet in [Test it](#test-it). `true` and `false` are how JSON writes `True` and `False`.
 
 **Step 5: The command loop.** `task_app.py` holds the conversation. It loads the tasks, asks for commands until `quit`, then saves.
 
@@ -343,7 +337,16 @@ For the first failure, she saved one task with the AI's code. She read the last 
 TypeError: Object of type Task is not JSON serializable
 ```
 
-On your computer, the `File` lines show full paths, and some versions of Python add a note after the last line. Asha pasted the code and the error and asked for the cause first. The AI explained that `json.dumps()` can save numbers, text, `True`, `False`, lists and dictionaries, but not a `Task` object. The fix is `to_dict()`, which turns each task into a dictionary:
+On your computer, the `File` lines show full paths, and Python 3.14 and newer add a short note under the error line: `when serializing list item 0`. Asha pasted the code and the error and asked for the cause first. The AI explained that `json.dumps()` can save numbers, text, `True`, `False`, `None`, lists and dictionaries, but not a `Task` object. The fix is a new method, `to_dict()`, which turns each task into a dictionary, and one changed line in `save_tasks()`. Here they are.
+
+```python
+# illustrative: lines 13 to 17 of project/tasks_core.py
+    def to_dict(self):
+        """Return the task as a dict that JSON can save."""
+        return {"title": self.title,
+                "priority": self.priority,
+                "done": self.done}
+```
 
 ```python
 # illustrative: lines 52 to 55 of project/tasks_core.py
@@ -489,7 +492,7 @@ The AI's version uses the number as a list position, so task 1 marks the second 
 - Give every task a number from 1 for people, and subtract 1 for the list.
 - JSON saves dictionaries, not objects. A `to_dict()` method turns an object into data.
 - A missing or empty file can mean "nothing yet". A broken file gets one clear message.
-- Every AI suggestion was judged by running your tests: the plan, the code, the review.
+- Every AI suggestion was judged by your criteria, a run, or your tests.
 
 You earned **300 XP** and the **Python Builder** badge. Module 6 is complete, and so is the course.
 

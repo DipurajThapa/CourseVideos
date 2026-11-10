@@ -42,7 +42,7 @@
      },
      "segments": [
       {
-       "say": "Welcome to Chapter 28. The final boss!"
+       "say": "Welcome to Chapter 28. The final boss! In Chapter 1, Asha printed one receipt. Today she builds real software."
       },
       {
        "say": "Asha will build a task manager that keeps her jobs in a file, with tests written first, and an AI assistant at every stage.",
@@ -488,7 +488,8 @@
        31,
        32,
        33,
-       34
+       34,
+       35
       ],
       "highlight": [
        23,
@@ -583,13 +584,7 @@
        8,
        9,
        10,
-       11,
-       12,
-       13,
-       14,
-       15,
-       16,
-       17
+       11
       ],
       "highlight": [
        7,
@@ -603,16 +598,6 @@
      "segments": [
       {
        "say": "Step 2. A task is a data class, as in Chapter 26: a title, a priority that starts at 2, and done, which starts as False."
-      },
-      {
-       "say": "To dict returns the task as a dictionary. You will see why it matters soon.",
-       "highlight": [
-        13,
-        14,
-        15,
-        16,
-        17
-       ]
       }
      ]
     },
@@ -678,6 +663,13 @@
        "say": "Asha adds three tasks. Line 6 adds Restock milk with spaces around it, and no priority.",
        "highlight": [
         6
+       ]
+      },
+      {
+       "say": "Line 9 prints one line per task: its number, a box that is empty until the task is done, the title, and P with the priority.",
+       "highlight": [
+        8,
+        9
        ]
       }
      ],
@@ -919,9 +911,12 @@
         "text": "Here are my ten tests. Write save_tasks(path, task_list) and load_tasks(path) for my Task and TaskList classes. Do not change my tests.",
         "code": "project/test_tasks_core.py",
         "code_lines": [
-         58,
-         59,
-         60
+         46,
+         47,
+         48,
+         49,
+         50,
+         51
         ]
        },
        {
@@ -1211,16 +1206,16 @@
      },
      "segments": [
       {
-       "say": "Stage 5: debug. For the other failure, Asha saves one task with the AI's code. It stops with an error, and a long report of the lines inside the JSON module."
+       "say": "Stage 5: debug. For the other failure, Asha saves one task with the AI's code. It stops with a long error report, through the lines of the JSON module."
       },
       {
-       "say": "As she learned in Chapter 1, she reads the last line first. Type error: object of type Task is not JSON serializable. Serializable means it can be saved as text.",
+       "say": "As she learned in Chapter 1, she finds the error line at the bottom. Type error: object of type Task is not JSON serializable. Serializable means it can be saved as text.",
        "out_highlight": [
         -1
        ]
       },
       {
-       "say": "Here you see only that last line. On your computer, the lines above it show full file paths.",
+       "say": "Here you see only that error line. On your computer, the report above it shows full file paths, and Python 3.14 and newer add a short note under it.",
        "out_highlight": []
       }
      ]
@@ -1237,7 +1232,7 @@
        },
        {
         "role": "ai",
-        "text": "`json.dumps()` can save numbers, text, True, False, lists and dictionaries. A `Task` is none of these.\nThe fix: turn each task into a dictionary first, with a `to_dict()` method.",
+        "text": "`json.dumps()` can save numbers, text, True, False, None, lists and dictionaries. A `Task` is none of these.\nThe fix: turn each task into a dictionary first, with a `to_dict()` method.",
         "code": "project/tasks_core.py",
         "code_lines": [
          52,
@@ -1254,7 +1249,7 @@
        "say": "She pastes the code and the error, and asks for the cause first."
       },
       {
-       "say": "The AI explains: JSON can save numbers, text, true and false, lists and dictionaries. A task is none of these. So each task becomes a dictionary first, with to dict.",
+       "say": "The AI explains: JSON can save numbers, text, true and false, None, lists and dictionaries. A task is none of these. So each task becomes a dictionary first, with a new method, to dict.",
        "reveal": 2,
        "focus": 1
       }
@@ -1266,27 +1261,36 @@
       "file": "examples/ai/fixed/tasks_core.py",
       "heading": "Two fixes",
       "code_lines": [
+       13,
+       14,
+       15,
+       16,
+       17,
        52,
        53,
        54,
        55,
-       58,
-       59,
-       60,
-       61,
-       62,
-       63,
        64,
        65
       ],
       "highlight": [
-       53
+       13,
+       14,
+       15,
+       16,
+       17
       ],
       "hidden_text": "Every test runs again on the next screen."
      },
      "segments": [
       {
-       "say": "Line 53 turns each task into a dictionary before dumps."
+       "say": "The new to dict method returns a task as a dictionary."
+      },
+      {
+       "say": "Line 53 turns each task into a dictionary before dumps.",
+       "highlight": [
+        53
+       ]
       },
       {
        "say": "And lines 64 and 65 treat an empty file as no tasks, before JSON loads can complain.",
@@ -1328,6 +1332,57 @@
        "out_highlight": [
         1,
         2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/step4/save_check.py",
+      "heading": "Save, then load again",
+      "highlight": [
+       10,
+       11
+      ],
+      "hidden_text": "Predict the output before it appears."
+     },
+     "segments": [
+      {
+       "say": "One more check, by hand. Asha saves two tasks, the first one done. Line 10 prints the saved file, and line 11 loads it again.",
+       "highlight": [
+        8,
+        9,
+        10,
+        11
+       ]
+      }
+     ],
+     "ask": {
+      "question": "After loading the file again, what does line 12 print?"
+     },
+     "after": [
+      {
+       "say": "The same two lines as before saving: task 1 with its x, and task 2 still open.",
+       "output": "examples/step4/save_check.expected",
+       "highlight": [
+        12
+       ],
+       "out_highlight": [
+        -1
+       ]
+      },
+      {
+       "say": "And the file shows each task as a dictionary. JSON writes True as true, in small letters.",
+       "highlight": [
+        10
+       ],
+       "out_highlight": [
+        2,
+        3,
+        4,
+        5,
+        6
        ]
       }
      ]
@@ -1505,17 +1560,47 @@
        39
       ],
       "highlight": [
-       33,
-       34
+       32
       ],
-      "output": "examples/cases/bad_json/task_app.expected"
+      "hidden_text": "Predict the output before it appears."
      },
      "segments": [
       {
-       "say": "And the broken file, which is missing a comma between two tasks. One clear line: expecting a comma. Pass. All three match.",
+       "say": "And the broken file, which is missing a comma between two tasks. Load tasks raises a value error for a broken file."
+      }
+     ],
+     "ask": {
+      "question": "The file is broken. Will the app crash?"
+     },
+     "after": [
+      {
+       "say": "No. Line 34 prints one clear line: expecting a comma. Pass. All three match.",
+       "output": "examples/cases/bad_json/task_app.expected",
+       "highlight": [
+        33,
+        34
+       ],
        "out_highlight": [
         1
        ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "breather",
+      "items": [
+       "Read the error line first.",
+       "JSON saves dictionaries, not objects.",
+       "Run every test after every fix."
+      ]
+     },
+     "segments": [
+      {
+       "say": "Breather. Every test passes, and every known case matches."
+      },
+      {
+       "say": "Next, the last stage: a review from the AI."
       }
      ]
     }
@@ -1645,12 +1730,32 @@
        "focus_row": 0
       },
       {
-       "say": "And it was confidently wrong five times: the plan, the wrong task, a promise of ten passes, the empty file, and a check it wanted to remove.",
+       "say": "It was confidently wrong five times. A plan that could not be tested.",
+       "focus_row": 0
+      },
+      {
+       "say": "The wrong task.",
+       "focus_row": 1
+      },
+      {
+       "say": "A promise of ten passes.",
        "focus_row": 2
       },
       {
-       "say": "Every time, something Asha wrote first caught it: her criteria, a side by side run, and her tests.",
+       "say": "A case list with no empty file.",
+       "focus_row": 3
+      },
+      {
+       "say": "And a check it wanted to remove.",
        "focus_row": 5
+      },
+      {
+       "say": "At debug, the AI was right. Asha could tell, because the fix made every test pass.",
+       "focus_row": 4
+      },
+      {
+       "say": "Every time, something Asha wrote first decided: her criteria, a side by side run, and her tests.",
+       "focus_row": null
       }
      ]
     },
@@ -1691,7 +1796,7 @@
        "Number tasks from 1 for people, and subtract 1 for the list.",
        "JSON saves dictionaries, not objects. `to_dict()` turns one into the other.",
        "A missing or empty file can mean nothing yet. A broken one gets a clear message.",
-       "Every AI suggestion was judged by running your tests."
+       "Every AI suggestion was judged by your criteria, a run, or your tests."
       ],
       "reveal": 0
      },
@@ -1725,7 +1830,7 @@
        "focus": 4
       },
       {
-       "say": "And every AI suggestion was judged by running your tests.",
+       "say": "And every AI suggestion was judged by your criteria, a run, or your tests.",
        "reveal": 6,
        "focus": 5
       }
@@ -1816,9 +1921,12 @@
        "focus": 4
       },
       {
-       "say": "And classes, safe changes, and today's task manager. At every step, you used AI, and checked every answer yourself.",
+       "say": "And classes, safe changes, and today's task manager.",
        "reveal": 6,
        "focus": 5
+      },
+      {
+       "say": "28 chapters, 6 boss levels, and one AI habit: check every answer."
       }
      ]
     },
