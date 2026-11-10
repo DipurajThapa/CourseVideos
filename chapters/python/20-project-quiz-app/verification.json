@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-20",
   "run_id": "2026-11-10-cc88df",
-  "verified_at": "2026-11-10T06:48:37+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T07:05:58+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -209,24 +209,23 @@
         },
         "video/script.md": {
           "sentences": 629,
-          "average_words": 8.6,
+          "average_words": 8.5,
           "longest": 29
         }
       }
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/20-project-quiz-app",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/20-project-quiz-app",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/20-project-quiz-app",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/20-project-quiz-app"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 16.0
+        "estimated_minutes": 16.0,
+        "duration_seconds": 945.9,
+        "size_mb": 41.15,
+        "scenes": 14,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "e8f6d5d067d3980f38eb6caa940ac6d03842fbf25f8a97d89d622fa7e652c6f4"
+  "fingerprint": "331e31e806c5948da6be1a222b54aff10b255f3711b482615e479d101bc2edf3"
 }

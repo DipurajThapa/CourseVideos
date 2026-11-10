@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 16:00 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 15:46.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:33)
 
 **Section:** Introduction
 
@@ -21,7 +21,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** An AI assistant will write part of the code, and promise that it passes every test. The tests will have the last word.
   **On screen:** The Tested Quiz App Tests first. Then the code.
 
-## Scene 2: The mission
+## Scene 2: The mission (0:33 to 1:14)
 
 **Section:** The mission
 
@@ -56,7 +56,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Plus one new pytest option. Dash dash t b equals no hides the details of each failure, so the report is a short list.
   **On screen:** Table: Everything from Module 4 (row 5 in focus)
 
-## Scene 3: What you will build
+## Scene 3: What you will build (1:14 to 1:47)
 
 **Section:** What you will build
 
@@ -79,7 +79,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The app itself is only fourteen lines. The rules live in another file.
   **On screen:** Code `project/quiz_app.py`, output `project/quiz_app.expected`
 
-## Scene 4: Acceptance criteria
+## Scene 4: Acceptance criteria (1:47 to 2:48)
 
 **Section:** Acceptance criteria
 
@@ -128,7 +128,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Eight tests say when it is done.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Plan it with AI
+## Scene 5: Plan it with AI (2:48 to 3:31)
 
 **Section:** Plan it with AI
 
@@ -150,7 +150,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: I am a beginner. I know functions, modules and pytest. I want a staff quiz with four questions, a check for each answer, a percentage and a grade. I will write the tests first. Do not write code. List the functions I need, and the file for each one.
     - AI (example answer): Use three files. In `quiz_logic.py`, write `ask_and_check(question)`: it asks with `input()`, checks the answer and returns True or False. Also add `percentage()`, `grade()` and `result_line()`.
 
-## Scene 6: Step 1: The questions
+## Scene 6: Step 1: The questions (3:31 to 4:20)
 
 **Section:** Build it step by step
 
@@ -170,7 +170,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** 4 questions. Then the first question, price of a tea, and its answer, 3.50.
   **On screen:** Code `examples/ex01_data.py`, line 4, 6, 7 highlighted, output `examples/ex01_data.expected`
 
-## Scene 7: Step 2: Tests first
+## Scene 7: Step 2: Tests first (4:20 to 6:25)
 
 **Section:** Build it step by step
 
@@ -207,7 +207,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** C. Fail. A test that checks real behaviour fails until the code is right. That failure is the starting line.
   **On screen:** Quick check: "You write the tests first. What should most of them do before any code exists?" (answer revealed: Fail)
 
-## Scene 8: Step 3: The first rule
+## Scene 8: Step 3: The first rule (6:25 to 7:57)
 
 **Section:** Build it step by step
 
@@ -249,7 +249,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - One rule done, four tests pass.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: Step 4: Let the tests judge the AI
+## Scene 9: Step 4: Let the tests judge the AI (7:57 to 10:29)
 
 **Section:** Build it step by step
 
@@ -314,7 +314,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - After the fix, all eight ran again.
 - **Breather:** 4 quiet seconds.
 
-## Scene 10: Step 5: The app
+## Scene 10: Step 5: The app (10:29 to 11:14)
 
 **Section:** Build it step by step
 
@@ -336,7 +336,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Score, 4 out of 4, 100 percent, Ready.
   **On screen:** Code `examples/apptest/full_marks.py`, line 14 highlighted, output `examples/apptest/full_marks.expected`
 
-## Scene 11: Test it
+## Scene 11: Test it (11:14 to 12:20)
 
 **Section:** Test it
 
@@ -364,7 +364,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** All four runs pass, and so do the eight tests.
   **On screen:** Table: Four typed runs: results
 
-## Scene 12: Improve it with AI
+## Scene 12: Improve it with AI (12:20 to 13:57)
 
 **Section:** Improve it with AI
 
@@ -408,7 +408,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Edge tests caught a one-sign change.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Recap
+## Scene 13: Recap (13:57 to 15:23)
 
 **Section:** Recap
 
@@ -460,7 +460,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Write the checks first, then the code.
   **On screen:** Table: Practice: 8 tasks, 170 XP
 
-## Scene 14: What's next
+## Scene 14: What's next (15:23 to 15:46)
 
 **Section:** What's next
 
