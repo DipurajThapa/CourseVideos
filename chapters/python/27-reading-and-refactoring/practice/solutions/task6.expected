@@ -1,0 +1,8 @@
+--- old
++++ new
+@@ -1 +1 @@
+-price = 3.5
++TEA_PRICE = 3.5
+@@ -3 +3 @@
+-print(price * count)
++print(TEA_PRICE * count)

@@ -1,0 +1,65 @@
+{
+  "id": "python-27",
+  "title": "Reading and Improving Code with AI",
+  "language": "python",
+  "type": "lesson",
+  "module": "M6",
+  "badge": "Code Reviewer",
+  "xp": {
+    "lesson": 100,
+    "practice": 170
+  },
+  "concepts": [
+    "reading unfamiliar code",
+    "tracing one input",
+    "refactoring",
+    "characterization test",
+    "renaming",
+    "magic number",
+    "constant",
+    "extract a function",
+    "unified diff",
+    "difflib.unified_diff",
+    "keeping an old name as a second name",
+    "ImportError: cannot import name",
+    "reviewing AI changes with tests"
+  ],
+  "prerequisites": [
+    "python-26"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/stock_ai.py",
+    "fixed_file": "examples/stock_v2.py",
+    "flaw": "Asked to refactor Sam's stock checker chk(s, o) with clear names and exactly the same behaviour, the AI renamed it low_stock and changed the comparison from < 3 to <= LOW_LIMIT, and said the behaviour was the same. Asha's characterization test for an item with exactly 3 left failed (1 failed, 4 passed), so she put < back and kept the clear names. Renaming also broke her daily report (ImportError: cannot import name 'chk'), fixed by keeping chk as a second name. A later AI suggestion added sorted(), a feature nobody asked for, and her test for the order of the items failed."
+  },
+  "support_files": [
+    "examples/till_v2.py",
+    "examples/till_v3.py",
+    "examples/till_final.py",
+    "examples/stock_old.py",
+    "examples/stock_ai.py",
+    "examples/stock_v2.py",
+    "examples/stock_final.py",
+    "examples/stock_sorted.py"
+  ],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The chapter continues Asha's Corner Cafe story: she inherits Sam's old till and stock code, which has short names, magic numbers and no tests.",
+    "Each refactoring step is its own small module (till_v2.py, till_v3.py, till_final.py; stock_old.py to stock_final.py) with its own pytest file, so every step's test run is verified and the video can show each version and its run separately. The modules are listed in support_files because they only define functions.",
+    "Diffs are made with difflib.unified_diff from the standard library on two verified files, skipping each file's '# file:' comment line, so the diff output is the same on every run.",
+    "The failing pytest runs use --tb=no to keep the report short; pytest's own short summary still names the failing test."
+  ],
+  "outstanding_issues": [
+    "On a learner's computer, the error reports show the full path to the file instead of the short file name.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

@@ -1,0 +1,4 @@
+.F...                                            [100%]
+=============== short test summary info ================
+FAILED test_stock_ai.py::test_exactly_three_left - As...
+1 failed, 4 passed in 0.01s
