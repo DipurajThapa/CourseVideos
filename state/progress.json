@@ -418,15 +418,19 @@
     "python-22": {
       "language": "python",
       "number": 22,
-      "status": "in_progress",
+      "status": "in_review",
       "runs": [
         {
           "run_id": "2026-11-10-1bb1b5",
           "started": "2026-11-10T07:45:39+00:00",
-          "from_status": "pending"
+          "from_status": "pending",
+          "ended": "2026-11-10T08:17:43+00:00",
+          "result": "in_review"
         }
       ],
-      "current_run_id": "2026-11-10-1bb1b5"
+      "current_run_id": "2026-11-10-1bb1b5",
+      "path": "chapters/python/22-exceptions",
+      "completed": "2026-11-10T08:17:43+00:00"
     },
     "python-23": {
       "language": "python",
@@ -465,5 +469,5 @@
       "runs": []
     }
   },
-  "updated": "2026-11-10T07:45:39+00:00"
+  "updated": "2026-11-10T08:17:43+00:00"
 }

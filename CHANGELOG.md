@@ -2,6 +2,7 @@
 
 One line per daily run, newest first.
 
+- python-22 Handling Errors ready for review: a score board that skips a damaged row and handles a missing file, six AI stages on load_scores with a bare except caught by tests (17:05).
 - python-21 Files and Paths ready for review: score board saved as CSV, six AI stages on a save function, mode w data loss caught by tests (17:41).
 - python-20 Boss Level 4: The Tested Quiz App ready for review (15:45): three modules, eight tests written first, AI code judged by the tests. Module 4 complete.
 - python-19 "Testing Your Code: assert and pytest" ready for review (18:16). The verifier now runs pytest examples (`.pytest` files) and setup installs pytest.
