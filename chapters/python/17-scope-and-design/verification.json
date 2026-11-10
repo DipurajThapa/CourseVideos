@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-17",
   "run_id": "2026-11-10-660a07",
-  "verified_at": "2026-11-10T04:39:05+00:00",
+  "verified_at": "2026-11-10T04:45:12+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -19,7 +19,7 @@
       "passed": true,
       "problems": [],
       "details": {
-        "files_run": 29,
+        "files_run": 31,
         "toolchains": [
           "Python 3.15.2",
           "Python 3.13.18"
@@ -29,11 +29,19 @@
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
+          "examples/ai_own_total.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
           "examples/ai_record_fixed.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
           "examples/ai_record_flawed.py": {
+            "Python 3.15.2": "pass",
+            "Python 3.13.18": "pass"
+          },
+          "examples/ai_split_final.py": {
             "Python 3.15.2": "pass",
             "Python 3.13.18": "pass"
           },
@@ -187,14 +195,14 @@
       "problems": [],
       "details": {
         "lesson.md": {
-          "sentences": 109,
-          "average_words": 13.4,
+          "sentences": 113,
+          "average_words": 13.8,
           "longest": 29
         },
         "video/script.md": {
-          "sentences": 558,
+          "sentences": 552,
           "average_words": 9.4,
-          "longest": 26
+          "longest": 29
         }
       }
     },
@@ -208,9 +216,9 @@
         "missing video/description.md: run python3 tools/render_video.py chapters/python/17-scope-and-design"
       ],
       "details": {
-        "estimated_minutes": 17.2
+        "estimated_minutes": 17.3
       }
     }
   ],
-  "fingerprint": "d5dd526043abd90249e4ee170b437a3fa38325960b298899c27c8d2c5271c684"
+  "fingerprint": "3bb8a82e1471c4eef748400b76929e11bc6c514c221ad3e0d216159d567f2358"
 }

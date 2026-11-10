@@ -16,7 +16,7 @@
      "visual": {
       "type": "text",
       "heading": "One function, three jobs",
-      "label": "Previously",
+      "label": "The problem",
       "body": [
        "Asha's oldest function at the Corner Cafe closes the day."
       ],
@@ -28,7 +28,7 @@
        "focus": "pre"
       },
       {
-       "say": "When one part goes wrong, she has to read all of it. And in Chapter 16 she asked: can the rest of the program see a variable made inside a function?"
+       "say": "When one part goes wrong, she has to read all of it. And Chapter 16 ended with a question: day total has a variable called total inside it. Can the rest of the program see it?"
       }
      ]
     },
@@ -100,12 +100,7 @@
      },
      "segments": [
       {
-       "say": "Explain where a variable lives, fix two scope errors, and use default and keyword arguments.",
-       "reveal": 3,
-       "focus": 2
-      },
-      {
-       "say": "And split a function that does too much, with an AI's help and your own checks.",
+       "say": "Your goals: know where a variable lives, fix two scope errors, use default and keyword arguments, and split a function that does too much, with an AI's help.",
        "reveal": 5,
        "focus": 4
       }
@@ -133,14 +128,9 @@
      },
      "segments": [
       {
-       "say": "Real programs have hundreds of functions. They stay manageable only when each function is small, gets its values through parameters, and returns its result.",
-       "reveal": 2,
-       "focus": 1
-      },
-      {
-       "say": "A function like that can be tested on its own, and an AI assistant can change it without breaking the rest of the program.",
+       "say": "Real programs have hundreds of functions. A small function that gets its values as parameters and returns its result can be tested on its own, and an AI can change it safely.",
        "reveal": 3,
-       "focus": 2
+       "focus": 1
       }
      ]
     }
@@ -198,11 +188,8 @@
      },
      "segments": [
       {
-       "say": "Think of the cafe. The big menu board on the wall is global. Everyone can read it, even the cook in the kitchen.",
+       "say": "Think of the cafe. The menu board on the wall is global: everyone can read it, even the cook. The kitchen whiteboard is local: its notes are wiped when the job is done.",
        "focus": "pre"
-      },
-      {
-       "say": "The kitchen whiteboard is local. The cook's notes are wiped when the job is done, so nobody outside can read them."
       },
       {
        "say": "Where it stops working: suppose the cook writes a note with the same name as something on the menu board. Python treats that name as a kitchen note for the whole function, even on the lines before the note."
@@ -435,7 +422,9 @@
        ],
        "out_highlight": [
         2,
-        5
+        3,
+        5,
+        6
        ]
       },
       {
@@ -535,6 +524,13 @@
        "out_highlight": [
         2
        ]
+      },
+      {
+       "say": "One more fact about defaults: Python creates a default value once, when the def line runs, not at each call. For a number, that makes no difference. Remember it for later.",
+       "highlight": [
+        2
+       ],
+       "out_highlight": []
       }
      ]
     },
@@ -556,7 +552,7 @@
        ]
       },
       {
-       "say": "Keyword arguments can come in any order, but they must come after any positional ones. Line 8 names both arguments, in a new order.",
+       "say": "A positional argument is matched by its position: first to first. Keyword arguments can come in any order, but after any positional ones. Line 8 names both, in a new order.",
        "highlight": [
         8
        ]
@@ -716,7 +712,7 @@
       {
        "say": "Report line has its own local variable called total, on line 15. Day total has one too. The two never meet: each lives only inside its own function.",
        "highlight": [
-        7,
+        8,
         15
        ]
       },
@@ -835,19 +831,30 @@
      "visual": {
       "type": "chat",
       "stage": 2,
-      "heading": "Write: save the target output",
+      "heading": "Write: your own function first",
       "messages": [
        {
         "role": "you",
-        "text": "Before I change anything, I will save the exact output as my target. Predict it, line by line, including spaces."
+        "text": "Before any split, I wrote the calculation myself as a pure function. Do not change it. Predict exactly what the last two lines print.",
+        "code": "examples/ai_own_total.py",
+        "code_lines": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
        },
        {
         "role": "ai",
-        "text": "Three lines: Monday with 3 sales and 11.28, Tuesday with 2 sales and 8.53, then the week total, 19.81."
+        "text": "`11.28`, then `8.53`."
        },
        {
         "role": "you",
-        "text": "I ran it. This is my target:",
+        "text": "Correct. I also ran the original program and saved its output. This is my target:",
         "output": "examples/ai_close_day_original.expected"
        }
       ],
@@ -855,12 +862,12 @@
      },
      "segments": [
       {
-       "say": "Stage 2: write. Before any change, Asha records her target. She asks the AI to predict the output, including spaces.",
+       "say": "Stage 2: write. Before asking for a split, Asha writes the calculation herself, as a pure day total. The AI predicts 11.28 and 8.53, and her run agrees.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "Then she runs the original and saves the real output. That is her target, not the prediction.",
+       "say": "Then she runs the original program and saves its real output. That is her target for every change.",
        "reveal": 3,
        "focus": 2
       }
@@ -900,7 +907,7 @@
        "say": "Stage 3: generate. Asha asks for a split with clear rules: no global variables, return instead of print, and exactly the same output."
       },
       {
-       "say": "The AI writes day total and report line, and promises the same output.",
+       "say": "The AI writes day total and report line, and promises the same output. Its day total matches the one Asha wrote herself.",
        "reveal": 2,
        "focus": 1
       }
@@ -976,9 +983,44 @@
        "say": "Stage 4: test. Asha tells the AI what happened. She asks for the fix, and for three test cases with the exact expected line: a normal day, an empty day, and one sale."
       },
       {
-       "say": "The AI changes print to return on line 10, and lists the three cases. Asha checks each expected line against her target.",
+       "say": "The AI changes print to return on line 10, and lists the three cases. Asha checks Monday against her target, and counts the spaces in the other two.",
        "reveal": 2,
        "focus": 1
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_split_tests_flawed.py",
+      "heading": "The three cases, on the AI's first version",
+      "highlight": [
+       12,
+       13,
+       14
+      ],
+      "code_lines": [
+       12,
+       13,
+       14,
+       15,
+       16,
+       17
+      ],
+      "output": "examples/ai_split_tests_flawed.expected"
+     },
+     "segments": [
+      {
+       "say": "First, she runs the three cases on the AI's first version. Every case fails, because report line still prints and returns None.",
+       "highlight": [
+        16,
+        17
+       ],
+       "out_highlight": [
+        2,
+        4,
+        6
+       ]
       }
      ]
     },
@@ -1017,31 +1059,6 @@
        "say": "Line 17 prints pass or FAIL, with the if else from Chapter 14. All three pass, including the empty day.",
        "highlight": [
         17
-       ],
-       "out_highlight": [
-        1,
-        2,
-        3
-       ]
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
-      "file": "examples/ai_split_fixed.py",
-      "heading": "The fixed split against the target",
-      "highlight": [
-       9
-      ],
-      "output": "examples/ai_split_fixed.expected"
-     },
-     "segments": [
-      {
-       "say": "And the whole program now prints exactly the target: Monday, Tuesday, and the week total, 19.81. No global, and no None.",
-       "highlight": [
-        10,
-        16
        ],
        "out_highlight": [
         1,
@@ -1127,31 +1144,57 @@
     {
      "visual": {
       "type": "code",
-      "file": "examples/ai_week_fixed.py",
-      "heading": "The fix: pass it in, return it out",
+      "file": "examples/ai_split_final.py",
+      "heading": "The final split, checked again",
       "highlight": [
-       2,
-       3
+       12,
+       13
       ],
-      "output": "examples/ai_week_fixed.expected"
+      "code_lines": [
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26
+      ],
+      "output": "examples/ai_split_final.expected"
      },
      "segments": [
       {
-       "say": "Add to week now takes the week total and returns the new one. Lines 6 and 7 add Monday and Tuesday.",
+       "say": "Add to week now takes the week total in, and returns the new one. Lines 19 and 20 add Monday and Tuesday.",
        "highlight": [
-        2,
-        3,
-        6,
-        7
+        12,
+        13,
+        19,
+        20
        ]
       },
       {
-       "say": "19.81: the same week total as her target.",
+       "say": "Asha runs everything again. The output matches her target exactly, week total 19.81, and all three cases pass.",
        "highlight": [
-        8
+        17,
+        18,
+        21,
+        25,
+        26
        ],
        "out_highlight": [
-        1
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
        ]
       }
      ]
@@ -1220,37 +1263,12 @@
        ]
       },
       {
-       "say": "So every call that leaves out the list shares the same one. Asha rejects the suggestion.",
+       "say": "Remember step 4: the default is created once, so every call that leaves out the list shares it. Asha rejects the suggestion, and her final program still matches the target.",
        "highlight": [
         6,
         8
        ],
        "out_highlight": [
-        2
-       ]
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
-      "file": "examples/ai_record_fixed.py",
-      "heading": "No default list: a new list for each day",
-      "highlight": [
-       2
-      ],
-      "output": "examples/ai_record_fixed.expected"
-     },
-     "segments": [
-      {
-       "say": "Her version has no default. Each day starts with its own new empty list, on lines 6 and 8. Monday has two sales, Tuesday has one.",
-       "highlight": [
-        2,
-        6,
-        8
-       ],
-       "out_highlight": [
-        1,
         2
        ]
       }
@@ -1416,7 +1434,7 @@
      },
      "segments": [
       {
-       "say": "Mistake 4 is the AI's suggestion again, and it gives no error. Lina and Omar share one order, because the default list is created only once.",
+       "say": "Mistake 4 is the AI's suggestion again, with no error. Lina and Omar share one order. The fix: no default list; pass a new empty list in each call.",
        "highlight": [
         2,
         6,
@@ -1426,10 +1444,6 @@
         1,
         2
        ]
-      },
-      {
-       "say": "The fix: no default list. Pass a new empty list in each call.",
-       "out_highlight": []
       }
      ]
     },
@@ -1444,7 +1458,7 @@
      },
      "segments": [
       {
-       "say": "Last breather. Now you know the four scope and design mistakes that catch most beginners."
+       "say": "Breather. Two questions to think about come next."
       }
      ]
     }

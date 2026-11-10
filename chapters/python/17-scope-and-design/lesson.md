@@ -158,9 +158,9 @@ print(with_tax(4.0))
 4.4
 ```
 
-The rate is now a parameter, so nothing is hidden, and most calls stay short. Parameters with a default must come after the parameters without one.
+The rate is now a parameter, so nothing is hidden, and most calls stay short. Parameters with a default must come after the parameters without one. Python creates a default value once, when the `def` line runs, not at each call. For a number such as 1.1, that makes no difference; for a list, it does (see Mistake 4).
 
-**Step 5: Keyword arguments.** A **keyword argument** names the parameter in the call: `qty=2`. Keyword arguments can come in any order, after any positional ones.
+**Step 5: Keyword arguments.** A **positional argument** is matched to a parameter by its position: the first argument to the first parameter, and so on. A **keyword argument** names the parameter in the call: `qty=2`. Keyword arguments can come in any order, after any positional ones.
 
 ```python
 # file: examples/ex06_keywords.py
@@ -253,7 +253,7 @@ The safety habits from Chapter 1 still apply. Never paste passwords, keys or pri
 | Stage | How to use AI in this chapter |
 |---|---|
 | Plan | Paste a long function and ask AI to list each job it does. No code yet. |
-| Write | Run the original program and save its exact output. That output is your target. |
+| Write | Write the smallest function yourself first, then compare it with the AI's version. Save the original program's exact output as your target. |
 | Generate | Ask AI to split the function into small functions with no global variables and the same output. |
 | Test | Ask AI for test cases with expected lines. Run them on the split, before and after each fix. |
 | Debug | Paste the code and the full error. Ask for the cause and a fix that keeps your design rules. |
@@ -261,7 +261,7 @@ The safety habits from Chapter 1 still apply. Never paste passwords, keys or pri
 
 The full prompts are in [ai-prompts.md](ai-prompts.md).
 
-**AI pair moment.** Asha's old `close_day()` function adds tax, prints a line and changes a global week total. She saved its output first:
+**AI pair moment.** Asha's old `close_day()` function adds tax, prints a line and changes a global week total. Before asking for help, she wrote the calculation herself as a pure function, `day_total()`, and checked that it gives 11.28 for Monday and 8.53 for Tuesday. Then she saved the original program's output as her target:
 
 ```python
 # file: examples/ai_close_day_original.py
@@ -348,7 +348,7 @@ Tuesday  2 sales   8.53
 Week             19.81
 ```
 
-The output now matches the original exactly. Later, the AI suggested a default empty list, `sales=[]`, so that she could record sales without making a list first. Asha tested it with two separate days:
+The output now matches the original exactly, and its `day_total()` is the same as the one Asha wrote herself. Later, the AI suggested a default empty list, `sales=[]`, so that she could record sales without making a list first. Asha tested it with two separate days:
 
 ```python
 # file: examples/ai_record_flawed.py
@@ -403,14 +403,14 @@ def order_line(item, price, qty=1):
     cost = price * qty
     return f"{qty} x {item:<6} {cost:>5.2f}"
 
-print(order_line(item="Cake", 4.0))
+order_line(item="Cake", 4.0)
 ```
 
 <!-- error: examples/err02_keyword_order.expected_error -->
 ```output
   File "err02_keyword_order.py", line 6
-    print(order_line(item="Cake", 4.0))
-                                     ^
+    order_line(item="Cake", 4.0)
+                               ^
 SyntaxError: positional argument follows keyword argument
 ```
 

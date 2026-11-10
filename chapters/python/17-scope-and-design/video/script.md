@@ -2,7 +2,7 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:13 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:18 (estimate, not rendered yet).
 
 ## Scene 1: Introduction
 
@@ -12,7 +12,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** At the Corner Cafe, Asha's oldest function closes the day. It adds the tax, prints a line, and changes a week total, all at once.
   **On screen:** One function, three jobs
-- **Narration:** When one part goes wrong, she has to read all of it. And in Chapter 16 she asked: can the rest of the program see a variable made inside a function?
+- **Narration:** When one part goes wrong, she has to read all of it. And Chapter 16 ended with a question: day total has a variable called total inside it. Can the rest of the program see it?
   **On screen:** One function, three jobs
 - **Narration:** This is Code Quest, Chapter 17: where variables live, and how to design small functions.
   **On screen:** Scope and Good Function Design
@@ -29,12 +29,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Each goal appears as it is spoken.
 
-- **Narration:** Explain where a variable lives, fix two scope errors, and use default and keyword arguments.
-  **On screen:** By the end, you will be able to:
-    - Explain local and global variables, and predict which one a line uses.
-    - Fix a `NameError` and an `UnboundLocalError` caused by scope.
-    - Write default arguments and call functions with keyword arguments.
-- **Narration:** And split a function that does too much, with an AI's help and your own checks.
+- **Narration:** Your goals: know where a variable lives, fix two scope errors, use default and keyword arguments, and split a function that does too much, with an AI's help.
   **On screen:** By the end, you will be able to:
     - Explain local and global variables, and predict which one a line uses.
     - Fix a `NameError` and an `UnboundLocalError` caused by scope.
@@ -48,11 +43,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 **Direction:** Connect small, self-contained functions to testing and to safe AI changes.
 
-- **Narration:** Real programs have hundreds of functions. They stay manageable only when each function is small, gets its values through parameters, and returns its result.
-  **On screen:** Why this matters
-    - Real programs have hundreds of functions.
-    - A small function that gets its values as parameters and returns its result can be tested on its own.
-- **Narration:** A function like that can be tested on its own, and an AI assistant can change it without breaking the rest of the program.
+- **Narration:** Real programs have hundreds of functions. A small function that gets its values as parameters and returns its result can be tested on its own, and an AI can change it safely.
   **On screen:** Why this matters
     - Real programs have hundreds of functions.
     - A small function that gets its values as parameters and returns its result can be tested on its own.
@@ -68,9 +59,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Table: Two scopes (row 1 in focus)
 - **Narration:** A global variable is created at the top level of the file. Every function can read it.
   **On screen:** Table: Two scopes (row 2 in focus)
-- **Narration:** Think of the cafe. The big menu board on the wall is global. Everyone can read it, even the cook in the kitchen.
-  **On screen:** The menu board and the whiteboard
-- **Narration:** The kitchen whiteboard is local. The cook's notes are wiped when the job is done, so nobody outside can read them.
+- **Narration:** Think of the cafe. The menu board on the wall is global: everyone can read it, even the cook. The kitchen whiteboard is local: its notes are wiped when the job is done.
   **On screen:** The menu board and the whiteboard
 - **Narration:** Where it stops working: suppose the cook writes a note with the same name as something on the menu board. Python treats that name as a kitchen note for the whole function, even on the lines before the note.
   **On screen:** The menu board and the whiteboard
@@ -156,9 +145,11 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/ex05_defaults.py`, line 5, 7 highlighted, output `examples/ex05_defaults.expected`
 - **Narration:** Line 6 prints 4.2 with its own rate. Now nothing is hidden: the rate is a parameter.
   **On screen:** Code `examples/ex05_defaults.py`, line 6 highlighted, output `examples/ex05_defaults.expected`
+- **Narration:** One more fact about defaults: Python creates a default value once, when the def line runs, not at each call. For a number, that makes no difference. Remember it for later.
+  **On screen:** Code `examples/ex05_defaults.py`, line 2 highlighted, output `examples/ex05_defaults.expected`
 - **Narration:** Step 5. A keyword argument names the parameter in the call. On line 7, q t y equals 2 says at once what the 2 means.
   **On screen:** Code `examples/ex06_keywords.py`, line 7 highlighted, output hidden
-- **Narration:** Keyword arguments can come in any order, but they must come after any positional ones. Line 8 names both arguments, in a new order.
+- **Narration:** A positional argument is matched by its position: first to first. Keyword arguments can come in any order, but after any positional ones. Line 8 names both, in a new order.
   **On screen:** Code `examples/ex06_keywords.py`, line 8 highlighted, output hidden
 - **Interaction:** "What does line 8 print?" stays on screen with a 10-second timer.
 - **Narration:** 1 x Scone, 2.75. Q t y keeps its default, 1, and the names put each value in the right place.
@@ -201,7 +192,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Day total and report line take the rate too, and pass it on to the next function.
   **On screen:** Code `examples/ex08_day_report.py`, line 6, 10, 13, 15 highlighted, output hidden
 - **Narration:** Report line has its own local variable called total, on line 15. Day total has one too. The two never meet: each lives only inside its own function.
-  **On screen:** Code `examples/ex08_day_report.py`, line 7, 15 highlighted, output hidden
+  **On screen:** Code `examples/ex08_day_report.py`, line 8, 15 highlighted, output hidden
 - **Narration:** Line 19 reports Friday, a day with a higher tax, using a keyword argument for the rate.
   **On screen:** Code `examples/ex08_day_report.py`, line 19 highlighted, output hidden
 - **Interaction:** "What does line 19 print?" stays on screen with a 10-second timer.
@@ -233,19 +224,19 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** AI chat, stage 1: Plan: list the jobs
     - You: Here is my oldest function. Do not write code yet. List every separate job it does, with the line numbers for each job. [code `examples/ai_close_day_original.py`]
     - AI (example answer): 1. It adds tax and totals the prices (lines 6 to 9). 2. It prints a report line (line 10). 3. It changes the global `week_total` (lines 5 and 11).
-- **Narration:** Stage 2: write. Before any change, Asha records her target. She asks the AI to predict the output, including spaces.
-  **On screen:** AI chat, stage 2: Write: save the target output
-    - You: Before I change anything, I will save the exact output as my target. Predict it, line by line, including spaces.
-    - AI (example answer): Three lines: Monday with 3 sales and 11.28, Tuesday with 2 sales and 8.53, then the week total, 19.81.
-- **Narration:** Then she runs the original and saves the real output. That is her target, not the prediction.
-  **On screen:** AI chat, stage 2: Write: save the target output
-    - You: Before I change anything, I will save the exact output as my target. Predict it, line by line, including spaces.
-    - AI (example answer): Three lines: Monday with 3 sales and 11.28, Tuesday with 2 sales and 8.53, then the week total, 19.81.
-    - You: I ran it. This is my target:
+- **Narration:** Stage 2: write. Before asking for a split, Asha writes the calculation herself, as a pure day total. The AI predicts 11.28 and 8.53, and her run agrees.
+  **On screen:** AI chat, stage 2: Write: your own function first
+    - You: Before any split, I wrote the calculation myself as a pure function. Do not change it. Predict exactly what the last two lines print. [code `examples/ai_own_total.py`]
+    - AI (example answer): `11.28`, then `8.53`.
+- **Narration:** Then she runs the original program and saves its real output. That is her target for every change.
+  **On screen:** AI chat, stage 2: Write: your own function first
+    - You: Before any split, I wrote the calculation myself as a pure function. Do not change it. Predict exactly what the last two lines print. [code `examples/ai_own_total.py`]
+    - AI (example answer): `11.28`, then `8.53`.
+    - You: Correct. I also ran the original program and saved its output. This is my target:
 - **Narration:** Stage 3: generate. Asha asks for a split with clear rules: no global variables, return instead of print, and exactly the same output.
   **On screen:** AI chat, stage 3: Generate: a split with rules
     - You: Split close_day into small functions with one job each. Use no global variables. Return results instead of printing them. The output must stay exactly the same.
-- **Narration:** The AI writes day total and report line, and promises the same output.
+- **Narration:** The AI writes day total and report line, and promises the same output. Its day total matches the one Asha wrote herself.
   **On screen:** AI chat, stage 3: Generate: a split with rules
     - You: Split close_day into small functions with one job each. Use no global variables. Return results instead of printing them. The output must stay exactly the same.
     - AI (example answer): Here is the split: `day_total()` and `report_line()`, and no globals. The output stays exactly the same. [code `examples/ai_split_flawed.py`]
@@ -259,16 +250,16 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Stage 4: test. Asha tells the AI what happened. She asks for the fix, and for three test cases with the exact expected line: a normal day, an empty day, and one sale.
   **On screen:** AI chat, stage 4: Test: cases with expected lines
     - You: Your report_line prints instead of returning, so my program printed None twice. Fix it. Then give me three test cases with the exact expected line: a normal day, an empty day and a day with one sale.
-- **Narration:** The AI changes print to return on line 10, and lists the three cases. Asha checks each expected line against her target.
+- **Narration:** The AI changes print to return on line 10, and lists the three cases. Asha checks Monday against her target, and counts the spaces in the other two.
   **On screen:** AI chat, stage 4: Test: cases with expected lines
     - You: Your report_line prints instead of returning, so my program printed None twice. Fix it. Then give me three test cases with the exact expected line: a normal day, an empty day and a day with one sale.
     - AI (example answer): Change `print(` to `return` on line 10. Test cases: Monday `[3.5, 4.0, 2.75]` gives `Monday   3 sales  11.28`. Sunday `[]` gives `Sunday   0 sales   0.00`. Friday `[2.0]` gives `Friday   1 sales   2.20`.
+- **Narration:** First, she runs the three cases on the AI's first version. Every case fails, because report line still prints and returns None.
+  **On screen:** Code `examples/ai_split_tests_flawed.py`, line 16, 17 highlighted, output `examples/ai_split_tests_flawed.expected`
 - **Narration:** Lines 12 to 14 hold the three cases: a day, its prices, and the expected line. The loop on line 15 runs each one through report line.
   **On screen:** Code `examples/ai_split_tests_fixed.py`, line 12, 13, 14, 15, 16 highlighted, output `examples/ai_split_tests_fixed.expected`
 - **Narration:** Line 17 prints pass or FAIL, with the if else from Chapter 14. All three pass, including the empty day.
   **On screen:** Code `examples/ai_split_tests_fixed.py`, line 17 highlighted, output `examples/ai_split_tests_fixed.expected`
-- **Narration:** And the whole program now prints exactly the target: Monday, Tuesday, and the week total, 19.81. No global, and no None.
-  **On screen:** Code `examples/ai_split_fixed.py`, line 10, 16 highlighted, output `examples/ai_split_fixed.expected`
 - **Narration:** Stage 5: debug. Asha moves the week total into its own function, and Python stops. She pastes the code and the full error, and asks for the cause first.
   **On screen:** AI chat, stage 5: Debug: the cause before the fix
     - You: I added a function for the week total, and got this error. First explain the cause and the line. Then show the smallest fix. [code `examples/ai_week_unbound.py`]
@@ -282,10 +273,10 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: I added a function for the week total, and got this error. First explain the cause and the line. Then show the smallest fix. [code `examples/ai_week_unbound.py`]
     - AI (example answer): Line 5 assigns to `week_total`, so Python treats it as local in `add_to_week()`. Then it reads that local name before it has a value. The fix: add `global week_total` as the first line of the function.
     - You: My plan says no global variables. Show a fix that passes the week total in and returns the new total.
-- **Narration:** Add to week now takes the week total and returns the new one. Lines 6 and 7 add Monday and Tuesday.
-  **On screen:** Code `examples/ai_week_fixed.py`, line 2, 3, 6, 7 highlighted, output `examples/ai_week_fixed.expected`
-- **Narration:** 19.81: the same week total as her target.
-  **On screen:** Code `examples/ai_week_fixed.py`, line 8 highlighted, output `examples/ai_week_fixed.expected`
+- **Narration:** Add to week now takes the week total in, and returns the new one. Lines 19 and 20 add Monday and Tuesday.
+  **On screen:** Code `examples/ai_split_final.py`, line 12, 13, 19, 20 highlighted, output `examples/ai_split_final.expected`
+- **Narration:** Asha runs everything again. The output matches her target exactly, week total 19.81, and all three cases pass.
+  **On screen:** Code `examples/ai_split_final.py`, line 17, 18, 21, 25, 26 highlighted, output `examples/ai_split_final.expected`
 - **Narration:** Stage 6: improve. Asha asks for one improvement that keeps the output the same.
   **On screen:** AI chat, stage 6: Improve: one suggestion
     - You: My split passes every test. Suggest one improvement, with one reason. Keep the output the same.
@@ -298,10 +289,8 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Interaction:** "Will Tuesday's list hold only `4.25`?" stays on screen with a 10-second timer.
 - **Narration:** No. Both lists hold all three sales. Python creates a default value once, when the def line runs, not at each call.
   **On screen:** Code `examples/ai_record_flawed.py`, line 2 highlighted, output `examples/ai_record_flawed.expected`
-- **Narration:** So every call that leaves out the list shares the same one. Asha rejects the suggestion.
+- **Narration:** Remember step 4: the default is created once, so every call that leaves out the list shares it. Asha rejects the suggestion, and her final program still matches the target.
   **On screen:** Code `examples/ai_record_flawed.py`, line 6, 8 highlighted, output `examples/ai_record_flawed.expected`
-- **Narration:** Her version has no default. Each day starts with its own new empty list, on lines 6 and 8. Monday has two sales, Tuesday has one.
-  **On screen:** Code `examples/ai_record_fixed.py`, line 2, 6, 8 highlighted, output `examples/ai_record_fixed.expected`
 - **Narration:** Quick check. An AI split your function, and says the output is the same. What do you do?
   **On screen:** Quick check: "An AI split your function and says the output is the same. What do you do?" (options shown)
 - **Interaction:** "An AI split your function and says the output is the same. What do you do?" stays on screen with a 10-second timer.
@@ -336,11 +325,9 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Code `examples/err03_default_order.py`, line 2 highlighted, error `examples/err03_default_order.expected_error`
 - **Narration:** The fix: price first, then rate equals 1.1.
   **On screen:** Code `examples/err03_default_order.py`, line 2 highlighted, error `examples/err03_default_order.expected_error`
-- **Narration:** Mistake 4 is the AI's suggestion again, and it gives no error. Lina and Omar share one order, because the default list is created only once.
+- **Narration:** Mistake 4 is the AI's suggestion again, with no error. Lina and Omar share one order. The fix: no default list; pass a new empty list in each call.
   **On screen:** Code `examples/err04_shared_list.py`, line 2, 6, 7 highlighted, output `examples/err04_shared_list.expected`
-- **Narration:** The fix: no default list. Pass a new empty list in each call.
-  **On screen:** Code `examples/err04_shared_list.py`, line 2, 6, 7 highlighted, output `examples/err04_shared_list.expected`
-- **Narration:** Last breather. Now you know the four scope and design mistakes that catch most beginners.
+- **Narration:** Breather. Two questions to think about come next.
   **On screen:** Breather card
     - Return what you need outside.
     - Defaults last, keywords last.

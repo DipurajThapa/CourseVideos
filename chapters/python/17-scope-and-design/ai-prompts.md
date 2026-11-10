@@ -12,15 +12,15 @@ Use these with an AI assistant such as ChatGPT or Claude. Replace the parts in a
 
 **Check it:** read each line of your function and tick it against the list. Every line belongs to exactly one job. A line the AI did not mention is a job it missed.
 
-## Write: Save the target output first
+## Write: Write it yourself first, then save the target
 
-**Prompt:** "Here is my program: <paste it>. I will run it and save its exact output before I change anything. Predict that output, line by line, including spaces."
+**Prompt:** "Here is a small function I wrote myself: <paste it>. Do not change it. Predict exactly what these lines print: <paste the calls>. Later I will compare my function with the version you write."
 
-**Use it when:** you are about to change working code and want a fixed target to compare against.
+**Use it when:** you are about to ask AI to rewrite working code and want your own version and a fixed target first.
 
-**A good answer:** one predicted line for every `print()`, with the same spacing and the same number of decimal places as your format strings.
+**A good answer:** one predicted value or line for every `print()`, with the same number of decimal places as your code.
 
-**Check it:** run the program and save the real output. The real output is your target, not the AI's prediction. If they differ, find out why before you go on.
+**Check it:** run your function and the original program, and save their exact output. The real output is your target, not the AI's prediction. When the AI writes its version later, compare it with yours line by line.
 
 ## Generate: Ask for a split with rules
 
