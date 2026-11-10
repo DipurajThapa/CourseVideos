@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:10 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 18:14.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:52)
 
 **Section:** Introduction
 
@@ -24,7 +24,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And an AI assistant will sound completely sure at every stage. Your tests will decide who is right.
   **On screen:** The Expense Tracker Record. Total. Find the biggest.
 
-## Scene 2: The mission
+## Scene 2: The mission (0:52 to 1:34)
 
 **Section:** The mission
 
@@ -61,7 +61,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Plus one small new tool: the replace method with a third value, to check an amount such as 12.50.
   **On screen:** Table: Everything you need (row 6 in focus)
 
-## Scene 3: What you will build
+## Scene 3: What you will build (1:34 to 1:58)
 
 **Section:** What you will build
 
@@ -76,7 +76,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** About twenty-five lines of code. By the end of this video, you will understand every one.
   **On screen:** Code `project/expense_tracker.py`, output `project/expense_tracker.expected`
 
-## Scene 4: Acceptance criteria
+## Scene 4: Acceptance criteria (1:58 to 3:06)
 
 **Section:** Acceptance criteria
 
@@ -125,7 +125,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Six criteria say when it is done.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Plan it with AI
+## Scene 5: Plan it with AI (3:06 to 4:20)
 
 **Section:** Plan it with AI
 
@@ -166,7 +166,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Nothing is ever lost: two milks are two tuples.
     - A **dictionary of totals** is built from the list at the end.
 
-## Scene 6: Step 1: A list of tuples
+## Scene 6: Step 1: A list of tuples (4:20 to 5:04)
 
 **Section:** Build it step by step
 
@@ -186,7 +186,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And line 6 says 2 expenses.
   **On screen:** Code `examples/ex01_record.py`, line 6 highlighted, output `examples/ex01_record.expected`
 
-## Scene 7: Step 2: Ask until done
+## Scene 7: Step 2: Ask until done (5:04 to 6:01)
 
 **Section:** Build it step by step
 
@@ -211,7 +211,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: I wrote this loop myself. Do not change it. What does it print for these answers: Milk with a space before it, then tea, then done? [code `examples/ex02_categories.py`]
     - AI (example answer): `strip()` and `lower()` turn it into milk, which is in the set, so it prints `OK: milk`. Tea is not in the set, so it prints the message. Done stops the loop, and the count is 1.
 
-## Scene 8: Step 2: The real run
+## Scene 8: Step 2: The real run (6:01 to 6:14)
 
 **Section:** Build it step by step
 
@@ -224,7 +224,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And done stops the loop, with one category entered. The AI's prediction matches the real run.
   **On screen:** Code `examples/ex02_categories.py`, line 13 highlighted, output `examples/ex02_categories.expected`
 
-## Scene 9: Step 3: Check an amount
+## Scene 9: Step 3: Check an amount (6:14 to 7:57)
 
 **Section:** Build it step by step
 
@@ -260,7 +260,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Check an amount, then convert it.
 - **Breather:** 4 quiet seconds.
 
-## Scene 10: Step 4: Add up each category
+## Scene 10: Step 4: Add up each category (7:57 to 8:40)
 
 **Section:** Build it step by step
 
@@ -276,7 +276,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** 20.5. The first milk found no total, so get gave 0, and the total became 12.5. The second milk added 8.
   **On screen:** Code `examples/ex04_totals.py`, line 5, 6 highlighted, output `examples/ex04_totals.expected`
 
-## Scene 11: Step 5: Print the table
+## Scene 11: Step 5: Print the table (8:40 to 9:05)
 
 **Section:** Build it step by step
 
@@ -289,7 +289,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Line 6 prints the count of expenses, and the sum of the values: 56.75.
   **On screen:** Code `examples/ex05_table.py`, line 6 highlighted, output `examples/ex05_table.expected`
 
-## Scene 12: Step 6: The biggest category
+## Scene 12: Step 6: The biggest category (9:05 to 12:33)
 
 **Section:** Build it step by step
 
@@ -380,7 +380,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - After the fix, every day ran again.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Step 7: Put it together
+## Scene 13: Step 7: Put it together (12:33 to 13:37)
 
 **Section:** Build it step by step
 
@@ -404,7 +404,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Expenses, 2. Total, 5.50. Both cups went into the list, and the totals added them into one row.
   **On screen:** Code `examples/test_two_cups.py`, line 24 highlighted, output `examples/test_two_cups.expected`
 
-## Scene 14: Test it
+## Scene 14: Test it (13:37 to 14:55)
 
 **Section:** Test it
 
@@ -438,7 +438,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And the other four runs you saw match too. All five test days pass.
   **On screen:** Table: Five test days: results
 
-## Scene 15: Improve it with AI
+## Scene 15: Improve it with AI (14:55 to 16:16)
 
 **Section:** Improve it with AI
 
@@ -484,7 +484,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Tests with known results caught every mistake.
 - **Breather:** 4 quiet seconds.
 
-## Scene 16: Recap
+## Scene 16: Recap (16:16 to 17:50)
 
 **Section:** Recap
 
@@ -536,7 +536,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Write down the expected result before you run each one.
   **On screen:** Table: Practice: 8 tasks, 170 XP
 
-## Scene 17: What's next
+## Scene 17: What's next (17:50 to 18:14)
 
 **Section:** What's next
 

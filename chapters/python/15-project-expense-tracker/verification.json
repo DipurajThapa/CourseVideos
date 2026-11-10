@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-15",
   "run_id": "2026-11-10-024700",
-  "verified_at": "2026-11-10T03:29:55+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T03:50:00+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -188,17 +188,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/15-project-expense-tracker",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/15-project-expense-tracker",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/15-project-expense-tracker",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/15-project-expense-tracker"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 18.2
+        "estimated_minutes": 18.2,
+        "duration_seconds": 1093.6,
+        "size_mb": 47.08,
+        "scenes": 17,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "68e9c961af349e58e25810a1311769f17672968eb6a45f9aac92f57eac9da9c8"
+  "fingerprint": "714a48d26102cafd42f5b3c249fffa9c9812f9adeab104f0daf50f855a685e14"
 }
