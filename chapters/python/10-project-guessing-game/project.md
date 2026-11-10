@@ -12,7 +12,7 @@ This boss level uses everything from Chapters 6 to 9, and one new tool:
 
 | Chapter | What you use from it |
 |---|---|
-| 6 | `if`, `elif` and `else`, comparisons, `and`, `or`, `not`, and a `bool` that remembers a result |
+| 6 | `if`, `elif` and `else`, comparisons, `and`, `or` and `not` |
 | 7 | A `while` loop with a counter, `+=` and `break` |
 | 8 | A `for` loop with `range()`, to run a test many times |
 | 9 | Reading an error report, and testing with known results |
@@ -24,15 +24,13 @@ A program called `guessing_game.py`. Here is one game. The secret was 7, and the
 
 <!-- output: examples/test_high_low.expected -->
 ```output
-====== BISCUIT JAR GAME ======
-Guess the biscuits in the jar: 1 to 20.
-You have 5 tries. Win a free tea!
+BISCUIT JAR: guess 1 to 20. Five tries!
 Your guess: 12
 Too high! Tries left: 4
 Your guess: 3
 Too low! Tries left: 3
 Your guess: 7
-Correct! It was 7. Guesses used: 3. Free tea!
+Correct! Free tea! Tries: 3
 ```
 
 ## Acceptance criteria
@@ -83,24 +81,24 @@ Too high!
 
 Each guess goes down exactly one branch. 12 is not equal to 7 and not lower than 7, so the `else` branch runs.
 
-**Step 2: Five tries.** A `while` loop repeats the guess. The counter `tries` goes up after each guess, and `break` stops the loop when the guess is right. The `bool` called `won` remembers the result after the loop.
+**Step 2: Five tries.** A `while` loop repeats the guess. The counter `tries` goes up after each guess, and `break` stops the loop when the guess is right. After the loop, line 14 checks the last guess: if it is still wrong, the player ran out of tries.
 
 ```python
 # file: examples/ex03_tries.py
 secret = 7
 tries = 0
-won = False
 while tries < 5:
     guess = int(input("Your guess: "))
     tries += 1
     if guess == secret:
-        won = True
+        print(f"Correct! Tries: {tries}")
         break
     elif guess < secret:
         print(f"Too low! Tries left: {5 - tries}")
     else:
         print(f"Too high! Tries left: {5 - tries}")
-print("Won:", won, "Tries:", tries)
+if guess != secret:
+    print("Out of tries.")
 ```
 
 <!-- output: examples/ex03_tries.expected -->
@@ -110,7 +108,7 @@ Too high! Tries left: 4
 Your guess: 3
 Too low! Tries left: 3
 Your guess: 7
-Won: True Tries: 3
+Correct! Tries: 3
 ```
 
 The loop condition `tries < 5` is true for tries 0 to 4, so the player gets exactly five guesses.
@@ -208,13 +206,9 @@ The order matters. Line 5 calls `int(answer)`, and it only runs when line 3 has 
 ```python
 # file: project/guessing_game.py
 import random
-
-print(f"{' BISCUIT JAR GAME ':=^30}")
-print("Guess the biscuits in the jar: 1 to 20.")
-print("You have 5 tries. Win a free tea!")
+print("BISCUIT JAR: guess 1 to 20. Five tries!")
 secret = random.randint(1, 20)
 tries = 0
-won = False
 while tries < 5:
     answer = input("Your guess: ").strip()
     if not answer.isdigit():
@@ -225,53 +219,47 @@ while tries < 5:
         guess = int(answer)
         tries += 1
         if guess == secret:
-            won = True
+            print(f"Correct! Free tea! Tries: {tries}")
             break
         elif guess < secret:
             print(f"Too low! Tries left: {5 - tries}")
         else:
             print(f"Too high! Tries left: {5 - tries}")
-if won:
-    print(f"Correct! It was {secret}. Guesses used: {tries}. Free tea!")
-else:
+if guess != secret:
     print(f"Out of tries. It was {secret}.")
 ```
 
-Lines 4 to 9 set up the game. Lines 12 to 15 reject an answer that is not a whole number or not from 1 to 20. Only a fair guess reaches line 18, so only a fair guess counts as a try. Lines 26 to 29 run after the loop and use `won` to choose the last message.
+Lines 3 to 5 set up the game. Lines 8 to 11 reject an answer that is not a whole number or not from 1 to 20. Only a fair guess reaches line 14, so only a fair guess counts as a try. Lines 22 and 23 run after the loop: if the last guess was wrong, the player ran out of tries.
 
 ## Test it
 
-A random secret makes a game impossible to test: you cannot know the right result in advance. So each test is a copy of the game with one change. Line 7 sets a fixed secret, such as `secret = 7  # fixed for this test`. Every other line is the same. Each test also has its own typed answers.
+A random secret makes a game impossible to test: you cannot know the right result in advance. So each test is a copy of the game with one change. Line 4 sets a fixed secret, such as `secret = 7  # fixed for this test`. Every other line is the same. Each test also has its own typed answers.
 
 | Test | Secret | Answers typed | Expected last line | Result |
 |---|---|---|---|---|
-| Win first try | 7 | 7 | `Correct! It was 7. Guesses used: 1. Free tea!` | Pass |
-| Too high, too low, win | 7 | 12, 3, 7 | `Correct! It was 7. Guesses used: 3. Free tea!` | Pass |
-| Words and an empty answer | 7 | (empty), seven, 7 | `Correct! It was 7. Guesses used: 1. Free tea!` | Pass |
+| Win first try | 7 | 7 | `Correct! Free tea! Tries: 1` | Pass |
+| Too high, too low, win | 7 | 12, 3, 7 | `Correct! Free tea! Tries: 3` | Pass |
+| Words and an empty answer | 7 | (empty), seven, 7 | `Correct! Free tea! Tries: 1` | Pass |
 | Out of tries | 7 | 1, 2, 3, 4, 5 | `Out of tries. It was 7.` | Pass |
-| Largest secret, outside answers | 20 | 0, 21, 20 | `Correct! It was 20. Guesses used: 1. Free tea!` | Pass |
-| Smallest secret | 1 | 1 | `Correct! It was 1. Guesses used: 1. Free tea!` | Pass |
+| Largest secret, outside answers | 20 | 0, 21, 20 | `Correct! Free tea! Tries: 1` | Pass |
+| Smallest secret | 1 | 1 | `Correct! Free tea! Tries: 1` | Pass |
 
 Here are two of the runs. The words did not count as tries:
 
 <!-- output: examples/test_words.expected -->
 ```output
-====== BISCUIT JAR GAME ======
-Guess the biscuits in the jar: 1 to 20.
-You have 5 tries. Win a free tea!
+BISCUIT JAR: guess 1 to 20. Five tries!
 Your guess: 
 Please type a whole number, like 12.
 Your guess: seven
 Please type a whole number, like 12.
 Your guess: 7
-Correct! It was 7. Guesses used: 1. Free tea!
+Correct! Free tea! Tries: 1
 ```
 
 <!-- output: examples/test_out_of_tries.expected -->
 ```output
-====== BISCUIT JAR GAME ======
-Guess the biscuits in the jar: 1 to 20.
-You have 5 tries. Win a free tea!
+BISCUIT JAR: guess 1 to 20. Five tries!
 Your guess: 1
 Too low! Tries left: 4
 Your guess: 2
@@ -335,17 +323,15 @@ Highest: 20
 
 ## Improve it with AI
 
-When all six tests passed, Asha asked an AI assistant: "Review my game for readability. Suggest at most two changes, each with one reason. Do not change what it prints or which answers it accepts." One suggestion was to remove `.strip()` from line 11, "because `isdigit()` already ignores spaces". Step 4 showed that `" 7".isdigit()` is `False`, so Asha tested the suggestion before accepting it. Phone keyboards often add a space after a word, so she typed `7` with a space after it:
+When all six tests passed, Asha asked an AI assistant: "Review my game for readability. Suggest at most two changes, each with one reason. Do not change what it prints or which answers it accepts." One suggestion was to remove `.strip()` from line 7, "because `isdigit()` already ignores spaces". Step 4 showed that `" 7".isdigit()` is `False`, so Asha tested the suggestion before accepting it. Phone keyboards often add a space after a word, so she typed `7` with a space after it:
 
 <!-- output: examples/ai_no_strip.expected -->
 ```output
-====== BISCUIT JAR GAME ======
-Guess the biscuits in the jar: 1 to 20.
-You have 5 tries. Win a free tea!
+BISCUIT JAR: guess 1 to 20. Five tries!
 Your guess: 7 
 Please type a whole number, like 12.
 Your guess: 7
-Correct! It was 7. Guesses used: 1. Free tea!
+Correct! Free tea! Tries: 1
 ```
 
 Without `.strip()`, the game rejected an answer that looks exactly like 7. The suggestion changed which answers the game accepts, which Asha had said not to do. She kept `.strip()`.
@@ -366,7 +352,7 @@ These are the six ways AI helped with this project. The full prompts are in [ai-
 - `import random` loads a module, and `random.randint(1, 20)` picks a whole number with both ends included. `randrange()` stops before its end value, like `range()`.
 - `random.seed()` makes the same numbers on every run. Use it for tests, not for real games.
 - Check an answer before converting it: `strip()`, then `isdigit()`, then a range check, then `int()`.
-- A loop with a counter, `break` and a `bool` such as `won` runs a game with limited tries.
+- A `while` loop with a counter and `break` runs a game with limited tries.
 - Test a random program by fixing its random part, then run every case with a known result.
 
 You earned **300 XP** and the **Game Maker** badge. Module 2 is complete.

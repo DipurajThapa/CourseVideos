@@ -1,12 +1,8 @@
 # file: examples/test_edges.py
 import random
-
-print(f"{' BISCUIT JAR GAME ':=^30}")
-print("Guess the biscuits in the jar: 1 to 20.")
-print("You have 5 tries. Win a free tea!")
+print("BISCUIT JAR: guess 1 to 20. Five tries!")
 secret = 20  # fixed for this test
 tries = 0
-won = False
 while tries < 5:
     answer = input("Your guess: ").strip()
     if not answer.isdigit():
@@ -17,13 +13,11 @@ while tries < 5:
         guess = int(answer)
         tries += 1
         if guess == secret:
-            won = True
+            print(f"Correct! Free tea! Tries: {tries}")
             break
         elif guess < secret:
             print(f"Too low! Tries left: {5 - tries}")
         else:
             print(f"Too high! Tries left: {5 - tries}")
-if won:
-    print(f"Correct! It was {secret}. Guesses used: {tries}. Free tea!")
-else:
+if guess != secret:
     print(f"Out of tries. It was {secret}.")

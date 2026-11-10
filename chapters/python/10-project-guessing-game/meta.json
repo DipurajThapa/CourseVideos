@@ -18,7 +18,6 @@
     "checking input with strip() and isdigit() before int()",
     "range checks with or",
     "while loop with a try counter and break",
-    "a bool flag such as won",
     "testing a random program with a fixed secret"
   ],
   "prerequisites": [

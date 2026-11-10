@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-10",
   "run_id": "2026-11-09-22422e",
-  "verified_at": "2026-11-10T00:02:54+00:00",
+  "verified_at": "2026-11-10T00:14:37+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -164,7 +164,7 @@
       "details": {
         "project.md": {
           "sentences": 104,
-          "average_words": 12.9,
+          "average_words": 13.0,
           "longest": 30
         }
       }
@@ -173,7 +173,6 @@
       "name": "video",
       "passed": false,
       "problems": [
-        "storyboard has no scenes",
         "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/10-project-guessing-game",
         "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/10-project-guessing-game",
         "missing video/render.json: run python3 tools/render_video.py chapters/python/10-project-guessing-game",
@@ -181,9 +180,9 @@
         "missing video/script.md: run python3 tools/render_video.py chapters/python/10-project-guessing-game"
       ],
       "details": {
-        "estimated_minutes": 0.0
+        "estimated_minutes": 18.1
       }
     }
   ],
-  "fingerprint": "6a5c0472f4c5922a2145a79306c37b996ddb2bae9f16b382b743d1a593e63379"
+  "fingerprint": "c1b83ec7c99a806c7dbc9a49c7a6b2569edcb24a0a27a7f5ef959c58de1e8508"
 }
