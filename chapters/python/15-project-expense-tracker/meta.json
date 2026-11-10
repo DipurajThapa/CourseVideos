@@ -1,0 +1,56 @@
+{
+  "id": "python-15",
+  "title": "Boss Level 3: The Expense Tracker",
+  "language": "python",
+  "type": "project",
+  "module": "M3",
+  "badge": "Money Mapper",
+  "xp": {
+    "project": 300,
+    "practice": 170
+  },
+  "concepts": [
+    "data model: a list of tuples, one tuple for each record",
+    "a dictionary of totals built with get(key, 0)",
+    "a set of allowed values with in and not in",
+    "cleaning answers with strip() and lower()",
+    "checking an amount with replace('.', '', 1) and isdigit() before float()",
+    "a while True loop that stops with done",
+    "a table with sorted() and f-string alignment",
+    "max() on a dictionary compares keys, not values",
+    "keeping the biggest key so far in a loop",
+    "test days with expected results and a re-run after each fix"
+  ],
+  "prerequisites": [
+    "python-11",
+    "python-12",
+    "python-13",
+    "python-14"
+  ],
+  "ai_pair_moment": {
+    "flawed_file": "examples/ai_biggest_flawed.py",
+    "fixed_file": "examples/ai_biggest_fixed.py",
+    "flaw": "Asked for the category with the biggest total, the AI wrote biggest = max(totals) and said it gives the category that cost the most. max() on a dictionary compares the keys, so it printed milk, the last name in alphabetical order, although beans cost the most. A test day where repairs cost the most passed by luck, and an empty day stopped with ValueError. A loop that keeps the biggest category so far fixes both."
+  },
+  "support_files": [],
+  "python_version": {
+    "minimum": "3.12",
+    "current_release_at_research": "3.15.2"
+  },
+  "research_date": "2026-11-10",
+  "changes": [
+    "The curriculum asks for totals by category and the largest category. The project prints the biggest category by total, and the number of expenses and the day's total as well.",
+    "Amounts are checked with replace() and isdigit() before float(), because try and except arrive in Chapter 22. The third value of replace(), the number of changes, is new in this chapter.",
+    "Comprehensions from Chapter 14 appear in the practice (Task 7) rather than in the tracker, which stays short enough to read on one screen.",
+    "Every full-day test is a copy of the tracker (examples/test_*.py) with its own typed answers, and the tracker itself is verified with a normal day."
+  ],
+  "outstanding_issues": [
+    "The tracebacks show the short file name; on a learner's computer the full path appears instead.",
+    "The narration uses a synthetic voice (Kokoro bm_lewis). The owner should watch the video once and flag any word the voice mispronounces; fixes go in the PRONOUNCE list in tools/voice.py."
+  ],
+  "video": {
+    "storyboard": "video/storyboard.json",
+    "file": "video/chapter.mp4",
+    "voice": "kokoro bm_lewis"
+  }
+}

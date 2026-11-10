@@ -1,0 +1,5 @@
+beans     30.00 of 40.00
+cups       6.25 of 5.00
+milk      20.50 of 15.00
+Over budget: ['cups', 'milk']
+Categories over budget: 2
