@@ -1,7 +1,7 @@
 {
   "chapter_id": "python-12",
   "run_id": "2026-11-10-bbf260",
-  "verified_at": "2026-11-10T01:30:34+00:00",
+  "verified_at": "2026-11-10T01:34:20+00:00",
   "passed": false,
   "toolchains": [
     "Python 3.15.2",
@@ -204,5 +204,5 @@
       }
     }
   ],
-  "fingerprint": "ca048e9b9cc633a88813b82deaf51f5f28cd511a28cc7930b428e5bc3a8e3fb4"
+  "fingerprint": "af8c76a5fc93dd2eddedfa6e2f1fd4674c06e7df9f7d88d93196476a71410d53"
 }

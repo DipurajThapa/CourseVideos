@@ -4,7 +4,7 @@
  "version": 3,
  "title": "Chapter 12: Dictionaries: Looking Things Up by Name",
  "video_title": "Python Chapter 12: Dictionaries, Looking Things Up by Name",
- "summary": "Customers ask for prices by name, but a list answers by position. Follow Asha as she learns dictionaries: keys and values, adding, changing and removing items, in and get() with a default, looping with items(), counting by name and nested data. Then watch her build a stock tracker with an AI assistant at all six stages, challenging its two-list design and catching names printed instead of numbers, a crash it did not predict, and a change she did not ask for.",
+ "summary": "Customers ask for prices by name, but a list answers by position. Follow Asha as she learns dictionaries: keys and values, adding, changing and removing items, in and get() with a default, looping with items(), counting by name and nested data. Then watch her build a stock tracker with an AI assistant at all six stages. She challenges its two-list design and catches names printed instead of numbers, a crash it did not predict, and a change that broke her rule.",
  "scenes": [
   {
    "id": "intro",
@@ -50,7 +50,7 @@
        "say": "This is Code Quest, Chapter 12. Today you learn dictionaries. They find a value by its name."
       },
       {
-       "say": "And an AI assistant will promise to print how many cakes are left. It will print the word cake instead. You will catch it.",
+       "say": "And an AI assistant will promise one thing, and print another. You will catch it.",
        "subtitle": "Ask by name. Get the value."
       }
      ]
@@ -116,11 +116,6 @@
        "say": "Read any value by its key, and add, change or remove items.",
        "reveal": 2,
        "focus": 1
-      },
-      {
-       "say": "Check for a key safely, and go through a dictionary with items.",
-       "reveal": 4,
-       "focus": 3
       },
       {
        "say": "And choose between a list and a dictionary, even when an AI chooses differently.",
@@ -511,7 +506,7 @@
      },
      "segments": [
       {
-       "say": "Step 4. A for loop over a dictionary goes through its keys, one at a time.",
+       "say": "Step 4. A for loop over a dictionary goes through its keys, one at a time. So lines 3 and 4 print the names.",
        "highlight": [
         3,
         4
@@ -539,24 +534,12 @@
       }
      ],
      "ask": {
-      "question": "Lines 3 and 4 loop over `menu`. Do they print the names or the prices?"
+      "question": "What do lines 5 and 6 print?"
      },
      "after": [
       {
-       "say": "The names. A loop over a dictionary gives its keys. Remember this one.",
+       "say": "Each name with its price, lined up with the codes from Chapter 3: tea 3.50, coffee 4.00, cake 4.25.",
        "output": "examples/ex04_loop_menu.expected",
-       "highlight": [
-        3,
-        4
-       ],
-       "out_highlight": [
-        1,
-        2,
-        3
-       ]
-      },
-      {
-       "say": "Lines 5 and 6 print each name with its price, lined up with the codes from Chapter 3.",
        "highlight": [
         5,
         6
@@ -565,6 +548,18 @@
         4,
         5,
         6
+       ]
+      },
+      {
+       "say": "And lines 3 and 4 printed the names only. A loop over a dictionary gives its keys. Remember this one.",
+       "highlight": [
+        3,
+        4
+       ],
+       "out_highlight": [
+        1,
+        2,
+        3
        ]
       },
       {
@@ -587,7 +582,7 @@
   {
    "id": "step5",
    "section": "Build it step by step",
-   "title": "Step 5: Count with a dictionary",
+   "title": "Steps 5 and 6: Count, then nest",
    "direction": "Walk the counting line slowly, then ask what line 6 prints. Then nested data and a breather.",
    "beats": [
     {
@@ -718,7 +713,7 @@
        3
       ],
       "hidden_text": "Predict the receipt before it appears.",
-      "note": "The customer will type: Tea, cake, juice, tea, done"
+      "note": "The customer will type: Tea, cake, juice, tea with a space first, done"
      },
      "segments": [
       {
@@ -743,7 +738,7 @@
        ]
       },
       {
-       "say": "Then lines 13 to 16 go through the order with items, work out each cost and add up the total.",
+       "say": "Then lines 12 to 17 go through the order with items, work out each cost, add up the total and print the receipt.",
        "highlight": [
         12,
         13,
@@ -755,7 +750,7 @@
       }
      ],
      "ask": {
-      "question": "The customer types Tea, cake, juice, tea, done. How many teas does the order hold?"
+      "question": "The customer types Tea, cake, juice, then \" tea\" with a space, then done. How many teas does the order hold?"
      },
      "after": [
       {
@@ -889,7 +884,8 @@
         "code_lines": [
          2,
          3,
-         4
+         4,
+         5
         ]
        },
        {
@@ -993,11 +989,11 @@
       "messages": [
        {
         "role": "you",
-        "text": "It printed the names, not the numbers. Fix it so each line shows the item and its count. Then give me three test cases with the exact expected output: no sales, selling the last two cakes, and selling a muffin, which is not in my stock."
+        "text": "It printed the names, not the numbers. Fix it so each line shows the item and its count. Then give me three test cases, each starting with 2 cakes, with the exact expected output: no sales, selling the last two cakes, and selling a cake and a muffin. Muffins are not in my stock."
        },
        {
         "role": "ai",
-        "text": "Use `items()` to get each name with its count.\n1. No sales: 6, 4 and 5 left.\n2. The last two cakes: cake: 0 left.\n3. A muffin: the muffin is ignored, and the counts are printed as normal.",
+        "text": "Use `items()` to get each name with its count.\n1. No sales: 2, 4 and 5 left.\n2. The last two cakes: cake: 0 left.\n3. A cake and a muffin: the muffin is ignored, and the counts are printed as normal.",
         "code": "examples/ai_stock_fixed.py",
         "code_lines": [
          6,
@@ -1009,7 +1005,7 @@
      },
      "segments": [
       {
-       "say": "Stage 4: test. Asha asks for a fix, and three test cases with expected outputs. One is a muffin, which is not in her stock."
+       "say": "Stage 4: test. Asha asks for a fix, and three test cases with expected outputs. Each case starts with 2 cakes, and one sells a muffin, which is not in her stock."
       },
       {
        "say": "The fix uses items. And for the muffin, the AI predicts: the muffin is ignored.",
@@ -1029,6 +1025,50 @@
     {
      "visual": {
       "type": "code",
+      "file": "examples/ai_stock_fixed.py",
+      "heading": "The fix: names and numbers",
+      "highlight": [
+       6,
+       7
+      ],
+      "output": "examples/ai_stock_fixed.expected",
+      "out_highlight": [
+       1,
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "First, Asha runs the AI's fix on today's sales. Cake 4, scone 3, sandwich 5. Now each line shows a name and a number."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_case_none_sold.py",
+      "heading": "Case 1: no sales",
+      "highlight": [
+       2,
+       3
+      ],
+      "output": "examples/ai_case_none_sold.expected",
+      "out_highlight": [
+       1,
+       2,
+       3
+      ]
+     },
+     "segments": [
+      {
+       "say": "Then the cases. For each one, she sets cake to 2. No sales: 2, 4 and 5 left, as expected. Pass."
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
       "file": "examples/ai_case_last_cake.py",
       "heading": "Case 2: the last two cakes",
       "highlight": [
@@ -1042,27 +1082,7 @@
      },
      "segments": [
       {
-       "say": "Asha runs each case on the fixed code. No sales: 6, 4 and 5 left. Pass. The last two cakes: cake, 0 left. Pass."
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "code",
-      "file": "examples/ai_case_muffin.py",
-      "heading": "Case 3: a muffin",
-      "highlight": [
-       3,
-       5
-      ],
-      "error": "examples/ai_case_muffin.expected_error"
-     },
-     "segments": [
-      {
-       "say": "And the muffin. Line 5 asks for stock, muffin. Python stops with a Key Error: muffin.",
-       "out_highlight": [
-        -1
-       ]
+       "say": "The last two cakes: cake, 0 left. Pass."
       }
      ]
     },
@@ -1080,8 +1100,8 @@
       "rows": [
        [
         "No sales",
-        "6, 4 and 5 left",
-        "6, 4 and 5 left",
+        "2, 4 and 5 left",
+        "2, 4 and 5 left",
         "pass"
        ],
        [
@@ -1091,7 +1111,7 @@
         "pass"
        ],
        [
-        "A muffin, not in stock",
+        "A cake and a muffin",
         "the muffin is ignored",
         "`KeyError: 'muffin'`",
         "FAIL"
@@ -1100,7 +1120,7 @@
      },
      "segments": [
       {
-       "say": "Two cases pass. The muffin fails. The AI's prediction was wrong, and only the run showed it.",
+       "say": "Case 3, a cake and a muffin, stops with a Key Error: muffin. Two cases pass, and one fails. The AI's prediction was wrong, and only the run showed it.",
        "focus_row": 2
       }
      ]
@@ -1163,7 +1183,15 @@
      },
      "segments": [
       {
-       "say": "A fix can break a case that worked before. So Asha runs all three cases again with the check, starting from 2 cakes each time. No sales: pass."
+       "say": "A fix can break a case that worked before. So Asha runs all three cases again with the check. Lines 2 to 6 keep the cases in a dictionary: each name points to a list of sales."
+      },
+      {
+       "say": "Line 9 resets the stock to 2 cakes at the start of each case. No sales: 2, 4 and 5 left. Pass.",
+       "highlight": [
+        7,
+        8,
+        9
+       ]
       },
       {
        "say": "The last two cakes: cake, 0 left. Pass.",
@@ -1289,7 +1317,7 @@
      },
      "segments": [
       {
-       "say": "Breather. Asha challenged a design, and caught three AI mistakes: names instead of numbers, a crash it did not predict, and a change she did not ask for. Next, the mistakes beginners make with dictionaries."
+       "say": "Breather. Asha challenged a design, and caught three AI mistakes: names instead of numbers, a crash it did not predict, and a change that broke her rule. Next, the mistakes beginners make with dictionaries."
       }
      ]
     }
@@ -1299,7 +1327,7 @@
    "id": "mistakes",
    "section": "Common mistakes",
    "title": "Common mistakes",
-   "direction": "Mistake 1 shows the KeyError. Mistake 2 is a spot-it on get() with a capital letter. Mistake 3 is a spot-it on a repeated key. Mistake 4 calls back to the AI's loop. Then a quiz.",
+   "direction": "Mistake 1 shows the KeyError. Mistake 2 is a spot-it on get() with a capital letter. Mistake 3 is a spot-it on a repeated key. Mistake 4 calls back to the AI's loop.",
    "beats": [
     {
      "visual": {
@@ -1348,7 +1376,7 @@
      },
      "segments": [
       {
-       "say": "Now you try. Line 3 uses get to find the price of tea, with a capital T. Remember: keys are case-sensitive."
+       "say": "Now you try. Line 3 uses get to find the price of tea, with a capital T. Keys are case-sensitive: capital T and small t make different keys."
       }
      ],
      "ask": {
@@ -1440,30 +1468,6 @@
       {
        "say": "The fix: loop over menu dot values, or use items when you need both.",
        "out_highlight": []
-      }
-     ]
-    },
-    {
-     "visual": {
-      "type": "quiz",
-      "question": "`menu.get(\"juice\", 0)` and `\"juice\"` is not a key. What does it give?",
-      "options": [
-       "A `KeyError`",
-       "`None`",
-       "`\"juice\"`",
-       "`0`"
-      ],
-      "answer": 3,
-      "explain": "`get()` never stops the program. With a default, it gives the default."
-     },
-     "segments": [
-      {
-       "say": "Quick check. Menu dot get, juice, with a default of 0. Juice is not a key. What does it give?"
-      }
-     ],
-     "after": [
-      {
-       "say": "D. 0. Get never stops the program, and here it gives the default."
       }
      ]
     },
