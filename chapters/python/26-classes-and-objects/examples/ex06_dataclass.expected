@@ -1,0 +1,3 @@
+MenuItem(name='Tea', price=3.5)
+True
+False
