@@ -19,14 +19,14 @@
       "label": "Chapter 10",
       "reveal": 0,
       "items": [
-       "The player guesses 7, then 12, then 15.",
+       "At the Corner Cafe, a player guesses 7, then 12, then 15.",
        "Each new guess replaces the one before.",
        "At the end, the game cannot show a single guess."
       ]
      },
      "segments": [
       {
-       "say": "Remember the guessing game? The player guesses 7, then 12, then 15.",
+       "say": "Remember Asha's biscuit jar game at the Corner Cafe? A player guesses 7, then 12, then 15.",
        "reveal": 1,
        "focus": 0
       },
@@ -36,7 +36,7 @@
        "focus": 1
       },
       {
-       "say": "At the end, the game cannot show a single guess. It forgot them all.",
+       "say": "At the end, the game cannot show a single guess. Asha's day report from Chapter 9 had the same problem: it added up the sales, but could not show them again.",
        "reveal": 3,
        "focus": 2
       }
@@ -55,7 +55,7 @@
        "say": "This is Code Quest, Chapter 11. Today you learn lists: one variable that keeps many values, in order."
       },
       {
-       "say": "And an AI assistant will promise the three biggest sales of the day. It will print the three smallest.",
+       "say": "And an AI assistant will promise the three biggest sales of the day. Will its code deliver them? You will check.",
        "subtitle": "Keep every value. Find any one."
       }
      ]
@@ -116,22 +116,12 @@
      },
      "segments": [
       {
-       "say": "Write a list, and read any item by its position.",
-       "reveal": 1,
-       "focus": 0
-      },
-      {
-       "say": "Add and remove items.",
+       "say": "Read any item of a list, and add or remove items.",
        "reveal": 2,
        "focus": 1
       },
       {
-       "say": "Take a part of a list with a slice.",
-       "reveal": 3,
-       "focus": 2
-      },
-      {
-       "say": "Build a list in a loop, and check whether a value is in it.",
+       "say": "Take a part with a slice, and build a list in a loop.",
        "reveal": 4,
        "focus": 3
       },
@@ -164,12 +154,7 @@
      },
      "segments": [
       {
-       "say": "A list keeps many values in one variable, in a fixed order. You can add values, remove them, sort them and go through them one by one.",
-       "reveal": 1,
-       "focus": 0
-      },
-      {
-       "say": "And a list of 3 sales needs the same code as a list of 3,000.",
+       "say": "A list keeps many values in one variable, in a fixed order. And a list of 3 sales needs the same code as a list of 3,000.",
        "reveal": 2,
        "focus": 1
       },
@@ -351,15 +336,6 @@
        ],
        "out_highlight": [
         4
-       ]
-      },
-      {
-       "say": "And notice line 3. Printing a whole list shows the brackets and the quotation marks.",
-       "highlight": [
-        3
-       ],
-       "out_highlight": [
-        1
        ]
       }
      ]
@@ -687,7 +663,7 @@
    "id": "step5",
    "section": "Build it step by step",
    "title": "Step 5: Sort and add up",
-   "direction": "Teach sorted() against sort() with the table first. Ask what line 4 prints, reveal, then sum, min and max. Quiz, then a breather.",
+   "direction": "Teach sorted() against sort() with the table first. Ask what line 4 prints, reveal, then sum, min and max. Then a breather.",
    "beats": [
     {
      "visual": {
@@ -791,30 +767,6 @@
     },
     {
      "visual": {
-      "type": "quiz",
-      "question": "What does `sales.sort()` give back?",
-      "options": [
-       "`None`",
-       "A new sorted list",
-       "The first item",
-       "An error"
-      ],
-      "answer": 0,
-      "explain": "`sort()` changes the list itself and gives back `None`."
-     },
-     "segments": [
-      {
-       "say": "Quick check. What does the method sort give back?"
-      }
-     ],
-     "after": [
-      {
-       "say": "A. None. It changes the list itself. The function sorted is the one that gives a new list."
-      }
-     ]
-    },
-    {
-     "visual": {
       "type": "breather",
       "items": [
        "`append()`, `insert()`, `remove()`, `pop()` change a list.",
@@ -849,7 +801,7 @@
      },
      "segments": [
       {
-       "say": "Back to the mission. Line 2 keeps five sales. Line 3 appends a sixth, 6.50."
+       "say": "Back to the mission. Line 2 keeps five sales. Line 3 appends a sixth, 6.5."
       },
       {
        "say": "Line 4 adds them up with sum. Line 5 counts them with len.",
@@ -907,7 +859,7 @@
        ]
       },
       {
-       "say": "Mission complete! Then Asha wants one more line: the top three sales of the day. She builds it with an AI assistant, one stage at a time.",
+       "say": "Mission complete! Next, Asha wants a top three sales line. She builds it with an AI assistant, one stage at a time.",
        "highlight": [],
        "out_highlight": []
       }
@@ -982,11 +934,12 @@
       "messages": [
        {
         "role": "you",
-        "text": "I wrote this line myself. Explain what `sales[:3]` gives, with my list as a worked example. Do not change my code.",
+        "text": "I wrote these lines myself. Explain what `sales[:3]` gives, with my list as a worked example. Do not change my code.",
         "code": "examples/ai_slice_check.py",
         "code_lines": [
          2,
-         3
+         3,
+         4
         ]
        },
        {
@@ -1085,11 +1038,11 @@
       "messages": [
        {
         "role": "you",
-        "text": "It printed `[6.5, 8.0, 9.25]`. My check: the first item must equal `max(sales)`, 21.0, so it fails. Fix it, then give me three test lists with the expected output: a normal day, three equal sales and a day with only two sales."
+        "text": "It printed `[6.5, 8.0, 9.25]`. My check: the first item must equal `max(sales)`, 21.0, so it fails. Fix it, then give me three test lists with the expected output: a normal day, a day where the top three sales are equal, and a day with only two sales."
        },
        {
         "role": "ai",
-        "text": "Sort with `reverse=True`, so the biggest comes first.\n1. Normal day: `[21.0, 15.75, 12.5]`\n2. Equal sales: `[5.0, 5.0, 5.0]`\n3. Two sales: an `IndexError`, because the list has fewer than three items.",
+        "text": "Sort with `reverse=True`, so the biggest comes first.\n1. Normal day: `[21.0, 15.75, 12.5]`\n2. Top three equal: `[5.0, 5.0, 5.0]`\n3. Two sales: an `IndexError`, because the list has fewer than three items.",
         "code": "examples/ai_top_fixed.py",
         "code_lines": [
          3,
@@ -1101,7 +1054,7 @@
      },
      "segments": [
       {
-       "say": "Stage 4: test. Asha shows the AI a check that fails: the first of the top three must equal max, 21.0. Then she asks for a fix and three test lists, each with its expected output."
+       "say": "Stage 4: test. Asha shows the AI a failed check: the first of the top three must equal max, 21.0. She asks for a fix, and three test lists with expected outputs."
       },
       {
        "say": "The fix: reverse equals True. And three expected results. For a day with only two sales, the AI predicts an Index Error.",
@@ -1138,7 +1091,7 @@
        "say": "Asha runs all three lists. A normal day: 21.0 first, and it equals max. Pass."
       },
       {
-       "say": "Three equal sales: three fives. Pass.",
+       "say": "The top three all equal: three fives. Pass.",
        "highlight": [
         5,
         6,
@@ -1163,40 +1116,82 @@
     },
     {
      "visual": {
+      "type": "code",
+      "file": "examples/ai_fix_order.py",
+      "heading": "One more check: the day order",
+      "highlight": [
+       3
+      ],
+      "output": "examples/ai_fix_order.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "But remember the plan: the day order must stay the same. Asha prints sales after the fix.",
+       "highlight": [
+        3,
+        5
+       ]
+      },
+      {
+       "say": "The top three are right. But sort changed the list itself, so the day order is gone.",
+       "highlight": [
+        3
+       ],
+       "out_highlight": [
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
       "type": "table",
-      "heading": "Three test lists",
+      "heading": "Four checks on the AI's fix",
       "label": "Test",
       "columns": [
        "Case",
-       "The AI expected",
+       "Expected",
        "The real run",
        "Result"
       ],
       "rows": [
        [
         "A normal day",
-        "`[21.0, 15.75, 12.5]`",
-        "`[21.0, 15.75, 12.5]`",
+        "21.0, 15.75, 12.5",
+        "21.0, 15.75, 12.5",
         "pass"
        ],
        [
-        "Three equal sales",
-        "`[5.0, 5.0, 5.0]`",
-        "`[5.0, 5.0, 5.0]`",
+        "Top three all equal",
+        "5.0, 5.0, 5.0",
+        "5.0, 5.0, 5.0",
         "pass"
        ],
        [
         "Only two sales",
-        "an `IndexError`",
-        "`[9.0, 4.0]`",
-        "the AI was wrong"
+        "an `IndexError`, said the AI",
+        "9.0, 4.0",
+        "pass (the AI's prediction was wrong)"
+       ],
+       [
+        "Day order kept",
+        "12.5 first, as in the day",
+        "21.0 first: sorted",
+        "FAIL"
        ]
       ]
      },
      "segments": [
       {
-       "say": "So the code passes all three tests. But the AI's own expectation for case 3 was wrong. A prediction is not a test. The run is.",
+       "say": "Three test lists pass. For two sales, the AI predicted an error, but the run gave none. A prediction is not a test. The run is.",
        "focus_row": 2
+      },
+      {
+       "say": "And the day order check fails. Asha must fix that next.",
+       "focus_row": 3
       }
      ]
     },
@@ -1226,10 +1221,10 @@
      },
      "segments": [
       {
-       "say": "Stage 5: debug. The fix sorts sales itself, so the day order is lost. Asha wants to keep it, so she stores the result of sort in a new variable, top. Python stops with a Type Error."
+       "say": "Stage 5: debug. To keep the day order, Asha stores the result of sort in a new variable, top. Python stops with a Type Error."
       },
       {
-       "say": "She pastes the code and the full error, and asks for the cause first. The AI names line 3: sort gives back None, and nobody can slice None. The fix is sorted.",
+       "say": "She pastes the code and the full error, and asks for the cause first. The AI names line 3: sort gives back None. Not subscriptable means you cannot use square brackets on it. The fix is sorted.",
        "reveal": 2,
        "focus": 1
       }
@@ -1259,6 +1254,36 @@
        ],
        "out_highlight": [
         2
+       ]
+      }
+     ]
+    },
+    {
+     "visual": {
+      "type": "code",
+      "file": "examples/ai_top_regression.py",
+      "heading": "Run every check again",
+      "highlight": [
+       2,
+       3,
+       4
+      ],
+      "output": "examples/ai_top_regression.expected",
+      "out_highlight": [
+       1
+      ]
+     },
+     "segments": [
+      {
+       "say": "A fix can break a case that worked before. So Asha runs all three test lists again, with sorted, and prints each list after it."
+      },
+      {
+       "say": "Every top three is right, and every list keeps its order. All four checks pass.",
+       "highlight": [],
+       "out_highlight": [
+        1,
+        2,
+        3
        ]
       }
      ]
@@ -1359,10 +1384,7 @@
      },
      "segments": [
       {
-       "say": "Breather. Asha caught three AI mistakes: the three smallest sales, an error that never happens, and a change of order."
-      },
-      {
-       "say": "Next, the mistakes beginners make with lists."
+       "say": "Breather. Asha caught three AI mistakes: the three smallest sales, an error that never happens, and a change of order. Next, the mistakes beginners make with lists."
       }
      ]
     }
@@ -1504,12 +1526,12 @@
       "type": "quiz",
       "question": "A list has 5 items. What is the index of the last item, counting from the start?",
       "options": [
-       "5",
-       "minus 5",
        "4",
+       "5",
+       "-5",
        "0"
       ],
-      "answer": 2,
+      "answer": 0,
       "explain": "Counting starts at 0, so 5 items have the indexes 0 to 4."
      },
      "segments": [
@@ -1519,7 +1541,7 @@
      ],
      "after": [
       {
-       "say": "C. 4. Counting starts at 0, so the indexes are 0 to 4."
+       "say": "A. 4. Counting starts at 0, so the indexes are 0 to 4."
       }
      ]
     },
@@ -1535,9 +1557,6 @@
      "segments": [
       {
        "say": "Last breather. Now you know the four list mistakes that catch most beginners."
-      },
-      {
-       "say": "Two questions to think about on your own come next."
       }
      ]
     }

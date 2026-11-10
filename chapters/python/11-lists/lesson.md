@@ -267,7 +267,7 @@ print(f"Top three: {top_three}")
 Top three: [21.0, 15.75, 12.5]
 ```
 
-Asha then tested a day with three equal sales and a day with only two sales. A slice never goes past the end of a list, so a short day gives two items and no error.
+Asha then tested a day where the top three sales are equal and a day with only two sales. A slice never goes past the end of a list, so a short day gives two items and no error. One check failed: `sort()` changed `sales` itself, so the day order was lost. `sorted(sales, reverse=True)` gives the same top three and keeps the day order.
 
 ## Common mistakes
 
