@@ -211,18 +211,18 @@ Here is the tracker summary from Chapter 15, rebuilt with functions. Each functi
 ```python
 # file: examples/ex08_day_report.py
 def with_tax(price):
-    """Return the price with 10 percent tax, rounded to cents."""
+    """Add 10 percent tax, rounded to cents."""
     return round(price * 1.1, 2)
 
 def day_total(prices):
-    """Return the total of a day's prices, with tax."""
+    """Return a day's total with tax."""
     total = 0
     for price in prices:
         total += with_tax(price)
     return round(total, 2)
 
 def report(day, prices):
-    """Print one summary line for one day."""
+    """Print one line for one day."""
     print(f"{day:<9} {len(prices)} sales  {day_total(prices):>6.2f}")
 
 report("Monday", [3.5, 4.0, 2.75])
@@ -284,9 +284,12 @@ The function prints instead of returning, so the call gives back `None`. The f-s
 def share(total, people, tip_percent):
     return total * (1 + tip_percent / 100) / people
 
-print(share(40.0, 4, 10), share(40.0, 4, 10) == 11.0)
-print(share(43.07, 4, 0), share(43.07, 4, 0) == 10.77)
-print(share(10.0, 3, 0), share(10.0, 3, 0) == 3.33)
+s1 = share(40.0, 4, 10)
+s2 = share(43.07, 4, 0)
+s3 = share(10.0, 3, 0)
+print(s1, s1 == 11.0)
+print(s2, s2 == 10.77)
+print(s3, s3 == 3.33)
 ```
 
 <!-- output: examples/ai_share_noround.expected -->
@@ -303,9 +306,12 @@ One check passed only by luck: its exact answer has no extra digits. Adding `rou
 def share(total, people, tip_percent):
     return round(total * (1 + tip_percent / 100) / people, 2)
 
-print(share(40.0, 4, 10), share(40.0, 4, 10) == 11.0)
-print(share(43.07, 4, 0), share(43.07, 4, 0) == 10.77)
-print(share(10.0, 3, 0), share(10.0, 3, 0) == 3.33)
+s1 = share(40.0, 4, 10)
+s2 = share(43.07, 4, 0)
+s3 = share(10.0, 3, 0)
+print(s1, s1 == 11.0)
+print(s2, s2 == 10.77)
+print(s3, s3 == 3.33)
 ```
 
 <!-- output: examples/ai_share_fixed.expected -->

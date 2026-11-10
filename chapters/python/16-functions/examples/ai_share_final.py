@@ -1,6 +1,6 @@
 # file: examples/ai_share_final.py
 def share(total, people, tip_percent):
-    """Return each person's share with the tip, rounded to cents."""
+    """Return one share with the tip, rounded to cents."""
     return round(total * (1 + tip_percent / 100) / people, 2)
 
 print(f"Table 4: each pays {share(40.0, 4, 10):.2f}")
