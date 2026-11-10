@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:24 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:03.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:36)
 
 **Section:** Introduction
 
@@ -21,7 +21,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The AI will promise that its code passes all of her tests. Her tests will decide.
   **On screen:** The Personal Task Manager Plan it. Test it. Build it. Judge every answer.
 
-## Scene 2: The mission
+## Scene 2: The mission (0:36 to 1:16)
 
 **Section:** The mission
 
@@ -58,7 +58,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And classes, from Chapter 26, with the safe changes from Chapter 27.
   **On screen:** Table: This boss uses the whole course (row 6 in focus)
 
-## Scene 3: What you will build
+## Scene 3: What you will build (1:16 to 1:49)
 
 **Section:** What you will build
 
@@ -79,7 +79,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The second list shows both changes. Quit saves them in the file.
   **On screen:** Code `project/task_app.py`, output `project/task_app.expected`
 
-## Scene 4: Acceptance criteria
+## Scene 4: Acceptance criteria (1:49 to 2:52)
 
 **Section:** Acceptance criteria
 
@@ -136,7 +136,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Done means seven checks.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Plan it with AI
+## Scene 5: Plan it with AI (2:52 to 3:23)
 
 **Section:** Plan it with AI
 
@@ -158,7 +158,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - You: I am a beginner. I know classes, data classes, files, JSON, try and except, and pytest. I want a command-line task manager with add, done, list and quit, saved as JSON. Do not write code. Plan the classes and functions.
     - AI (example answer): Make one class, `TaskManager`. Its `run()` method asks for commands with `input()`, prints the tasks, and saves the file after each command.
 
-## Scene 6: Step 1: Tests first
+## Scene 6: Step 1: Tests first (3:23 to 4:26)
 
 **Section:** Build it step by step
 
@@ -184,7 +184,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** A passing test proves something only when it can fail.
   **On screen:** Code `examples/step1/test_tasks_core.py`, output `examples/step1/test_tasks_core.expected`
 
-## Scene 7: Step 2: Tasks and a task list
+## Scene 7: Step 2: Tasks and a task list (4:26 to 5:37)
 
 **Section:** Build it step by step
 
@@ -208,7 +208,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And the empty title on line 11 is refused, with the message from add.
   **On screen:** Code `examples/step2/list_check.py`, line 11 highlighted, output `examples/step2/list_check.expected`
 
-## Scene 8: Step 3: Numbers that start at 1
+## Scene 8: Step 3: Numbers that start at 1 (5:37 to 7:14)
 
 **Section:** Build it step by step
 
@@ -252,7 +252,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Number minus 1 is the list position.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: Step 4: Save and load
+## Scene 9: Step 4: Save and load (7:14 to 8:05)
 
 **Section:** Build it step by step
 
@@ -277,7 +277,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Eight pass, but a promise of ten is not ten. Her tests caught a confident claim.
   **On screen:** Code `examples/ai/flawed/test_tasks_core.py`, line 46, 58 highlighted, output `examples/ai/flawed/test_tasks_core.expected`
 
-## Scene 10: Step 5: The command loop
+## Scene 10: Step 5: The command loop (8:05 to 8:47)
 
 **Section:** Build it step by step
 
@@ -296,7 +296,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** The else block runs only when the tasks loaded. It shows how many are open, runs the loop, and saves.
   **On screen:** Code `project/task_app.py`, line 35, 36, 37, 38, 39 highlighted, output hidden
 
-## Scene 11: Test it
+## Scene 11: Test it (8:47 to 13:00)
 
 **Section:** Test it
 
@@ -380,7 +380,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Run every test after every fix.
 - **Breather:** 4 quiet seconds.
 
-## Scene 12: Improve it with AI
+## Scene 12: Improve it with AI (13:00 to 14:38)
 
 **Section:** Improve it with AI
 
@@ -430,7 +430,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Keep a check your tests need.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Recap
+## Scene 13: Recap (14:38 to 16:39)
 
 **Section:** Recap
 
@@ -531,7 +531,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks, worth 40 each, including a load that never crashes.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 14: What's next
+## Scene 14: What's next (16:39 to 17:03)
 
 **Section:** What's next
 

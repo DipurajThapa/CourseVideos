@@ -1,8 +1,8 @@
 {
   "chapter_id": "python-28",
   "run_id": "2026-11-10-eb1386",
-  "verified_at": "2026-11-10T12:35:33+00:00",
-  "passed": false,
+  "verified_at": "2026-11-10T12:56:23+00:00",
+  "passed": true,
   "toolchains": [
     "Python 3.15.2",
     "Python 3.13.18"
@@ -224,17 +224,16 @@
     },
     {
       "name": "video",
-      "passed": false,
-      "problems": [
-        "missing video/chapter.mp4: run python3 tools/render_video.py chapters/python/28-capstone-task-manager",
-        "missing video/chapter.srt: run python3 tools/render_video.py chapters/python/28-capstone-task-manager",
-        "missing video/render.json: run python3 tools/render_video.py chapters/python/28-capstone-task-manager",
-        "missing video/description.md: run python3 tools/render_video.py chapters/python/28-capstone-task-manager"
-      ],
+      "passed": true,
+      "problems": [],
       "details": {
-        "estimated_minutes": 17.4
+        "estimated_minutes": 17.4,
+        "duration_seconds": 1023.1,
+        "size_mb": 44.15,
+        "scenes": 14,
+        "voice": null
       }
     }
   ],
-  "fingerprint": "5402eb45c0cda4044c5fda0bd8187a002161afa7cd254bbec809e196ac02ec55"
+  "fingerprint": "020be06b1128217bb806267b5825d3555517594b38c04f5907a5628fb4646c4f"
 }
