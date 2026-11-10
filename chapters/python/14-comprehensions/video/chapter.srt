@@ -1,0 +1,1257 @@
+1
+00:00:00,250 --> 00:00:03,562
+At the Corner Cafe, Asha adds tax to every
+price.
+
+2
+00:00:03,582 --> 00:00:08,730
+She needs three lines: an empty list, a
+loop, and append with the new price.
+
+3
+00:00:08,767 --> 00:00:10,351
+Then names in capitals.
+
+4
+00:00:10,371 --> 00:00:12,164
+Then only the vegan items.
+
+5
+00:00:12,184 --> 00:00:16,487
+Asha thinks: another empty list, another
+loop, another append.
+
+6
+00:00:16,507 --> 00:00:18,440
+There must be a shorter way!
+
+7
+00:00:19,053 --> 00:00:22,561
+This is Code Quest, Chapter 14:
+comprehensions.
+
+8
+00:00:22,581 --> 00:00:24,963
+One line that builds a new list.
+
+9
+00:00:25,000 --> 00:00:30,184
+And an AI assistant will rewrite Asha's
+loop in one line, and promise the same
+
+10
+00:00:30,204 --> 00:00:30,651
+output.
+
+11
+00:00:30,671 --> 00:00:32,319
+Will it keep its promise?
+
+12
+00:00:32,339 --> 00:00:33,320
+You will check.
+
+13
+00:00:33,920 --> 00:00:38,265
+So here is today's mission: the menu board
+for the Corner Cafe.
+
+14
+00:00:38,285 --> 00:00:42,700
+Lines 2 to 5 hold each item, its price,
+and whether it is vegan.
+
+15
+00:00:42,733 --> 00:00:45,858
+Lines 6, 7 and 8 are three comprehensions.
+
+16
+00:00:45,878 --> 00:00:49,003
+Each one builds something new in one line.
+
+17
+00:00:49,033 --> 00:00:51,617
+And the printing stays in a normal loop.
+
+18
+00:00:51,637 --> 00:00:52,723
+You will see why.
+
+19
+00:00:52,743 --> 00:00:53,699
+Let's build it.
+
+20
+00:00:54,283 --> 00:00:59,326
+Write list comprehensions, filter them,
+build dictionaries the same way, and know
+
+21
+00:00:59,346 --> 00:01:00,763
+when a loop is clearer.
+
+22
+00:01:00,800 --> 00:01:06,035
+And ask an AI to rewrite a loop, then
+prove that the output stayed the same.
+
+23
+00:01:06,617 --> 00:01:11,502
+A comprehension builds a new list or
+dictionary from another collection, in one
+
+24
+00:01:11,522 --> 00:01:11,812
+line.
+
+25
+00:01:11,832 --> 00:01:14,607
+It says what you want, not how to collect
+it.
+
+26
+00:01:14,633 --> 00:01:18,447
+Data tools and reports use comprehensions
+all the time.
+
+27
+00:01:18,467 --> 00:01:20,886
+But they do not replace every loop.
+
+28
+00:01:20,906 --> 00:01:23,883
+Part of this chapter is learning to
+choose.
+
+29
+00:01:24,483 --> 00:01:28,143
+A list comprehension has three parts
+inside square brackets.
+
+30
+00:01:28,163 --> 00:01:29,983
+Start in the middle: the loop.
+
+31
+00:01:30,003 --> 00:01:32,743
+For price in prices, exactly like a for
+loop.
+
+32
+00:01:32,767 --> 00:01:36,182
+On the left is the new value, made for
+each item.
+
+33
+00:01:36,202 --> 00:01:39,547
+Here, the price with tax, rounded to two
+places.
+
+34
+00:01:39,567 --> 00:01:42,161
+And on the right, an optional filter.
+
+35
+00:01:42,181 --> 00:01:45,271
+Keep the item only if the condition is
+True.
+
+36
+00:01:45,291 --> 00:01:46,260
+No empty list.
+
+37
+00:01:46,280 --> 00:01:46,967
+No append.
+
+38
+00:01:47,587 --> 00:01:51,203
+Think of a comprehension as a recipe card
+for a new list.
+
+39
+00:01:51,223 --> 00:01:55,287
+For each price, if it is under 4, write
+down the price with tax.
+
+40
+00:01:55,333 --> 00:01:59,880
+Unlike a real recipe card, it cannot do
+other jobs on the way.
+
+41
+00:01:59,900 --> 00:02:02,384
+No printing, and no running total.
+
+42
+00:02:02,404 --> 00:02:04,446
+It only builds the new list.
+
+43
+00:02:05,053 --> 00:02:05,830
+Quick check.
+
+44
+00:02:05,850 --> 00:02:09,214
+In this comprehension, which part is the
+new value?
+
+45
+00:02:20,580 --> 00:02:20,703
+C.
+
+46
+00:02:20,723 --> 00:02:21,775
+Name dot upper.
+
+47
+00:02:21,795 --> 00:02:26,704
+The new value comes first, on the left,
+and it is made for each item.
+
+48
+00:02:27,320 --> 00:02:28,437
+Take a breather.
+
+49
+00:02:28,457 --> 00:02:30,498
+Here is what you know so far.
+
+50
+00:02:30,518 --> 00:02:33,697
+Next, Asha rewrites her tax loop in one
+line.
+
+51
+00:02:38,450 --> 00:02:43,520
+Step 1 is the loop you saw at the start:
+an empty list, a loop, and append, with
+
+52
+00:02:43,540 --> 00:02:45,810
+round to two places, from Chapter 2.
+
+53
+00:02:45,833 --> 00:02:46,356
+Step 2.
+
+54
+00:02:46,376 --> 00:02:49,457
+Line 3 builds the same list in one line.
+
+55
+00:02:49,477 --> 00:02:53,023
+The new value first, then for price in
+prices.
+
+56
+00:02:53,067 --> 00:02:54,828
+Line 4 prints the new list.
+
+57
+00:02:54,848 --> 00:02:59,577
+Line 5 prints the length of the new list,
+and the length of the old one.
+
+58
+00:03:10,947 --> 00:03:17,847
+Line 4 prints exactly the same list as the
+loop: 3.85, 4.4, 4.68, and 3.03.
+
+59
+00:03:17,867 --> 00:03:20,510
+And line 5 prints 4 and 4.
+
+60
+00:03:20,530 --> 00:03:26,863
+Without a filter, the new list has one
+item for each old item.
+
+61
+00:03:27,450 --> 00:03:27,941
+Step 3.
+
+62
+00:03:27,961 --> 00:03:30,569
+The new value can be any expression.
+
+63
+00:03:30,589 --> 00:03:34,220
+Line 2 holds the menu names, all in small
+letters.
+
+64
+00:03:34,267 --> 00:03:38,647
+Line 3 uses title, the string method from
+Chapter 3.
+
+65
+00:03:38,667 --> 00:03:42,540
+Line 4 uses len, so each new item is a
+number.
+
+66
+00:03:53,913 --> 00:03:59,783
+Line 5 prints the names with capital
+letters: Tea, Coffee, Carrot Cake, Scone.
+
+67
+00:03:59,833 --> 00:04:03,566
+Line 6 prints the lengths: 3, 6, 11 and 5.
+
+68
+00:04:03,586 --> 00:04:06,783
+The space in carrot cake counts too.
+
+69
+00:04:06,833 --> 00:04:09,774
+And line 7 shows the old list, unchanged.
+
+70
+00:04:09,794 --> 00:04:12,662
+A comprehension always makes a new list.
+
+71
+00:04:13,250 --> 00:04:13,762
+Step 4.
+
+72
+00:04:13,782 --> 00:04:18,622
+Each tuple holds a name, a price, and
+whether the item is vegan.
+
+73
+00:04:18,642 --> 00:04:22,420
+The loop part unpacks all three, as in
+Chapter 13.
+
+74
+00:04:22,467 --> 00:04:24,465
+An if at the end is a filter.
+
+75
+00:04:24,485 --> 00:04:28,849
+An item goes into the new list only when
+the condition is True.
+
+76
+00:04:28,869 --> 00:04:30,867
+Line 6 keeps the vegan names.
+
+77
+00:04:30,900 --> 00:04:34,966
+Line 7 keeps the names of the items that
+cost less than 4.
+
+78
+00:04:46,347 --> 00:04:47,547
+Tea and Scone.
+
+79
+00:04:47,567 --> 00:04:51,817
+Coffee costs exactly 4, and 4 is not less
+than 4.
+
+80
+00:04:51,867 --> 00:04:55,202
+And line 8 prints the vegan names: Tea and
+Coffee.
+
+81
+00:04:55,222 --> 00:04:58,088
+With a filter, the new list can be
+shorter.
+
+82
+00:04:58,683 --> 00:04:59,242
+Step 5.
+
+83
+00:04:59,262 --> 00:05:02,797
+Line 3 has an if at the end, so it
+filters.
+
+84
+00:05:02,817 --> 00:05:04,863
+Only prices under 4 stay.
+
+85
+00:05:04,900 --> 00:05:06,091
+Line 4 is different.
+
+86
+00:05:06,111 --> 00:05:08,694
+The if and else come first, before the
+for.
+
+87
+00:05:08,714 --> 00:05:12,810
+That chooses a value for every item: snack
+under 4, otherwise treat.
+
+88
+00:05:12,833 --> 00:05:17,990
+This form must have an else, because every
+item needs a value.
+
+89
+00:05:29,347 --> 00:05:29,715
+Four.
+
+90
+00:05:29,735 --> 00:05:33,827
+One label for each price: snack, treat,
+treat, snack.
+
+91
+00:05:33,867 --> 00:05:36,355
+But line 5 prints only two prices.
+
+92
+00:05:36,375 --> 00:05:38,863
+The filter made that list shorter.
+
+93
+00:05:39,453 --> 00:05:40,255
+Quick check.
+
+94
+00:05:40,275 --> 00:05:43,678
+Which comprehension keeps only the prices
+under 4?
+
+95
+00:05:55,047 --> 00:05:55,176
+B.
+
+96
+00:05:55,196 --> 00:05:57,185
+The filter goes at the end.
+
+97
+00:05:57,205 --> 00:06:01,726
+Option A keeps every item, and puts 0 in
+place of the others.
+
+98
+00:06:02,320 --> 00:06:02,930
+Breather.
+
+99
+00:06:02,950 --> 00:06:04,262
+Relax for a moment.
+
+100
+00:06:04,282 --> 00:06:07,484
+Next, the same idea builds a whole
+dictionary.
+
+101
+00:06:12,217 --> 00:06:12,788
+Step 6.
+
+102
+00:06:12,808 --> 00:06:16,677
+Line 2 is the menu dictionary from Chapter
+12.
+
+103
+00:06:16,700 --> 00:06:21,134
+Line 3 uses curly brackets with a key, a
+colon, and a value.
+
+104
+00:06:21,154 --> 00:06:23,955
+That makes a dictionary comprehension.
+
+105
+00:06:23,975 --> 00:06:26,330
+Items gives each name and price.
+
+106
+00:06:26,367 --> 00:06:29,398
+Line 5 reads cake from the new dictionary.
+
+107
+00:06:29,418 --> 00:06:32,014
+Line 6 reads cake from the old menu.
+
+108
+00:06:43,380 --> 00:06:46,893
+4.68, the cake with tax, and then 4.25.
+
+109
+00:06:46,913 --> 00:06:49,430
+The old menu did not change.
+
+110
+00:06:49,467 --> 00:06:55,433
+Line 4 shows the whole new dictionary: the
+same keys, with new values.
+
+111
+00:06:56,017 --> 00:06:56,450
+Step 7.
+
+112
+00:06:56,470 --> 00:07:00,527
+Today, items of 4 or more cost 0.50 less,
+and they get a label.
+
+113
+00:07:00,547 --> 00:07:01,887
+Lines 5 to 7 do that.
+
+114
+00:07:01,933 --> 00:07:05,959
+Line 8 prints each item, and line 9 adds
+it to a total.
+
+115
+00:07:05,979 --> 00:07:08,313
+That is four jobs for each item.
+
+116
+00:07:08,333 --> 00:07:12,327
+A comprehension builds one new list and
+nothing else.
+
+117
+00:07:12,347 --> 00:07:15,583
+Here, a normal loop is much easier to
+read.
+
+118
+00:07:15,633 --> 00:07:17,114
+So the rule is simple.
+
+119
+00:07:17,134 --> 00:07:20,387
+One new list or dictionary: use a
+comprehension.
+
+120
+00:07:20,407 --> 00:07:24,138
+Several steps, a print, or a running
+total: use a loop.
+
+121
+00:07:24,717 --> 00:07:26,029
+Back to the mission.
+
+122
+00:07:26,049 --> 00:07:30,227
+Line 6 builds a dictionary: each name,
+with its price plus tax.
+
+123
+00:07:30,267 --> 00:07:32,619
+Line 7 filters the vegan names.
+
+124
+00:07:32,639 --> 00:07:37,287
+Line 8 filters the board, so it compares
+the prices with tax.
+
+125
+00:07:37,333 --> 00:07:42,066
+Lines 9 and 10 print the board with a
+normal loop, because printing is not
+
+126
+00:07:42,086 --> 00:07:43,093
+building a list.
+
+127
+00:07:43,133 --> 00:07:47,227
+Line 12 prints the names whose price with
+tax is under 4.
+
+128
+00:07:58,580 --> 00:07:59,771
+Tea and Scone.
+
+129
+00:07:59,791 --> 00:08:03,230
+With tax, Tea is 3.85 and Scone is 3.03.
+
+130
+00:08:03,250 --> 00:08:06,170
+Coffee becomes 4.40, so it is out.
+
+131
+00:08:06,200 --> 00:08:09,777
+Line 11 prints the vegan items, Tea and
+Coffee.
+
+132
+00:08:09,797 --> 00:08:12,149
+Three comprehensions, one loop.
+
+133
+00:08:12,169 --> 00:08:13,450
+Mission complete!
+
+134
+00:08:13,500 --> 00:08:17,572
+Next, Asha wants a loop of her own in one
+line.
+
+135
+00:08:17,592 --> 00:08:21,576
+She asks an AI assistant, one stage at a
+time.
+
+136
+00:08:22,150 --> 00:08:25,117
+This chapter's AI skill is safe
+refactoring.
+
+137
+00:08:25,137 --> 00:08:30,480
+To refactor means to change how code is
+written, without changing what it does.
+
+138
+00:08:30,500 --> 00:08:36,216
+And you prove it: run both versions on the
+same data, and compare every line.
+
+139
+00:08:36,820 --> 00:08:37,837
+Stage 1: plan.
+
+140
+00:08:37,857 --> 00:08:41,170
+Asha's loop adds tax to the vegan items
+only.
+
+141
+00:08:41,190 --> 00:08:47,170
+Before any rewrite, she asks the AI what
+the new line must keep exactly the same.
+
+142
+00:08:47,200 --> 00:08:52,840
+The AI gives a checklist: only vegan
+items, the same order, the same rounding,
+
+143
+00:08:52,860 --> 00:08:53,638
+and a list.
+
+144
+00:08:53,658 --> 00:08:55,525
+Asha keeps this checklist.
+
+145
+00:08:56,120 --> 00:08:57,332
+Stage 2: write.
+
+146
+00:08:57,352 --> 00:08:59,632
+Asha wrote the loop herself.
+
+147
+00:08:59,652 --> 00:09:04,890
+She asks the AI to predict its exact
+output, without running it.
+
+148
+00:09:04,933 --> 00:09:08,862
+The AI predicts 3.85 and 4.4, only Tea and
+Coffee.
+
+149
+00:09:08,882 --> 00:09:12,336
+Asha predicted the same, and the run
+agrees.
+
+150
+00:09:12,953 --> 00:09:14,269
+Stage 3: generate.
+
+151
+00:09:14,289 --> 00:09:20,281
+Asha asks the AI to rewrite her loop as a
+list comprehension, keep the output the
+
+152
+00:09:20,301 --> 00:09:22,433
+same, and say what it prints.
+
+153
+00:09:22,467 --> 00:09:29,117
+The AI gives one line, and promises 3.85
+and 4.4, the same as the loop.
+
+154
+00:09:29,720 --> 00:09:32,317
+Here is the AI's line, on line 6.
+
+155
+00:09:32,337 --> 00:09:35,727
+Compare it with the checklist from stage
+1.
+
+156
+00:09:47,080 --> 00:09:47,268
+No.
+
+157
+00:09:47,288 --> 00:09:50,043
+Point 1 on the checklist was the filter.
+
+158
+00:09:50,063 --> 00:09:53,650
+Line 6 has no if at the end, so it keeps
+every item.
+
+159
+00:09:53,700 --> 00:09:56,669
+Asha runs it: four prices instead of two.
+
+160
+00:09:56,689 --> 00:09:59,220
+The cake and the scone got tax too.
+
+161
+00:09:59,240 --> 00:10:03,083
+The AI sounded sure, and it dropped part
+of her loop.
+
+162
+00:10:03,687 --> 00:10:04,829
+Stage 4: test.
+
+163
+00:10:04,849 --> 00:10:10,307
+Asha asks for three test cases, with the
+expected result for each.
+
+164
+00:10:10,333 --> 00:10:16,366
+A normal menu, a menu with no vegan items,
+and two vegan items with the same price.
+
+165
+00:10:16,987 --> 00:10:22,431
+Lines 2 to 6 keep the three cases in a
+dictionary: a name, and a small menu for
+
+166
+00:10:22,451 --> 00:10:22,777
+each.
+
+167
+00:10:22,800 --> 00:10:26,620
+For each case, lines 8 to 11 run Asha's
+loop.
+
+168
+00:10:26,667 --> 00:10:28,792
+Line 12 runs the AI's line.
+
+169
+00:10:28,812 --> 00:10:35,229
+Line 13 uses the same if and else from
+step 5: it prints pass when both lists are
+
+170
+00:10:35,249 --> 00:10:37,216
+the same, otherwise FAIL.
+
+171
+00:10:48,580 --> 00:10:51,937
+The normal menu and the menu with no vegan
+items.
+
+172
+00:10:51,957 --> 00:10:54,970
+Both get a scone price they should not
+have.
+
+173
+00:10:55,000 --> 00:10:59,158
+The same-price case passes, because both
+items are vegan.
+
+174
+00:10:59,178 --> 00:11:01,504
+One passing case proves nothing.
+
+175
+00:11:01,524 --> 00:11:02,457
+Run them all.
+
+176
+00:11:03,053 --> 00:11:04,125
+Stage 5: debug.
+
+177
+00:11:04,145 --> 00:11:09,146
+Asha tries to add the filter herself, and
+puts the if before the for.
+
+178
+00:11:09,166 --> 00:11:11,547
+Python stops with a syntax error.
+
+179
+00:11:11,567 --> 00:11:14,894
+She pastes the line and the full error
+report.
+
+180
+00:11:15,487 --> 00:11:21,004
+The AI explains: an if before the for
+chooses a value for every item, so it
+
+181
+00:11:21,024 --> 00:11:22,038
+needs an else.
+
+182
+00:11:22,058 --> 00:11:23,220
+Remember step 5.
+
+183
+00:11:23,240 --> 00:11:25,878
+To filter, move if vegan to the end.
+
+184
+00:11:26,487 --> 00:11:29,323
+Asha moves the if to the end, on line 12.
+
+185
+00:11:29,343 --> 00:11:35,037
+Then she runs every case again, because a
+fix can break a case that worked before.
+
+186
+00:11:35,067 --> 00:11:36,646
+Normal: 3.85, pass.
+
+187
+00:11:36,666 --> 00:11:39,171
+No vegan: an empty list, pass.
+
+188
+00:11:39,191 --> 00:11:40,602
+Same price: pass.
+
+189
+00:11:40,622 --> 00:11:42,370
+All three cases pass.
+
+190
+00:11:42,987 --> 00:11:44,227
+Stage 6: improve.
+
+191
+00:11:44,247 --> 00:11:48,082
+Asha asks for one change that makes her
+line better.
+
+192
+00:11:48,102 --> 00:11:51,937
+And she adds: the output must stay exactly
+the same.
+
+193
+00:11:51,967 --> 00:11:56,803
+The AI suggests curly brackets, because a
+set is faster to search.
+
+194
+00:11:56,823 --> 00:11:58,863
+It promises the same output.
+
+195
+00:11:59,453 --> 00:12:01,544
+Asha does not trust it yet.
+
+196
+00:12:01,564 --> 00:12:05,140
+Line 12 now has curly brackets, with no
+colon.
+
+197
+00:12:05,160 --> 00:12:06,703
+She runs every case.
+
+198
+00:12:18,080 --> 00:12:18,263
+No.
+
+199
+00:12:18,283 --> 00:12:19,415
+Every case fails.
+
+200
+00:12:19,435 --> 00:12:23,617
+Curly brackets made a set, and a set is
+never equal to a list.
+
+201
+00:12:23,637 --> 00:12:26,870
+Set, with empty round brackets, is an
+empty set.
+
+202
+00:12:26,900 --> 00:12:31,587
+And look at the same-price case: the two
+equal prices merged into one.
+
+203
+00:12:31,607 --> 00:12:33,470
+A set keeps each value once.
+
+204
+00:12:33,500 --> 00:12:37,560
+The AI broke her rule: the output did not
+stay the same.
+
+205
+00:12:37,580 --> 00:12:39,819
+Asha keeps her square brackets.
+
+206
+00:12:40,420 --> 00:12:41,210
+Quick check.
+
+207
+00:12:41,230 --> 00:12:43,639
+An AI rewrote your loop as one line.
+
+208
+00:12:43,659 --> 00:12:46,608
+How do you prove the output stayed the
+same?
+
+209
+00:12:57,980 --> 00:12:58,108
+A.
+
+210
+00:12:58,128 --> 00:13:02,914
+Run both versions on the same test cases,
+and compare every line.
+
+211
+00:13:02,934 --> 00:13:04,614
+A promise is not proof.
+
+212
+00:13:05,220 --> 00:13:05,830
+Breather.
+
+213
+00:13:05,850 --> 00:13:11,217
+Asha kept a checklist, ran three cases,
+and caught two AI mistakes: a missing
+
+214
+00:13:11,237 --> 00:13:13,106
+filter, and curly brackets.
+
+215
+00:13:13,126 --> 00:13:16,464
+Next, the comprehension mistakes beginners
+make.
+
+216
+00:13:21,217 --> 00:13:23,574
+Mistake 1 is the AI's improvement.
+
+217
+00:13:23,594 --> 00:13:27,349
+Curly brackets with no colon make a set
+comprehension.
+
+218
+00:13:27,369 --> 00:13:29,237
+Line 4 shows the type: set.
+
+219
+00:13:29,267 --> 00:13:33,307
+A set has no fixed order, so line 5 prints
+it sorted.
+
+220
+00:13:33,327 --> 00:13:34,685
+There is no error.
+
+221
+00:13:34,705 --> 00:13:40,967
+But the list had 3.5 twice, and the set
+kept 3.85 only once: 3 items instead of 4.
+
+222
+00:13:41,000 --> 00:13:43,508
+The fix: square brackets for a list.
+
+223
+00:13:43,528 --> 00:13:47,371
+Curly brackets with key, colon, value for
+a dictionary.
+
+224
+00:13:47,987 --> 00:13:48,927
+Now you try.
+
+225
+00:13:48,947 --> 00:13:52,447
+Look closely at line 3, and remember step
+5.
+
+226
+00:14:03,813 --> 00:14:06,714
+A filter at the end cannot have an else.
+
+227
+00:14:06,734 --> 00:14:09,853
+Python stops with a syntax error on line
+3.
+
+228
+00:14:09,900 --> 00:14:15,249
+The fix: to choose a value for every item,
+move the if and else to the start.
+
+229
+00:14:15,269 --> 00:14:17,132
+To filter, remove the else.
+
+230
+00:14:17,753 --> 00:14:18,440
+Mistake 3.
+
+231
+00:14:18,460 --> 00:14:22,541
+Print shows text on the screen, but it
+gives back nothing.
+
+232
+00:14:22,561 --> 00:14:24,733
+Python calls that nothing None.
+
+233
+00:14:24,767 --> 00:14:28,213
+Line 3 builds a list from three calls to
+print.
+
+234
+00:14:28,233 --> 00:14:29,983
+Line 4 prints that list.
+
+235
+00:14:41,347 --> 00:14:42,470
+None, None, None.
+
+236
+00:14:42,490 --> 00:14:45,697
+The names were printed, but the list is
+useless.
+
+237
+00:14:45,733 --> 00:14:49,556
+The fix: when the job is printing, use a
+normal for loop.
+
+238
+00:14:50,153 --> 00:14:50,956
+Mistake 4.
+
+239
+00:14:50,976 --> 00:14:53,424
+Line 3 adds tax with no round.
+
+240
+00:14:53,444 --> 00:14:58,443
+Remember Chapter 2: some floats are stored
+with a tiny error.
+
+241
+00:14:58,467 --> 00:15:02,268
+The fix: round inside the comprehension,
+as line 5 does.
+
+242
+00:15:02,288 --> 00:15:06,500
+Or format the price with two decimal
+places when you print it.
+
+243
+00:15:07,120 --> 00:15:07,971
+Last breather.
+
+244
+00:15:07,991 --> 00:15:12,391
+Now you know the four comprehension
+mistakes that catch most beginners.
+
+245
+00:15:17,117 --> 00:15:17,491
+First.
+
+246
+00:15:17,511 --> 00:15:18,871
+Asha has five orders.
+
+247
+00:15:18,891 --> 00:15:23,078
+Write a comprehension that keeps only the
+teas, then count them.
+
+248
+00:15:23,098 --> 00:15:26,168
+Could you count them without making a new
+list?
+
+249
+00:15:37,547 --> 00:15:39,947
+Write it after the video, and run it.
+
+250
+00:15:40,553 --> 00:15:41,013
+Second.
+
+251
+00:15:41,033 --> 00:15:46,088
+A comprehension can have two for parts,
+such as every size of every drink.
+
+252
+00:15:46,108 --> 00:15:49,105
+Predict the order of the items, then run
+it.
+
+253
+00:16:00,480 --> 00:16:03,319
+Compare your prediction with the real
+output.
+
+254
+00:16:03,917 --> 00:16:04,674
+Let's recap.
+
+255
+00:16:04,694 --> 00:16:09,017
+A list comprehension: the new value, then
+for, then an optional if.
+
+256
+00:16:09,067 --> 00:16:10,675
+An if at the end filters.
+
+257
+00:16:10,695 --> 00:16:14,517
+An if and else at the start chooses a
+value for every item.
+
+258
+00:16:14,567 --> 00:16:17,518
+Curly brackets with a colon build a
+dictionary.
+
+259
+00:16:17,538 --> 00:16:19,857
+And the old collection never changes.
+
+260
+00:16:19,900 --> 00:16:25,612
+Use a loop for several steps, and with AI,
+run both versions on the same cases.
+
+261
+00:16:26,220 --> 00:16:27,248
+One last check.
+
+262
+00:16:27,268 --> 00:16:29,622
+What does this comprehension give?
+
+263
+00:16:40,980 --> 00:16:41,114
+D.
+
+264
+00:16:41,134 --> 00:16:41,729
+4 and 6.
+
+265
+00:16:41,749 --> 00:16:46,421
+The filter keeps 2 and 3, and the new
+value doubles each one.
+
+266
+00:16:47,020 --> 00:16:48,335
+Mission complete!
+
+267
+00:16:48,355 --> 00:16:51,789
+You earned 100 XP and the Transformer
+badge.
+
+268
+00:16:54,017 --> 00:16:57,545
+Now it is your turn: eight tasks, worth
+170 XP.
+
+269
+00:16:57,565 --> 00:17:03,284
+Three warm-up tasks at 10 XP, and three
+apply tasks at 20, including a stock
+
+270
+00:17:03,304 --> 00:17:03,737
+check.
+
+271
+00:17:03,767 --> 00:17:10,517
+And two stretch tasks, worth 40 each: a
+vegan menu board, and an AI's refactor to
+
+272
+00:17:10,537 --> 00:17:11,019
+check.
+
+273
+00:17:11,039 --> 00:17:14,530
+Try each one before you open the solution.
+
+274
+00:17:15,117 --> 00:17:19,722
+Asha now knows lists, dictionaries,
+tuples, sets and comprehensions.
+
+275
+00:17:19,742 --> 00:17:25,028
+But every day, she still adds up the
+Corner Cafe's costs on paper: milk, cups,
+
+276
+00:17:25,048 --> 00:17:25,777
+tea leaves.
+
+277
+00:17:25,800 --> 00:17:30,977
+In Chapter 15, Boss Level 3, you will
+build an expense tracker that does it for
+
+278
+00:17:30,997 --> 00:17:31,240
+her.
+
+279
+00:17:31,267 --> 00:17:32,945
+Do the warm-up tasks now.
+
+280
+00:17:32,965 --> 00:17:34,847
+They take about ten minutes.
+
+281
+00:17:34,867 --> 00:17:36,675
+See you in Chapter 15.

@@ -2,9 +2,9 @@
 
 Generated from `storyboard.json` by `tools/render_video.py --script`. Do not edit by hand: change the storyboard and render again.
 
-Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:54 (estimate, not rendered yet).
+Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Length: 17:39.
 
-## Scene 1: Introduction
+## Scene 1: Introduction (0:00 to 0:54)
 
 **Section:** Introduction
 
@@ -12,7 +12,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 
 - **Narration:** At the Corner Cafe, Asha adds tax to every price. She needs three lines: an empty list, a loop, and append with the new price.
   **On screen:** Code `examples/ex01_tax_loop.py`, line 3, 4, 5 highlighted, output hidden
-- **Narration:** Then names in capitals. Then only the vegan items. Asha sighs: another empty list, another loop, another append. Is there a shorter way?
+- **Narration:** Then names in capitals. Then only the vegan items. Asha thinks: another empty list, another loop, another append. There must be a shorter way!
   **On screen:** Code `examples/ex01_tax_loop.py`, line 3, 4, 5 highlighted, output hidden
 - **Narration:** This is Code Quest, Chapter 14: comprehensions. One line that builds a new list.
   **On screen:** Comprehensions: Transforming Data in One Line
@@ -25,7 +25,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And the printing stays in a normal loop. You will see why. Let's build it.
   **On screen:** Code `examples/ex08_menu_board.py`, line 9, 10 highlighted, output hidden
 
-## Scene 2: Learning goals
+## Scene 2: Learning goals (0:54 to 1:06)
 
 **Section:** Learning goals
 
@@ -45,7 +45,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Explain when a normal loop is clearer than a comprehension.
     - Ask AI to rewrite a loop as one line, then prove the output stayed the same.
 
-## Scene 3: Why this matters
+## Scene 3: Why this matters (1:06 to 1:24)
 
 **Section:** Why this matters
 
@@ -62,7 +62,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Data tools and reports use them to clean and reshape data.
     - It does not replace every loop. Part of the skill is choosing.
 
-## Scene 4: The idea: three parts in square brackets
+## Scene 4: The idea: three parts in square brackets (1:24 to 2:38)
 
 **Section:** The idea
 
@@ -94,7 +94,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Then an optional filter.
 - **Breather:** 4 quiet seconds.
 
-## Scene 5: Steps 1 and 2: The same list in one line
+## Scene 5: Steps 1 and 2: The same list in one line (2:38 to 3:27)
 
 **Section:** Build it step by step
 
@@ -112,7 +112,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And line 5 prints 4 and 4. Without a filter, the new list has one item for each old item.
   **On screen:** Code `examples/ex02_tax_comp.py`, line 5 highlighted, output `examples/ex02_tax_comp.expected`
 
-## Scene 6: Step 3: Transform text
+## Scene 6: Step 3: Transform text (3:27 to 4:13)
 
 **Section:** Build it step by step
 
@@ -130,7 +130,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And line 7 shows the old list, unchanged. A comprehension always makes a new list.
   **On screen:** Code `examples/ex03_names.py`, line 7 highlighted, output `examples/ex03_names.expected`
 
-## Scene 7: Step 4: Keep only some items
+## Scene 7: Step 4: Keep only some items (4:13 to 4:58)
 
 **Section:** Build it step by step
 
@@ -148,7 +148,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And line 8 prints the vegan names: Tea and Coffee. With a filter, the new list can be shorter.
   **On screen:** Code `examples/ex04_filter.py`, line 6, 8 highlighted, output `examples/ex04_filter.expected`
 
-## Scene 8: Step 5: Filter or choose
+## Scene 8: Step 5: Filter or choose (4:58 to 6:12)
 
 **Section:** Build it step by step
 
@@ -177,7 +177,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - `if ... else` at the start chooses.
 - **Breather:** 4 quiet seconds.
 
-## Scene 9: Step 6: Build a dictionary
+## Scene 9: Step 6: Build a dictionary (6:12 to 6:56)
 
 **Section:** Build it step by step
 
@@ -195,7 +195,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Line 4 shows the whole new dictionary: the same keys, with new values.
   **On screen:** Code `examples/ex06_dict_comp.py`, line 4 highlighted, output `examples/ex06_dict_comp.expected`
 
-## Scene 10: Step 7: When a loop is clearer
+## Scene 10: Step 7: When a loop is clearer (6:56 to 7:24)
 
 **Section:** Build it step by step
 
@@ -210,7 +210,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** So the rule is simple. One new list or dictionary: use a comprehension. Several steps, a print, or a running total: use a loop.
   **On screen:** Code `examples/ex07_loop_clearer.py`, output `examples/ex07_loop_clearer.expected`
 
-## Scene 11: See the outcome: the menu board
+## Scene 11: See the outcome: the menu board (7:24 to 8:22)
 
 **Section:** See the outcome
 
@@ -232,7 +232,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Next, Asha wants a loop of her own in one line. She asks an AI assistant, one stage at a time.
   **On screen:** Code `examples/ex08_menu_board.py`, output `examples/ex08_menu_board.expected`
 
-## Scene 12: Work with AI: six stages, one rewrite
+## Scene 12: Work with AI: six stages, one rewrite (8:22 to 13:21)
 
 **Section:** Work with AI
 
@@ -332,7 +332,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - A promise is not proof. A run is.
 - **Breather:** 4 quiet seconds.
 
-## Scene 13: Common mistakes
+## Scene 13: Common mistakes (13:21 to 15:17)
 
 **Section:** Common mistakes
 
@@ -371,7 +371,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
     - Use a loop to print.
 - **Breather:** 4 quiet seconds.
 
-## Scene 14: Think beyond
+## Scene 14: Think beyond (15:17 to 16:04)
 
 **Section:** Think beyond
 
@@ -388,7 +388,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** Compare your prediction with the real output.
   **On screen:** Question card: "`[size + " " + drink for drink in drinks for size in sizes]` with drinks tea and coffee, and sizes small and large. In what order do the items come?"
 
-## Scene 15: Recap
+## Scene 15: Recap (16:04 to 16:54)
 
 **Section:** Recap
 
@@ -424,7 +424,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
   **On screen:** Transformer You earned 100 XP.
 - **Breather:** 2 quiet seconds.
 
-## Scene 16: Practice
+## Scene 16: Practice (16:54 to 17:15)
 
 **Section:** Practice
 
@@ -435,7 +435,7 @@ Format: interactive full chapter walkthrough, 1920x1080, 30 fps, narrated. Lengt
 - **Narration:** And two stretch tasks, worth 40 each: a vegan menu board, and an AI's refactor to check. Try each one before you open the solution.
   **On screen:** Table: Practice: 8 tasks, 170 XP (row 3 in focus)
 
-## Scene 17: What's next
+## Scene 17: What's next (17:15 to 17:39)
 
 **Section:** What's next
 
